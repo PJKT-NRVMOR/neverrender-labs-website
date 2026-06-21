@@ -101,4 +101,10 @@ document.addEventListener('DOMContentLoaded', () => {
         archiveModal.classList.remove('active');
         launchVideo.pause();
     });
+
+    // Contact Logic
+    const contactBtn = document.getElementById('contact-creator');
+    contactBtn.addEventListener('click', () => {
+        window.location.href = "mailto:creator@renderwithoutcode.com";
+    });
 });
