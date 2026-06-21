@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeverRender Labs</title>
+    <meta name="description" content="Agent Assisted Creative Studio - Surreal-Futurist Macro-Diorama">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="macro-environment">
+        <!-- Background plate for bokeh/blur -->
+        <div class="background-plate"></div>
+        
+        <!-- Energy Conduits -->
+        <div class="conduit-grid">
+            <div class="conduit-line horizontal top"></div>
+            <div class="conduit-line vertical left"></div>
+            <div class="conduit-line horizontal bottom"></div>
+            <div class="conduit-line vertical right"></div>
+        </div>
+
+        <!-- Central Crystalline Viewport -->
+        <div class="viewport-container" id="main-viewport">
+            <div class="glass-panel">
+                <header class="sys-header">
+                    <div class="sys-status">
+                        <span class="indicator blink"></span> SYSTEM STATUS: CEMENTED
+                    </div>
+                    <div class="sys-id">PROJECT_NEVERMORE</div>
+                </header>
+
+                <main class="content-matrix">
+                    <h1 class="chromatic-aberration">NEVERRENDER LABS</h1>
+                    <p class="subtitle">THE COMPLETE ARCHITECTURAL COMPENDIUM</p>
+                    
+                    <div class="terminal-box" id="terminal-interface">
+                        <div class="terminal-header">
+                            <span>> TERMINAL FOCUS</span>
+                        </div>
+                        <div class="terminal-body">
+                            <p class="typewriter-text" id="typewriter"></p>
+                            <span class="cursor">_</span>
+                        </div>
+                    </div>
+
+                    <div class="action-matrix">
+                        <button class="action-btn primary" id="init-sequence">INITIALIZE SEQUENCE</button>
+                        <button class="action-btn secondary" id="view-archives">VIEW ARCHIVES</button>
+                    </div>
+                </main>
+
+                <footer class="sys-footer">
+                    <div>COMPUTE: TUNED AMD 6800U</div>
+                    <div class="text-pop">AESTHETIC: SURREAL-FUTURIST MACRO-DIORAMA</div>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <div class="video-modal" id="archive-modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content glass-panel">
+            <header class="sys-header">
+                <div class="sys-id">ARCHIVE_PLAYBACK</div>
+                <button class="close-btn" id="close-modal">[X] CLOSE</button>
+            </header>
+            <div class="video-container">
+                <video id="launch-video" controls>
+                    <source src="HOLOGRAPHIC_DAWN_MVFORSOCIALS_POST.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
