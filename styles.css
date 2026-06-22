@@ -48,7 +48,7 @@ body, html {
     background-position: center;
     filter: blur(8px) brightness(0.4);
     z-index: 0;
-    transition: transform 0.1s ease-out;
+    transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 /* Conduit Grid */
@@ -99,7 +99,7 @@ body, html {
     width: 90%;
     max-width: 1000px;
     transform-style: preserve-3d;
-    transition: transform 0.1s ease-out;
+    transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .glass-panel {
