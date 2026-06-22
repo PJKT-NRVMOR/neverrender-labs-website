@@ -336,21 +336,11 @@ h1.chromatic-aberration {
 }
 
 /* QR Code Integration */
-.qr-code {
+.qr-link {
     position: absolute;
-    bottom: 20px;
-    width: 40px;
-    height: 40px;
-    opacity: 0.6;
-    transition: all 0.3s ease;
-    cursor: pointer;
+    bottom: 60px;
     z-index: 20;
-}
-
-.qr-code:hover {
-    opacity: 1;
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 10px var(--color-energy-cyan));
+    display: block;
 }
 
 .qr-left {
@@ -359,6 +349,20 @@ h1.chromatic-aberration {
 
 .qr-right {
     right: 20px;
+}
+
+.qr-code {
+    width: 65px;
+    height: 65px;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.qr-link:hover .qr-code {
+    opacity: 1;
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 10px var(--color-energy-cyan));
 }
 
 /* Extended Video Modal Layout */

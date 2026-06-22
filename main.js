@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initBtn.addEventListener('click', () => {
         // Play arcade audio
         if (bgAudio.paused) {
-            bgAudio.volume = 0.5;
+            bgAudio.volume = 1.0;
             bgAudio.play();
         }
 
