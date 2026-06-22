@@ -25,6 +25,8 @@
         <!-- Central Crystalline Viewport -->
         <div class="viewport-container" id="main-viewport">
             <div class="glass-panel">
+                <img src="yt-qr-code.svg" class="qr-code qr-left" alt="YouTube QR">
+                <img src="Insta-qr-code.svg" class="qr-code qr-right" alt="Instagram QR">
                 <header class="sys-header">
                     <div class="sys-status">
                         <span class="indicator blink"></span> SYSTEM STATUS: CEMENTED
@@ -62,19 +64,28 @@
     </div>
     <div class="video-modal" id="archive-modal">
         <div class="modal-backdrop"></div>
-        <div class="modal-content glass-panel">
+        <div class="modal-content glass-panel extended-modal">
             <header class="sys-header">
                 <div class="sys-id">ARCHIVE_PLAYBACK</div>
                 <button class="close-btn" id="close-modal">[X] CLOSE</button>
             </header>
-            <div class="video-container">
-                <video id="launch-video" controls>
-                    <source src="HOLOGRAPHIC_DAWN_MVFORSOCIALS_POST.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+            <div class="archive-layout">
+                <div class="playlist-sidebar">
+                    <button class="playlist-btn active" data-src="HOLOGRAPHIC_DAWN_MVFORSOCIALS_POST.mp4">HOLOGRAPHIC DAWN</button>
+                    <button class="playlist-btn" data-src="THE_AWAKENING/THE_AWAKENING.mp4">THE AWAKENING</button>
+                </div>
+                <div class="video-container">
+                    <video id="launch-video" controls>
+                        <source src="HOLOGRAPHIC_DAWN_MVFORSOCIALS_POST.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
             </div>
         </div>
     </div>
+    <audio id="bg-audio" loop>
+        <source src="HIGH_ENERGY_ARCADE_LANDING.m4a" type="audio/mp4">
+    </audio>
     <script src="main.js"></script>
 </body>
 </html>

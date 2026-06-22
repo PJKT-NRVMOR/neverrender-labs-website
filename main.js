@@ -63,7 +63,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Disruptive Pop on Button click
     const initBtn = document.getElementById('init-sequence');
+    const bgAudio = document.getElementById('bg-audio');
+    
     initBtn.addEventListener('click', () => {
+        // Play arcade audio
+        if (bgAudio.paused) {
+            bgAudio.volume = 0.5;
+            bgAudio.play();
+        }
+
         // High Energy Flash inversion
         document.body.style.backgroundColor = '#00E5FF';
         setTimeout(() => {
@@ -91,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const archiveModal = document.getElementById('archive-modal');
     const closeModalBtn = document.getElementById('close-modal');
     const launchVideo = document.getElementById('launch-video');
+    const playlistBtns = document.querySelectorAll('.playlist-btn');
 
     viewArchivesBtn.addEventListener('click', () => {
         archiveModal.classList.add('active');
@@ -100,6 +109,20 @@ document.addEventListener('DOMContentLoaded', () => {
     closeModalBtn.addEventListener('click', () => {
         archiveModal.classList.remove('active');
         launchVideo.pause();
+    });
+
+    playlistBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Update active state
+            playlistBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Swap video source
+            const newSrc = btn.getAttribute('data-src');
+            launchVideo.querySelector('source').setAttribute('src', newSrc);
+            launchVideo.load();
+            launchVideo.play();
+        });
     });
 
     // Contact Logic
