@@ -337,18 +337,8 @@ h1.chromatic-aberration {
 
 /* QR Code Integration */
 .qr-link {
-    position: absolute;
-    bottom: 60px;
     z-index: 20;
     display: block;
-}
-
-.qr-left {
-    left: 20px;
-}
-
-.qr-right {
-    right: 20px;
 }
 
 .qr-code {
