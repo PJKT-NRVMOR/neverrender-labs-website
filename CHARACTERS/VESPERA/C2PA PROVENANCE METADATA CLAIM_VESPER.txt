@@ -1,0 +1,11 @@
++------------------------------------------------------------------------+
+|                     C2PA PROVENANCE METADATA CLAIM                     |
++------------------------------------------------------------------------+
+|  [SIGNER:]        NeverRender Labs Production Node                     |
+|  [SOURCE_TYPE:]   trainedAlgorithmicMedia                              |
+|  [ACTION_1:]      c2pa.created (Via Firefly Character Architect GEM)   |
+|  [ACTION_2:]      c2pa.edited  (Temporal Attention Extension in Flow)  |
+|  [RESTRICTION:]   c2pa.ai_generative_training: "notAllowed"            |
++------------------------------------------------------------------------+
+|  Status: SECURE // CRYPTOGRAPHIC CHAIN INTACT                         |
++------------------------------------------------------------------------+

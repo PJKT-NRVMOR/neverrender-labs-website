@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeverRender Labs - Character Archives</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .character-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px;
+            overflow-y: auto;
+            max-height: 70vh;
+        }
+        .character-card {
+            background: rgba(18, 69, 89, 0.2);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .character-card:hover {
+            border-color: var(--color-energy-cyan);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+            transform: translateY(-5px);
+        }
+        .character-img-wrapper {
+            width: 100%;
+            height: 250px;
+            min-height: 250px;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+        .character-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .character-card:hover .character-img {
+            transform: scale(1.05);
+        }
+        .character-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .character-name {
+            font-size: 1.2rem;
+            color: var(--color-energy-cyan);
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .character-prompt {
+            font-size: 0.85rem;
+            color: #a0c4d8;
+            line-height: 1.5;
+            font-family: 'Courier New', Courier, monospace;
+            opacity: 0.8;
+            margin-bottom: 0;
+            flex-grow: 1;
+        }
+        .header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid rgba(0, 229, 255, 0.1);
+        }
+        .back-btn {
+            background: transparent;
+            border: 1px solid var(--color-coral-pink);
+            color: var(--color-coral-pink);
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: inherit;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+        }
+        .back-btn:hover {
+            background: var(--color-coral-pink);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(255, 107, 107, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="ambient-background"></div>
+    <div class="conduit conduit-1"></div>
+    <div class="conduit conduit-2"></div>
+
+    <div class="viewport-container" style="max-width: 1400px; padding: 20px;">
+        <div class="glass-panel" style="padding: 0; display: flex; flex-direction: column; height: 90vh;">
+            
+            <div class="header-nav">
+                <div>
+                    <h1 class="chromatic-aberration" style="font-size: 2rem; margin-bottom: 5px;">SUBJECT ARCHIVES</h1>
+                    <p class="subtitle" style="font-size: 0.9rem;">RESTRICTED ACCESS: CLEARANCE GRANTED</p>
+                </div>
+                <button class="back-btn" onclick="window.location.href='index.html'">[x] RETURN TO TERMINAL</button>
+            </div>
+
+            <div class="character-gallery">
+
+                <a href="CHARACTERS/ASHER/ASHER_DYSTOPIAN_SHEPARD.png" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="character-card">
+                        <div class="character-img-wrapper">
+                            <img src="CHARACTERS/ASHER/ASHER_DYSTOPIAN_SHEPARD.png" alt="ASHER" class="character-img">
+                        </div>
+                        <div class="character-info">
+                            <div class="character-name">ASHER</div>
+                            <p class="character-prompt">> No prompt data found in the archives.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="CHARACTERS/GRATHE/GRATHE_POST_J.jpg" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="character-card">
+                        <div class="character-img-wrapper">
+                            <img src="CHARACTERS/GRATHE/GRATHE_POST_J.jpg" alt="GRATHE" class="character-img">
+                        </div>
+                        <div class="character-info">
+                            <div class="character-name">GRATHE</div>
+                            <p class="character-prompt">> Cinematic portrait of a male lounge singer leaning against a polished chrome microphone stand, geometric silhouette composition. His clothing is a tailored midnight-blue matte velvet suit that merges into a dark background. His eyes are replaced by twin glowing glass vacuum tube filaments emittin...</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="CHARACTERS/JACKSON_BEAT/JACKSON_BEAT_POST_J.jpg" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="character-card">
+                        <div class="character-img-wrapper">
+                            <img src="CHARACTERS/JACKSON_BEAT/JACKSON_BEAT_POST_J.jpg" alt="JACKSON BEAT" class="character-img">
+                        </div>
+                        <div class="character-info">
+                            <div class="character-name">JACKSON BEAT</div>
+                            <p class="character-prompt">> A detailed close-up portrait of the four-armed 1980s casino dealer. Focus on the chest and face. The immaculate white tuxedo jacket is pristine, with razor-sharp lapels that glow with a steady ultraviolet hum. Two of his robotic arms are visible in the foreground, precisely gripping glowing, semi...</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="CHARACTERS/LASER_LINE_LENNY/LASER_LINE_LENNY.jpg" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="character-card">
+                        <div class="character-img-wrapper">
+                            <img src="CHARACTERS/LASER_LINE_LENNY/LASER_LINE_LENNY.jpg" alt="LASER LINE LENNY" class="character-img">
+                        </div>
+                        <div class="character-info">
+                            <div class="character-name">LASER LINE LENNY</div>
+                            <p class="character-prompt">> Cinematic portrait of a futuristic theater usher from the chest up, torso enclosed in a rigid uniform made of light-absorbing matte-black carbon fiber panels with sharp lines, featuring glowing piping in hot magenta and electric turquoise tracing every structural seam. The head is entirely covere...</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="CHARACTERS/THE_ARTIST/THE_ARTIST.jpg" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="character-card">
+                        <div class="character-img-wrapper">
+                            <img src="CHARACTERS/THE_ARTIST/THE_ARTIST.jpg" alt="THE ARTIST" class="character-img">
+                        </div>
+                        <div class="character-info">
+                            <div class="character-name">THE ARTIST</div>
+                            <p class="character-prompt">> No prompt data found in the archives.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="CHARACTERS/VESPERA/VESPER.png" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="character-card">
+                        <div class="character-img-wrapper">
+                            <img src="CHARACTERS/VESPERA/VESPER.png" alt="VESPERA" class="character-img">
+                        </div>
+                        <div class="character-info">
+                            <div class="character-name">VESPERA</div>
+                            <p class="character-prompt">> No prompt data found in the archives.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="CHARACTERS/VOX_THE_VHS_FUTURIST/VOX_THE_VHS_FUTURIST_POST_J.jpg" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="character-card">
+                        <div class="character-img-wrapper">
+                            <img src="CHARACTERS/VOX_THE_VHS_FUTURIST/VOX_THE_VHS_FUTURIST_POST_J.jpg" alt="VOX THE VHS FUTURIST" class="character-img">
+                        </div>
+                        <div class="character-info">
+                            <div class="character-name">VOX THE VHS FUTURIST</div>
+                            <p class="character-prompt">> Cinematic portrait of a woman wearing a sharp, tailored deep slate-teal trench coat with a high collar, layered over black geometric streetwear featuring integrated neon tangerine orange and hot pink panels. Her silhouette is hyper-crisp, but her walking motion leaves a faint, brief trailing anom...</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="CHARACTERS/SUBJECT_A.jpeg" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="character-card">
+                        <div class="character-img-wrapper">
+                            <img src="CHARACTERS/SUBJECT_A.jpeg" alt="SUBJECT A" class="character-img">
+                        </div>
+                        <div class="character-info">
+                            <div class="character-name">SUBJECT A</div>
+                            <p class="character-prompt">> No prompt data found in the archives.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="CHARACTERS/SUBJUCT_B.jpeg" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="character-card">
+                        <div class="character-img-wrapper">
+                            <img src="CHARACTERS/SUBJUCT_B.jpeg" alt="SUBJECT B" class="character-img">
+                        </div>
+                        <div class="character-info">
+                            <div class="character-name">SUBJECT B</div>
+                            <p class="character-prompt">> No prompt data found in the archives.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="CHARACTERS/{9FD835AC-83EC-42A3-971E-C6A690028984}.png" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="character-card">
+                        <div class="character-img-wrapper">
+                            <img src="CHARACTERS/{9FD835AC-83EC-42A3-971E-C6A690028984}.png" alt="UNKNOWN SUBJECT" class="character-img">
+                        </div>
+                        <div class="character-info">
+                            <div class="character-name">UNKNOWN SUBJECT</div>
+                            <p class="character-prompt">> No prompt data found in the archives.</p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+            
+            <div style="padding: 20px 40px; border-top: 1px solid rgba(0, 229, 255, 0.1); font-family: monospace; font-size: 0.8rem; color: var(--color-energy-cyan);">
+                // SYSTEM STATUS: CEMENTED
+            </div>
+        </div>
+    </div>
+</body>
+</html>
