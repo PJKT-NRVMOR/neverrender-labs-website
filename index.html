@@ -36,28 +36,21 @@
                     <h1 class="chromatic-aberration">NEVERRENDER LABS</h1>
                     <p class="subtitle">THE COMPLETE ARCHITECTURAL COMPENDIUM</p>
                     
-                    <div class="terminal-container" style="display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%; margin-top: 20px;">
-                        <a href="https://youtu.be/j6G2yc-H05A" target="_blank" class="qr-link">
-                            <img src="yt-qr-code.svg" class="qr-code" alt="YouTube QR">
-                        </a>
-                        <div class="terminal-box" id="terminal-interface" style="margin-top: 0;">
-                            <div class="terminal-header">
-                                <span>> TERMINAL FOCUS</span>
-                            </div>
-                            <div class="terminal-body">
-                                <p class="typewriter-text" id="typewriter"></p>
-                                <span class="cursor">_</span>
-                            </div>
+                    <div class="terminal-box" id="terminal-interface">
+                        <div class="terminal-header">
+                            <span>> TERMINAL FOCUS</span>
                         </div>
-                        <a href="https://instagram.com" target="_blank" class="qr-link">
-                            <img src="Insta-qr-code.svg" class="qr-code" alt="Instagram QR">
-                        </a>
+                        <div class="terminal-body">
+                            <p class="typewriter-text" id="typewriter"></p>
+                            <span class="cursor">_</span>
+                        </div>
                     </div>
 
                     <div class="action-matrix">
                         <button class="action-btn primary" id="init-sequence">INITIALIZE SEQUENCE</button>
                         <button class="action-btn secondary" id="view-archives">VIEW ARCHIVES</button>
                         <button class="action-btn secondary" id="view-characters" onclick="window.location.href='characters.html'">VIEW CHARACTERS</button>
+                        <button class="action-btn secondary" id="view-stills" onclick="window.location.href='still-edits.html'">STILL EDITS</button>
                         <button class="action-btn secondary" id="contact-creator">CONTACT</button>
                     </div>
                 </main>
@@ -78,13 +71,14 @@
             </header>
             <div class="archive-layout">
                 <div class="playlist-sidebar">
-                    <button class="playlist-btn active" data-type="local" data-src="HOLOGRAPHIC_DAWN_MVFORSOCIALS_POST.mp4">HOLOGRAPHIC DAWN</button>
+                    <button class="playlist-btn active" data-type="local" data-src="FLOW_TO_THE_MUSIC/HOLOGRAPHIC_DAWN_MVFORSOCIALS_POST.mp4">HOLOGRAPHIC DAWN</button>
+                    <button class="playlist-btn" data-type="local" data-src="FLOW_TO_THE_MUSIC/SHADOW_LOOP_MUSIC_VIDEO.mp4">SHADOW LOOP</button>
                     <button class="playlist-btn" data-type="youtube" data-src="https://www.youtube.com/embed/j6G2yc-H05A?autoplay=1">THE AWAKENING</button>
-                    <button class="playlist-btn" data-type="local" data-src="VESPERA_BALLOON_RIDE/VESPERA_BALLOON_RIDE.mp4">VESPERA BALLOON RIDE</button>
+                    <button class="playlist-btn" data-type="local" data-src="MOTIOIN_EDITS/VESPERA_BALLOON_RIDE/VESPERA_BALLOON_RIDE.mp4">VESPERA BALLOON RIDE</button>
                 </div>
                 <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0;">
                     <video id="launch-video" controls style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-                        <source src="HOLOGRAPHIC_DAWN_MVFORSOCIALS_POST.mp4" type="video/mp4">
+                        <source src="FLOW_TO_THE_MUSIC/HOLOGRAPHIC_DAWN_MVFORSOCIALS_POST.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <iframe id="youtube-player" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -93,7 +87,7 @@
         </div>
     </div>
     <audio id="bg-audio" loop>
-        <source src="HIGH_ENERGY_ARCADE_LANDING.m4a" type="audio/mp4">
+        <source src="WEBSITE_MEDIA/HIGH_ENERGY_ARCADE_LANDING.m4a" type="audio/mp4">
     </audio>
     <script src="main.js"></script>
 </body>

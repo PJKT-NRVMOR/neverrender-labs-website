@@ -43,10 +43,10 @@ body, html {
     left: -5%;
     width: 110%;
     height: 110%;
-    background-image: url('vlcsnap-2026-06-20-18h26m06s569.png');
+    background-image: url('WEBSITE_MEDIA/WEBSITE_TERMINAL.jpeg');
     background-size: cover;
     background-position: center;
-    filter: blur(8px) brightness(0.4);
+    filter: blur(4px) brightness(0.4);
     z-index: 0;
     transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
 }
@@ -335,25 +335,7 @@ h1.chromatic-aberration {
     text-shadow: 0 0 8px var(--color-pop-red);
 }
 
-/* QR Code Integration */
-.qr-link {
-    z-index: 20;
-    display: block;
-}
 
-.qr-code {
-    width: 65px;
-    height: 65px;
-    opacity: 0.6;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.qr-link:hover .qr-code {
-    opacity: 1;
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 10px var(--color-energy-cyan));
-}
 
 /* Extended Video Modal Layout */
 .extended-modal {
