@@ -1,0 +1,46 @@
+<omni_shot_configuration>
+    <!-- RENDERING TELEMETRY SPECIFICATIONS -->
+    <camera_profile>
+        Cinematic macro close-up, fixed tracking axis. Crystalline foreground focus locked directly onto Vespera's facial structures, utilizing an extremely shallow depth of field to resolve sharp skin pore and eyelash detail. Sub-millimeter tilt-shift lens distortion isolates her eyes, throwing the rear flight deck console blocks into abstract, cream-like geometric bokeh shapes. Cam executes a slow, linear, high-tension dolly-forward camera pass directly toward her face.
+    </camera_profile>
+    
+    <!-- THE FOUNDATIONAL LAB COLOR MATRIX (DYNAMIC TRANSITION METRICS) -->
+    <color_grading_matrix ratio="Standard_to_Inverted_Dynamic_Flip">
+        <phase_1_baseline duration="0.0s-1.5s" weighting="Standard_60_30_10">
+            60% Base Architecture: Clinical icy white (#EAFBFF) interior cockpit bulkheads and deep slate-teal (#124559) shadow pockets. 30% Dynamic Energy: Warm, ambient sunset-gold console glow reflecting off glossy dashboard surfaces. 10% Disruptive Pop: Quiescent electric cyan (#00E5FF) and coral pink-red (#FF6B6B) inactive toggle status lines.
+        </phase_1_baseline>
+        <phase_2_kinetic duration="1.5s-4.5s" weighting="Inverted_60_30_10_High_Energy_Splash">
+            60% Color Splash: Violent, high-frequency overexposure flood of flashing electric cyan neon and hot coral-red glare strobe pulses. 30% Materials: Deep midnight slate-teal metallic frames. 10% Base Architecture: Fragmented, stark icy-white silhouettes tracking across dynamic moving shadow vectors.
+        </phase_2_kinetic>
+    </color_grading_matrix>
+    
+    <!-- OPTICAL & LIGHTING LOGIC -->
+    <lighting_and_materials>
+        Volumetric internal emission beams cutting through cockpit air grids. High-frequency refractive panel caustics casting flickering light paths over her profile. Intense rainbow spectral edge separation (chromatic aberration) localized strictly around the perimeter edges of the violently strobing neon dashboard panels. Moving highlights hold complete physical geometric consistency across her skin texture.
+    </lighting_and_materials>
+
+    <!-- VISUAL COMPOSITION & ACTION CORE -->
+    <scene_action>
+        Tight cinematic close-up shot of Vespera sitting inside the spaceship cockpit. Absolute subject binding active: her strong facial bone structure, intense lavender eyes, and precise short electric-cyan bob haircut remain perfectly consistent, un-warped, and structurally frozen. Camera pushes in with linear tension on her face. At 1.5s, the ambient cockpit lighting transitions instantly from an even sunset-gold glow to a high-speed, high-contrast electric-cyan and coral-red neon strobe pattern. Moving neon flashes cast sharp, hard-edged dynamic shadows tracking across her cheeks and jawline. No facial morphing, zero suit color shifts, flawless physics.
+    </scene_action>
+
+    <!-- DECOUPLED INTEGRATED AUDIO MATRIX -->
+    <audio_system_streams>
+        <music_track semantic="Visual_Mood">
+            0.0s - 1.5s: Low-frequency analog synth pad drone holding an unresolved minor chord suspension. Exactly at 1.5s: A fast-pulsing, high-frequency mid-register step-sequencer pattern cuts in violently, ticking in an accelerated 16th-note subdivision to build immediate psychological tension.
+        </music_track>
+        <effects_track semantic="Event_Timing">
+            Timestamp 1.5s: A sharp, high-transient electronic relay snap-click event, transitioning immediately into a cyclic cascade of low-amplitude data packet chime sweeps operating flatly at -16dB, synchronized precisely to the rhythmic duration of the neon panel flashes.
+        </effects_track>
+        <speech_track semantic="Dialogue_Prosody">
+            <speaker ID="Vespera" status="Silent" />
+        </speech_track>
+    </audio_system_streams>
+
+    <!-- OBJECT-BASED SPATIAL METADATA -->
+    <spatial_metadata_anchors>
+        <console_relay_strobe coordinates="Cartesian(0.0, 0.8, 0.4)" tracking="World-Locked_Dashboard_Bay">
+            High-frequency electronic audio clicks are locked to the lower visual bounds, utilizing narrow horizontal panning parameters to preserve sharp micro-scale layout localization as the camera dollies forward.
+        </console_relay_strobe>
+    </spatial_metadata_anchors>
+</omni_shot_configuration>
