@@ -384,16 +384,46 @@ h1.chromatic-aberration {
 /* Responsive adjustments */
 @media (max-width: 768px) {
     h1.chromatic-aberration {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+        word-wrap: break-word;
+        letter-spacing: 2px;
     }
     .subtitle {
-        font-size: 0.9rem;
-        letter-spacing: 4px;
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+        word-wrap: break-word;
     }
     .glass-panel {
         padding: 20px;
+        width: 100%;
+        overflow-x: hidden;
     }
     .action-matrix {
         flex-direction: column;
+        width: 100%;
+    }
+    .action-btn {
+        width: 100%;
+        text-align: center;
+    }
+    .terminal-box {
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .archive-layout {
+        flex-direction: column-reverse;
+    }
+    .playlist-sidebar {
+        width: 100%;
+        flex-direction: column;
+    }
+    .playlist-btn {
+        width: 100%;
+        text-align: center;
+    }
+    .video-container {
+        width: 100%;
+        height: auto;
     }
 }

@@ -82,12 +82,23 @@
             cursor: pointer;
             font-family: inherit;
             letter-spacing: 1px;
-            transition: all 0.2s ease;
-        }
         .back-btn:hover {
             background: var(--color-coral-pink);
             color: #fff;
             box-shadow: 0 0 15px rgba(255, 107, 107, 0.4);
+        }
+        @media (max-width: 768px) {
+            .character-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                padding: 15px;
+                gap: 15px;
+            }
+            .header-nav {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+                padding: 15px;
+            }
         }
     </style>
 </head>
