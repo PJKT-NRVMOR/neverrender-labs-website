@@ -1,0 +1,36 @@
+[SEQUENCE CONFIGURATION]
+Resolution = 3840x2160 (Native 4K UHD)
+Frame_Rate = 23.976 fps (Cinematic Timebase)
+Color_Space = Rec. 2020 / HDR10 ST 2084
+
+[LUMETRI COLOR: BASIC CORRECTION]
+Input_LUT = None / Managed Scene-Linear
+Exposure = +1.45 EV (Simulating explosive overexposure energy surge)
+Contrast = +32
+Highlights = +65 (Saturating the plasma burst)
+Shadows = -12 (Retaining base structural depth)
+Whites = +40 (Clipping the core laser weld point)
+Blacks = -5
+
+[LUMETRI COLOR: CREATIVE PANEL]
+Faded_Film = 0% (Keep crisp, clinical refractions)
+Sharpen = +25 (Accentuating the faceted crystal edges)
+Vibrance = +18
+Saturation = +115%
+
+[LUMETRI COLOR: HSL SECONDARY - PLASMATIC FLOOD]
+Key_Target = Hex #FF6B6B (Coral pink-red)
+Hue_Range = 345° - 5°
+Saturation_Range = 55% - 100%
+Luminance_Range = 40% - 100%
+Correction_Tilt = Push Midtones/Highlights toward intense pink-orange radiation
+
+[EFFECTS ORCHESTRATION]
+Effect_01 = "VR Chromatic Aberrations"
+  - Red_Displacement = +0.012
+  - Blue_Displacement = -0.010
+  - Falloff = 85% (Creates rainbow spectral edge separation at macro bounds)
+Effect_02 = "Lens Flare (Brightest Tangent)"
+  - Flare_Center = Coordinates of laser tool weld tip
+  - Brightness = 140%
+  - Blend_Mode = Screen

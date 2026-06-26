@@ -1,0 +1,5 @@
+Generate a 10-second timeline extension prompt for the window-push welding shot. 
+
+Narrative Action: The intense explosive flash of the welding spark transitions into a stable, continuous burn. The crystalline figure slowly releases the welding tool, and the camera smooth-pans down the physical path of the glass conduit pipe. Inside the pipe, the electric cyan (#00E5FF) plasma moves in a highly turbulent, spiraling wave down the line, pulsing dynamically.
+
+Telemetry Shift: Keep the Inverted 60/30/10 Ratio rule active, but smoothly glide from the overexposed white/red flash into a 60% saturation of electric cyan light. The glowing plasma should heavily illuminate the surrounding deep slate-teal (#124559) floor terrain and cast intense moving caustics through the glass laboratory flasks on the side benches. Maintain identical character geometry and absolute camera motion continuity.

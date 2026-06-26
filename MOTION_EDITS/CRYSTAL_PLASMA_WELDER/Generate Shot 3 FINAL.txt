@@ -1,0 +1,5 @@
+Generate a final 5-second timeline extension prompt for the glass conduit plasma sequence. 
+
+Narrative Action: The camera completes its pan and dives directly into the core of the laboratory's power station. The camera plunges straight toward a heavy, circular industrial pressure vault door on the wall. As the camera approaches, the heavy mechanical locks rotate, and the pneumatic door smoothly slides open to reveal a pitch-black vacuum corridor ahead.
+
+Telemetry Shift: Maintain the Inverted 60/30/10 Ratio rule. The environment should be 60% flooded with the intense cyan light reflecting off the surrounding mechanical fixtures. As the vault door opens, the pitch-black corridor sucks the light forward, creating a dramatic, high-contrast framing event. Keep the sharp edge refractions and macro focus depth perfectly continuous with the previous clip.
