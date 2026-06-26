@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ytPlayer.src = ''; // stop yt video
                 ytPlayer.style.display = 'none';
                 launchVideo.style.display = 'block';
-                launchVideo.querySelector('source').setAttribute('src', newSrc);
+                launchVideo.src = newSrc;
                 launchVideo.load();
                 launchVideo.play();
             }
