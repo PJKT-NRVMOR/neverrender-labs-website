@@ -46,6 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const container = document.querySelector('.macro-environment');
 
     container.addEventListener('mousemove', (e) => {
+        if (window.innerWidth <= 768) return; // Disable on mobile screens
+        
         const x = (e.clientX / window.innerWidth - 0.5) * 2; // -1 to 1
         const y = (e.clientY / window.innerHeight - 0.5) * 2;
 
