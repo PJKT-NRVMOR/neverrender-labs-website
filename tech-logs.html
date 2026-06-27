@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeverRender Labs - Tech Logs</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .log-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px;
+            overflow-y: auto;
+            max-height: 70vh;
+        }
+        .log-card {
+            background: rgba(18, 69, 89, 0.2);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 20px;
+        }
+        .log-card:hover {
+            border-color: var(--color-energy-cyan);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+            transform: translateY(-5px);
+            background: rgba(18, 69, 89, 0.4);
+        }
+        .log-icon {
+            font-size: 3rem;
+            color: var(--color-energy-cyan);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .log-title {
+            font-size: 1.2rem;
+            color: var(--color-energy-cyan);
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+        .log-desc {
+            font-size: 0.85rem;
+            color: #a0c4d8;
+            line-height: 1.5;
+            font-family: 'Courier New', Courier, monospace;
+            opacity: 0.8;
+            text-align: center;
+        }
+        .header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid rgba(0, 229, 255, 0.1);
+        }
+        .back-btn {
+            background: transparent;
+            border: 1px solid var(--color-coral-pink);
+            color: var(--color-coral-pink);
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: inherit;
+            letter-spacing: 1px;
+        }
+        .back-btn:hover {
+            background: var(--color-coral-pink);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(255, 107, 107, 0.4);
+        }
+        @media (max-width: 768px) {
+            .log-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                padding: 15px;
+                gap: 15px;
+            }
+            .header-nav {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background plate for bokeh/blur -->
+    <div class="background-plate"></div>
+    
+    <!-- Energy Conduits -->
+    <div class="conduit-grid">
+        <div class="conduit-line horizontal top"></div>
+        <div class="conduit-line vertical left"></div>
+        <div class="conduit-line horizontal bottom"></div>
+        <div class="conduit-line vertical right"></div>
+    </div>
+
+    <div class="viewport-container" style="max-width: 1400px; padding: 20px;">
+        <div class="glass-panel" style="padding: 0; display: flex; flex-direction: column; height: 90vh;">
+            
+            <div class="header-nav">
+                <div>
+                    <h1 class="chromatic-aberration" style="font-size: 2rem; margin-bottom: 5px;">TECH LOGS</h1>
+                    <p class="subtitle" style="font-size: 0.9rem;">RESTRICTED ACCESS: CLEARANCE GRANTED</p>
+                </div>
+                <button class="back-btn" onclick="window.location.href='index.html'">[x] RETURN TO TERMINAL</button>
+            </div>
+
+            <div class="log-gallery">
+                <a href="TECH_LOGS/8-Bit Theater District - Creator Journal (V1 to V11).pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">CREATOR JOURNAL (V1 to V11)</div>
+                        <p class="log-desc">> Access the original creator documentation and logs for the 8-Bit Theater District.</p>
+                    </div>
+                </a>
+
+                <a href="TECH_LOGS/8-Bit Theater District - Creator Automation Tutorials.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">AUTOMATION TUTORIALS</div>
+                        <p class="log-desc">> Comprehensive guide to the underlying automation systems and node networks.</p>
+                    </div>
+                </a>
+
+                <a href="TECH_LOGS/8-Bit Theater District - Creator Automation Tutorials (1).pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">AUTOMATION TUTORIALS (ALT)</div>
+                        <p class="log-desc">> Secondary revision of the automation guide for the 8-Bit Theater District.</p>
+                    </div>
+                </a>
+            </div>
+            
+            <div style="padding: 20px 40px; border-top: 1px solid rgba(0, 229, 255, 0.1); font-family: monospace; font-size: 0.8rem; color: var(--color-energy-cyan);">
+                // SYSTEM STATUS: CEMENTED
+            </div>
+        </div>
+    </div>
+</body>
+</html>
