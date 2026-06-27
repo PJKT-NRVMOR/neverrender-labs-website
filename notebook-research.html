@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeverRender Labs - Notebook Research</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .log-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px;
+            overflow-y: auto;
+            max-height: 70vh;
+        }
+        .log-card {
+            background: rgba(18, 69, 89, 0.2);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 20px;
+            height: 100%;
+        }
+        .log-card:hover {
+            border-color: var(--color-energy-cyan);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+            transform: translateY(-5px);
+            background: rgba(18, 69, 89, 0.4);
+        }
+        .log-icon {
+            font-size: 3rem;
+            color: var(--color-energy-cyan);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .log-title {
+            font-size: 1rem;
+            color: var(--color-energy-cyan);
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-align: center;
+            flex-grow: 1;
+        }
+        .log-desc {
+            font-size: 0.85rem;
+            color: #a0c4d8;
+            line-height: 1.5;
+            font-family: 'Courier New', Courier, monospace;
+            opacity: 0.8;
+            text-align: center;
+        }
+        .header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid rgba(0, 229, 255, 0.1);
+        }
+        .back-btn {
+            background: transparent;
+            border: 1px solid var(--color-coral-pink);
+            color: var(--color-coral-pink);
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: inherit;
+            letter-spacing: 1px;
+        }
+        .back-btn:hover {
+            background: var(--color-coral-pink);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(255, 107, 107, 0.4);
+        }
+        .section-header {
+            font-size: 1.5rem;
+            color: var(--color-base-light);
+            text-align: center;
+            margin: 30px 0 10px 0;
+            letter-spacing: 4px;
+            font-weight: 900;
+        }
+        .explainer-video {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            display: block;
+            border: 1px solid var(--color-energy-cyan);
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+        }
+        @media (max-width: 768px) {
+            .log-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                padding: 15px;
+                gap: 15px;
+            }
+            .header-nav {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-plate"></div>
+    <div class="conduit-grid">
+        <div class="conduit-line horizontal top"></div>
+        <div class="conduit-line vertical left"></div>
+        <div class="conduit-line horizontal bottom"></div>
+        <div class="conduit-line vertical right"></div>
+    </div>
+
+    <div class="viewport-container" style="max-width: 1400px; padding: 20px;">
+        <div class="glass-panel" style="padding: 0; display: flex; flex-direction: column; height: auto; overflow-y: visible;">
+            
+            <div class="header-nav">
+                <div>
+                    <h1 class="chromatic-aberration" style="font-size: 2rem; margin-bottom: 5px;">NOTEBOOK RESEARCH</h1>
+                    <p class="subtitle" style="font-size: 0.9rem;">DEEP DIVES AND EXPLAINERS</p>
+                </div>
+                <button class="back-btn" onclick="window.location.href='index.html'">[x] RETURN TO TERMINAL</button>
+            </div>
+
+            <div style="padding: 20px; overflow-y: auto; max-height: 75vh;">
+                <h2 class="section-header">NOTEBOOKLM EXPLAINERS</h2>
+                
+                <video class="explainer-video" controls poster="NOTEBOOKLM_EXPLAINERS/vlcsnap-2026-06-27-10h58m30s715.png">
+                    <source src="NOTEBOOKLM_EXPLAINERS/Architecting_the_Agentic_Micro-Studio.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+
+                <div class="log-gallery" style="padding: 0 40px 40px 40px; max-height: none;">
+                    
+                <a href="https://notebooklm.google.com/notebook/90380f75-1943-4804-916b-05c242b6a131" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card" style="border-color: rgba(255, 107, 107, 0.4);">
+                        <div class="log-icon" style="color: var(--color-pop-red);">🔗</div>
+                        <div class="log-title" style="color: var(--color-pop-red); font-size: 1rem;">The Architecture of Agentic Content Workflows</div>
+                        <p class="log-desc">> NotebookLM Open-Source Repository Link</p>
+                    </div>
+                </a>
+                <a href="https://notebooklm.google.com/notebook/c6194105-51a2-4bc5-bd3f-17e3d6a2a50c" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card" style="border-color: rgba(255, 107, 107, 0.4);">
+                        <div class="log-icon" style="color: var(--color-pop-red);">🔗</div>
+                        <div class="log-title" style="color: var(--color-pop-red); font-size: 1rem;">The 2026 AI Video and LLM Hardware Guide</div>
+                        <p class="log-desc">> NotebookLM Open-Source Repository Link</p>
+                    </div>
+                </a>
+                <a href="https://notebooklm.google.com/notebook/6529a3e9-313a-4b64-8033-83b6c2854b3c" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card" style="border-color: rgba(255, 107, 107, 0.4);">
+                        <div class="log-icon" style="color: var(--color-pop-red);">🔗</div>
+                        <div class="log-title" style="color: var(--color-pop-red); font-size: 1rem;">Modern Virtual Production Tools & High-Speed Cinematography Guide</div>
+                        <p class="log-desc">> NotebookLM Open-Source Repository Link</p>
+                    </div>
+                </a>
+                <a href="https://notebooklm.google.com/notebook/c42157ac-5964-4422-8b7c-1ae88c0d34f7" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card" style="border-color: rgba(255, 107, 107, 0.4);">
+                        <div class="log-icon" style="color: var(--color-pop-red);">🔗</div>
+                        <div class="log-title" style="color: var(--color-pop-red); font-size: 1rem;">2026: Algorithms, Hashtags, and Performance Data</div>
+                        <p class="log-desc">> NotebookLM Open-Source Repository Link</p>
+                    </div>
+                </a>
+                <a href="https://notebooklm.google.com/notebook/8b38d7df-d5b6-45a8-99f4-8d752afcd32a" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card" style="border-color: rgba(255, 107, 107, 0.4);">
+                        <div class="log-icon" style="color: var(--color-pop-red);">🔗</div>
+                        <div class="log-title" style="color: var(--color-pop-red); font-size: 1rem;">Adobe Ecosystem For One Person Workflows</div>
+                        <p class="log-desc">> NotebookLM Open-Source Repository Link</p>
+                    </div>
+                </a>
+                <a href="https://notebooklm.google.com/notebook/cfa262f9-d947-47a1-8bdc-b997edefe6eb" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card" style="border-color: rgba(255, 107, 107, 0.4);">
+                        <div class="log-icon" style="color: var(--color-pop-red);">🔗</div>
+                        <div class="log-title" style="color: var(--color-pop-red); font-size: 1rem;">Google Lyria 3 and Flow Music Production Guide</div>
+                        <p class="log-desc">> NotebookLM Open-Source Repository Link</p>
+                    </div>
+                </a>
+                </div>
+
+                <div style="width: 100%; height: 1px; background: rgba(0, 229, 255, 0.2); margin: 20px 0;"></div>
+
+                <h2 class="section-header">DEEP DIVES (PDF)</h2>
+                <div class="log-gallery" style="padding: 0 40px 40px 40px; max-height: none;">
+                    
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ Advanced XML-Style Prompting in Google's Gemini Omni Multimodal Architecture.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">Advanced XML-Style Prompting in Google's Gemini Omni Multimodal Architecture</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ Archeology of the Future_ The Chromatic and Tactile Taxonomy of Retro-Futuristic Art and Design.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">Archeology of the Future_ The Chromatic and Tactile Taxonomy of Retro-Futuristic Art and Design</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ Architecting Custom AI Workflows_ A Comprehensive Analysis of Gemini Gems and Super Gems Ecosystems.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">Architecting Custom AI Workflows_ A Comprehensive Analysis of Gemini Gems and Super Gems Ecosystems</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ Architectural Paradigms and Cross-Industry Applications of Agentic AI Workflows.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">Architectural Paradigms and Cross-Industry Applications of Agentic AI Workflows</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ Cinematographic Scale Manipulation_ The Technical Realization of Hobbit Stature in The Lord of the Rings Trilogy.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">Cinematographic Scale Manipulation_ The Technical Realization of Hobbit Stature in The Lord of the Rings Trilogy</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ Comparative Architectural and Performance Analysis of Adobe Premiere Pro and Adobe After Effects in Professional Production Pipelines.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">Comparative Architectural and Performance Analysis of Adobe Premiere Pro and Adobe After Effects in Professional Production Pipelines</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ Comparative Hardware Architecture and System Topologies of SFF and NUC PCs for Creative Workstations.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">Comparative Hardware Architecture and System Topologies of SFF and NUC PCs for Creative Workstations</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ Computational Architectures and Systems Engineering Under the Hood of Generative Media AI.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">Computational Architectures and Systems Engineering Under the Hood of Generative Media AI</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ Computational Architectures of Learned Physics_ Google's Gemini Omni World Model and the Future of Synthetic Reality Simulation.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">Computational Architectures of Learned Physics_ Google's Gemini Omni World Model and the Future of Synthetic Reality Simulation</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ Computational Optics, Kinematic Engineering, and Photochemical Inversion in Christopher Nolan's Tenet.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">Computational Optics, Kinematic Engineering, and Photochemical Inversion in Christopher Nolan's Tenet</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ Denoising-Resilient Latent Cryptographic Soft Bindings_ Architectures, Vulnerabilities, and Cross-Layer Provenance Integrity.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">Denoising-Resilient Latent Cryptographic Soft Bindings_ Architectures, Vulnerabilities, and Cross-Layer Provenance Integrity</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ Differentiable, Physics-Informed 3D Gaussian Splatting_ Unified Paradigms for Kinematic Evolution, Inverse Simulation, and Functional Design.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">Differentiable, Physics-Informed 3D Gaussian Splatting_ Unified Paradigms for Kinematic Evolution, Inverse Simulation, and Functional Design</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ Enterprise Generative Media Production_ A Strategic Analysis of the Adobe Firefly Ecosystem.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">Enterprise Generative Media Production_ A Strategic Analysis of the Adobe Firefly Ecosystem</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ High-Dimensional Latent Dynamics and Structural Mapping_ An Analysis of How Generative Transformers Parse Prompt Architectures.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">High-Dimensional Latent Dynamics and Structural Mapping_ An Analysis of How Generative Transformers Parse Prompt Architectures</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ High-Fidelity Cinematography and the Engineering Physics of the IMAX Ecosystem.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">High-Fidelity Cinematography and the Engineering Physics of the IMAX Ecosystem</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ In-Depth Strategic Analysis of Influencer and Content Creator Social Media Methodologies in 2026 (1).pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">In-Depth Strategic Analysis of Influencer and Content Creator Social Media Methodologies in 2026 (1)</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ Micro to Macro_ The Technical and Narrative Evolution of Scale-Shifting Cinematography.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">Micro to Macro_ The Technical and Narrative Evolution of Scale-Shifting Cinematography</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ Neuromorphic Optimization of the Vestibulo-Ocular Reflex in Virtual Reality Auditory Systems.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">Neuromorphic Optimization of the Vestibulo-Ocular Reflex in Virtual Reality Auditory Systems</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ Optimizing the Micro-Studio_ Operational Pipelines, Tool Integration, and Space-System Architectures in Modern Creative Industries.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">Optimizing the Micro-Studio_ Operational Pipelines, Tool Integration, and Space-System Architectures in Modern Creative Industries</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ Paradigm Shift in Custom AI Architectures_ A Comprehensive Analysis of Google Gemini Gems, Super Gems, and the Opal No-Code Engine.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">Paradigm Shift in Custom AI Architectures_ A Comprehensive Analysis of Google Gemini Gems, Super Gems, and the Opal No-Code Engine</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ Post-Production Architectures_ Technical Analysis of Image Processing, Asset Management, and Artificial Intelligence in the Adobe Ecosystem.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">Post-Production Architectures_ Technical Analysis of Image Processing, Asset Management, and Artificial Intelligence in the Adobe Ecosystem</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ Strategic Restructuring of the Adobe Photoshop Ecosystem_ 2026 Market Analysis.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">Strategic Restructuring of the Adobe Photoshop Ecosystem_ 2026 Market Analysis</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ Structural Shifts in Software Orchestration and Speculative Physics_ A Comprehensive Analysis of Google's Antigravity Platforms and Moonshot Engineering.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">Structural Shifts in Software Orchestration and Speculative Physics_ A Comprehensive Analysis of Google's Antigravity Platforms and Moonshot Engineering</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ Systemic Architecture and Narrative Governance in Generative World Building_ Coherence Engines, Graph Memory, and Legal Guardrails.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">Systemic Architecture and Narrative Governance in Generative World Building_ Coherence Engines, Graph Memory, and Legal Guardrails</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ Systemic Frameworks and Pipelines for Character Consistency in Generative Media.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">Systemic Frameworks and Pipelines for Character Consistency in Generative Media</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ Systems and Methodologies for State-Preservation and Continuity in Generative AI Models.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">Systems and Methodologies for State-Preservation and Continuity in Generative AI Models</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ Technical Architecture, Security, and Deployment of the Adobe Creative Cloud Pro and Enterprise Ecosystems.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">Technical Architecture, Security, and Deployment of the Adobe Creative Cloud Pro and Enterprise Ecosystems</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ Technical Evolution and Strategic Analysis of the Adobe Substance 3D Ecosystem.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">Technical Evolution and Strategic Analysis of the Adobe Substance 3D Ecosystem</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ Technical Spatial Understanding of Dolby Audio and THX Sound Technologies.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">Technical Spatial Understanding of Dolby Audio and THX Sound Technologies</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ The Aesthetics of Surreal Futurism_ Chromatic Systems, Artistic Styles, and Spatial Paradigms.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">The Aesthetics of Surreal Futurism_ Chromatic Systems, Artistic Styles, and Spatial Paradigms</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ The Agentic Adobe Ecosystem in Solo Digital Practice_ A Strategic Framework for One-Person Studios.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">The Agentic Adobe Ecosystem in Solo Digital Practice_ A Strategic Framework for One-Person Studios</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ The Architecture of Agentic Workflows in Enterprise Content Operations.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">The Architecture of Agentic Workflows in Enterprise Content Operations</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ The Architecture of Cinematic Scale_ From Micro-Studio Infrastructure to Blockbuster Virtual Production.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">The Architecture of Cinematic Scale_ From Micro-Studio Infrastructure to Blockbuster Virtual Production</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ The Architecture of Retro-Futuristic Melancholy_ Analyzing the Visual Power, Conceptual Depth, and Global Appeal of Frank Moth.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">The Architecture of Retro-Futuristic Melancholy_ Analyzing the Visual Power, Conceptual Depth, and Global Appeal of Frank Moth</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ The Artscape of the Surreal Retro-Futurist_ A Critical Mapping of Temporal Anachronism, Digital Craft, and Cultural Disillusionment.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">The Artscape of the Surreal Retro-Futurist_ A Critical Mapping of Temporal Anachronism, Digital Craft, and Cultural Disillusionment</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ The Cinematographic and Spatial Architecture of the Continuous Shot in 1917.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">The Cinematographic and Spatial Architecture of the Continuous Shot in 1917</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ The Computational and Kinematic Engineering of Gravity_ A Technical Analysis of Virtual Production and Rendering Methodologies.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">The Computational and Kinematic Engineering of Gravity_ A Technical Analysis of Virtual Production and Rendering Methodologies</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ The Google Flow Architecture_ An Analysis of Generative Media Studios, Enterprise Orchestration, and Asynchronous Frameworks.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">The Google Flow Architecture_ An Analysis of Generative Media Studios, Enterprise Orchestration, and Asynchronous Frameworks</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ The Optical Trickery of Charlie Chaplin_ Technical Ingenuity, Spatial Manipulation, and the Cognitive Mechanics of Early Visual Effects.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">The Optical Trickery of Charlie Chaplin_ Technical Ingenuity, Spatial Manipulation, and the Cognitive Mechanics of Early Visual Effects</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ The Paradoxical Implications of Frontier Artificial Intelligence in Enterprise Content Workflows.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">The Paradoxical Implications of Frontier Artificial Intelligence in Enterprise Content Workflows</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ The Speculative Welfare State and Transmedia Melancholy_ The Aesthetic, Narrative, and Sonic Architecture of Simon Stålenhag.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">The Speculative Welfare State and Transmedia Melancholy_ The Aesthetic, Narrative, and Sonic Architecture of Simon Stålenhag</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ The Technical Architecture, Computational Engine, and Market Economics of Adobe Lightroom.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">The Technical Architecture, Computational Engine, and Market Economics of Adobe Lightroom</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ Theory and Practice of Agentic Workflows in Solo Creative Studios.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">Theory and Practice of Agentic Workflows in Solo Creative Studios</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ Understanding World or Predicting Future_ A Comprehensive Survey of World Models.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">Understanding World or Predicting Future_ A Comprehensive Survey of World Models</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                <a href="TECH_LOGS/UPLOADED_NOTEBOOK_DEEPDIVES/Deep Research Report_ Unified Audio-Visual Latent Space Diffusion_ Engineering Native Synesthesia in Generative AI.pdf" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="log-card">
+                        <div class="log-icon">📄</div>
+                        <div class="log-title">Unified Audio-Visual Latent Space Diffusion_ Engineering Native Synesthesia in Generative AI</div>
+                        <p class="log-desc">> Deep Research Report via NotebookLM</p>
+                    </div>
+                </a>
+                </div>
+            </div>
+            
+            <div style="padding: 20px 40px; border-top: 1px solid rgba(0, 229, 255, 0.1); font-family: monospace; font-size: 0.8rem; color: var(--color-energy-cyan);">
+                // KNOWLEDGE ARCHIVE: ONLINE
+            </div>
+        </div>
+    </div>
+</body>
+</html>
