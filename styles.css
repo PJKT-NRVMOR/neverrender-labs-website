@@ -397,6 +397,7 @@ h1.chromatic-aberration {
         padding: 20px;
         width: 100%;
         overflow-x: hidden;
+        overflow-y: auto;
     }
     .action-matrix {
         flex-direction: column;

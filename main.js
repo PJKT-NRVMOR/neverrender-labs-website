@@ -63,16 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Disruptive Pop on Button click
     const initBtn = document.getElementById('init-sequence');
-    const bgAudio = document.getElementById('bg-audio');
     
-    initBtn.addEventListener('click', () => {
-        // Play arcade audio
-        if (bgAudio.paused) {
-            bgAudio.volume = 1.0;
-            bgAudio.play();
-        }
-
-        // High Energy Flash inversion
+    initBtn.addEventListener('click', () => {        // High Energy Flash inversion
         document.body.style.backgroundColor = '#00E5FF';
         setTimeout(() => {
             document.body.style.backgroundColor = '#050a0d';
