@@ -63,31 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
         background.style.transform = `translateX(0) translateY(0) scale(1)`;
     });
 
-    // Disruptive Pop on Button click
-    const initBtn = document.getElementById('init-sequence');
-    
-    initBtn.addEventListener('click', () => {        // High Energy Flash inversion
-        document.body.style.backgroundColor = '#00E5FF';
-        setTimeout(() => {
-            document.body.style.backgroundColor = '#050a0d';
-        }, 150);
-        
-        const terminalHeader = document.querySelector('.terminal-header');
-        terminalHeader.style.backgroundColor = '#FF6B6B';
-        terminalHeader.style.color = '#fff';
-        
-        // Typewriter override
-        typewriterEl.textContent = "SEQUENCE INITIALIZED. COMPILING ASSETS...";
-        charIndex = typewriterEl.textContent.length;
-        isDeleting = false;
-        
-        // Return terminal header color after 2s
-        setTimeout(() => {
-            terminalHeader.style.backgroundColor = 'rgba(18, 69, 89, 0.5)';
-            terminalHeader.style.color = '#FF6B6B';
-        }, 2000);
-    });
-
     // Video Modal Logic
     const viewArchivesBtn = document.getElementById('view-archives');
     const archiveModal = document.getElementById('archive-modal');
