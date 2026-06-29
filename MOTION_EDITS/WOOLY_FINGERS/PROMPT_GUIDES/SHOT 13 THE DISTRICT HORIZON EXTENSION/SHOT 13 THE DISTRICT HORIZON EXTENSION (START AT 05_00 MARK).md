@@ -1,0 +1,7 @@
+**SHOT 12\_C: THE DISTRICT HORIZON EXTENSION (START AT 05:00 MARK)**
+
+* **Visual Continuity Link:** Hard frame lock to the final sequence composition of "Asher\_steps\_onto\_platform\_skyline\_202606280135.mp4". Asher remains stationary at the center railing, his back to the camera, holding the titanium case. The un-insulated carbon-fiber panels of his jacket and the off-white wool collar lining are firmly locked in place with zero structural drift.  
+* **Cinematography & Motion:** 18mm ultra-wide anamorphic lens execution. Establish a continuous, incredibly slow cinematic right-to-left panoramic camera drift across the horizon line to expand the visible landscape layout.  
+* **Color & Lighting Depth:** 8-Bit Theater District aesthetic rules applied. Keep the midnight indigo sky overhead. The sprawling grid of facility silos remains anchored in deep slate-teal. Boost the neon pink-pop and electric cyan saturation emitting from the massive city tower clusters as they slowly shift through the lens perspective.  
+* **Action Core:** 0.0s–6.0s: A seamless, continuous extension of the wide platform view. Asher stands still, looking out at the city as the camera executes a slow panoramic drift. Digital light arrays flicker smoothly on the distant skyscraper surfaces, and low-frequency volumetric atmospheric smog moves subtly across the industrial lower sectors. Slow cinematic fade to black at exactly 6.0 seconds.
+
