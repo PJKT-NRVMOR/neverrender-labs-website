@@ -1,0 +1,9 @@
+[Premiere Pro Lumetri Settings]
+Input_LUT = "OCIO_NeverRender_LabsFidelity_v1.4.cube"
+Contrast = 14.2
+Whites = "Clinical_Icy_White_Balance_Target_#EAFBFF"
+Blacks = "Deep_Slate_Teal_Shadow_Lock_#124559"
+
+[Curves Matrix]
+RGB_S_Curve = "Enforce_Micro_Texture_Contrast"
+Coral_Pink_Luminance_Boost = "+60%_Dreamy_Surreal_Farmland_Haze_#FF6B6B"
