@@ -120,7 +120,7 @@
     <div class="viewport-container" style="max-width: 1400px; padding: 20px;">
         <div class="glass-panel" style="padding: 0; display: flex; flex-direction: column; height: 90vh;">
             
-            <div class="header-nav">
+            <div class="header-nav" style="flex-shrink: 0;">
                 <div>
                     <h1 class="chromatic-aberration" style="font-size: 2rem; margin-bottom: 5px;">SUBJECT ARCHIVES</h1>
                     <p class="subtitle" style="font-size: 0.9rem;">RESTRICTED ACCESS: CLEARANCE GRANTED</p>
@@ -128,31 +128,32 @@
                 <button class="back-btn" onclick="window.location.href='index.html'">[x] RETURN TO TERMINAL</button>
             </div>
 
-            <!-- Founder / Creator Section (Above the Grid) -->
-            <div style="display: flex; flex-direction: column; align-items: center; margin: 40px; padding-bottom: 40px; border-bottom: 1px dashed var(--color-energy-cyan); position: relative;">
-                <div onclick="openModal('MATTHEW WYATT >> FOUNDER // CREATOR', 'CHARACTERS/MATTHEW_WYATT/MATTHEW_WYATT_DREAMBEANS.jpg', '', '> Architect of the surreal. Puppet master of the digital dioramas.')" style="cursor: pointer; text-decoration: none; color: inherit; display: block; width: 100%; max-width: 500px; z-index: 2;">
-                    <div class="character-card" style="border-color: var(--color-coral-pink); box-shadow: 0 0 20px rgba(255, 107, 107, 0.2);">
-                        <div class="character-img-wrapper" style="height: 400px;">
-                            <img src="CHARACTERS/MATTHEW_WYATT/MATTHEW_WYATT_DREAMBEANS.jpg" alt="MATTHEW WYATT" class="character-img" style="object-position: top;">
-                        </div>
-                        <div class="character-info" style="text-align: center;">
-                            <div class="character-name" style="color: var(--color-coral-pink); font-size: 1.3rem;">MATTHEW WYATT >> FOUNDER // CREATOR</div>
-                            <p class="character-prompt" style="color: #fff;">> Master of the Digital Marionettes</p>
+            <div style="overflow-y: auto; flex-grow: 1;">
+                <!-- Founder / Creator Section (Above the Grid) -->
+                <div style="display: flex; flex-direction: column; align-items: center; margin: 40px; padding-bottom: 40px; border-bottom: 1px dashed var(--color-energy-cyan); position: relative;">
+                    <div onclick="openModal('MATTHEW WYATT >> FOUNDER // CREATOR', 'CHARACTERS/MATTHEW_WYATT/MATTHEW_WYATT_DREAMBEANS.jpg', '', '> Architect of the surreal. Puppet master of the digital dioramas.')" style="cursor: pointer; text-decoration: none; color: inherit; display: block; width: 100%; max-width: 500px; z-index: 2;">
+                        <div class="character-card" style="border-color: var(--color-coral-pink); box-shadow: 0 0 20px rgba(255, 107, 107, 0.2);">
+                            <div class="character-img-wrapper" style="height: 400px;">
+                                <img src="CHARACTERS/MATTHEW_WYATT/MATTHEW_WYATT_DREAMBEANS.jpg" alt="MATTHEW WYATT" class="character-img" style="object-position: top;">
+                            </div>
+                            <div class="character-info" style="text-align: center;">
+                                <div class="character-name" style="color: var(--color-coral-pink); font-size: 1.3rem;">MATTHEW WYATT >> FOUNDER // CREATOR</div>
+                                <p class="character-prompt" style="color: #fff;">> Master of the Digital Marionettes</p>
+                            </div>
                         </div>
                     </div>
+                    
+                    <!-- Marionette Strings connecting to the gallery -->
+                    <div style="position: absolute; bottom: 0; display: flex; justify-content: space-around; width: 100%; height: 40px; opacity: 0.5;">
+                        <div style="width: 1px; height: 100%; background: var(--color-energy-cyan);"></div>
+                        <div style="width: 1px; height: 100%; background: var(--color-energy-cyan);"></div>
+                        <div style="width: 1px; height: 100%; background: var(--color-energy-cyan);"></div>
+                        <div style="width: 1px; height: 100%; background: var(--color-energy-cyan);"></div>
+                        <div style="width: 1px; height: 100%; background: var(--color-energy-cyan);"></div>
+                    </div>
                 </div>
-                
-                <!-- Marionette Strings connecting to the gallery -->
-                <div style="position: absolute; bottom: 0; display: flex; justify-content: space-around; width: 100%; height: 40px; opacity: 0.5;">
-                    <div style="width: 1px; height: 100%; background: var(--color-energy-cyan);"></div>
-                    <div style="width: 1px; height: 100%; background: var(--color-energy-cyan);"></div>
-                    <div style="width: 1px; height: 100%; background: var(--color-energy-cyan);"></div>
-                    <div style="width: 1px; height: 100%; background: var(--color-energy-cyan);"></div>
-                    <div style="width: 1px; height: 100%; background: var(--color-energy-cyan);"></div>
-                </div>
-            </div>
 
-            <div class="character-gallery">
+                <div class="character-gallery" style="overflow-y: visible; max-height: none;">
 
                 <div onclick="openModal('ASHER', 'CHARACTERS/ASHER/ASHER_DYSTOPIAN_SHEPARD.png', 'CHARACTERS/ASHER/ASHER_PROMPT_DATA.md', '')" style="cursor: pointer; text-decoration: none; color: inherit; display: block;">
                     <div class="character-card">
@@ -264,9 +265,10 @@
                     </div>
                 </div>
 
-            </div>
+            </div> <!-- end character-gallery -->
+            </div> <!-- end scroll area -->
             
-            <div style="padding: 20px 40px; border-top: 1px solid rgba(0, 229, 255, 0.1); font-family: monospace; font-size: 0.8rem; color: var(--color-energy-cyan);">
+            <div style="padding: 20px 40px; border-top: 1px solid rgba(0, 229, 255, 0.1); font-family: monospace; font-size: 0.8rem; color: var(--color-energy-cyan); flex-shrink: 0;">
                 // SYSTEM STATUS: CEMENTED
             </div>
         </div>
