@@ -128,21 +128,45 @@
                 <button class="back-btn" onclick="window.location.href='index.html'">[x] RETURN TO TERMINAL</button>
             </div>
 
+            <!-- Founder / Creator Section (Above the Grid) -->
+            <div style="display: flex; flex-direction: column; align-items: center; margin: 40px; padding-bottom: 40px; border-bottom: 1px dashed var(--color-energy-cyan); position: relative;">
+                <div onclick="openModal('MATTHEW WYATT >> FOUNDER // CREATOR', 'CHARACTERS/MATTHEW_WYATT/MATTHEW_WYATT_DREAMBEANS.jpg', '', '> Architect of the surreal. Puppet master of the digital dioramas.')" style="cursor: pointer; text-decoration: none; color: inherit; display: block; width: 100%; max-width: 500px; z-index: 2;">
+                    <div class="character-card" style="border-color: var(--color-coral-pink); box-shadow: 0 0 20px rgba(255, 107, 107, 0.2);">
+                        <div class="character-img-wrapper" style="height: 400px;">
+                            <img src="CHARACTERS/MATTHEW_WYATT/MATTHEW_WYATT_DREAMBEANS.jpg" alt="MATTHEW WYATT" class="character-img" style="object-position: top;">
+                        </div>
+                        <div class="character-info" style="text-align: center;">
+                            <div class="character-name" style="color: var(--color-coral-pink); font-size: 1.3rem;">MATTHEW WYATT >> FOUNDER // CREATOR</div>
+                            <p class="character-prompt" style="color: #fff;">> Master of the Digital Marionettes</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Marionette Strings connecting to the gallery -->
+                <div style="position: absolute; bottom: 0; display: flex; justify-content: space-around; width: 100%; height: 40px; opacity: 0.5;">
+                    <div style="width: 1px; height: 100%; background: var(--color-energy-cyan);"></div>
+                    <div style="width: 1px; height: 100%; background: var(--color-energy-cyan);"></div>
+                    <div style="width: 1px; height: 100%; background: var(--color-energy-cyan);"></div>
+                    <div style="width: 1px; height: 100%; background: var(--color-energy-cyan);"></div>
+                    <div style="width: 1px; height: 100%; background: var(--color-energy-cyan);"></div>
+                </div>
+            </div>
+
             <div class="character-gallery">
 
-                <a href="CHARACTERS/ASHER/ASHER_DYSTOPIAN_SHEPARD.png" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                <div onclick="openModal('ASHER', 'CHARACTERS/ASHER/ASHER_DYSTOPIAN_SHEPARD.png', 'CHARACTERS/ASHER/ASHER_PROMPT_DATA.md', '')" style="cursor: pointer; text-decoration: none; color: inherit; display: block;">
                     <div class="character-card">
                         <div class="character-img-wrapper">
                             <img src="CHARACTERS/ASHER/ASHER_DYSTOPIAN_SHEPARD.png" alt="ASHER" class="character-img">
                         </div>
                         <div class="character-info">
                             <div class="character-name">ASHER</div>
-                            <p class="character-prompt">> No prompt data found in the archives.</p>
+                            <p class="character-prompt">> Prompt data secured in MD file.</p>
                         </div>
                     </div>
-                </a>
+                </div>
 
-                <a href="CHARACTERS/GRATHE/GRATHE_POST_J.jpg" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                <div onclick="openModal('GRATHE', 'CHARACTERS/GRATHE/GRATHE_POST_J.jpg', '', '> Cinematic portrait of a male lounge singer leaning against a polished chrome microphone stand, geometric silhouette composition. His clothing is a tailored midnight-blue matte velvet suit that merges into a dark background. His eyes are replaced by twin glowing glass vacuum tube filaments emittin...')" style="cursor: pointer; text-decoration: none; color: inherit; display: block;">
                     <div class="character-card">
                         <div class="character-img-wrapper">
                             <img src="CHARACTERS/GRATHE/GRATHE_POST_J.jpg" alt="GRATHE" class="character-img">
@@ -152,9 +176,9 @@
                             <p class="character-prompt">> Cinematic portrait of a male lounge singer leaning against a polished chrome microphone stand, geometric silhouette composition. His clothing is a tailored midnight-blue matte velvet suit that merges into a dark background. His eyes are replaced by twin glowing glass vacuum tube filaments emittin...</p>
                         </div>
                     </div>
-                </a>
+                </div>
 
-                <a href="CHARACTERS/JACKSON_BEAT/JACKSON_BEAT_POST_J.jpg" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                <div onclick="openModal('JACKSON BEAT', 'CHARACTERS/JACKSON_BEAT/JACKSON_BEAT_POST_J.jpg', '', '> A detailed close-up portrait of the four-armed 1980s casino dealer. Focus on the chest and face. The immaculate white tuxedo jacket is pristine, with razor-sharp lapels that glow with a steady ultraviolet hum. Two of his robotic arms are visible in the foreground, precisely gripping glowing, semi...')" style="cursor: pointer; text-decoration: none; color: inherit; display: block;">
                     <div class="character-card">
                         <div class="character-img-wrapper">
                             <img src="CHARACTERS/JACKSON_BEAT/JACKSON_BEAT_POST_J.jpg" alt="JACKSON BEAT" class="character-img">
@@ -164,9 +188,9 @@
                             <p class="character-prompt">> A detailed close-up portrait of the four-armed 1980s casino dealer. Focus on the chest and face. The immaculate white tuxedo jacket is pristine, with razor-sharp lapels that glow with a steady ultraviolet hum. Two of his robotic arms are visible in the foreground, precisely gripping glowing, semi...</p>
                         </div>
                     </div>
-                </a>
+                </div>
 
-                <a href="CHARACTERS/LASER_LINE_LENNY/LASER_LINE_LENNY.jpg" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                <div onclick="openModal('LASER LINE LENNY', 'CHARACTERS/LASER_LINE_LENNY/LASER_LINE_LENNY.jpg', '', '> Cinematic portrait of a futuristic theater usher from the chest up, torso enclosed in a rigid uniform made of light-absorbing matte-black carbon fiber panels with sharp lines, featuring glowing piping in hot magenta and electric turquoise tracing every structural seam. The head is entirely covere...')" style="cursor: pointer; text-decoration: none; color: inherit; display: block;">
                     <div class="character-card">
                         <div class="character-img-wrapper">
                             <img src="CHARACTERS/LASER_LINE_LENNY/LASER_LINE_LENNY.jpg" alt="LASER LINE LENNY" class="character-img">
@@ -176,33 +200,23 @@
                             <p class="character-prompt">> Cinematic portrait of a futuristic theater usher from the chest up, torso enclosed in a rigid uniform made of light-absorbing matte-black carbon fiber panels with sharp lines, featuring glowing piping in hot magenta and electric turquoise tracing every structural seam. The head is entirely covere...</p>
                         </div>
                     </div>
-                </a>
+                </div>
 
-                <a href="CHARACTERS/THE_ARTIST/THE_ARTIST.jpg" target="_blank" style="text-decoration: none; color: inherit; display: block;">
-                    <div class="character-card">
-                        <div class="character-img-wrapper">
-                            <img src="CHARACTERS/THE_ARTIST/THE_ARTIST.jpg" alt="THE ARTIST" class="character-img">
-                        </div>
-                        <div class="character-info">
-                            <div class="character-name">THE ARTIST</div>
-                            <p class="character-prompt">> No prompt data found in the archives.</p>
-                        </div>
-                    </div>
-                </a>
 
-                <a href="CHARACTERS/VESPERA/VESPER.png" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+
+                <div onclick="openModal('VESPERA', 'CHARACTERS/VESPERA/VESPER.png', 'CHARACTERS/VESPERA/VESPERA_PROMPT_DATA.md', '')" style="cursor: pointer; text-decoration: none; color: inherit; display: block;">
                     <div class="character-card">
                         <div class="character-img-wrapper">
                             <img src="CHARACTERS/VESPERA/VESPER.png" alt="VESPERA" class="character-img">
                         </div>
                         <div class="character-info">
                             <div class="character-name">VESPERA</div>
-                            <p class="character-prompt">> No prompt data found in the archives.</p>
+                            <p class="character-prompt">> Prompt data secured in MD file.</p>
                         </div>
                     </div>
-                </a>
+                </div>
 
-                <a href="CHARACTERS/VOX_THE_VHS_FUTURIST/VOX_THE_VHS_FUTURIST_POST_J.jpg" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                <div onclick="openModal('VOX THE VHS FUTURIST', 'CHARACTERS/VOX_THE_VHS_FUTURIST/VOX_THE_VHS_FUTURIST_POST_J.jpg', '', '> Cinematic portrait of a woman wearing a sharp, tailored deep slate-teal trench coat with a high collar, layered over black geometric streetwear featuring integrated neon tangerine orange and hot pink panels. Her silhouette is hyper-crisp, but her walking motion leaves a faint, brief trailing anom...')" style="cursor: pointer; text-decoration: none; color: inherit; display: block;">
                     <div class="character-card">
                         <div class="character-img-wrapper">
                             <img src="CHARACTERS/VOX_THE_VHS_FUTURIST/VOX_THE_VHS_FUTURIST_POST_J.jpg" alt="VOX THE VHS FUTURIST" class="character-img">
@@ -212,9 +226,9 @@
                             <p class="character-prompt">> Cinematic portrait of a woman wearing a sharp, tailored deep slate-teal trench coat with a high collar, layered over black geometric streetwear featuring integrated neon tangerine orange and hot pink panels. Her silhouette is hyper-crisp, but her walking motion leaves a faint, brief trailing anom...</p>
                         </div>
                     </div>
-                </a>
+                </div>
 
-                <a href="CHARACTERS/DIGITAL_DIAL_DEREK/DIGITAL_DIAL_DEREK_J.jpg" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                <div onclick="openModal('DIGITAL DIAL DEREK', 'CHARACTERS/DIGITAL_DIAL_DEREK/DIGITAL_DIAL_DEREK_J.jpg', '', '> Wide-angle full-body macro shot, tilt-shift lens perspective, extremely shallow depth of field, showcasing the detective standing on an infinite perspective retro grid floor under a dark twilight sky. His face is entirely obscured by the deep shadow of the hat brim, revealing only a flat minimalist digital clock dial with a glowing blue dot matrix interface...')" style="cursor: pointer; text-decoration: none; color: inherit; display: block;">
                     <div class="character-card">
                         <div class="character-img-wrapper">
                             <img src="CHARACTERS/DIGITAL_DIAL_DEREK/DIGITAL_DIAL_DEREK_J.jpg" alt="DIGITAL DIAL DEREK" class="character-img">
@@ -224,9 +238,9 @@
                             <p class="character-prompt">> Wide-angle full-body macro shot, tilt-shift lens perspective, extremely shallow depth of field, showcasing the detective standing on an infinite perspective retro grid floor under a dark twilight sky. His face is entirely obscured by the deep shadow of the hat brim, revealing only a flat minimalist digital clock dial with a glowing blue dot matrix interface...</p>
                         </div>
                     </div>
-                </a>
+                </div>
 
-                <a href="CHARACTERS/VACUUM-VERSE_VAL/VACUUM-VERSE_VAL_J.jpg" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                <div onclick="openModal('VACUUM-VERSE VAL', 'CHARACTERS/VACUUM-VERSE_VAL/VACUUM-VERSE_VAL_J.jpg', '', '> Cinematic portrait of a futuristic woman with delicate facial features wearing an exaggerated wide-collar jacket constructed from segmented matte-black carbon fiber panels. Her hair is a sleek, precision-cut bob made of glowing red fiber-optic strands. Her eyes are replaced by twin flaring glass vacuum tube filaments emitting intense ruby red light...')" style="cursor: pointer; text-decoration: none; color: inherit; display: block;">
                     <div class="character-card">
                         <div class="character-img-wrapper">
                             <img src="CHARACTERS/VACUUM-VERSE_VAL/VACUUM-VERSE_VAL_J.jpg" alt="VACUUM-VERSE VAL" class="character-img">
@@ -236,9 +250,9 @@
                             <p class="character-prompt">> Cinematic portrait of a futuristic woman with delicate facial features wearing an exaggerated wide-collar jacket constructed from segmented matte-black carbon fiber panels. Her hair is a sleek, precision-cut bob made of glowing red fiber-optic strands. Her eyes are replaced by twin flaring glass vacuum tube filaments emitting intense ruby red light...</p>
                         </div>
                     </div>
-                </a>
+                </div>
 
-                <a href="CHARACTERS/VELVET_PRISM/VELVET_PRISM_J.jpg" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                <div onclick="openModal('VELVET PRISM', 'CHARACTERS/VELVET_PRISM/VELVET_PRISM_J.jpg', '', '> Extreme vertical composition, low-angle tracking camera perspective, emphasizing the tall fluid height of the subject against a minimalistic infinite perspective grid layout. Her hair is a continuous looping neon glass tube pulsing with a shifting pearlescent pastel pink and holographic blue color gradient. On the floor beneath her, she casts a pool of glowing...')" style="cursor: pointer; text-decoration: none; color: inherit; display: block;">
                     <div class="character-card">
                         <div class="character-img-wrapper">
                             <img src="CHARACTERS/VELVET_PRISM/VELVET_PRISM_J.jpg" alt="VELVET PRISM" class="character-img">
@@ -248,7 +262,7 @@
                             <p class="character-prompt">> Extreme vertical composition, low-angle tracking camera perspective, emphasizing the tall fluid height of the subject against a minimalistic infinite perspective grid layout. Her hair is a continuous looping neon glass tube pulsing with a shifting pearlescent pastel pink and holographic blue color gradient. On the floor beneath her, she casts a pool of glowing...</p>
                         </div>
                     </div>
-                </a>
+                </div>
 
             </div>
             
@@ -257,5 +271,52 @@
             </div>
         </div>
     </div>
+    <div class="video-modal" id="character-modal">
+        <div class="modal-backdrop" onclick="closeModal()"></div>
+        <div class="modal-content glass-panel extended-modal" style="max-width: 900px; max-height: 85vh; padding-bottom: 20px; overflow-y: auto;">
+            <header class="sys-header">
+                <div class="sys-id" id="modal-title">SUBJECT DATA</div>
+                <button class="close-btn" onclick="closeModal()">[X] CLOSE</button>
+            </header>
+            <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px;">
+                <div style="flex: 1; min-width: 300px; display: flex; align-items: flex-start; justify-content: center;">
+                    <img id="modal-img" src="" style="max-width: 100%; max-height: 60vh; object-fit: contain; border: 1px solid var(--color-energy-cyan); border-radius: 8px;">
+                </div>
+                <div style="flex: 1; min-width: 300px; background: rgba(0,0,0,0.5); padding: 20px; border-radius: 8px; border: 1px solid rgba(0, 229, 255, 0.2); overflow-y: auto; max-height: 60vh;">
+                    <div style="color: var(--color-energy-cyan); font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 10px; border-bottom: 1px solid rgba(0, 229, 255, 0.2); padding-bottom: 5px;">// EXTRACTED PROMPT DATA //</div>
+                    <pre id="modal-prompt" style="color: #a0c4d8; white-space: pre-wrap; font-family: 'Courier New', Courier, monospace; font-size: 0.95rem; margin: 0; line-height: 1.5;"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function openModal(name, imgSrc, mdPath, fallbackText) {
+            document.getElementById('modal-title').textContent = name;
+            document.getElementById('modal-img').src = imgSrc;
+            const promptEl = document.getElementById('modal-prompt');
+            
+            if (mdPath) {
+                promptEl.textContent = "> RETRIEVING ARCHIVE FILE...";
+                fetch(mdPath)
+                    .then(response => {
+                        if (!response.ok) throw new Error("Network response was not ok");
+                        return response.text();
+                    })
+                    .then(text => promptEl.textContent = text)
+                    .catch(error => promptEl.textContent = "> ERROR LOADING DATA: " + error.message);
+            } else {
+                promptEl.textContent = fallbackText;
+            }
+            
+            document.getElementById('character-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('character-modal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
 </body>
 </html>

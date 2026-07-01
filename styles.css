@@ -242,6 +242,10 @@ h1.chromatic-aberration {
     text-transform: uppercase;
     position: relative;
     overflow: hidden;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .action-btn::before {

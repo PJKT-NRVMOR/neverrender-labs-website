@@ -1,0 +1,1 @@
+A chrono-pilot. Athletic, with a sharp jawline, intense lavender eyes, and a short asymmetrical neon-teal bob haircut. She wears a pristine white retro-futuristic flight suit with orange brass piping, a high collar, and a terminal focus coral indicator badge on her chest.
