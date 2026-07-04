@@ -1,0 +1,29 @@
+﻿<instruction_set>
+<context>
+PROJECT_NEVERMORE: Downtown Vista (Zip Code 92083) regional train platform at dusk. Val steps off the train. 
+This layer calibrates the structural, physical, and chromatic parameters, enforcing local architectural assets and the 60-30-10 chromatic rule, completely decoupled from character attire and camera dynamics.
+</context>
+
+
+<prompt_matrix>
+<midjourney_v8_1_keyframe>
+A cinematic master shot at dusk on a regional train platform in downtown Vista, California 92083. The environment strictly enforces a 60-30-10 color rule. 60% of the scene is dominated by a deep Slate-Teal (#124559) palette mapping the train platform hulls, asphalt, and raw textured concrete surfaces. 30% of the scene features sharp structural lines of Electric Cyan (#00E5FF) and Jade Teal (#00C49A) emanating from active Googie architectural features, cantilever canopies, and vibrant neon conduits framing roadside commercial spaces. 10% of the scene utilizes popping high-contrast indicators of Coral Pink-Red (#FF6B6B) reserved for warning signs, active pylon signals, and pilot badges. The background landscape features desaturated eucalyptus silhouettes, washed-out palm fronds, and dusty ice plants under a Southern California marine layer twilight sky. Symmetrical composition, shot on an anamorphic lens, high-fidelity texture, zero geometric distortion --ar 16:9 --style raw --v 8.1
+</midjourney_v8_1_keyframe>
+
+
+<kling_3_0_video_motion>
+<subject_lock>
+Cinematic portrait of Val, a character with locked facial geometry, athletic build, and distinct features. Val wears a heavy, insulated high-collar tech-wear flight jacket with matte panel textures and weather-resistant polymer lining. The clothing textures, suit colors, and physical attributes remain 100% stable with zero feature warping, jawline distortion, or attribute drift over time.
+</subject_lock>
+
+
+<viewport_motion>
+A continuous 6-second horizontal dolly-out camera movement tracking left-to-right on a rigid parallel Z-axis path relative to the train platform. True physical scale simulation: background elements translate along opposite relative motion vectors to foreground structures to create realistic spatial parallax. The camera has an organic 3% handheld micro-shake animation layer for cinematic realism. Viewport perspective, nearby structures, elevator shafts, and street curbs remain completely unmoving relative to the camera track. Film style with deep focus, high-fidelity texture rendering, and clear legible marquee text matrices without text-soup warping. Low-frequency analog synthesizer drone hum holding a steady 55Hz tone on the audio timeline, layered with high-pitched digital telemetry clicks that sync precisely with flickering cyan neon indicators. Sequence terminates on a clean full-width fade to black at exactly 6.0 seconds.
+</viewport_motion>
+
+
+<structural_negative_prompts>
+facial morphing, changing clothes, shifting suit colors, jawline warping, de-aging, background crawling, pixel sliding, sliding walls, morphing metal, melting cabin structures, background warping, floating geometry, changing text, text soup, structural hallucination, extra limbs, bleeding colors, loose artifacts.
+</structural_negative_prompts>
+</prompt_matrix>
+</instruction_set>

@@ -1,0 +1,41 @@
+﻿GEM: Character Architect (Multi-Factor Control V2)
+Custom Gem
+🃏 Firefly Character Architect Compilation: The Midnight Card Sharp
+Here is the hyper-precise, decoupled prompt generation engineering payload for The Midnight Card Sharp (Character 8). The architecture segregates physical visual attributes into a master subject lock while mapping fluid kinematic mechanics directly to the viewport motion block to maintain total visual stability across frames.  
+HTML
+
+
+🧱 Architectural Prompt Blocks
+[SUBJECT_LOCK]
+
+
+Slender, sharp-angled character, face is a completely flat 2D glowing hot-tangerine neon sign shaped like a diamond card suit floating beneath the shadow of a wide-brimmed fedora. Wearing an oversized obsidian-black structural trench coat. Incorporating exact styling palettes and neon-pop grain structures directly from SURREAL_FUTURISM_FOUNDATION_SWATCH.webp and matching the tech-noir silhouette integration of DIGITAL_DIAL_DEREK_J.jpg[cite: 1, 2, 5].
+
+
+[VIEWPORT_MOTION]
+
+
+Low-angle cinematic tracking shot, 35mm anamorphic lens, shallow depth of field with heavy deep violet background bokeh[cite: 3, 5]. Moody laser-cyan rim lighting casting dynamic highlights across the coat layers. Character is frozen mid-motion throwing a hand of transparent, glowing glass playing cards that project interactive neon retro UI menus and pixel art icons into the atmospheric laboratory mist[cite: 1, 3].  
+HTML
+
+
+🚀 Compiled Firefly Input String
+(Combined sequentially under the 1024-character model token limit)
+
+
+Plaintext
+[SUBJECT_LOCK]. Slender, sharp-angled character, face is a completely flat 2D glowing hot-tangerine neon sign shaped like a diamond card suit floating beneath the shadow of a wide-brimmed fedora. Wearing an oversized obsidian-black structural trench coat. Incorporating exact styling palettes and neon-pop grain structures directly from SURREAL_FUTURISM_FOUNDATION_SWATCH.webp and matching the tech-noir silhouette integration of DIGITAL_DIAL_DEREK_J.jpg. [VIEWPORT_MOTION]. Low-angle cinematic tracking shot, 35mm anamorphic lens, shallow depth of field with heavy deep violet background bokeh. Moody laser-cyan rim lighting casting dynamic highlights across the coat layers. Character is frozen mid-motion throwing a hand of transparent, glowing glass playing cards that project interactive neon retro UI menus and pixel art icons into the atmospheric laboratory mist.
+🎨 Color Chemistry Parameters
+This layout relies strictly on the 60/30/10 High-Contrast Chromatic Segregation rules to ensure maximum clarity on the physical render pass:  
+NEVERRENDER LABS: THE COMPLETE ARCHITECTURAL COMPENDIUM
+
+
+60% Base Architecture: Obsidian Black and Deep Violet voids grounding the trench coat silhouette and background elements.  
+HTML
+
+
+30% Dynamic Energy: Hot Tangerine and Laser-Cyan emissive illumination fields driving the floating neon face shield and holographic retro card frames.  
+HTML
+
+
+10% Disruptive Pop: High-saturation pixel art interface graphics throwing crisp environmental caustics across the foreground[cite: 1, 3].

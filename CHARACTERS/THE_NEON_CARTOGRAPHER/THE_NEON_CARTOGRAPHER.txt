@@ -1,0 +1,37 @@
+﻿GEM: Character Architect (Multi-Factor Control V2)
+Custom Gem
+📐 Firefly Character Architect Compilation: The Neon Cartographer
+Here is the hyper-precise, decoupled prompt generation engineering payload for The Neon Cartographer (Character 11). This architecture segregates the architectural scale and complex wireframe geometries into distinct, manageable data blocks to ensure absolute feature permanence on your Beelink rig.
+
+
+🧱 Architectural Prompt Blocks
+[SUBJECT_LOCK]
+
+
+Mysterious hunched figure, face obscured by a low-hanging hood. Wearing a heavy, structural deep navy blue cloak completely covered in thousands of tiny, blinking stark white LED status lights that pulse in a slow rhythmic breathing pattern. Operating a massive, hovering retro-futuristic mechanical drafting table. Incorporating exact material constraints and neon-pop grain structures directly from SURREAL_FUTURISM_FOUNDATION_SWATCH_2.webp and matching the layout scale of DIGITAL_DIAL_DEREK_J_2.jpg[cite: 1, 2, 5].
+
+
+[VIEWPORT_MOTION]
+
+
+Low-angle wide tracking shot, 24mm anamorphic prime lens, dramatic background bokeh[cite: 3, 5]. High-contrast laser-cyan rim lighting casting dynamic panel shadows. The character sketches on the glass console surface, causing vibrant radioactive lime-green grid lines to physically lift off the table, morphing into a complex 3D wireframe cityscape cage that floats upward and wraps seamlessly around their body[cite: 2, 3].
+
+
+🚀 Compiled Firefly Input String
+(Combined sequentially under the 900-character model token limit)
+
+
+Plaintext
+[SUBJECT_LOCK]. Mysterious hunched figure, face obscured by a low-hanging hood. Wearing a heavy, structural deep navy blue cloak completely covered in thousands of tiny, blinking stark white LED status lights that pulse in a slow rhythmic breathing pattern. Operating a massive, hovering retro-futuristic mechanical drafting table. Incorporating exact material constraints and neon-pop grain structures directly from SURREAL_FUTURISM_FOUNDATION_SWATCH_2.webp and matching the layout scale of DIGITAL_DIAL_DEREK_J_2.jpg. [VIEWPORT_MOTION]. Low-angle wide tracking shot, 24mm anamorphic prime lens, dramatic background bokeh. High-contrast laser-cyan rim lighting casting dynamic panel shadows. The character sketches on the glass console surface, causing vibrant radioactive lime-green grid lines to physically lift off the table, morphing into a complex 3D wireframe cityscape cage that floats upward and wraps seamlessly around their body.
+🎨 Color Chemistry Parameters
+This layout relies strictly on the 60/30/10 High-Contrast Chromatic Segregation rules to ensure maximum spatial clarity on the physical render pass:  
+NEVERRENDER LABS: THE COMPLETE ARCHITECTURAL COMPENDIUM
+
+
+60% Base Architecture: Deep Navy Blue grounding the main cloak silhouette and structural room shadows.
+
+
+30% Dynamic Energy: Radioactive Lime grid lines and Laser-Cyan structural vectors lifting from the glass interface to define environment scale.
+
+
+10% Disruptive Pop: Stark White accent emissions restricted strictly to the pulsing, rhythmic LED cluster fields.

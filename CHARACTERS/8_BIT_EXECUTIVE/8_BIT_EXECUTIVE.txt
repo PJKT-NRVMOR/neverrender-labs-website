@@ -1,0 +1,12 @@
+﻿GEM: Character Architect (Multi-Factor Control V2)
+Custom Gem
+[SUBJECT_LOCK]
+Faceless corporate archetype, average build. The upper half of the torso explodes upward into a chaotic, pixelated cloud of floating 3D cubes, low-poly pyramids, and glowing grid fragments that rearrange themselves in mid-air. Draped below the explosion is a flawlessly tailored, sharp high-contrast fabric business suit jacket and trousers. A smooth, solid neon-cyan silk tie drops perfectly down the front of the suit jacket as a stable center line anchor. Key colors are pure stark black, brilliant cyber cyan, and blinding hot coral, calibrated to the palette archetype of SURREAL_FUTURISM_FOUNDATION_SWATCH_5.webp.
+
+
+[VIEWPORT_MOTION]
+Symmetrical straight-on medium portrait framing, 50mm anamorphic prime lens with hyper-shallow depth of field, high-contrast crisp studio key lighting from the left and right, throwing the background laboratory columns into soft bokeh. The subject is sitting perfectly rigid and motionless behind a clean black desk, while the complex cluster of low-poly geometric shapes and neon-cyan grid fragments shifts and floats dynamically above their shoulders.
+
+
+Final Firefly Compilation Input
+"Faceless corporate archetype, average build. The upper half of the torso explodes upward into a chaotic, pixelated cloud of floating 3D cubes, low-poly pyramids, and glowing grid fragments that rearrange themselves in mid-air. Draped below the explosion is a flawlessly tailored, sharp high-contrast fabric business suit jacket and trousers. A smooth, solid neon-cyan silk tie drops perfectly down the front of the suit jacket as a stable center line anchor. Key colors are pure stark black, brilliant cyber cyan, and blinding hot coral, calibrated to the palette archetype of SURREAL_FUTURISM_FOUNDATION_SWATCH_5.webp. Symmetrical straight-on medium portrait framing, 50mm anamorphic prime lens with hyper-shallow depth of field, high-contrast crisp studio key lighting from the left and right, throwing the background laboratory columns into soft bokeh. The subject is sitting perfectly rigid and motionless behind a clean black desk, while the complex cluster of low-poly geometric shapes and neon-cyan grid fragments shifts and floats dynamically above their shoulders."
