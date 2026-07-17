@@ -1,0 +1,13 @@
+﻿The 8-Bit Projectionist
+A character that literally bridges the gap between flat 2D retro gaming and 3D space.
+* The Concept: A lanky, mysterious figure clad in a sharp, retro-futuristic trench coat, carrying a heavy, industrial-sized film reel on their back.
+* The Surreal Twist: The character's body is entirely flat, constructed from stacked, offset 2D pixel planes (like a physical sprite sheet). As they move, they leave a lingering trail of "ghost frames" behind them.
+* Visual Flair: Their face is a single, massive, glowing projector lens. It casts a bright, conical beam of light ahead of them that projects a moving, pixelated 8-bit cityscape onto whatever surface it hits.
+* Palettes: Stark paper white, deep scan-line violet, and blinding cyber-cyan.
+[SUBJECT_LOCK]
+Androgynous lanky flat 2D pixel-plane build, face is a single massive glowing vintage projector lens, wearing a sharp retro-futuristic trench coat with a heavy industrial-sized film reel strapped to the back, stark paper white and deep scan-line violet with blinding cyber-cyan accents
+[VIEWPORT_MOTION]
+Low-angle tracking shot, 24mm anamorphic prime lens, high-contrast volumetric rim lighting. Subject is striding forward leaving a lingering trail of ghost frames, projecting a moving pixelated 8-bit cityscape from the face lens onto the surrounding environment
+Final Output Compilation
+Copy and paste the exact string below into Adobe Firefly. It sequences the physical lock and the spatial mechanics perfectly in under 900 characters:
+" Androgynous lanky flat 2D pixel-plane build, face is a single massive glowing vintage projector lens, wearing a sharp retro-futuristic trench coat with a heavy industrial-sized film reel strapped to the back, stark paper white and deep scan-line violet with blinding cyber-cyan accents. Low-angle tracking shot, 24mm anamorphic prime lens, high-contrast volumetric rim lighting. Subject is striding forward leaving a lingering trail of ghost frames, projecting a moving pixelated 8-bit cityscape from the face lens onto the surrounding environment. "
