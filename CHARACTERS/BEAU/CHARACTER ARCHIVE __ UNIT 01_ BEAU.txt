@@ -1,0 +1,20 @@
+﻿CHARACTER ARCHIVE // UNIT 01: BEAU
+"The armor we wear to survive the 9-to-5 has no place where we are truly loved."
+
+
+	
+
+	Status
+	Active Corporate Asset (Attempting Extraction)
+	Designation
+	Dedicated Data Processor
+	Core Structure
+	Solid brutalist concrete block head
+	Primary Output
+	Continuous, cascading streams of raw data tape
+	Current Objective
+	Punch out on time; secure safe transit to a 5-year-old's unicorn party
+	🗲 File Overview
+Beau is a model employee processing intensive quarterly data streams under the bleak, endless hum of corporate fluorescent lights. Outwardly, he is the ultimate company man—his head a rigid, unyielding block of brutalist concrete, completely overflowing with relentless paper trails.
+But beneath the heavy stone exterior beats the heart of a father on the most critical deadline of his career. To make it home to his daughter's whimsical birthday party, Beau must navigate the sprawling, subterranean industrial corridors of Unit 7 and conquer the vanishing horizon of a distant time clock. He is about to discover exactly what it takes for the cold armor of the corporate grind to finally melt away.
+Workflow Note: This character profile card is part of the open-source architecture framework. Registered creators can download the complete character consistency pipelines, prompt sequences, and master research reports for this asset at RenderWithoutCode.com
