@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const terminalText = [
         "Awaiting instruction...",
         "Loading deep-lore ingestion...",
+        "CRITICAL INGESTION: VEO BYPASS PATCH (JULY UNICORN) DETECTED...",
         "Accessing PRODUCTION MATRIX INVENTORY...",
         "System Status: READY FOR INSTRUCTION."
     ];

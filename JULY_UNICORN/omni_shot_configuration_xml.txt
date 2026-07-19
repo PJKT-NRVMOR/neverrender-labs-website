@@ -1,0 +1,36 @@
+﻿<omni_shot_configuration shot_index="01" duration="8s">  
+  <model_provenance_locking>  
+    <character_dna>  
+      [Describe your character's visual DNA here - e.g., Surrealist humanoid entity, charcoal gray suit.]  
+    </character_dna>  
+    <continuity_constraints>  
+      [Define rigid-body material permanence rules here - e.g., Lock concrete material properties to absolute structural stability. Set enhancePrompt: false.]  
+    </continuity_constraints>  
+  </model_provenance_locking>  
+    
+  <camera_profile>  
+    <lens_configuration>[Define lens profiles - e.g., Wide angle anamorphic prime lens]</lens_configuration>  
+    <depth_of_field>[Define focus tracking - e.g., Deep focus maintaining clarity on foreground]</depth_of_field>  
+    <trajectory_vector mechanism="MRMC_Flair_Kinematics">[Define precise camera movement paths - e.g., Continuous horizontal dolly tracking]</trajectory_vector>  
+  </camera_profile>  
+    
+  <color_grading_matrix ratio="Standard_60_30_10" palette_source="8_bit_theater_district_aesthetic.json">  
+    <distribution_weighting>  
+      <base_architecture weight="60%">[60% color block assignment - e.g., Deep Slate Teal hex #124559]</base_architecture>  
+      <dynamic_energy weight="30%">[30% mid-tone accent assignment - e.g., Electric Cyan hex #00E5FF]</dynamic_energy>  
+      <disruptive_pop weight="10%">[10% high-contrast pop assignment - e.g., Coral Pink Red hex #FF6B6B]</disruptive_pop>  
+    </distribution_weighting>  
+  </color_grading_matrix>  
+    
+  <lighting_and_materials>  
+    <illumination_model weight="100%">[Define lighting directions, textures, and sources]</illumination_model>  
+    <material_expressiveness weight="100%">[Define surface properties - e.g., Heavy sandblasted concrete block textures, dry matte paper]</material_expressiveness>  
+  </lighting_and_materials>  
+    
+  <scene_action>  
+    <temporal_flow>24 FPS cinematic real time physical simulation with gritty industrial film grain</temporal_flow>  
+    <action_core>  
+      [Define the physical action, character performance, and spatial parallax behavior here.]  
+    </action_core>  
+  </scene_action>  
+</omni_shot_configuration>
