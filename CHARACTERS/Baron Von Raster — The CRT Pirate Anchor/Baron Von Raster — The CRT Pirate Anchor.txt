@@ -1,0 +1,42 @@
+﻿Baron Von Raster — The CRT Pirate Anchor
+"Broadcasting live from frequency zero. Keep your tuners locked and your code unpatched."
+
+
+The Aesthetic: Dapper 80s double-breasted suit with a chrome tie, topped with a floating, restored retro CRT television head. His TV screen displays animated 8-bit facial expressions, scanlines, and occasional tracking glitches.
+
+
+The Vibe: A smooth-talking, mysterious broadcast icon running an illegal pirate radio network from an abandoned satellite dish, spinning underground beats and dropping glitchy, encrypted truths.
+
+
+Signature Gear: A vintage studio microphone with a built-in EMP burst switch.
+
+
+[SUBJECT_LOCK]
+Slender male figure. Floating restored retro CRT television head displaying animated 8-bit facial expressions with scanlines and tracking glitches. Wearing an 80s double-breasted suit, reflective chrome tie, and holding a vintage metal studio microphone with an integrated EMP burst switch. Deep slate blue, chrome silver, electric cyan, vibrant magenta.
+
+
+[VIEWPORT_MOTION]
+Low-angle medium tracking shot, 35mm anamorphic prime lens, shallow depth of field. Harsh neon rim lighting from the side with soft cyan fill light. Subject leans toward the vintage microphone while adjusting his chrome tie with a confident gesture.
+
+
+Final Output Compilation
+"Slender male figure, floating restored retro CRT television head displaying animated 8-bit facial expressions with scanlines and tracking glitches. Wearing an 80s double-breasted suit, reflective chrome tie, and holding a vintage metal studio microphone with an integrated EMP burst switch. Deep slate blue, chrome silver, electric cyan, vibrant magenta. Low-angle medium tracking shot, 35mm anamorphic prime lens, shallow depth of field. Harsh neon rim lighting from the side with soft cyan fill light. Subject leans toward the vintage microphone while adjusting his chrome tie with a confident gesture."
+
+
+Alternate Modifications
+Option 1: Abandoned Satellite Deck
+
+
+Mod: Shift viewport to an eye-level wide tracking shot in an abandoned satellite dish hub with flickering blue data terminals in the background.
+
+
+Option 2: EMP Pulse Macro
+
+
+Mod: Shift viewport to an 85mm macro close-up on the CRT glass screen as an active purple plasma static burst flares across the faceplate.
+
+
+Option 3: Kinetic Signal Sweep
+
+
+Mod: Shift viewport to a fast 180-degree orbital camera sweep around the subject while chromatic RGB signal noise splits his silhouette.
