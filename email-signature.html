@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matthew Wyatt | 8-Bit Email Signature Card</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;600;700&family=VT323&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #12151e;
+            color: #f1f5f9;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .pixel-font {
+            font-family: 'Press Start 2P', monospace;
+        }
+
+        .terminal-font {
+            font-family: 'VT323', monospace;
+        }
+
+        /* Live Signature Preview Container */
+        .preview-wrapper {
+            background: #e2e8f0;
+            background-image: 
+                radial-gradient(#cbd5e1 1px, transparent 1px),
+                radial-gradient(#cbd5e1 1px, #e2e8f0 1px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+        }
+    </style>
+</head>
+<body class="min-h-screen py-10 px-4 flex flex-col items-center justify-center">
+
+    <div class="max-w-3xl w-full space-y-6">
+
+        <!-- Top Header & Instructions -->
+        <div class="text-center space-y-2">
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/30 rounded text-amber-400 text-xs font-mono">
+                <span class="w-2 h-2 bg-amber-400 rounded-none animate-pulse"></span>
+                RETRO STUDIO COMMUNICATIONS // 8-BIT EMAIL SIGNATURE
+            </div>
+            <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+                Matthew Wyatt // Email Signature Card
+            </h1>
+            <p class="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto">
+                Designed with a warm cream card background, rich 8-bit retro palette, table-based email compatibility (Gmail, Outlook, Apple Mail), and direct links to your ecosystem.
+            </p>
+        </div>
+
+        <!-- Live Preview Stage -->
+        <div class="preview-wrapper p-6 sm:p-10 rounded-xl border border-slate-700 shadow-2xl flex flex-col items-center justify-center">
+            
+            <div class="w-full flex justify-between items-center mb-4 text-xs font-mono text-slate-600 font-bold px-1">
+                <span>[ PREVIEW IN EMAIL INBOX ]</span>
+                <span class="text-slate-500 text-[10px]">FORMAT: EMAIL-SAFE HTML TABLE</span>
+            </div>
+
+            <!-- =================================================================== -->
+            <!-- 💌 THE EXACT SIGNATURE CODE STARTS HERE (TABLE-BASED EMAIL SAFE) -->
+            <!-- =================================================================== -->
+            <div id="signature-container" class="w-full max-w-lg">
+                <table cellpadding="0" cellspacing="0" border="0" style="width: 100%; max-width: 520px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #FAF6EE; border: 2.5px solid #1C1917; border-radius: 4px; box-shadow: 4px 4px 0px #1C1917; margin: 0; padding: 0;">
+                    <tr>
+                        <td style="padding: 20px 22px; background-color: #FAF6EE;">
+                            
+                            <!-- Header / Badge Row -->
+                            <table cellpadding="0" cellspacing="0" border="0" style="width: 100%; margin-bottom: 10px;">
+                                <tr>
+                                    <td style="vertical-align: middle;">
+                                        <span style="font-family: 'Courier New', Courier, monospace; font-size: 10px; font-weight: bold; color: #EA580C; background-color: #FFF0E5; border: 1.5px solid #EA580C; padding: 2px 6px; letter-spacing: 0.5px; text-transform: uppercase;">
+                                            &#9654; NEVERRENDER LABS // SRE
+                                        </span>
+                                    </td>
+                                    <td style="text-align: right; vertical-align: middle;">
+                                        <span style="font-family: 'Courier New', Courier, monospace; font-size: 10px; font-weight: bold; color: #B45309; background-color: #FEF3C7; border: 1.5px solid #D97706; padding: 2px 6px;">
+                                            &#9733; GOOGLE LABS FEATURED
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- Name & Title -->
+                            <table cellpadding="0" cellspacing="0" border="0" style="width: 100%; margin-bottom: 12px;">
+                                <tr>
+                                    <td>
+                                        <div style="font-size: 22px; font-weight: 900; color: #1C1917; line-height: 1.2; letter-spacing: -0.5px; margin-bottom: 2px;">
+                                            Matthew Wyatt
+                                        </div>
+                                        <div style="font-size: 13px; font-weight: 600; color: #D97706; font-family: 'Courier New', Courier, monospace; letter-spacing: -0.2px;">
+                                            Creative Technologist &amp; 3D / AI Media Specialist
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- Retro Dashed Divider -->
+                            <div style="border-bottom: 2px dashed #D6CEBE; margin-bottom: 14px; width: 100%;"></div>
+
+                            <!-- Tagline & Core Focus -->
+                            <div style="font-size: 12px; color: #44403C; line-height: 1.45; margin-bottom: 16px; background-color: #F3EBDD; padding: 8px 10px; border-left: 3px solid #EA580C;">
+                                Architecting real-time 3D, generative AI pipelines, and agentic workflows that push boundaries without production lag.
+                            </div>
+
+                            <!-- Action Hub / Links -->
+                            <table cellpadding="0" cellspacing="0" border="0" style="width: 100%;">
+                                <tr>
+                                    <td>
+                                        <!-- Primary Web Link Button -->
+                                        <a href="https://renderwithoutcode.com" target="_blank" style="display: inline-block; background-color: #EA580C; color: #FFFFFF; font-size: 11px; font-weight: bold; font-family: 'Courier New', Courier, monospace; text-decoration: none; padding: 6px 12px; border: 1.5px solid #1C1917; box-shadow: 2px 2px 0px #1C1917; margin-right: 8px; text-transform: uppercase;">
+                                            &#9654; RENDERWITHOUTCODE.COM
+                                        </a>
+
+                                        <!-- Resume Link Button -->
+                                        <a href="https://renderwithoutcode.com/resume" target="_blank" style="display: inline-block; background-color: #FFFFFF; color: #1C1917; font-size: 11px; font-weight: bold; font-family: 'Courier New', Courier, monospace; text-decoration: none; padding: 6px 10px; border: 1.5px solid #1C1917; box-shadow: 2px 2px 0px #1C1917; margin-right: 8px;">
+                                            8-BIT RESUME
+                                        </a>
+
+                                        <!-- Instagram Link -->
+                                        <a href="https://www.instagram.com/neverrenderlabs/" target="_blank" style="display: inline-block; background-color: #FFFFFF; color: #DC2626; font-size: 11px; font-weight: bold; font-family: 'Courier New', Courier, monospace; text-decoration: none; padding: 6px 8px; border: 1.5px solid #1C1917; box-shadow: 2px 2px 0px #1C1917;">
+                                            @NEVERRENDERLABS
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- =================================================================== -->
+            <!-- 💌 THE EXACT SIGNATURE CODE ENDS HERE                               -->
+            <!-- =================================================================== -->
+
+        </div>
+
+        <!-- Copy & Export Controls -->
+        <div class="flex flex-wrap items-center justify-center gap-3 font-mono text-xs">
+            <button onclick="copySignatureRichText()" id="btn-copy-rich" class="px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded flex items-center gap-2 shadow-[3px_3px_0px_#000] transition active:translate-x-0.5 active:translate-y-0.5">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                <span>COPY SIGNATURE FOR GMAIL / OUTLOOK</span>
+            </button>
+
+            <button onclick="copyRawHTML()" id="btn-copy-html" class="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold rounded flex items-center gap-2 shadow-[3px_3px_0px_#000] transition">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                <span>COPY RAW HTML</span>
+            </button>
+        </div>
+
+        <!-- Feedback Notification Toast -->
+        <div id="toast" class="hidden text-center text-xs font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800 p-2.5 rounded shadow">
+            ✔ Copied to clipboard! Ready to paste into your Gmail / Mail settings.
+        </div>
+
+        <!-- How to Install Instructions -->
+        <div class="bg-slate-900/90 border border-slate-800 p-5 rounded-lg text-xs font-mono space-y-3 text-slate-300">
+            <div class="text-amber-400 font-bold flex items-center gap-1.5 font-pixel text-[9px]">
+                <span>⚡ HOW TO PASTE INTO GMAIL:</span>
+            </div>
+            <ol class="list-decimal list-inside space-y-1 text-slate-300 leading-relaxed">
+                <li>Click the amber <strong>"COPY SIGNATURE FOR GMAIL / OUTLOOK"</strong> button above.</li>
+                <li>Go to <strong>Gmail</strong> &gt; Settings (gear icon) &gt; <strong>See all settings</strong>.</li>
+                <li>Scroll down to the <strong>Signature</strong> section.</li>
+                <li>Click in the signature text box and press <kbd class="bg-slate-800 text-amber-300 px-1.5 py-0.5 rounded border border-slate-700">Ctrl + V</kbd> (or <kbd class="bg-slate-800 text-amber-300 px-1.5 py-0.5 rounded border border-slate-700">Cmd + V</kbd>).</li>
+                <li>Scroll to the bottom and click <strong>Save Changes</strong>.</li>
+            </ol>
+        </div>
+
+    </div>
+
+    <script>
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3500);
+        }
+
+        async function copySignatureRichText() {
+            const container = document.getElementById('signature-container');
+            
+            try {
+                // Use clipboard API with text/html for perfect rich-text pasting into email clients
+                const blob = new Blob([container.innerHTML], { type: 'text/html' });
+                const plainTextBlob = new Blob([container.innerText], { type: 'text/plain' });
+                const item = new ClipboardItem({
+                    'text/html': blob,
+                    'text/plain': plainTextBlob
+                });
+                await navigator.clipboard.write([item]);
+                showToast("✔ Rich signature copied! Open Gmail/Outlook and hit Ctrl+V in your Signature box.");
+            } catch (err) {
+                // Fallback selection copy
+                const range = document.createRange();
+                range.selectNode(container);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                document.execCommand('copy');
+                window.getSelection().removeAllRanges();
+                showToast("✔ Signature selected & copied! Paste into your email settings.");
+            }
+        }
+
+        function copyRawHTML() {
+            const container = document.getElementById('signature-container');
+            navigator.clipboard.writeText(container.innerHTML.trim()).then(() => {
+                showToast("✔ Raw HTML code copied to clipboard!");
+            });
+        }
+    </script>
+</body>
+</html>
