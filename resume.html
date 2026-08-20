@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matthew Wyatt | NeverRender Labs Resume</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Press+Start+2P&family=Space+Grotesk:wght@300;400;500;600;700&family=VT323&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                        sans: ['"Space Grotesk"', 'sans-serif'],
+                        pixel: ['"Press Start 2P"', 'monospace'],
+                        terminal: ['"VT323"', 'monospace']
+                    },
+                    colors: {
+                        crt: {
+                            bg: '#080a0f',
+                            panel: '#10141e',
+                            border: '#1e293b',
+                            accent: '#00f0ff',
+                            amber: '#ffb300',
+                            magenta: '#ff0055',
+                            purple: '#1a0a2a',
+                            green: '#34d399',
+                            dim: '#64748b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Force browser print engine to render background graphics & colors accurately */
+        *, *::before, *::after {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            color-adjust: exact !important;
+        }
+
+        /* Base Dark CRT Theme */
+        body {
+            background-color: #06080c;
+            color: #e2e8f0;
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        /* Scanline Overlay Effect */
+        .crt-scanlines::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            z-index: 50;
+            background-size: 100% 4px, 6px 100%;
+            pointer-events: none;
+            opacity: 0.85;
+            transition: opacity 0.3s ease;
+        }
+
+        .crt-scanlines.crt-high::before {
+            background-size: 100% 3px, 3px 100%;
+            opacity: 1;
+        }
+
+        .crt-scanlines.crt-off::before {
+            display: none !important;
+        }
+
+        @keyframes subtle-flicker {
+            0% { opacity: 0.992; }
+            50% { opacity: 1; }
+            52% { opacity: 0.985; }
+            54% { opacity: 1; }
+            80% { opacity: 0.995; }
+            100% { opacity: 0.992; }
+        }
+
+        .crt-flicker {
+            animation: subtle-flicker 0.15s infinite;
+        }
+
+        /* Phosphor Text Glows */
+        .glow-cyan { text-shadow: 0 0 8px rgba(0, 240, 255, 0.55); }
+        .glow-amber { text-shadow: 0 0 8px rgba(255, 179, 0, 0.55); }
+        .glow-pink { text-shadow: 0 0 8px rgba(255, 0, 85, 0.55); }
+        .glow-green { text-shadow: 0 0 8px rgba(52, 211, 153, 0.55); }
+
+        /* 8-Bit Pixelated Containers (Dark Mode) */
+        .term-box {
+            position: relative;
+            background: rgba(16, 20, 30, 0.85);
+            border: 2px solid #1e293b;
+            box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.8);
+            transition: all 0.2s ease;
+        }
+
+        .term-box::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px;
+            width: 8px; height: 8px;
+            border-top: 3px solid #00f0ff;
+            border-left: 3px solid #00f0ff;
+        }
+
+        .term-box::after {
+            content: '';
+            position: absolute;
+            bottom: -2px; right: -2px;
+            width: 8px; height: 8px;
+            border-bottom: 3px solid #ff0055;
+            border-right: 3px solid #ff0055;
+        }
+
+        /* 8-Bit Pixel Badges */
+        .pixel-badge {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 9px;
+            letter-spacing: -0.5px;
+            padding: 4px 8px;
+            border: 2px solid currentColor;
+            box-shadow: 2px 2px 0px currentColor;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            text-transform: uppercase;
+        }
+
+        .pixel-chip {
+            font-family: 'VT323', monospace;
+            font-size: 16px;
+            background: rgba(15, 23, 42, 0.8);
+            border: 2px solid #334155;
+            box-shadow: 2px 2px 0px #0f172a;
+            padding: 2px 8px;
+            display: inline-block;
+        }
+
+        /* ==================================================== */
+        /* 🕹️ 8-BIT LIGHT RETRO THEME (Interactive & Print-Ready) */
+        /* ==================================================== */
+        body.light-theme {
+            background-color: #f3f5fa;
+            color: #0f172a;
+        }
+
+        body.light-theme .crt-scanlines::before {
+            display: none !important;
+        }
+
+        body.light-theme .term-box {
+            background: #ffffff;
+            border: 2px solid #0f172a;
+            box-shadow: 4px 4px 0px #0f172a;
+            color: #0f172a;
+        }
+
+        body.light-theme .term-box::before {
+            border-top: 3px solid #008ba3;
+            border-left: 3px solid #008ba3;
+        }
+
+        body.light-theme .term-box::after {
+            border-bottom: 3px solid #d90452;
+            border-right: 3px solid #d90452;
+        }
+
+        body.light-theme .glow-cyan,
+        body.light-theme .glow-amber,
+        body.light-theme .glow-pink,
+        body.light-theme .glow-green {
+            text-shadow: none !important;
+        }
+
+        body.light-theme h1,
+        body.light-theme h2,
+        body.light-theme h3 {
+            color: #0f172a !important;
+        }
+
+        body.light-theme .text-white {
+            color: #0f172a !important;
+        }
+
+        body.light-theme .text-slate-300,
+        body.light-theme .text-slate-400 {
+            color: #334155 !important;
+        }
+
+        body.light-theme .bg-slate-900\/60,
+        body.light-theme .bg-slate-900\/50,
+        body.light-theme .bg-slate-950\/60 {
+            background-color: #f8fafc !important;
+            border-color: #cbd5e1 !important;
+        }
+
+        body.light-theme .pixel-chip {
+            background: #ffffff !important;
+            border: 2px solid #0f172a !important;
+            box-shadow: 2px 2px 0px #0f172a !important;
+            color: #0f172a !important;
+        }
+
+        body.light-theme .tagline-box {
+            background-color: #e0f2fe !important;
+            border: 2px dashed #0284c7 !important;
+            color: #0369a1 !important;
+        }
+
+        /* ==================================================== */
+        /* 🖨️ STRICT HIGH-CONTRAST 8-BIT PRINT ENGINE           */
+        /* ==================================================== */
+        @media print {
+            .no-print { display: none !important; }
+            
+            body { 
+                background: #ffffff !important; 
+                color: #000000 !important; 
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            .crt-scanlines::before { 
+                display: none !important; 
+            }
+
+            .term-box { 
+                background: #ffffff !important; 
+                border: 2px solid #000000 !important; 
+                box-shadow: 3px 3px 0px #000000 !important;
+                color: #000000 !important; 
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
+                margin-bottom: 1rem !important;
+                padding: 1.25rem !important;
+            }
+
+            .term-box::before, .term-box::after {
+                border-color: #000000 !important;
+            }
+
+            h1, h2, h3, h4, strong, .text-white { 
+                color: #000000 !important; 
+                text-shadow: none !important;
+            }
+
+            p, span, li, .text-slate-300, .text-slate-400 { 
+                color: #1e293b !important; 
+                text-shadow: none !important;
+            }
+
+            .bg-slate-900\/60,
+            .bg-slate-900\/50,
+            .bg-slate-950\/60 {
+                background: #f8fafc !important;
+                border: 1px solid #94a3b8 !important;
+            }
+
+            .pixel-chip {
+                background: #ffffff !important;
+                border: 1.5px solid #000000 !important;
+                box-shadow: 1.5px 1.5px 0px #000000 !important;
+                color: #000000 !important;
+            }
+
+            .pixel-badge {
+                border-color: #000000 !important;
+                box-shadow: 1.5px 1.5px 0px #000000 !important;
+                color: #000000 !important;
+                background: #f1f5f9 !important;
+            }
+
+            .tagline-box {
+                background: #f1f5f9 !important;
+                border: 1.5px dashed #000000 !important;
+                color: #000000 !important;
+            }
+
+            @page {
+                margin: 0.35in;
+                size: letter portrait;
+            }
+        }
+    </style>
+</head>
+<body class="crt-scanlines crt-flicker antialiased min-h-screen py-4 sm:py-8 px-2 sm:px-6 md:px-12">
+
+    <!-- Top Control Bar (Hidden on Print) -->
+    <header class="max-w-5xl mx-auto mb-6 no-print">
+        <div class="flex flex-wrap items-center justify-between gap-4 p-3 bg-slate-900/90 border-2 border-slate-800 rounded-lg text-xs font-mono shadow-[4px_4px_0px_rgba(0,0,0,0.5)]">
+            <div class="flex items-center space-x-3">
+                <span class="pixel-badge text-emerald-400 border-emerald-500 bg-emerald-950/40">
+                    <span class="w-2 h-2 rounded-none bg-emerald-400 animate-pulse"></span>
+                    LVL 99 // ACTIVE
+                </span>
+                <span class="text-slate-400 hidden sm:inline font-pixel text-[8px] text-sky-400">NEVERRENDER_LABS</span>
+            </div>
+
+            <!-- Theme & Print Controls -->
+            <div class="flex flex-wrap items-center gap-2">
+                <!-- Theme Toggle Button -->
+                <button onclick="toggleTheme()" id="btn-theme-toggle" class="px-3 py-1 rounded bg-sky-950 text-sky-300 border border-sky-700 font-bold transition flex items-center gap-1.5 shadow-[2px_2px_0px_#000]">
+                    <span>🕹️ Theme:</span>
+                    <span id="theme-label" class="text-amber-400 font-pixel text-[8px]">DARK CRT</span>
+                </button>
+
+                <!-- CRT Scanline Intensity (Only for Dark Mode) -->
+                <button onclick="cycleCRT()" id="btn-crt-cycle" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 transition shadow-[2px_2px_0px_#000]">
+                    CRT: <span id="crt-label" class="text-sky-400 font-bold">Muted</span>
+                </button>
+
+                <div class="h-4 w-px bg-slate-800 mx-1 hidden sm:block"></div>
+
+                <!-- Export PDF / Print Button -->
+                <button onclick="printResume()" class="px-3.5 py-1 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded transition flex items-center gap-1.5 font-pixel text-[8px] font-bold shadow-[2px_2px_0px_#000]">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                    PRINT / PDF
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Resume Container -->
+    <main class="max-w-5xl mx-auto space-y-6">
+
+        <!-- Header Card -->
+        <section class="term-box p-6 sm:p-8 rounded-none">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b-2 border-slate-800 pb-6">
+                <div>
+                    <div class="font-pixel text-[9px] text-crt-amber glow-amber tracking-wider mb-2 flex items-center gap-2">
+                        <span class="text-crt-magenta">▶</span> SYSTEM IDENTIFIER: MATTHEW_WYATT
+                        <span class="ml-2 pixel-badge text-amber-400 border-amber-500 bg-amber-950/30 text-[8px]">★ GOOGLE LABS FEATURED</span>
+                    </div>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white glow-cyan font-sans">
+                        Matthew Wyatt
+                    </h1>
+                    <div class="text-lg sm:text-xl font-mono text-crt-accent mt-1 flex items-center gap-2 font-bold">
+                        <span>NeverRender Labs</span>
+                        <span class="text-xs px-2 py-0.5 border border-crt-accent font-pixel text-[8px]">8-BIT SRE</span>
+                    </div>
+                    <p class="text-sm text-slate-400 mt-2 font-mono">
+                        Creative Technologist & 3D / AI Media Specialist | Remote / Worldwide
+                    </p>
+                </div>
+
+                <!-- Contact Links & Inventory HUD -->
+                <div class="font-mono text-xs space-y-2 text-slate-300">
+                    <div class="flex items-center gap-2">
+                        <span class="text-crt-amber font-bold font-pixel text-[8px]">> MAIL:</span>
+                        <a href="mailto:creator@renderwithoutcode.com" class="hover:text-crt-accent underline decoration-sky-500/40 transition">
+                            creator@renderwithoutcode.com
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-crt-amber font-bold font-pixel text-[8px]">> WEB:</span>
+                        <a href="https://renderwithoutcode.com/" target="_blank" rel="noopener" class="hover:text-crt-accent underline decoration-sky-500/40 transition">
+                            RenderWithoutCode.com
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-crt-amber font-bold font-pixel text-[8px]">> INSTA:</span>
+                        <a href="https://www.instagram.com/neverrenderlabs/" target="_blank" rel="noopener" class="hover:text-crt-accent underline decoration-sky-500/40 transition">
+                            @NeverRenderLabs
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tagline Mission -->
+            <div class="tagline-box mt-6 font-mono text-xs sm:text-sm text-sky-200/90 bg-sky-950/40 p-3.5 border-2 border-sky-800/60 flex items-start gap-2.5">
+                <span class="font-pixel text-crt-amber text-[10px] mt-0.5">★</span>
+                <span>"Specializing in real-time 3D, generative AI pipelines, and high-impact digital media creation that pushes creative boundaries without production lag."</span>
+            </div>
+        </section>
+
+        <!-- Executive Summary -->
+        <section class="term-box p-6 sm:p-8 rounded-none">
+            <h2 class="text-xs font-pixel text-crt-amber tracking-wider uppercase mb-3 flex items-center gap-2">
+                <span class="w-2.5 h-2.5 bg-amber-400 inline-block shadow-[1px_1px_0px_#000]"></span>
+                Executive Summary
+            </h2>
+            <p class="text-slate-300 leading-relaxed font-sans text-base">
+                Innovator and founder at <strong class="text-white font-semibold">NeverRender Labs</strong>, featured creator on <strong class="text-white font-semibold">Google Labs Flow</strong> (creator of <span class="font-mono text-crt-accent font-bold">RETRO-TERM 80</span>), with deep expertise in 3D art, real-time rendering, and cutting-edge generative AI workflows. Specialized in helping brands, agencies, and creative studios build visually captivating digital assets, motion design, and interactive media fast and efficiently. Proven track record of merging artistic vision with technical execution to deliver future-proof creative solutions.
+            </p>
+        </section>
+
+        <!-- Core Offerings & Services -->
+        <section class="term-box p-6 sm:p-8 rounded-none">
+            <h2 class="text-xs font-pixel text-crt-amber tracking-wider uppercase mb-6 flex items-center gap-2">
+                <span class="w-2.5 h-2.5 bg-amber-400 inline-block shadow-[1px_1px_0px_#000]"></span>
+                Core Offerings & Services
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- Service 1 -->
+                <div class="p-4 bg-slate-900/60 border-2 border-slate-800 rounded-none hover:border-sky-500/50 transition">
+                    <div class="font-mono text-crt-accent text-sm font-bold mb-2 flex items-center gap-2">
+                        <span class="font-pixel text-[8px] text-amber-400">[01]</span> Real-Time 3D & GenAI
+                    </div>
+                    <p class="text-slate-300 text-xs leading-relaxed font-sans">
+                        Custom visual pipelines utilizing real-time engines, Gaussian splatting, and AI synthesis to generate high-fidelity visual assets rapidly.
+                    </p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="p-4 bg-slate-900/60 border-2 border-slate-800 rounded-none hover:border-sky-500/50 transition">
+                    <div class="font-mono text-crt-accent text-sm font-bold mb-2 flex items-center gap-2">
+                        <span class="font-pixel text-[8px] text-amber-400">[02]</span> Motion Design & VFX
+                    </div>
+                    <p class="text-slate-300 text-xs leading-relaxed font-sans">
+                        End-to-end 3D graphics, animations, and visual storytelling tailored for digital campaigns, social media, and brand activations.
+                    </p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="p-4 bg-slate-900/60 border-2 border-slate-800 rounded-none hover:border-sky-500/50 transition">
+                    <div class="font-mono text-crt-accent text-sm font-bold mb-2 flex items-center gap-2">
+                        <span class="font-pixel text-[8px] text-amber-400">[03]</span> Pipeline Automation
+                    </div>
+                    <p class="text-slate-300 text-xs leading-relaxed font-sans">
+                        Architecting custom tools and workflows (ComfyUI, Python, node-based tools) to accelerate production cycles for studios and agency teams.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects / Case Studies -->
+        <section class="term-box p-6 sm:p-8 rounded-none">
+            <h2 class="text-xs font-pixel text-crt-amber tracking-wider uppercase mb-6 flex items-center gap-2">
+                <span class="w-2.5 h-2.5 bg-amber-400 inline-block shadow-[1px_1px_0px_#000]"></span>
+                Featured Deliverables & Projects
+            </h2>
+
+            <div class="space-y-6">
+                <!-- Project 1: Google Labs Spotlight -->
+                <div class="p-5 bg-slate-900/50 border-2 border-slate-800/80 rounded-none">
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                        <h3 class="font-mono text-lg font-bold text-white glow-cyan">
+                            Google Labs Flow Spotlight: RETRO-TERM 80
+                        </h3>
+                        <span class="pixel-badge text-amber-400 border-amber-500 bg-amber-950/30">
+                            ★ OFFICIAL GOOGLE LABS FEATURE // FRONT PAGE
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 font-mono text-xs mb-3">
+                        <div class="bg-slate-950/60 p-3 border border-slate-800">
+                            <span class="text-slate-400 block mb-1 font-bold font-pixel text-[8px]">CHALLENGE:</span>
+                            <span class="text-slate-300 font-sans">Architect a high-performance visual generative utility for the global AI creative community with brutalist aesthetic constraints and phosphor matrix simulation.</span>
+                        </div>
+
+                        <div class="bg-slate-950/60 p-3 border border-slate-800">
+                            <span class="text-slate-400 block mb-1 font-bold font-pixel text-[8px]">SOLUTION:</span>
+                            <span class="text-slate-300 font-sans">Engineered & published tool <strong>"RETRO-TERM 80"</strong> directly on Google's Flow platform, creating custom procedural node logic and magnetic distortion shaders.</span>
+                        </div>
+
+                        <div class="bg-slate-950/60 p-3 border border-slate-800">
+                            <span class="text-emerald-400 block mb-1 font-bold font-pixel text-[8px]">KEY OUTCOME:</span>
+                            <span class="text-emerald-200 font-sans">Selected and featured on the front page of Google Flow's official community tool explore page (<code class="text-sky-300">labs.google</code>).</span>
+                        </div>
+                    </div>
+
+                    <div class="font-mono text-xs text-sky-400 flex items-center justify-between pt-2 border-t border-slate-800">
+                        <a href="https://labs.google/fx/tools/flow/shared/tool/c718f343-2e2f-4ae8-92bd-6f68f13b1c45" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 underline decoration-sky-500 hover:text-white transition font-bold">
+                            <span>▶ View Live Tool on Google Labs Flow</span>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                        <span class="text-slate-500 text-[10px] hidden sm:inline">labs.google/fx/tools/flow</span>
+                    </div>
+                </div>
+
+                <!-- Project 2: Interactive Real-Time Experience -->
+                <div class="p-5 bg-slate-900/50 border-2 border-slate-800/80 rounded-none">
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                        <h3 class="font-mono text-lg font-bold text-white glow-cyan">
+                            Interactive Real-Time Experience & Visuals
+                        </h3>
+                        <span class="pixel-badge text-sky-400 border-sky-500 bg-sky-950/30">
+                            Creative Technologist Lead
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 font-mono text-xs">
+                        <div class="bg-slate-950/60 p-3 border border-slate-800">
+                            <span class="text-slate-400 block mb-1 font-bold font-pixel text-[8px]">CHALLENGE:</span>
+                            <span class="text-slate-300 font-sans">Brand required an immersive, high-impact visual display for a live digital event without traditional offline render bottlenecks.</span>
+                        </div>
+
+                        <div class="bg-slate-950/60 p-3 border border-slate-800">
+                            <span class="text-slate-400 block mb-1 font-bold font-pixel text-[8px]">SOLUTION:</span>
+                            <span class="text-slate-300 font-sans">Designed real-time shaders, motion tracking, and generative graphics using Unreal Engine and real-time interactive tools.</span>
+                        </div>
+
+                        <div class="bg-slate-950/60 p-3 border border-slate-800">
+                            <span class="text-emerald-400 block mb-1 font-bold font-pixel text-[8px]">KEY OUTCOME:</span>
+                            <span class="text-emerald-200 font-sans">Delivered real-time performance with zero lag, resulting in elevated audience engagement and press coverage.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Stack & Tools -->
+        <section class="term-box p-6 sm:p-8 rounded-none">
+            <h2 class="text-xs font-pixel text-crt-amber tracking-wider uppercase mb-6 flex items-center gap-2">
+                <span class="w-2.5 h-2.5 bg-amber-400 inline-block shadow-[1px_1px_0px_#000]"></span>
+                Technical Stack & Capabilities
+            </h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono text-xs">
+                <!-- Stack Category 1 -->
+                <div class="p-4 bg-slate-900/60 border-2 border-slate-800">
+                    <div class="text-crt-accent font-bold mb-3 pb-1 border-b border-slate-800 font-pixel text-[8px]">3D & Real-Time</div>
+                    <ul class="space-y-1.5 text-slate-300">
+                        <li>• Unreal Engine</li>
+                        <li>• Blender</li>
+                        <li>• Cinema 4D</li>
+                        <li>• TouchDesigner</li>
+                    </ul>
+                </div>
+
+                <!-- Stack Category 2 -->
+                <div class="p-4 bg-slate-900/60 border-2 border-slate-800">
+                    <div class="text-crt-magenta font-bold mb-3 pb-1 border-b border-slate-800 font-pixel text-[8px]">AI & Generative</div>
+                    <ul class="space-y-1.5 text-slate-300">
+                        <li>• Google Flow / Labs</li>
+                        <li>• ComfyUI & SDXL</li>
+                        <li>• Midjourney</li>
+                        <li>• Gaussian Splatting</li>
+                    </ul>
+                </div>
+
+                <!-- Stack Category 3 -->
+                <div class="p-4 bg-slate-900/60 border-2 border-slate-800">
+                    <div class="text-crt-amber font-bold mb-3 pb-1 border-b border-slate-800 font-pixel text-[8px]">Post & Design</div>
+                    <ul class="space-y-1.5 text-slate-300">
+                        <li>• After Effects</li>
+                        <li>• Premiere Pro</li>
+                        <li>• Photoshop</li>
+                        <li>• DaVinci Resolve</li>
+                    </ul>
+                </div>
+
+                <!-- Stack Category 4 -->
+                <div class="p-4 bg-slate-900/60 border-2 border-slate-800">
+                    <div class="text-crt-green font-bold mb-3 pb-1 border-b border-slate-800 font-pixel text-[8px]">Automation & SRE</div>
+                    <ul class="space-y-1.5 text-slate-300">
+                        <li>• Python & Node Scripting</li>
+                        <li>• Veo & Vertex Specialist</li>
+                        <li>• Agentic AI Workflows</li>
+                        <li>• FastMCP / Tool Bridges</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professional Experience & Track Record -->
+        <section class="term-box p-6 sm:p-8 rounded-none">
+            <h2 class="text-xs font-pixel text-crt-amber tracking-wider uppercase mb-6 flex items-center gap-2">
+                <span class="w-2.5 h-2.5 bg-amber-400 inline-block shadow-[1px_1px_0px_#000]"></span>
+                Professional Experience & Track Record
+            </h2>
+
+            <div class="space-y-6">
+                <!-- Role 1 -->
+                <div class="relative pl-6 border-l-3 border-sky-500">
+                    <div class="absolute -left-[7px] top-0 w-3 h-3 bg-sky-400 border-2 border-slate-950 shadow-[1px_1px_0px_#000]"></div>
+                    <div class="flex flex-wrap items-center justify-between gap-1 mb-1">
+                        <h3 class="font-mono text-base font-bold text-white">Founder & Creative Technologist</h3>
+                        <span class="pixel-badge text-amber-400 border-amber-500 bg-amber-950/20">2022 – Present</span>
+                    </div>
+                    <div class="font-mono text-xs text-sky-400 mb-2 font-bold">NeverRender Labs</div>
+                    <ul class="list-disc list-inside text-xs text-slate-300 space-y-1.5 font-sans">
+                        <li>Lead end-to-end creative direction, technical R&D, and client delivery for 3D and AI-driven digital media projects.</li>
+                        <li>Built and launched <strong class="text-white">RETRO-TERM 80</strong>, featured on the official front page of <strong class="text-white">Google Labs Flow</strong>.</li>
+                        <li>Consult with creative agencies and tech startups to integrate generative AI and real-time rendering into existing production pipelines.</li>
+                        <li>Architect custom agentic workflows, prompt patches (Veo bypass tools), and interactive web experiences.</li>
+                    </ul>
+                </div>
+
+                <!-- Role 2 -->
+                <div class="relative pl-6 border-l-3 border-slate-600">
+                    <div class="absolute -left-[7px] top-0 w-3 h-3 bg-slate-500 border-2 border-slate-950 shadow-[1px_1px_0px_#000]"></div>
+                    <div class="flex flex-wrap items-center justify-between gap-1 mb-1">
+                        <h3 class="font-mono text-base font-bold text-white">3D Motion & Visual Effects Specialist</h3>
+                        <span class="pixel-badge text-slate-400 border-slate-600">Freelance / Client Studios</span>
+                    </div>
+                    <ul class="list-disc list-inside text-xs text-slate-300 space-y-1.5 font-sans">
+                        <li>Produced high-end motion graphics and 3D animations for digital advertising and social campaigns.</li>
+                        <li>Collaborated with cross-functional creative teams to deliver complex visual sequences under tight deadlines.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Terminal Bar -->
+        <footer class="pt-4 pb-12 text-center font-mono text-xs text-slate-500 no-print">
+            <p class="font-pixel text-[8px] text-slate-600">> NEVERRENDER LABS // ARCHITECTURAL COMPENDIUM // 2026</p>
+        </footer>
+
+    </main>
+
+    <script>
+        let crtModes = ['subtle', 'high', 'off'];
+        let crtIndex = 0;
+
+        function cycleCRT() {
+            crtIndex = (crtIndex + 1) % crtModes.length;
+            const mode = crtModes[crtIndex];
+            const body = document.body;
+            const label = document.getElementById('crt-label');
+
+            body.classList.remove('crt-off', 'crt-high');
+
+            if (mode === 'off') {
+                body.classList.add('crt-off');
+                label.textContent = "Off";
+                label.className = "text-rose-400 font-bold";
+            } else if (mode === 'high') {
+                body.classList.add('crt-high');
+                label.textContent = "Retro";
+                label.className = "text-amber-400 font-bold";
+            } else {
+                label.textContent = "Muted";
+                label.className = "text-sky-400 font-bold";
+            }
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const html = document.documentElement;
+            const label = document.getElementById('theme-label');
+            const isLight = body.classList.toggle('light-theme');
+
+            if (isLight) {
+                html.classList.remove('dark');
+                label.textContent = "8-BIT LIGHT";
+                label.className = "text-sky-600 font-pixel text-[8px]";
+            } else {
+                html.classList.add('dark');
+                label.textContent = "DARK CRT";
+                label.className = "text-amber-400 font-pixel text-[8px]";
+            }
+        }
+
+        function printResume() {
+            window.print();
+        }
+    </script>
+</body>
+</html>
