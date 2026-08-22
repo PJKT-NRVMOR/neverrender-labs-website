@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wellgreens Dispensary | Vista Flagship & House Exclusives</title>
+    <title>Wellgreens Vista | Modern Flagship & Self-Checkout Kiosk System</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,15 +22,18 @@
                     colors: {
                         brand: {
                             lime: '#84CC16',
-                            limeHover: '#A3E635',
-                            limeDark: '#4D7C0F',
-                            red: '#DC2626',
+                            limeSoft: '#A3E635',
                             mint: '#34D399',
+                            cyan: '#38BDF8',
+                            cyanSoft: '#7DD3FC',
                             lavender: '#A78BFA',
+                            indigoSoft: '#818CF8',
                             melon: '#FBBF24',
-                            darkBg: '#050505',
-                            darkSurface: '#0D0D11',
-                            cardBg: 'rgba(18, 18, 24, 0.75)',
+                            peach: '#F472B6',
+                            red: '#DC2626',
+                            darkBg: '#07080B',
+                            darkSurface: '#0E1017',
+                            cardBg: 'rgba(16, 19, 27, 0.82)',
                             borderDark: 'rgba(255, 255, 255, 0.1)'
                         }
                     }
@@ -41,14 +44,14 @@
 
     <style>
         body {
-            background-color: #060709;
-            color: #F1F5F9;
+            background-color: #07080B;
+            color: #F8FAFC;
             font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
             position: relative;
         }
 
-        /* Fixed Background Canvas for 3D Bubbly Parallax */
+        /* 3D Bubbly Parallax Background Canvas */
         #bg-canvas {
             position: fixed;
             top: 0;
@@ -59,31 +62,55 @@
             z-index: 0;
         }
 
-        /* Glassmorphism card styles */
+        /* Glassmorphism Card System */
         .glass-panel {
-            background: rgba(15, 17, 23, 0.72);
+            background: rgba(16, 19, 27, 0.82);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .glass-panel:hover {
-            border-color: rgba(132, 204, 22, 0.4);
-            box-shadow: 0 10px 40px -10px rgba(132, 204, 22, 0.25);
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 12px 40px -10px rgba(56, 189, 248, 0.25);
             transform: translateY(-2px);
         }
 
-        /* Exclusive Brand Card Highlight */
-        .exclusive-card {
-            background: linear-gradient(135deg, rgba(24, 24, 32, 0.8) 0%, rgba(12, 14, 18, 0.9) 100%);
-            border: 1px solid rgba(132, 204, 22, 0.25);
+        /* Contour Topographic Pattern for UP! Cards */
+        .contour-cyan {
+            background-color: #0c1424;
+            background-image: radial-gradient(circle at 100% 0%, rgba(56, 189, 248, 0.25) 0%, transparent 60%),
+                              radial-gradient(circle at 0% 100%, rgba(125, 211, 252, 0.15) 0%, transparent 50%);
+            border: 1px solid rgba(56, 189, 248, 0.35);
         }
-        .exclusive-card:hover {
-            border-color: rgba(132, 204, 22, 0.6);
-            box-shadow: 0 12px 48px -8px rgba(132, 204, 22, 0.3);
+        .contour-cyan:hover {
+            border-color: #38BDF8;
+            box-shadow: 0 12px 45px -8px rgba(56, 189, 248, 0.35);
         }
 
-        /* Continuous marquee animation */
+        .contour-lime {
+            background-color: #0e1c12;
+            background-image: radial-gradient(circle at 100% 0%, rgba(132, 204, 22, 0.25) 0%, transparent 60%),
+                              radial-gradient(circle at 0% 100%, rgba(52, 211, 153, 0.15) 0%, transparent 50%);
+            border: 1px solid rgba(132, 204, 22, 0.35);
+        }
+        .contour-lime:hover {
+            border-color: #84CC16;
+            box-shadow: 0 12px 45px -8px rgba(132, 204, 22, 0.35);
+        }
+
+        .contour-indigo {
+            background-color: #141026;
+            background-image: radial-gradient(circle at 100% 0%, rgba(167, 139, 250, 0.25) 0%, transparent 60%),
+                              radial-gradient(circle at 0% 100%, rgba(129, 140, 248, 0.15) 0%, transparent 50%);
+            border: 1px solid rgba(167, 139, 250, 0.35);
+        }
+        .contour-indigo:hover {
+            border-color: #A78BFA;
+            box-shadow: 0 12px 45px -8px rgba(167, 139, 250, 0.35);
+        }
+
+        /* Continuous Marquee Animation */
         @keyframes marquee {
             0% { transform: translateX(0%); }
             100% { transform: translateX(-50%); }
@@ -102,14 +129,27 @@
             transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Custom dark scrollbars */
+        /* Kiosk Mode Fullscreen Styling */
+        body.kiosk-mode header {
+            position: static;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+        body.kiosk-mode .kiosk-hide {
+            display: none !important;
+        }
+        body.kiosk-mode .kiosk-badge {
+            display: inline-flex !important;
+        }
+
+        /* Custom Scrollbars */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #060709; }
-        ::-webkit-scrollbar-thumb { background: rgba(132, 204, 22, 0.35); border-radius: 9999px; }
-        ::-webkit-scrollbar-thumb:hover { background: #84CC16; }
+        ::-webkit-scrollbar-track { background: #07080B; }
+        ::-webkit-scrollbar-thumb { background: rgba(56, 189, 248, 0.3); border-radius: 9999px; }
+        ::-webkit-scrollbar-thumb:hover { background: #38BDF8; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col antialiased selection:bg-brand-lime selection:text-black">
+<body class="min-h-screen flex flex-col antialiased selection:bg-brand-cyan selection:text-black">
 
     <!-- 3D Bubbly Parallax Background Canvas -->
     <canvas id="bg-canvas"></canvas>
@@ -121,17 +161,13 @@
             <span>•</span>
             <span>🎁 25% OFF FIRST DELIVERY</span>
             <span>•</span>
-            <span>🏪 WELLGREENS VISTA FLAGSHIP IS REBUILDING (954 S SANTA FE AVE)</span>
+            <span>🏪 VISTA STORE RE-MODEL: IN-STORE SELF-CHECKOUT KIOSKS ACTIVE (954 S SANTA FE AVE)</span>
             <span>•</span>
-            <span>⭐ SHOP WELLGREENS EXCLUSIVES: UP! • LIGHTS OUT • CITY ROOTS • DIRECT</span>
+            <span>⭐ UP! EXCLUSIVE BUNDLE: 7 CARTRIDGES FOR $60+TAX</span>
+            <span>•</span>
+            <span>⭐ 10% OFF ANY TWO 14G FLOWER SMALLS</span>
             <span>•</span>
             <span>🚗 EXPRESS PICKUP & DELIVERY OPEN DAILY 6:00 AM – 9:45 PM</span>
-            <span>•</span>
-            <span>⚡ THE TRIP. WE COME TO YOU</span>
-            <span>•</span>
-            <span>🎁 25% OFF FIRST DELIVERY</span>
-            <span>•</span>
-            <span>🏪 WELLGREENS VISTA FLAGSHIP IS REBUILDING (954 S SANTA FE AVE)</span>
         </div>
     </div>
 
@@ -143,45 +179,51 @@
                 <!-- Brand Logo & Store Selector -->
                 <div class="flex items-center gap-6">
                     <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-lime to-brand-mint text-slate-950 flex items-center justify-center font-display font-black text-2xl shadow-lg shadow-lime-500/25">
+                        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-cyan via-brand-lime to-brand-lavender text-slate-950 flex items-center justify-center font-display font-black text-2xl shadow-lg shadow-cyan-500/25">
                             W
                         </div>
                         <div>
                             <div class="font-display font-black text-2xl tracking-tight text-white leading-none flex items-center gap-1.5">
                                 WELLGREENS
                             </div>
-                            <span class="text-[9px] font-mono text-brand-lime font-bold tracking-widest uppercase block mt-0.5">DISPENSARY // VISTA FLAGSHIP</span>
+                            <span class="text-[9px] font-mono text-brand-cyan font-bold tracking-widest uppercase block mt-0.5">VISTA DISPENSARY & SELF-CHECKOUT</span>
                         </div>
                     </div>
 
                     <!-- Location Selector Pill -->
-                    <div class="hidden lg:flex items-center gap-2 px-3 py-1.5 bg-zinc-900/90 rounded-full border border-white/15 text-xs">
-                        <span class="w-2 h-2 rounded-full bg-brand-lime animate-pulse"></span>
+                    <div class="hidden lg:flex items-center gap-2 px-3.5 py-1.5 bg-zinc-900/90 rounded-full border border-white/15 text-xs">
+                        <span class="w-2 h-2 rounded-full bg-brand-cyan animate-pulse"></span>
                         <span class="text-white font-bold">Vista Store</span>
                         <span class="text-zinc-400 font-mono text-[10px]">• 954 S Santa Fe Ave</span>
-                        <span class="text-brand-lime font-mono text-[10px] font-bold">OPEN TIL 9:45 PM</span>
+                        <span class="text-brand-cyan font-mono text-[10px] font-bold">OPEN TIL 9:45 PM</span>
                     </div>
                 </div>
 
                 <!-- Instant Search Bar (Sub-50ms engine) -->
                 <div class="flex-1 max-w-md hidden md:block">
                     <div class="relative">
-                        <svg class="w-4 h-4 text-brand-lime absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                        <input type="text" id="search-input" oninput="handleSearch(this.value)" placeholder="Search strains, house exclusives, terpenes..." class="w-full pl-10 pr-4 py-2 bg-zinc-900/90 border border-white/15 rounded-full text-xs text-white placeholder-zinc-500 focus:border-brand-lime focus:ring-2 focus:ring-brand-lime/30 transition outline-none">
+                        <svg class="w-4 h-4 text-brand-cyan absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        <input type="text" id="search-input" oninput="handleSearch(this.value)" placeholder="Search UP! carts, flower smalls, terpenes..." class="w-full pl-10 pr-4 py-2 bg-zinc-900/90 border border-white/15 rounded-full text-xs text-white placeholder-zinc-500 focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/30 transition outline-none">
                     </div>
                 </div>
 
-                <!-- Navigation Controls: SRE Audit & Cart -->
+                <!-- Navigation Controls: Kiosk Mode Toggle & Cart -->
                 <div class="flex items-center gap-3">
+                    
+                    <!-- In-Store Kiosk Mode Switcher -->
+                    <button onclick="toggleKioskMode()" id="kiosk-toggle-btn" class="inline-flex items-center gap-1.5 px-3 py-2 bg-zinc-900 hover:bg-zinc-800 text-brand-cyan rounded-xl text-xs font-mono border border-cyan-500/30 font-bold transition shadow-sm">
+                        <span class="text-brand-cyan">🖥️</span> <span id="kiosk-btn-text">Kiosk Mode</span>
+                    </button>
+
                     <button onclick="toggleAuditModal()" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 bg-zinc-900 hover:bg-zinc-800 text-brand-lime rounded-xl text-xs font-mono border border-lime-500/30 font-bold transition shadow-sm">
                         <span>⚡</span> SRE Audit
                     </button>
 
-                    <!-- Neon Green Bag Trigger -->
-                    <button onclick="openCart()" class="px-5 py-2.5 bg-brand-lime hover:bg-brand-limeHover text-slate-950 font-display font-black text-xs uppercase tracking-wider rounded-full flex items-center gap-2 shadow-lg shadow-lime-500/25 transition active:scale-95">
+                    <!-- Neon Cyan/Lime Bag Trigger -->
+                    <button onclick="openCart()" class="px-5 py-2.5 bg-gradient-to-r from-brand-cyan to-brand-lime hover:from-cyan-400 hover:to-lime-400 text-slate-950 font-display font-black text-xs uppercase tracking-wider rounded-full flex items-center gap-2 shadow-lg shadow-cyan-500/25 transition active:scale-95">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
                         <span>Bag</span>
-                        <span id="cart-badge" class="bg-black text-brand-lime font-mono text-[11px] font-black px-2 py-0.5 rounded-full">0</span>
+                        <span id="cart-badge" class="bg-black text-brand-cyan font-mono text-[11px] font-black px-2 py-0.5 rounded-full">0</span>
                     </button>
                 </div>
             </div>
@@ -189,8 +231,8 @@
             <!-- Mobile Search Bar -->
             <div class="pb-3 md:hidden">
                 <div class="relative">
-                    <svg class="w-4 h-4 text-brand-lime absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                    <input type="text" oninput="handleSearch(this.value)" placeholder="Search products, brands, terpenes..." class="w-full pl-10 pr-4 py-2 bg-zinc-900 border border-white/15 rounded-full text-xs text-white placeholder-zinc-500 outline-none">
+                    <svg class="w-4 h-4 text-brand-cyan absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    <input type="text" oninput="handleSearch(this.value)" placeholder="Search products, UP! deals, terpenes..." class="w-full pl-10 pr-4 py-2 bg-zinc-900 border border-white/15 rounded-full text-xs text-white placeholder-zinc-500 outline-none">
                 </div>
             </div>
         </div>
@@ -200,22 +242,22 @@
     <main class="relative z-10 flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-12">
 
         <!-- Hero Brand Section: "WHAT ARE YOU LOOKING FOR?" -->
-        <section class="text-center py-8 sm:py-14 space-y-6 relative">
-            <div class="inline-flex items-center gap-2 px-3 py-1 bg-zinc-900/90 border border-lime-500/30 rounded-full text-brand-lime text-xs font-mono backdrop-blur-md">
-                <span class="w-2 h-2 rounded-full bg-brand-lime animate-ping"></span>
-                <span>OPEN NOW • VISTA FLAGSHIP REBUILD // 954 S SANTA FE AVE</span>
+        <section class="text-center py-6 sm:py-12 space-y-6 relative">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 bg-zinc-900/90 border border-cyan-500/30 rounded-full text-brand-cyan text-xs font-mono backdrop-blur-md">
+                <span class="w-2 h-2 rounded-full bg-brand-cyan animate-ping"></span>
+                <span>VISTA STORE REMODEL • IN-STORE TOUCH KIOSKS & RAPID PICKUP ACTIVE</span>
             </div>
 
             <h1 class="text-4xl sm:text-7xl font-display font-black tracking-tight text-white uppercase leading-none drop-shadow-2xl">
-                WHAT ARE YOU<br><span class="bg-gradient-to-r from-brand-lime via-brand-mint to-amber-300 bg-clip-text text-transparent">LOOKING FOR?</span>
+                WHAT ARE YOU<br><span class="bg-gradient-to-r from-brand-cyan via-brand-lime to-brand-lavender bg-clip-text text-transparent">LOOKING FOR?</span>
             </h1>
 
             <p class="max-w-2xl mx-auto text-zinc-300 text-sm sm:text-base font-medium drop-shadow">
-                Experience high-velocity e-commerce. Clean modular architecture, sub-50ms strain filtering, 3D bubbly depth parallax, and full terpene transparency.
+                Re-engineered for self-checkout kiosks and mobile speed. Sub-50ms response time, authentic mid-pastel contours, 3D bubbly parallax depth, and full terpene transparency.
             </p>
 
             <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
-                <button onclick="setOrderType('pickup'); openCart();" class="px-6 py-3.5 bg-brand-lime hover:bg-brand-limeHover text-slate-950 font-display font-black text-xs sm:text-sm uppercase tracking-wider rounded-full shadow-xl shadow-lime-500/30 transition active:scale-95 flex items-center gap-2">
+                <button onclick="setOrderType('pickup'); openCart();" class="px-6 py-3.5 bg-gradient-to-r from-brand-cyan to-brand-lime hover:opacity-90 text-slate-950 font-display font-black text-xs sm:text-sm uppercase tracking-wider rounded-full shadow-xl shadow-cyan-500/30 transition active:scale-95 flex items-center gap-2">
                     <span>🏬 ORDER EXPRESS PICKUP (15 MIN)</span>
                 </button>
                 <button onclick="setOrderType('delivery'); openCart();" class="px-6 py-3.5 bg-zinc-900/90 hover:bg-zinc-800 text-white border border-white/20 font-display font-bold text-xs sm:text-sm uppercase tracking-wider rounded-full backdrop-blur-md transition">
@@ -224,86 +266,106 @@
             </div>
         </section>
 
-        <!-- SPOTLIGHT: WELLGREENS EXCLUSIVES // HOUSE BRANDS VAULT -->
+        <!-- SPOTLIGHT: WELLGREENS EXCLUSIVES & MID-PASTEL BUBBLY SHOWCASE -->
         <section class="space-y-4">
             <div class="flex items-center justify-between">
                 <div>
-                    <div class="text-xs font-mono font-bold tracking-widest text-brand-lime uppercase flex items-center gap-1.5">
-                        <span>⭐ IN-HOUSE REPUTATION</span>
+                    <div class="text-xs font-mono font-bold tracking-widest text-brand-cyan uppercase flex items-center gap-1.5">
+                        <span>⭐ IN-HOUSE REPUTATION // 65% MARGIN VAULT</span>
                     </div>
                     <h2 class="text-2xl sm:text-3xl font-display font-black text-white uppercase tracking-tight">
                         WELLGREENS EXCLUSIVES
                     </h2>
                 </div>
-                <span class="text-xs font-mono text-zinc-400">High-Margin Curated Lines</span>
+                <span class="text-xs font-mono text-zinc-400">Featured Mid-Pastel Packaging Lines</span>
             </div>
 
-            <!-- 4 House Brand Banners (Light, Bubbly & Distinct Geometry) -->
+            <!-- Authentic 4 House Brand Banners with Contours & Real Deals -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 
-                <!-- Brand 1: UP! -->
-                <div onclick="handleSearch('UP!')" class="cursor-pointer p-5 rounded-2xl glass-panel exclusive-card flex flex-col justify-between space-y-4 group">
+                <!-- Brand 1: UP! (Mid-Pastel Cyan & Lime) -->
+                <div onclick="handleSearch('UP!')" class="cursor-pointer p-5 rounded-2xl contour-cyan flex flex-col justify-between space-y-4 group transition">
                     <div class="space-y-2">
-                        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-amber-400 to-lime-400 flex items-center justify-center text-slate-950 font-black text-lg shadow-lg group-hover:scale-110 transition">
-                            ⚡
+                        <div class="flex items-center justify-between">
+                            <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-cyan to-brand-lime flex items-center justify-center text-slate-950 font-black text-lg shadow-lg group-hover:scale-110 transition">
+                                ⚡
+                            </div>
+                            <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-black bg-cyan-400/20 text-cyan-300 border border-cyan-400/40">
+                                7 FOR $60
+                            </span>
                         </div>
-                        <h3 class="text-xl font-display font-black text-white group-hover:text-amber-300 transition">UP!</h3>
+                        <h3 class="text-2xl font-display font-black text-white group-hover:text-cyan-300 transition">UP!</h3>
                         <p class="text-xs text-zinc-300 leading-relaxed">
-                            Electric energy vapes, live resin diamond sugar, and infused moon rock blunts.
+                            Bubbly electric fruit vapes, live resin diamond sugar, and 14g smalls.
                         </p>
                     </div>
-                    <div class="flex items-center justify-between pt-2 border-t border-white/10 text-[11px] font-mono text-amber-400 font-bold">
-                        <span>Explore UP! Line</span>
+                    <div class="flex items-center justify-between pt-2 border-t border-cyan-500/20 text-[11px] font-mono text-brand-cyan font-bold">
+                        <span>Shop UP! Deals</span>
                         <span>→</span>
                     </div>
                 </div>
 
-                <!-- Brand 2: LIGHTS OUT -->
-                <div onclick="handleSearch('Lights Out')" class="cursor-pointer p-5 rounded-2xl glass-panel exclusive-card flex flex-col justify-between space-y-4 group">
+                <!-- Brand 2: LIGHTS OUT (Mid-Pastel Lavender & Indigo) -->
+                <div onclick="handleSearch('Lights Out')" class="cursor-pointer p-5 rounded-2xl contour-indigo flex flex-col justify-between space-y-4 group transition">
                     <div class="space-y-2">
-                        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-white font-black text-lg shadow-lg group-hover:scale-110 transition">
-                            🌙
+                        <div class="flex items-center justify-between">
+                            <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-lavender to-brand-indigoSoft flex items-center justify-center text-slate-950 font-black text-lg shadow-lg group-hover:scale-110 transition">
+                                🌙
+                            </div>
+                            <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-black bg-purple-400/20 text-purple-300 border border-purple-400/40">
+                                ROSIN SLEEP
+                            </span>
                         </div>
-                        <h3 class="text-xl font-display font-black text-white group-hover:text-indigo-300 transition">LIGHTS OUT</h3>
+                        <h3 class="text-2xl font-display font-black text-white group-hover:text-lavender transition">LIGHTS OUT</h3>
                         <p class="text-xs text-zinc-300 leading-relaxed">
-                            Solventless live rosin, hash-infused joints, and deep sleep recovery formulations.
+                            Solventless live rosin, hash-infused joints, and CBN evening formulations.
                         </p>
                     </div>
-                    <div class="flex items-center justify-between pt-2 border-t border-white/10 text-[11px] font-mono text-indigo-400 font-bold">
+                    <div class="flex items-center justify-between pt-2 border-t border-purple-500/20 text-[11px] font-mono text-brand-lavender font-bold">
                         <span>Explore Rosin</span>
                         <span>→</span>
                     </div>
                 </div>
 
-                <!-- Brand 3: CITY ROOTS -->
-                <div onclick="handleSearch('City Roots')" class="cursor-pointer p-5 rounded-2xl glass-panel exclusive-card flex flex-col justify-between space-y-4 group">
+                <!-- Brand 3: CITY ROOTS (Mid-Pastel Mint & Lime) -->
+                <div onclick="handleSearch('City Roots')" class="cursor-pointer p-5 rounded-2xl contour-lime flex flex-col justify-between space-y-4 group transition">
                     <div class="space-y-2">
-                        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center text-slate-950 font-black text-lg shadow-lg group-hover:scale-110 transition">
-                            🌱
+                        <div class="flex items-center justify-between">
+                            <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-lime to-brand-mint flex items-center justify-center text-slate-950 font-black text-lg shadow-lg group-hover:scale-110 transition">
+                                🌱
+                            </div>
+                            <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-black bg-lime-400/20 text-lime-300 border border-lime-400/40">
+                                CRAFT FLOWER
+                            </span>
                         </div>
-                        <h3 class="text-xl font-display font-black text-white group-hover:text-emerald-300 transition">CITY ROOTS</h3>
+                        <h3 class="text-2xl font-display font-black text-white group-hover:text-lime-300 transition">CITY ROOTS</h3>
                         <p class="text-xs text-zinc-300 leading-relaxed">
-                            Farm-fresh craft flower, premium live-resin gummies, and terpene sugar shake.
+                            Farm-fresh indoor craft flower, live-resin gummies, and sugar shake.
                         </p>
                     </div>
-                    <div class="flex items-center justify-between pt-2 border-t border-white/10 text-[11px] font-mono text-emerald-400 font-bold">
+                    <div class="flex items-center justify-between pt-2 border-t border-lime-500/20 text-[11px] font-mono text-brand-lime font-bold">
                         <span>Explore Craft</span>
                         <span>→</span>
                     </div>
                 </div>
 
-                <!-- Brand 4: DIRECT -->
-                <div onclick="handleSearch('Direct')" class="cursor-pointer p-5 rounded-2xl glass-panel exclusive-card flex flex-col justify-between space-y-4 group">
+                <!-- Brand 4: DIRECT (Mid-Pastel Peach & Melon) -->
+                <div onclick="handleSearch('Direct')" class="cursor-pointer p-5 rounded-2xl glass-panel flex flex-col justify-between space-y-4 group transition">
                     <div class="space-y-2">
-                        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-rose-500 to-amber-500 flex items-center justify-center text-white font-black text-lg shadow-lg group-hover:scale-110 transition">
-                            📦
+                        <div class="flex items-center justify-between">
+                            <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-peach to-brand-melon flex items-center justify-center text-slate-950 font-black text-lg shadow-lg group-hover:scale-110 transition">
+                                📦
+                            </div>
+                            <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-black bg-amber-400/20 text-amber-300 border border-amber-400/40">
+                                14G DEALS
+                            </span>
                         </div>
-                        <h3 class="text-xl font-display font-black text-white group-hover:text-rose-300 transition">DIRECT</h3>
+                        <h3 class="text-2xl font-display font-black text-white group-hover:text-amber-300 transition">DIRECT</h3>
                         <p class="text-xs text-zinc-300 leading-relaxed">
-                            Everyday indoor jars, 1g single-sticks, and 1000mg high-potency micro-tablets.
+                            Everyday indoor jars, 1g single-sticks, and 1000mg high-potency tablets.
                         </p>
                     </div>
-                    <div class="flex items-center justify-between pt-2 border-t border-white/10 text-[11px] font-mono text-rose-400 font-bold">
+                    <div class="flex items-center justify-between pt-2 border-t border-white/10 text-[11px] font-mono text-brand-melon font-bold">
                         <span>Explore Value</span>
                         <span>→</span>
                     </div>
@@ -321,27 +383,27 @@
             <div class="grid grid-cols-3 sm:grid-cols-6 gap-3 sm:gap-4" id="category-cards">
                 <div onclick="filterCategory('Flower', this)" class="cat-pill cursor-pointer p-4 rounded-2xl glass-panel text-center flex flex-col items-center justify-center gap-2 group transition">
                     <span class="text-2xl group-hover:scale-110 transition">🌸</span>
-                    <span class="font-display font-bold text-xs text-white group-hover:text-brand-lime transition uppercase">FLOWER</span>
+                    <span class="font-display font-bold text-xs text-white group-hover:text-brand-cyan transition uppercase">FLOWER</span>
                 </div>
                 <div onclick="filterCategory('Vapes', this)" class="cat-pill cursor-pointer p-4 rounded-2xl glass-panel text-center flex flex-col items-center justify-center gap-2 group transition">
                     <span class="text-2xl group-hover:scale-110 transition">💨</span>
-                    <span class="font-display font-bold text-xs text-white group-hover:text-brand-lime transition uppercase">VAPORIZERS</span>
+                    <span class="font-display font-bold text-xs text-white group-hover:text-brand-cyan transition uppercase">VAPORIZERS</span>
                 </div>
                 <div onclick="filterCategory('Edibles', this)" class="cat-pill cursor-pointer p-4 rounded-2xl glass-panel text-center flex flex-col items-center justify-center gap-2 group transition">
                     <span class="text-2xl group-hover:scale-110 transition">🍬</span>
-                    <span class="font-display font-bold text-xs text-white group-hover:text-brand-lime transition uppercase">EDIBLES</span>
+                    <span class="font-display font-bold text-xs text-white group-hover:text-brand-cyan transition uppercase">EDIBLES</span>
                 </div>
                 <div onclick="filterCategory('Pre-Rolls', this)" class="cat-pill cursor-pointer p-4 rounded-2xl glass-panel text-center flex flex-col items-center justify-center gap-2 group transition">
                     <span class="text-2xl group-hover:scale-110 transition">🚬</span>
-                    <span class="font-display font-bold text-xs text-white group-hover:text-brand-lime transition uppercase">PRE ROLLS</span>
+                    <span class="font-display font-bold text-xs text-white group-hover:text-brand-cyan transition uppercase">PRE ROLLS</span>
                 </div>
                 <div onclick="filterCategory('Concentrates', this)" class="cat-pill cursor-pointer p-4 rounded-2xl glass-panel text-center flex flex-col items-center justify-center gap-2 group transition">
                     <span class="text-2xl group-hover:scale-110 transition">🍯</span>
-                    <span class="font-display font-bold text-xs text-white group-hover:text-brand-lime transition uppercase">CONCENTRATES</span>
+                    <span class="font-display font-bold text-xs text-white group-hover:text-brand-cyan transition uppercase">CONCENTRATES</span>
                 </div>
                 <div onclick="filterCategory('Topicals', this)" class="cat-pill cursor-pointer p-4 rounded-2xl glass-panel text-center flex flex-col items-center justify-center gap-2 group transition">
                     <span class="text-2xl group-hover:scale-110 transition">🌿</span>
-                    <span class="font-display font-bold text-xs text-white group-hover:text-brand-lime transition uppercase">TOPICALS</span>
+                    <span class="font-display font-bold text-xs text-white group-hover:text-brand-cyan transition uppercase">TOPICALS</span>
                 </div>
             </div>
         </section>
@@ -350,16 +412,16 @@
         <section class="glass-panel p-5 rounded-2xl border border-white/10 space-y-3">
             <div class="flex flex-wrap items-center justify-between gap-2">
                 <div class="flex items-center gap-2">
-                    <span class="text-xs font-mono font-bold text-brand-lime">🧪 LIVE TERPENE MATRIX:</span>
+                    <span class="text-xs font-mono font-bold text-brand-cyan">🧪 LIVE TERPENE MATRIX:</span>
                     <span class="text-xs text-zinc-400">Filter by dominant terpene profile & physiological effect</span>
                 </div>
-                <button onclick="resetFilters()" class="text-xs text-brand-lime hover:underline font-mono font-semibold">
+                <button onclick="resetFilters()" class="text-xs text-brand-cyan hover:underline font-mono font-semibold">
                     [Reset Filters]
                 </button>
             </div>
 
             <div class="flex flex-wrap gap-2 pt-1" id="terpene-filters">
-                <button onclick="filterTerpene('all', this)" class="terp-chip active px-3.5 py-1.5 rounded-lg border border-brand-lime bg-brand-lime text-black text-xs font-bold font-mono">
+                <button onclick="filterTerpene('all', this)" class="terp-chip active px-3.5 py-1.5 rounded-lg border border-brand-cyan bg-brand-cyan text-black text-xs font-bold font-mono">
                     All Terpenes
                 </button>
                 <button onclick="filterTerpene('Limonene', this)" class="terp-chip px-3.5 py-1.5 rounded-lg border border-white/10 hover:border-amber-400 bg-zinc-900 text-zinc-300 text-xs font-semibold flex items-center gap-1.5">
@@ -413,12 +475,12 @@
         <!-- Cart Header -->
         <div class="p-5 border-b border-white/10 flex items-center justify-between bg-black">
             <div class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-xl bg-brand-lime text-slate-950 flex items-center justify-center font-bold text-base shadow-md">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-cyan to-brand-lime text-slate-950 flex items-center justify-center font-bold text-base shadow-md">
                     🛍️
                 </div>
                 <div>
                     <h2 class="font-display font-black text-lg text-white">Your Vista Bag</h2>
-                    <p class="text-xs text-zinc-400 font-mono">954 S Santa Fe Ave • Open til 9:45 PM</p>
+                    <p class="text-xs text-zinc-400 font-mono">954 S Santa Fe Ave • Self-Checkout Active</p>
                 </div>
             </div>
             <button onclick="closeCart()" class="p-2 text-zinc-400 hover:text-white rounded-lg hover:bg-zinc-900 transition">
@@ -428,7 +490,7 @@
 
         <!-- Order Fulfillment Switcher -->
         <div class="p-4 bg-zinc-900/60 border-b border-white/10 flex gap-2">
-            <button id="btn-pickup" onclick="setOrderType('pickup')" class="flex-1 py-2 rounded-xl bg-brand-lime text-black text-xs font-display font-black uppercase tracking-wider shadow-sm transition">
+            <button id="btn-pickup" onclick="setOrderType('pickup')" class="flex-1 py-2 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-lime text-black text-xs font-display font-black uppercase tracking-wider shadow-sm transition">
                 🏬 Express Pickup (15 Min)
             </button>
             <button id="btn-delivery" onclick="setOrderType('delivery')" class="flex-1 py-2 rounded-xl bg-zinc-800 text-zinc-300 border border-white/10 hover:bg-zinc-700 text-xs font-display font-bold uppercase tracking-wider transition">
@@ -458,11 +520,11 @@
                 </div>
                 <div class="border-t border-white/10 pt-2 flex justify-between text-sm font-bold text-white font-display">
                     <span>Estimated Total:</span>
-                    <span class="text-brand-lime text-xl font-black" id="cart-total">$0.00</span>
+                    <span class="text-brand-cyan text-xl font-black" id="cart-total">$0.00</span>
                 </div>
             </div>
 
-            <button onclick="simulateCheckout()" class="w-full py-4 bg-brand-lime hover:bg-brand-limeHover text-slate-950 font-display font-black text-sm uppercase tracking-wider rounded-xl shadow-lg shadow-lime-500/20 transition active:scale-95 flex items-center justify-center gap-2">
+            <button onclick="simulateCheckout()" class="w-full py-4 bg-gradient-to-r from-brand-cyan to-brand-lime hover:opacity-95 text-slate-950 font-display font-black text-sm uppercase tracking-wider rounded-xl shadow-lg shadow-cyan-500/20 transition active:scale-95 flex items-center justify-center gap-2">
                 <span>SUBMIT VISTA EXPRESS ORDER</span>
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
             </button>
@@ -474,7 +536,7 @@
         <div class="bg-zinc-950 rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 space-y-6 shadow-2xl border border-white/10">
             <div class="flex items-center justify-between border-b border-white/10 pb-4">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-brand-lime/10 border border-brand-lime/30 flex items-center justify-center text-brand-lime font-bold text-lg">
+                    <div class="w-10 h-10 rounded-xl bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan font-bold text-lg">
                         ⚡
                     </div>
                     <div>
@@ -493,16 +555,16 @@
                     </p>
                 </div>
 
-                <div class="p-4 bg-lime-950/40 border border-lime-500/40 rounded-xl space-y-2">
-                    <strong class="text-brand-lime font-bold block text-sm font-display">✔ NeverRender Labs Solution: 3D Bubbly Parallax & House Brand Vault</strong>
+                <div class="p-4 bg-cyan-950/40 border border-cyan-500/40 rounded-xl space-y-2">
+                    <strong class="text-brand-cyan font-bold block text-sm font-display">✔ NeverRender Labs Solution: Kiosk Velocity & Mid-Pastel Brand Cohesion</strong>
                     <p class="text-zinc-300">
-                        Sub-50ms instant client-side search, real-time terpene telemetry, interactive 3D floating orb parallax physics, and a dedicated showcase for Wellgreens Exclusives (UP!, Lights Out, City Roots, Direct).
+                        Sub-50ms response times for in-store touch self-checkout kiosks, real-time terpene telemetry, 3D bubbly depth physics, and high-margin showcase for UP!, Lights Out, City Roots, and Direct.
                     </p>
                 </div>
             </div>
 
             <div class="pt-2 flex justify-end">
-                <button onclick="toggleAuditModal()" class="px-5 py-2.5 bg-brand-lime text-slate-950 font-display font-black uppercase text-xs rounded-xl">
+                <button onclick="toggleAuditModal()" class="px-5 py-2.5 bg-brand-cyan text-slate-950 font-display font-black uppercase text-xs rounded-xl">
                     Close SRE Teardown
                 </button>
             </div>
@@ -512,11 +574,11 @@
     <!-- Footer -->
     <footer class="relative z-10 bg-black border-t border-white/10 py-10 px-4 text-center text-xs text-zinc-500 space-y-3">
         <p class="font-black text-white font-display uppercase tracking-widest text-sm">WELLGREENS VISTA // MODERN DISPENSARY ARCHITECTURE</p>
-        <p>Engineered by <strong class="text-brand-lime">Matthew Wyatt (NeverRender Labs)</strong> • Zero Console Errors • Real-Time 3D Parallax</p>
+        <p>Engineered by <strong class="text-brand-cyan">Matthew Wyatt (NeverRender Labs)</strong> • Zero Console Errors • Self-Checkout Kiosk Ready</p>
         <p class="text-[11px] text-zinc-600 font-mono">Dispensary ID: 63065d8793459900ab033b76 • 954 S Santa Fe Ave, Vista, CA 92084</p>
     </footer>
 
-    <!-- 3D Bubbly Parallax Physics Engine -->
+    <!-- 3D Bubbly Parallax Physics Engine (Mid-Pastel Palette) -->
     <script>
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
@@ -524,14 +586,14 @@
         let width, height;
         let scrollY = window.scrollY;
 
-        // Bubbly 3D Orb Particles Definition
+        // Mid-Pastel Bubbly 3D Orbs (Cyan, Lime, Lavender, Peach, Mint)
         const ORBS = [
-            { x: 0.15, y: 0.20, r: 140, color: 'rgba(132, 204, 22, 0.14)', depth: 0.12, pulseSpeed: 0.0015 },
-            { x: 0.85, y: 0.25, r: 180, color: 'rgba(52, 211, 153, 0.12)', depth: 0.18, pulseSpeed: 0.0012 },
-            { x: 0.50, y: 0.45, r: 220, color: 'rgba(251, 191, 36, 0.10)', depth: 0.08, pulseSpeed: 0.0009 },
-            { x: 0.20, y: 0.65, r: 160, color: 'rgba(167, 139, 250, 0.12)', depth: 0.22, pulseSpeed: 0.0016 },
-            { x: 0.80, y: 0.80, r: 190, color: 'rgba(132, 204, 22, 0.15)', depth: 0.15, pulseSpeed: 0.0014 },
-            { x: 0.40, y: 0.95, r: 130, color: 'rgba(56, 189, 248, 0.10)', depth: 0.25, pulseSpeed: 0.0018 },
+            { x: 0.12, y: 0.18, r: 150, color: 'rgba(56, 189, 248, 0.14)', depth: 0.12, pulseSpeed: 0.0015 },
+            { x: 0.88, y: 0.22, r: 180, color: 'rgba(132, 204, 22, 0.13)', depth: 0.18, pulseSpeed: 0.0012 },
+            { x: 0.48, y: 0.42, r: 210, color: 'rgba(167, 139, 250, 0.12)', depth: 0.08, pulseSpeed: 0.0009 },
+            { x: 0.18, y: 0.65, r: 160, color: 'rgba(244, 114, 182, 0.11)', depth: 0.22, pulseSpeed: 0.0016 },
+            { x: 0.82, y: 0.78, r: 190, color: 'rgba(52, 211, 153, 0.13)', depth: 0.15, pulseSpeed: 0.0014 },
+            { x: 0.35, y: 0.92, r: 140, color: 'rgba(251, 191, 36, 0.10)', depth: 0.25, pulseSpeed: 0.0018 },
         ];
 
         function resizeCanvas() {
@@ -552,21 +614,17 @@
             ctx.clearRect(0, 0, width, height);
 
             ORBS.forEach((orb, i) => {
-                // Parallax offset: moves slower as depth increases (simulating distant 3D space)
                 const parallaxY = -(scrollY * orb.depth);
-                
-                // Gentle floating breathing harmonic motion
-                const floatX = Math.sin(time * orb.pulseSpeed + i) * 20;
-                const floatY = Math.cos(time * orb.pulseSpeed + i * 1.5) * 15;
+                const floatX = Math.sin(time * orb.pulseSpeed + i) * 22;
+                const floatY = Math.cos(time * orb.pulseSpeed + i * 1.5) * 16;
                 const pulseR = orb.r + Math.sin(time * orb.pulseSpeed * 2) * 8;
 
                 const posX = orb.x * width + floatX;
                 const posY = ((orb.y * height * 1.4) + parallaxY + floatY) % (height * 1.5);
 
-                // Draw soft gradient 3D bubble
                 const grad = ctx.createRadialGradient(posX, posY, 0, posX, posY, pulseR);
                 grad.addColorStop(0, orb.color);
-                grad.addColorStop(0.7, orb.color.replace(/[\d\.]+\)$/, '0.04)'));
+                grad.addColorStop(0.75, orb.color.replace(/[\d\.]+\)$/, '0.03)'));
                 grad.addColorStop(1, 'transparent');
 
                 ctx.fillStyle = grad;
@@ -579,6 +637,15 @@
         }
 
         render3DParallax();
+
+        // Kiosk Mode Switcher
+        let isKiosk = false;
+        function toggleKioskMode() {
+            isKiosk = !isKiosk;
+            document.body.classList.toggle('kiosk-mode', isKiosk);
+            const btnText = document.getElementById('kiosk-btn-text');
+            btnText.textContent = isKiosk ? 'Exit Kiosk' : 'Kiosk Mode';
+        }
     </script>
 
     <!-- Prototype Product Catalog & Filtering Logic -->
@@ -587,62 +654,70 @@
             {
                 id: 1,
                 brand: "UP! (Wellgreens Exclusive)",
-                name: "Electric Watermelon Diamond Pod",
+                name: "Gorilla Glue (Hybrid) Classic Cartridge 1g",
                 category: "Vapes",
-                type: "Sativa",
-                thc: 89.4,
-                cbd: 0.5,
-                terpene: "Limonene",
-                terpeneDesc: "Juicy Melon Candy & Rapid Creative Surge",
-                price: 38.00,
-                staffPick: true,
+                type: "Hybrid",
+                thc: 83.5,
+                cbd: 0.4,
+                terpene: "Caryophyllene",
+                terpeneDesc: "Pungent Earth & Heavy Balanced Full-Body Relief",
+                price: 18.00,
+                dealTag: "UP! 7 FOR $60+TAX",
+                dealColor: "bg-lime-400/20 text-lime-300 border-lime-400/40",
+                contourClass: "contour-lime",
                 badge: "House Exclusive",
                 image: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=500&auto=format&fit=crop&q=60"
             },
             {
                 id: 2,
+                brand: "UP! (Wellgreens Exclusive)",
+                name: "SFV OG (Indica) Live Resin Cartridge 1g",
+                category: "Vapes",
+                type: "Indica",
+                thc: 77.11,
+                cbd: 0.6,
+                terpene: "Myrcene",
+                terpeneDesc: "Pine & Lemon OG with 100% Live Resin Terpenes",
+                price: 24.00,
+                dealTag: "UP! 7 FOR $60+TAX",
+                dealColor: "bg-purple-400/20 text-purple-300 border-purple-400/40",
+                contourClass: "contour-indigo",
+                badge: "Live Resin",
+                image: "https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=500&auto=format&fit=crop&q=60"
+            },
+            {
+                id: 3,
+                brand: "UP! (Wellgreens Exclusive)",
+                name: "Sherbert (Indica) Cannabis Smalls 14g",
+                category: "Flower",
+                type: "Indica",
+                thc: 26.1,
+                cbd: 0.23,
+                terpene: "Limonene",
+                terpeneDesc: "Sweet Berry Cream & Calming Physical Euphoria",
+                price: 49.00,
+                dealTag: "10% OFF ANY TWO 14G",
+                dealColor: "bg-cyan-400/20 text-cyan-300 border-cyan-400/40",
+                contourClass: "contour-cyan",
+                badge: "Smalls Deal",
+                image: "https://images.unsplash.com/photo-1568644396922-5c3bfae12521?w=500&auto=format&fit=crop&q=60"
+            },
+            {
+                id: 4,
                 brand: "Lights Out (Wellgreens Exclusive)",
-                name: "Midnight Blackberry Solventless Rosin",
+                name: "Midnight Blackberry Solventless Rosin 1g",
                 category: "Concentrates",
                 type: "Indica",
                 thc: 84.2,
                 cbd: 4.8,
                 terpene: "Myrcene",
-                terpeneDesc: "100% First-Wash Cold Rosin • Heavy Body Slumber",
+                terpeneDesc: "100% First-Wash Cold Rosin • Heavy Sleep Formula",
                 price: 48.00,
-                staffPick: true,
-                badge: "House Exclusive",
+                dealTag: "SOLVENTLESS ROSIN",
+                dealColor: "bg-purple-400/20 text-purple-300 border-purple-400/40",
+                contourClass: "contour-indigo",
+                badge: "Solventless",
                 image: "https://images.unsplash.com/photo-1603909223429-69bb7101f420?w=500&auto=format&fit=crop&q=60"
-            },
-            {
-                id: 3,
-                brand: "City Roots (Wellgreens Exclusive)",
-                name: "Pacific Beach Sour Diesel",
-                category: "Flower",
-                type: "Sativa",
-                thc: 32.6,
-                cbd: 0.1,
-                terpene: "Terpinolene",
-                terpeneDesc: "Pungent Gasoline & Euphoric Daytime Focus",
-                price: 45.00,
-                staffPick: false,
-                badge: "House Exclusive",
-                image: "https://images.unsplash.com/photo-1568644396922-5c3bfae12521?w=500&auto=format&fit=crop&q=60"
-            },
-            {
-                id: 4,
-                brand: "Direct (Wellgreens Exclusive)",
-                name: "Everyday Indoor Gelato #33 (14g)",
-                category: "Flower",
-                type: "Hybrid",
-                thc: 28.5,
-                cbd: 0.3,
-                terpene: "Caryophyllene",
-                terpeneDesc: "Sweet Sherbet & Smooth Balanced Relief",
-                price: 65.00,
-                staffPick: false,
-                badge: "House Value",
-                image: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=500&auto=format&fit=crop&q=60"
             },
             {
                 id: 5,
@@ -655,7 +730,9 @@
                 terpene: "Limonene",
                 terpeneDesc: "Sweet Sugary Milk & Citrus Uplift",
                 price: 55.00,
-                staffPick: true,
+                dealTag: "TOP SHELF",
+                dealColor: "bg-amber-400/20 text-amber-300 border-amber-400/40",
+                contourClass: "glass-panel",
                 badge: "Top Shelf",
                 image: "https://images.unsplash.com/photo-1536939459926-301728717817?w=500&auto=format&fit=crop&q=60"
             },
@@ -670,9 +747,11 @@
                 terpene: "Caryophyllene",
                 terpeneDesc: "Spicy Pine & Heavy Body Relaxation",
                 price: 40.00,
-                staffPick: false,
+                dealTag: "BEST SELLER",
+                dealColor: "bg-amber-400/20 text-amber-300 border-amber-400/40",
+                contourClass: "glass-panel",
                 badge: "Best Seller",
-                image: "https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=500&auto=format&fit=crop&q=60"
+                image: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=500&auto=format&fit=crop&q=60"
             },
             {
                 id: 7,
@@ -685,7 +764,9 @@
                 terpene: "Myrcene",
                 terpeneDesc: "Real Fruit & Restful Evening Slumber",
                 price: 22.00,
-                staffPick: true,
+                dealTag: "STAFF PICK",
+                dealColor: "bg-emerald-400/20 text-emerald-300 border-emerald-400/40",
+                contourClass: "glass-panel",
                 badge: "Staff Pick",
                 image: "https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?w=500&auto=format&fit=crop&q=60"
             },
@@ -700,7 +781,9 @@
                 terpene: "Caryophyllene",
                 terpeneDesc: "5mg CBN / 5mg THC Sleep Formula",
                 price: 26.00,
-                staffPick: false,
+                dealTag: "SLEEP AID",
+                dealColor: "bg-purple-400/20 text-purple-300 border-purple-400/40",
+                contourClass: "glass-panel",
                 badge: "Sleep Aid",
                 image: "https://images.unsplash.com/photo-1528825871115-3581a5387919?w=500&auto=format&fit=crop&q=60"
             }
@@ -734,7 +817,7 @@
                         <span class="text-4xl">🔍</span>
                         <h3 class="text-lg font-bold text-white font-display uppercase">No strains match your query</h3>
                         <p class="text-xs text-zinc-400">Try changing your category or resetting the terpene matrix.</p>
-                        <button onclick="resetFilters()" class="px-5 py-2 bg-brand-lime text-black font-display font-black text-xs uppercase rounded-full">Reset Filters</button>
+                        <button onclick="resetFilters()" class="px-5 py-2 bg-brand-cyan text-black font-display font-black text-xs uppercase rounded-full">Reset Filters</button>
                     </div>
                 `;
                 return;
@@ -743,41 +826,48 @@
             filtered.forEach(p => {
                 const card = document.createElement('div');
                 const isHouse = p.brand.includes("Wellgreens Exclusive");
-                card.className = isHouse ? "glass-panel exclusive-card rounded-2xl overflow-hidden shadow-xl flex flex-col justify-between group" : "glass-panel rounded-2xl overflow-hidden shadow-xl flex flex-col justify-between group";
+                card.className = `${p.contourClass} rounded-2xl overflow-hidden shadow-xl flex flex-col justify-between group transition`;
 
-                const typeColor = p.type === 'Sativa' ? 'bg-amber-400/20 text-amber-300 border-amber-400/40' : p.type === 'Indica' ? 'bg-purple-500/20 text-purple-300 border-purple-500/40' : 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40';
+                const typeColor = p.type === 'Sativa' ? 'bg-amber-400/20 text-amber-300 border-amber-400/40' : p.type === 'Indica' ? 'bg-purple-500/20 text-purple-300 border-purple-500/40' : 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40';
 
                 card.innerHTML = `
                     <div>
                         <!-- Product Image Box -->
-                        <div class="relative h-48 bg-zinc-900 overflow-hidden">
+                        <div class="relative h-48 bg-zinc-900/80 overflow-hidden">
                             <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                             
                             <div class="absolute top-3 left-3 flex flex-col gap-1">
                                 <span class="px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase tracking-wider border ${typeColor} backdrop-blur-md">
                                     ${p.type}
                                 </span>
-                                ${isHouse ? '<span class="px-2 py-0.5 rounded-md text-[10px] font-black bg-brand-lime text-slate-950 uppercase tracking-wider shadow-md">★ HOUSE EXCLUSIVE</span>' : ''}
+                                ${isHouse ? '<span class="px-2 py-0.5 rounded-md text-[10px] font-black bg-brand-cyan text-slate-950 uppercase tracking-wider shadow-md">★ WELLGREENS EXCLUSIVE</span>' : ''}
                             </div>
 
-                            <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded-md text-[11px] font-mono font-bold bg-black/80 text-brand-lime border border-white/10 backdrop-blur-md">
+                            <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded-md text-[11px] font-mono font-bold bg-black/80 text-brand-cyan border border-white/10 backdrop-blur-md">
                                 ${p.category === 'Edibles' ? `${p.thc}mg THC` : `${p.thc}% THC`}
                             </span>
                         </div>
 
                         <!-- Product Content Area -->
                         <div class="p-5 space-y-2.5">
-                            <div class="text-[10px] font-black ${isHouse ? 'text-brand-lime' : 'text-zinc-400'} uppercase tracking-widest font-mono">
+                            
+                            <!-- Deal Tag Badge -->
+                            <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-[10px] font-mono font-black border ${p.dealColor}">
+                                <span>🏷️</span>
+                                <span>${p.dealTag}</span>
+                            </div>
+
+                            <div class="text-[10px] font-black ${isHouse ? 'text-brand-cyan' : 'text-zinc-400'} uppercase tracking-widest font-mono">
                                 ${p.brand}
                             </div>
-                            <h3 class="font-display font-bold text-base text-white group-hover:text-brand-lime transition">
+                            <h3 class="font-display font-bold text-base text-white group-hover:text-brand-cyan transition">
                                 ${p.name}
                             </h3>
 
                             <!-- Terpene Card Block -->
                             <div class="bg-black/50 p-2.5 rounded-xl border border-white/5 text-[11px] text-zinc-300 space-y-0.5">
                                 <div class="flex items-center justify-between font-mono">
-                                    <span class="font-bold text-brand-lime">🧪 ${p.terpene}</span>
+                                    <span class="font-bold text-brand-cyan">🧪 ${p.terpene}</span>
                                     <span class="text-[10px] text-zinc-500 uppercase">${p.category}</span>
                                 </div>
                                 <div class="text-[10px] text-zinc-400 truncate">${p.terpeneDesc}</div>
@@ -791,7 +881,7 @@
                             <span class="text-[10px] text-zinc-500 block font-mono uppercase">Price</span>
                             <span class="text-xl font-black text-white font-display">$${p.price.toFixed(2)}</span>
                         </div>
-                        <button onclick="addToCart(${p.id})" class="px-5 py-2.5 bg-brand-lime hover:bg-brand-limeHover text-slate-950 font-display font-black uppercase text-xs rounded-xl shadow-md shadow-lime-500/20 transition active:scale-95 flex items-center gap-1.5">
+                        <button onclick="addToCart(${p.id})" class="px-5 py-2.5 bg-gradient-to-r from-brand-cyan to-brand-lime hover:opacity-90 text-slate-950 font-display font-black uppercase text-xs rounded-xl shadow-md shadow-cyan-500/20 transition active:scale-95 flex items-center gap-1.5">
                             <span>+ ADD</span>
                         </button>
                     </div>
@@ -812,7 +902,7 @@
                 document.querySelectorAll('.terp-chip').forEach(t => {
                     t.className = "terp-chip px-3.5 py-1.5 rounded-lg border border-white/10 hover:border-white/30 bg-zinc-900 text-zinc-300 text-xs font-semibold flex items-center gap-1.5";
                 });
-                btn.className = "terp-chip active px-3.5 py-1.5 rounded-lg border border-brand-lime bg-brand-lime text-black text-xs font-bold font-mono flex items-center gap-1.5";
+                btn.className = "terp-chip active px-3.5 py-1.5 rounded-lg border border-brand-cyan bg-brand-cyan text-black text-xs font-bold font-mono flex items-center gap-1.5";
             }
             renderProducts();
         }
@@ -873,7 +963,7 @@
                             <img src="${item.image}" class="w-12 h-12 rounded-lg object-cover">
                             <div>
                                 <div class="font-display font-bold text-xs text-white">${item.name}</div>
-                                <div class="text-[10px] text-brand-lime font-mono">$${item.price.toFixed(2)} each</div>
+                                <div class="text-[10px] text-brand-cyan font-mono">$${item.price.toFixed(2)} each</div>
                             </div>
                         </div>
                         <div class="flex items-center gap-2">
@@ -925,10 +1015,10 @@
             const dBtn = document.getElementById('btn-delivery');
 
             if (type === 'pickup') {
-                pBtn.className = "flex-1 py-2 rounded-xl bg-brand-lime text-black text-xs font-display font-black uppercase tracking-wider shadow-sm transition";
+                pBtn.className = "flex-1 py-2 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-lime text-black text-xs font-display font-black uppercase tracking-wider shadow-sm transition";
                 dBtn.className = "flex-1 py-2 rounded-xl bg-zinc-800 text-zinc-300 border border-white/10 hover:bg-zinc-700 text-xs font-display font-bold uppercase tracking-wider transition";
             } else {
-                dBtn.className = "flex-1 py-2 rounded-xl bg-brand-lime text-black text-xs font-display font-black uppercase tracking-wider shadow-sm transition";
+                dBtn.className = "flex-1 py-2 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-lime text-black text-xs font-display font-black uppercase tracking-wider shadow-sm transition";
                 pBtn.className = "flex-1 py-2 rounded-xl bg-zinc-800 text-zinc-300 border border-white/10 hover:bg-zinc-700 text-xs font-display font-bold uppercase tracking-wider transition";
             }
         }
@@ -938,7 +1028,7 @@
                 alert("Your bag is empty! Select a strain from the menu first.");
                 return;
             }
-            alert("🚀 PROTOTYPE CHECKOUT CONFIRMED!\n\nOrder submitted to Wellgreens Vista (954 S Santa Fe Ave).\nEstimated Pickup Time: 12 minutes.\n\nDemonstration built by NeverRender Labs.");
+            alert("🚀 VISTA SELF-CHECKOUT ORDER CONFIRMED!\n\nOrder submitted to Wellgreens Vista Kiosk (954 S Santa Fe Ave).\nEstimated Pickup Time: 10 minutes.\n\nDemonstration architected by NeverRender Labs.");
             cart = [];
             updateCartUI();
             closeCart();
