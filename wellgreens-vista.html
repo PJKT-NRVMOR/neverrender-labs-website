@@ -137,25 +137,25 @@
 
     <!-- Main Navigation Header (Frosted Ice Glass) -->
     <header class="sticky top-0 z-40 bg-white/85 backdrop-blur-xl border-b border-white/80 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20 gap-4">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20 gap-2 sm:gap-4">
                 
                 <!-- Brand Logo & Store Selector -->
-                <div class="flex items-center gap-6">
-                    <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                        <div class="w-11 h-11 rounded-2xl bg-ice-navy text-white flex items-center justify-center font-display font-black text-2xl shadow-md border border-sky-300/30">
+                <div class="flex items-center gap-2 sm:gap-6 min-w-0 flex-shrink">
+                    <div class="flex items-center gap-2 sm:gap-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                        <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-ice-navy text-white flex-shrink-0 flex items-center justify-center font-display font-black text-xl sm:text-2xl shadow-md border border-sky-300/30">
                             W
                         </div>
-                        <div>
-                            <div class="font-display font-black text-2xl tracking-tight text-ice-deepNavy leading-none flex items-center gap-1.5">
+                        <div class="truncate">
+                            <div class="font-display font-black text-lg sm:text-2xl tracking-tight text-ice-deepNavy leading-none">
                                 WELLGREENS
                             </div>
-                            <span class="text-[9px] font-mono text-sky-700 font-extrabold tracking-widest uppercase block mt-0.5">VISTA DISPENSARY & KIOSKS</span>
+                            <span class="text-[8px] sm:text-[9px] font-mono text-sky-700 font-extrabold tracking-widest uppercase block mt-0.5 truncate">VISTA DISPENSARY</span>
                         </div>
                     </div>
 
                     <!-- Location Selector Pill -->
-                    <div class="hidden lg:flex items-center gap-2 px-4 py-1.5 bg-white/90 rounded-full border border-sky-200 text-xs shadow-sm">
+                    <div class="hidden xl:flex items-center gap-2 px-4 py-1.5 bg-white/90 rounded-full border border-sky-200 text-xs shadow-sm">
                         <span class="w-2.5 h-2.5 rounded-full bg-sky-500 animate-pulse"></span>
                         <span class="text-ice-deepNavy font-extrabold">Vista Store</span>
                         <span class="text-slate-500 font-mono text-[10px]">• 954 S Santa Fe Ave</span>
@@ -172,22 +172,22 @@
                 </div>
 
                 <!-- Navigation Controls: Kiosk Mode & Bag -->
-                <div class="flex items-center gap-3">
+                <div class="flex items-center gap-1.5 sm:gap-3 flex-shrink-0">
                     
-                    <!-- In-Store Kiosk Mode Toggle -->
-                    <button onclick="toggleKioskMode()" id="kiosk-toggle-btn" class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-white/90 hover:bg-white text-ice-navy rounded-xl text-xs font-mono border border-sky-300 font-extrabold transition shadow-sm">
-                        <span class="text-sky-600">🖥️</span> <span id="kiosk-btn-text">Kiosk Mode</span>
+                    <!-- In-Store Kiosk Mode Toggle (Hidden on mobile phones to prevent header clipping) -->
+                    <button onclick="toggleKioskMode()" id="kiosk-toggle-btn" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 bg-white/90 hover:bg-white text-ice-navy rounded-xl text-xs font-mono border border-sky-300 font-extrabold transition shadow-sm">
+                        <span class="text-sky-600">🖥️</span> <span id="kiosk-btn-text">Kiosk</span>
                     </button>
 
-                    <button onclick="toggleAuditModal()" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 bg-white/90 hover:bg-white text-slate-700 rounded-xl text-xs font-mono border border-slate-300 font-extrabold transition shadow-sm">
-                        <span class="text-amber-500">⚡</span> SRE Audit
+                    <button onclick="toggleAuditModal()" class="hidden md:inline-flex items-center gap-1.5 px-3 py-2 bg-white/90 hover:bg-white text-slate-700 rounded-xl text-xs font-mono border border-slate-300 font-extrabold transition shadow-sm">
+                        <span class="text-amber-500">⚡</span> Audit
                     </button>
 
                     <!-- Deep Navy Shopping Bag Trigger -->
-                    <button onclick="openCart()" class="px-5 py-2.5 bg-ice-navy hover:bg-ice-deepNavy text-white font-display font-black text-xs uppercase tracking-wider rounded-full flex items-center gap-2 shadow-md shadow-sky-900/10 transition active:scale-95">
+                    <button onclick="openCart()" class="px-3.5 py-2 sm:px-5 sm:py-2.5 bg-ice-navy hover:bg-ice-deepNavy text-white font-display font-black text-xs uppercase tracking-wider rounded-full flex items-center gap-1.5 sm:gap-2 shadow-md shadow-sky-900/10 transition active:scale-95">
                         <svg class="w-4 h-4 text-sky-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
-                        <span>Bag</span>
-                        <span id="cart-badge" class="bg-sky-400 text-slate-950 font-mono text-[11px] font-black px-2 py-0.5 rounded-full">0</span>
+                        <span class="hidden xs:inline sm:inline">Bag</span>
+                        <span id="cart-badge" class="bg-sky-400 text-slate-950 font-mono text-[10px] sm:text-[11px] font-black px-1.5 sm:px-2 py-0.5 rounded-full">0</span>
                     </button>
                 </div>
             </div>
