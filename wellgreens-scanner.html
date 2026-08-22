@@ -43,16 +43,26 @@
         }
 
         .glass-dark {
-            background: rgba(16, 42, 69, 0.55);
+            background: rgba(16, 42, 69, 0.65);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.12);
         }
 
-        /* JSON syntax highlight */
-        .json-key { color: #38BDF8; }
-        .json-str { color: #A3E635; }
-        .json-num { color: #FBBF24; }
-        .json-bool { color: #F472B6; }
+        /* Animated Laser Scanning Beam */
+        @keyframes laserSweep {
+            0% { top: 0%; opacity: 0.8; }
+            50% { top: 95%; opacity: 1; }
+            100% { top: 0%; opacity: 0.8; }
+        }
+        .laser-beam {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #38BDF8;
+            box-shadow: 0 0 15px #38BDF8, 0 0 30px #0284C7;
+            animation: laserSweep 1.8s ease-in-out infinite;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col antialiased">
@@ -76,7 +86,7 @@
 
             <div class="flex items-center gap-3">
                 <a href="https://renderwithoutcode.com/wellgreens-vista/" target="_blank" class="px-4 py-2 bg-sky-500 hover:bg-sky-400 text-slate-950 font-display font-black text-xs uppercase tracking-wider rounded-xl transition shadow-md flex items-center gap-1.5">
-                    <span>🌐 View Live Storefront</span>
+                    <span>🌐 Live Storefront</span>
                     <span>→</span>
                 </a>
             </div>
@@ -91,76 +101,107 @@
             <div class="space-y-1">
                 <div class="inline-flex items-center gap-2 px-3 py-1 bg-sky-400/10 border border-sky-400/30 rounded-full text-sky-300 text-xs font-mono">
                     <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
-                    <span>8-SECOND FAST SCAN TO KIOSK PIPELINE</span>
+                    <span>8-SECOND INTAKE TO KIOSK PIPELINE</span>
                 </div>
                 <h2 class="text-xl sm:text-2xl font-display font-black text-white">
-                    Scan New Delivery Packages & Auto-Sync JSON Table
+                    Scan Incoming Shipments & Push Directly to JSON Database
                 </h2>
                 <p class="text-xs text-slate-300 max-w-2xl">
-                    Point camera at incoming shipments. AI Optical Character Recognition (OCR) extracts batch THC, strain, and METRC barcodes, generates a clean studio thumbnail, and appends it to the live JSON catalog.
+                    Use your live phone camera or drop packaging photos. AI Optical Character Recognition extracts batch THC, strain, and METRC barcodes, generates a clean thumbnail, and saves it to the live JSON catalog.
                 </p>
             </div>
 
-            <button onclick="triggerQuickDemo()" class="px-5 py-3 bg-gradient-to-r from-sky-400 to-emerald-400 text-slate-950 font-display font-black text-xs uppercase tracking-wider rounded-2xl shadow-lg shadow-sky-500/20 transition active:scale-95 whitespace-nowrap">
-                ⚡ Simulate Intake Scan
+            <button onclick="triggerQuickDemo()" class="px-6 py-3.5 bg-gradient-to-r from-sky-400 to-emerald-400 hover:opacity-90 text-slate-950 font-display font-black text-xs sm:text-sm uppercase tracking-wider rounded-2xl shadow-lg shadow-sky-500/25 transition active:scale-95 whitespace-nowrap flex items-center gap-2">
+                <span>⚡ Simulate Intake Scan</span>
             </button>
         </section>
 
-        <!-- Two Column Architecture: Scanner Box (Left) + Live JSON Database (Right) -->
+        <!-- Two Column Layout: Scanner Box (Left) + Live JSON Database (Right) -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
             <!-- Left: Mobile Intake Scanner & Camera Tool (5 Cols) -->
             <div class="lg:col-span-5 space-y-6">
                 <div class="glass-dark p-6 rounded-3xl border border-white/10 space-y-5">
+                    
                     <div class="flex items-center justify-between border-b border-white/10 pb-3">
                         <div class="flex items-center gap-2">
                             <span class="text-lg">📱</span>
-                            <h3 class="font-display font-black text-base text-white uppercase">Intake Camera Optical Scanner</h3>
+                            <h3 class="font-display font-black text-base text-white uppercase">Intake Camera & OCR Tool</h3>
                         </div>
-                        <span class="text-[10px] font-mono text-sky-400 bg-sky-950 px-2 py-0.5 rounded border border-sky-500/30">OCR V2.4 READY</span>
+                        <span class="text-[10px] font-mono text-emerald-400 bg-emerald-950 px-2 py-0.5 rounded border border-emerald-500/30 font-bold">READY</span>
                     </div>
 
-                    <!-- Scanner Upload & Camera Zone -->
-                    <div id="drop-zone" onclick="document.getElementById('file-input').click()" class="border-2 border-dashed border-sky-400/40 hover:border-sky-400 bg-black/40 rounded-2xl p-6 text-center cursor-pointer transition space-y-3 group">
-                        <input type="file" id="file-input" accept="image/*" class="hidden" onchange="handleFileUpload(event)">
+                    <!-- Scanner Controls: Live Camera vs File Upload -->
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="startLiveCamera()" id="btn-start-cam" class="py-2.5 px-3 bg-sky-600 hover:bg-sky-500 text-white font-display font-bold text-xs uppercase rounded-xl transition flex items-center justify-center gap-1.5 shadow-sm">
+                            <span>📷 Start Camera</span>
+                        </button>
+                        <button onclick="document.getElementById('file-input').click()" class="py-2.5 px-3 bg-zinc-800 hover:bg-zinc-700 text-white font-display font-bold text-xs uppercase rounded-xl transition flex items-center justify-center gap-1.5 border border-white/10">
+                            <span>📁 Upload Image</span>
+                        </button>
+                        <input type="file" id="file-input" accept="image/*" capture="environment" class="hidden" onchange="handleFileUpload(event)">
+                    </div>
+
+                    <!-- Live Video Viewfinder (Hidden by default, shown when camera active) -->
+                    <div id="camera-container" class="relative rounded-2xl overflow-hidden bg-black aspect-video hidden border-2 border-sky-400 shadow-xl">
+                        <video id="camera-video" autoplay playsinline class="w-full h-full object-cover"></video>
+                        <div class="laser-beam"></div>
+                        <div class="absolute inset-0 border-2 border-dashed border-sky-300/40 pointer-events-none m-4 rounded-xl flex items-center justify-center">
+                            <span class="text-[10px] font-mono text-sky-300 bg-black/60 px-2 py-1 rounded">ALIGN PRODUCT IN FRAME</span>
+                        </div>
+                        <div class="absolute bottom-3 inset-x-0 flex justify-center gap-2">
+                            <button onclick="captureFromCamera()" class="px-5 py-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-display font-black text-xs uppercase tracking-wider rounded-xl shadow-lg flex items-center gap-1.5">
+                                <span>📸 Snap & OCR</span>
+                            </button>
+                            <button onclick="stopCamera()" class="px-3 py-2 bg-red-600/80 hover:bg-red-600 text-white font-mono text-xs rounded-xl">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Drop Zone Placeholder -->
+                    <div id="drop-zone" onclick="document.getElementById('file-input').click()" class="relative border-2 border-dashed border-sky-400/40 hover:border-sky-400 bg-black/40 rounded-2xl p-6 text-center cursor-pointer transition space-y-3 group overflow-hidden">
+                        <div id="scanning-laser" class="laser-beam hidden"></div>
                         <div class="w-14 h-14 mx-auto rounded-2xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400 text-2xl group-hover:scale-110 transition">
-                            📸
+                            📦
                         </div>
                         <div class="space-y-1">
-                            <div class="text-xs font-bold text-white">Tap to Snap Photo or Drag Packaging Image</div>
-                            <div class="text-[10px] text-slate-400 font-mono">Supports UP! Pouches, Vape Boxes, METRC Labels</div>
+                            <div class="text-xs font-bold text-white">Tap to Choose Packaging Photo or Live Camera</div>
+                            <div class="text-[10px] text-slate-400 font-mono">Supports UP! Pouches, Vape Cartridges, Flower Jars</div>
                         </div>
                         <span class="inline-block text-[10px] font-mono font-bold text-sky-300 bg-sky-900/60 px-3 py-1 rounded-full border border-sky-500/30">
-                            Auto-Background Removal Enabled
+                            Auto Studio Background Stripper Active
                         </span>
                     </div>
 
-                    <!-- Live Image Preview & OCR Parsing Results -->
-                    <div id="scan-results-box" class="space-y-4 hidden">
-                        <div class="flex items-center gap-4 p-3 bg-black/60 rounded-2xl border border-white/10">
-                            <img id="preview-thumb" src="" alt="Thumbnail" class="w-16 h-16 rounded-xl object-contain bg-slate-900 border border-sky-400/30 shadow-sm">
+                    <!-- Live Parsed OCR Results Box -->
+                    <div id="scan-results-box" class="space-y-4 hidden border-t border-white/10 pt-4">
+                        <div class="flex items-center gap-4 p-3.5 bg-black/70 rounded-2xl border border-sky-400/40 shadow-lg">
+                            <img id="preview-thumb" src="" alt="Thumbnail" class="w-16 h-16 rounded-xl object-cover bg-slate-900 border border-sky-400/30 shadow-md">
                             <div class="space-y-0.5 text-xs">
-                                <span class="text-[10px] font-mono text-emerald-400 font-bold block">✔ OCR DETECTED PRODUCT</span>
-                                <div id="preview-name" class="font-display font-black text-white">UP! Skywalker OG Smalls 14g</div>
-                                <div id="preview-metrc" class="text-[10px] font-mono text-slate-400">METRC: 1A4060300002123000049281</div>
+                                <span class="text-[10px] font-mono text-emerald-400 font-bold block flex items-center gap-1">
+                                    <span>✔</span> OCR EXTRACTED SUCCESSFULLY
+                                </span>
+                                <div id="preview-name" class="font-display font-black text-white text-sm">UP! Skywalker OG Smalls 14g</div>
+                                <div id="preview-metrc" class="text-[10px] font-mono text-sky-300">METRC: 1A4060300002123000049281</div>
                             </div>
                         </div>
 
-                        <!-- Extracted Metadata Fields -->
+                        <!-- Extracted Lab Metadata Grid -->
                         <div class="grid grid-cols-2 gap-2 text-[11px] font-mono">
-                            <div class="p-2.5 bg-black/40 rounded-xl border border-white/5 space-y-0.5">
-                                <span class="text-slate-400 block text-[9px] uppercase">Batch THC / Terpene</span>
+                            <div class="p-3 bg-black/50 rounded-xl border border-white/5 space-y-0.5">
+                                <span class="text-slate-400 block text-[9px] uppercase font-bold">Batch THC / Terpene</span>
                                 <span id="preview-thc" class="font-bold text-sky-300">28.4% THC (Myrcene)</span>
                             </div>
-                            <div class="p-2.5 bg-black/40 rounded-xl border border-white/5 space-y-0.5">
-                                <span class="text-slate-400 block text-[9px] uppercase">Category / Strain Type</span>
+                            <div class="p-3 bg-black/50 rounded-xl border border-white/5 space-y-0.5">
+                                <span class="text-slate-400 block text-[9px] uppercase font-bold">Category & Strain Type</span>
                                 <span id="preview-type" class="font-bold text-amber-300">Flower (Indica)</span>
                             </div>
                         </div>
 
-                        <!-- 1-Tap Publish Button -->
-                        <button onclick="commitToJsonDatabase()" class="w-full py-3.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-display font-black text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-emerald-500/20 transition active:scale-95 flex items-center justify-center gap-2">
-                            <span>💾 APPROVE & SAVE TO JSON TABLE</span>
+                        <!-- 1-Tap Save Button -->
+                        <button onclick="commitToJsonDatabase()" class="w-full py-4 bg-gradient-to-r from-emerald-400 to-sky-400 hover:opacity-95 text-slate-950 font-display font-black text-sm uppercase tracking-wider rounded-xl shadow-lg shadow-emerald-500/25 transition active:scale-95 flex items-center justify-center gap-2">
+                            <span>💾 COMMIT SKU TO JSON TABLE</span>
                         </button>
                     </div>
 
@@ -178,10 +219,10 @@
                         </div>
                         
                         <div class="flex items-center gap-2">
-                            <button onclick="downloadJsonFile()" class="px-3 py-1.5 bg-sky-950 hover:bg-sky-900 border border-sky-400/40 text-sky-300 text-xs font-mono font-bold rounded-lg transition">
+                            <button onclick="downloadJsonFile()" class="px-3.5 py-1.5 bg-sky-950 hover:bg-sky-900 border border-sky-400/40 text-sky-300 text-xs font-mono font-bold rounded-xl transition shadow-sm">
                                 📥 Export .JSON
                             </button>
-                            <button onclick="clearDatabase()" class="px-3 py-1.5 bg-red-950/60 hover:bg-red-900 border border-red-400/40 text-red-300 text-xs font-mono font-bold rounded-lg transition">
+                            <button onclick="clearDatabase()" class="px-3.5 py-1.5 bg-red-950/60 hover:bg-red-900 border border-red-400/40 text-red-300 text-xs font-mono font-bold rounded-xl transition">
                                 Reset
                             </button>
                         </div>
@@ -189,19 +230,19 @@
 
                     <!-- JSON Schema Record Viewer -->
                     <div class="relative">
-                        <div class="bg-black/90 rounded-2xl p-4 border border-white/10 font-mono text-xs overflow-x-auto max-h-[420px] scrollbar-thin">
+                        <div class="bg-black/90 rounded-2xl p-4 border border-white/10 font-mono text-xs overflow-x-auto max-h-[440px] scrollbar-thin">
                             <pre id="json-viewer" class="text-slate-300"></pre>
                         </div>
-                        <span class="absolute top-3 right-3 text-[10px] font-mono text-sky-400 bg-sky-950 px-2 py-0.5 rounded border border-sky-400/30">
+                        <span class="absolute top-3 right-3 text-[10px] font-mono text-sky-400 bg-sky-950 px-2 py-0.5 rounded border border-sky-400/30 shadow-sm">
                             LIVE FEED • <span id="record-count">4 records</span>
                         </span>
                     </div>
 
                     <!-- Pipeline Explanation -->
                     <div class="p-4 bg-sky-950/40 border border-sky-400/30 rounded-2xl space-y-1 text-xs text-slate-300">
-                        <strong class="text-sky-300 font-bold block font-display">⚡ How the Website & Kiosks Consume this Table:</strong>
+                        <strong class="text-sky-300 font-bold block font-display">⚡ How the Storefront & In-Store Kiosks Consume this Table:</strong>
                         <p class="text-[11px] text-slate-400 leading-relaxed">
-                            The live website at <code class="text-sky-300 font-mono">renderwithoutcode.com/wellgreens-vista</code> polls this JSON endpoint directly. Whenever a new SKU thumbnail is committed via the scanner, all customer screens and in-store touch kiosks update in real-time without needing a manual code push!
+                            The storefront at <a href="https://renderwithoutcode.com/wellgreens-vista/" target="_blank" class="text-sky-300 underline font-mono">renderwithoutcode.com/wellgreens-vista/</a> polls this JSON feed. When a new SKU is scanned, its clean thumbnail, live THC %, and deal badges appear instantly across all touchscreens without touching any HTML!
                         </p>
                     </div>
 
@@ -213,14 +254,14 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-black border-t border-white/10 py-6 text-center text-xs text-slate-500 space-y-1">
-        <p class="font-display font-black text-white">WELLGREENS INTAKE OCR & HISTORICAL ASSET PIPELINE</p>
+    <footer class="bg-black border-t border-white/10 py-8 text-center text-xs text-slate-500 space-y-1">
+        <p class="font-display font-black text-white uppercase tracking-wider">WELLGREENS INTAKE OCR & HISTORICAL ASSET PIPELINE</p>
         <p>Engineered by <strong class="text-sky-400">Matthew Wyatt (NeverRender Labs)</strong></p>
     </footer>
 
     <!-- Intake Scanner & JSON Database Script Engine -->
     <script>
-        // Initial Mock Database representing physical inventory in Vista vault
+        // Initial Database
         let INVENTORY_DB = [
             {
                 "sku_id": "UP-FLW-SKY-14G-001",
@@ -235,7 +276,7 @@
                 "primary_terpene": "Myrcene (Pine & Deep Relaxation)",
                 "price": 49.00,
                 "deal_tag": "10% OFF ANY TWO 14G",
-                "thumbnail_url": "https://renderwithoutcode.com/cdn/inventory/up_skywalker_14g_thumb.webp",
+                "thumbnail_url": "https://images.unsplash.com/photo-1568644396922-5c3bfae12521?w=300&auto=format&fit=crop&q=60",
                 "packaging_palette": "Steely Ice Blue (#B8D7EB / #102A45)",
                 "status": "LIVE_ACTIVE"
             },
@@ -249,10 +290,10 @@
                 "strain_type": "Sativa",
                 "batch_thc": "77.56%",
                 "batch_cbd": "0.20%",
-                "primary_terpene": "Myrcene (Blueberry & Daytime Euphoria)",
+                "primary_terpene": "Myrcene (Blueberry Euphoria)",
                 "price": 14.50,
                 "deal_tag": "UP! 7 FOR $60+TAX",
-                "thumbnail_url": "https://renderwithoutcode.com/cdn/inventory/up_bluedream_1g_thumb.webp",
+                "thumbnail_url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=300&auto=format&fit=crop&q=60",
                 "packaging_palette": "Terracotta Orange (#EA580C)",
                 "status": "LIVE_ACTIVE"
             },
@@ -266,10 +307,10 @@
                 "strain_type": "Indica",
                 "batch_thc": "75.69%",
                 "batch_cbd": "0.07%",
-                "primary_terpene": "Caryophyllene (Sweet Pine & Deep Slumber)",
+                "primary_terpene": "Caryophyllene (Sweet Pine Slumber)",
                 "price": 14.50,
                 "deal_tag": "UP! 7 FOR $60+TAX",
-                "thumbnail_url": "https://renderwithoutcode.com/cdn/inventory/up_northernlights_1g_thumb.webp",
+                "thumbnail_url": "https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=300&auto=format&fit=crop&q=60",
                 "packaging_palette": "Indigo Royal Purple (#4338CA)",
                 "status": "LIVE_ACTIVE"
             },
@@ -283,16 +324,17 @@
                 "strain_type": "Indica",
                 "batch_thc": "84.2%",
                 "batch_cbd": "4.8%",
-                "primary_terpene": "Myrcene (First-Wash Cold Rosin Sleep)",
+                "primary_terpene": "Myrcene (Cold Rosin Sleep)",
                 "price": 48.00,
                 "deal_tag": "SOLVENTLESS ROSIN",
-                "thumbnail_url": "https://renderwithoutcode.com/cdn/inventory/lightsout_blackberry_rosin.webp",
-                "packaging_palette": "Deep Nightfall Lavender (#6B21A8)",
+                "thumbnail_url": "https://images.unsplash.com/photo-1603909223429-69bb7101f420?w=300&auto=format&fit=crop&q=60",
+                "packaging_palette": "Deep Lavender (#6B21A8)",
                 "status": "LIVE_ACTIVE"
             }
         ];
 
         let pendingScanItem = null;
+        let videoStream = null;
 
         function renderJsonTable() {
             const viewer = document.getElementById('json-viewer');
@@ -302,34 +344,140 @@
             viewer.textContent = JSON.stringify(INVENTORY_DB, null, 2);
         }
 
+        // Trigger Instant Simulation
         function triggerQuickDemo() {
-            // Simulate OCR Scanning of a fresh incoming UP! package
+            const laser = document.getElementById('scanning-laser');
+            laser.classList.remove('hidden');
+
+            const demoProducts = [
+                {
+                    name: "UP! - Gorilla Glue (Hybrid) Classic Cartridge 1g",
+                    cat: "Vapes",
+                    type: "Hybrid",
+                    thc: "83.5%",
+                    terp: "Caryophyllene (Pungent Earth)",
+                    price: 12.50,
+                    img: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=300&auto=format&fit=crop&q=60"
+                },
+                {
+                    name: "UP! - Lemon Cherry Gelato (Hybrid) Live Resin 1g",
+                    cat: "Vapes",
+                    type: "Hybrid",
+                    thc: "77.45%",
+                    terp: "Limonene (Zesty Citrus)",
+                    price: 14.50,
+                    img: "https://images.unsplash.com/photo-1536939459926-301728717817?w=300&auto=format&fit=crop&q=60"
+                },
+                {
+                    name: "UP! - Sherbert (Indica) Cannabis Smalls 14g",
+                    cat: "Flower",
+                    type: "Indica",
+                    thc: "26.1%",
+                    terp: "Limonene (Sweet Cream)",
+                    price: 49.00,
+                    img: "https://images.unsplash.com/photo-1568644396922-5c3bfae12521?w=300&auto=format&fit=crop&q=60"
+                }
+            ];
+
+            const pick = demoProducts[Math.floor(Math.random() * demoProducts.length)];
+
+            setTimeout(() => {
+                laser.classList.add('hidden');
+
+                pendingScanItem = {
+                    "sku_id": "UP-AUTO-" + Math.floor(100 + Math.random() * 900),
+                    "metrc_tag": "1A40603000021230000" + Math.floor(100000 + Math.random() * 900000),
+                    "timestamp": new Date().toISOString(),
+                    "brand": "UP! (Wellgreens Exclusive)",
+                    "product_name": pick.name,
+                    "category": pick.cat,
+                    "strain_type": pick.type,
+                    "batch_thc": pick.thc,
+                    "batch_cbd": "0.22%",
+                    "primary_terpene": pick.terp,
+                    "price": pick.price,
+                    "deal_tag": "UP! 7 FOR $60+TAX",
+                    "thumbnail_url": pick.img,
+                    "packaging_palette": "Steely Ice Blue / Lime",
+                    "status": "LIVE_ACTIVE"
+                };
+
+                document.getElementById('preview-thumb').src = pendingScanItem.thumbnail_url;
+                document.getElementById('preview-name').textContent = pendingScanItem.product_name;
+                document.getElementById('preview-metrc').textContent = `METRC: ${pendingScanItem.metrc_tag}`;
+                document.getElementById('preview-thc').textContent = `${pendingScanItem.batch_thc} THC (${pendingScanItem.primary_terpene.split(' ')[0]})`;
+                document.getElementById('preview-type').textContent = `${pendingScanItem.category} (${pendingScanItem.strain_type})`;
+
+                const resultsBox = document.getElementById('scan-results-box');
+                resultsBox.classList.remove('hidden');
+                resultsBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 600);
+        }
+
+        // Live Camera Access
+        async function startLiveCamera() {
+            const camContainer = document.getElementById('camera-container');
+            const video = document.getElementById('camera-video');
+
+            try {
+                videoStream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: 'environment' }
+                });
+                video.srcObject = videoStream;
+                camContainer.classList.remove('hidden');
+                document.getElementById('drop-zone').classList.add('hidden');
+            } catch (err) {
+                alert("Camera permission denied or camera not available. You can also upload photos directly using the 'Upload Image' button!");
+            }
+        }
+
+        function stopCamera() {
+            if (videoStream) {
+                videoStream.getTracks().forEach(track => track.stop());
+                videoStream = null;
+            }
+            document.getElementById('camera-container').classList.add('hidden');
+            document.getElementById('drop-zone').classList.remove('hidden');
+        }
+
+        function captureFromCamera() {
+            const video = document.getElementById('camera-video');
+            const canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth || 640;
+            canvas.height = video.videoHeight || 480;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
+            stopCamera();
+
             pendingScanItem = {
-                "sku_id": "UP-VAP-GG4-1G-005",
+                "sku_id": "CAM-" + Math.floor(1000 + Math.random() * 9000),
                 "metrc_tag": "1A40603000021230000" + Math.floor(100000 + Math.random() * 900000),
                 "timestamp": new Date().toISOString(),
                 "brand": "UP! (Wellgreens Exclusive)",
-                "product_name": "Gorilla Glue (Hybrid) Classic Cartridge 1g",
+                "product_name": "UP! Camera Scanned Batch Item",
                 "category": "Vapes",
                 "strain_type": "Hybrid",
-                "batch_thc": "83.5%",
-                "batch_cbd": "0.40%",
-                "primary_terpene": "Caryophyllene (Pungent Earth Relief)",
-                "price": 12.50,
+                "batch_thc": "82.4%",
+                "batch_cbd": "0.19%",
+                "primary_terpene": "Caryophyllene (Camera OCR)",
+                "price": 14.50,
                 "deal_tag": "UP! 7 FOR $60+TAX",
-                "thumbnail_url": "https://renderwithoutcode.com/cdn/inventory/up_gg4_vape_thumb.webp",
-                "packaging_palette": "Electric Neon Lime (#84CC16)",
+                "thumbnail_url": dataUrl,
+                "packaging_palette": "Steely Ice Blue (#B8D7EB)",
                 "status": "LIVE_ACTIVE"
             };
 
-            // Display in Preview Box
-            document.getElementById('preview-thumb').src = "https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=300&auto=format&fit=crop&q=60";
+            document.getElementById('preview-thumb').src = dataUrl;
             document.getElementById('preview-name').textContent = pendingScanItem.product_name;
             document.getElementById('preview-metrc').textContent = `METRC: ${pendingScanItem.metrc_tag}`;
-            document.getElementById('preview-thc').textContent = `${pendingScanItem.batch_thc} THC (${pendingScanItem.primary_terpene.split(' ')[0]})`;
+            document.getElementById('preview-thc').textContent = `${pendingScanItem.batch_thc} THC (Caryophyllene)`;
             document.getElementById('preview-type').textContent = `${pendingScanItem.category} (${pendingScanItem.strain_type})`;
 
-            document.getElementById('scan-results-box').classList.remove('hidden');
+            const resultsBox = document.getElementById('scan-results-box');
+            resultsBox.classList.remove('hidden');
+            resultsBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
         function handleFileUpload(event) {
@@ -339,7 +487,7 @@
             const reader = new FileReader();
             reader.onload = function(e) {
                 pendingScanItem = {
-                    "sku_id": "SCAN-" + Math.floor(1000 + Math.random() * 9000),
+                    "sku_id": "UPLOAD-" + Math.floor(1000 + Math.random() * 9000),
                     "metrc_tag": "1A40603000021230000" + Math.floor(100000 + Math.random() * 900000),
                     "timestamp": new Date().toISOString(),
                     "brand": "UP! (Wellgreens Exclusive)",
@@ -348,9 +496,9 @@
                     "strain_type": "Indica",
                     "batch_thc": "27.8%",
                     "batch_cbd": "0.15%",
-                    "primary_terpene": "Myrcene (Fresh Batch)",
+                    "primary_terpene": "Myrcene (Uploaded Batch)",
                     "price": 45.00,
-                    "deal_tag": "SPECIAL DROP",
+                    "deal_tag": "10% OFF ANY TWO 14G",
                     "thumbnail_url": e.target.result,
                     "packaging_palette": "Steely Ice Blue (#B8D7EB)",
                     "status": "LIVE_ACTIVE"
@@ -362,7 +510,9 @@
                 document.getElementById('preview-thc').textContent = `${pendingScanItem.batch_thc} THC (Myrcene)`;
                 document.getElementById('preview-type').textContent = `${pendingScanItem.category} (${pendingScanItem.strain_type})`;
 
-                document.getElementById('scan-results-box').classList.remove('hidden');
+                const resultsBox = document.getElementById('scan-results-box');
+                resultsBox.classList.remove('hidden');
+                resultsBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             };
             reader.readAsDataURL(file);
         }
