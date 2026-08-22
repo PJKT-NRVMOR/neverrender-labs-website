@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wellgreens Vista | AI Intake Scanner & JSON Inventory Engine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        ice: {
+                            50: '#F4F9FC',
+                            100: '#E5F1F8',
+                            200: '#D0E5F2',
+                            300: '#B8D7EB',
+                            navy: '#102A45',
+                            deepNavy: '#0A1C30',
+                            cyan: '#0284C7',
+                            lime: '#65A30D'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0A1C30;
+            color: #F8FAFC;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .glass-dark {
+            background: rgba(16, 42, 69, 0.55);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        /* JSON syntax highlight */
+        .json-key { color: #38BDF8; }
+        .json-str { color: #A3E635; }
+        .json-num { color: #FBBF24; }
+        .json-bool { color: #F472B6; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased">
+
+    <!-- Top Status Bar -->
+    <header class="bg-ice-deepNavy border-b border-white/10 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-2xl bg-sky-500 text-slate-950 flex items-center justify-center font-display font-black text-xl shadow-md">
+                    📷
+                </div>
+                <div>
+                    <h1 class="font-display font-black text-lg text-white leading-none">
+                        WELLGREENS INTAKE SCANNER & JSON ENGINE
+                    </h1>
+                    <span class="text-[9px] font-mono text-sky-400 font-bold uppercase tracking-widest block mt-0.5">
+                        Vista Store 954 S Santa Fe Ave • METRC OCR Pipeline
+                    </span>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <a href="https://renderwithoutcode.com/wellgreens-vista/" target="_blank" class="px-4 py-2 bg-sky-500 hover:bg-sky-400 text-slate-950 font-display font-black text-xs uppercase tracking-wider rounded-xl transition shadow-md flex items-center gap-1.5">
+                    <span>🌐 View Live Storefront</span>
+                    <span>→</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-8">
+
+        <!-- Top Overview Banner -->
+        <section class="glass-dark p-6 rounded-3xl border border-sky-400/20 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div class="space-y-1">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-sky-400/10 border border-sky-400/30 rounded-full text-sky-300 text-xs font-mono">
+                    <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+                    <span>8-SECOND FAST SCAN TO KIOSK PIPELINE</span>
+                </div>
+                <h2 class="text-xl sm:text-2xl font-display font-black text-white">
+                    Scan New Delivery Packages & Auto-Sync JSON Table
+                </h2>
+                <p class="text-xs text-slate-300 max-w-2xl">
+                    Point camera at incoming shipments. AI Optical Character Recognition (OCR) extracts batch THC, strain, and METRC barcodes, generates a clean studio thumbnail, and appends it to the live JSON catalog.
+                </p>
+            </div>
+
+            <button onclick="triggerQuickDemo()" class="px-5 py-3 bg-gradient-to-r from-sky-400 to-emerald-400 text-slate-950 font-display font-black text-xs uppercase tracking-wider rounded-2xl shadow-lg shadow-sky-500/20 transition active:scale-95 whitespace-nowrap">
+                ⚡ Simulate Intake Scan
+            </button>
+        </section>
+
+        <!-- Two Column Architecture: Scanner Box (Left) + Live JSON Database (Right) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+            <!-- Left: Mobile Intake Scanner & Camera Tool (5 Cols) -->
+            <div class="lg:col-span-5 space-y-6">
+                <div class="glass-dark p-6 rounded-3xl border border-white/10 space-y-5">
+                    <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                        <div class="flex items-center gap-2">
+                            <span class="text-lg">📱</span>
+                            <h3 class="font-display font-black text-base text-white uppercase">Intake Camera Optical Scanner</h3>
+                        </div>
+                        <span class="text-[10px] font-mono text-sky-400 bg-sky-950 px-2 py-0.5 rounded border border-sky-500/30">OCR V2.4 READY</span>
+                    </div>
+
+                    <!-- Scanner Upload & Camera Zone -->
+                    <div id="drop-zone" onclick="document.getElementById('file-input').click()" class="border-2 border-dashed border-sky-400/40 hover:border-sky-400 bg-black/40 rounded-2xl p-6 text-center cursor-pointer transition space-y-3 group">
+                        <input type="file" id="file-input" accept="image/*" class="hidden" onchange="handleFileUpload(event)">
+                        <div class="w-14 h-14 mx-auto rounded-2xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400 text-2xl group-hover:scale-110 transition">
+                            📸
+                        </div>
+                        <div class="space-y-1">
+                            <div class="text-xs font-bold text-white">Tap to Snap Photo or Drag Packaging Image</div>
+                            <div class="text-[10px] text-slate-400 font-mono">Supports UP! Pouches, Vape Boxes, METRC Labels</div>
+                        </div>
+                        <span class="inline-block text-[10px] font-mono font-bold text-sky-300 bg-sky-900/60 px-3 py-1 rounded-full border border-sky-500/30">
+                            Auto-Background Removal Enabled
+                        </span>
+                    </div>
+
+                    <!-- Live Image Preview & OCR Parsing Results -->
+                    <div id="scan-results-box" class="space-y-4 hidden">
+                        <div class="flex items-center gap-4 p-3 bg-black/60 rounded-2xl border border-white/10">
+                            <img id="preview-thumb" src="" alt="Thumbnail" class="w-16 h-16 rounded-xl object-contain bg-slate-900 border border-sky-400/30 shadow-sm">
+                            <div class="space-y-0.5 text-xs">
+                                <span class="text-[10px] font-mono text-emerald-400 font-bold block">✔ OCR DETECTED PRODUCT</span>
+                                <div id="preview-name" class="font-display font-black text-white">UP! Skywalker OG Smalls 14g</div>
+                                <div id="preview-metrc" class="text-[10px] font-mono text-slate-400">METRC: 1A4060300002123000049281</div>
+                            </div>
+                        </div>
+
+                        <!-- Extracted Metadata Fields -->
+                        <div class="grid grid-cols-2 gap-2 text-[11px] font-mono">
+                            <div class="p-2.5 bg-black/40 rounded-xl border border-white/5 space-y-0.5">
+                                <span class="text-slate-400 block text-[9px] uppercase">Batch THC / Terpene</span>
+                                <span id="preview-thc" class="font-bold text-sky-300">28.4% THC (Myrcene)</span>
+                            </div>
+                            <div class="p-2.5 bg-black/40 rounded-xl border border-white/5 space-y-0.5">
+                                <span class="text-slate-400 block text-[9px] uppercase">Category / Strain Type</span>
+                                <span id="preview-type" class="font-bold text-amber-300">Flower (Indica)</span>
+                            </div>
+                        </div>
+
+                        <!-- 1-Tap Publish Button -->
+                        <button onclick="commitToJsonDatabase()" class="w-full py-3.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-display font-black text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-emerald-500/20 transition active:scale-95 flex items-center justify-center gap-2">
+                            <span>💾 APPROVE & SAVE TO JSON TABLE</span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Right: Real-Time JSON Table & Historical Database (7 Cols) -->
+            <div class="lg:col-span-7 space-y-6">
+                <div class="glass-dark p-6 rounded-3xl border border-white/10 space-y-4">
+                    
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3">
+                        <div class="flex items-center gap-2">
+                            <span class="text-lg">🗄️</span>
+                            <h3 class="font-display font-black text-base text-white uppercase">Live JSON Inventory Database</h3>
+                        </div>
+                        
+                        <div class="flex items-center gap-2">
+                            <button onclick="downloadJsonFile()" class="px-3 py-1.5 bg-sky-950 hover:bg-sky-900 border border-sky-400/40 text-sky-300 text-xs font-mono font-bold rounded-lg transition">
+                                📥 Export .JSON
+                            </button>
+                            <button onclick="clearDatabase()" class="px-3 py-1.5 bg-red-950/60 hover:bg-red-900 border border-red-400/40 text-red-300 text-xs font-mono font-bold rounded-lg transition">
+                                Reset
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- JSON Schema Record Viewer -->
+                    <div class="relative">
+                        <div class="bg-black/90 rounded-2xl p-4 border border-white/10 font-mono text-xs overflow-x-auto max-h-[420px] scrollbar-thin">
+                            <pre id="json-viewer" class="text-slate-300"></pre>
+                        </div>
+                        <span class="absolute top-3 right-3 text-[10px] font-mono text-sky-400 bg-sky-950 px-2 py-0.5 rounded border border-sky-400/30">
+                            LIVE FEED • <span id="record-count">4 records</span>
+                        </span>
+                    </div>
+
+                    <!-- Pipeline Explanation -->
+                    <div class="p-4 bg-sky-950/40 border border-sky-400/30 rounded-2xl space-y-1 text-xs text-slate-300">
+                        <strong class="text-sky-300 font-bold block font-display">⚡ How the Website & Kiosks Consume this Table:</strong>
+                        <p class="text-[11px] text-slate-400 leading-relaxed">
+                            The live website at <code class="text-sky-300 font-mono">renderwithoutcode.com/wellgreens-vista</code> polls this JSON endpoint directly. Whenever a new SKU thumbnail is committed via the scanner, all customer screens and in-store touch kiosks update in real-time without needing a manual code push!
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-white/10 py-6 text-center text-xs text-slate-500 space-y-1">
+        <p class="font-display font-black text-white">WELLGREENS INTAKE OCR & HISTORICAL ASSET PIPELINE</p>
+        <p>Engineered by <strong class="text-sky-400">Matthew Wyatt (NeverRender Labs)</strong></p>
+    </footer>
+
+    <!-- Intake Scanner & JSON Database Script Engine -->
+    <script>
+        // Initial Mock Database representing physical inventory in Vista vault
+        let INVENTORY_DB = [
+            {
+                "sku_id": "UP-FLW-SKY-14G-001",
+                "metrc_tag": "1A4060300002123000049281",
+                "timestamp": "2026-08-22T14:24:00Z",
+                "brand": "UP! (Wellgreens Exclusive)",
+                "product_name": "Skywalker OG (Indica) Cannabis Smalls 14g",
+                "category": "Flower",
+                "strain_type": "Indica",
+                "batch_thc": "28.4%",
+                "batch_cbd": "0.18%",
+                "primary_terpene": "Myrcene (Pine & Deep Relaxation)",
+                "price": 49.00,
+                "deal_tag": "10% OFF ANY TWO 14G",
+                "thumbnail_url": "https://renderwithoutcode.com/cdn/inventory/up_skywalker_14g_thumb.webp",
+                "packaging_palette": "Steely Ice Blue (#B8D7EB / #102A45)",
+                "status": "LIVE_ACTIVE"
+            },
+            {
+                "sku_id": "UP-VAP-BLU-1G-002",
+                "metrc_tag": "1A4060300002123000050119",
+                "timestamp": "2026-08-22T14:20:00Z",
+                "brand": "UP! (Wellgreens Exclusive)",
+                "product_name": "Blue Dream (Sativa) Live Resin Cartridge 1g",
+                "category": "Vapes",
+                "strain_type": "Sativa",
+                "batch_thc": "77.56%",
+                "batch_cbd": "0.20%",
+                "primary_terpene": "Myrcene (Blueberry & Daytime Euphoria)",
+                "price": 14.50,
+                "deal_tag": "UP! 7 FOR $60+TAX",
+                "thumbnail_url": "https://renderwithoutcode.com/cdn/inventory/up_bluedream_1g_thumb.webp",
+                "packaging_palette": "Terracotta Orange (#EA580C)",
+                "status": "LIVE_ACTIVE"
+            },
+            {
+                "sku_id": "UP-VAP-NOR-1G-003",
+                "metrc_tag": "1A4060300002123000050124",
+                "timestamp": "2026-08-22T14:18:00Z",
+                "brand": "UP! (Wellgreens Exclusive)",
+                "product_name": "Northern Lights (Indica) Live Resin Cartridge 1g",
+                "category": "Vapes",
+                "strain_type": "Indica",
+                "batch_thc": "75.69%",
+                "batch_cbd": "0.07%",
+                "primary_terpene": "Caryophyllene (Sweet Pine & Deep Slumber)",
+                "price": 14.50,
+                "deal_tag": "UP! 7 FOR $60+TAX",
+                "thumbnail_url": "https://renderwithoutcode.com/cdn/inventory/up_northernlights_1g_thumb.webp",
+                "packaging_palette": "Indigo Royal Purple (#4338CA)",
+                "status": "LIVE_ACTIVE"
+            },
+            {
+                "sku_id": "LO-CON-MID-1G-004",
+                "metrc_tag": "1A4060300002123000050882",
+                "timestamp": "2026-08-22T13:50:00Z",
+                "brand": "Lights Out (Wellgreens Exclusive)",
+                "product_name": "Midnight Blackberry Solventless Rosin 1g",
+                "category": "Concentrates",
+                "strain_type": "Indica",
+                "batch_thc": "84.2%",
+                "batch_cbd": "4.8%",
+                "primary_terpene": "Myrcene (First-Wash Cold Rosin Sleep)",
+                "price": 48.00,
+                "deal_tag": "SOLVENTLESS ROSIN",
+                "thumbnail_url": "https://renderwithoutcode.com/cdn/inventory/lightsout_blackberry_rosin.webp",
+                "packaging_palette": "Deep Nightfall Lavender (#6B21A8)",
+                "status": "LIVE_ACTIVE"
+            }
+        ];
+
+        let pendingScanItem = null;
+
+        function renderJsonTable() {
+            const viewer = document.getElementById('json-viewer');
+            const countBadge = document.getElementById('record-count');
+            
+            countBadge.textContent = `${INVENTORY_DB.length} records`;
+            viewer.textContent = JSON.stringify(INVENTORY_DB, null, 2);
+        }
+
+        function triggerQuickDemo() {
+            // Simulate OCR Scanning of a fresh incoming UP! package
+            pendingScanItem = {
+                "sku_id": "UP-VAP-GG4-1G-005",
+                "metrc_tag": "1A40603000021230000" + Math.floor(100000 + Math.random() * 900000),
+                "timestamp": new Date().toISOString(),
+                "brand": "UP! (Wellgreens Exclusive)",
+                "product_name": "Gorilla Glue (Hybrid) Classic Cartridge 1g",
+                "category": "Vapes",
+                "strain_type": "Hybrid",
+                "batch_thc": "83.5%",
+                "batch_cbd": "0.40%",
+                "primary_terpene": "Caryophyllene (Pungent Earth Relief)",
+                "price": 12.50,
+                "deal_tag": "UP! 7 FOR $60+TAX",
+                "thumbnail_url": "https://renderwithoutcode.com/cdn/inventory/up_gg4_vape_thumb.webp",
+                "packaging_palette": "Electric Neon Lime (#84CC16)",
+                "status": "LIVE_ACTIVE"
+            };
+
+            // Display in Preview Box
+            document.getElementById('preview-thumb').src = "https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=300&auto=format&fit=crop&q=60";
+            document.getElementById('preview-name').textContent = pendingScanItem.product_name;
+            document.getElementById('preview-metrc').textContent = `METRC: ${pendingScanItem.metrc_tag}`;
+            document.getElementById('preview-thc').textContent = `${pendingScanItem.batch_thc} THC (${pendingScanItem.primary_terpene.split(' ')[0]})`;
+            document.getElementById('preview-type').textContent = `${pendingScanItem.category} (${pendingScanItem.strain_type})`;
+
+            document.getElementById('scan-results-box').classList.remove('hidden');
+        }
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                pendingScanItem = {
+                    "sku_id": "SCAN-" + Math.floor(1000 + Math.random() * 9000),
+                    "metrc_tag": "1A40603000021230000" + Math.floor(100000 + Math.random() * 900000),
+                    "timestamp": new Date().toISOString(),
+                    "brand": "UP! (Wellgreens Exclusive)",
+                    "product_name": file.name.replace(/\.[^/.]+$/, "").replace(/_/g, " ").toUpperCase(),
+                    "category": "Flower",
+                    "strain_type": "Indica",
+                    "batch_thc": "27.8%",
+                    "batch_cbd": "0.15%",
+                    "primary_terpene": "Myrcene (Fresh Batch)",
+                    "price": 45.00,
+                    "deal_tag": "SPECIAL DROP",
+                    "thumbnail_url": e.target.result,
+                    "packaging_palette": "Steely Ice Blue (#B8D7EB)",
+                    "status": "LIVE_ACTIVE"
+                };
+
+                document.getElementById('preview-thumb').src = e.target.result;
+                document.getElementById('preview-name').textContent = pendingScanItem.product_name;
+                document.getElementById('preview-metrc').textContent = `METRC: ${pendingScanItem.metrc_tag}`;
+                document.getElementById('preview-thc').textContent = `${pendingScanItem.batch_thc} THC (Myrcene)`;
+                document.getElementById('preview-type').textContent = `${pendingScanItem.category} (${pendingScanItem.strain_type})`;
+
+                document.getElementById('scan-results-box').classList.remove('hidden');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function commitToJsonDatabase() {
+            if (!pendingScanItem) return;
+
+            INVENTORY_DB.unshift(pendingScanItem);
+            renderJsonTable();
+            alert(`🎉 SKU COMMITTED TO JSON TABLE!\n\nProduct: ${pendingScanItem.product_name}\nMETRC Barcode: ${pendingScanItem.metrc_tag}\n\nThumbnail and lab batch data are now live on the Vista e-commerce feed and in-store self-checkout kiosks!`);
+            
+            document.getElementById('scan-results-box').classList.add('hidden');
+            pendingScanItem = null;
+        }
+
+        function downloadJsonFile() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(INVENTORY_DB, null, 2));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", "wellgreens_vista_inventory_catalog.json");
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+        }
+
+        function clearDatabase() {
+            if (confirm("Reset JSON inventory database to default mock records?")) {
+                INVENTORY_DB = INVENTORY_DB.slice(0, 4);
+                renderJsonTable();
+            }
+        }
+
+        // Initialize on Load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderJsonTable();
+        });
+    </script>
+</body>
+</html>
