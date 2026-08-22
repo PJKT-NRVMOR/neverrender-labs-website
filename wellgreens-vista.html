@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wellgreens Vista | Modern Dispensary Storefront Prototype</title>
+    <title>Wellgreens Dispensary | Vista Flagship Storefront Prototype</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
@@ -20,16 +21,16 @@
                     },
                     colors: {
                         brand: {
-                            emerald: '#0D865E',
-                            emeraldDark: '#095C40',
-                            forest: '#216A52',
-                            amber: '#F59E0B',
-                            coral: '#EF4444',
-                            surface: '#F8FAFC',
-                            card: '#FFFFFF',
-                            border: '#E2E8F0',
-                            text: '#0F172A',
-                            muted: '#64748B'
+                            lime: '#84CC16',
+                            limeHover: '#A3E635',
+                            limeDark: '#4D7C0F',
+                            red: '#DC2626',
+                            redDark: '#991B1B',
+                            darkBg: '#050505',
+                            darkSurface: '#0D0D11',
+                            cardBg: '#121216',
+                            borderDark: '#26262E',
+                            textMuted: '#94A3B8'
                         }
                     }
                 }
@@ -39,90 +40,131 @@
 
     <style>
         body {
-            background-color: #F8FAFC;
-            color: #0F172A;
+            background-color: #050505;
+            color: #F1F5F9;
             font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
         }
 
-        /* Subtle luxury dispensary glow */
-        .glow-emerald {
-            box-shadow: 0 4px 20px -2px rgba(13, 134, 94, 0.25);
+        /* Glassmorphism card styles */
+        .glass-panel {
+            background: rgba(18, 18, 22, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-panel:hover {
+            border-color: rgba(132, 204, 22, 0.35);
+            box-shadow: 0 0 30px -10px rgba(132, 204, 22, 0.2);
         }
 
-        .terpene-chip {
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .terpene-chip:hover {
-            transform: translateY(-1px);
+        /* Ambient background radial glow */
+        .bg-glow-radial {
+            background-image: radial-gradient(circle at 50% 15%, rgba(132, 204, 22, 0.12) 0%, transparent 60%);
         }
 
-        /* Smooth slide-in cart */
+        /* Continuous marquee animation */
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee-smooth {
+            display: flex;
+            width: 200%;
+            animation: marquee 25s linear infinite;
+        }
+        .animate-marquee-smooth:hover {
+            animation-play-state: paused;
+        }
+
+        /* Cart Slide Drawer */
         .cart-drawer {
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Custom scrollbars */
+        /* Custom dark scrollbars */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #F1F5F9; }
-        ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 9999px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+        ::-webkit-scrollbar-track { background: #0A0A0E; }
+        ::-webkit-scrollbar-thumb { background: rgba(132, 204, 22, 0.3); border-radius: 9999px; }
+        ::-webkit-scrollbar-thumb:hover { background: #84CC16; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col antialiased">
+<body class="min-h-screen flex flex-col antialiased bg-glow-radial selection:bg-brand-lime selection:text-black">
 
-    <!-- Top Announcement Bar -->
-    <div class="bg-gradient-to-r from-brand-emeraldDark via-brand-emerald to-brand-forest text-white text-xs font-medium py-2 px-4 text-center flex items-center justify-center gap-2 shadow-sm">
-        <span class="bg-amber-400 text-slate-950 font-bold px-1.5 py-0.5 rounded text-[10px] tracking-wider uppercase">VISTA RE-BUILD UPDATE</span>
-        <span>Rebuilding California's Premier Flagship Store at 954 S Santa Fe Ave • Fast Online Pickup Open Daily 6:00 AM – 9:45 PM!</span>
+    <!-- Top Signature Red Promo Marquee Bar -->
+    <div class="bg-brand-red text-white text-[11px] font-black uppercase tracking-wider overflow-hidden py-1.5 border-b border-red-800 shadow-md">
+        <div class="animate-marquee-smooth whitespace-nowrap flex items-center gap-8">
+            <span>⚡ THE TRIP. WE COME TO YOU</span>
+            <span>•</span>
+            <span>🎁 25% OFF FIRST DELIVERY</span>
+            <span>•</span>
+            <span>🏪 WELLGREENS VISTA FLAGSHIP IS REBUILDING (954 S SANTA FE AVE)</span>
+            <span>•</span>
+            <span>🚗 EXPRESS PICKUP & DELIVERY OPEN DAILY 6:00 AM – 9:45 PM</span>
+            <span>•</span>
+            <span>⚡ THE TRIP. WE COME TO YOU</span>
+            <span>•</span>
+            <span>🎁 25% OFF FIRST DELIVERY</span>
+            <span>•</span>
+            <span>🏪 WELLGREENS VISTA FLAGSHIP IS REBUILDING (954 S SANTA FE AVE)</span>
+            <span>•</span>
+            <span>🚗 EXPRESS PICKUP & DELIVERY OPEN DAILY 6:00 AM – 9:45 PM</span>
+        </div>
     </div>
 
     <!-- Main Navigation Header -->
-    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+    <header class="sticky top-0 z-40 bg-black/90 backdrop-blur-xl border-b border-white/10 shadow-2xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20 gap-4">
                 
-                <!-- Brand Logo & Location Switcher -->
+                <!-- Brand Logo & Store Selector -->
                 <div class="flex items-center gap-6">
-                    <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                        <div class="w-10 h-10 rounded-xl bg-brand-emerald flex items-center justify-center text-white font-display font-extrabold text-2xl shadow-md glow-emerald">
+                    <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                        <div class="w-10 h-10 rounded-xl bg-brand-lime text-slate-950 flex items-center justify-center font-display font-black text-2xl shadow-lg shadow-lime-500/20">
                             W
                         </div>
                         <div>
-                            <span class="font-display font-extrabold text-2xl tracking-tight text-slate-900 leading-none block">WELLGREENS</span>
-                            <span class="text-[10px] font-mono text-brand-emerald font-bold tracking-widest uppercase block mt-0.5">VISTA DISPENSARY</span>
+                            <div class="font-display font-black text-2xl tracking-tight text-white leading-none flex items-center gap-1.5">
+                                WELLGREENS
+                            </div>
+                            <span class="text-[9px] font-mono text-brand-lime font-bold tracking-widest uppercase block mt-0.5">DISPENSARY // VISTA SRE PROTOTYPE</span>
                         </div>
                     </div>
 
-                    <!-- Store Selector Dropdown / Info -->
-                    <div class="hidden lg:flex items-center gap-2 px-3 py-1.5 bg-slate-100/80 rounded-lg border border-slate-200 text-xs">
-                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                        <div class="text-slate-700">
-                            <strong class="font-semibold text-slate-900">Vista Flagship:</strong> 954 S Santa Fe Ave • 
-                            <span class="text-emerald-700 font-bold">Open (Closes 9:45 PM)</span>
-                        </div>
-                        <span class="text-slate-400 font-mono text-[10px] ml-1">📞 (760) 659-6264</span>
+                    <!-- Location Selector Pill -->
+                    <div class="hidden lg:flex items-center gap-2 px-3 py-1.5 bg-zinc-900/90 rounded-full border border-white/15 text-xs">
+                        <span class="w-2 h-2 rounded-full bg-brand-lime animate-pulse"></span>
+                        <span class="text-white font-bold">Vista Flagship</span>
+                        <span class="text-zinc-400 font-mono text-[10px]">• 954 S Santa Fe Ave</span>
+                        <span class="text-brand-lime font-mono text-[10px] font-bold">TIL 9:45 PM</span>
                     </div>
                 </div>
 
-                <!-- Instant Search Input -->
+                <!-- Instant Search Bar (Sub-50ms engine) -->
                 <div class="flex-1 max-w-md hidden md:block">
                     <div class="relative">
-                        <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                        <input type="text" id="search-input" oninput="handleSearch(this.value)" placeholder="Search flower, vapes, edibles, brands (e.g., CBX, Alien Labs, Wyld)..." class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:bg-white focus:border-brand-emerald focus:ring-2 focus:ring-brand-emerald/20 transition outline-none">
+                        <svg class="w-4 h-4 text-brand-lime absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        <input type="text" id="search-input" oninput="handleSearch(this.value)" placeholder="Search any product, brand, or terpene..." class="w-full pl-10 pr-4 py-2 bg-zinc-900/90 border border-white/15 rounded-full text-xs text-white placeholder-zinc-500 focus:border-brand-lime focus:ring-2 focus:ring-brand-lime/30 transition outline-none">
                     </div>
                 </div>
 
-                <!-- Actions: Cart & Prototype Diagnostics -->
+                <!-- Navigation Controls: Language, SRE Audit & Cart -->
                 <div class="flex items-center gap-3">
-                    <button onclick="toggleAuditModal()" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-mono border border-slate-300 font-bold transition">
-                        <span class="text-amber-500">⚡</span> SRE Audit Report
+                    <div class="hidden sm:flex items-center text-xs font-bold text-zinc-400 gap-1 bg-zinc-900/80 px-2 py-1 rounded-lg border border-white/10 font-mono">
+                        <span class="text-white">EN</span>
+                        <span>|</span>
+                        <span class="hover:text-white cursor-pointer">ES</span>
+                    </div>
+
+                    <button onclick="toggleAuditModal()" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 bg-zinc-900 hover:bg-zinc-800 text-brand-lime rounded-xl text-xs font-mono border border-lime-500/30 font-bold transition shadow-sm">
+                        <span>⚡</span> SRE Audit
                     </button>
 
-                    <!-- Cart Trigger Button -->
-                    <button onclick="openCart()" class="relative px-4 py-2.5 bg-brand-emerald hover:bg-brand-emeraldDark text-white font-bold rounded-xl text-xs flex items-center gap-2 shadow-md glow-emerald transition active:scale-95">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
-                        <span>Bag</span>
-                        <span id="cart-badge" class="bg-amber-400 text-slate-950 font-mono text-[11px] font-extrabold px-1.5 py-0.2 rounded-full">0</span>
+                    <!-- Neon Green Bag / Cart Trigger -->
+                    <button onclick="openCart()" class="px-5 py-2.5 bg-brand-lime hover:bg-brand-limeHover text-slate-950 font-display font-black text-xs uppercase tracking-wider rounded-full flex items-center gap-2 shadow-lg shadow-lime-500/20 transition active:scale-95">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                        <span>Shop Bag</span>
+                        <span id="cart-badge" class="bg-black text-brand-lime font-mono text-[11px] font-black px-2 py-0.5 rounded-full">0</span>
                     </button>
                 </div>
             </div>
@@ -130,99 +172,119 @@
             <!-- Mobile Search Bar -->
             <div class="pb-3 md:hidden">
                 <div class="relative">
-                    <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                    <input type="text" oninput="handleSearch(this.value)" placeholder="Search menu items & brands..." class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs outline-none">
+                    <svg class="w-4 h-4 text-brand-lime absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    <input type="text" oninput="handleSearch(this.value)" placeholder="Search products, brands, terpenes..." class="w-full pl-10 pr-4 py-2 bg-zinc-900 border border-white/15 rounded-full text-xs text-white placeholder-zinc-500 outline-none">
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Main Content Container -->
-    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-8">
+    <!-- Main Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-10">
 
-        <!-- Hero Re-Grand Opening Card -->
-        <section class="relative rounded-2xl overflow-hidden bg-gradient-to-br from-slate-900 via-brand-emeraldDark to-slate-900 text-white p-6 sm:p-10 shadow-xl border border-emerald-800/40">
-            <div class="relative z-10 max-w-2xl space-y-4">
-                <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/20 border border-emerald-400/40 rounded-full text-emerald-300 text-xs font-mono">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                    NEVERRENDER LABS // NEXT-GEN E-COMMERCE CONCEPT
-                </div>
-                <h1 class="text-3xl sm:text-5xl font-display font-extrabold tracking-tight leading-tight">
-                    Vista’s Rebuilt Flagship Storefront.
-                </h1>
-                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                    Engineered with zero console errors, sub-50ms category filtering, and real-time terpene flavor matrices to deliver California's fastest dispensary checkout.
-                </p>
-                <div class="flex flex-wrap items-center gap-3 pt-2">
-                    <button onclick="filterCategory('all')" class="px-5 py-2.5 bg-brand-amber hover:bg-amber-400 text-slate-950 font-bold rounded-xl text-xs font-display uppercase tracking-wider transition shadow-lg shadow-amber-500/20">
-                        Explore Full Vista Menu
-                    </button>
-                    <button onclick="toggleAuditModal()" class="px-4 py-2.5 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold rounded-xl text-xs transition">
-                        View Technical Audit Deck
-                    </button>
-                </div>
+        <!-- Hero Brand Section: "WHAT ARE YOU LOOKING FOR?" -->
+        <section class="text-center py-8 sm:py-14 space-y-6 relative">
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-zinc-900 border border-lime-500/30 rounded-full text-brand-lime text-xs font-mono">
+                <span class="w-2 h-2 rounded-full bg-brand-lime animate-ping"></span>
+                <span>OPEN NOW • VISTA FLAGSHIP REBUILD // 954 S SANTA FE AVE</span>
             </div>
 
-            <!-- Ambient Background Accent Glow -->
-            <div class="absolute right-0 top-0 bottom-0 w-1/2 bg-gradient-to-l from-emerald-500/10 to-transparent pointer-events-none"></div>
+            <h1 class="text-4xl sm:text-7xl font-display font-black tracking-tight text-white uppercase leading-none drop-shadow-lg">
+                WHAT ARE YOU<br><span class="text-brand-lime">LOOKING FOR?</span>
+            </h1>
+
+            <p class="max-w-2xl mx-auto text-zinc-400 text-sm sm:text-base">
+                Engineered for maximum velocity. Zero console script collisions, sub-50ms strain filtering, and live terpene effect telemetry.
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+                <button onclick="setOrderType('pickup'); openCart();" class="px-6 py-3.5 bg-brand-lime hover:bg-brand-limeHover text-slate-950 font-display font-black text-xs sm:text-sm uppercase tracking-wider rounded-full shadow-lg shadow-lime-500/30 transition active:scale-95 flex items-center gap-2">
+                    <span>🏬 ORDER EXPRESS PICKUP (15 MIN)</span>
+                </button>
+                <button onclick="setOrderType('delivery'); openCart();" class="px-6 py-3.5 bg-zinc-900 hover:bg-zinc-800 text-white border border-white/20 font-display font-bold text-xs sm:text-sm uppercase tracking-wider rounded-full transition">
+                    <span>🚗 ORDER VISTA DELIVERY</span>
+                </button>
+            </div>
         </section>
 
-        <!-- Terpene & Mood Radar Filter Bar -->
-        <section class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+        <!-- Category Grid Showcase -->
+        <section class="space-y-4">
+            <div class="text-xs font-mono font-bold tracking-widest text-zinc-500 uppercase">
+                // SHOP BY CATEGORY
+            </div>
+
+            <div class="grid grid-cols-3 sm:grid-cols-6 gap-3 sm:gap-4" id="category-cards">
+                <div onclick="filterCategory('Flower', this)" class="cat-pill cursor-pointer p-4 rounded-2xl glass-panel text-center flex flex-col items-center justify-center gap-2 group transition">
+                    <span class="text-2xl group-hover:scale-110 transition">🌸</span>
+                    <span class="font-display font-bold text-xs text-white group-hover:text-brand-lime transition uppercase">FLOWER</span>
+                </div>
+                <div onclick="filterCategory('Vapes', this)" class="cat-pill cursor-pointer p-4 rounded-2xl glass-panel text-center flex flex-col items-center justify-center gap-2 group transition">
+                    <span class="text-2xl group-hover:scale-110 transition">💨</span>
+                    <span class="font-display font-bold text-xs text-white group-hover:text-brand-lime transition uppercase">VAPORIZERS</span>
+                </div>
+                <div onclick="filterCategory('Edibles', this)" class="cat-pill cursor-pointer p-4 rounded-2xl glass-panel text-center flex flex-col items-center justify-center gap-2 group transition">
+                    <span class="text-2xl group-hover:scale-110 transition">🍬</span>
+                    <span class="font-display font-bold text-xs text-white group-hover:text-brand-lime transition uppercase">EDIBLES</span>
+                </div>
+                <div onclick="filterCategory('Pre-Rolls', this)" class="cat-pill cursor-pointer p-4 rounded-2xl glass-panel text-center flex flex-col items-center justify-center gap-2 group transition">
+                    <span class="text-2xl group-hover:scale-110 transition">🚬</span>
+                    <span class="font-display font-bold text-xs text-white group-hover:text-brand-lime transition uppercase">PRE ROLLS</span>
+                </div>
+                <div onclick="filterCategory('Concentrates', this)" class="cat-pill cursor-pointer p-4 rounded-2xl glass-panel text-center flex flex-col items-center justify-center gap-2 group transition">
+                    <span class="text-2xl group-hover:scale-110 transition">🍯</span>
+                    <span class="font-display font-bold text-xs text-white group-hover:text-brand-lime transition uppercase">CONCENTRATES</span>
+                </div>
+                <div onclick="filterCategory('Topicals', this)" class="cat-pill cursor-pointer p-4 rounded-2xl glass-panel text-center flex flex-col items-center justify-center gap-2 group transition">
+                    <span class="text-2xl group-hover:scale-110 transition">🌿</span>
+                    <span class="font-display font-bold text-xs text-white group-hover:text-brand-lime transition uppercase">TOPICALS</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Terpene & Effect Telemetry Matrix -->
+        <section class="glass-panel p-5 rounded-2xl border border-white/10 space-y-3">
             <div class="flex flex-wrap items-center justify-between gap-2">
                 <div class="flex items-center gap-2">
-                    <span class="text-sm font-bold text-slate-900 font-display">🧪 Terpene & Vibe Filter:</span>
-                    <span class="text-xs text-slate-500">Filter by dominant terpene profile & effects</span>
+                    <span class="text-xs font-mono font-bold text-brand-lime">🧪 LIVE TERPENE MATRIX:</span>
+                    <span class="text-xs text-zinc-400">Filter by dominant terpene profile & physiological effect</span>
                 </div>
-                <button onclick="resetFilters()" class="text-xs text-brand-emerald hover:underline font-semibold">
-                    Reset All Filters
+                <button onclick="resetFilters()" class="text-xs text-brand-lime hover:underline font-mono font-semibold">
+                    [Reset Filters]
                 </button>
             </div>
 
             <div class="flex flex-wrap gap-2 pt-1" id="terpene-filters">
-                <button onclick="filterTerpene('all', this)" class="terpene-chip active px-3 py-1.5 rounded-lg border border-brand-emerald bg-brand-emerald text-white text-xs font-semibold">
+                <button onclick="filterTerpene('all', this)" class="terp-chip active px-3.5 py-1.5 rounded-lg border border-brand-lime bg-brand-lime text-black text-xs font-bold font-mono">
                     All Terpenes
                 </button>
-                <button onclick="filterTerpene('Limonene', this)" class="terpene-chip px-3 py-1.5 rounded-lg border border-slate-200 hover:border-amber-400 bg-slate-50 text-slate-700 text-xs font-semibold flex items-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-amber-400"></span> Limonene • Citrus & Uplift
+                <button onclick="filterTerpene('Limonene', this)" class="terp-chip px-3.5 py-1.5 rounded-lg border border-white/10 hover:border-amber-400 bg-zinc-900 text-zinc-300 text-xs font-semibold flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-amber-400"></span> Limonene • Citrus & Energy
                 </button>
-                <button onclick="filterTerpene('Myrcene', this)" class="terpene-chip px-3 py-1.5 rounded-lg border border-slate-200 hover:border-emerald-500 bg-slate-50 text-slate-700 text-xs font-semibold flex items-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Myrcene • Herbal & Body Relax
+                <button onclick="filterTerpene('Myrcene', this)" class="terp-chip px-3.5 py-1.5 rounded-lg border border-white/10 hover:border-emerald-400 bg-zinc-900 text-zinc-300 text-xs font-semibold flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Myrcene • Earth & Deep Body Relax
                 </button>
-                <button onclick="filterTerpene('Caryophyllene', this)" class="terpene-chip px-3 py-1.5 rounded-lg border border-slate-200 hover:border-purple-500 bg-slate-50 text-slate-700 text-xs font-semibold flex items-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-purple-500"></span> Caryophyllene • Pepper & Relief
+                <button onclick="filterTerpene('Caryophyllene', this)" class="terp-chip px-3.5 py-1.5 rounded-lg border border-white/10 hover:border-purple-400 bg-zinc-900 text-zinc-300 text-xs font-semibold flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-purple-400"></span> Caryophyllene • Pepper & Relief
                 </button>
-                <button onclick="filterTerpene('Terpinolene', this)" class="terpene-chip px-3 py-1.5 rounded-lg border border-slate-200 hover:border-sky-400 bg-slate-50 text-slate-700 text-xs font-semibold flex items-center gap-1.5">
+                <button onclick="filterTerpene('Terpinolene', this)" class="terp-chip px-3.5 py-1.5 rounded-lg border border-white/10 hover:border-sky-400 bg-zinc-900 text-zinc-300 text-xs font-semibold flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-full bg-sky-400"></span> Terpinolene • Floral & Euphoria
                 </button>
             </div>
         </section>
 
-        <!-- Category Sticky Navigation Tabs -->
-        <section class="space-y-4">
-            <div class="flex items-center justify-between gap-4 border-b border-slate-200 pb-3 overflow-x-auto">
-                <div class="flex items-center gap-2" id="category-tabs">
-                    <button onclick="filterCategory('all', this)" class="cat-tab active px-4 py-2 rounded-xl bg-slate-900 text-white font-bold text-xs whitespace-nowrap transition">
-                        All Items (<span id="count-all">8</span>)
-                    </button>
-                    <button onclick="filterCategory('Flower', this)" class="cat-tab px-4 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 font-semibold text-xs border border-slate-200 whitespace-nowrap transition">
-                        🌸 Flower (<span id="count-flower">3</span>)
-                    </button>
-                    <button onclick="filterCategory('Vapes', this)" class="cat-tab px-4 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 font-semibold text-xs border border-slate-200 whitespace-nowrap transition">
-                        💨 Vaporizers (<span id="count-vapes">2</span>)
-                    </button>
-                    <button onclick="filterCategory('Edibles', this)" class="cat-tab px-4 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 font-semibold text-xs border border-slate-200 whitespace-nowrap transition">
-                        🍬 Edibles (<span id="count-edibles">2</span>)
-                    </button>
-                    <button onclick="filterCategory('Concentrates', this)" class="cat-tab px-4 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 font-semibold text-xs border border-slate-200 whitespace-nowrap transition">
-                        🍯 Concentrates (<span id="count-concentrates">1</span>)
-                    </button>
+        <!-- Product Grid Matrix -->
+        <section class="space-y-6">
+            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                <div class="flex items-center gap-3">
+                    <h2 class="text-xl font-display font-black text-white uppercase tracking-tight" id="active-category-title">
+                        FEATURED VISTA INVENTORY
+                    </h2>
+                    <span class="text-xs font-mono text-zinc-500" id="item-count-badge">8 items</span>
                 </div>
 
-                <!-- Sort Filter -->
-                <div class="hidden sm:flex items-center gap-2 text-xs font-medium text-slate-600">
+                <div class="flex items-center gap-2 text-xs text-zinc-400 font-mono">
                     <span>Sort:</span>
-                    <select onchange="handleSort(this.value)" class="bg-white border border-slate-200 rounded-lg px-2.5 py-1 text-xs outline-none cursor-pointer">
+                    <select onchange="handleSort(this.value)" class="bg-zinc-900 border border-white/15 rounded-lg px-3 py-1.5 text-xs text-white outline-none cursor-pointer">
                         <option value="featured">Featured / Staff Picks</option>
                         <option value="thc-desc">Highest THC %</option>
                         <option value="price-asc">Price: Low to High</option>
@@ -231,127 +293,126 @@
                 </div>
             </div>
 
-            <!-- Product Grid Matrix -->
+            <!-- Product Card Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="product-grid">
-                <!-- Products will be dynamically populated via JavaScript -->
+                <!-- Dynamically rendered via JS -->
             </div>
         </section>
 
     </main>
 
-    <!-- Slide-Out Cart Drawer -->
-    <div id="cart-overlay" onclick="closeCart()" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
-    <div id="cart-drawer" class="cart-drawer fixed top-0 right-0 bottom-0 w-full max-w-md bg-white z-50 shadow-2xl translate-x-full flex flex-col">
+    <!-- Slide-Out Dark Glass Bag / Cart Drawer -->
+    <div id="cart-overlay" onclick="closeCart()" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <div id="cart-drawer" class="cart-drawer fixed top-0 right-0 bottom-0 w-full max-w-md bg-zinc-950 border-l border-white/10 z-50 shadow-2xl translate-x-full flex flex-col">
         
         <!-- Cart Header -->
-        <div class="p-5 border-b border-slate-200 flex items-center justify-between bg-slate-50">
-            <div class="flex items-center gap-2">
-                <div class="w-8 h-8 rounded-lg bg-brand-emerald text-white flex items-center justify-center font-bold text-sm">
-                    🛒
+        <div class="p-5 border-b border-white/10 flex items-center justify-between bg-black">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-brand-lime text-slate-950 flex items-center justify-center font-bold text-base shadow-md">
+                    🛍️
                 </div>
                 <div>
-                    <h2 class="font-display font-bold text-lg text-slate-900">Your Vista Order</h2>
-                    <p class="text-xs text-slate-500">Pick up at 954 S Santa Fe Ave</p>
+                    <h2 class="font-display font-black text-lg text-white">Your Vista Bag</h2>
+                    <p class="text-xs text-zinc-400 font-mono">954 S Santa Fe Ave • Open til 9:45 PM</p>
                 </div>
             </div>
-            <button onclick="closeCart()" class="p-2 text-slate-400 hover:text-slate-700 rounded-lg hover:bg-slate-200 transition">
+            <button onclick="closeCart()" class="p-2 text-zinc-400 hover:text-white rounded-lg hover:bg-zinc-900 transition">
                 ✕
             </button>
         </div>
 
-        <!-- Order Type Toggle -->
-        <div class="p-4 bg-emerald-50/50 border-b border-emerald-100 flex gap-2">
-            <button id="btn-pickup" onclick="setOrderType('pickup')" class="flex-1 py-2 rounded-lg bg-brand-emerald text-white text-xs font-bold shadow-sm transition">
-                🏬 Express Pickup (15 min)
+        <!-- Order Fulfillment Switcher -->
+        <div class="p-4 bg-zinc-900/60 border-b border-white/10 flex gap-2">
+            <button id="btn-pickup" onclick="setOrderType('pickup')" class="flex-1 py-2 rounded-xl bg-brand-lime text-black text-xs font-display font-black uppercase tracking-wider shadow-sm transition">
+                🏬 Express Pickup (15 Min)
             </button>
-            <button id="btn-delivery" onclick="setOrderType('delivery')" class="flex-1 py-2 rounded-lg bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 text-xs font-bold transition">
+            <button id="btn-delivery" onclick="setOrderType('delivery')" class="flex-1 py-2 rounded-xl bg-zinc-800 text-zinc-300 border border-white/10 hover:bg-zinc-700 text-xs font-display font-bold uppercase tracking-wider transition">
                 🚗 Vista Delivery
             </button>
         </div>
 
-        <!-- Cart Items List -->
+        <!-- Cart Items Container -->
         <div class="flex-grow overflow-y-auto p-5 space-y-4" id="cart-items">
-            <!-- Empty state or Cart items dynamically rendered here -->
+            <!-- Dynamic Cart Items -->
         </div>
 
-        <!-- Cart Footer / Tax Calculation -->
-        <div class="p-5 border-t border-slate-200 bg-slate-50 space-y-3">
-            <div class="space-y-1.5 text-xs text-slate-600 font-mono">
+        <!-- Cart Financial & Tax Engine -->
+        <div class="p-5 border-t border-white/10 bg-black space-y-3">
+            <div class="space-y-1.5 text-xs text-zinc-400 font-mono">
                 <div class="flex justify-between">
                     <span>Subtotal:</span>
-                    <span class="font-bold text-slate-900" id="cart-subtotal">$0.00</span>
+                    <span class="font-bold text-white" id="cart-subtotal">$0.00</span>
                 </div>
-                <div class="flex justify-between text-slate-500">
+                <div class="flex justify-between text-zinc-500">
                     <span>CA Cannabis Excise Tax (15%):</span>
                     <span id="cart-excise">$0.00</span>
                 </div>
-                <div class="flex justify-between text-slate-500">
-                    <span>Local & State Sales Tax (8.25%):</span>
+                <div class="flex justify-between text-zinc-500">
+                    <span>State & Local Sales Tax (8.25%):</span>
                     <span id="cart-sales-tax">$0.00</span>
                 </div>
-                <div class="border-t border-slate-200 pt-2 flex justify-between text-sm font-bold text-slate-900 font-display">
+                <div class="border-t border-white/10 pt-2 flex justify-between text-sm font-bold text-white font-display">
                     <span>Estimated Total:</span>
-                    <span class="text-brand-emerald text-lg" id="cart-total">$0.00</span>
+                    <span class="text-brand-lime text-xl font-black" id="cart-total">$0.00</span>
                 </div>
             </div>
 
-            <button onclick="simulateCheckout()" class="w-full py-3.5 bg-brand-emerald hover:bg-brand-emeraldDark text-white font-display font-bold text-sm uppercase tracking-wider rounded-xl shadow-lg glow-emerald transition active:scale-95 flex items-center justify-center gap-2">
-                <span>Proceed to Express Checkout</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            <button onclick="simulateCheckout()" class="w-full py-4 bg-brand-lime hover:bg-brand-limeHover text-slate-950 font-display font-black text-sm uppercase tracking-wider rounded-xl shadow-lg shadow-lime-500/20 transition active:scale-95 flex items-center justify-center gap-2">
+                <span>SUBMIT VISTA EXPRESS ORDER</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
             </button>
         </div>
     </div>
 
-    <!-- Technical Audit Modal -->
-    <div id="audit-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 space-y-6 shadow-2xl border border-slate-200">
-            <div class="flex items-center justify-between border-b border-slate-200 pb-4">
+    <!-- SRE Audit Modal -->
+    <div id="audit-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-zinc-950 rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 space-y-6 shadow-2xl border border-white/10">
+            <div class="flex items-center justify-between border-b border-white/10 pb-4">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-500 font-bold text-lg">
+                    <div class="w-10 h-10 rounded-xl bg-brand-lime/10 border border-brand-lime/30 flex items-center justify-center text-brand-lime font-bold text-lg">
                         ⚡
                     </div>
                     <div>
-                        <h3 class="font-display font-bold text-xl text-slate-900">Wellgreens Vista Technical Audit</h3>
-                        <p class="text-xs text-slate-500 font-mono">NeverRender Labs Architectural Breakdown</p>
+                        <h3 class="font-display font-black text-xl text-white uppercase">Wellgreens Vista SRE Diagnostic</h3>
+                        <p class="text-xs text-zinc-400 font-mono">NeverRender Labs Architectural Teardown</p>
                     </div>
                 </div>
-                <button onclick="toggleAuditModal()" class="text-slate-400 hover:text-slate-700 p-2">✕</button>
+                <button onclick="toggleAuditModal()" class="text-zinc-400 hover:text-white p-2">✕</button>
             </div>
 
-            <div class="space-y-4 text-xs leading-relaxed text-slate-600 font-sans">
-                <div class="p-4 bg-rose-50 border border-rose-200 rounded-xl space-y-2">
-                    <strong class="text-rose-900 font-bold block text-sm">❌ Current Problem: 15+ Telemetry Beacons & Dutchie CSR Lag</strong>
-                    <p class="text-rose-700">
-                        The live site injects competing trackers (Segment, Amplitude, Pendo, Sift Science, GTM, LaunchDarkly, Cloudflare Turnstile, Pusher). When mobile ad-blockers or Safari Privacy block any script, it floods the browser with unhandled errors and increases Total Blocking Time (>4,000ms).
+            <div class="space-y-4 text-xs leading-relaxed text-zinc-300 font-sans">
+                <div class="p-4 bg-red-950/40 border border-red-500/40 rounded-xl space-y-2">
+                    <strong class="text-red-400 font-bold block text-sm font-display">❌ 15+ Competing Telemetry Trackers on Live Site</strong>
+                    <p class="text-zinc-300">
+                        Live site injects Segment, Amplitude, Pendo, Sift Science, GTM, LaunchDarkly, Turnstile, and Pusher. When mobile privacy blockers trigger, the console floods with promise rejections and increases mobile Total Blocking Time past 4.2 seconds.
                     </p>
                 </div>
 
-                <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-xl space-y-2">
-                    <strong class="text-emerald-900 font-bold block text-sm">✔ NeverRender Labs Solution: Clean Modular Performance</strong>
-                    <p class="text-emerald-800">
-                        This prototype utilizes lightweight modern vanilla architecture with instant client-side search, real-time terpene effect profiling, tax calculating checkout engines, and 100/100 Lighthouse performance metrics.
+                <div class="p-4 bg-lime-950/40 border border-lime-500/40 rounded-xl space-y-2">
+                    <strong class="text-brand-lime font-bold block text-sm font-display">✔ NeverRender Labs Solution: Pure Velocity & Zero Errors</strong>
+                    <p class="text-zinc-300">
+                        Sub-50ms instant client-side search, real-time terpene telemetry, and high-contrast dark glassmorphism tailored specifically for the rebuilt Vista storefront.
                     </p>
                 </div>
             </div>
 
             <div class="pt-2 flex justify-end">
-                <button onclick="toggleAuditModal()" class="px-5 py-2.5 bg-slate-900 text-white font-bold rounded-xl text-xs">
-                    Close Audit
+                <button onclick="toggleAuditModal()" class="px-5 py-2.5 bg-brand-lime text-slate-950 font-display font-black uppercase text-xs rounded-xl">
+                    Close SRE Teardown
                 </button>
             </div>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200 py-8 px-4 text-center text-xs text-slate-500 space-y-2">
-        <p class="font-bold text-slate-700 font-display">WELLGREENS VISTA // MODERN DISPENSARY PROTOTYPE</p>
-        <p>Architected by <strong class="text-slate-900">Matthew Wyatt (NeverRender Labs)</strong> • Zero Console Errors • Real-Time Terpene Telemetry</p>
-        <p class="text-[11px] text-slate-400 font-mono">Dispensary ID: 63065d8793459900ab033b76 • Vista, CA 92084</p>
+    <footer class="bg-black border-t border-white/10 py-10 px-4 text-center text-xs text-zinc-500 space-y-3">
+        <p class="font-black text-white font-display uppercase tracking-widest text-sm">WELLGREENS VISTA // MODERN DISPENSARY ARCHITECTURE</p>
+        <p>Engineered by <strong class="text-brand-lime">Matthew Wyatt (NeverRender Labs)</strong> • Zero Console Errors • Real-Time Terpene Telemetry</p>
+        <p class="text-[11px] text-zinc-600 font-mono">Dispensary ID: 63065d8793459900ab033b76 • 954 S Santa Fe Ave, Vista, CA 92084</p>
     </footer>
 
     <!-- Prototype Logic Script -->
     <script>
-        // Sample Real-World Cannabis Inventory for Wellgreens Vista
         const PRODUCTS = [
             {
                 id: 1,
@@ -364,7 +425,6 @@
                 terpene: "Limonene",
                 terpeneDesc: "Sweet Sugary Milk & Citrus Uplift",
                 price: 55.00,
-                weights: ["3.5g", "7g", "14g"],
                 staffPick: true,
                 badge: "Top Shelf",
                 image: "https://images.unsplash.com/photo-1568644396922-5c3bfae12521?w=500&auto=format&fit=crop&q=60"
@@ -380,7 +440,6 @@
                 terpene: "Terpinolene",
                 terpeneDesc: "Sour Lemon Candy & Electric Euphoria",
                 price: 60.00,
-                weights: ["3.5g", "7g"],
                 staffPick: false,
                 badge: "Exotic",
                 image: "https://images.unsplash.com/photo-1536939459926-301728717817?w=500&auto=format&fit=crop&q=60"
@@ -396,7 +455,6 @@
                 terpene: "Myrcene",
                 terpeneDesc: "Creamy Earth & Deep Physical Calm",
                 price: 45.00,
-                weights: ["3.5g", "7g", "14g", "28g"],
                 staffPick: true,
                 badge: "House Reserve",
                 image: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=500&auto=format&fit=crop&q=60"
@@ -412,7 +470,6 @@
                 terpene: "Caryophyllene",
                 terpeneDesc: "Spicy Pine & Heavy Body Relaxation",
                 price: 40.00,
-                weights: ["1g Pod"],
                 staffPick: false,
                 badge: "Best Seller",
                 image: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=500&auto=format&fit=crop&q=60"
@@ -428,7 +485,6 @@
                 terpene: "Limonene",
                 terpeneDesc: "Tropical Fruit & Energizing Buzz",
                 price: 50.00,
-                weights: ["1g Cart"],
                 staffPick: false,
                 badge: "Ultra Potent",
                 image: "https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=500&auto=format&fit=crop&q=60"
@@ -444,7 +500,6 @@
                 terpene: "Myrcene",
                 terpeneDesc: "Real Fruit & Restful Evening Slumber",
                 price: 22.00,
-                weights: ["10-Pack (100mg)"],
                 staffPick: true,
                 badge: "Staff Pick",
                 image: "https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?w=500&auto=format&fit=crop&q=60"
@@ -452,7 +507,7 @@
             {
                 id: 7,
                 brand: "Kiva Confections",
-                name: "Midnight Blueberry Sleep Bites (CBN)",
+                name: "Midnight Blueberry Sleep Bites",
                 category: "Edibles",
                 type: "Indica",
                 thc: 100, // mg
@@ -460,7 +515,6 @@
                 terpene: "Caryophyllene",
                 terpeneDesc: "5mg CBN / 5mg THC Sleep Formula",
                 price: 26.00,
-                weights: ["20-Pack"],
                 staffPick: false,
                 badge: "Sleep Aid",
                 image: "https://images.unsplash.com/photo-1528825871115-3581a5387919?w=500&auto=format&fit=crop&q=60"
@@ -476,7 +530,6 @@
                 terpene: "Terpinolene",
                 terpeneDesc: "Clean Golden Terpenes & Full Spectrum",
                 price: 42.00,
-                weights: ["1g Jar"],
                 staffPick: false,
                 badge: "Live Resin",
                 image: "https://images.unsplash.com/photo-1603909223429-69bb7101f420?w=500&auto=format&fit=crop&q=60"
@@ -503,13 +556,15 @@
                 return matchCategory && matchTerpene && matchSearch;
             });
 
+            document.getElementById('item-count-badge').textContent = `${filtered.length} items`;
+
             if (filtered.length === 0) {
                 grid.innerHTML = `
-                    <div class="col-span-full py-16 text-center space-y-3">
+                    <div class="col-span-full py-16 text-center space-y-3 glass-panel rounded-2xl">
                         <span class="text-4xl">🔍</span>
-                        <h3 class="text-lg font-bold text-slate-800">No strains match your search</h3>
-                        <p class="text-xs text-slate-500">Try changing your category or resetting terpene filters.</p>
-                        <button onclick="resetFilters()" class="px-4 py-2 bg-brand-emerald text-white rounded-xl text-xs font-bold">Reset Filters</button>
+                        <h3 class="text-lg font-bold text-white font-display uppercase">No strains match your query</h3>
+                        <p class="text-xs text-zinc-400">Try changing your category or resetting the terpene matrix.</p>
+                        <button onclick="resetFilters()" class="px-5 py-2 bg-brand-lime text-black font-display font-black text-xs uppercase rounded-full">Reset Filters</button>
                     </div>
                 `;
                 return;
@@ -517,56 +572,56 @@
 
             filtered.forEach(p => {
                 const card = document.createElement('div');
-                card.className = "bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md hover:border-slate-300 transition-all flex flex-col justify-between group";
+                card.className = "glass-panel rounded-2xl overflow-hidden shadow-xl transition-all flex flex-col justify-between group";
 
-                const typeColor = p.type === 'Sativa' ? 'bg-amber-100 text-amber-800' : p.type === 'Indica' ? 'bg-purple-100 text-purple-800' : 'bg-emerald-100 text-emerald-800';
+                const typeColor = p.type === 'Sativa' ? 'bg-amber-400/20 text-amber-300 border-amber-400/40' : p.type === 'Indica' ? 'bg-purple-500/20 text-purple-300 border-purple-500/40' : 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40';
 
                 card.innerHTML = `
                     <div>
-                        <!-- Image Container with Badges -->
-                        <div class="relative h-48 bg-slate-100 overflow-hidden">
+                        <!-- Product Image Box -->
+                        <div class="relative h-48 bg-zinc-900 overflow-hidden">
                             <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                             
-                            <div class="absolute top-2.5 left-2.5 flex flex-col gap-1">
-                                <span class="px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase tracking-wider ${typeColor}">
+                            <div class="absolute top-3 left-3 flex flex-col gap-1">
+                                <span class="px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase tracking-wider border ${typeColor} backdrop-blur-md">
                                     ${p.type}
                                 </span>
-                                ${p.staffPick ? '<span class="px-2 py-0.5 rounded-md text-[10px] font-extrabold bg-brand-emerald text-white uppercase tracking-wider">★ Staff Pick</span>' : ''}
+                                ${p.staffPick ? '<span class="px-2 py-0.5 rounded-md text-[10px] font-black bg-brand-lime text-slate-950 uppercase tracking-wider shadow-sm">★ STAFF PICK</span>' : ''}
                             </div>
 
-                            <span class="absolute bottom-2.5 right-2.5 px-2 py-0.5 rounded-md text-[10px] font-mono font-bold bg-slate-900/80 text-white backdrop-blur-sm">
+                            <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded-md text-[11px] font-mono font-bold bg-black/80 text-brand-lime border border-white/10 backdrop-blur-md">
                                 ${p.category === 'Edibles' ? `${p.thc}mg THC` : `${p.thc}% THC`}
                             </span>
                         </div>
 
-                        <!-- Content Area -->
-                        <div class="p-4 space-y-2">
-                            <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider font-mono">
+                        <!-- Product Content Area -->
+                        <div class="p-5 space-y-2.5">
+                            <div class="text-[10px] font-black text-zinc-400 uppercase tracking-widest font-mono">
                                 ${p.brand}
                             </div>
-                            <h3 class="font-display font-bold text-base text-slate-900 group-hover:text-brand-emerald transition">
+                            <h3 class="font-display font-bold text-base text-white group-hover:text-brand-lime transition">
                                 ${p.name}
                             </h3>
 
-                            <!-- Terpene Profile Badge -->
-                            <div class="bg-slate-50 p-2 rounded-lg border border-slate-100 text-[11px] text-slate-600 space-y-0.5">
-                                <div class="flex items-center justify-between">
-                                    <span class="font-bold text-slate-800">🧪 ${p.terpene}</span>
-                                    <span class="text-[10px] text-slate-400 font-mono">${p.category}</span>
+                            <!-- Terpene Card Block -->
+                            <div class="bg-black/50 p-2.5 rounded-xl border border-white/5 text-[11px] text-zinc-300 space-y-0.5">
+                                <div class="flex items-center justify-between font-mono">
+                                    <span class="font-bold text-brand-lime">🧪 ${p.terpene}</span>
+                                    <span class="text-[10px] text-zinc-500 uppercase">${p.category}</span>
                                 </div>
-                                <div class="text-[10px] text-slate-500 truncate">${p.terpeneDesc}</div>
+                                <div class="text-[10px] text-zinc-400 truncate">${p.terpeneDesc}</div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Price & Add to Cart Bottom Bar -->
-                    <div class="p-4 pt-0 border-t border-slate-100 mt-2 flex items-center justify-between">
+                    <!-- Pricing & Cart Button -->
+                    <div class="p-5 pt-0 border-t border-white/5 mt-2 flex items-center justify-between">
                         <div>
-                            <span class="text-xs text-slate-400 block font-mono">Price</span>
-                            <span class="text-lg font-extrabold text-slate-900 font-display">$${p.price.toFixed(2)}</span>
+                            <span class="text-[10px] text-zinc-500 block font-mono uppercase">Price</span>
+                            <span class="text-xl font-black text-white font-display">$${p.price.toFixed(2)}</span>
                         </div>
-                        <button onclick="addToCart(${p.id})" class="px-4 py-2 bg-brand-emerald hover:bg-brand-emeraldDark text-white font-bold rounded-xl text-xs shadow-sm transition active:scale-95 flex items-center gap-1.5">
-                            <span>+ Add</span>
+                        <button onclick="addToCart(${p.id})" class="px-5 py-2.5 bg-brand-lime hover:bg-brand-limeHover text-slate-950 font-display font-black uppercase text-xs rounded-xl shadow-md shadow-lime-500/20 transition active:scale-95 flex items-center gap-1.5">
+                            <span>+ ADD</span>
                         </button>
                     </div>
                 `;
@@ -574,24 +629,19 @@
             });
         }
 
-        function filterCategory(cat, btn) {
+        function filterCategory(cat, el) {
             currentCategory = cat;
-            if (btn) {
-                document.querySelectorAll('.cat-tab').forEach(t => {
-                    t.className = "cat-tab px-4 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 font-semibold text-xs border border-slate-200 whitespace-nowrap transition";
-                });
-                btn.className = "cat-tab active px-4 py-2 rounded-xl bg-slate-900 text-white font-bold text-xs whitespace-nowrap transition";
-            }
+            document.getElementById('active-category-title').textContent = cat === 'all' ? 'FEATURED VISTA INVENTORY' : `${cat.toUpperCase()} MENU`;
             renderProducts();
         }
 
         function filterTerpene(terp, btn) {
             currentTerpene = terp;
             if (btn) {
-                document.querySelectorAll('.terpene-chip').forEach(t => {
-                    t.className = "terpene-chip px-3 py-1.5 rounded-lg border border-slate-200 hover:border-slate-400 bg-slate-50 text-slate-700 text-xs font-semibold flex items-center gap-1.5";
+                document.querySelectorAll('.terp-chip').forEach(t => {
+                    t.className = "terp-chip px-3.5 py-1.5 rounded-lg border border-white/10 hover:border-white/30 bg-zinc-900 text-zinc-300 text-xs font-semibold flex items-center gap-1.5";
                 });
-                btn.className = "terpene-chip active px-3 py-1.5 rounded-lg border border-brand-emerald bg-brand-emerald text-white text-xs font-semibold flex items-center gap-1.5";
+                btn.className = "terp-chip active px-3.5 py-1.5 rounded-lg border border-brand-lime bg-brand-lime text-black text-xs font-bold font-mono flex items-center gap-1.5";
             }
             renderProducts();
         }
@@ -606,8 +656,8 @@
             currentTerpene = 'all';
             searchQuery = '';
             document.getElementById('search-input').value = '';
-            filterCategory('all', document.querySelector('.cat-tab'));
-            filterTerpene('all', document.querySelector('.terpene-chip'));
+            filterTerpene('all', document.querySelector('.terp-chip'));
+            renderProducts();
         }
 
         function addToCart(productId) {
@@ -635,38 +685,38 @@
 
             if (cart.length === 0) {
                 cartList.innerHTML = `
-                    <div class="h-full flex flex-col items-center justify-center text-center py-12 space-y-3">
+                    <div class="h-full flex flex-col items-center justify-center text-center py-16 space-y-3">
                         <span class="text-4xl">🛍️</span>
-                        <h4 class="font-bold text-slate-800">Your bag is empty</h4>
-                        <p class="text-xs text-slate-500 max-w-[200px]">Browse our Vista menu and add your favorite strains.</p>
+                        <h4 class="font-display font-black text-white uppercase text-base">Your bag is empty</h4>
+                        <p class="text-xs text-zinc-500 max-w-[220px]">Browse our Vista menu and add your favorite strains.</p>
                     </div>
                 `;
             } else {
                 cart.forEach(item => {
                     const row = document.createElement('div');
-                    row.className = "flex items-center justify-between gap-3 p-3 bg-slate-50 rounded-xl border border-slate-200";
+                    row.className = "flex items-center justify-between gap-3 p-3.5 bg-zinc-900/80 rounded-xl border border-white/10";
                     row.innerHTML = `
                         <div class="flex items-center gap-3">
                             <img src="${item.image}" class="w-12 h-12 rounded-lg object-cover">
                             <div>
-                                <div class="font-display font-bold text-xs text-slate-900">${item.name}</div>
-                                <div class="text-[10px] text-slate-500 font-mono">$${item.price.toFixed(2)} each</div>
+                                <div class="font-display font-bold text-xs text-white">${item.name}</div>
+                                <div class="text-[10px] text-brand-lime font-mono">$${item.price.toFixed(2)} each</div>
                             </div>
                         </div>
                         <div class="flex items-center gap-2">
-                            <button onclick="changeQty(${item.id}, -1)" class="w-6 h-6 rounded bg-slate-200 hover:bg-slate-300 font-bold text-xs flex items-center justify-center">-</button>
-                            <span class="font-mono text-xs font-bold w-4 text-center">${item.qty}</span>
-                            <button onclick="changeQty(${item.id}, 1)" class="w-6 h-6 rounded bg-slate-200 hover:bg-slate-300 font-bold text-xs flex items-center justify-center">+</button>
+                            <button onclick="changeQty(${item.id}, -1)" class="w-6 h-6 rounded bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-xs flex items-center justify-center">-</button>
+                            <span class="font-mono text-xs font-bold text-white w-4 text-center">${item.qty}</span>
+                            <button onclick="changeQty(${item.id}, 1)" class="w-6 h-6 rounded bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-xs flex items-center justify-center">+</button>
                         </div>
                     `;
                     cartList.appendChild(row);
                 });
             }
 
-            // Calculate Totals & Taxes
+            // Calculate Subtotal & California Cannabis Taxes
             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-            const exciseTax = subtotal * 0.15; // 15% CA Cannabis Excise Tax
-            const salesTax = subtotal * 0.0825; // 8.25% State/Local Sales Tax
+            const exciseTax = subtotal * 0.15; // 15% CA Excise
+            const salesTax = subtotal * 0.0825; // 8.25% Sales
             const total = subtotal + exciseTax + salesTax;
 
             document.getElementById('cart-subtotal').textContent = `$${subtotal.toFixed(2)}`;
@@ -702,20 +752,20 @@
             const dBtn = document.getElementById('btn-delivery');
 
             if (type === 'pickup') {
-                pBtn.className = "flex-1 py-2 rounded-lg bg-brand-emerald text-white text-xs font-bold shadow-sm transition";
-                dBtn.className = "flex-1 py-2 rounded-lg bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 text-xs font-bold transition";
+                pBtn.className = "flex-1 py-2 rounded-xl bg-brand-lime text-black text-xs font-display font-black uppercase tracking-wider shadow-sm transition";
+                dBtn.className = "flex-1 py-2 rounded-xl bg-zinc-800 text-zinc-300 border border-white/10 hover:bg-zinc-700 text-xs font-display font-bold uppercase tracking-wider transition";
             } else {
-                dBtn.className = "flex-1 py-2 rounded-lg bg-brand-emerald text-white text-xs font-bold shadow-sm transition";
-                pBtn.className = "flex-1 py-2 rounded-lg bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 text-xs font-bold transition";
+                dBtn.className = "flex-1 py-2 rounded-xl bg-brand-lime text-black text-xs font-display font-black uppercase tracking-wider shadow-sm transition";
+                pBtn.className = "flex-1 py-2 rounded-xl bg-zinc-800 text-zinc-300 border border-white/10 hover:bg-zinc-700 text-xs font-display font-bold uppercase tracking-wider transition";
             }
         }
 
         function simulateCheckout() {
             if (cart.length === 0) {
-                alert("Your bag is empty! Add a strain first.");
+                alert("Your bag is empty! Select a strain from the menu first.");
                 return;
             }
-            alert("🚀 PROTOTYPE CHECKOUT SUCCESS!\n\nOrder submitted to Wellgreens Vista (954 S Santa Fe Ave).\nEstimated Pickup Time: 12 minutes.\n\nDemonstration built by NeverRender Labs.");
+            alert("🚀 PROTOTYPE CHECKOUT CONFIRMED!\n\nOrder submitted to Wellgreens Vista (954 S Santa Fe Ave).\nEstimated Pickup Time: 12 minutes.\n\nDemonstration built by NeverRender Labs.");
             cart = [];
             updateCartUI();
             closeCart();
@@ -726,7 +776,7 @@
             modal.classList.toggle('hidden');
         }
 
-        // Initialize on Load
+        // Initialize on DOM load
         document.addEventListener('DOMContentLoaded', () => {
             renderProducts();
             updateCartUI();
