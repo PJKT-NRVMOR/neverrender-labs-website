@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wellgreens Vista | Modern Flagship & Self-Checkout Kiosk System</title>
+    <title>Wellgreens Vista | Ice Blue Flagship & House Exclusives</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,7 +11,6 @@
 
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
@@ -20,21 +19,17 @@
                         mono: ['"JetBrains Mono"', 'monospace'],
                     },
                     colors: {
-                        brand: {
-                            lime: '#84CC16',
-                            limeSoft: '#A3E635',
-                            mint: '#34D399',
-                            cyan: '#38BDF8',
-                            cyanSoft: '#7DD3FC',
-                            lavender: '#A78BFA',
-                            indigoSoft: '#818CF8',
-                            melon: '#FBBF24',
-                            peach: '#F472B6',
-                            red: '#DC2626',
-                            darkBg: '#07080B',
-                            darkSurface: '#0E1017',
-                            cardBg: 'rgba(16, 19, 27, 0.82)',
-                            borderDark: 'rgba(255, 255, 255, 0.1)'
+                        ice: {
+                            50: '#F4F9FC',
+                            100: '#E5F1F8',
+                            200: '#D0E5F2',
+                            300: '#B8D7EB',
+                            400: '#9BC7E2',
+                            500: '#7CB5D8',
+                            navy: '#102A45',
+                            deepNavy: '#0A1C30',
+                            accentCyan: '#0284C7',
+                            accentLime: '#65A30D'
                         }
                     }
                 }
@@ -44,14 +39,14 @@
 
     <style>
         body {
-            background-color: #07080B;
-            color: #F8FAFC;
+            background-color: #D4E7F2;
+            color: #0A1C30;
             font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
             position: relative;
         }
 
-        /* 3D Bubbly Parallax Background Canvas */
+        /* 3D Ice-Blue Geometry Parallax Background Canvas */
         #bg-canvas {
             position: fixed;
             top: 0;
@@ -62,52 +57,32 @@
             z-index: 0;
         }
 
-        /* Glassmorphism Card System */
-        .glass-panel {
-            background: rgba(16, 19, 27, 0.82);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+        /* Frosted Ice Glass Card System */
+        .ice-glass {
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            box-shadow: 0 12px 36px -8px rgba(16, 42, 69, 0.08), 0 2px 8px rgba(16, 42, 69, 0.04);
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .glass-panel:hover {
-            border-color: rgba(56, 189, 248, 0.4);
-            box-shadow: 0 12px 40px -10px rgba(56, 189, 248, 0.25);
-            transform: translateY(-2px);
-        }
-
-        /* Contour Topographic Pattern for UP! Cards */
-        .contour-cyan {
-            background-color: #0c1424;
-            background-image: radial-gradient(circle at 100% 0%, rgba(56, 189, 248, 0.25) 0%, transparent 60%),
-                              radial-gradient(circle at 0% 100%, rgba(125, 211, 252, 0.15) 0%, transparent 50%);
-            border: 1px solid rgba(56, 189, 248, 0.35);
-        }
-        .contour-cyan:hover {
+        .ice-glass:hover {
+            background: rgba(255, 255, 255, 0.88);
             border-color: #38BDF8;
-            box-shadow: 0 12px 45px -8px rgba(56, 189, 248, 0.35);
+            box-shadow: 0 18px 48px -10px rgba(2, 132, 199, 0.2), 0 4px 12px rgba(16, 42, 69, 0.06);
+            transform: translateY(-3px);
         }
 
-        .contour-lime {
-            background-color: #0e1c12;
-            background-image: radial-gradient(circle at 100% 0%, rgba(132, 204, 22, 0.25) 0%, transparent 60%),
-                              radial-gradient(circle at 0% 100%, rgba(52, 211, 153, 0.15) 0%, transparent 50%);
-            border: 1px solid rgba(132, 204, 22, 0.35);
+        /* UP! Authentic Pouch Card Styling */
+        .up-pouch-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(218, 237, 248, 0.85) 100%);
+            border: 1.5px solid rgba(56, 189, 248, 0.5);
+            box-shadow: 0 12px 36px -6px rgba(2, 132, 199, 0.15);
         }
-        .contour-lime:hover {
-            border-color: #84CC16;
-            box-shadow: 0 12px 45px -8px rgba(132, 204, 22, 0.35);
-        }
-
-        .contour-indigo {
-            background-color: #141026;
-            background-image: radial-gradient(circle at 100% 0%, rgba(167, 139, 250, 0.25) 0%, transparent 60%),
-                              radial-gradient(circle at 0% 100%, rgba(129, 140, 248, 0.15) 0%, transparent 50%);
-            border: 1px solid rgba(167, 139, 250, 0.35);
-        }
-        .contour-indigo:hover {
-            border-color: #A78BFA;
-            box-shadow: 0 12px 45px -8px rgba(167, 139, 250, 0.35);
+        .up-pouch-card:hover {
+            border-color: #0284C7;
+            box-shadow: 0 20px 50px -8px rgba(2, 132, 199, 0.28);
+            transform: translateY(-3px);
         }
 
         /* Continuous Marquee Animation */
@@ -132,98 +107,95 @@
         /* Kiosk Mode Fullscreen Styling */
         body.kiosk-mode header {
             position: static;
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
-        }
-        body.kiosk-mode .kiosk-hide {
-            display: none !important;
         }
         body.kiosk-mode .kiosk-badge {
             display: inline-flex !important;
         }
 
-        /* Custom Scrollbars */
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #07080B; }
-        ::-webkit-scrollbar-thumb { background: rgba(56, 189, 248, 0.3); border-radius: 9999px; }
-        ::-webkit-scrollbar-thumb:hover { background: #38BDF8; }
+        /* Custom Soft Ice Scrollbars */
+        ::-webkit-scrollbar { width: 7px; height: 7px; }
+        ::-webkit-scrollbar-track { background: #D4E7F2; }
+        ::-webkit-scrollbar-thumb { background: rgba(16, 42, 69, 0.25); border-radius: 9999px; }
+        ::-webkit-scrollbar-thumb:hover { background: #102A45; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col antialiased selection:bg-brand-cyan selection:text-black">
+<body class="min-h-screen flex flex-col antialiased selection:bg-ice-navy selection:text-white">
 
-    <!-- 3D Bubbly Parallax Background Canvas -->
+    <!-- 3D Steely Ice Blue Parallax Canvas -->
     <canvas id="bg-canvas"></canvas>
 
-    <!-- Top Signature Red Promo Marquee Bar -->
-    <div class="relative z-50 bg-brand-red text-white text-[11px] font-black uppercase tracking-wider overflow-hidden py-1.5 border-b border-red-800 shadow-md">
+    <!-- Top Signature Navy & Cyan Promo Marquee Bar -->
+    <div class="relative z-50 bg-ice-deepNavy text-white text-[11px] font-black uppercase tracking-wider overflow-hidden py-2 border-b border-ice-navy shadow-md">
         <div class="animate-marquee-smooth whitespace-nowrap flex items-center gap-8">
-            <span>⚡ THE TRIP. WE COME TO YOU</span>
+            <span class="text-sky-300">⚡ UNREAL PRODUCT • UNREAL PRICE • UNREAL PROCESS</span>
             <span>•</span>
-            <span>🎁 25% OFF FIRST DELIVERY</span>
+            <span>🏪 VISTA FLAGSHIP REBUILD (954 S SANTA FE AVE)</span>
             <span>•</span>
-            <span>🏪 VISTA STORE RE-MODEL: IN-STORE SELF-CHECKOUT KIOSKS ACTIVE (954 S SANTA FE AVE)</span>
+            <span class="bg-sky-400 text-slate-950 font-black px-2 py-0.5 rounded-full text-[10px]">UP! 7 FOR $60+TAX CARTS</span>
             <span>•</span>
-            <span>⭐ UP! EXCLUSIVE BUNDLE: 7 CARTRIDGES FOR $60+TAX</span>
+            <span class="bg-emerald-400 text-slate-950 font-black px-2 py-0.5 rounded-full text-[10px]">10% OFF ANY TWO 14G SMALLS</span>
             <span>•</span>
-            <span>⭐ 10% OFF ANY TWO 14G FLOWER SMALLS</span>
+            <span>🚗 EXPRESS IN-STORE SELF-CHECKOUT & DELIVERY OPEN TIL 9:45 PM</span>
             <span>•</span>
-            <span>🚗 EXPRESS PICKUP & DELIVERY OPEN DAILY 6:00 AM – 9:45 PM</span>
+            <span class="text-sky-300">⚡ UNREAL PRODUCT • UNREAL PRICE • UNREAL PROCESS</span>
+            <span>•</span>
+            <span>🏪 VISTA FLAGSHIP REBUILD (954 S SANTA FE AVE)</span>
         </div>
     </div>
 
-    <!-- Main Navigation Header -->
-    <header class="sticky top-0 z-40 bg-black/85 backdrop-blur-xl border-b border-white/10 shadow-2xl">
+    <!-- Main Navigation Header (Frosted Ice Glass) -->
+    <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-xl border-b border-white/80 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20 gap-4">
                 
                 <!-- Brand Logo & Store Selector -->
                 <div class="flex items-center gap-6">
                     <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-cyan via-brand-lime to-brand-lavender text-slate-950 flex items-center justify-center font-display font-black text-2xl shadow-lg shadow-cyan-500/25">
+                        <div class="w-11 h-11 rounded-2xl bg-ice-navy text-white flex items-center justify-center font-display font-black text-2xl shadow-md border border-sky-300/30">
                             W
                         </div>
                         <div>
-                            <div class="font-display font-black text-2xl tracking-tight text-white leading-none flex items-center gap-1.5">
+                            <div class="font-display font-black text-2xl tracking-tight text-ice-deepNavy leading-none flex items-center gap-1.5">
                                 WELLGREENS
                             </div>
-                            <span class="text-[9px] font-mono text-brand-cyan font-bold tracking-widest uppercase block mt-0.5">VISTA DISPENSARY & SELF-CHECKOUT</span>
+                            <span class="text-[9px] font-mono text-sky-700 font-extrabold tracking-widest uppercase block mt-0.5">VISTA DISPENSARY & KIOSKS</span>
                         </div>
                     </div>
 
                     <!-- Location Selector Pill -->
-                    <div class="hidden lg:flex items-center gap-2 px-3.5 py-1.5 bg-zinc-900/90 rounded-full border border-white/15 text-xs">
-                        <span class="w-2 h-2 rounded-full bg-brand-cyan animate-pulse"></span>
-                        <span class="text-white font-bold">Vista Store</span>
-                        <span class="text-zinc-400 font-mono text-[10px]">• 954 S Santa Fe Ave</span>
-                        <span class="text-brand-cyan font-mono text-[10px] font-bold">OPEN TIL 9:45 PM</span>
+                    <div class="hidden lg:flex items-center gap-2 px-4 py-1.5 bg-white/90 rounded-full border border-sky-200 text-xs shadow-sm">
+                        <span class="w-2.5 h-2.5 rounded-full bg-sky-500 animate-pulse"></span>
+                        <span class="text-ice-deepNavy font-extrabold">Vista Store</span>
+                        <span class="text-slate-500 font-mono text-[10px]">• 954 S Santa Fe Ave</span>
+                        <span class="text-emerald-700 font-mono text-[10px] font-black bg-emerald-100 px-2 py-0.5 rounded-full">OPEN TIL 9:45 PM</span>
                     </div>
                 </div>
 
                 <!-- Instant Search Bar (Sub-50ms engine) -->
                 <div class="flex-1 max-w-md hidden md:block">
                     <div class="relative">
-                        <svg class="w-4 h-4 text-brand-cyan absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                        <input type="text" id="search-input" oninput="handleSearch(this.value)" placeholder="Search UP! carts, flower smalls, terpenes..." class="w-full pl-10 pr-4 py-2 bg-zinc-900/90 border border-white/15 rounded-full text-xs text-white placeholder-zinc-500 focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/30 transition outline-none">
+                        <svg class="w-4 h-4 text-sky-600 absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        <input type="text" id="search-input" oninput="handleSearch(this.value)" placeholder="Search UP! smalls, cartridges, terpenes..." class="w-full pl-10 pr-4 py-2.5 bg-white/90 border border-sky-200 rounded-full text-xs text-ice-deepNavy placeholder-slate-400 focus:border-sky-500 focus:ring-2 focus:ring-sky-300/40 transition outline-none shadow-sm font-medium">
                     </div>
                 </div>
 
-                <!-- Navigation Controls: Kiosk Mode Toggle & Cart -->
+                <!-- Navigation Controls: Kiosk Mode & Bag -->
                 <div class="flex items-center gap-3">
                     
-                    <!-- In-Store Kiosk Mode Switcher -->
-                    <button onclick="toggleKioskMode()" id="kiosk-toggle-btn" class="inline-flex items-center gap-1.5 px-3 py-2 bg-zinc-900 hover:bg-zinc-800 text-brand-cyan rounded-xl text-xs font-mono border border-cyan-500/30 font-bold transition shadow-sm">
-                        <span class="text-brand-cyan">🖥️</span> <span id="kiosk-btn-text">Kiosk Mode</span>
+                    <!-- In-Store Kiosk Mode Toggle -->
+                    <button onclick="toggleKioskMode()" id="kiosk-toggle-btn" class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-white/90 hover:bg-white text-ice-navy rounded-xl text-xs font-mono border border-sky-300 font-extrabold transition shadow-sm">
+                        <span class="text-sky-600">🖥️</span> <span id="kiosk-btn-text">Kiosk Mode</span>
                     </button>
 
-                    <button onclick="toggleAuditModal()" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 bg-zinc-900 hover:bg-zinc-800 text-brand-lime rounded-xl text-xs font-mono border border-lime-500/30 font-bold transition shadow-sm">
-                        <span>⚡</span> SRE Audit
+                    <button onclick="toggleAuditModal()" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 bg-white/90 hover:bg-white text-slate-700 rounded-xl text-xs font-mono border border-slate-300 font-extrabold transition shadow-sm">
+                        <span class="text-amber-500">⚡</span> SRE Audit
                     </button>
 
-                    <!-- Neon Cyan/Lime Bag Trigger -->
-                    <button onclick="openCart()" class="px-5 py-2.5 bg-gradient-to-r from-brand-cyan to-brand-lime hover:from-cyan-400 hover:to-lime-400 text-slate-950 font-display font-black text-xs uppercase tracking-wider rounded-full flex items-center gap-2 shadow-lg shadow-cyan-500/25 transition active:scale-95">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                    <!-- Deep Navy Shopping Bag Trigger -->
+                    <button onclick="openCart()" class="px-5 py-2.5 bg-ice-navy hover:bg-ice-deepNavy text-white font-display font-black text-xs uppercase tracking-wider rounded-full flex items-center gap-2 shadow-md shadow-sky-900/10 transition active:scale-95">
+                        <svg class="w-4 h-4 text-sky-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
                         <span>Bag</span>
-                        <span id="cart-badge" class="bg-black text-brand-cyan font-mono text-[11px] font-black px-2 py-0.5 rounded-full">0</span>
+                        <span id="cart-badge" class="bg-sky-400 text-slate-950 font-mono text-[11px] font-black px-2 py-0.5 rounded-full">0</span>
                     </button>
                 </div>
             </div>
@@ -231,8 +203,8 @@
             <!-- Mobile Search Bar -->
             <div class="pb-3 md:hidden">
                 <div class="relative">
-                    <svg class="w-4 h-4 text-brand-cyan absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                    <input type="text" oninput="handleSearch(this.value)" placeholder="Search products, UP! deals, terpenes..." class="w-full pl-10 pr-4 py-2 bg-zinc-900 border border-white/15 rounded-full text-xs text-white placeholder-zinc-500 outline-none">
+                    <svg class="w-4 h-4 text-sky-600 absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    <input type="text" oninput="handleSearch(this.value)" placeholder="Search products, UP! deals, terpenes..." class="w-full pl-10 pr-4 py-2 bg-white border border-sky-200 rounded-full text-xs text-ice-deepNavy outline-none">
                 </div>
             </div>
         </div>
@@ -243,129 +215,129 @@
 
         <!-- Hero Brand Section: "WHAT ARE YOU LOOKING FOR?" -->
         <section class="text-center py-6 sm:py-12 space-y-6 relative">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1 bg-zinc-900/90 border border-cyan-500/30 rounded-full text-brand-cyan text-xs font-mono backdrop-blur-md">
-                <span class="w-2 h-2 rounded-full bg-brand-cyan animate-ping"></span>
-                <span>VISTA STORE REMODEL • IN-STORE TOUCH KIOSKS & RAPID PICKUP ACTIVE</span>
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-white/90 border border-sky-300 rounded-full text-ice-navy text-xs font-mono shadow-sm backdrop-blur-md">
+                <span class="w-2 h-2 rounded-full bg-sky-500 animate-ping"></span>
+                <span class="font-extrabold">VISTA FLAGSHIP RE-MODEL • SELF-CHECKOUT KIOSKS ACTIVE</span>
             </div>
 
-            <h1 class="text-4xl sm:text-7xl font-display font-black tracking-tight text-white uppercase leading-none drop-shadow-2xl">
-                WHAT ARE YOU<br><span class="bg-gradient-to-r from-brand-cyan via-brand-lime to-brand-lavender bg-clip-text text-transparent">LOOKING FOR?</span>
+            <h1 class="text-4xl sm:text-7xl font-display font-black tracking-tight text-ice-deepNavy uppercase leading-none drop-shadow-sm">
+                WHAT ARE YOU<br><span class="bg-gradient-to-r from-sky-600 via-ice-navy to-indigo-600 bg-clip-text text-transparent">LOOKING FOR?</span>
             </h1>
 
-            <p class="max-w-2xl mx-auto text-zinc-300 text-sm sm:text-base font-medium drop-shadow">
-                Re-engineered for self-checkout kiosks and mobile speed. Sub-50ms response time, authentic mid-pastel contours, 3D bubbly parallax depth, and full terpene transparency.
+            <p class="max-w-2xl mx-auto text-slate-700 text-sm sm:text-base font-semibold drop-shadow-sm">
+                Steely Ice-Blue 3D Parallax Architecture. Engineered for in-store self-checkout touchscreens and lightning-fast mobile ordering.
             </p>
 
             <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
-                <button onclick="setOrderType('pickup'); openCart();" class="px-6 py-3.5 bg-gradient-to-r from-brand-cyan to-brand-lime hover:opacity-90 text-slate-950 font-display font-black text-xs sm:text-sm uppercase tracking-wider rounded-full shadow-xl shadow-cyan-500/30 transition active:scale-95 flex items-center gap-2">
+                <button onclick="setOrderType('pickup'); openCart();" class="px-6 py-3.5 bg-ice-navy hover:bg-ice-deepNavy text-white font-display font-black text-xs sm:text-sm uppercase tracking-wider rounded-full shadow-lg shadow-sky-900/15 transition active:scale-95 flex items-center gap-2">
                     <span>🏬 ORDER EXPRESS PICKUP (15 MIN)</span>
                 </button>
-                <button onclick="setOrderType('delivery'); openCart();" class="px-6 py-3.5 bg-zinc-900/90 hover:bg-zinc-800 text-white border border-white/20 font-display font-bold text-xs sm:text-sm uppercase tracking-wider rounded-full backdrop-blur-md transition">
+                <button onclick="setOrderType('delivery'); openCart();" class="px-6 py-3.5 bg-white/90 hover:bg-white text-ice-deepNavy border border-sky-300 font-display font-black text-xs sm:text-sm uppercase tracking-wider rounded-full shadow-sm transition">
                     <span>🚗 ORDER VISTA DELIVERY</span>
                 </button>
             </div>
         </section>
 
-        <!-- SPOTLIGHT: WELLGREENS EXCLUSIVES & MID-PASTEL BUBBLY SHOWCASE -->
+        <!-- SPOTLIGHT: WELLGREENS EXCLUSIVES & UP! POUCH SHOWCASE -->
         <section class="space-y-4">
             <div class="flex items-center justify-between">
                 <div>
-                    <div class="text-xs font-mono font-bold tracking-widest text-brand-cyan uppercase flex items-center gap-1.5">
+                    <div class="text-xs font-mono font-black tracking-widest text-sky-700 uppercase flex items-center gap-1.5">
                         <span>⭐ IN-HOUSE REPUTATION // 65% MARGIN VAULT</span>
                     </div>
-                    <h2 class="text-2xl sm:text-3xl font-display font-black text-white uppercase tracking-tight">
+                    <h2 class="text-2xl sm:text-3xl font-display font-black text-ice-deepNavy uppercase tracking-tight">
                         WELLGREENS EXCLUSIVES
                     </h2>
                 </div>
-                <span class="text-xs font-mono text-zinc-400">Featured Mid-Pastel Packaging Lines</span>
+                <span class="text-xs font-mono text-slate-600 font-bold">Steely Ice-Blue Geometric Lines</span>
             </div>
 
-            <!-- Authentic 4 House Brand Banners with Contours & Real Deals -->
+            <!-- 4 House Brand Cards Styled from the Authentic Pouch Geometry -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 
-                <!-- Brand 1: UP! (Mid-Pastel Cyan & Lime) -->
-                <div onclick="handleSearch('UP!')" class="cursor-pointer p-5 rounded-2xl contour-cyan flex flex-col justify-between space-y-4 group transition">
-                    <div class="space-y-2">
+                <!-- UP! Smalls & Carts (Ice Blue & Navy) -->
+                <div onclick="handleSearch('UP!')" class="cursor-pointer p-5 rounded-3xl up-pouch-card flex flex-col justify-between space-y-4 group transition">
+                    <div class="space-y-2.5">
                         <div class="flex items-center justify-between">
-                            <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-cyan to-brand-lime flex items-center justify-center text-slate-950 font-black text-lg shadow-lg group-hover:scale-110 transition">
-                                ⚡
+                            <div class="w-12 h-12 rounded-2xl bg-ice-navy text-white flex items-center justify-center font-display font-black text-xl shadow-md border border-sky-300/40 group-hover:scale-110 transition">
+                                UP!
                             </div>
-                            <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-black bg-cyan-400/20 text-cyan-300 border border-cyan-400/40">
+                            <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-black bg-sky-100 text-sky-800 border border-sky-300">
                                 7 FOR $60
                             </span>
                         </div>
-                        <h3 class="text-2xl font-display font-black text-white group-hover:text-cyan-300 transition">UP!</h3>
-                        <p class="text-xs text-zinc-300 leading-relaxed">
-                            Bubbly electric fruit vapes, live resin diamond sugar, and 14g smalls.
+                        <h3 class="text-2xl font-display font-black text-ice-deepNavy group-hover:text-sky-700 transition">UP! FLOWER & VAPES</h3>
+                        <p class="text-xs text-slate-600 font-medium leading-relaxed">
+                            Skywalker OG 14g Smalls, 1g Live Resin & Classic Carts with concentric ripple profiles.
                         </p>
                     </div>
-                    <div class="flex items-center justify-between pt-2 border-t border-cyan-500/20 text-[11px] font-mono text-brand-cyan font-bold">
-                        <span>Shop UP! Deals</span>
+                    <div class="flex items-center justify-between pt-2 border-t border-sky-200 text-[11px] font-mono text-sky-700 font-black">
+                        <span>Shop UP! Exclusives</span>
                         <span>→</span>
                     </div>
                 </div>
 
-                <!-- Brand 2: LIGHTS OUT (Mid-Pastel Lavender & Indigo) -->
-                <div onclick="handleSearch('Lights Out')" class="cursor-pointer p-5 rounded-2xl contour-indigo flex flex-col justify-between space-y-4 group transition">
-                    <div class="space-y-2">
+                <!-- LIGHTS OUT (Deep Lavender/Indigo Rosin) -->
+                <div onclick="handleSearch('Lights Out')" class="cursor-pointer p-5 rounded-3xl ice-glass flex flex-col justify-between space-y-4 group transition">
+                    <div class="space-y-2.5">
                         <div class="flex items-center justify-between">
-                            <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-lavender to-brand-indigoSoft flex items-center justify-center text-slate-950 font-black text-lg shadow-lg group-hover:scale-110 transition">
+                            <div class="w-12 h-12 rounded-2xl bg-indigo-900 text-white flex items-center justify-center font-display font-black text-xl shadow-md group-hover:scale-110 transition">
                                 🌙
                             </div>
-                            <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-black bg-purple-400/20 text-purple-300 border border-purple-400/40">
+                            <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-black bg-purple-100 text-purple-800 border border-purple-300">
                                 ROSIN SLEEP
                             </span>
                         </div>
-                        <h3 class="text-2xl font-display font-black text-white group-hover:text-lavender transition">LIGHTS OUT</h3>
-                        <p class="text-xs text-zinc-300 leading-relaxed">
-                            Solventless live rosin, hash-infused joints, and CBN evening formulations.
+                        <h3 class="text-2xl font-display font-black text-ice-deepNavy group-hover:text-indigo-700 transition">LIGHTS OUT</h3>
+                        <p class="text-xs text-slate-600 font-medium leading-relaxed">
+                            Solventless cold cure live rosin, hash pre-rolls, and CBN bedtime sleep formulas.
                         </p>
                     </div>
-                    <div class="flex items-center justify-between pt-2 border-t border-purple-500/20 text-[11px] font-mono text-brand-lavender font-bold">
+                    <div class="flex items-center justify-between pt-2 border-t border-slate-200 text-[11px] font-mono text-indigo-700 font-black">
                         <span>Explore Rosin</span>
                         <span>→</span>
                     </div>
                 </div>
 
-                <!-- Brand 3: CITY ROOTS (Mid-Pastel Mint & Lime) -->
-                <div onclick="handleSearch('City Roots')" class="cursor-pointer p-5 rounded-2xl contour-lime flex flex-col justify-between space-y-4 group transition">
-                    <div class="space-y-2">
+                <!-- CITY ROOTS (Mint & Lime Craft) -->
+                <div onclick="handleSearch('City Roots')" class="cursor-pointer p-5 rounded-3xl ice-glass flex flex-col justify-between space-y-4 group transition">
+                    <div class="space-y-2.5">
                         <div class="flex items-center justify-between">
-                            <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-lime to-brand-mint flex items-center justify-center text-slate-950 font-black text-lg shadow-lg group-hover:scale-110 transition">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-800 text-white flex items-center justify-center font-display font-black text-xl shadow-md group-hover:scale-110 transition">
                                 🌱
                             </div>
-                            <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-black bg-lime-400/20 text-lime-300 border border-lime-400/40">
+                            <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-black bg-emerald-100 text-emerald-800 border border-emerald-300">
                                 CRAFT FLOWER
                             </span>
                         </div>
-                        <h3 class="text-2xl font-display font-black text-white group-hover:text-lime-300 transition">CITY ROOTS</h3>
-                        <p class="text-xs text-zinc-300 leading-relaxed">
-                            Farm-fresh indoor craft flower, live-resin gummies, and sugar shake.
+                        <h3 class="text-2xl font-display font-black text-ice-deepNavy group-hover:text-emerald-700 transition">CITY ROOTS</h3>
+                        <p class="text-xs text-slate-600 font-medium leading-relaxed">
+                            Farm-fresh indoor craft eighths, live-resin infused joints, and terpene sugar shake.
                         </p>
                     </div>
-                    <div class="flex items-center justify-between pt-2 border-t border-lime-500/20 text-[11px] font-mono text-brand-lime font-bold">
+                    <div class="flex items-center justify-between pt-2 border-t border-slate-200 text-[11px] font-mono text-emerald-700 font-black">
                         <span>Explore Craft</span>
                         <span>→</span>
                     </div>
                 </div>
 
-                <!-- Brand 4: DIRECT (Mid-Pastel Peach & Melon) -->
-                <div onclick="handleSearch('Direct')" class="cursor-pointer p-5 rounded-2xl glass-panel flex flex-col justify-between space-y-4 group transition">
-                    <div class="space-y-2">
+                <!-- DIRECT (Value 14g Smalls & Tablets) -->
+                <div onclick="handleSearch('Direct')" class="cursor-pointer p-5 rounded-3xl ice-glass flex flex-col justify-between space-y-4 group transition">
+                    <div class="space-y-2.5">
                         <div class="flex items-center justify-between">
-                            <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-peach to-brand-melon flex items-center justify-center text-slate-950 font-black text-lg shadow-lg group-hover:scale-110 transition">
+                            <div class="w-12 h-12 rounded-2xl bg-amber-700 text-white flex items-center justify-center font-display font-black text-xl shadow-md group-hover:scale-110 transition">
                                 📦
                             </div>
-                            <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-black bg-amber-400/20 text-amber-300 border border-amber-400/40">
+                            <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-black bg-amber-100 text-amber-800 border border-amber-300">
                                 14G DEALS
                             </span>
                         </div>
-                        <h3 class="text-2xl font-display font-black text-white group-hover:text-amber-300 transition">DIRECT</h3>
-                        <p class="text-xs text-zinc-300 leading-relaxed">
-                            Everyday indoor jars, 1g single-sticks, and 1000mg high-potency tablets.
+                        <h3 class="text-2xl font-display font-black text-ice-deepNavy group-hover:text-amber-700 transition">DIRECT</h3>
+                        <p class="text-xs text-slate-600 font-medium leading-relaxed">
+                            Everyday indoor half-ounces, 1g single-sticks, and 1000mg micro-dose tablets.
                         </p>
                     </div>
-                    <div class="flex items-center justify-between pt-2 border-t border-white/10 text-[11px] font-mono text-brand-melon font-bold">
+                    <div class="flex items-center justify-between pt-2 border-t border-slate-200 text-[11px] font-mono text-amber-700 font-black">
                         <span>Explore Value</span>
                         <span>→</span>
                     </div>
@@ -376,82 +348,82 @@
 
         <!-- Category Grid Showcase -->
         <section class="space-y-4">
-            <div class="text-xs font-mono font-bold tracking-widest text-zinc-400 uppercase">
+            <div class="text-xs font-mono font-black tracking-widest text-slate-600 uppercase">
                 // SHOP BY CATEGORY
             </div>
 
             <div class="grid grid-cols-3 sm:grid-cols-6 gap-3 sm:gap-4" id="category-cards">
-                <div onclick="filterCategory('Flower', this)" class="cat-pill cursor-pointer p-4 rounded-2xl glass-panel text-center flex flex-col items-center justify-center gap-2 group transition">
+                <div onclick="filterCategory('Flower', this)" class="cat-pill cursor-pointer p-4 rounded-2xl ice-glass text-center flex flex-col items-center justify-center gap-2 group transition">
                     <span class="text-2xl group-hover:scale-110 transition">🌸</span>
-                    <span class="font-display font-bold text-xs text-white group-hover:text-brand-cyan transition uppercase">FLOWER</span>
+                    <span class="font-display font-black text-xs text-ice-deepNavy group-hover:text-sky-600 transition uppercase">FLOWER</span>
                 </div>
-                <div onclick="filterCategory('Vapes', this)" class="cat-pill cursor-pointer p-4 rounded-2xl glass-panel text-center flex flex-col items-center justify-center gap-2 group transition">
+                <div onclick="filterCategory('Vapes', this)" class="cat-pill cursor-pointer p-4 rounded-2xl ice-glass text-center flex flex-col items-center justify-center gap-2 group transition">
                     <span class="text-2xl group-hover:scale-110 transition">💨</span>
-                    <span class="font-display font-bold text-xs text-white group-hover:text-brand-cyan transition uppercase">VAPORIZERS</span>
+                    <span class="font-display font-black text-xs text-ice-deepNavy group-hover:text-sky-600 transition uppercase">VAPORIZERS</span>
                 </div>
-                <div onclick="filterCategory('Edibles', this)" class="cat-pill cursor-pointer p-4 rounded-2xl glass-panel text-center flex flex-col items-center justify-center gap-2 group transition">
+                <div onclick="filterCategory('Edibles', this)" class="cat-pill cursor-pointer p-4 rounded-2xl ice-glass text-center flex flex-col items-center justify-center gap-2 group transition">
                     <span class="text-2xl group-hover:scale-110 transition">🍬</span>
-                    <span class="font-display font-bold text-xs text-white group-hover:text-brand-cyan transition uppercase">EDIBLES</span>
+                    <span class="font-display font-black text-xs text-ice-deepNavy group-hover:text-sky-600 transition uppercase">EDIBLES</span>
                 </div>
-                <div onclick="filterCategory('Pre-Rolls', this)" class="cat-pill cursor-pointer p-4 rounded-2xl glass-panel text-center flex flex-col items-center justify-center gap-2 group transition">
+                <div onclick="filterCategory('Pre-Rolls', this)" class="cat-pill cursor-pointer p-4 rounded-2xl ice-glass text-center flex flex-col items-center justify-center gap-2 group transition">
                     <span class="text-2xl group-hover:scale-110 transition">🚬</span>
-                    <span class="font-display font-bold text-xs text-white group-hover:text-brand-cyan transition uppercase">PRE ROLLS</span>
+                    <span class="font-display font-black text-xs text-ice-deepNavy group-hover:text-sky-600 transition uppercase">PRE ROLLS</span>
                 </div>
-                <div onclick="filterCategory('Concentrates', this)" class="cat-pill cursor-pointer p-4 rounded-2xl glass-panel text-center flex flex-col items-center justify-center gap-2 group transition">
+                <div onclick="filterCategory('Concentrates', this)" class="cat-pill cursor-pointer p-4 rounded-2xl ice-glass text-center flex flex-col items-center justify-center gap-2 group transition">
                     <span class="text-2xl group-hover:scale-110 transition">🍯</span>
-                    <span class="font-display font-bold text-xs text-white group-hover:text-brand-cyan transition uppercase">CONCENTRATES</span>
+                    <span class="font-display font-black text-xs text-ice-deepNavy group-hover:text-sky-600 transition uppercase">CONCENTRATES</span>
                 </div>
-                <div onclick="filterCategory('Topicals', this)" class="cat-pill cursor-pointer p-4 rounded-2xl glass-panel text-center flex flex-col items-center justify-center gap-2 group transition">
+                <div onclick="filterCategory('Topicals', this)" class="cat-pill cursor-pointer p-4 rounded-2xl ice-glass text-center flex flex-col items-center justify-center gap-2 group transition">
                     <span class="text-2xl group-hover:scale-110 transition">🌿</span>
-                    <span class="font-display font-bold text-xs text-white group-hover:text-brand-cyan transition uppercase">TOPICALS</span>
+                    <span class="font-display font-black text-xs text-ice-deepNavy group-hover:text-sky-600 transition uppercase">TOPICALS</span>
                 </div>
             </div>
         </section>
 
         <!-- Terpene & Effect Telemetry Matrix -->
-        <section class="glass-panel p-5 rounded-2xl border border-white/10 space-y-3">
+        <section class="ice-glass p-5 rounded-3xl space-y-3">
             <div class="flex flex-wrap items-center justify-between gap-2">
                 <div class="flex items-center gap-2">
-                    <span class="text-xs font-mono font-bold text-brand-cyan">🧪 LIVE TERPENE MATRIX:</span>
-                    <span class="text-xs text-zinc-400">Filter by dominant terpene profile & physiological effect</span>
+                    <span class="text-xs font-mono font-black text-sky-700">🧪 LIVE TERPENE MATRIX:</span>
+                    <span class="text-xs text-slate-600 font-semibold">Filter by dominant terpene profile & physiological effect</span>
                 </div>
-                <button onclick="resetFilters()" class="text-xs text-brand-cyan hover:underline font-mono font-semibold">
+                <button onclick="resetFilters()" class="text-xs text-sky-700 hover:underline font-mono font-black">
                     [Reset Filters]
                 </button>
             </div>
 
             <div class="flex flex-wrap gap-2 pt-1" id="terpene-filters">
-                <button onclick="filterTerpene('all', this)" class="terp-chip active px-3.5 py-1.5 rounded-lg border border-brand-cyan bg-brand-cyan text-black text-xs font-bold font-mono">
+                <button onclick="filterTerpene('all', this)" class="terp-chip active px-4 py-2 rounded-xl border border-sky-400 bg-ice-navy text-white text-xs font-black font-mono shadow-sm">
                     All Terpenes
                 </button>
-                <button onclick="filterTerpene('Limonene', this)" class="terp-chip px-3.5 py-1.5 rounded-lg border border-white/10 hover:border-amber-400 bg-zinc-900 text-zinc-300 text-xs font-semibold flex items-center gap-1.5">
+                <button onclick="filterTerpene('Limonene', this)" class="terp-chip px-4 py-2 rounded-xl border border-sky-200 hover:border-amber-400 bg-white/90 text-slate-700 text-xs font-bold flex items-center gap-2">
                     <span class="w-2 h-2 rounded-full bg-amber-400"></span> Limonene • Citrus & Energy
                 </button>
-                <button onclick="filterTerpene('Myrcene', this)" class="terp-chip px-3.5 py-1.5 rounded-lg border border-white/10 hover:border-emerald-400 bg-zinc-900 text-zinc-300 text-xs font-semibold flex items-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Myrcene • Earth & Deep Body Relax
+                <button onclick="filterTerpene('Myrcene', this)" class="terp-chip px-4 py-2 rounded-xl border border-sky-200 hover:border-emerald-400 bg-white/90 text-slate-700 text-xs font-bold flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Myrcene • Earth & Body Relax
                 </button>
-                <button onclick="filterTerpene('Caryophyllene', this)" class="terp-chip px-3.5 py-1.5 rounded-lg border border-white/10 hover:border-purple-400 bg-zinc-900 text-zinc-300 text-xs font-semibold flex items-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-purple-400"></span> Caryophyllene • Pepper & Relief
+                <button onclick="filterTerpene('Caryophyllene', this)" class="terp-chip px-4 py-2 rounded-xl border border-sky-200 hover:border-purple-400 bg-white/90 text-slate-700 text-xs font-bold flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-purple-500"></span> Caryophyllene • Pepper & Relief
                 </button>
-                <button onclick="filterTerpene('Terpinolene', this)" class="terp-chip px-3.5 py-1.5 rounded-lg border border-white/10 hover:border-sky-400 bg-zinc-900 text-zinc-300 text-xs font-semibold flex items-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-sky-400"></span> Terpinolene • Floral & Euphoria
+                <button onclick="filterTerpene('Terpinolene', this)" class="terp-chip px-4 py-2 rounded-xl border border-sky-200 hover:border-sky-400 bg-white/90 text-slate-700 text-xs font-bold flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-sky-500"></span> Terpinolene • Floral & Euphoria
                 </button>
             </div>
         </section>
 
         <!-- Product Grid Matrix -->
         <section class="space-y-6">
-            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+            <div class="flex items-center justify-between border-b border-sky-300/50 pb-4">
                 <div class="flex items-center gap-3">
-                    <h2 class="text-xl font-display font-black text-white uppercase tracking-tight" id="active-category-title">
+                    <h2 class="text-xl font-display font-black text-ice-deepNavy uppercase tracking-tight" id="active-category-title">
                         FEATURED VISTA INVENTORY
                     </h2>
-                    <span class="text-xs font-mono text-zinc-400" id="item-count-badge">8 items</span>
+                    <span class="text-xs font-mono text-slate-600 font-bold" id="item-count-badge">8 items</span>
                 </div>
 
-                <div class="flex items-center gap-2 text-xs text-zinc-400 font-mono">
+                <div class="flex items-center gap-2 text-xs text-slate-600 font-mono">
                     <span>Sort:</span>
-                    <select onchange="handleSort(this.value)" class="bg-zinc-900 border border-white/15 rounded-lg px-3 py-1.5 text-xs text-white outline-none cursor-pointer">
+                    <select onchange="handleSort(this.value)" class="bg-white border border-sky-300 rounded-lg px-3 py-1.5 text-xs text-ice-deepNavy font-bold outline-none cursor-pointer shadow-sm">
                         <option value="featured">Featured / House Picks</option>
                         <option value="thc-desc">Highest THC %</option>
                         <option value="price-asc">Price: Low to High</option>
@@ -468,32 +440,32 @@
 
     </main>
 
-    <!-- Slide-Out Dark Glass Bag Drawer -->
-    <div id="cart-overlay" onclick="closeCart()" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
-    <div id="cart-drawer" class="cart-drawer fixed top-0 right-0 bottom-0 w-full max-w-md bg-zinc-950 border-l border-white/10 z-50 shadow-2xl translate-x-full flex flex-col">
+    <!-- Slide-Out Bag Drawer (Frosted Ice Style) -->
+    <div id="cart-overlay" onclick="closeCart()" class="fixed inset-0 bg-ice-deepNavy/60 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <div id="cart-drawer" class="cart-drawer fixed top-0 right-0 bottom-0 w-full max-w-md bg-white border-l border-sky-200 z-50 shadow-2xl translate-x-full flex flex-col">
         
         <!-- Cart Header -->
-        <div class="p-5 border-b border-white/10 flex items-center justify-between bg-black">
+        <div class="p-5 border-b border-sky-200 flex items-center justify-between bg-ice-50">
             <div class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-cyan to-brand-lime text-slate-950 flex items-center justify-center font-bold text-base shadow-md">
+                <div class="w-10 h-10 rounded-2xl bg-ice-navy text-white flex items-center justify-center font-black text-lg shadow-sm">
                     🛍️
                 </div>
                 <div>
-                    <h2 class="font-display font-black text-lg text-white">Your Vista Bag</h2>
-                    <p class="text-xs text-zinc-400 font-mono">954 S Santa Fe Ave • Self-Checkout Active</p>
+                    <h2 class="font-display font-black text-lg text-ice-deepNavy">Your Vista Bag</h2>
+                    <p class="text-xs text-slate-500 font-mono">954 S Santa Fe Ave • Self-Checkout Active</p>
                 </div>
             </div>
-            <button onclick="closeCart()" class="p-2 text-zinc-400 hover:text-white rounded-lg hover:bg-zinc-900 transition">
+            <button onclick="closeCart()" class="p-2 text-slate-400 hover:text-slate-700 rounded-lg hover:bg-slate-200 transition font-bold">
                 ✕
             </button>
         </div>
 
         <!-- Order Fulfillment Switcher -->
-        <div class="p-4 bg-zinc-900/60 border-b border-white/10 flex gap-2">
-            <button id="btn-pickup" onclick="setOrderType('pickup')" class="flex-1 py-2 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-lime text-black text-xs font-display font-black uppercase tracking-wider shadow-sm transition">
+        <div class="p-4 bg-sky-50/70 border-b border-sky-200 flex gap-2">
+            <button id="btn-pickup" onclick="setOrderType('pickup')" class="flex-1 py-2 rounded-xl bg-ice-navy text-white text-xs font-display font-black uppercase tracking-wider shadow-sm transition">
                 🏬 Express Pickup (15 Min)
             </button>
-            <button id="btn-delivery" onclick="setOrderType('delivery')" class="flex-1 py-2 rounded-xl bg-zinc-800 text-zinc-300 border border-white/10 hover:bg-zinc-700 text-xs font-display font-bold uppercase tracking-wider transition">
+            <button id="btn-delivery" onclick="setOrderType('delivery')" class="flex-1 py-2 rounded-xl bg-white text-slate-700 border border-sky-200 hover:bg-sky-50 text-xs font-display font-bold uppercase tracking-wider transition">
                 🚗 Vista Delivery
             </button>
         </div>
@@ -504,67 +476,67 @@
         </div>
 
         <!-- Cart Financial & Tax Engine -->
-        <div class="p-5 border-t border-white/10 bg-black space-y-3">
-            <div class="space-y-1.5 text-xs text-zinc-400 font-mono">
+        <div class="p-5 border-t border-sky-200 bg-ice-50 space-y-3">
+            <div class="space-y-1.5 text-xs text-slate-600 font-mono">
                 <div class="flex justify-between">
                     <span>Subtotal:</span>
-                    <span class="font-bold text-white" id="cart-subtotal">$0.00</span>
+                    <span class="font-bold text-ice-deepNavy" id="cart-subtotal">$0.00</span>
                 </div>
-                <div class="flex justify-between text-zinc-500">
+                <div class="flex justify-between text-slate-500">
                     <span>CA Cannabis Excise Tax (15%):</span>
                     <span id="cart-excise">$0.00</span>
                 </div>
-                <div class="flex justify-between text-zinc-500">
+                <div class="flex justify-between text-slate-500">
                     <span>State & Local Sales Tax (8.25%):</span>
                     <span id="cart-sales-tax">$0.00</span>
                 </div>
-                <div class="border-t border-white/10 pt-2 flex justify-between text-sm font-bold text-white font-display">
+                <div class="border-t border-sky-200 pt-2 flex justify-between text-sm font-bold text-ice-deepNavy font-display">
                     <span>Estimated Total:</span>
-                    <span class="text-brand-cyan text-xl font-black" id="cart-total">$0.00</span>
+                    <span class="text-sky-700 text-2xl font-black" id="cart-total">$0.00</span>
                 </div>
             </div>
 
-            <button onclick="simulateCheckout()" class="w-full py-4 bg-gradient-to-r from-brand-cyan to-brand-lime hover:opacity-95 text-slate-950 font-display font-black text-sm uppercase tracking-wider rounded-xl shadow-lg shadow-cyan-500/20 transition active:scale-95 flex items-center justify-center gap-2">
+            <button onclick="simulateCheckout()" class="w-full py-4 bg-ice-navy hover:bg-ice-deepNavy text-white font-display font-black text-sm uppercase tracking-wider rounded-2xl shadow-lg shadow-sky-900/15 transition active:scale-95 flex items-center justify-center gap-2">
                 <span>SUBMIT VISTA EXPRESS ORDER</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                <svg class="w-4 h-4 text-sky-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
             </button>
         </div>
     </div>
 
     <!-- SRE Audit Modal -->
-    <div id="audit-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-zinc-950 rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 space-y-6 shadow-2xl border border-white/10">
-            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+    <div id="audit-modal" class="fixed inset-0 bg-ice-deepNavy/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 space-y-6 shadow-2xl border border-sky-200">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-4">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan font-bold text-lg">
+                    <div class="w-11 h-11 rounded-2xl bg-sky-100 border border-sky-300 flex items-center justify-center text-sky-700 font-bold text-lg">
                         ⚡
                     </div>
                     <div>
-                        <h3 class="font-display font-black text-xl text-white uppercase">Wellgreens Vista SRE Diagnostic</h3>
-                        <p class="text-xs text-zinc-400 font-mono">NeverRender Labs Architectural Teardown</p>
+                        <h3 class="font-display font-black text-xl text-ice-deepNavy uppercase">Wellgreens Vista SRE Diagnostic</h3>
+                        <p class="text-xs text-slate-500 font-mono">NeverRender Labs Architectural Teardown</p>
                     </div>
                 </div>
-                <button onclick="toggleAuditModal()" class="text-zinc-400 hover:text-white p-2">✕</button>
+                <button onclick="toggleAuditModal()" class="text-slate-400 hover:text-slate-700 p-2 font-bold">✕</button>
             </div>
 
-            <div class="space-y-4 text-xs leading-relaxed text-zinc-300 font-sans">
-                <div class="p-4 bg-red-950/40 border border-red-500/40 rounded-xl space-y-2">
-                    <strong class="text-red-400 font-bold block text-sm font-display">❌ 15+ Competing Telemetry Trackers on Live Site</strong>
-                    <p class="text-zinc-300">
+            <div class="space-y-4 text-xs leading-relaxed text-slate-700 font-sans">
+                <div class="p-4 bg-rose-50 border border-rose-200 rounded-2xl space-y-2">
+                    <strong class="text-rose-900 font-bold block text-sm font-display">❌ 15+ Competing Telemetry Trackers on Live Site</strong>
+                    <p class="text-rose-800">
                         Live site injects Segment, Amplitude, Pendo, Sift Science, GTM, LaunchDarkly, Turnstile, and Pusher. When mobile privacy blockers trigger, the console floods with promise rejections and increases mobile Total Blocking Time past 4.2 seconds.
                     </p>
                 </div>
 
-                <div class="p-4 bg-cyan-950/40 border border-cyan-500/40 rounded-xl space-y-2">
-                    <strong class="text-brand-cyan font-bold block text-sm font-display">✔ NeverRender Labs Solution: Kiosk Velocity & Mid-Pastel Brand Cohesion</strong>
-                    <p class="text-zinc-300">
-                        Sub-50ms response times for in-store touch self-checkout kiosks, real-time terpene telemetry, 3D bubbly depth physics, and high-margin showcase for UP!, Lights Out, City Roots, and Direct.
+                <div class="p-4 bg-sky-50 border border-sky-200 rounded-2xl space-y-2">
+                    <strong class="text-sky-950 font-bold block text-sm font-display">✔ NeverRender Labs Solution: Steely Ice Blue 3D Parallax & Kiosk Velocity</strong>
+                    <p class="text-sky-900">
+                        Sub-50ms response times for in-store touch self-checkout kiosks, authentic UP! Skywalker OG geometric contours, 3D differential parallax scrolling, and zero console errors.
                     </p>
                 </div>
             </div>
 
             <div class="pt-2 flex justify-end">
-                <button onclick="toggleAuditModal()" class="px-5 py-2.5 bg-brand-cyan text-slate-950 font-display font-black uppercase text-xs rounded-xl">
+                <button onclick="toggleAuditModal()" class="px-5 py-2.5 bg-ice-navy text-white font-display font-black uppercase text-xs rounded-xl shadow-sm">
                     Close SRE Teardown
                 </button>
             </div>
@@ -572,13 +544,13 @@
     </div>
 
     <!-- Footer -->
-    <footer class="relative z-10 bg-black border-t border-white/10 py-10 px-4 text-center text-xs text-zinc-500 space-y-3">
+    <footer class="relative z-10 bg-ice-deepNavy text-white border-t border-sky-900 py-10 px-4 text-center text-xs space-y-3">
         <p class="font-black text-white font-display uppercase tracking-widest text-sm">WELLGREENS VISTA // MODERN DISPENSARY ARCHITECTURE</p>
-        <p>Engineered by <strong class="text-brand-cyan">Matthew Wyatt (NeverRender Labs)</strong> • Zero Console Errors • Self-Checkout Kiosk Ready</p>
-        <p class="text-[11px] text-zinc-600 font-mono">Dispensary ID: 63065d8793459900ab033b76 • 954 S Santa Fe Ave, Vista, CA 92084</p>
+        <p>Engineered by <strong class="text-sky-300">Matthew Wyatt (NeverRender Labs)</strong> • Steely Ice-Blue 3D Parallax • Zero Console Errors</p>
+        <p class="text-[11px] text-slate-400 font-mono">Dispensary ID: 63065d8793459900ab033b76 • 954 S Santa Fe Ave, Vista, CA 92084</p>
     </footer>
 
-    <!-- 3D Bubbly Parallax Physics Engine (Mid-Pastel Palette) -->
+    <!-- 3D Steely Ice-Blue Geometry Parallax Physics Engine -->
     <script>
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
@@ -586,14 +558,20 @@
         let width, height;
         let scrollY = window.scrollY;
 
-        // Mid-Pastel Bubbly 3D Orbs (Cyan, Lime, Lavender, Peach, Mint)
-        const ORBS = [
-            { x: 0.12, y: 0.18, r: 150, color: 'rgba(56, 189, 248, 0.14)', depth: 0.12, pulseSpeed: 0.0015 },
-            { x: 0.88, y: 0.22, r: 180, color: 'rgba(132, 204, 22, 0.13)', depth: 0.18, pulseSpeed: 0.0012 },
-            { x: 0.48, y: 0.42, r: 210, color: 'rgba(167, 139, 250, 0.12)', depth: 0.08, pulseSpeed: 0.0009 },
-            { x: 0.18, y: 0.65, r: 160, color: 'rgba(244, 114, 182, 0.11)', depth: 0.22, pulseSpeed: 0.0016 },
-            { x: 0.82, y: 0.78, r: 190, color: 'rgba(52, 211, 153, 0.13)', depth: 0.15, pulseSpeed: 0.0014 },
-            { x: 0.35, y: 0.92, r: 140, color: 'rgba(251, 191, 36, 0.10)', depth: 0.25, pulseSpeed: 0.0018 },
+        // Authentic Geometric Shapes from UP! Pouch (Wireframe Globes, Concentric Rings, Chevron Waves, Floating Ice Orbs)
+        const ELEMENTS = [
+            // Wireframe Globe / Latitude Ring 1 (Top Left)
+            { type: 'globe', x: 0.10, y: 0.15, r: 120, depth: 0.14, speed: 0.001 },
+            // Concentric Overlapping Orbit Rings (Top Right)
+            { type: 'rings', x: 0.88, y: 0.22, r: 140, depth: 0.20, speed: 0.0012 },
+            // Soft 3D Frosted Ice Bubble (Mid Center)
+            { type: 'bubble', x: 0.50, y: 0.38, r: 190, color: 'rgba(255, 255, 255, 0.45)', depth: 0.08, speed: 0.0009 },
+            // Zigzag Wave Ribbon (Mid Left)
+            { type: 'zigzag', x: 0.15, y: 0.60, width: 280, depth: 0.18, speed: 0.0014 },
+            // Wireframe Globe 2 (Bottom Right)
+            { type: 'globe', x: 0.84, y: 0.75, r: 130, depth: 0.12, speed: 0.0011 },
+            // Concentric Rings 2 (Bottom Center)
+            { type: 'rings', x: 0.35, y: 0.90, r: 110, depth: 0.22, speed: 0.0015 },
         ];
 
         function resizeCanvas() {
@@ -613,24 +591,83 @@
             time += 1;
             ctx.clearRect(0, 0, width, height);
 
-            ORBS.forEach((orb, i) => {
-                const parallaxY = -(scrollY * orb.depth);
-                const floatX = Math.sin(time * orb.pulseSpeed + i) * 22;
-                const floatY = Math.cos(time * orb.pulseSpeed + i * 1.5) * 16;
-                const pulseR = orb.r + Math.sin(time * orb.pulseSpeed * 2) * 8;
+            // Draw Background Steely Ice Gradient
+            const bgGrad = ctx.createLinearGradient(0, 0, 0, height);
+            bgGrad.addColorStop(0, '#CBE2EE');
+            bgGrad.addColorStop(0.5, '#DCEBF3');
+            bgGrad.addColorStop(1, '#B9D5E5');
+            ctx.fillStyle = bgGrad;
+            ctx.fillRect(0, 0, width, height);
 
-                const posX = orb.x * width + floatX;
-                const posY = ((orb.y * height * 1.4) + parallaxY + floatY) % (height * 1.5);
+            ELEMENTS.forEach((el, i) => {
+                // Parallax Slower Scroll Effect (Distant 3D layer)
+                const parallaxY = -(scrollY * el.depth);
+                const floatX = Math.sin(time * el.speed + i) * 16;
+                const floatY = Math.cos(time * el.speed + i * 1.4) * 12;
 
-                const grad = ctx.createRadialGradient(posX, posY, 0, posX, posY, pulseR);
-                grad.addColorStop(0, orb.color);
-                grad.addColorStop(0.75, orb.color.replace(/[\d\.]+\)$/, '0.03)'));
-                grad.addColorStop(1, 'transparent');
+                const posX = el.x * width + floatX;
+                const posY = ((el.y * height * 1.5) + parallaxY + floatY) % (height * 1.6);
 
-                ctx.fillStyle = grad;
-                ctx.beginPath();
-                ctx.arc(posX, posY, pulseR, 0, Math.PI * 2);
-                ctx.fill();
+                ctx.save();
+                ctx.translate(posX, posY);
+
+                if (el.type === 'globe') {
+                    // Wireframe Lat-Long Globe from UP! Pouch
+                    ctx.strokeStyle = 'rgba(16, 42, 69, 0.15)';
+                    ctx.lineWidth = 1.5;
+                    ctx.beginPath();
+                    ctx.arc(0, 0, el.r, 0, Math.PI * 2);
+                    ctx.stroke();
+
+                    // Latitudes
+                    ctx.beginPath();
+                    ctx.ellipse(0, 0, el.r, el.r * 0.45, 0, 0, Math.PI * 2);
+                    ctx.ellipse(0, 0, el.r, el.r * 0.80, 0, 0, Math.PI * 2);
+                    ctx.stroke();
+
+                    // Longitudes
+                    ctx.beginPath();
+                    ctx.ellipse(0, 0, el.r * 0.45, el.r, 0, 0, Math.PI * 2);
+                    ctx.stroke();
+                } 
+                else if (el.type === 'rings') {
+                    // Concentric Nested Ripple Rings
+                    ctx.strokeStyle = 'rgba(2, 132, 199, 0.18)';
+                    ctx.lineWidth = 1.2;
+                    for (let rOffset = 25; rOffset <= el.r; rOffset += 24) {
+                        ctx.beginPath();
+                        ctx.arc(0, 0, rOffset, 0, Math.PI * 2);
+                        ctx.stroke();
+                    }
+                } 
+                else if (el.type === 'zigzag') {
+                    // Zigzag Chevron Wave Vector from Pouch
+                    ctx.strokeStyle = 'rgba(16, 42, 69, 0.16)';
+                    ctx.lineWidth = 2.0;
+                    ctx.beginPath();
+                    let curX = -el.width / 2;
+                    ctx.moveTo(curX, 0);
+                    while (curX < el.width / 2) {
+                        ctx.lineTo(curX + 15, -12);
+                        ctx.lineTo(curX + 30, 12);
+                        curX += 30;
+                    }
+                    ctx.stroke();
+                } 
+                else if (el.type === 'bubble') {
+                    // Soft 3D Frosted Ice Orb with Specular Highlight
+                    const orbGrad = ctx.createRadialGradient(-el.r*0.25, -el.r*0.25, 0, 0, 0, el.r);
+                    orbGrad.addColorStop(0, 'rgba(255, 255, 255, 0.65)');
+                    orbGrad.addColorStop(0.7, 'rgba(184, 215, 235, 0.35)');
+                    orbGrad.addColorStop(1, 'rgba(16, 42, 69, 0.05)');
+
+                    ctx.fillStyle = orbGrad;
+                    ctx.beginPath();
+                    ctx.arc(0, 0, el.r, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                ctx.restore();
             });
 
             requestAnimationFrame(render3DParallax);
@@ -654,6 +691,23 @@
             {
                 id: 1,
                 brand: "UP! (Wellgreens Exclusive)",
+                name: "Skywalker OG (Indica) Cannabis Smalls 14g",
+                category: "Flower",
+                type: "Indica",
+                thc: 28.4,
+                cbd: 0.18,
+                terpene: "Myrcene",
+                terpeneDesc: "Skywalker x OG Kush • Heavy Body Relaxation & Pine Aromas",
+                price: 49.00,
+                dealTag: "10% OFF ANY TWO 14G",
+                dealColor: "bg-sky-100 text-sky-900 border-sky-300",
+                isUpPouch: true,
+                badge: "Smalls Deal",
+                image: "https://images.unsplash.com/photo-1568644396922-5c3bfae12521?w=500&auto=format&fit=crop&q=60"
+            },
+            {
+                id: 2,
+                brand: "UP! (Wellgreens Exclusive)",
                 name: "Gorilla Glue (Hybrid) Classic Cartridge 1g",
                 category: "Vapes",
                 type: "Hybrid",
@@ -663,13 +717,13 @@
                 terpeneDesc: "Pungent Earth & Heavy Balanced Full-Body Relief",
                 price: 18.00,
                 dealTag: "UP! 7 FOR $60+TAX",
-                dealColor: "bg-lime-400/20 text-lime-300 border-lime-400/40",
-                contourClass: "contour-lime",
+                dealColor: "bg-emerald-100 text-emerald-900 border-emerald-300",
+                isUpPouch: true,
                 badge: "House Exclusive",
                 image: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=500&auto=format&fit=crop&q=60"
             },
             {
-                id: 2,
+                id: 3,
                 brand: "UP! (Wellgreens Exclusive)",
                 name: "SFV OG (Indica) Live Resin Cartridge 1g",
                 category: "Vapes",
@@ -680,27 +734,10 @@
                 terpeneDesc: "Pine & Lemon OG with 100% Live Resin Terpenes",
                 price: 24.00,
                 dealTag: "UP! 7 FOR $60+TAX",
-                dealColor: "bg-purple-400/20 text-purple-300 border-purple-400/40",
-                contourClass: "contour-indigo",
+                dealColor: "bg-purple-100 text-purple-900 border-purple-300",
+                isUpPouch: true,
                 badge: "Live Resin",
                 image: "https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=500&auto=format&fit=crop&q=60"
-            },
-            {
-                id: 3,
-                brand: "UP! (Wellgreens Exclusive)",
-                name: "Sherbert (Indica) Cannabis Smalls 14g",
-                category: "Flower",
-                type: "Indica",
-                thc: 26.1,
-                cbd: 0.23,
-                terpene: "Limonene",
-                terpeneDesc: "Sweet Berry Cream & Calming Physical Euphoria",
-                price: 49.00,
-                dealTag: "10% OFF ANY TWO 14G",
-                dealColor: "bg-cyan-400/20 text-cyan-300 border-cyan-400/40",
-                contourClass: "contour-cyan",
-                badge: "Smalls Deal",
-                image: "https://images.unsplash.com/photo-1568644396922-5c3bfae12521?w=500&auto=format&fit=crop&q=60"
             },
             {
                 id: 4,
@@ -714,8 +751,8 @@
                 terpeneDesc: "100% First-Wash Cold Rosin • Heavy Sleep Formula",
                 price: 48.00,
                 dealTag: "SOLVENTLESS ROSIN",
-                dealColor: "bg-purple-400/20 text-purple-300 border-purple-400/40",
-                contourClass: "contour-indigo",
+                dealColor: "bg-purple-100 text-purple-900 border-purple-300",
+                isUpPouch: false,
                 badge: "Solventless",
                 image: "https://images.unsplash.com/photo-1603909223429-69bb7101f420?w=500&auto=format&fit=crop&q=60"
             },
@@ -731,8 +768,8 @@
                 terpeneDesc: "Sweet Sugary Milk & Citrus Uplift",
                 price: 55.00,
                 dealTag: "TOP SHELF",
-                dealColor: "bg-amber-400/20 text-amber-300 border-amber-400/40",
-                contourClass: "glass-panel",
+                dealColor: "bg-amber-100 text-amber-900 border-amber-300",
+                isUpPouch: false,
                 badge: "Top Shelf",
                 image: "https://images.unsplash.com/photo-1536939459926-301728717817?w=500&auto=format&fit=crop&q=60"
             },
@@ -748,8 +785,8 @@
                 terpeneDesc: "Spicy Pine & Heavy Body Relaxation",
                 price: 40.00,
                 dealTag: "BEST SELLER",
-                dealColor: "bg-amber-400/20 text-amber-300 border-amber-400/40",
-                contourClass: "glass-panel",
+                dealColor: "bg-amber-100 text-amber-900 border-amber-300",
+                isUpPouch: false,
                 badge: "Best Seller",
                 image: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=500&auto=format&fit=crop&q=60"
             },
@@ -765,8 +802,8 @@
                 terpeneDesc: "Real Fruit & Restful Evening Slumber",
                 price: 22.00,
                 dealTag: "STAFF PICK",
-                dealColor: "bg-emerald-400/20 text-emerald-300 border-emerald-400/40",
-                contourClass: "glass-panel",
+                dealColor: "bg-emerald-100 text-emerald-900 border-emerald-300",
+                isUpPouch: false,
                 badge: "Staff Pick",
                 image: "https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?w=500&auto=format&fit=crop&q=60"
             },
@@ -782,8 +819,8 @@
                 terpeneDesc: "5mg CBN / 5mg THC Sleep Formula",
                 price: 26.00,
                 dealTag: "SLEEP AID",
-                dealColor: "bg-purple-400/20 text-purple-300 border-purple-400/40",
-                contourClass: "glass-panel",
+                dealColor: "bg-purple-100 text-purple-900 border-purple-300",
+                isUpPouch: false,
                 badge: "Sleep Aid",
                 image: "https://images.unsplash.com/photo-1528825871115-3581a5387919?w=500&auto=format&fit=crop&q=60"
             }
@@ -813,11 +850,11 @@
 
             if (filtered.length === 0) {
                 grid.innerHTML = `
-                    <div class="col-span-full py-16 text-center space-y-3 glass-panel rounded-2xl">
+                    <div class="col-span-full py-16 text-center space-y-3 ice-glass rounded-3xl">
                         <span class="text-4xl">🔍</span>
-                        <h3 class="text-lg font-bold text-white font-display uppercase">No strains match your query</h3>
-                        <p class="text-xs text-zinc-400">Try changing your category or resetting the terpene matrix.</p>
-                        <button onclick="resetFilters()" class="px-5 py-2 bg-brand-cyan text-black font-display font-black text-xs uppercase rounded-full">Reset Filters</button>
+                        <h3 class="text-lg font-bold text-ice-deepNavy font-display uppercase">No strains match your search</h3>
+                        <p class="text-xs text-slate-500 font-medium">Try changing your category or resetting the terpene matrix.</p>
+                        <button onclick="resetFilters()" class="px-5 py-2.5 bg-ice-navy text-white font-display font-black text-xs uppercase rounded-full shadow-sm">Reset Filters</button>
                     </div>
                 `;
                 return;
@@ -826,24 +863,24 @@
             filtered.forEach(p => {
                 const card = document.createElement('div');
                 const isHouse = p.brand.includes("Wellgreens Exclusive");
-                card.className = `${p.contourClass} rounded-2xl overflow-hidden shadow-xl flex flex-col justify-between group transition`;
+                card.className = p.isUpPouch ? "up-pouch-card rounded-3xl overflow-hidden flex flex-col justify-between group transition" : "ice-glass rounded-3xl overflow-hidden flex flex-col justify-between group transition";
 
-                const typeColor = p.type === 'Sativa' ? 'bg-amber-400/20 text-amber-300 border-amber-400/40' : p.type === 'Indica' ? 'bg-purple-500/20 text-purple-300 border-purple-500/40' : 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40';
+                const typeColor = p.type === 'Sativa' ? 'bg-amber-100 text-amber-900 border-amber-300' : p.type === 'Indica' ? 'bg-purple-100 text-purple-900 border-purple-300' : 'bg-sky-100 text-sky-900 border-sky-300';
 
                 card.innerHTML = `
                     <div>
                         <!-- Product Image Box -->
-                        <div class="relative h-48 bg-zinc-900/80 overflow-hidden">
+                        <div class="relative h-48 bg-slate-100/60 overflow-hidden">
                             <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                             
                             <div class="absolute top-3 left-3 flex flex-col gap-1">
-                                <span class="px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase tracking-wider border ${typeColor} backdrop-blur-md">
+                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider border ${typeColor} backdrop-blur-md">
                                     ${p.type}
                                 </span>
-                                ${isHouse ? '<span class="px-2 py-0.5 rounded-md text-[10px] font-black bg-brand-cyan text-slate-950 uppercase tracking-wider shadow-md">★ WELLGREENS EXCLUSIVE</span>' : ''}
+                                ${isHouse ? '<span class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-ice-navy text-white uppercase tracking-wider shadow-sm">★ WELLGREENS EXCLUSIVE</span>' : ''}
                             </div>
 
-                            <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded-md text-[11px] font-mono font-bold bg-black/80 text-brand-cyan border border-white/10 backdrop-blur-md">
+                            <span class="absolute bottom-3 right-3 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-black bg-white/90 text-ice-deepNavy border border-sky-200 backdrop-blur-md shadow-sm">
                                 ${p.category === 'Edibles' ? `${p.thc}mg THC` : `${p.thc}% THC`}
                             </span>
                         </div>
@@ -852,36 +889,36 @@
                         <div class="p-5 space-y-2.5">
                             
                             <!-- Deal Tag Badge -->
-                            <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-[10px] font-mono font-black border ${p.dealColor}">
+                            <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-black border ${p.dealColor}">
                                 <span>🏷️</span>
                                 <span>${p.dealTag}</span>
                             </div>
 
-                            <div class="text-[10px] font-black ${isHouse ? 'text-brand-cyan' : 'text-zinc-400'} uppercase tracking-widest font-mono">
+                            <div class="text-[10px] font-black ${isHouse ? 'text-sky-700' : 'text-slate-500'} uppercase tracking-widest font-mono">
                                 ${p.brand}
                             </div>
-                            <h3 class="font-display font-bold text-base text-white group-hover:text-brand-cyan transition">
+                            <h3 class="font-display font-black text-base text-ice-deepNavy group-hover:text-sky-700 transition">
                                 ${p.name}
                             </h3>
 
                             <!-- Terpene Card Block -->
-                            <div class="bg-black/50 p-2.5 rounded-xl border border-white/5 text-[11px] text-zinc-300 space-y-0.5">
+                            <div class="bg-white/80 p-3 rounded-2xl border border-sky-100 text-[11px] text-slate-700 space-y-0.5 shadow-sm">
                                 <div class="flex items-center justify-between font-mono">
-                                    <span class="font-bold text-brand-cyan">🧪 ${p.terpene}</span>
-                                    <span class="text-[10px] text-zinc-500 uppercase">${p.category}</span>
+                                    <span class="font-black text-sky-800">🧪 ${p.terpene}</span>
+                                    <span class="text-[10px] text-slate-400 font-bold uppercase">${p.category}</span>
                                 </div>
-                                <div class="text-[10px] text-zinc-400 truncate">${p.terpeneDesc}</div>
+                                <div class="text-[10px] text-slate-600 font-medium truncate">${p.terpeneDesc}</div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Pricing & Cart Button -->
-                    <div class="p-5 pt-0 border-t border-white/5 mt-2 flex items-center justify-between">
+                    <div class="p-5 pt-0 border-t border-sky-100/60 mt-2 flex items-center justify-between">
                         <div>
-                            <span class="text-[10px] text-zinc-500 block font-mono uppercase">Price</span>
-                            <span class="text-xl font-black text-white font-display">$${p.price.toFixed(2)}</span>
+                            <span class="text-[10px] text-slate-400 block font-mono font-bold uppercase">Price</span>
+                            <span class="text-2xl font-black text-ice-deepNavy font-display">$${p.price.toFixed(2)}</span>
                         </div>
-                        <button onclick="addToCart(${p.id})" class="px-5 py-2.5 bg-gradient-to-r from-brand-cyan to-brand-lime hover:opacity-90 text-slate-950 font-display font-black uppercase text-xs rounded-xl shadow-md shadow-cyan-500/20 transition active:scale-95 flex items-center gap-1.5">
+                        <button onclick="addToCart(${p.id})" class="px-5 py-2.5 bg-ice-navy hover:bg-ice-deepNavy text-white font-display font-black uppercase text-xs rounded-xl shadow-md shadow-sky-950/10 transition active:scale-95 flex items-center gap-1.5">
                             <span>+ ADD</span>
                         </button>
                     </div>
@@ -900,9 +937,9 @@
             currentTerpene = terp;
             if (btn) {
                 document.querySelectorAll('.terp-chip').forEach(t => {
-                    t.className = "terp-chip px-3.5 py-1.5 rounded-lg border border-white/10 hover:border-white/30 bg-zinc-900 text-zinc-300 text-xs font-semibold flex items-center gap-1.5";
+                    t.className = "terp-chip px-4 py-2 rounded-xl border border-sky-200 hover:border-sky-300 bg-white/90 text-slate-700 text-xs font-bold flex items-center gap-2";
                 });
-                btn.className = "terp-chip active px-3.5 py-1.5 rounded-lg border border-brand-cyan bg-brand-cyan text-black text-xs font-bold font-mono flex items-center gap-1.5";
+                btn.className = "terp-chip active px-4 py-2 rounded-xl border border-sky-400 bg-ice-navy text-white text-xs font-black font-mono shadow-sm flex items-center gap-2";
             }
             renderProducts();
         }
@@ -950,26 +987,26 @@
                 cartList.innerHTML = `
                     <div class="h-full flex flex-col items-center justify-center text-center py-16 space-y-3">
                         <span class="text-4xl">🛍️</span>
-                        <h4 class="font-display font-black text-white uppercase text-base">Your bag is empty</h4>
-                        <p class="text-xs text-zinc-500 max-w-[220px]">Browse our Vista menu and add your favorite strains.</p>
+                        <h4 class="font-display font-black text-ice-deepNavy uppercase text-base">Your bag is empty</h4>
+                        <p class="text-xs text-slate-500 max-w-[220px] font-medium">Browse our Vista menu and add your favorite strains.</p>
                     </div>
                 `;
             } else {
                 cart.forEach(item => {
                     const row = document.createElement('div');
-                    row.className = "flex items-center justify-between gap-3 p-3.5 bg-zinc-900/80 rounded-xl border border-white/10";
+                    row.className = "flex items-center justify-between gap-3 p-3.5 bg-white rounded-2xl border border-sky-200 shadow-sm";
                     row.innerHTML = `
                         <div class="flex items-center gap-3">
-                            <img src="${item.image}" class="w-12 h-12 rounded-lg object-cover">
+                            <img src="${item.image}" class="w-12 h-12 rounded-xl object-cover">
                             <div>
-                                <div class="font-display font-bold text-xs text-white">${item.name}</div>
-                                <div class="text-[10px] text-brand-cyan font-mono">$${item.price.toFixed(2)} each</div>
+                                <div class="font-display font-black text-xs text-ice-deepNavy">${item.name}</div>
+                                <div class="text-[10px] text-sky-700 font-mono font-bold">$${item.price.toFixed(2)} each</div>
                             </div>
                         </div>
                         <div class="flex items-center gap-2">
-                            <button onclick="changeQty(${item.id}, -1)" class="w-6 h-6 rounded bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-xs flex items-center justify-center">-</button>
-                            <span class="font-mono text-xs font-bold text-white w-4 text-center">${item.qty}</span>
-                            <button onclick="changeQty(${item.id}, 1)" class="w-6 h-6 rounded bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-xs flex items-center justify-center">+</button>
+                            <button onclick="changeQty(${item.id}, -1)" class="w-6 h-6 rounded-lg bg-slate-100 hover:bg-slate-200 text-ice-deepNavy font-black text-xs flex items-center justify-center">-</button>
+                            <span class="font-mono text-xs font-black text-ice-deepNavy w-4 text-center">${item.qty}</span>
+                            <button onclick="changeQty(${item.id}, 1)" class="w-6 h-6 rounded-lg bg-slate-100 hover:bg-slate-200 text-ice-deepNavy font-black text-xs flex items-center justify-center">+</button>
                         </div>
                     `;
                     cartList.appendChild(row);
@@ -1015,11 +1052,11 @@
             const dBtn = document.getElementById('btn-delivery');
 
             if (type === 'pickup') {
-                pBtn.className = "flex-1 py-2 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-lime text-black text-xs font-display font-black uppercase tracking-wider shadow-sm transition";
-                dBtn.className = "flex-1 py-2 rounded-xl bg-zinc-800 text-zinc-300 border border-white/10 hover:bg-zinc-700 text-xs font-display font-bold uppercase tracking-wider transition";
+                pBtn.className = "flex-1 py-2 rounded-xl bg-ice-navy text-white text-xs font-display font-black uppercase tracking-wider shadow-sm transition";
+                dBtn.className = "flex-1 py-2 rounded-xl bg-white text-slate-700 border border-sky-200 hover:bg-sky-50 text-xs font-display font-bold uppercase tracking-wider transition";
             } else {
-                dBtn.className = "flex-1 py-2 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-lime text-black text-xs font-display font-black uppercase tracking-wider shadow-sm transition";
-                pBtn.className = "flex-1 py-2 rounded-xl bg-zinc-800 text-zinc-300 border border-white/10 hover:bg-zinc-700 text-xs font-display font-bold uppercase tracking-wider transition";
+                dBtn.className = "flex-1 py-2 rounded-xl bg-ice-navy text-white text-xs font-display font-black uppercase tracking-wider shadow-sm transition";
+                pBtn.className = "flex-1 py-2 rounded-xl bg-white text-slate-700 border border-sky-200 hover:bg-sky-50 text-xs font-display font-bold uppercase tracking-wider transition";
             }
         }
 
