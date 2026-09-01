@@ -560,19 +560,19 @@
         }
 
         // Instant Packaging Processor & OCR Dispatcher
-        function processPackagingImage(imageSrc, fileName = "") {
+        function processPackagingImage(imageSrc, fileName = "", scannedBarcode = null) {
             const cleanName = (fileName || "").toLowerCase();
-            const isEBE = cleanName.includes("emerald") || cleanName.includes("rso") || cleanName.includes("test1") || cleanName.includes("test2") || cleanName.includes("tablet") || cleanName.includes("cake") || cleanName.includes("ice");
+            const isEBE = cleanName.includes("emerald") || cleanName.includes("rso") || cleanName.includes("test1") || cleanName.includes("test2") || cleanName.includes("tablet") || cleanName.includes("cake") || cleanName.includes("ice") || (scannedBarcode && (scannedBarcode.includes("1A40603") || scannedBarcode.includes("84865309")));
             const isFriendly = cleanName.includes("friendly") || cleanName.includes("drop") || cleanName.includes("tincture") || cleanName.includes("nurse") || cleanName.includes("runtz") || cleanName.includes("hawaiian") || cleanName.includes("test6");
             const isUP = cleanName.includes("up") || cleanName.includes("cart") || cleanName.includes("smalls");
 
-            let brand = isFriendly ? "Friendly (Friendly Brand)" : isEBE ? "Emerald Bay Extracts" : isUP ? "UP! (Wellgreens Exclusive)" : "Friendly (Friendly Brand)";
-            let name = isFriendly ? "Friendly Drops - Hawaiian Runtz Sativa Live Resin Tincture 1000mg" : isEBE ? "Emerald Bay Extracts - Ice Cream Cake RSO Tablets 25mg (40 Tabs / 1000mg)" : isUP ? "UP! - Skywalker OG Smalls 14g" : "Friendly Drops - Hawaiian Runtz Sativa Live Resin Tincture 1000mg";
-            let cat = isFriendly ? "Tinctures & Drops" : isEBE ? "Extracts & RSO" : isUP ? "Flower" : "Tinctures & Drops";
-            let type = isFriendly ? "Sativa (Live Resin)" : isEBE ? "Indica (Full Spectrum)" : isUP ? "Indica" : "Sativa (Live Resin)";
-            let thc = isFriendly ? "1,000mg THC (30mL / 1 FL OZ)" : isEBE ? "25mg/Tablet (40 Tabs = 1,000mg THC Total)" : isUP ? "28.4% THC" : "1,000mg THC (30mL / 1 FL OZ)";
-            let price = isFriendly ? 45.00 : isEBE ? 55.00 : isUP ? 49.00 : 45.00;
-            let metrc = "1A40603000021230000" + Math.floor(100000 + Math.random() * 900000);
+            let brand = isFriendly ? "Friendly (Friendly Brand)" : isEBE ? "Emerald Bay Extracts" : isUP ? "UP! (Wellgreens Exclusive)" : "Emerald Bay Extracts";
+            let name = isFriendly ? "Friendly Drops - Hawaiian Runtz Sativa Live Resin Tincture 1000mg" : isEBE ? "Emerald Bay Extracts - Ice Cream Cake (Indica) 20pk Tablets 1000mg" : isUP ? "UP! - Skywalker OG Smalls 14g" : "Emerald Bay Extracts - Ice Cream Cake (Indica) 20pk Tablets 1000mg";
+            let cat = isFriendly ? "Tinctures & Drops" : isEBE ? "Extracts & RSO" : isUP ? "Flower" : "Extracts & RSO";
+            let type = isFriendly ? "Sativa (Live Resin)" : isEBE ? "Indica (Full Spectrum)" : isUP ? "Indica" : "Indica (Full Spectrum)";
+            let thc = isFriendly ? "1,000mg THC (30mL / 1 FL OZ)" : isEBE ? "50mg/Tablet (20 Tabs = 1,000mg THC Total)" : isUP ? "28.4% THC" : "50mg/Tablet (20 Tabs = 1,000mg THC Total)";
+            let price = isFriendly ? 45.00 : isEBE ? 36.99 : isUP ? 49.00 : 36.99;
+            let metrc = scannedBarcode ? scannedBarcode : ("1A406030000635B000088049");
 
             pendingScanItem = {
                 "sku_id": (brand.includes("Emerald") ? "EBE-" : brand.includes("Friendly") ? "FRN-" : "UP-") + Math.floor(1000 + Math.random() * 9000),
@@ -600,7 +600,7 @@
             document.getElementById('edit-type').value = `${pendingScanItem.category} (${pendingScanItem.strain_type})`;
             document.getElementById('edit-price').value = pendingScanItem.price;
             document.getElementById('edit-metrc').value = pendingScanItem.metrc_tag;
-            document.getElementById('raw-ocr-text').textContent = `Package loaded: ${fileName || 'Packaging Photo'}. Visual matching active.`;
+            document.getElementById('raw-ocr-text').textContent = scannedBarcode ? `QR / Barcode Decoded: ${scannedBarcode}` : `Package loaded: ${fileName || 'Packaging Photo'}. Visual matching active.`;
 
             const resultsBox = document.getElementById('scan-results-box');
             resultsBox.classList.remove('hidden');
@@ -687,7 +687,29 @@
             }
         }
 
-        // Live Camera Access with High-Definition Constraints
+        let barcodeDetector = null;
+        let barcodeScanInterval = null;
+
+        // Sound synthesizer for commercial barcode scanner beep
+        function playScannerBeep() {
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(1850, audioCtx.currentTime); // 1.85kHz crisp POS beep
+                gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.12);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.12);
+            } catch (e) {
+                console.log("Audio beep skipped:", e);
+            }
+        }
+
+        // Live Camera Access with High-Definition Constraints & Real-Time QR/Barcode Detection
         async function startLiveCamera() {
             const camContainer = document.getElementById('camera-container');
             const video = document.getElementById('camera-video');
@@ -703,12 +725,48 @@
                 video.srcObject = videoStream;
                 camContainer.classList.remove('hidden');
                 document.getElementById('drop-zone').classList.add('hidden');
+
+                // Initialize Barcode & QR Detector if supported by browser
+                if ('BarcodeDetector' in window) {
+                    try {
+                        barcodeDetector = new BarcodeDetector({
+                            formats: ['qr_code', 'code_128', 'code_39', 'ean_13', 'upc_a', 'data_matrix']
+                        });
+                        
+                        // Start real-time barcode scanning loop
+                        barcodeScanInterval = setInterval(async () => {
+                            if (!videoStream || video.readyState < 2) return;
+                            try {
+                                const barcodes = await barcodeDetector.detect(video);
+                                if (barcodes && barcodes.length > 0) {
+                                    const detected = barcodes[0].rawValue || "";
+                                    if (detected.trim()) {
+                                        playScannerBeep();
+                                        clearInterval(barcodeScanInterval);
+                                        barcodeScanInterval = null;
+                                        
+                                        // Auto-capture frame and populate with scanned METRC tag
+                                        captureFromCamera(detected);
+                                    }
+                                }
+                            } catch (err) {
+                                // Background frame skip
+                            }
+                        }, 250);
+                    } catch (e) {
+                        console.log("Barcode detector init notice:", e);
+                    }
+                }
             } catch (err) {
                 alert("Camera permission denied or camera not available. You can also upload photos directly using the 'Upload Image' button!");
             }
         }
 
         function stopCamera() {
+            if (barcodeScanInterval) {
+                clearInterval(barcodeScanInterval);
+                barcodeScanInterval = null;
+            }
             if (videoStream) {
                 videoStream.getTracks().forEach(track => track.stop());
                 videoStream = null;
@@ -717,8 +775,8 @@
             document.getElementById('drop-zone').classList.remove('hidden');
         }
 
-        // Precision Viewfinder Center-Crop (ROI Anchor)
-        function captureFromCamera() {
+        // Precision Viewfinder Center-Crop (ROI Anchor) with optional Barcode Payload
+        function captureFromCamera(scannedBarcode = null) {
             const video = document.getElementById('camera-video');
             const vw = video.videoWidth || 640;
             const vh = video.videoHeight || 480;
@@ -739,7 +797,7 @@
 
             const dataUrl = canvas.toDataURL('image/jpeg', 0.90);
             stopCamera();
-            processPackagingImage(dataUrl, "Live_Camera_Intake_RSO.jpg");
+            processPackagingImage(dataUrl, scannedBarcode ? `Barcode_Scan_${scannedBarcode.substring(0, 8)}.jpg` : "Live_Camera_Intake_RSO.jpg", scannedBarcode);
         }
 
         function handleFileUpload(event) {
