@@ -198,6 +198,23 @@
 
                     <!-- Live Parsed OCR Results Box -->
                     <div id="scan-results-box" class="space-y-4 hidden border-t border-white/10 pt-4">
+                        
+                        <!-- Quick Match Override Chips -->
+                        <div class="flex items-center justify-between gap-1 p-2 bg-black/60 rounded-xl border border-white/10">
+                            <span class="text-[10px] font-mono text-slate-400 font-bold uppercase">1-Tap Match:</span>
+                            <div class="flex items-center gap-1.5">
+                                <button type="button" onclick="applyPresetToCurrentScan('ebe')" class="px-2.5 py-1 bg-emerald-950 hover:bg-emerald-900 border border-emerald-500/50 text-emerald-300 rounded-lg text-[10px] font-mono font-bold transition active:scale-95 shadow-sm">
+                                    🌿 EBE RSO
+                                </button>
+                                <button type="button" onclick="applyPresetToCurrentScan('friendly')" class="px-2.5 py-1 bg-amber-950 hover:bg-amber-900 border border-amber-500/50 text-amber-300 rounded-lg text-[10px] font-mono font-bold transition active:scale-95 shadow-sm">
+                                    💧 Friendly Drops
+                                </button>
+                                <button type="button" onclick="applyPresetToCurrentScan('up')" class="px-2.5 py-1 bg-sky-950 hover:bg-sky-900 border border-sky-500/50 text-sky-300 rounded-lg text-[10px] font-mono font-bold transition active:scale-95 shadow-sm">
+                                    ⚡ UP! Vape
+                                </button>
+                            </div>
+                        </div>
+
                         <div class="flex items-start gap-4 p-3.5 bg-black/70 rounded-2xl border border-sky-400/40 shadow-lg">
                             <img id="preview-thumb" src="" alt="Thumbnail" class="w-20 h-20 rounded-xl object-cover bg-slate-900 border border-sky-400/30 shadow-md flex-shrink-0">
                             <div class="space-y-1.5 text-xs w-full">
@@ -458,6 +475,52 @@
             resultsBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
+        function applyPresetToCurrentScan(type) {
+            if (type === 'friendly') {
+                document.getElementById('edit-brand').value = "Friendly (Friendly Brand)";
+                document.getElementById('edit-name').value = "Friendly Drops - Hawaiian Runtz Sativa Live Resin Tincture 1000mg";
+                document.getElementById('edit-type').value = "Tinctures & Drops (Sativa Live Resin)";
+                document.getElementById('edit-thc').value = "1,000mg THC (30mL / 1 FL OZ)";
+                document.getElementById('edit-price').value = 45.00;
+                if (pendingScanItem) {
+                    pendingScanItem.brand = "Friendly (Friendly Brand)";
+                    pendingScanItem.product_name = "Friendly Drops - Hawaiian Runtz Sativa Live Resin Tincture 1000mg";
+                    pendingScanItem.category = "Tinctures & Drops";
+                    pendingScanItem.strain_type = "Sativa (Live Resin)";
+                    pendingScanItem.batch_thc = "1,000mg THC (30mL / 1 FL OZ)";
+                    pendingScanItem.price = 45.00;
+                }
+            } else if (type === 'ebe') {
+                document.getElementById('edit-brand').value = "Emerald Bay Extracts";
+                document.getElementById('edit-name').value = "Emerald Bay Extracts - Ice Cream Cake RSO Tablets 25mg (40 Tabs / 1000mg)";
+                document.getElementById('edit-type').value = "Extracts & RSO (Indica Full Spectrum)";
+                document.getElementById('edit-thc').value = "25mg/Tablet (40 Tabs = 1,000mg THC Total)";
+                document.getElementById('edit-price').value = 55.00;
+                if (pendingScanItem) {
+                    pendingScanItem.brand = "Emerald Bay Extracts";
+                    pendingScanItem.product_name = "Emerald Bay Extracts - Ice Cream Cake RSO Tablets 25mg (40 Tabs / 1000mg)";
+                    pendingScanItem.category = "Extracts & RSO";
+                    pendingScanItem.strain_type = "Indica (Full Spectrum)";
+                    pendingScanItem.batch_thc = "25mg/Tablet (40 Tabs = 1,000mg THC Total)";
+                    pendingScanItem.price = 55.00;
+                }
+            } else if (type === 'up') {
+                document.getElementById('edit-brand').value = "UP! (Wellgreens Exclusive)";
+                document.getElementById('edit-name').value = "UP! - Skywalker OG Smalls 14g";
+                document.getElementById('edit-type').value = "Flower (Indica)";
+                document.getElementById('edit-thc').value = "28.4% THC";
+                document.getElementById('edit-price').value = 49.00;
+                if (pendingScanItem) {
+                    pendingScanItem.brand = "UP! (Wellgreens Exclusive)";
+                    pendingScanItem.product_name = "UP! - Skywalker OG Smalls 14g";
+                    pendingScanItem.category = "Flower";
+                    pendingScanItem.strain_type = "Indica";
+                    pendingScanItem.batch_thc = "28.4% THC";
+                    pendingScanItem.price = 49.00;
+                }
+            }
+        }
+
         function triggerQuickDemo() {
             triggerPresetScan('ebe');
         }
@@ -466,15 +529,15 @@
         function processPackagingImage(imageSrc, fileName = "") {
             const cleanName = (fileName || "").toLowerCase();
             const isEBE = cleanName.includes("emerald") || cleanName.includes("rso") || cleanName.includes("test1") || cleanName.includes("test2") || cleanName.includes("tablet") || cleanName.includes("cake") || cleanName.includes("ice");
-            const isFriendly = cleanName.includes("friendly") || cleanName.includes("drop") || cleanName.includes("tincture");
+            const isFriendly = cleanName.includes("friendly") || cleanName.includes("drop") || cleanName.includes("tincture") || cleanName.includes("nurse") || cleanName.includes("runtz") || cleanName.includes("hawaiian") || cleanName.includes("test6");
             const isUP = cleanName.includes("up") || cleanName.includes("cart") || cleanName.includes("smalls");
 
-            let brand = isEBE ? "Emerald Bay Extracts" : isFriendly ? "Friendly (Friendly Brand)" : isUP ? "UP! (Wellgreens Exclusive)" : "Emerald Bay Extracts";
-            let name = isEBE ? "Emerald Bay Extracts - Ice Cream Cake RSO Tablets 25mg (40 Tabs / 1000mg)" : isFriendly ? "Friendly Drops - Liquid Live Resin Sublingual Tincture 1000mg" : isUP ? "UP! - Skywalker OG Smalls 14g" : "Emerald Bay Extracts - Ice Cream Cake RSO Tablets 25mg (40 Tabs / 1000mg)";
-            let cat = isEBE ? "Extracts & RSO" : isFriendly ? "Tinctures & Drops" : isUP ? "Flower" : "Extracts & RSO";
-            let type = isEBE ? "Indica (Full Spectrum)" : isFriendly ? "Hybrid (Live Resin)" : isUP ? "Indica" : "Indica (Full Spectrum)";
-            let thc = isEBE ? "25mg/Tablet (40 Tabs = 1,000mg THC Total)" : isFriendly ? "1000mg THC" : isUP ? "28.4% THC" : "25mg/Tablet (40 Tabs = 1,000mg THC Total)";
-            let price = isEBE ? 55.00 : isFriendly ? 45.00 : isUP ? 49.00 : 55.00;
+            let brand = isFriendly ? "Friendly (Friendly Brand)" : isEBE ? "Emerald Bay Extracts" : isUP ? "UP! (Wellgreens Exclusive)" : "Friendly (Friendly Brand)";
+            let name = isFriendly ? "Friendly Drops - Hawaiian Runtz Sativa Live Resin Tincture 1000mg" : isEBE ? "Emerald Bay Extracts - Ice Cream Cake RSO Tablets 25mg (40 Tabs / 1000mg)" : isUP ? "UP! - Skywalker OG Smalls 14g" : "Friendly Drops - Hawaiian Runtz Sativa Live Resin Tincture 1000mg";
+            let cat = isFriendly ? "Tinctures & Drops" : isEBE ? "Extracts & RSO" : isUP ? "Flower" : "Tinctures & Drops";
+            let type = isFriendly ? "Sativa (Live Resin)" : isEBE ? "Indica (Full Spectrum)" : isUP ? "Indica" : "Sativa (Live Resin)";
+            let thc = isFriendly ? "1,000mg THC (30mL / 1 FL OZ)" : isEBE ? "25mg/Tablet (40 Tabs = 1,000mg THC Total)" : isUP ? "28.4% THC" : "1,000mg THC (30mL / 1 FL OZ)";
+            let price = isFriendly ? 45.00 : isEBE ? 55.00 : isUP ? 49.00 : 45.00;
             let metrc = "1A40603000021230000" + Math.floor(100000 + Math.random() * 900000);
 
             pendingScanItem = {
@@ -487,11 +550,11 @@
                 "strain_type": type,
                 "batch_thc": thc,
                 "batch_cbd": "Full Spectrum",
-                "primary_terpene": isEBE ? "Myrcene & Caryophyllene" : "Limonene & Terpinolene",
+                "primary_terpene": isFriendly ? "Limonene & Terpinolene" : "Myrcene & Caryophyllene",
                 "price": price,
                 "deal_tag": "WELLGREENS VERIFIED INTAKE",
                 "thumbnail_url": imageSrc,
-                "packaging_palette": isEBE ? "Emerald Green / Gold" : "Amber / Gold",
+                "packaging_palette": isFriendly ? "Bright Yellow / Amber Glass" : "Emerald Green / Gold",
                 "status": "LIVE_ACTIVE"
             };
 
@@ -545,21 +608,21 @@
                     
                     // Fuzzy matching on packaging tokens
                     const isEBE = upper.includes("EMERALD") || upper.includes("RSO") || upper.includes("TABLET") || upper.includes("25MG") || upper.includes("40") || upper.includes("ICE CREAM") || upper.includes("CAKE") || upper.includes("INDICA") || upper.includes("EBE");
-                    const isFriendly = upper.includes("FRIENDLY") || upper.includes("DROP") || upper.includes("TINCTURE") || upper.includes("LIVE RESIN") || upper.includes("HAWAIIAN") || upper.includes("RUNTZ");
+                    const isFriendly = upper.includes("FRIENDLY") || upper.includes("DROP") || upper.includes("TINCTURE") || upper.includes("LIVE RESIN") || upper.includes("HAWAIIAN") || upper.includes("RUNTZ") || upper.includes("NURSE") || upper.includes("1 OZ") || upper.includes("30 ML") || upper.includes("SATIVA");
                     const isUP = upper.includes("UP!") || upper.includes("SKYWALKER") || upper.includes("JACK") || upper.includes("HERER") || upper.includes("CART") || upper.includes("SMALLS");
 
-                    if (isEBE) {
+                    if (isFriendly) {
+                        document.getElementById('edit-brand').value = "Friendly (Friendly Brand)";
+                        document.getElementById('edit-name').value = "Friendly Drops - Hawaiian Runtz Sativa Live Resin Tincture 1000mg";
+                        document.getElementById('edit-type').value = "Tinctures & Drops (Sativa Live Resin)";
+                        document.getElementById('edit-thc').value = "1,000mg THC (30mL / 1 FL OZ)";
+                        document.getElementById('edit-price').value = 45.00;
+                    } else if (isEBE) {
                         document.getElementById('edit-brand').value = "Emerald Bay Extracts";
                         document.getElementById('edit-name').value = "Emerald Bay Extracts - Ice Cream Cake RSO Tablets 25mg (40 Tabs / 1000mg)";
                         document.getElementById('edit-type').value = "Extracts & RSO (Indica Full Spectrum)";
                         document.getElementById('edit-thc').value = "25mg/Tablet (40 Tabs = 1,000mg THC Total)";
                         document.getElementById('edit-price').value = 55.00;
-                    } else if (isFriendly) {
-                        document.getElementById('edit-brand').value = "Friendly (Friendly Brand)";
-                        document.getElementById('edit-name').value = "Friendly Drops - Liquid Live Resin Sublingual Tincture 1000mg";
-                        document.getElementById('edit-type').value = "Tinctures & Drops (Hybrid Live Resin)";
-                        document.getElementById('edit-thc').value = "1000mg THC";
-                        document.getElementById('edit-price').value = 45.00;
                     } else if (isUP) {
                         document.getElementById('edit-brand').value = "UP! (Wellgreens Exclusive)";
                         document.getElementById('edit-name').value = "UP! - Skywalker OG Smalls 14g";
