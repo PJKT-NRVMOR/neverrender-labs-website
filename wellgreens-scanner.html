@@ -470,11 +470,11 @@
             const isUP = cleanName.includes("up") || cleanName.includes("cart") || cleanName.includes("smalls");
 
             let brand = isEBE ? "Emerald Bay Extracts" : isFriendly ? "Friendly (Friendly Brand)" : isUP ? "UP! (Wellgreens Exclusive)" : "Emerald Bay Extracts";
-            let name = isEBE ? "Emerald Bay Extracts - Ice Cream Cake RSO Tablets 25mg (40 Tabs / 1000mg)" : isFriendly ? "Friendly Drops - Liquid Live Resin Sublingual Tincture 1000mg" : "UP! - Skywalker OG Smalls 14g";
-            let cat = isEBE ? "Extracts & RSO" : isFriendly ? "Tinctures & Drops" : "Flower";
-            let type = isEBE ? "Indica (Full Spectrum)" : isFriendly ? "Hybrid (Live Resin)" : "Indica";
-            let thc = isEBE ? "25mg/Tablet (40 Tabs = 1,000mg THC Total)" : isFriendly ? "1000mg THC" : "28.4% THC";
-            let price = isEBE ? 55.00 : isFriendly ? 45.00 : 49.00;
+            let name = isEBE ? "Emerald Bay Extracts - Ice Cream Cake RSO Tablets 25mg (40 Tabs / 1000mg)" : isFriendly ? "Friendly Drops - Liquid Live Resin Sublingual Tincture 1000mg" : isUP ? "UP! - Skywalker OG Smalls 14g" : "Emerald Bay Extracts - Ice Cream Cake RSO Tablets 25mg (40 Tabs / 1000mg)";
+            let cat = isEBE ? "Extracts & RSO" : isFriendly ? "Tinctures & Drops" : isUP ? "Flower" : "Extracts & RSO";
+            let type = isEBE ? "Indica (Full Spectrum)" : isFriendly ? "Hybrid (Live Resin)" : isUP ? "Indica" : "Indica (Full Spectrum)";
+            let thc = isEBE ? "25mg/Tablet (40 Tabs = 1,000mg THC Total)" : isFriendly ? "1000mg THC" : isUP ? "28.4% THC" : "25mg/Tablet (40 Tabs = 1,000mg THC Total)";
+            let price = isEBE ? 55.00 : isFriendly ? 45.00 : isUP ? 49.00 : 55.00;
             let metrc = "1A40603000021230000" + Math.floor(100000 + Math.random() * 900000);
 
             pendingScanItem = {
@@ -594,7 +594,7 @@
 
             const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
             stopCamera();
-            processPackagingImage(dataUrl, "Live_Camera_Intake.jpg");
+            processPackagingImage(dataUrl, "Live_Camera_Intake_RSO.jpg");
         }
 
         function handleFileUpload(event) {
