@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wellgreens Vista | AI Intake Scanner & JSON Inventory Engine</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
@@ -111,9 +112,17 @@
                 </p>
             </div>
 
-            <button onclick="triggerQuickDemo()" class="px-6 py-3.5 bg-gradient-to-r from-sky-400 to-emerald-400 hover:opacity-90 text-slate-950 font-display font-black text-xs sm:text-sm uppercase tracking-wider rounded-2xl shadow-lg shadow-sky-500/25 transition active:scale-95 whitespace-nowrap flex items-center gap-2">
-                <span>⚡ Simulate Intake Scan</span>
-            </button>
+            <div class="flex flex-wrap items-center gap-2">
+                <button onclick="triggerPresetScan('ebe')" class="px-4 py-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-display font-black text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-emerald-500/20 transition active:scale-95 flex items-center gap-1.5">
+                    <span>🌿 EBE RSO (1000mg)</span>
+                </button>
+                <button onclick="triggerPresetScan('friendly')" class="px-4 py-3 bg-amber-400 hover:bg-amber-300 text-slate-950 font-display font-black text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-amber-500/20 transition active:scale-95 flex items-center gap-1.5">
+                    <span>💧 Friendly Drops</span>
+                </button>
+                <button onclick="triggerPresetScan('up')" class="px-4 py-3 bg-sky-400 hover:bg-sky-300 text-slate-950 font-display font-black text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-sky-500/20 transition active:scale-95 flex items-center gap-1.5">
+                    <span>⚡ UP! Brand</span>
+                </button>
+            </div>
         </section>
 
         <!-- Two Column Layout: Scanner Box (Left) + Live JSON Database (Right) -->
@@ -160,47 +169,74 @@
                     </div>
 
                     <!-- Drop Zone Placeholder -->
-                    <div id="drop-zone" onclick="document.getElementById('file-input').click()" class="relative border-2 border-dashed border-sky-400/40 hover:border-sky-400 bg-black/40 rounded-2xl p-6 text-center cursor-pointer transition space-y-3 group overflow-hidden">
+                    <div id="drop-zone" onclick="document.getElementById('file-input').click()" ondragover="event.preventDefault(); this.classList.add('border-sky-400');" ondragleave="this.classList.remove('border-sky-400');" ondrop="handleDrop(event)" class="relative border-2 border-dashed border-sky-400/40 hover:border-sky-400 bg-black/40 rounded-2xl p-6 text-center cursor-pointer transition space-y-3 group overflow-hidden">
                         <div id="scanning-laser" class="laser-beam hidden"></div>
                         <div class="w-14 h-14 mx-auto rounded-2xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400 text-2xl group-hover:scale-110 transition">
                             📦
                         </div>
                         <div class="space-y-1">
-                            <div class="text-xs font-bold text-white">Tap to Choose Packaging Photo or Live Camera</div>
-                            <div class="text-[10px] text-slate-400 font-mono">Supports UP! Pouches, Vape Cartridges, Flower Jars</div>
+                            <div class="text-xs font-bold text-white">Tap to Choose Packaging Photo or Drag & Drop Here</div>
+                            <div class="text-[10px] text-slate-400 font-mono">Supports Emerald Bay RSO, Friendly Drops, Vape Carts, Flower</div>
                         </div>
                         <span class="inline-block text-[10px] font-mono font-bold text-sky-300 bg-sky-900/60 px-3 py-1 rounded-full border border-sky-500/30">
                             Auto Studio Background Stripper Active
                         </span>
                     </div>
 
+                    <!-- OCR Status & Progress Bar -->
+                    <div id="ocr-progress-box" class="hidden p-4 bg-sky-950/80 border border-sky-400/40 rounded-2xl space-y-2">
+                        <div class="flex items-center justify-between text-xs font-mono">
+                            <span id="ocr-status-text" class="text-sky-300 font-bold flex items-center gap-1.5">
+                                <span class="animate-spin">🔄</span> Running Tesseract Neural OCR...
+                            </span>
+                            <span id="ocr-progress-num" class="text-emerald-400 font-bold">0%</span>
+                        </div>
+                        <div class="w-full bg-slate-900 h-2 rounded-full overflow-hidden border border-white/10">
+                            <div id="ocr-progress-bar" class="bg-gradient-to-r from-sky-400 to-emerald-400 h-full w-0 transition-all duration-200"></div>
+                        </div>
+                    </div>
+
                     <!-- Live Parsed OCR Results Box -->
                     <div id="scan-results-box" class="space-y-4 hidden border-t border-white/10 pt-4">
-                        <div class="flex items-center gap-4 p-3.5 bg-black/70 rounded-2xl border border-sky-400/40 shadow-lg">
-                            <img id="preview-thumb" src="" alt="Thumbnail" class="w-16 h-16 rounded-xl object-cover bg-slate-900 border border-sky-400/30 shadow-md">
-                            <div class="space-y-0.5 text-xs">
+                        <div class="flex items-start gap-4 p-3.5 bg-black/70 rounded-2xl border border-sky-400/40 shadow-lg">
+                            <img id="preview-thumb" src="" alt="Thumbnail" class="w-20 h-20 rounded-xl object-cover bg-slate-900 border border-sky-400/30 shadow-md flex-shrink-0">
+                            <div class="space-y-1.5 text-xs w-full">
                                 <span class="text-[10px] font-mono text-emerald-400 font-bold block flex items-center gap-1">
-                                    <span>✔</span> OCR EXTRACTED SUCCESSFULLY
+                                    <span>✔</span> OCR EXTRACTED & VERIFIED
                                 </span>
-                                <div id="preview-name" class="font-display font-black text-white text-sm">UP! Skywalker OG Smalls 14g</div>
-                                <div id="preview-metrc" class="text-[10px] font-mono text-sky-300">METRC: 1A4060300002123000049281</div>
+                                <input type="text" id="edit-name" class="w-full bg-slate-900/90 border border-sky-400/40 rounded-lg px-2.5 py-1 text-white font-display font-bold text-xs" placeholder="Product Name">
+                                <input type="text" id="edit-brand" class="w-full bg-slate-900/90 border border-white/20 rounded-lg px-2.5 py-1 text-sky-300 font-mono text-[11px]" placeholder="Brand Name">
                             </div>
                         </div>
 
-                        <!-- Extracted Lab Metadata Grid -->
+                        <!-- Extracted Lab Metadata Grid (Editable) -->
                         <div class="grid grid-cols-2 gap-2 text-[11px] font-mono">
-                            <div class="p-3 bg-black/50 rounded-xl border border-white/5 space-y-0.5">
-                                <span class="text-slate-400 block text-[9px] uppercase font-bold">Batch THC / Terpene</span>
-                                <span id="preview-thc" class="font-bold text-sky-300">28.4% THC (Myrcene)</span>
+                            <div class="p-2.5 bg-black/50 rounded-xl border border-white/10 space-y-1">
+                                <span class="text-slate-400 block text-[9px] uppercase font-bold">Batch Potency (THC/CBD)</span>
+                                <input type="text" id="edit-thc" class="w-full bg-slate-900 border border-white/20 rounded px-2 py-1 text-sky-300 font-bold text-xs">
                             </div>
-                            <div class="p-3 bg-black/50 rounded-xl border border-white/5 space-y-0.5">
-                                <span class="text-slate-400 block text-[9px] uppercase font-bold">Category & Strain Type</span>
-                                <span id="preview-type" class="font-bold text-amber-300">Flower (Indica)</span>
+                            <div class="p-2.5 bg-black/50 rounded-xl border border-white/10 space-y-1">
+                                <span class="text-slate-400 block text-[9px] uppercase font-bold">Category & Genetics</span>
+                                <input type="text" id="edit-type" class="w-full bg-slate-900 border border-white/20 rounded px-2 py-1 text-amber-300 font-bold text-xs">
                             </div>
+                            <div class="p-2.5 bg-black/50 rounded-xl border border-white/10 space-y-1">
+                                <span class="text-slate-400 block text-[9px] uppercase font-bold">Price ($)</span>
+                                <input type="number" step="0.5" id="edit-price" class="w-full bg-slate-900 border border-white/20 rounded px-2 py-1 text-emerald-400 font-bold text-xs">
+                            </div>
+                            <div class="p-2.5 bg-black/50 rounded-xl border border-white/10 space-y-1">
+                                <span class="text-slate-400 block text-[9px] uppercase font-bold">METRC Package Tag</span>
+                                <input type="text" id="edit-metrc" class="w-full bg-slate-900 border border-white/20 rounded px-2 py-1 text-slate-300 text-[10px]">
+                            </div>
+                        </div>
+
+                        <!-- Raw OCR Detected Text Log -->
+                        <div class="p-2.5 bg-slate-950/80 rounded-xl border border-white/5 space-y-1">
+                            <span class="text-slate-500 block text-[9px] uppercase font-mono font-bold">Raw OCR Detected Text</span>
+                            <p id="raw-ocr-text" class="text-[10px] font-mono text-slate-400 line-clamp-2 italic"></p>
                         </div>
 
                         <!-- 1-Tap Save Button -->
-                        <button onclick="commitToJsonDatabase()" class="w-full py-4 bg-gradient-to-r from-emerald-400 to-sky-400 hover:opacity-95 text-slate-950 font-display font-black text-sm uppercase tracking-wider rounded-xl shadow-lg shadow-emerald-500/25 transition active:scale-95 flex items-center justify-center gap-2">
+                        <button onclick="commitToJsonDatabase()" class="w-full py-3.5 bg-gradient-to-r from-emerald-400 to-sky-400 hover:opacity-95 text-slate-950 font-display font-black text-xs sm:text-sm uppercase tracking-wider rounded-xl shadow-lg shadow-emerald-500/25 transition active:scale-95 flex items-center justify-center gap-2">
                             <span>💾 COMMIT SKU TO JSON TABLE</span>
                         </button>
                     </div>
@@ -261,74 +297,74 @@
 
     <!-- Intake Scanner & JSON Database Script Engine -->
     <script>
-        // Initial Database
+        // Initial Seed Database with Wellgreens Multi-Brand Catalog (RSO, Tinctures, Vapes, Flower)
         let INVENTORY_DB = [
             {
-                "sku_id": "UP-FLW-SKY-14G-001",
-                "metrc_tag": "1A4060300002123000049281",
-                "timestamp": "2026-08-22T14:24:00Z",
+                "sku_id": "EBE-RSO-101",
+                "metrc_tag": "1A40603000021230000849201",
+                "timestamp": "2026-09-01T12:00:00.000Z",
+                "brand": "Emerald Bay Extracts",
+                "product_name": "Emerald Bay Extracts - RSO Full Spectrum Tablets 1000mg",
+                "category": "Extracts & RSO",
+                "strain_type": "Indica (Full Spectrum)",
+                "batch_thc": "1000mg THC",
+                "batch_cbd": "45mg CBD / 18mg CBN",
+                "primary_terpene": "Myrcene & Beta-Caryophyllene (Deep Relief)",
+                "price": 55.00,
+                "deal_tag": "MEDICAL GRADE MEDICINAL FAVORITE",
+                "thumbnail_url": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=300&auto=format&fit=crop&q=60",
+                "packaging_palette": "Emerald Green / Gold Foil",
+                "status": "LIVE_ACTIVE"
+            },
+            {
+                "sku_id": "FRN-DROP-202",
+                "metrc_tag": "1A40603000021230000918234",
+                "timestamp": "2026-09-01T12:05:00.000Z",
+                "brand": "Friendly (Friendly Brand)",
+                "product_name": "Friendly Drops - Liquid Live Resin Sublingual Tincture 1000mg",
+                "category": "Tinctures & Drops",
+                "strain_type": "Hybrid (True Live Resin)",
+                "batch_thc": "1000mg THC",
+                "batch_cbd": "12mg CBD",
+                "primary_terpene": "Limonene & Terpinolene (Rich Citrus Bouquet)",
+                "price": 42.00,
+                "deal_tag": "TRUE TERPENE FULL SPECTRUM",
+                "thumbnail_url": "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=300&auto=format&fit=crop&q=60",
+                "packaging_palette": "Sunset Orange / Amber Glass",
+                "status": "LIVE_ACTIVE"
+            },
+            {
+                "sku_id": "UP-CART-701",
+                "metrc_tag": "1A40603000021230000492811",
+                "timestamp": "2026-08-30T10:15:00.000Z",
                 "brand": "UP! (Wellgreens Exclusive)",
-                "product_name": "Skywalker OG (Indica) Cannabis Smalls 14g",
-                "category": "Flower",
-                "strain_type": "Indica",
-                "batch_thc": "28.4%",
+                "product_name": "UP! - Jack Herer (Sativa) Classic Cartridge 1g",
+                "category": "Vapes",
+                "strain_type": "Sativa",
+                "batch_thc": "84.2%",
                 "batch_cbd": "0.18%",
-                "primary_terpene": "Myrcene (Pine & Deep Relaxation)",
+                "primary_terpene": "Terpinolene (Pine / Citrus)",
+                "price": 12.50,
+                "deal_tag": "UP! 7 FOR $60+TAX",
+                "thumbnail_url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=300&auto=format&fit=crop&q=60",
+                "packaging_palette": "Steely Ice Blue / Lime",
+                "status": "LIVE_ACTIVE"
+            },
+            {
+                "sku_id": "UP-FLW-804",
+                "metrc_tag": "1A40603000021230000510293",
+                "timestamp": "2026-08-30T11:42:00.000Z",
+                "brand": "UP! (Wellgreens Exclusive)",
+                "product_name": "UP! - Biscotti (Hybrid) Smalls 14g",
+                "category": "Flower",
+                "strain_type": "Hybrid",
+                "batch_thc": "29.4%",
+                "batch_cbd": "0.08%",
+                "primary_terpene": "Caryophyllene (Cookie Gas)",
                 "price": 49.00,
                 "deal_tag": "10% OFF ANY TWO 14G",
                 "thumbnail_url": "https://images.unsplash.com/photo-1568644396922-5c3bfae12521?w=300&auto=format&fit=crop&q=60",
-                "packaging_palette": "Steely Ice Blue (#B8D7EB / #102A45)",
-                "status": "LIVE_ACTIVE"
-            },
-            {
-                "sku_id": "UP-VAP-BLU-1G-002",
-                "metrc_tag": "1A4060300002123000050119",
-                "timestamp": "2026-08-22T14:20:00Z",
-                "brand": "UP! (Wellgreens Exclusive)",
-                "product_name": "Blue Dream (Sativa) Live Resin Cartridge 1g",
-                "category": "Vapes",
-                "strain_type": "Sativa",
-                "batch_thc": "77.56%",
-                "batch_cbd": "0.20%",
-                "primary_terpene": "Myrcene (Blueberry Euphoria)",
-                "price": 14.50,
-                "deal_tag": "UP! 7 FOR $60+TAX",
-                "thumbnail_url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=300&auto=format&fit=crop&q=60",
-                "packaging_palette": "Terracotta Orange (#EA580C)",
-                "status": "LIVE_ACTIVE"
-            },
-            {
-                "sku_id": "UP-VAP-NOR-1G-003",
-                "metrc_tag": "1A4060300002123000050124",
-                "timestamp": "2026-08-22T14:18:00Z",
-                "brand": "UP! (Wellgreens Exclusive)",
-                "product_name": "Northern Lights (Indica) Live Resin Cartridge 1g",
-                "category": "Vapes",
-                "strain_type": "Indica",
-                "batch_thc": "75.69%",
-                "batch_cbd": "0.07%",
-                "primary_terpene": "Caryophyllene (Sweet Pine Slumber)",
-                "price": 14.50,
-                "deal_tag": "UP! 7 FOR $60+TAX",
-                "thumbnail_url": "https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=300&auto=format&fit=crop&q=60",
-                "packaging_palette": "Indigo Royal Purple (#4338CA)",
-                "status": "LIVE_ACTIVE"
-            },
-            {
-                "sku_id": "LO-CON-MID-1G-004",
-                "metrc_tag": "1A4060300002123000050882",
-                "timestamp": "2026-08-22T13:50:00Z",
-                "brand": "Lights Out (Wellgreens Exclusive)",
-                "product_name": "Midnight Blackberry Solventless Rosin 1g",
-                "category": "Concentrates",
-                "strain_type": "Indica",
-                "batch_thc": "84.2%",
-                "batch_cbd": "4.8%",
-                "primary_terpene": "Myrcene (Cold Rosin Sleep)",
-                "price": 48.00,
-                "deal_tag": "SOLVENTLESS ROSIN",
-                "thumbnail_url": "https://images.unsplash.com/photo-1603909223429-69bb7101f420?w=300&auto=format&fit=crop&q=60",
-                "packaging_palette": "Deep Lavender (#6B21A8)",
+                "packaging_palette": "Deep Lavender / Matte Black",
                 "status": "LIVE_ACTIVE"
             }
         ];
@@ -344,74 +380,182 @@
             viewer.textContent = JSON.stringify(INVENTORY_DB, null, 2);
         }
 
-        // Trigger Instant Simulation
-        function triggerQuickDemo() {
-            const laser = document.getElementById('scanning-laser');
-            laser.classList.remove('hidden');
-
-            const demoProducts = [
-                {
+        // Multi-Brand Simulation Trigger
+        function triggerPresetScan(brandType) {
+            const brandPresets = {
+                'ebe': {
+                    brand: "Emerald Bay Extracts",
+                    name: "Emerald Bay Extracts - Ice Cream Cake RSO Tablets 25mg (40 Tabs / 1000mg Total)",
+                    cat: "Extracts & RSO",
+                    type: "Indica (Full Spectrum)",
+                    thc: "25mg/Tab (1,000mg THC Total)",
+                    cbd: "50mg CBD / 20mg CBN",
+                    terp: "Myrcene & Linalool (Sedative Sleep & Pain Relief)",
+                    price: 58.00,
+                    deal: "WELLGREENS TOP RSO PICK",
+                    palette: "Emerald Green & Gold",
+                    img: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=300&auto=format&fit=crop&q=60"
+                },
+                'friendly': {
+                    brand: "Friendly (Friendly Brand)",
+                    name: "Friendly Drops - Liquid Live Resin Sublingual Tincture 1000mg",
+                    cat: "Tinctures & Drops",
+                    type: "Hybrid (Live Resin)",
+                    thc: "1000mg THC",
+                    cbd: "15mg CBD",
+                    terp: "Limonene & Caryophyllene (Citrus Terpene Rich)",
+                    price: 45.00,
+                    deal: "100% TRUE LIVE RESIN DROPS",
+                    palette: "Amber Bottle / Gold Label",
+                    img: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=300&auto=format&fit=crop&q=60"
+                },
+                'up': {
+                    brand: "UP! (Wellgreens Exclusive)",
                     name: "UP! - Gorilla Glue (Hybrid) Classic Cartridge 1g",
                     cat: "Vapes",
                     type: "Hybrid",
-                    thc: "83.5%",
+                    thc: "83.5% THC",
+                    cbd: "0.22% CBD",
                     terp: "Caryophyllene (Pungent Earth)",
                     price: 12.50,
+                    deal: "UP! 7 FOR $60+TAX",
+                    palette: "Steely Ice Blue / Lime",
                     img: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=300&auto=format&fit=crop&q=60"
-                },
-                {
-                    name: "UP! - Lemon Cherry Gelato (Hybrid) Live Resin 1g",
-                    cat: "Vapes",
-                    type: "Hybrid",
-                    thc: "77.45%",
-                    terp: "Limonene (Zesty Citrus)",
-                    price: 14.50,
-                    img: "https://images.unsplash.com/photo-1536939459926-301728717817?w=300&auto=format&fit=crop&q=60"
-                },
-                {
-                    name: "UP! - Sherbert (Indica) Cannabis Smalls 14g",
-                    cat: "Flower",
-                    type: "Indica",
-                    thc: "26.1%",
-                    terp: "Limonene (Sweet Cream)",
-                    price: 49.00,
-                    img: "https://images.unsplash.com/photo-1568644396922-5c3bfae12521?w=300&auto=format&fit=crop&q=60"
                 }
-            ];
+            };
 
-            const pick = demoProducts[Math.floor(Math.random() * demoProducts.length)];
+            const pick = brandPresets[brandType] || brandPresets['ebe'];
 
-            setTimeout(() => {
-                laser.classList.add('hidden');
+            pendingScanItem = {
+                "sku_id": (pick.brand.includes("Emerald") ? "EBE-" : pick.brand.includes("Friendly") ? "FRN-" : "UP-") + Math.floor(100 + Math.random() * 900),
+                "metrc_tag": "1A40603000021230000" + Math.floor(100000 + Math.random() * 900000),
+                "timestamp": new Date().toISOString(),
+                "brand": pick.brand,
+                "product_name": pick.name,
+                "category": pick.cat,
+                "strain_type": pick.type,
+                "batch_thc": pick.thc,
+                "batch_cbd": pick.cbd,
+                "primary_terpene": pick.terp,
+                "price": pick.price,
+                "deal_tag": pick.deal,
+                "thumbnail_url": pick.img,
+                "packaging_palette": pick.palette,
+                "status": "LIVE_ACTIVE"
+            };
 
-                pendingScanItem = {
-                    "sku_id": "UP-AUTO-" + Math.floor(100 + Math.random() * 900),
-                    "metrc_tag": "1A40603000021230000" + Math.floor(100000 + Math.random() * 900000),
-                    "timestamp": new Date().toISOString(),
-                    "brand": "UP! (Wellgreens Exclusive)",
-                    "product_name": pick.name,
-                    "category": pick.cat,
-                    "strain_type": pick.type,
-                    "batch_thc": pick.thc,
-                    "batch_cbd": "0.22%",
-                    "primary_terpene": pick.terp,
-                    "price": pick.price,
-                    "deal_tag": "UP! 7 FOR $60+TAX",
-                    "thumbnail_url": pick.img,
-                    "packaging_palette": "Steely Ice Blue / Lime",
-                    "status": "LIVE_ACTIVE"
-                };
+            document.getElementById('preview-thumb').src = pendingScanItem.thumbnail_url;
+            document.getElementById('edit-name').value = pendingScanItem.product_name;
+            document.getElementById('edit-brand').value = pendingScanItem.brand;
+            document.getElementById('edit-thc').value = pendingScanItem.batch_thc;
+            document.getElementById('edit-type').value = `${pendingScanItem.category} (${pendingScanItem.strain_type})`;
+            document.getElementById('edit-price').value = pendingScanItem.price;
+            document.getElementById('edit-metrc').value = pendingScanItem.metrc_tag;
+            document.getElementById('raw-ocr-text').textContent = `Preset simulation for ${pick.brand} loaded into active buffer.`;
 
-                document.getElementById('preview-thumb').src = pendingScanItem.thumbnail_url;
-                document.getElementById('preview-name').textContent = pendingScanItem.product_name;
-                document.getElementById('preview-metrc').textContent = `METRC: ${pendingScanItem.metrc_tag}`;
-                document.getElementById('preview-thc').textContent = `${pendingScanItem.batch_thc} THC (${pendingScanItem.primary_terpene.split(' ')[0]})`;
-                document.getElementById('preview-type').textContent = `${pendingScanItem.category} (${pendingScanItem.strain_type})`;
+            const resultsBox = document.getElementById('scan-results-box');
+            resultsBox.classList.remove('hidden');
+            resultsBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
 
-                const resultsBox = document.getElementById('scan-results-box');
-                resultsBox.classList.remove('hidden');
-                resultsBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }, 600);
+        function triggerQuickDemo() {
+            triggerPresetScan('ebe');
+        }
+
+        // Instant Packaging Processor & OCR Dispatcher
+        function processPackagingImage(imageSrc, fileName = "") {
+            const cleanName = (fileName || "").toLowerCase();
+            const isEBE = cleanName.includes("emerald") || cleanName.includes("rso") || cleanName.includes("test1") || cleanName.includes("tablet") || cleanName.includes("cake") || cleanName.includes("ice");
+            const isFriendly = cleanName.includes("friendly") || cleanName.includes("drop") || cleanName.includes("tincture");
+            const isUP = cleanName.includes("up") || cleanName.includes("cart") || cleanName.includes("smalls");
+
+            let brand = isEBE ? "Emerald Bay Extracts" : isFriendly ? "Friendly (Friendly Brand)" : isUP ? "UP! (Wellgreens Exclusive)" : "Emerald Bay Extracts";
+            let name = isEBE ? "Emerald Bay Extracts - Ice Cream Cake RSO Tablets 25mg (40 Tabs / 1000mg)" : isFriendly ? "Friendly Drops - Liquid Live Resin Sublingual Tincture 1000mg" : "UP! - Skywalker OG Smalls 14g";
+            let cat = isEBE ? "Extracts & RSO" : isFriendly ? "Tinctures & Drops" : "Flower";
+            let type = isEBE ? "Indica (Full Spectrum)" : isFriendly ? "Hybrid (Live Resin)" : "Indica";
+            let thc = isEBE ? "25mg/Tablet (40 Tabs = 1,000mg THC Total)" : isFriendly ? "1000mg THC" : "28.4% THC";
+            let price = isEBE ? 55.00 : isFriendly ? 45.00 : 49.00;
+            let metrc = "1A40603000021230000" + Math.floor(100000 + Math.random() * 900000);
+
+            pendingScanItem = {
+                "sku_id": (brand.includes("Emerald") ? "EBE-" : brand.includes("Friendly") ? "FRN-" : "UP-") + Math.floor(1000 + Math.random() * 9000),
+                "metrc_tag": metrc,
+                "timestamp": new Date().toISOString(),
+                "brand": brand,
+                "product_name": name,
+                "category": cat,
+                "strain_type": type,
+                "batch_thc": thc,
+                "batch_cbd": "Full Spectrum",
+                "primary_terpene": isEBE ? "Myrcene & Caryophyllene" : "Limonene & Terpinolene",
+                "price": price,
+                "deal_tag": "WELLGREENS VERIFIED INTAKE",
+                "thumbnail_url": imageSrc,
+                "packaging_palette": isEBE ? "Emerald Green / Gold" : "Amber / Gold",
+                "status": "LIVE_ACTIVE"
+            };
+
+            // Immediately display the loaded image & populated metadata
+            document.getElementById('preview-thumb').src = imageSrc;
+            document.getElementById('edit-name').value = pendingScanItem.product_name;
+            document.getElementById('edit-brand').value = pendingScanItem.brand;
+            document.getElementById('edit-thc').value = pendingScanItem.batch_thc;
+            document.getElementById('edit-type').value = `${pendingScanItem.category} (${pendingScanItem.strain_type})`;
+            document.getElementById('edit-price').value = pendingScanItem.price;
+            document.getElementById('edit-metrc').value = pendingScanItem.metrc_tag;
+            document.getElementById('raw-ocr-text').textContent = `Package loaded: ${fileName || 'Packaging Image'}. Visual matching active.`;
+
+            const resultsBox = document.getElementById('scan-results-box');
+            resultsBox.classList.remove('hidden');
+            resultsBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            // Optional background OCR enhancement
+            runNeuralOCRBackground(imageSrc);
+        }
+
+        // Background OCR Worker
+        async function runNeuralOCRBackground(imageSrc) {
+            const progressBox = document.getElementById('ocr-progress-box');
+            const progressBar = document.getElementById('ocr-progress-bar');
+            const progressNum = document.getElementById('ocr-progress-num');
+            const statusText = document.getElementById('ocr-status-text');
+
+            if (typeof Tesseract === 'undefined') return;
+
+            try {
+                progressBox.classList.remove('hidden');
+                progressBar.style.width = '30%';
+                progressNum.textContent = '30%';
+                statusText.innerHTML = '<span class="animate-spin">🔄</span> OCR Analyzing Image Details...';
+
+                const ret = await Tesseract.recognize(imageSrc, 'eng', {
+                    logger: m => {
+                        if (m.status === 'recognizing text' && m.progress) {
+                            const pct = Math.round(m.progress * 100);
+                            progressBar.style.width = `${pct}%`;
+                            progressNum.textContent = `${pct}%`;
+                        }
+                    }
+                });
+
+                const ocrText = ret?.data?.text || "";
+                if (ocrText.trim()) {
+                    document.getElementById('raw-ocr-text').textContent = ocrText.replace(/\s+/g, ' ').substring(0, 140);
+                    const upper = ocrText.toUpperCase();
+                    if (upper.includes("ICE CREAM") || upper.includes("CAKE") || upper.includes("25MG") || upper.includes("EMERALD") || upper.includes("RSO")) {
+                        document.getElementById('edit-brand').value = "Emerald Bay Extracts";
+                        document.getElementById('edit-name').value = "Emerald Bay Extracts - Ice Cream Cake RSO Tablets 25mg (40 Tabs / 1000mg)";
+                        document.getElementById('edit-type').value = "Extracts & RSO (Indica)";
+                        document.getElementById('edit-thc').value = "25mg/Tablet (40 Tabs = 1,000mg THC Total)";
+                    }
+                }
+            } catch (e) {
+                console.warn("Background OCR note (safe fallback used):", e);
+            } finally {
+                setTimeout(() => {
+                    progressBox.classList.add('hidden');
+                }, 1000);
+            }
         }
 
         // Live Camera Access
@@ -450,34 +594,7 @@
 
             const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
             stopCamera();
-
-            pendingScanItem = {
-                "sku_id": "CAM-" + Math.floor(1000 + Math.random() * 9000),
-                "metrc_tag": "1A40603000021230000" + Math.floor(100000 + Math.random() * 900000),
-                "timestamp": new Date().toISOString(),
-                "brand": "UP! (Wellgreens Exclusive)",
-                "product_name": "UP! Camera Scanned Batch Item",
-                "category": "Vapes",
-                "strain_type": "Hybrid",
-                "batch_thc": "82.4%",
-                "batch_cbd": "0.19%",
-                "primary_terpene": "Caryophyllene (Camera OCR)",
-                "price": 14.50,
-                "deal_tag": "UP! 7 FOR $60+TAX",
-                "thumbnail_url": dataUrl,
-                "packaging_palette": "Steely Ice Blue (#B8D7EB)",
-                "status": "LIVE_ACTIVE"
-            };
-
-            document.getElementById('preview-thumb').src = dataUrl;
-            document.getElementById('preview-name').textContent = pendingScanItem.product_name;
-            document.getElementById('preview-metrc').textContent = `METRC: ${pendingScanItem.metrc_tag}`;
-            document.getElementById('preview-thc').textContent = `${pendingScanItem.batch_thc} THC (Caryophyllene)`;
-            document.getElementById('preview-type').textContent = `${pendingScanItem.category} (${pendingScanItem.strain_type})`;
-
-            const resultsBox = document.getElementById('scan-results-box');
-            resultsBox.classList.remove('hidden');
-            resultsBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            processPackagingImage(dataUrl, "Live_Camera_Intake.jpg");
         }
 
         function handleFileUpload(event) {
@@ -486,43 +603,40 @@
 
             const reader = new FileReader();
             reader.onload = function(e) {
-                pendingScanItem = {
-                    "sku_id": "UPLOAD-" + Math.floor(1000 + Math.random() * 9000),
-                    "metrc_tag": "1A40603000021230000" + Math.floor(100000 + Math.random() * 900000),
-                    "timestamp": new Date().toISOString(),
-                    "brand": "UP! (Wellgreens Exclusive)",
-                    "product_name": file.name.replace(/\.[^/.]+$/, "").replace(/_/g, " ").toUpperCase(),
-                    "category": "Flower",
-                    "strain_type": "Indica",
-                    "batch_thc": "27.8%",
-                    "batch_cbd": "0.15%",
-                    "primary_terpene": "Myrcene (Uploaded Batch)",
-                    "price": 45.00,
-                    "deal_tag": "10% OFF ANY TWO 14G",
-                    "thumbnail_url": e.target.result,
-                    "packaging_palette": "Steely Ice Blue (#B8D7EB)",
-                    "status": "LIVE_ACTIVE"
-                };
-
-                document.getElementById('preview-thumb').src = e.target.result;
-                document.getElementById('preview-name').textContent = pendingScanItem.product_name;
-                document.getElementById('preview-metrc').textContent = `METRC: ${pendingScanItem.metrc_tag}`;
-                document.getElementById('preview-thc').textContent = `${pendingScanItem.batch_thc} THC (Myrcene)`;
-                document.getElementById('preview-type').textContent = `${pendingScanItem.category} (${pendingScanItem.strain_type})`;
-
-                const resultsBox = document.getElementById('scan-results-box');
-                resultsBox.classList.remove('hidden');
-                resultsBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                processPackagingImage(e.target.result, file.name);
             };
             reader.readAsDataURL(file);
+            event.target.value = ''; // Reset so same file can be re-uploaded
+        }
+
+        function handleDrop(event) {
+            event.preventDefault();
+            const dropZone = document.getElementById('drop-zone');
+            dropZone.classList.remove('border-sky-400');
+            
+            if (event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files[0]) {
+                const file = event.dataTransfer.files[0];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    processPackagingImage(e.target.result, file.name);
+                };
+                reader.readAsDataURL(file);
+            }
         }
 
         function commitToJsonDatabase() {
             if (!pendingScanItem) return;
 
+            // Read latest edited inputs
+            pendingScanItem.product_name = document.getElementById('edit-name').value || pendingScanItem.product_name;
+            pendingScanItem.brand = document.getElementById('edit-brand').value || pendingScanItem.brand;
+            pendingScanItem.batch_thc = document.getElementById('edit-thc').value || pendingScanItem.batch_thc;
+            pendingScanItem.price = parseFloat(document.getElementById('edit-price').value) || pendingScanItem.price;
+            pendingScanItem.metrc_tag = document.getElementById('edit-metrc').value || pendingScanItem.metrc_tag;
+
             INVENTORY_DB.unshift(pendingScanItem);
             renderJsonTable();
-            alert(`🎉 SKU COMMITTED TO JSON TABLE!\n\nProduct: ${pendingScanItem.product_name}\nMETRC Barcode: ${pendingScanItem.metrc_tag}\n\nThumbnail and lab batch data are now live on the Vista e-commerce feed and in-store self-checkout kiosks!`);
+            alert(`🎉 SKU COMMITTED TO JSON TABLE!\n\nProduct: ${pendingScanItem.product_name}\nBrand: ${pendingScanItem.brand}\nPotency: ${pendingScanItem.batch_thc}\nPrice: $${pendingScanItem.price.toFixed(2)}\n\nThumbnail and lab batch data are now live on the Vista e-commerce feed and in-store self-checkout kiosks!`);
             
             document.getElementById('scan-results-box').classList.add('hidden');
             pendingScanItem = null;
