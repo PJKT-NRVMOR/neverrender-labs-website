@@ -606,9 +606,8 @@
                     document.getElementById('raw-ocr-text').textContent = ocrText.replace(/\s+/g, ' ').substring(0, 140);
                     const upper = ocrText.toUpperCase();
                     
-                    // Fuzzy matching on packaging tokens
-                    const isEBE = upper.includes("EMERALD") || upper.includes("RSO") || upper.includes("TABLET") || upper.includes("25MG") || upper.includes("40") || upper.includes("ICE CREAM") || upper.includes("CAKE") || upper.includes("INDICA") || upper.includes("EBE");
-                    const isFriendly = upper.includes("FRIENDLY") || upper.includes("DROP") || upper.includes("TINCTURE") || upper.includes("LIVE RESIN") || upper.includes("HAWAIIAN") || upper.includes("RUNTZ") || upper.includes("NURSE") || upper.includes("1 OZ") || upper.includes("30 ML") || upper.includes("SATIVA");
+                    const isFriendly = upper.includes("FRIENDLY") || upper.includes("DROP") || upper.includes("TINCTURE") || upper.includes("HAWAIIAN") || upper.includes("RUNTZ") || upper.includes("NURSE");
+                    const isEBE = upper.includes("EMERALD") || upper.includes("RSO") || upper.includes("TABLET") || upper.includes("25MG") || upper.includes("50MG") || upper.includes("40") || upper.includes("ICE CREAM") || upper.includes("CAKE") || upper.includes("BLUEBERRY") || upper.includes("FUEGO") || upper.includes("EBE");
                     const isUP = upper.includes("UP!") || upper.includes("SKYWALKER") || upper.includes("JACK") || upper.includes("HERER") || upper.includes("CART") || upper.includes("SMALLS");
 
                     if (isFriendly) {
@@ -618,11 +617,19 @@
                         document.getElementById('edit-thc').value = "1,000mg THC (30mL / 1 FL OZ)";
                         document.getElementById('edit-price').value = 45.00;
                     } else if (isEBE) {
+                        const isBlueberry = upper.includes("BLUEBERRY") || upper.includes("FUEGO") || upper.includes("50MG") || (upper.includes("SATIVA") && upper.includes("TABLET"));
                         document.getElementById('edit-brand').value = "Emerald Bay Extracts";
-                        document.getElementById('edit-name').value = "Emerald Bay Extracts - Ice Cream Cake RSO Tablets 25mg (40 Tabs / 1000mg)";
-                        document.getElementById('edit-type').value = "Extracts & RSO (Indica Full Spectrum)";
-                        document.getElementById('edit-thc').value = "25mg/Tablet (40 Tabs = 1,000mg THC Total)";
-                        document.getElementById('edit-price').value = 55.00;
+                        if (isBlueberry) {
+                            document.getElementById('edit-name').value = "Emerald Bay Extracts - Blueberry Fuego Sativa RSO Tablets 50mg";
+                            document.getElementById('edit-type').value = "Extracts & RSO (Sativa Full Spectrum)";
+                            document.getElementById('edit-thc').value = "50mg/Tablet (Full Spectrum Sativa)";
+                            document.getElementById('edit-price').value = 55.00;
+                        } else {
+                            document.getElementById('edit-name').value = "Emerald Bay Extracts - Ice Cream Cake RSO Tablets 25mg (40 Tabs / 1000mg)";
+                            document.getElementById('edit-type').value = "Extracts & RSO (Indica Full Spectrum)";
+                            document.getElementById('edit-thc').value = "25mg/Tablet (40 Tabs = 1,000mg THC Total)";
+                            document.getElementById('edit-price').value = 55.00;
+                        }
                     } else if (isUP) {
                         document.getElementById('edit-brand').value = "UP! (Wellgreens Exclusive)";
                         document.getElementById('edit-name').value = "UP! - Skywalker OG Smalls 14g";
