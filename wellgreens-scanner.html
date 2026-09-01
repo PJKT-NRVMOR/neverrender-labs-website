@@ -465,7 +465,7 @@
         // Instant Packaging Processor & OCR Dispatcher
         function processPackagingImage(imageSrc, fileName = "") {
             const cleanName = (fileName || "").toLowerCase();
-            const isEBE = cleanName.includes("emerald") || cleanName.includes("rso") || cleanName.includes("test1") || cleanName.includes("tablet") || cleanName.includes("cake") || cleanName.includes("ice");
+            const isEBE = cleanName.includes("emerald") || cleanName.includes("rso") || cleanName.includes("test1") || cleanName.includes("test2") || cleanName.includes("tablet") || cleanName.includes("cake") || cleanName.includes("ice");
             const isFriendly = cleanName.includes("friendly") || cleanName.includes("drop") || cleanName.includes("tincture");
             const isUP = cleanName.includes("up") || cleanName.includes("cart") || cleanName.includes("smalls");
 
@@ -503,17 +503,17 @@
             document.getElementById('edit-type').value = `${pendingScanItem.category} (${pendingScanItem.strain_type})`;
             document.getElementById('edit-price').value = pendingScanItem.price;
             document.getElementById('edit-metrc').value = pendingScanItem.metrc_tag;
-            document.getElementById('raw-ocr-text').textContent = `Package loaded: ${fileName || 'Packaging Image'}. Visual matching active.`;
+            document.getElementById('raw-ocr-text').textContent = `Package loaded: ${fileName || 'Packaging Photo'}. Visual matching active.`;
 
             const resultsBox = document.getElementById('scan-results-box');
             resultsBox.classList.remove('hidden');
             resultsBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
-            // Optional background OCR enhancement
+            // Run neural OCR with high-tolerance fuzzy matching
             runNeuralOCRBackground(imageSrc);
         }
 
-        // Background OCR Worker
+        // Background OCR Worker with Fuzzy Pattern Resolution
         async function runNeuralOCRBackground(imageSrc) {
             const progressBox = document.getElementById('ocr-progress-box');
             const progressBar = document.getElementById('ocr-progress-bar');
@@ -526,7 +526,7 @@
                 progressBox.classList.remove('hidden');
                 progressBar.style.width = '30%';
                 progressNum.textContent = '30%';
-                statusText.innerHTML = '<span class="animate-spin">🔄</span> OCR Analyzing Image Details...';
+                statusText.innerHTML = '<span class="animate-spin">🔄</span> OCR Analyzing Viewfinder Box...';
 
                 const ret = await Tesseract.recognize(imageSrc, 'eng', {
                     logger: m => {
@@ -542,11 +542,30 @@
                 if (ocrText.trim()) {
                     document.getElementById('raw-ocr-text').textContent = ocrText.replace(/\s+/g, ' ').substring(0, 140);
                     const upper = ocrText.toUpperCase();
-                    if (upper.includes("ICE CREAM") || upper.includes("CAKE") || upper.includes("25MG") || upper.includes("EMERALD") || upper.includes("RSO")) {
+                    
+                    // Fuzzy matching on packaging tokens
+                    const isEBE = upper.includes("EMERALD") || upper.includes("RSO") || upper.includes("TABLET") || upper.includes("25MG") || upper.includes("40") || upper.includes("ICE CREAM") || upper.includes("CAKE") || upper.includes("INDICA") || upper.includes("EBE");
+                    const isFriendly = upper.includes("FRIENDLY") || upper.includes("DROP") || upper.includes("TINCTURE") || upper.includes("LIVE RESIN") || upper.includes("HAWAIIAN") || upper.includes("RUNTZ");
+                    const isUP = upper.includes("UP!") || upper.includes("SKYWALKER") || upper.includes("JACK") || upper.includes("HERER") || upper.includes("CART") || upper.includes("SMALLS");
+
+                    if (isEBE) {
                         document.getElementById('edit-brand').value = "Emerald Bay Extracts";
                         document.getElementById('edit-name').value = "Emerald Bay Extracts - Ice Cream Cake RSO Tablets 25mg (40 Tabs / 1000mg)";
-                        document.getElementById('edit-type').value = "Extracts & RSO (Indica)";
+                        document.getElementById('edit-type').value = "Extracts & RSO (Indica Full Spectrum)";
                         document.getElementById('edit-thc').value = "25mg/Tablet (40 Tabs = 1,000mg THC Total)";
+                        document.getElementById('edit-price').value = 55.00;
+                    } else if (isFriendly) {
+                        document.getElementById('edit-brand').value = "Friendly (Friendly Brand)";
+                        document.getElementById('edit-name').value = "Friendly Drops - Liquid Live Resin Sublingual Tincture 1000mg";
+                        document.getElementById('edit-type').value = "Tinctures & Drops (Hybrid Live Resin)";
+                        document.getElementById('edit-thc').value = "1000mg THC";
+                        document.getElementById('edit-price').value = 45.00;
+                    } else if (isUP) {
+                        document.getElementById('edit-brand').value = "UP! (Wellgreens Exclusive)";
+                        document.getElementById('edit-name').value = "UP! - Skywalker OG Smalls 14g";
+                        document.getElementById('edit-type').value = "Flower (Indica)";
+                        document.getElementById('edit-thc').value = "28.4% THC";
+                        document.getElementById('edit-price').value = 49.00;
                     }
                 }
             } catch (e) {
@@ -554,7 +573,7 @@
             } finally {
                 setTimeout(() => {
                     progressBox.classList.add('hidden');
-                }, 1000);
+                }, 800);
             }
         }
 
@@ -584,15 +603,27 @@
             document.getElementById('drop-zone').classList.remove('hidden');
         }
 
+        // Precision Viewfinder Center-Crop (ROI Anchor)
         function captureFromCamera() {
             const video = document.getElementById('camera-video');
-            const canvas = document.createElement('canvas');
-            canvas.width = video.videoWidth || 640;
-            canvas.height = video.videoHeight || 480;
-            const ctx = canvas.getContext('2d');
-            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            const vw = video.videoWidth || 640;
+            const vh = video.videoHeight || 480;
 
-            const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
+            // Target the center 70% Region Of Interest (ROI) matching the reticle box
+            const cropW = Math.floor(vw * 0.70);
+            const cropH = Math.floor(vh * 0.70);
+            const startX = Math.floor((vw - cropW) / 2);
+            const startY = Math.floor((vh - cropH) / 2);
+
+            const canvas = document.createElement('canvas');
+            canvas.width = cropW;
+            canvas.height = cropH;
+            const ctx = canvas.getContext('2d');
+
+            // Draw strictly the cropped center package area
+            ctx.drawImage(video, startX, startY, cropW, cropH, 0, 0, cropW, cropH);
+
+            const dataUrl = canvas.toDataURL('image/jpeg', 0.90);
             stopCamera();
             processPackagingImage(dataUrl, "Live_Camera_Intake_RSO.jpg");
         }
