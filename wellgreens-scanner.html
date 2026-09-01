@@ -200,16 +200,22 @@
                     <div id="scan-results-box" class="space-y-4 hidden border-t border-white/10 pt-4">
                         
                         <!-- Quick Match Override Chips -->
-                        <div class="flex items-center justify-between gap-1 p-2 bg-black/60 rounded-xl border border-white/10">
-                            <span class="text-[10px] font-mono text-slate-400 font-bold uppercase">1-Tap Match:</span>
-                            <div class="flex items-center gap-1.5">
-                                <button type="button" onclick="applyPresetToCurrentScan('ebe')" class="px-2.5 py-1 bg-emerald-950 hover:bg-emerald-900 border border-emerald-500/50 text-emerald-300 rounded-lg text-[10px] font-mono font-bold transition active:scale-95 shadow-sm">
-                                    🌿 EBE RSO
+                        <div class="flex flex-col gap-1.5 p-2.5 bg-black/60 rounded-xl border border-white/10">
+                            <span class="text-[9px] font-mono text-slate-400 font-bold uppercase">1-Tap Verified Strain Override:</span>
+                            <div class="flex flex-wrap items-center gap-1.5">
+                                <button type="button" onclick="applyPresetToCurrentScan('ebe_blueberry')" class="px-2 py-1 bg-amber-950/80 hover:bg-amber-900 border border-amber-500/50 text-amber-300 rounded-lg text-[9px] font-mono font-bold transition active:scale-95 shadow-sm">
+                                    🫐 EBE Blueberry 50mg
                                 </button>
-                                <button type="button" onclick="applyPresetToCurrentScan('friendly')" class="px-2.5 py-1 bg-amber-950 hover:bg-amber-900 border border-amber-500/50 text-amber-300 rounded-lg text-[10px] font-mono font-bold transition active:scale-95 shadow-sm">
+                                <button type="button" onclick="applyPresetToCurrentScan('ebe_gelato')" class="px-2 py-1 bg-teal-950/80 hover:bg-teal-900 border border-teal-500/50 text-teal-300 rounded-lg text-[9px] font-mono font-bold transition active:scale-95 shadow-sm">
+                                    🍨 EBE Gelato 100mg
+                                </button>
+                                <button type="button" onclick="applyPresetToCurrentScan('ebe_icc')" class="px-2 py-1 bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-500/50 text-emerald-300 rounded-lg text-[9px] font-mono font-bold transition active:scale-95 shadow-sm">
+                                    🍦 EBE ICC 25mg
+                                </button>
+                                <button type="button" onclick="applyPresetToCurrentScan('friendly')" class="px-2 py-1 bg-yellow-950/80 hover:bg-yellow-900 border border-yellow-500/50 text-yellow-300 rounded-lg text-[9px] font-mono font-bold transition active:scale-95 shadow-sm">
                                     💧 Friendly Drops
                                 </button>
-                                <button type="button" onclick="applyPresetToCurrentScan('up')" class="px-2.5 py-1 bg-sky-950 hover:bg-sky-900 border border-sky-500/50 text-sky-300 rounded-lg text-[10px] font-mono font-bold transition active:scale-95 shadow-sm">
+                                <button type="button" onclick="applyPresetToCurrentScan('up')" class="px-2 py-1 bg-sky-950/80 hover:bg-sky-900 border border-sky-500/50 text-sky-300 rounded-lg text-[9px] font-mono font-bold transition active:scale-95 shadow-sm">
                                     ⚡ UP! Vape
                                 </button>
                             </div>
@@ -476,21 +482,35 @@
         }
 
         function applyPresetToCurrentScan(type) {
-            if (type === 'friendly') {
-                document.getElementById('edit-brand').value = "Friendly (Friendly Brand)";
-                document.getElementById('edit-name').value = "Friendly Drops - Hawaiian Runtz Sativa Live Resin Tincture 1000mg";
-                document.getElementById('edit-type').value = "Tinctures & Drops (Sativa Live Resin)";
-                document.getElementById('edit-thc').value = "1,000mg THC (30mL / 1 FL OZ)";
-                document.getElementById('edit-price').value = 45.00;
+            if (type === 'ebe_blueberry') {
+                document.getElementById('edit-brand').value = "Emerald Bay Extracts";
+                document.getElementById('edit-name').value = "Emerald Bay Extracts - Blueberry Fuego Sativa RSO Tablets 50mg";
+                document.getElementById('edit-type').value = "Extracts & RSO (Sativa Full Spectrum)";
+                document.getElementById('edit-thc').value = "50mg/Tablet (Full Spectrum Sativa)";
+                document.getElementById('edit-price').value = 55.00;
                 if (pendingScanItem) {
-                    pendingScanItem.brand = "Friendly (Friendly Brand)";
-                    pendingScanItem.product_name = "Friendly Drops - Hawaiian Runtz Sativa Live Resin Tincture 1000mg";
-                    pendingScanItem.category = "Tinctures & Drops";
-                    pendingScanItem.strain_type = "Sativa (Live Resin)";
-                    pendingScanItem.batch_thc = "1,000mg THC (30mL / 1 FL OZ)";
-                    pendingScanItem.price = 45.00;
+                    pendingScanItem.brand = "Emerald Bay Extracts";
+                    pendingScanItem.product_name = "Emerald Bay Extracts - Blueberry Fuego Sativa RSO Tablets 50mg";
+                    pendingScanItem.category = "Extracts & RSO";
+                    pendingScanItem.strain_type = "Sativa (Full Spectrum)";
+                    pendingScanItem.batch_thc = "50mg/Tablet (Full Spectrum Sativa)";
+                    pendingScanItem.price = 55.00;
                 }
-            } else if (type === 'ebe') {
+            } else if (type === 'ebe_gelato') {
+                document.getElementById('edit-brand').value = "Emerald Bay Extracts";
+                document.getElementById('edit-name').value = "Emerald Bay Extracts - Gelato Hybrid RSO Tablets 100mg";
+                document.getElementById('edit-type').value = "Extracts & RSO (Hybrid Full Spectrum)";
+                document.getElementById('edit-thc').value = "100mg/Tablet (Full Spectrum Hybrid)";
+                document.getElementById('edit-price').value = 60.00;
+                if (pendingScanItem) {
+                    pendingScanItem.brand = "Emerald Bay Extracts";
+                    pendingScanItem.product_name = "Emerald Bay Extracts - Gelato Hybrid RSO Tablets 100mg";
+                    pendingScanItem.category = "Extracts & RSO";
+                    pendingScanItem.strain_type = "Hybrid (Full Spectrum)";
+                    pendingScanItem.batch_thc = "100mg/Tablet (Full Spectrum Hybrid)";
+                    pendingScanItem.price = 60.00;
+                }
+            } else if (type === 'ebe_icc' || type === 'ebe') {
                 document.getElementById('edit-brand').value = "Emerald Bay Extracts";
                 document.getElementById('edit-name').value = "Emerald Bay Extracts - Ice Cream Cake RSO Tablets 25mg (40 Tabs / 1000mg)";
                 document.getElementById('edit-type').value = "Extracts & RSO (Indica Full Spectrum)";
@@ -503,6 +523,20 @@
                     pendingScanItem.strain_type = "Indica (Full Spectrum)";
                     pendingScanItem.batch_thc = "25mg/Tablet (40 Tabs = 1,000mg THC Total)";
                     pendingScanItem.price = 55.00;
+                }
+            } else if (type === 'friendly') {
+                document.getElementById('edit-brand').value = "Friendly (Friendly Brand)";
+                document.getElementById('edit-name').value = "Friendly Drops - Hawaiian Runtz Sativa Live Resin Tincture 1000mg";
+                document.getElementById('edit-type').value = "Tinctures & Drops (Sativa Live Resin)";
+                document.getElementById('edit-thc').value = "1,000mg THC (30mL / 1 FL OZ)";
+                document.getElementById('edit-price').value = 45.00;
+                if (pendingScanItem) {
+                    pendingScanItem.brand = "Friendly (Friendly Brand)";
+                    pendingScanItem.product_name = "Friendly Drops - Hawaiian Runtz Sativa Live Resin Tincture 1000mg";
+                    pendingScanItem.category = "Tinctures & Drops";
+                    pendingScanItem.strain_type = "Sativa (Live Resin)";
+                    pendingScanItem.batch_thc = "1,000mg THC (30mL / 1 FL OZ)";
+                    pendingScanItem.price = 45.00;
                 }
             } else if (type === 'up') {
                 document.getElementById('edit-brand').value = "UP! (Wellgreens Exclusive)";
@@ -607,7 +641,7 @@
                     const upper = ocrText.toUpperCase();
                     
                     const isFriendly = upper.includes("FRIENDLY") || upper.includes("DROP") || upper.includes("TINCTURE") || upper.includes("HAWAIIAN") || upper.includes("RUNTZ") || upper.includes("NURSE");
-                    const isEBE = upper.includes("EMERALD") || upper.includes("RSO") || upper.includes("TABLET") || upper.includes("25MG") || upper.includes("50MG") || upper.includes("40") || upper.includes("ICE CREAM") || upper.includes("CAKE") || upper.includes("BLUEBERRY") || upper.includes("FUEGO") || upper.includes("EBE");
+                    const isEBE = upper.includes("EMERALD") || upper.includes("RSO") || upper.includes("TABLET") || upper.includes("25MG") || upper.includes("50MG") || upper.includes("100MG") || upper.includes("40") || upper.includes("ICE CREAM") || upper.includes("CAKE") || upper.includes("BLUEBERRY") || upper.includes("FUEGO") || upper.includes("GELATO") || upper.includes("EBE");
                     const isUP = upper.includes("UP!") || upper.includes("SKYWALKER") || upper.includes("JACK") || upper.includes("HERER") || upper.includes("CART") || upper.includes("SMALLS");
 
                     if (isFriendly) {
@@ -618,8 +652,14 @@
                         document.getElementById('edit-price').value = 45.00;
                     } else if (isEBE) {
                         const isBlueberry = upper.includes("BLUEBERRY") || upper.includes("FUEGO") || upper.includes("50MG") || (upper.includes("SATIVA") && upper.includes("TABLET"));
+                        const isGelato = upper.includes("GELATO") || upper.includes("100MG") || (upper.includes("HYBRID") && upper.includes("TABLET"));
                         document.getElementById('edit-brand').value = "Emerald Bay Extracts";
-                        if (isBlueberry) {
+                        if (isGelato) {
+                            document.getElementById('edit-name').value = "Emerald Bay Extracts - Gelato Hybrid RSO Tablets 100mg";
+                            document.getElementById('edit-type').value = "Extracts & RSO (Hybrid Full Spectrum)";
+                            document.getElementById('edit-thc').value = "100mg/Tablet (Full Spectrum Hybrid)";
+                            document.getElementById('edit-price').value = 60.00;
+                        } else if (isBlueberry) {
                             document.getElementById('edit-name').value = "Emerald Bay Extracts - Blueberry Fuego Sativa RSO Tablets 50mg";
                             document.getElementById('edit-type').value = "Extracts & RSO (Sativa Full Spectrum)";
                             document.getElementById('edit-thc').value = "50mg/Tablet (Full Spectrum Sativa)";
@@ -647,14 +687,18 @@
             }
         }
 
-        // Live Camera Access
+        // Live Camera Access with High-Definition Constraints
         async function startLiveCamera() {
             const camContainer = document.getElementById('camera-container');
             const video = document.getElementById('camera-video');
 
             try {
                 videoStream = await navigator.mediaDevices.getUserMedia({
-                    video: { facingMode: 'environment' }
+                    video: {
+                        facingMode: { ideal: 'environment' },
+                        width: { ideal: 1920 },
+                        height: { ideal: 1080 }
+                    }
                 });
                 video.srcObject = videoStream;
                 camContainer.classList.remove('hidden');
