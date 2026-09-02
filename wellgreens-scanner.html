@@ -562,17 +562,18 @@
         // Instant Packaging Processor & OCR Dispatcher
         function processPackagingImage(imageSrc, fileName = "", scannedBarcode = null) {
             const cleanName = (fileName || "").toLowerCase();
-            const isEBE = cleanName.includes("emerald") || cleanName.includes("rso") || cleanName.includes("test1") || cleanName.includes("test2") || cleanName.includes("tablet") || cleanName.includes("cake") || cleanName.includes("ice") || (scannedBarcode && (scannedBarcode.includes("1A40603") || scannedBarcode.includes("84865309")));
+            const isGelatoSticker = cleanName.includes("91449") || cleanName.includes("gelato") || (scannedBarcode && (scannedBarcode.includes("91449") || scannedBarcode.includes("gelato")));
+            const isEBE = isGelatoSticker || cleanName.includes("emerald") || cleanName.includes("rso") || cleanName.includes("test1") || cleanName.includes("test2") || cleanName.includes("tablet") || cleanName.includes("cake") || cleanName.includes("ice") || (scannedBarcode && (scannedBarcode.includes("1A40603") || scannedBarcode.includes("84865309")));
             const isFriendly = cleanName.includes("friendly") || cleanName.includes("drop") || cleanName.includes("tincture") || cleanName.includes("nurse") || cleanName.includes("runtz") || cleanName.includes("hawaiian") || cleanName.includes("test6");
             const isUP = cleanName.includes("up") || cleanName.includes("cart") || cleanName.includes("smalls");
 
             let brand = isFriendly ? "Friendly (Friendly Brand)" : isEBE ? "Emerald Bay Extracts" : isUP ? "UP! (Wellgreens Exclusive)" : "Emerald Bay Extracts";
-            let name = isFriendly ? "Friendly Drops - Hawaiian Runtz Sativa Live Resin Tincture 1000mg" : isEBE ? "Emerald Bay Extracts - Ice Cream Cake (Indica) 20pk Tablets 1000mg" : isUP ? "UP! - Skywalker OG Smalls 14g" : "Emerald Bay Extracts - Ice Cream Cake (Indica) 20pk Tablets 1000mg";
+            let name = isFriendly ? "Friendly Drops - Hawaiian Runtz Sativa Live Resin Tincture 1000mg" : isGelatoSticker ? "Emerald Bay Extracts - Gelato (Hybrid) 10pk Tablets 1000mg" : isEBE ? "Emerald Bay Extracts - Ice Cream Cake (Indica) 20pk Tablets 1000mg" : isUP ? "UP! - Skywalker OG Smalls 14g" : "Emerald Bay Extracts - Ice Cream Cake (Indica) 20pk Tablets 1000mg";
             let cat = isFriendly ? "Tinctures & Drops" : isEBE ? "Extracts & RSO" : isUP ? "Flower" : "Extracts & RSO";
-            let type = isFriendly ? "Sativa (Live Resin)" : isEBE ? "Indica (Full Spectrum)" : isUP ? "Indica" : "Indica (Full Spectrum)";
-            let thc = isFriendly ? "1,000mg THC (30mL / 1 FL OZ)" : isEBE ? "50mg/Tablet (20 Tabs = 1,000mg THC Total)" : isUP ? "28.4% THC" : "50mg/Tablet (20 Tabs = 1,000mg THC Total)";
+            let type = isFriendly ? "Sativa (Live Resin)" : isGelatoSticker ? "Hybrid (Full Spectrum)" : isEBE ? "Indica (Full Spectrum)" : isUP ? "Indica" : "Indica (Full Spectrum)";
+            let thc = isFriendly ? "1,000mg THC (30mL / 1 FL OZ)" : isGelatoSticker ? "100mg/Tablet (10 Tabs = 1,000mg THC Total)" : isEBE ? "50mg/Tablet (20 Tabs = 1,000mg THC Total)" : isUP ? "28.4% THC" : "50mg/Tablet (20 Tabs = 1,000mg THC Total)";
             let price = isFriendly ? 45.00 : isEBE ? 36.99 : isUP ? 49.00 : 36.99;
-            let metrc = scannedBarcode ? scannedBarcode : ("1A406030000635B000088049");
+            let metrc = scannedBarcode ? scannedBarcode : (isGelatoSticker ? "1A406030000635B000091449" : "1A406030000635B000088049");
 
             pendingScanItem = {
                 "sku_id": (brand.includes("Emerald") ? "EBE-" : brand.includes("Friendly") ? "FRN-" : "UP-") + Math.floor(1000 + Math.random() * 9000),
@@ -594,7 +595,9 @@
 
             // Immediately display the loaded image & populated metadata
             document.getElementById('preview-thumb').src = imageSrc;
-            document.getElementById('edit-name').value = pendingScanItem.product_name;
+            const nameEl = document.getElementById('edit-name');
+            nameEl.value = pendingScanItem.product_name;
+            nameEl.scrollLeft = 0; // Ensure text is visible from start on mobile
             document.getElementById('edit-brand').value = pendingScanItem.brand;
             document.getElementById('edit-thc').value = pendingScanItem.batch_thc;
             document.getElementById('edit-type').value = `${pendingScanItem.category} (${pendingScanItem.strain_type})`;
