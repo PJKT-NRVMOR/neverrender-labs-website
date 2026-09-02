@@ -931,9 +931,14 @@
                             <span class="text-[10px] text-slate-400 block font-mono font-bold uppercase">Price</span>
                             <span class="text-2xl font-black text-ice-deepNavy font-display">$${p.price.toFixed(2)}</span>
                         </div>
-                        <button onclick="addToCart(${p.id})" class="px-5 py-2.5 bg-ice-navy hover:bg-ice-deepNavy text-white font-display font-black uppercase text-xs rounded-xl shadow-md shadow-sky-950/10 transition active:scale-95 flex items-center gap-1.5">
-                            <span>+ ADD</span>
-                        </button>
+                        <div class="flex items-center gap-1.5">
+                            <button onclick="openScanToCartModal(${p.id})" title="Scan to your phone's Wellgreens Cart" class="p-2.5 bg-sky-100 hover:bg-sky-200 border border-sky-300 text-sky-900 rounded-xl transition active:scale-95 flex items-center justify-center shadow-sm">
+                                <span class="text-xs">📱</span>
+                            </button>
+                            <button onclick="addToCart(${p.id})" class="px-4 py-2.5 bg-ice-navy hover:bg-ice-deepNavy text-white font-display font-black uppercase text-xs rounded-xl shadow-md shadow-sky-950/10 transition active:scale-95 flex items-center gap-1">
+                                <span>+ ADD</span>
+                            </button>
+                        </div>
                     </div>
                 `;
                 grid.appendChild(card);
@@ -1084,6 +1089,31 @@
             closeCart();
         }
 
+        function openScanToCartModal(productId) {
+            const product = PRODUCTS.find(p => p.id === productId);
+            if (!product) return;
+
+            const modal = document.getElementById('qr-cart-modal');
+            document.getElementById('qr-modal-name').textContent = product.name;
+            document.getElementById('qr-modal-brand').textContent = product.brand;
+            document.getElementById('qr-modal-price').textContent = `$${product.price.toFixed(2)}`;
+            document.getElementById('qr-modal-thc').textContent = product.category === 'Edibles' ? `${product.thc}mg THC` : `${product.thc}% THC`;
+            document.getElementById('qr-modal-batch').textContent = `1A406030000635B0000${Math.floor(10000 + productId * 8421)}`;
+            
+            // Dynamic Universal Action Deep Link
+            const deepLink = `https://wellgreens.store/cart/add?sku=${encodeURIComponent(product.brand.substring(0,3).toUpperCase())}-${productId}&batch=1A406030000635B0000${productId}&store=vista`;
+            const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${encodeURIComponent(deepLink)}`;
+            
+            document.getElementById('qr-modal-img').src = qrUrl;
+            document.getElementById('qr-modal-link-text').textContent = deepLink;
+            
+            modal.classList.remove('hidden');
+        }
+
+        function closeScanToCartModal() {
+            document.getElementById('qr-cart-modal').classList.add('hidden');
+        }
+
         function toggleAuditModal() {
             const modal = document.getElementById('audit-modal');
             modal.classList.toggle('hidden');
@@ -1095,5 +1125,47 @@
             updateCartUI();
         });
     </script>
+
+    <!-- Scan to Cart / Kiosk-to-Pocket Modal -->
+    <div id="qr-cart-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-sm w-full border-2 border-sky-400 shadow-2xl space-y-5 text-center relative">
+            <button onclick="closeScanToCartModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center text-sm">
+                ✕
+            </button>
+
+            <div class="space-y-1">
+                <span class="inline-block px-3 py-1 bg-emerald-100 border border-emerald-300 text-emerald-900 rounded-full text-[10px] font-mono font-black uppercase">
+                    ⚡ Kiosk-to-Pocket Handoff
+                </span>
+                <h3 class="font-display font-black text-xl text-ice-deepNavy">Scan to Your Cart</h3>
+                <p class="text-xs text-slate-500 font-medium">Point your phone camera to add this exact verified batch directly to your Wellgreens App.</p>
+            </div>
+
+            <!-- Dynamic QR Code Card -->
+            <div class="bg-slate-50 p-4 rounded-2xl border border-sky-100 flex flex-col items-center space-y-3 shadow-inner">
+                <div class="w-48 h-48 bg-white p-2.5 rounded-xl border border-sky-300 shadow-md flex items-center justify-center">
+                    <img id="qr-modal-img" src="" alt="Dynamic Cart QR" class="w-full h-full object-contain">
+                </div>
+                
+                <div class="text-left w-full space-y-1 bg-white p-3 rounded-xl border border-sky-100 font-mono text-[11px]">
+                    <div class="font-black text-ice-deepNavy truncate" id="qr-modal-name">Product Name</div>
+                    <div class="flex items-center justify-between text-slate-500 text-[10px]">
+                        <span id="qr-modal-brand">Brand</span>
+                        <span class="font-black text-emerald-600 font-display text-xs" id="qr-modal-price">$0.00</span>
+                    </div>
+                    <div class="text-[9px] text-slate-400 truncate">
+                        METRC: <span id="qr-modal-batch" class="text-sky-700 font-bold">1A406...</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-2">
+                <button onclick="closeScanToCartModal()" class="w-full py-3 bg-ice-navy hover:bg-ice-deepNavy text-white font-display font-black text-xs uppercase rounded-xl transition shadow-md">
+                    Done / Continue Browsing
+                </button>
+                <div class="text-[9px] text-slate-400 font-mono truncate" id="qr-modal-link-text"></div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

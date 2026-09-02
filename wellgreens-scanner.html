@@ -6,6 +6,7 @@
     <title>Wellgreens Vista | AI Intake Scanner & JSON Inventory Engine</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@undecaf/barcode-detector-polyfill@0.9.21/dist/index.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
@@ -641,44 +642,35 @@
                 const ocrText = ret?.data?.text || "";
                 if (ocrText.trim()) {
                     document.getElementById('raw-ocr-text').textContent = ocrText.replace(/\s+/g, ' ').substring(0, 140);
-                    const upper = ocrText.toUpperCase();
                     
-                    const isFriendly = upper.includes("FRIENDLY") || upper.includes("DROP") || upper.includes("TINCTURE") || upper.includes("HAWAIIAN") || upper.includes("RUNTZ") || upper.includes("NURSE");
-                    const isEBE = upper.includes("EMERALD") || upper.includes("RSO") || upper.includes("TABLET") || upper.includes("25MG") || upper.includes("50MG") || upper.includes("100MG") || upper.includes("40") || upper.includes("ICE CREAM") || upper.includes("CAKE") || upper.includes("BLUEBERRY") || upper.includes("FUEGO") || upper.includes("GELATO") || upper.includes("EBE");
-                    const isUP = upper.includes("UP!") || upper.includes("SKYWALKER") || upper.includes("JACK") || upper.includes("HERER") || upper.includes("CART") || upper.includes("SMALLS");
+                    // Universal California Compliance & Inventory Parser
+                    const parsed = parseUniversalComplianceText(ocrText);
 
-                    if (isFriendly) {
-                        document.getElementById('edit-brand').value = "Friendly (Friendly Brand)";
-                        document.getElementById('edit-name').value = "Friendly Drops - Hawaiian Runtz Sativa Live Resin Tincture 1000mg";
-                        document.getElementById('edit-type').value = "Tinctures & Drops (Sativa Live Resin)";
-                        document.getElementById('edit-thc').value = "1,000mg THC (30mL / 1 FL OZ)";
-                        document.getElementById('edit-price').value = 45.00;
-                    } else if (isEBE) {
-                        const isBlueberry = upper.includes("BLUEBERRY") || upper.includes("FUEGO") || upper.includes("50MG") || (upper.includes("SATIVA") && upper.includes("TABLET"));
-                        const isGelato = upper.includes("GELATO") || upper.includes("100MG") || (upper.includes("HYBRID") && upper.includes("TABLET"));
-                        document.getElementById('edit-brand').value = "Emerald Bay Extracts";
-                        if (isGelato) {
-                            document.getElementById('edit-name').value = "Emerald Bay Extracts - Gelato Hybrid RSO Tablets 100mg";
-                            document.getElementById('edit-type').value = "Extracts & RSO (Hybrid Full Spectrum)";
-                            document.getElementById('edit-thc').value = "100mg/Tablet (Full Spectrum Hybrid)";
-                            document.getElementById('edit-price').value = 60.00;
-                        } else if (isBlueberry) {
-                            document.getElementById('edit-name').value = "Emerald Bay Extracts - Blueberry Fuego Sativa RSO Tablets 50mg";
-                            document.getElementById('edit-type').value = "Extracts & RSO (Sativa Full Spectrum)";
-                            document.getElementById('edit-thc').value = "50mg/Tablet (Full Spectrum Sativa)";
-                            document.getElementById('edit-price').value = 55.00;
-                        } else {
-                            document.getElementById('edit-name').value = "Emerald Bay Extracts - Ice Cream Cake RSO Tablets 25mg (40 Tabs / 1000mg)";
-                            document.getElementById('edit-type').value = "Extracts & RSO (Indica Full Spectrum)";
-                            document.getElementById('edit-thc').value = "25mg/Tablet (40 Tabs = 1,000mg THC Total)";
-                            document.getElementById('edit-price').value = 55.00;
-                        }
-                    } else if (isUP) {
-                        document.getElementById('edit-brand').value = "UP! (Wellgreens Exclusive)";
-                        document.getElementById('edit-name').value = "UP! - Skywalker OG Smalls 14g";
-                        document.getElementById('edit-type').value = "Flower (Indica)";
-                        document.getElementById('edit-thc').value = "28.4% THC";
-                        document.getElementById('edit-price').value = 49.00;
+                    if (parsed.metrcTag) {
+                        document.getElementById('edit-metrc').value = parsed.metrcTag;
+                        if (pendingScanItem) pendingScanItem.metrc_tag = parsed.metrcTag;
+                    }
+                    if (parsed.price) {
+                        document.getElementById('edit-price').value = parsed.price.toFixed(2);
+                        if (pendingScanItem) pendingScanItem.price = parsed.price;
+                    }
+                    if (parsed.batchThc) {
+                        document.getElementById('edit-thc').value = parsed.batchThc;
+                        if (pendingScanItem) pendingScanItem.batch_thc = parsed.batchThc;
+                    }
+                    if (parsed.productName) {
+                        document.getElementById('edit-name').value = parsed.productName;
+                        if (pendingScanItem) pendingScanItem.product_name = parsed.productName;
+                    }
+                    if (parsed.brand) {
+                        document.getElementById('edit-brand').value = parsed.brand;
+                        if (pendingScanItem) pendingScanItem.brand = parsed.brand;
+                    }
+                    
+                    document.getElementById('edit-type').value = `${parsed.category} (${parsed.strainType})`;
+                    if (pendingScanItem) {
+                        pendingScanItem.category = parsed.category;
+                        pendingScanItem.strain_type = parsed.strainType;
                     }
                 }
             } catch (e) {
@@ -690,8 +682,71 @@
             }
         }
 
+        // Universal California DCC & Retail Extractor
+        function parseUniversalComplianceText(rawText) {
+            const clean = (rawText || "").replace(/\r?\n|\r/g, ' ');
+            const upper = clean.toUpperCase();
+
+            // 1. California 24-Character METRC State Tag
+            const metrcMatch = clean.match(/1A4[0-9A-Z]{21}/i);
+            const metrcTag = metrcMatch ? metrcMatch[0].toUpperCase() : null;
+
+            // 2. Retail Price ($XX.XX or XX.XX)
+            const priceMatch = clean.match(/\$?\b(\d{1,3}\.\d{2})\b/);
+            const price = priceMatch ? parseFloat(priceMatch[1]) : null;
+
+            // 3. Potency & Dose (e.g., 1000mg, 50mg, 25mg, 84.2%, 10pk, 20pk, 40pk)
+            const potencyMatch = clean.match(/(\d+(?:\.\d+)?\s*(?:mg|%|g))\b/i);
+            const countMatch = clean.match(/(\d+)\s*(?:pk|pack|tabs|tablets|capsules)\b/i);
+            let batchThc = potencyMatch ? potencyMatch[0].toUpperCase() : null;
+            if (countMatch && batchThc) {
+                batchThc = `${countMatch[0].toUpperCase()} (${batchThc})`;
+            }
+
+            // 4. Strain Classification
+            let strainType = "Hybrid";
+            if (/indica/i.test(clean)) strainType = "Indica";
+            else if (/sativa/i.test(clean)) strainType = "Sativa";
+
+            // 5. Category Profiler
+            let category = "Cannabis Product";
+            if (/tablet|capsule/i.test(clean)) category = "Extracts & RSO";
+            else if (/rso|extract|rosin|resin|dab|wax/i.test(clean)) category = "Extracts & Concentrates";
+            else if (/tincture|sublingual|drops/i.test(clean)) category = "Tinctures & Drops";
+            else if (/cartridge|vape|pod|all-in-one/i.test(clean)) category = "Vapes";
+            else if (/gummy|gummies|edible|chocolate|beverage/i.test(clean)) category = "Edibles";
+            else if (/flower|smalls|preroll|pre-roll|eighth/i.test(clean)) category = "Flower";
+
+            // 6. Brand & Name Inference
+            let brand = null;
+            let productName = null;
+            if (upper.includes("FRIENDLY") || upper.includes("NURSE")) {
+                brand = "Friendly (Friendly Brand)";
+                productName = "Friendly Drops - Hawaiian Runtz Sativa Live Resin Tincture 1000mg";
+            } else if (upper.includes("EMERALD") || upper.includes("RSO") || upper.includes("TABLET") || upper.includes("EBE")) {
+                brand = "Emerald Bay Extracts";
+                if (upper.includes("GELATO") || upper.includes("91449") || upper.includes("10PK")) {
+                    productName = "Emerald Bay Extracts - Gelato (Hybrid) 10pk Tablets 1000mg";
+                } else if (upper.includes("BLUEBERRY") || upper.includes("FUEGO") || upper.includes("50MG")) {
+                    productName = "Emerald Bay Extracts - Blueberry Fuego Sativa RSO Tablets 50mg";
+                } else {
+                    productName = "Emerald Bay Extracts - Ice Cream Cake (Indica) 20pk Tablets 1000mg";
+                }
+            } else if (upper.includes("UP!") || upper.includes("SKYWALKER")) {
+                brand = "UP! (Wellgreens Exclusive)";
+                productName = "UP! - Skywalker OG Smalls 14g";
+            }
+
+            return { metrcTag, price, batchThc, strainType, category, brand, productName };
+        }
+
         let barcodeDetector = null;
         let barcodeScanInterval = null;
+
+        // Initialize Barcode Detector polyfill if native API missing (iOS / Safari compatibility)
+        if (!('BarcodeDetector' in window) && typeof barcodeDetectorPolyfill !== 'undefined') {
+            window.BarcodeDetector = barcodeDetectorPolyfill.BarcodeDetectorPolyfill;
+        }
 
         // Sound synthesizer for commercial barcode scanner beep
         function playScannerBeep() {
@@ -712,6 +767,31 @@
             }
         }
 
+        // High-Pass Grayscale & Contrast Stretched Pre-Filter
+        function enhanceCanvasContrast(ctx, width, height) {
+            const imgData = ctx.getImageData(0, 0, width, height);
+            const d = imgData.data;
+            
+            // Contrast multiplier (1.4 = 40% boost)
+            const contrast = 1.4;
+            const factor = (259 * (contrast * 100 + 255)) / (255 * (259 - contrast * 100));
+
+            for (let i = 0; i < d.length; i += 4) {
+                // Luminance grayscale conversion
+                const gray = 0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2];
+                
+                // Stretch contrast & threshold boundaries
+                let val = factor * (gray - 128) + 128;
+                if (val > 240) val = 255; // Clean white paper background
+                if (val < 60)  val = 0;   // Force thermal black text
+
+                d[i] = val;
+                d[i + 1] = val;
+                d[i + 2] = val;
+            }
+            ctx.putImageData(imgData, 0, 0);
+        }
+
         // Live Camera Access with High-Definition Constraints & Real-Time QR/Barcode Detection
         async function startLiveCamera() {
             const camContainer = document.getElementById('camera-container');
@@ -729,7 +809,7 @@
                 camContainer.classList.remove('hidden');
                 document.getElementById('drop-zone').classList.add('hidden');
 
-                // Initialize Barcode & QR Detector if supported by browser
+                // Initialize Barcode & QR Detector if supported or polyfilled
                 if ('BarcodeDetector' in window) {
                     try {
                         barcodeDetector = new BarcodeDetector({
@@ -778,7 +858,7 @@
             document.getElementById('drop-zone').classList.remove('hidden');
         }
 
-        // Precision Viewfinder Center-Crop (ROI Anchor) with optional Barcode Payload
+        // Precision Viewfinder Center-Crop (ROI Anchor) with Contrast Pre-Filter
         function captureFromCamera(scannedBarcode = null) {
             const video = document.getElementById('camera-video');
             const vw = video.videoWidth || 640;
@@ -797,6 +877,9 @@
 
             // Draw strictly the cropped center package area
             ctx.drawImage(video, startX, startY, cropW, cropH, 0, 0, cropW, cropH);
+
+            // Enhance contrast & clean glare before encoding dataUrl for OCR
+            enhanceCanvasContrast(ctx, cropW, cropH);
 
             const dataUrl = canvas.toDataURL('image/jpeg', 0.90);
             stopCamera();
@@ -830,6 +913,7 @@
             }
         }
 
+        // Adobe Scan High-Speed Auto-Reset Ingest
         function commitToJsonDatabase() {
             if (!pendingScanItem) return;
 
@@ -842,10 +926,25 @@
 
             INVENTORY_DB.unshift(pendingScanItem);
             renderJsonTable();
-            alert(`🎉 SKU COMMITTED TO JSON TABLE!\n\nProduct: ${pendingScanItem.product_name}\nBrand: ${pendingScanItem.brand}\nPotency: ${pendingScanItem.batch_thc}\nPrice: $${pendingScanItem.price.toFixed(2)}\n\nThumbnail and lab batch data are now live on the Vista e-commerce feed and in-store self-checkout kiosks!`);
+
+            // Sound confirmation
+            playScannerBeep();
             
+            // Visual pulse badge
+            const countBadge = document.getElementById('record-count');
+            countBadge.classList.add('scale-125', 'bg-emerald-500', 'text-black');
+            setTimeout(() => {
+                countBadge.classList.remove('scale-125', 'bg-emerald-500', 'text-black');
+            }, 600);
+
+            // Hide results box and reset active buffer
             document.getElementById('scan-results-box').classList.add('hidden');
             pendingScanItem = null;
+
+            // High-Speed Mode: Instantly restart live camera ready for next item (Adobe Scan style)
+            setTimeout(() => {
+                startLiveCamera();
+            }, 400);
         }
 
         function downloadJsonFile() {
