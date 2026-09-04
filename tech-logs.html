@@ -10,10 +10,8 @@
         .log-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 40px;
-            overflow-y: auto;
-            max-height: 70vh;
+            gap: 25px;
+            padding: 20px 40px 40px 40px;
         }
         .log-card {
             background: rgba(18, 69, 89, 0.2);
@@ -114,82 +112,75 @@
                 <button class="back-btn" onclick="window.location.href='index.html'">[x] RETURN TO TERMINAL</button>
             </div>
 
-            <div style="padding: 20px 40px; text-align: center;">
-                <video style="width: 100%; max-width: 800px; border: 1px solid var(--color-energy-cyan); border-radius: 8px; box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);" controls autoplay muted loop playsinline>
-                    <source src="TECH_LOGS/THE_CREATIVE_AUTONOMY_PROTOCOL_POST.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+            <div style="overflow-y: auto; flex-grow: 1;">
+
+            <!-- Career Path & Solopreneur / Debugging NotebookLM Spotlight -->
+            <div style="padding: 20px 40px 10px 40px;">
+                <div class="log-card" style="border: 2px solid var(--color-marquee-gold); background: rgba(254, 227, 120, 0.08); padding: 25px 30px; text-align: center; box-shadow: 0 0 25px rgba(254, 227, 120, 0.2); position: relative; overflow: hidden; cursor: default;">
+                    <div style="position: absolute; top: 12px; right: 15px; font-family: monospace; font-size: 0.7rem; color: var(--color-marquee-gold); border: 1px solid var(--color-marquee-gold); padding: 2px 8px; border-radius: 4px; background: rgba(0,0,0,0.5);">
+                        LIVE SRE NOTEBOOK // 2026
+                    </div>
+                    <div class="log-icon" style="color: var(--color-marquee-gold); font-size: 3rem; margin-bottom: 10px;">📓 ⚡</div>
+                    <div class="log-title" style="color: var(--color-marquee-gold); font-size: 1.5rem; letter-spacing: 2px; margin-bottom: 8px;">
+                        NEVERRENDER LABS CAREER PATH // DEBUGGING &amp; SOLOPRENEUR NOTEBOOK
+                    </div>
+                    <p class="log-desc" style="color: var(--color-base-light); max-width: 850px; margin: 0 auto 18px auto; font-size: 0.95rem; line-height: 1.6;">
+                        > Follow along the active NeverRender Labs career trajectory, systems architecture, solopreneur operational blueprints, and real-time debugging ledgers. Powered by Google NotebookLM with live citations, source notebooks, and continuous multi-agent research telemetry.
+                    </p>
+                    <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                        <a href="https://notebook.google.com/notebook/8f1ea112-fb7c-4720-a4f2-0c208f16b435" target="_blank" rel="noopener" style="text-decoration: none;">
+                            <button class="action-btn" style="border-color: var(--color-marquee-gold); color: #050a0d; background: var(--color-marquee-gold); font-weight: bold; font-size: 0.85rem; padding: 10px 24px; box-shadow: 0 0 15px rgba(254, 227, 120, 0.5); cursor: pointer;">
+                                [ 📖 LAUNCH LIVE GOOGLE NOTEBOOKLM ]
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Industry Spotlight: Vianet Djenguet Recognition (Directly Under Notebook) -->
+            <div style="padding: 10px 40px 15px 40px;">
+                <div class="log-card" style="border-color: var(--color-laser-amber, #ffb300); background: rgba(255, 179, 0, 0.06); padding: 25px 30px; cursor: default;">
+                    <div class="log-icon" style="color: var(--color-laser-amber, #ffb300); font-size: 3rem; margin-bottom: 8px;">🦁 ✨</div>
+                    <div class="log-title" style="color: var(--color-laser-amber, #ffb300); font-size: 1.5rem; margin-bottom: 8px; letter-spacing: 2px;">INDUSTRY SPOTLIGHT: VIANET DJENGUET</div>
+                    <p class="log-desc" style="color: var(--color-base-light); max-width: 850px; margin: 0 auto 18px auto; font-size: 0.95rem;">
+                        > Acclaimed international BBC/PBS National Geographic wildlife cinematographer and presenter <strong>Vianet Djenguet</strong> (<a href="https://instagram.com/vianetdjenguet_" target="_blank" style="color: var(--color-energy-cyan); text-decoration: underline;">@vianetdjenguet_</a>) recognized and engaged with the <em>8-Bit Theater District</em> reel series, delivering high-praise industry telemetry: <em>"Adventure awaits around every corner. Thank you for the follow 😊🙏"</em>
+                    </p>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; width: 100%; margin-top: 10px;">
+                        <a href="TECH_LOGS/HE_LIKED_IT/Screenshot_20260827_063943_Instagram.jpg" target="_blank" style="text-decoration: none; color: inherit; display: block; flex: 1; min-width: 240px; max-width: 300px;">
+                            <div class="log-card" style="border-color: rgba(255, 179, 0, 0.4); background: rgba(0, 0, 0, 0.4); padding: 12px; height: 100%; text-align: center;">
+                                <img src="TECH_LOGS/HE_LIKED_IT/Screenshot_20260827_063943_Instagram.jpg" alt="Vianet Djenguet Reel Likes" style="width: 100%; height: auto; border-radius: 6px; border: 1px solid rgba(255, 179, 0, 0.3); margin-bottom: 8px;">
+                                <div class="log-title" style="font-size: 0.8rem; color: var(--color-laser-amber, #ffb300); margin-bottom: 4px;">NOTIFICATION FEED</div>
+                                <p class="log-desc" style="font-size: 0.72rem;">Verified Reel Endorsements</p>
+                            </div>
+                        </a>
+                        <a href="TECH_LOGS/HE_LIKED_IT/Screenshot_20260827_064026_Instagram.jpg" target="_blank" style="text-decoration: none; color: inherit; display: block; flex: 1; min-width: 240px; max-width: 300px;">
+                            <div class="log-card" style="border-color: rgba(0, 240, 255, 0.4); background: rgba(0, 0, 0, 0.4); padding: 12px; height: 100%; text-align: center;">
+                                <img src="TECH_LOGS/HE_LIKED_IT/Screenshot_20260827_064026_Instagram.jpg" alt="Vianet Djenguet Direct Message" style="width: 100%; height: auto; border-radius: 6px; border: 1px solid rgba(0, 240, 255, 0.3); margin-bottom: 8px;">
+                                <div class="log-title" style="font-size: 0.8rem; color: var(--color-energy-cyan); margin-bottom: 4px;">DIRECT TELEMETRY</div>
+                                <p class="log-desc" style="font-size: 0.72rem;">"Adventure Awaits Around Every Corner"</p>
+                            </div>
+                        </a>
+                        <a href="TECH_LOGS/HE_LIKED_IT/Screenshot_20260827_064109_Instagram.jpg" target="_blank" style="text-decoration: none; color: inherit; display: block; flex: 1; min-width: 240px; max-width: 300px;">
+                            <div class="log-card" style="border-color: rgba(255, 0, 85, 0.4); background: rgba(0, 0, 0, 0.4); padding: 12px; height: 100%; text-align: center;">
+                                <img src="TECH_LOGS/HE_LIKED_IT/Screenshot_20260827_064109_Instagram.jpg" alt="Story Mention & Chat Heart" style="width: 100%; height: auto; border-radius: 6px; border: 1px solid rgba(255, 0, 85, 0.3); margin-bottom: 8px;">
+                                <div class="log-title" style="font-size: 0.8rem; color: var(--color-retro-coral, #fa6874); margin-bottom: 4px;">STORY MENTION &amp; CHAT</div>
+                                <p class="log-desc" style="font-size: 0.72rem;">Mutual Creator Connection</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
 
             <div class="log-gallery" style="padding-top: 10px;">
-                <!-- July Unicorn: Veo Bypass & Prompt Patch Section -->
-                <div style="grid-column: 1 / -1;">
-                    <div id="july-unicorn" class="log-card" style="border-color: var(--color-energy-cyan); background: rgba(0, 229, 255, 0.05); display: flex; flex-direction: column; align-items: center; padding: 30px; margin-bottom: 20px; cursor: default;">
-                        <div class="log-icon" style="color: var(--color-energy-cyan); font-size: 4rem; margin-bottom: 10px;">🦄</div>
-                        <div class="log-title" style="color: var(--color-energy-cyan); font-size: 1.8rem; margin-bottom: 15px;">VEO BYPASS & PROMPT PATCH (JULY UNICORN)</div>
-                        <p class="log-desc" style="color: var(--color-base-light); max-width: 800px; font-size: 0.95rem; margin-bottom: 25px;">
-                            > ALERT: CRITICAL WORKFLOW FIX FOR CREATORS. A novel mitigation framework targeting latent identity drift, feature entanglement, and backend vector shifts in modern T2V/I2V systems. Strips out forced LLM prompt rewriting, stabilizes U-Net cross-attention matrices, and bypasses platform context-length memory constraints.
-                        </p>
-                        <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; width: 100%;">
-                            <a href="JULY_UNICORN/ENHANCED_PROMPT_PATCH_COMPLETE_PLAYLOAD.zip" style="text-decoration: none; color: inherit; display: block; flex: 1; max-width: 380px;">
-                                <div class="log-card" style="border-color: var(--color-coral-pink); background: rgba(255, 107, 107, 0.05); margin: 0; height: 100%; justify-content: space-between;">
-                                    <div>
-                                        <div class="log-title" style="color: var(--color-coral-pink); font-size: 1.1rem;">COMPLETE PAYLOAD PACK</div>
-                                        <p class="log-desc" style="font-size: 0.8rem; margin-top: 10px;">> Includes high-fidelity consistency research reports, prompt templates, JSON blueprints, and visual comparison assets (BEAU_CORRECT_CONSISTENCY.gif, DRIFT_EXAMPLES).</p>
-                                    </div>
-                                    <p class="log-desc" style="color: var(--color-coral-pink); font-weight: bold; margin-top: 20px;">[ DOWNLOAD FULL PACK (28MB) ]</p>
-                                </div>
-                            </a>
-                            <a href="JULY_UNICORN/Veo_Bypass_Release_v1.zip" style="text-decoration: none; color: inherit; display: block; flex: 1; max-width: 380px;">
-                                <div class="log-card" style="border-color: var(--color-energy-cyan); background: rgba(0, 229, 255, 0.05); margin: 0; height: 100%; justify-content: space-between;">
-                                    <div>
-                                        <div class="log-title" style="color: var(--color-energy-cyan); font-size: 1.1rem;">VEO BYPASS UTILITY (V1)</div>
-                                        <p class="log-desc" style="font-size: 0.8rem; margin-top: 10px;">> Direct utility script patch to bypass enhancePrompt parameters and enforce raw user-prompt boundaries inside generative pipelines.</p>
-                                    </div>
-                                    <p class="log-desc" style="color: var(--color-energy-cyan); font-weight: bold; margin-top: 20px;">[ DOWNLOAD PATCH UTILITY (6KB) ]</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div style="margin-top: 25px; width: 100%; border-top: 1px dashed rgba(0, 229, 255, 0.2); padding-top: 20px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                            <a href="JULY_UNICORN/Character Consistency Research Strategy.txt" target="_blank" style="color: var(--color-energy-cyan); font-family: monospace; font-size: 0.85rem; text-decoration: none;">[ VIEW RESEARCH LOGS (TXT) ]</a>
-                            <a href="JULY_UNICORN/Character Consistency Research Strategy.md" target="_blank" style="color: var(--color-energy-cyan); font-family: monospace; font-size: 0.85rem; text-decoration: none;">[ VIEW RESEARCH LOGS (MD) ]</a>
-                            <a href="JULY_UNICORN/8_bit_theater_district_aesthetic_json.txt" target="_blank" style="color: var(--color-energy-cyan); font-family: monospace; font-size: 0.85rem; text-decoration: none;">[ VIEW AESTHETIC BLUEPRINTS (JSON) ]</a>
-                            <a href="JULY_UNICORN/omni_shot_configuration_xml.txt" target="_blank" style="color: var(--color-energy-cyan); font-family: monospace; font-size: 0.85rem; text-decoration: none;">[ VIEW XML CAGE STRUCTURES (XML) ]</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Industry Spotlight: Vianet Djenguet Recognition -->
-                <div style="grid-column: 1 / -1;">
-                    <div class="log-card" style="border-color: var(--color-laser-amber, #ffb300); background: rgba(255, 179, 0, 0.06); padding: 30px; margin-bottom: 10px; cursor: default;">
-                        <div class="log-icon" style="color: var(--color-laser-amber, #ffb300); font-size: 3.5rem; margin-bottom: 10px;">🦁 ✨</div>
-                        <div class="log-title" style="color: var(--color-laser-amber, #ffb300); font-size: 1.6rem; margin-bottom: 10px; letter-spacing: 2px;">INDUSTRY SPOTLIGHT: VIANET DJENGUET</div>
-                        <p class="log-desc" style="color: var(--color-base-light); max-width: 850px; margin: 0 auto 20px auto; font-size: 0.95rem;">
-                            > Acclaimed international wildlife cinematographer and presenter <strong>Vianet Djenguet</strong> (<a href="https://instagram.com/vianetdjenguet_" target="_blank" style="color: var(--color-energy-cyan); text-decoration: underline;">@vianetdjenguet_</a>) recognized and engaged with the <em>8-Bit Theater District</em> reel series, delivering high-praise industry telemetry: <em>"Adventure awaits around every corner. Thank you for the follow 😊🙏"</em>
-                        </p>
-                        <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; width: 100%; margin-top: 15px;">
-                            <a href="TECH_LOGS/HE_LIKED_IT/Screenshot_20260827_063943_Instagram.jpg" target="_blank" style="text-decoration: none; color: inherit; display: block; flex: 1; min-width: 260px; max-width: 320px;">
-                                <div class="log-card" style="border-color: rgba(255, 179, 0, 0.4); background: rgba(0, 0, 0, 0.4); padding: 12px; height: 100%; text-align: center;">
-                                    <img src="TECH_LOGS/HE_LIKED_IT/Screenshot_20260827_063943_Instagram.jpg" alt="Vianet Djenguet Reel Likes" style="width: 100%; height: auto; border-radius: 6px; border: 1px solid rgba(255, 179, 0, 0.3); margin-bottom: 10px;">
-                                    <div class="log-title" style="font-size: 0.85rem; color: var(--color-laser-amber, #ffb300); margin-bottom: 4px;">NOTIFICATION FEED</div>
-                                    <p class="log-desc" style="font-size: 0.75rem;">Verified Reel Endorsements</p>
-                                </div>
-                            </a>
-                            <a href="TECH_LOGS/HE_LIKED_IT/Screenshot_20260827_064026_Instagram.jpg" target="_blank" style="text-decoration: none; color: inherit; display: block; flex: 1; min-width: 260px; max-width: 320px;">
-                                <div class="log-card" style="border-color: rgba(0, 240, 255, 0.4); background: rgba(0, 0, 0, 0.4); padding: 12px; height: 100%; text-align: center;">
-                                    <img src="TECH_LOGS/HE_LIKED_IT/Screenshot_20260827_064026_Instagram.jpg" alt="Vianet Djenguet Direct Message" style="width: 100%; height: auto; border-radius: 6px; border: 1px solid rgba(0, 240, 255, 0.3); margin-bottom: 10px;">
-                                    <div class="log-title" style="font-size: 0.85rem; color: var(--color-energy-cyan); margin-bottom: 4px;">DIRECT TELEMETRY</div>
-                                    <p class="log-desc" style="font-size: 0.75rem;">"Adventure Awaits Around Every Corner"</p>
-                                </div>
-                            </a>
-                            <a href="TECH_LOGS/HE_LIKED_IT/Screenshot_20260827_064109_Instagram.jpg" target="_blank" style="text-decoration: none; color: inherit; display: block; flex: 1; min-width: 260px; max-width: 320px;">
-                                <div class="log-card" style="border-color: rgba(255, 0, 85, 0.4); background: rgba(0, 0, 0, 0.4); padding: 12px; height: 100%; text-align: center;">
-                                    <img src="TECH_LOGS/HE_LIKED_IT/Screenshot_20260827_064109_Instagram.jpg" alt="Story Mention & Chat Heart" style="width: 100%; height: auto; border-radius: 6px; border: 1px solid rgba(255, 0, 85, 0.3); margin-bottom: 10px;">
-                                    <div class="log-title" style="font-size: 0.85rem; color: var(--color-magenta, #ff0055); margin-bottom: 4px;">STORY MENTION &amp; CHAT</div>
-                                    <p class="log-desc" style="font-size: 0.75rem;">Mutual Creator Connection</p>
-                                </div>
-                            </a>
-                        </div>
+                <!-- July Unicorn: Compact Mitigation Utility Card -->
+                <div id="july-unicorn" class="log-card" style="border-color: var(--color-energy-cyan); background: rgba(137, 236, 164, 0.05);">
+                    <div class="log-icon" style="font-size: 2rem; margin-bottom: 10px;">🦄</div>
+                    <div class="log-title" style="font-size: 1rem; margin-bottom: 8px;">VEO BYPASS &amp; PROMPT PATCH</div>
+                    <p class="log-desc" style="font-size: 0.8rem; margin-bottom: 15px;">> Novel mitigation framework targeting latent identity drift, feature entanglement, and backend vector shifts in modern T2V/I2V systems.</p>
+                    <div style="display: flex; flex-direction: column; gap: 8px; width: 100%; margin-top: auto;">
+                        <a href="JULY_UNICORN/ENHANCED_PROMPT_PATCH_COMPLETE_PLAYLOAD.zip" style="text-decoration: none; color: var(--color-coral-pink); font-size: 0.75rem; font-weight: bold;">[ DOWNLOAD FULL PACK (28MB) ]</a>
+                        <a href="JULY_UNICORN/Veo_Bypass_Release_v1.zip" style="text-decoration: none; color: var(--color-energy-cyan); font-size: 0.75rem; font-weight: bold;">[ DOWNLOAD PATCH UTILITY (6KB) ]</a>
+                        <a href="JULY_UNICORN/Character Consistency Research Strategy.md" target="_blank" style="text-decoration: none; color: #a0c4d8; font-size: 0.72rem; font-family: monospace;">[ VIEW RESEARCH LOGS (MD) ]</a>
                     </div>
                 </div>
 
@@ -255,7 +246,9 @@
                 </a>
             </div>
             
-            <div style="padding: 20px 40px; border-top: 1px solid rgba(0, 229, 255, 0.1); font-family: monospace; font-size: 0.8rem; color: var(--color-energy-cyan);">
+            </div> <!-- end scrollable container -->
+            
+            <div style="padding: 20px 40px; border-top: 1px solid rgba(0, 229, 255, 0.1); font-family: monospace; font-size: 0.8rem; color: var(--color-energy-cyan); flex-shrink: 0;">
                 // SYSTEM STATUS: CEMENTED
             </div>
         </div>
