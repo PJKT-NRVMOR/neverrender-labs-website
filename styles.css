@@ -1,10 +1,19 @@
 :root {
-    /* 60/30/10 Color Matrix */
-    --color-base-dark: #124559;
+    /* Master Palette v2.0 Noir Mint & Marquee Gold (August 2026 Compendium) */
+    --color-noir-plum: #4A203B;       /* 60% Base Shadow (RGB 74, 32, 59) */
+    --color-deep-celadon: #36725B;     /* 60% Secondary Depth (RGB 54, 114, 91) */
+    --color-radioactive-mint: #89ECA4; /* 30% Dynamic Energy (RGB 137, 236, 164) */
+    --color-pale-mint: #9EF7B3;        /* 30% Ambient Accent (RGB 158, 247, 179) */
+    --color-marquee-gold: #FEE378;     /* 10% Emissive Light (RGB 254, 227, 120) */
+    --color-retro-coral: #FA6874;      /* 10% Disruptive Pop (RGB 250, 104, 116) */
+
+    /* Legacy & Semantic Aliases */
+    --color-base-dark: var(--color-noir-plum);
     --color-base-light: #EAFBFF;
-    --color-energy-cyan: #00E5FF;
-    --color-energy-jade: #00C49A;
-    --color-pop-red: #FF6B6B;
+    --color-energy-cyan: var(--color-radioactive-mint);
+    --color-energy-jade: var(--color-deep-celadon);
+    --color-pop-red: var(--color-retro-coral);
+    --color-gold: var(--color-marquee-gold);
 
     --font-primary: 'Inter', sans-serif;
     --font-mono: 'Space Mono', monospace;

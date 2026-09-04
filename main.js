@@ -1,11 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Typewriter effect for terminal
     const terminalText = [
-        "Awaiting instruction...",
-        "Loading deep-lore ingestion...",
-        "CRITICAL INGESTION: VEO BYPASS PATCH (JULY UNICORN) DETECTED...",
-        "Accessing PRODUCTION MATRIX INVENTORY...",
-        "System Status: READY FOR INSTRUCTION."
+        "SYSTEM ONLINE // NEVERRENDER LABS MASTER COMPENDIUM (AUG 2026)...",
+        "GOOGLE LABS FLOW: RETRO-TERM 80 COMMUNITY GALLERY FEATURED...",
+        "COMPUTER VISION ENGINE: CALIFORNIA METRC INTAKE PIPELINE ACTIVE...",
+        "COLOR MATRIX v2.0: DEEP NOIR PLUM // RADIOACTIVE MINT // MARQUEE GOLD...",
+        "HARDWARE TELEMETRY: AMD RYZEN 7 6800U 4-THREAD 0.99MS ENVELOPE...",
+        "DIRECTOR-ENGINEER AGENTIC ORCHESTRATION: SYSTEM CEMENTED."
     ];
     
     let textIndex = 0;
