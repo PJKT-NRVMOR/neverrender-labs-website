@@ -194,17 +194,12 @@
         }
 
         function copyProtonImageCard() {
-            const htmlPayload = `<div style="font-family: Arial, sans-serif; font-size: 14px; margin: 8px 0; padding: 0; line-height: 1.2;">
+            const htmlPayload = `<div style="margin: 8px 0; padding: 0; line-height: 0;">
     <a href="https://renderwithoutcode.com" target="_blank" style="display: inline-block; text-decoration: none; border: 0; outline: none;">
         <img src="https://raw.githubusercontent.com/PJKT-NRVMOR/neverrender-labs-website/main/card/signature-card.png" width="520" alt="Matthew Wyatt - Creative Technologist & 3D / AI Media Specialist" style="display: block; width: 520px; max-width: 100%; height: auto; border: 0;" />
     </a>
-    <div style="margin-top: 8px; font-family: 'Courier New', Courier, monospace; font-size: 11px; font-weight: bold;">
-        <a href="https://renderwithoutcode.com" target="_blank" style="color: #EA580C; text-decoration: none;">&#9654; RENDERWITHOUTCODE.COM</a>
-        &nbsp;&nbsp;|&nbsp;&nbsp;
-        <a href="https://renderwithoutcode.com/resume" target="_blank" style="color: #1C1917; text-decoration: none;">8-BIT RESUME</a>
-    </div>
 </div>`;
-            const plainText = "Matthew Wyatt | Creative Technologist & 3D / AI Media Specialist\nPortfolio: https://renderwithoutcode.com\nResume: https://renderwithoutcode.com/resume";
+            const plainText = "Matthew Wyatt | Creative Technologist & 3D / AI Media Specialist\nhttps://renderwithoutcode.com";
 
             const listener = function(e) {
                 e.clipboardData.setData('text/html', htmlPayload);
