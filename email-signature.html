@@ -65,73 +65,78 @@
             <!-- 💌 THE EXACT SIGNATURE CODE STARTS HERE (TABLE-BASED EMAIL SAFE) -->
             <!-- =================================================================== -->
             <div id="signature-container" class="w-full max-w-lg">
-                <table cellpadding="0" cellspacing="0" border="0" style="width: 100%; max-width: 520px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #FAF6EE; border: 2.5px solid #1C1917; border-radius: 4px; box-shadow: 4px 4px 0px #1C1917; margin: 0; padding: 0;">
-                    <tr>
-                        <td style="padding: 20px 22px; background-color: #FAF6EE;">
-                            
-                            <!-- Header / Badge Row -->
-                            <table cellpadding="0" cellspacing="0" border="0" style="width: 100%; margin-bottom: 10px;">
-                                <tr>
-                                    <td style="vertical-align: middle;">
-                                        <span style="font-family: 'Courier New', Courier, monospace; font-size: 10px; font-weight: bold; color: #EA580C; background-color: #FFF0E5; border: 1.5px solid #EA580C; padding: 2px 6px; letter-spacing: 0.5px; text-transform: uppercase;">
-                                            &#9654; NEVERRENDER LABS // SRE
-                                        </span>
-                                    </td>
-                                    <td style="text-align: right; vertical-align: middle;">
-                                        <span style="font-family: 'Courier New', Courier, monospace; font-size: 10px; font-weight: bold; color: #B45309; background-color: #FEF3C7; border: 1.5px solid #D97706; padding: 2px 6px;">
-                                            &#9733; GOOGLE LABS FEATURED
-                                        </span>
-                                    </td>
-                                </tr>
-                            </table>
+                <!-- PROTON SHIELD WRAPPER: inline-block with strict height ceiling kills flexbox vertical stretching completely -->
+                <div id="proton-signature-payload" style="display: inline-block !important; width: 520px !important; max-width: 520px !important; height: auto !important; max-height: 250px !important; margin: 16px 0 8px 0 !important; padding: 0 !important; vertical-align: top !important; clear: both !important; font-size: 14px !important; line-height: 1.2 !important; font-family: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif !important;">
+                    <table width="520" cellpadding="0" cellspacing="0" border="0" style="display: table !important; table-layout: fixed !important; width: 520px !important; max-width: 520px !important; height: auto !important; border-collapse: collapse !important; font-size: 14px !important; font-family: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif !important; background-color: #FAF6EE !important; border: 2.5px solid #1C1917 !important; border-radius: 4px !important; box-shadow: 4px 4px 0px #1C1917 !important; margin: 0 !important; padding: 0 !important;">
+                        <!-- Row 1: Badges (Locked 32px) -->
+                        <tr style="height: 32px !important;">
+                            <td valign="top" style="height: 32px !important; max-height: 32px !important; padding: 16px 18px 6px 18px !important; vertical-align: top !important; background-color: #FAF6EE !important;">
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width: 100% !important; border-collapse: collapse !important;">
+                                    <tr>
+                                        <td align="left" valign="middle" style="vertical-align: middle !important;">
+                                            <span style="display: inline-block !important; font-family: 'Courier New', Courier, monospace !important; font-size: 10px !important; font-weight: bold !important; color: #EA580C !important; background-color: #FFF0E5 !important; border: 1.5px solid #EA580C !important; padding: 2px 6px !important; letter-spacing: 0.5px !important; text-transform: uppercase !important;">
+                                                &#9654; NEVERRENDER LABS // SRE
+                                            </span>
+                                        </td>
+                                        <td align="right" valign="middle" style="vertical-align: middle !important;">
+                                            <span style="display: inline-block !important; font-family: 'Courier New', Courier, monospace !important; font-size: 10px !important; font-weight: bold !important; color: #B45309 !important; background-color: #FEF3C7 !important; border: 1.5px solid #D97706 !important; padding: 2px 6px !important; text-transform: uppercase !important;">
+                                                &#9733; GOOGLE LABS FEATURED
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
 
-                            <!-- Name & Title -->
-                            <table cellpadding="0" cellspacing="0" border="0" style="width: 100%; margin-bottom: 12px;">
-                                <tr>
-                                    <td>
-                                        <div style="font-size: 22px; font-weight: 900; color: #1C1917; line-height: 1.2; letter-spacing: -0.5px; margin-bottom: 2px;">
-                                            Matthew Wyatt
-                                        </div>
-                                        <div style="font-size: 13px; font-weight: 600; color: #D97706; font-family: 'Courier New', Courier, monospace; letter-spacing: -0.2px;">
-                                            Creative Technologist &amp; 3D / AI Media Specialist
-                                        </div>
-                                    </td>
-                                </tr>
-                            </table>
+                        <!-- Row 2: Name & Title (Locked 46px) -->
+                        <tr style="height: 46px !important;">
+                            <td valign="top" style="height: 46px !important; max-height: 46px !important; padding: 0 18px 6px 18px !important; vertical-align: top !important; background-color: #FAF6EE !important;">
+                                <div style="font-size: 20px !important; font-weight: 900 !important; color: #1C1917 !important; line-height: 1.2 !important; letter-spacing: -0.5px !important; margin: 0 0 2px 0 !important;">
+                                    Matthew Wyatt
+                                </div>
+                                <div style="font-size: 12px !important; font-weight: 600 !important; color: #D97706 !important; font-family: 'Courier New', Courier, monospace !important; letter-spacing: -0.2px !important; margin: 0 !important;">
+                                    Creative Technologist &amp; 3D / AI Media Specialist
+                                </div>
+                            </td>
+                        </tr>
 
-                            <!-- Retro Dashed Divider -->
-                            <div style="border-bottom: 2px dashed #D6CEBE; margin-bottom: 14px; width: 100%;"></div>
+                        <!-- Row 3: Retro Dashed Divider (Locked 10px) -->
+                        <tr style="height: 10px !important;">
+                            <td valign="top" style="height: 10px !important; max-height: 10px !important; padding: 0 18px 8px 18px !important; vertical-align: top !important; background-color: #FAF6EE !important; line-height: 0 !important;">
+                                <div style="border-bottom: 2px dashed #D6CEBE !important; width: 100% !important; height: 0 !important; line-height: 0 !important; margin: 0 !important;"></div>
+                            </td>
+                        </tr>
 
-                            <!-- Tagline & Core Focus -->
-                            <div style="font-size: 12px; color: #44403C; line-height: 1.45; margin-bottom: 16px; background-color: #F3EBDD; padding: 8px 10px; border-left: 3px solid #EA580C;">
-                                Architecting real-time 3D, generative AI pipelines, and agentic workflows that push boundaries without production lag.
-                            </div>
+                        <!-- Row 4: Tagline (Locked 50px) -->
+                        <tr style="height: 50px !important;">
+                            <td valign="top" style="height: 50px !important; max-height: 50px !important; padding: 0 18px 10px 18px !important; vertical-align: top !important; background-color: #FAF6EE !important;">
+                                <div style="font-size: 11px !important; color: #44403C !important; line-height: 1.45 !important; margin: 0 !important; background-color: #F3EBDD !important; padding: 8px 10px !important; border-left: 3px solid #EA580C !important;">
+                                    Architecting real-time 3D, generative AI pipelines, and agentic workflows that push boundaries without production lag.
+                                </div>
+                            </td>
+                        </tr>
 
-                            <!-- Action Hub / Links -->
-                            <table cellpadding="0" cellspacing="0" border="0" style="width: 100%;">
-                                <tr>
-                                    <td>
-                                        <!-- Primary Web Link Button -->
-                                        <a href="https://renderwithoutcode.com" target="_blank" style="display: inline-block; background-color: #EA580C; color: #FFFFFF; font-size: 11px; font-weight: bold; font-family: 'Courier New', Courier, monospace; text-decoration: none; padding: 6px 12px; border: 1.5px solid #1C1917; box-shadow: 2px 2px 0px #1C1917; margin-right: 8px; text-transform: uppercase;">
-                                            &#9654; RENDERWITHOUTCODE.COM
-                                        </a>
-
-                                        <!-- Resume Link Button -->
-                                        <a href="https://renderwithoutcode.com/resume" target="_blank" style="display: inline-block; background-color: #FFFFFF; color: #1C1917; font-size: 11px; font-weight: bold; font-family: 'Courier New', Courier, monospace; text-decoration: none; padding: 6px 10px; border: 1.5px solid #1C1917; box-shadow: 2px 2px 0px #1C1917; margin-right: 8px;">
-                                            8-BIT RESUME
-                                        </a>
-
-                                        <!-- Instagram Link -->
-                                        <a href="https://www.instagram.com/neverrenderlabs/" target="_blank" style="display: inline-block; background-color: #FFFFFF; color: #DC2626; font-size: 11px; font-weight: bold; font-family: 'Courier New', Courier, monospace; text-decoration: none; padding: 6px 8px; border: 1.5px solid #1C1917; box-shadow: 2px 2px 0px #1C1917;">
-                                            @NEVERRENDERLABS
-                                        </a>
-                                    </td>
-                                </tr>
-                            </table>
-
-                        </td>
-                    </tr>
-                </table>
+                        <!-- Row 5: Action Links / Buttons (Locked 48px) -->
+                        <tr style="height: 48px !important;">
+                            <td valign="top" style="height: 48px !important; max-height: 48px !important; padding: 0 18px 16px 18px !important; vertical-align: top !important; background-color: #FAF6EE !important;">
+                                <table cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse !important; margin: 0 !important; padding: 0 !important;">
+                                    <tr>
+                                        <td style="padding-right: 8px !important; vertical-align: middle !important;">
+                                            <a href="https://renderwithoutcode.com" target="_blank" style="display: inline-block !important; background-color: #EA580C !important; color: #FFFFFF !important; font-size: 10px !important; font-weight: bold !important; font-family: 'Courier New', Courier, monospace !important; text-decoration: none !important; padding: 5px 11px !important; border: 1.5px solid #1C1917 !important; box-shadow: 2px 2px 0px #1C1917 !important; text-transform: uppercase !important; white-space: nowrap !important;">
+                                                &#9654; RENDERWITHOUTCODE.COM
+                                            </a>
+                                        </td>
+                                        <td style="vertical-align: middle !important;">
+                                            <a href="https://renderwithoutcode.com/resume" target="_blank" style="display: inline-block !important; background-color: #FFFFFF !important; color: #1C1917 !important; font-size: 10px !important; font-weight: bold !important; font-family: 'Courier New', Courier, monospace !important; text-decoration: none !important; padding: 5px 10px !important; border: 1.5px solid #1C1917 !important; box-shadow: 2px 2px 0px #1C1917 !important; white-space: nowrap !important;">
+                                                8-BIT RESUME
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
             <!-- =================================================================== -->
             <!-- 💌 THE EXACT SIGNATURE CODE ENDS HERE                               -->
@@ -141,9 +146,14 @@
 
         <!-- Copy & Export Controls -->
         <div class="flex flex-wrap items-center justify-center gap-3 font-mono text-xs">
-            <button onclick="copySignatureRichText()" id="btn-copy-rich" class="px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded flex items-center gap-2 shadow-[3px_3px_0px_#000] transition active:translate-x-0.5 active:translate-y-0.5">
+            <button onclick="copyProtonImageCard()" id="btn-copy-proton" class="px-5 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded flex items-center gap-2 shadow-[3px_3px_0px_#000] transition active:translate-x-0.5 active:translate-y-0.5">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                <span>⚡ COPY PROTON IMAGE CARD (ZERO-BUG)</span>
+            </button>
+
+            <button onclick="copySignatureRichText()" id="btn-copy-rich" class="px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded flex items-center gap-2 shadow-[3px_3px_0px_#000] transition active:translate-x-0.5 active:translate-y-0.5">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
-                <span>COPY SIGNATURE FOR GMAIL / OUTLOOK</span>
+                <span>COPY HTML TABLE (GMAIL / OUTLOOK)</span>
             </button>
 
             <button onclick="copyRawHTML()" id="btn-copy-html" class="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold rounded flex items-center gap-2 shadow-[3px_3px_0px_#000] transition">
@@ -159,15 +169,15 @@
 
         <!-- How to Install Instructions -->
         <div class="bg-slate-900/90 border border-slate-800 p-5 rounded-lg text-xs font-mono space-y-3 text-slate-300">
-            <div class="text-amber-400 font-bold flex items-center gap-1.5 font-pixel text-[9px]">
-                <span>⚡ HOW TO PASTE INTO GMAIL:</span>
+            <div class="text-emerald-400 font-bold flex items-center gap-1.5 font-pixel text-[9px]">
+                <span>⚡ HOW TO PASTE INTO PROTON MAIL (ZERO-BUG CLICKABLE CARD):</span>
             </div>
-            <ol class="list-decimal list-inside space-y-1 text-slate-300 leading-relaxed">
-                <li>Click the amber <strong>"COPY SIGNATURE FOR GMAIL / OUTLOOK"</strong> button above.</li>
-                <li>Go to <strong>Gmail</strong> &gt; Settings (gear icon) &gt; <strong>See all settings</strong>.</li>
-                <li>Scroll down to the <strong>Signature</strong> section.</li>
-                <li>Click in the signature text box and press <kbd class="bg-slate-800 text-amber-300 px-1.5 py-0.5 rounded border border-slate-700">Ctrl + V</kbd> (or <kbd class="bg-slate-800 text-amber-300 px-1.5 py-0.5 rounded border border-slate-700">Cmd + V</kbd>).</li>
-                <li>Scroll to the bottom and click <strong>Save Changes</strong>.</li>
+            <ol class="list-decimal list-inside space-y-1.5 text-slate-300 leading-relaxed">
+                <li>Click the green <strong>"⚡ COPY PROTON IMAGE CARD (ZERO-BUG)"</strong> button above.</li>
+                <li>Go to <strong>Proton Mail</strong> &gt; Settings &gt; All settings &gt; <strong>Identity &amp; addresses</strong>.</li>
+                <li><strong>Recommended:</strong> Toggle <strong>OFF</strong> <em>"Proton Mail footer (Sent with Proton Mail secure email)"</em> so Proton won't shuffle it above/below your signature.</li>
+                <li>In the <strong>Signature</strong> editor, clear any existing text and press <kbd class="bg-slate-800 text-amber-300 px-1.5 py-0.5 rounded border border-slate-700">Ctrl + V</kbd> (or <kbd class="bg-slate-800 text-amber-300 px-1.5 py-0.5 rounded border border-slate-700">Cmd + V</kbd>).</li>
+                <li>Click <strong>Save</strong>. You now have a 100% immune, non-stretching clickable 8-bit card in both minimized and maximized composer!</li>
             </ol>
         </div>
 
@@ -183,35 +193,78 @@
             }, 3500);
         }
 
-        async function copySignatureRichText() {
-            const container = document.getElementById('signature-container');
-            
-            try {
-                // Use clipboard API with text/html for perfect rich-text pasting into email clients
-                const blob = new Blob([container.innerHTML], { type: 'text/html' });
-                const plainTextBlob = new Blob([container.innerText], { type: 'text/plain' });
-                const item = new ClipboardItem({
-                    'text/html': blob,
-                    'text/plain': plainTextBlob
+        function copyProtonImageCard() {
+            const htmlPayload = `<div style="font-family: Arial, sans-serif; font-size: 14px; margin: 8px 0; padding: 0; line-height: 1.2;">
+    <a href="https://renderwithoutcode.com" target="_blank" style="display: inline-block; text-decoration: none; border: 0; outline: none;">
+        <img src="https://raw.githubusercontent.com/PJKT-NRVMOR/neverrender-labs-website/main/card/signature-card.png" width="520" alt="Matthew Wyatt - Creative Technologist & 3D / AI Media Specialist" style="display: block; width: 520px; max-width: 100%; height: auto; border: 0;" />
+    </a>
+    <div style="margin-top: 8px; font-family: 'Courier New', Courier, monospace; font-size: 11px; font-weight: bold;">
+        <a href="https://renderwithoutcode.com" target="_blank" style="color: #EA580C; text-decoration: none;">&#9654; RENDERWITHOUTCODE.COM</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="https://renderwithoutcode.com/resume" target="_blank" style="color: #1C1917; text-decoration: none;">8-BIT RESUME</a>
+    </div>
+</div>`;
+            const plainText = "Matthew Wyatt | Creative Technologist & 3D / AI Media Specialist\nPortfolio: https://renderwithoutcode.com\nResume: https://renderwithoutcode.com/resume";
+
+            const listener = function(e) {
+                e.clipboardData.setData('text/html', htmlPayload);
+                e.clipboardData.setData('text/plain', plainText);
+                e.preventDefault();
+            };
+
+            document.addEventListener('copy', listener);
+            const successful = document.execCommand('copy');
+            document.removeEventListener('copy', listener);
+
+            if (successful) {
+                showToast("✔ Clickable Image Card copied! Ready to paste into Proton.");
+            } else {
+                navigator.clipboard.write([
+                    new ClipboardItem({
+                        'text/html': new Blob([htmlPayload], { type: 'text/html' }),
+                        'text/plain': new Blob([plainText], { type: 'text/plain' })
+                    })
+                ]).then(() => {
+                    showToast("✔ Clickable Image Card copied via Clipboard API!");
                 });
-                await navigator.clipboard.write([item]);
-                showToast("✔ Rich signature copied! Open Gmail/Outlook and hit Ctrl+V in your Signature box.");
-            } catch (err) {
-                // Fallback selection copy
-                const range = document.createRange();
-                range.selectNode(container);
-                window.getSelection().removeAllRanges();
-                window.getSelection().addRange(range);
-                document.execCommand('copy');
-                window.getSelection().removeAllRanges();
-                showToast("✔ Signature selected & copied! Paste into your email settings.");
+            }
+        }
+
+        function copySignatureRichText() {
+            // Select the wrapper container so Proton receives the display:block boundary
+            const payload = document.getElementById('proton-signature-payload');
+            const container = document.getElementById('signature-container');
+            const payloadHTML = payload.outerHTML;
+            const plainText = container.innerText;
+
+            const listener = function(e) {
+                e.clipboardData.setData('text/html', payloadHTML);
+                e.clipboardData.setData('text/plain', plainText);
+                e.preventDefault();
+            };
+
+            document.addEventListener('copy', listener);
+            const successful = document.execCommand('copy');
+            document.removeEventListener('copy', listener);
+
+            if (successful) {
+                showToast("✔ Clean signature copied! Proton-safe wrapper included.");
+            } else {
+                navigator.clipboard.write([
+                    new ClipboardItem({
+                        'text/html': new Blob([payloadHTML], { type: 'text/html' }),
+                        'text/plain': new Blob([plainText], { type: 'text/plain' })
+                    })
+                ]).then(() => {
+                    showToast("✔ Clean signature copied via Clipboard API!");
+                });
             }
         }
 
         function copyRawHTML() {
-            const container = document.getElementById('signature-container');
-            navigator.clipboard.writeText(container.innerHTML.trim()).then(() => {
-                showToast("✔ Raw HTML code copied to clipboard!");
+            const payload = document.getElementById('proton-signature-payload');
+            navigator.clipboard.writeText(payload.outerHTML.trim()).then(() => {
+                showToast("✔ Pure Table HTML code copied to clipboard!");
             });
         }
     </script>
