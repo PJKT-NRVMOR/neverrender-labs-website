@@ -73,20 +73,44 @@ document.addEventListener('DOMContentLoaded', () => {
     const ytPlayer = document.getElementById('youtube-player');
     const playlistBtns = document.querySelectorAll('.playlist-btn');
 
+    const modalBackdrop = archiveModal.querySelector('.modal-backdrop');
+
+    const stopPlayback = () => {
+        archiveModal.classList.remove('active');
+        launchVideo.pause();
+        ytPlayer.src = ''; // Stop YouTube playback completely on close
+    };
+
     viewArchivesBtn.addEventListener('click', () => {
         archiveModal.classList.add('active');
-        if (launchVideo.style.display !== 'none') {
+        const activeBtn = document.querySelector('.playlist-btn.active');
+        if (activeBtn) {
+            const type = activeBtn.getAttribute('data-type');
+            const src = activeBtn.getAttribute('data-src');
+            if (type === 'youtube') {
+                launchVideo.pause();
+                launchVideo.style.display = 'none';
+                ytPlayer.style.display = 'block';
+                ytPlayer.src = src;
+            } else {
+                ytPlayer.src = '';
+                ytPlayer.style.display = 'none';
+                launchVideo.style.display = 'block';
+                if (!launchVideo.src || !launchVideo.src.includes(src)) {
+                    launchVideo.src = src;
+                    launchVideo.load();
+                }
+                launchVideo.play();
+            }
+        } else if (launchVideo.style.display !== 'none') {
             launchVideo.play();
         }
     });
 
-    closeModalBtn.addEventListener('click', () => {
-        archiveModal.classList.remove('active');
-        launchVideo.pause();
-        const currentSrc = ytPlayer.src;
-        ytPlayer.src = '';
-        ytPlayer.src = currentSrc; // Hack to stop YouTube playback on close
-    });
+    closeModalBtn.addEventListener('click', stopPlayback);
+    if (modalBackdrop) {
+        modalBackdrop.addEventListener('click', stopPlayback);
+    }
 
     playlistBtns.forEach(btn => {
         btn.addEventListener('click', () => {
