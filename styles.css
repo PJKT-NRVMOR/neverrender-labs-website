@@ -1,19 +1,33 @@
 :root {
-    /* Master Palette v2.0 Noir Mint & Marquee Gold (August 2026 Compendium) */
-    --color-noir-plum: #4A203B;       /* 60% Base Shadow (RGB 74, 32, 59) */
-    --color-deep-celadon: #36725B;     /* 60% Secondary Depth (RGB 54, 114, 91) */
-    --color-radioactive-mint: #89ECA4; /* 30% Dynamic Energy (RGB 137, 236, 164) */
-    --color-pale-mint: #9EF7B3;        /* 30% Ambient Accent (RGB 158, 247, 179) */
-    --color-marquee-gold: #FEE378;     /* 10% Emissive Light (RGB 254, 227, 120) */
-    --color-retro-coral: #FA6874;      /* 10% Disruptive Pop (RGB 250, 104, 116) */
+    /* Master Palette v3.0 Lignite Slough & Iridescent Petroleum (September 2026) */
+    --color-void-black: #06090e;        /* Deepest Slough Petroleum Void */
+    --color-base-architecture: #100E2C; /* 60% Base Architecture - Deep Void Indigo */
+    --color-petroleum-teal: #124559;    /* 60% Secondary Depth - Lignite Slough Teal */
+    --color-energy-cyan: #00E5FF;       /* 30% Dynamic Energy - Electric Petrol Cyan */
+    --color-biolum-mint: #00FF88;       /* 30% Secondary Energy - Bioluminescent Mint */
+    --color-molten-amber: #FFB703;      /* 10% Emissive Light - Molten Amber Gold */
+    --color-disruptive-pink: #FF0077;   /* 10% Disruptive Pop - Radioactive Wristband Neon */
 
-    /* Legacy & Semantic Aliases */
-    --color-base-dark: var(--color-noir-plum);
+    /* Legacy & Semantic Aliases across website ecosystem */
+    --color-noir-plum: var(--color-base-architecture);
+    --color-deep-celadon: var(--color-petroleum-teal);
+    --color-radioactive-mint: var(--color-energy-cyan);
+    --color-pale-mint: var(--color-biolum-mint);
+    --color-marquee-gold: var(--color-molten-amber);
+    --color-retro-coral: var(--color-disruptive-pink);
+
+    --color-base-dark: var(--color-base-architecture);
     --color-base-light: #EAFBFF;
-    --color-energy-cyan: var(--color-radioactive-mint);
-    --color-energy-jade: var(--color-deep-celadon);
-    --color-pop-red: var(--color-retro-coral);
-    --color-gold: var(--color-marquee-gold);
+    --color-energy-jade: var(--color-petroleum-teal);
+    --color-pop-red: var(--color-disruptive-pink);
+    --color-gold: var(--color-molten-amber);
+
+    /* Anamorphic Iridescent Oil-Slick Gradients & Glows */
+    --grad-oil-slick: linear-gradient(135deg, #00E5FF 0%, #00FF88 35%, #FFB703 70%, #FF0077 100%);
+    --grad-glass-border: linear-gradient(135deg, rgba(0, 229, 255, 0.45), rgba(255, 0, 119, 0.45));
+    --glow-cyan: 0 0 15px rgba(0, 229, 255, 0.6);
+    --glow-pink: 0 0 18px rgba(255, 0, 119, 0.6);
+    --glow-mint: 0 0 15px rgba(0, 255, 136, 0.6);
 
     --font-primary: 'Inter', sans-serif;
     --font-mono: 'Space Mono', monospace;
@@ -29,7 +43,7 @@ body, html {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background-color: #050a0d;
+    background-color: var(--color-void-black);
     font-family: var(--font-primary);
     color: var(--color-base-light);
 }
@@ -44,21 +58,85 @@ body, html {
     justify-content: center;
     padding-bottom: 15vh;
     perspective: 1000px;
+    overflow: hidden;
 }
 
-/* Background Plate with DreamBeans cosmic diorama */
+/* Anamorphic Widescreen Stage with Floating Ambient Breath */
+.anamorphic-stage {
+    position: absolute;
+    top: -6%;
+    left: -6%;
+    width: 112%;
+    height: 112%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    animation: anamorphicFloat 16s ease-in-out infinite alternate;
+}
+
+@keyframes anamorphicFloat {
+    0% {
+        transform: scale(1.02) translate3d(0, 0, 0);
+    }
+    50% {
+        transform: scale(1.06) translate3d(-1.5%, -1%, 0);
+    }
+    100% {
+        transform: scale(1.03) translate3d(1%, 0.8%, 0);
+    }
+}
+
+/* Background Plate with Lignite Chemical Slough Banner */
 .background-plate {
     position: absolute;
-    top: -5%;
-    left: -5%;
-    width: 110%;
-    height: 110%;
-    background-image: url('WEBSITE_MEDIA/MCW_SAW_DREAMBEANS_HERO.png');
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('WEBSITE_MEDIA/SLICK_LIGNITE_BANNER_ART.jpg');
     background-size: cover;
-    background-position: center 10%;
-    filter: brightness(0.72) contrast(1.05);
+    background-position: center 46%;
+    filter: brightness(0.85) contrast(1.12) saturate(1.18);
     z-index: 0;
-    transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Responsive Anamorphic Flare & Streak */
+.anamorphic-streak {
+    position: absolute;
+    top: 40%;
+    left: -20%;
+    width: 140%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(0, 229, 255, 0.1) 20%, 
+        rgba(0, 229, 255, 0.65) 45%, 
+        rgba(255, 0, 119, 0.75) 55%, 
+        rgba(255, 183, 3, 0.55) 70%, 
+        transparent 100%);
+    box-shadow: 
+        0 0 14px rgba(0, 229, 255, 0.55), 
+        0 0 28px rgba(255, 0, 119, 0.45);
+    opacity: 0.5;
+    mix-blend-mode: screen;
+    pointer-events: none;
+    animation: streakPulse 9s ease-in-out infinite alternate;
+}
+
+@keyframes streakPulse {
+    0% { opacity: 0.3; transform: scaleX(0.96); }
+    50% { opacity: 0.65; transform: scaleX(1.04); }
+    100% { opacity: 0.4; transform: scaleX(0.99); }
+}
+
+/* Anamorphic Vignette: cinematic edge falloff and letterbox darkening */
+.anamorphic-vignette {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(ellipse 92% 72% at 50% 50%, transparent 42%, rgba(6, 9, 14, 0.65) 75%, rgba(6, 9, 14, 0.95) 100%),
+                linear-gradient(180deg, rgba(6, 9, 14, 0.75) 0%, transparent 14%, transparent 80%, rgba(6, 9, 14, 0.88) 100%);
+    pointer-events: none;
 }
 
 /* Conduit Grid */
@@ -71,21 +149,21 @@ body, html {
 
 .conduit-line {
     position: absolute;
-    background: linear-gradient(90deg, transparent, var(--color-energy-cyan), transparent);
-    box-shadow: 0 0 10px var(--color-energy-cyan);
-    opacity: 0.3;
+    background: linear-gradient(90deg, transparent, var(--color-energy-cyan), var(--color-disruptive-pink), transparent);
+    box-shadow: 0 0 12px var(--color-energy-cyan), 0 0 24px rgba(255, 0, 119, 0.3);
+    opacity: 0.35;
 }
 
 .conduit-line.horizontal {
     height: 1px;
     width: 100%;
-    animation: flowH 5s linear infinite;
+    animation: flowH 6s linear infinite;
 }
 .conduit-line.vertical {
     width: 1px;
     height: 100%;
-    background: linear-gradient(180deg, transparent, var(--color-energy-cyan), transparent);
-    animation: flowV 6s linear infinite;
+    background: linear-gradient(180deg, transparent, var(--color-energy-cyan), var(--color-disruptive-pink), transparent);
+    animation: flowV 7s linear infinite;
 }
 
 .conduit-line.top { top: 20%; }
@@ -114,15 +192,16 @@ body, html {
 }
 
 .glass-panel {
-    background: rgba(18, 69, 89, 0.25);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(234, 251, 255, 0.12);
-    border-radius: 4px;
+    background: rgba(16, 14, 44, 0.5);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    border-radius: 6px;
     padding: 22px 28px;
     box-shadow: 
-        0 15px 40px rgba(0,0,0,0.6),
-        inset 0 0 0 1px rgba(255,255,255,0.06);
+        0 20px 50px rgba(6, 9, 14, 0.85),
+        0 0 30px rgba(18, 69, 89, 0.35),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.07);
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -135,9 +214,9 @@ body, html {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    box-shadow: inset -2px 0 0px rgba(255, 107, 107, 0.3), inset 2px 0 0px rgba(0, 229, 255, 0.3);
+    box-shadow: inset -2px 0 0px rgba(255, 0, 119, 0.45), inset 2px 0 0px rgba(0, 229, 255, 0.45);
     pointer-events: none;
-    border-radius: 4px;
+    border-radius: 6px;
 }
 
 /* Typography & Layout */
@@ -161,10 +240,10 @@ body, html {
 .indicator {
     display: inline-block;
     width: 7px; height: 7px;
-    background-color: var(--color-energy-jade);
+    background-color: var(--color-biolum-mint);
     border-radius: 50%;
     margin-right: 6px;
-    box-shadow: 0 0 6px var(--color-energy-jade);
+    box-shadow: 0 0 8px var(--color-biolum-mint), 0 0 16px var(--color-biolum-mint);
 }
 .indicator.blink { animation: blinker 2s linear infinite; }
 @keyframes blinker { 50% { opacity: 0.3; } }
@@ -183,8 +262,9 @@ h1.chromatic-aberration {
     letter-spacing: 3px;
     color: var(--color-base-light);
     text-shadow: 
-        2px 0 0 rgba(255, 107, 107, 0.8),
-        -2px 0 0 rgba(0, 229, 255, 0.8);
+        2px 0 0 rgba(255, 0, 119, 0.85),
+        -2px 0 0 rgba(0, 229, 255, 0.85),
+        0 0 25px rgba(0, 229, 255, 0.3);
     margin: 0;
 }
 
@@ -199,19 +279,21 @@ h1.chromatic-aberration {
 .terminal-box {
     width: 100%;
     max-width: 520px;
-    background: rgba(0, 0, 0, 0.45);
-    border: 1px solid var(--color-base-dark);
-    border-left: 3px solid var(--color-pop-red);
+    background: rgba(8, 14, 20, 0.7);
+    border: 1px solid rgba(18, 69, 89, 0.8);
+    border-left: 3px solid var(--color-disruptive-pink);
     text-align: left;
     margin-top: 10px;
     font-family: var(--font-mono);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
 }
 
 .terminal-header {
-    background: rgba(18, 69, 89, 0.5);
+    background: rgba(18, 69, 89, 0.6);
     padding: 4px 12px;
     font-size: 0.72rem;
-    color: var(--color-pop-red);
+    color: var(--color-disruptive-pink);
+    letter-spacing: 1px;
 }
 
 .terminal-body {
@@ -242,7 +324,7 @@ h1.chromatic-aberration {
 }
 
 .action-btn {
-    background: transparent;
+    background: rgba(18, 69, 89, 0.25);
     border: 1px solid var(--color-energy-cyan);
     color: var(--color-energy-cyan);
     padding: 8px 16px;
@@ -250,7 +332,7 @@ h1.chromatic-aberration {
     font-size: 0.75rem;
     letter-spacing: 1.2px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     text-transform: uppercase;
     position: relative;
     overflow: hidden;
@@ -258,37 +340,51 @@ h1.chromatic-aberration {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 4px;
 }
 
 .action-btn::before {
     content: '';
     position: absolute;
     top: 0; left: -100%; width: 100%; height: 100%;
-    background: rgba(0, 229, 255, 0.2);
-    transition: all 0.3s ease;
+    background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.3), rgba(255, 0, 119, 0.2), transparent);
+    transition: all 0.4s ease;
 }
 
 .action-btn:hover::before {
-    left: 0;
+    left: 100%;
 }
 
 .action-btn:hover {
-    box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
-    text-shadow: 0 0 5px var(--color-energy-cyan);
+    box-shadow: 0 0 18px rgba(0, 229, 255, 0.5), 0 0 30px rgba(0, 229, 255, 0.2);
+    text-shadow: 0 0 6px var(--color-energy-cyan);
+    transform: translateY(-1px);
 }
 
 .action-btn.primary {
-    background: rgba(0, 229, 255, 0.1);
+    background: rgba(0, 229, 255, 0.15);
+}
+
+.action-btn.secondary {
+    background: rgba(16, 14, 44, 0.4);
+    border-color: rgba(0, 229, 255, 0.4);
+}
+
+.action-btn.secondary:hover {
+    border-color: var(--color-biolum-mint);
+    color: var(--color-biolum-mint);
+    box-shadow: 0 0 16px rgba(0, 255, 136, 0.45);
+    text-shadow: 0 0 5px var(--color-biolum-mint);
 }
 
 .action-btn:active {
-    border-color: var(--color-pop-red);
-    color: var(--color-pop-red);
-    box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+    border-color: var(--color-disruptive-pink);
+    color: var(--color-disruptive-pink);
+    box-shadow: 0 0 20px rgba(255, 0, 119, 0.6);
 }
 
 .text-pop {
-    color: var(--color-pop-red);
+    color: var(--color-disruptive-pink);
 }
 
 /* Video Modal */
@@ -312,7 +408,7 @@ h1.chromatic-aberration {
 .modal-backdrop {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(5, 10, 13, 0.8);
+    background: rgba(6, 9, 14, 0.88);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
 }
@@ -327,7 +423,7 @@ h1.chromatic-aberration {
 .video-container {
     width: 100%;
     border: 1px solid var(--color-energy-cyan);
-    box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+    box-shadow: 0 0 25px rgba(0, 229, 255, 0.25), 0 0 40px rgba(255, 0, 119, 0.15);
     border-radius: 4px;
     overflow: hidden;
     background: #000;
@@ -341,7 +437,7 @@ h1.chromatic-aberration {
 .close-btn {
     background: transparent;
     border: none;
-    color: var(--color-pop-red);
+    color: var(--color-disruptive-pink);
     font-family: var(--font-mono);
     cursor: pointer;
     font-size: 0.9rem;
@@ -349,10 +445,8 @@ h1.chromatic-aberration {
 }
 
 .close-btn:hover {
-    text-shadow: 0 0 8px var(--color-pop-red);
+    text-shadow: 0 0 10px var(--color-disruptive-pink);
 }
-
-
 
 /* Extended Video Modal Layout */
 .extended-modal {
@@ -374,27 +468,29 @@ h1.chromatic-aberration {
 }
 
 .playlist-btn {
-    background: rgba(18, 69, 89, 0.4);
-    border: 1px solid rgba(234, 251, 255, 0.1);
+    background: rgba(18, 69, 89, 0.35);
+    border: 1px solid rgba(0, 229, 255, 0.15);
     color: var(--color-base-light);
     padding: 15px;
     font-family: var(--font-mono);
     font-size: 0.8rem;
     text-align: left;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.25s ease;
     border-radius: 4px;
 }
 
 .playlist-btn:hover {
-    background: rgba(0, 229, 255, 0.1);
+    background: rgba(0, 229, 255, 0.15);
     border-color: var(--color-energy-cyan);
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.25);
+    color: #fff;
 }
 
 .playlist-btn.active {
-    background: rgba(0, 229, 255, 0.2);
-    border-color: var(--color-energy-cyan);
-    box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+    background: linear-gradient(90deg, rgba(0, 229, 255, 0.25), rgba(255, 0, 119, 0.2));
+    border-color: var(--color-disruptive-pink);
+    box-shadow: 0 0 15px rgba(255, 0, 119, 0.35), inset 0 0 10px rgba(0, 229, 255, 0.2);
     color: #fff;
 }
 
@@ -409,6 +505,15 @@ h1.chromatic-aberration {
         min-height: 100vh;
         align-items: flex-start;
         padding: 20px 0;
+    }
+    .anamorphic-stage {
+        width: 130%;
+        height: 120%;
+        top: -10%;
+        left: -15%;
+    }
+    .background-plate {
+        background-position: center 42%;
     }
     h1.chromatic-aberration {
         font-size: 2.2rem;
