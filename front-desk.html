@@ -46,15 +46,43 @@
         }
 
         .hero-banner {
-            background: radial-gradient(circle at center, rgba(0, 229, 255, 0.12) 0%, rgba(16, 14, 44, 0.6) 100%);
+            position: relative;
+            background: #080718;
             border: 2px solid var(--color-energy-cyan);
             border-radius: 12px;
-            padding: 35px 30px;
+            padding: 42px 30px;
             text-align: center;
             margin: 25px 0;
             box-shadow: 0 0 35px rgba(0, 229, 255, 0.25);
-            position: relative;
             overflow: hidden;
+        }
+
+        .hero-banner-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at center, rgba(16, 14, 44, 0.45) 0%, rgba(6, 9, 14, 0.82) 100%),
+                url('WEBSITE_MEDIA/nrl-ai-front-desk-banner.jpg');
+            background-size: cover;
+            background-position: center 30%;
+            background-repeat: no-repeat;
+            opacity: 0.28;
+            filter: contrast(1.15) saturate(1.2);
+            pointer-events: none;
+            z-index: 1;
+            transition: opacity 0.4s ease;
+        }
+
+        .hero-banner:hover .hero-banner-bg {
+            opacity: 0.42;
+        }
+
+        .hero-banner-content {
+            position: relative;
+            z-index: 2;
         }
 
         .hero-badge {
@@ -230,16 +258,19 @@
                     
                     <!-- Hero Banner -->
                     <div class="hero-banner">
-                        <div class="hero-badge">★ LIVE DUAL-LAYER PROTOTYPE // NOTEBOOKLM &amp; GEMINI 3.8</div>
-                        <h2 class="hero-title">24/7 AUTONOMOUS RECEPTION &amp; CONCIERGE</h2>
-                        <p class="hero-desc">
-                            Welcome to the live NeverRender Labs Front Desk prototype. Powered by an air-gapped dual-layer architecture, this autonomous concierge provides real-time guidance across Matthew Wyatt's career archives, active SRE operations, creative technology pipelines, and curatorial advisory services.
-                        </p>
-                        <a href="https://notebook.google.com/notebook/8f1ea112-fb7c-4720-a4f2-0c208f16b435" target="_blank" rel="noopener" class="cta-launch-btn">
-                            ⚡ LAUNCH INTERACTIVE FRONT DESK (NOTEBOOKLM)
-                        </a>
-                        <div style="margin-top: 12px; font-family: var(--font-mono); font-size: 0.75rem; color: #a0c4d8; opacity: 0.8;">
-                            Direct Sandbox Link: notebook.google.com/notebook/8f1ea112-fb7c-4720-a4f2-0c208f16b435
+                        <div class="hero-banner-bg"></div>
+                        <div class="hero-banner-content">
+                            <div class="hero-badge">★ LIVE DUAL-LAYER PROTOTYPE // NOTEBOOKLM &amp; GEMINI 3.8</div>
+                            <h2 class="hero-title">24/7 AUTONOMOUS RECEPTION &amp; CONCIERGE</h2>
+                            <p class="hero-desc">
+                                Welcome to the live NeverRender Labs Front Desk prototype. Powered by an air-gapped dual-layer architecture, this autonomous concierge provides real-time guidance across Matthew Wyatt's career archives, active SRE operations, creative technology pipelines, and curatorial advisory services.
+                            </p>
+                            <a href="https://notebook.google.com/notebook/8f1ea112-fb7c-4720-a4f2-0c208f16b435" target="_blank" rel="noopener" class="cta-launch-btn">
+                                ⚡ LAUNCH INTERACTIVE FRONT DESK (NOTEBOOKLM)
+                            </a>
+                            <div style="margin-top: 12px; font-family: var(--font-mono); font-size: 0.75rem; color: #a0c4d8; opacity: 0.85;">
+                                Direct Sandbox Link: notebook.google.com/notebook/8f1ea112-fb7c-4720-a4f2-0c208f16b435
+                            </div>
                         </div>
                     </div>
 
