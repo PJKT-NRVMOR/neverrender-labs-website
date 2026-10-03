@@ -78,33 +78,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const stopPlayback = () => {
         archiveModal.classList.remove('active');
-        launchVideo.pause();
-        ytPlayer.src = ''; // Stop YouTube playback completely on close
+        if (launchVideo) launchVideo.pause();
+        if (ytPlayer) ytPlayer.src = ''; // Stop YouTube playback completely on close
     };
 
     viewArchivesBtn.addEventListener('click', () => {
         archiveModal.classList.add('active');
         const activeBtn = document.querySelector('.playlist-btn.active');
         if (activeBtn) {
-            const type = activeBtn.getAttribute('data-type');
             const src = activeBtn.getAttribute('data-src');
-            if (type === 'youtube') {
+            if (ytPlayer) {
+                ytPlayer.src = src;
+                ytPlayer.style.display = 'block';
+            }
+            if (launchVideo) {
                 launchVideo.pause();
                 launchVideo.style.display = 'none';
-                ytPlayer.style.display = 'block';
-                ytPlayer.src = src;
-            } else {
-                ytPlayer.src = '';
-                ytPlayer.style.display = 'none';
-                launchVideo.style.display = 'block';
-                if (!launchVideo.src || !launchVideo.src.includes(src)) {
-                    launchVideo.src = src;
-                    launchVideo.load();
-                }
-                launchVideo.play();
             }
-        } else if (launchVideo.style.display !== 'none') {
-            launchVideo.play();
         }
     });
 
@@ -119,21 +109,14 @@ document.addEventListener('DOMContentLoaded', () => {
             playlistBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
-            const type = btn.getAttribute('data-type');
             const newSrc = btn.getAttribute('data-src');
-
-            if (type === 'youtube') {
+            if (ytPlayer) {
+                ytPlayer.src = newSrc;
+                ytPlayer.style.display = 'block';
+            }
+            if (launchVideo) {
                 launchVideo.pause();
                 launchVideo.style.display = 'none';
-                ytPlayer.style.display = 'block';
-                ytPlayer.src = newSrc;
-            } else {
-                ytPlayer.src = ''; // stop yt video
-                ytPlayer.style.display = 'none';
-                launchVideo.style.display = 'block';
-                launchVideo.src = newSrc;
-                launchVideo.load();
-                launchVideo.play();
             }
         });
     });
