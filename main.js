@@ -287,9 +287,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     float leatherLock = mix(1.0, smoothstep(0.12, 0.32, chroma + maxCh * 0.5), inFingerBox);
                     handProtection *= leatherLock;
 
-                    // 2. PUDDLE HORIZON MASK (Keep upper swamp trees & sunset sky crisp)
+                    // 2. PUDDLE HORIZON MASK (Keep upper swamp trees & sunset sky crisp, and zero out outside [0..1] canvas bounds)
+                    float inBounds = smoothstep(0.0, 0.035, imgUV.x) * smoothstep(1.0, 0.965, imgUV.x)
+                                   * smoothstep(0.0, 0.045, imgUV.y) * smoothstep(1.0, 0.955, imgUV.y);
                     float puddlePlane = smoothstep(0.39, 0.48, imgUV.y);
-                    float activeMask = puddlePlane * handProtection;
+                    float activeMask = puddlePlane * handProtection * inBounds;
 
                     // 3. DIRECTIONAL ARGON EMITTER: Bright Yellow Spot (0.34, 0.565) -> Toward the Gloved Hand (0.52, 0.555)
                     vec2 yellowSource = vec2(0.34, 0.565);
@@ -388,6 +390,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     finalCol += gasTint * gasIntensity * 0.52;
                     finalCol += mix(colCyan, colAmber, q.y * 0.5 + 0.5) * ambientSlickGlow;
                     finalCol += crestColor * rippleCrest * 0.35;
+                    finalCol *= inBounds;
 
                     gl_FragColor = vec4(clamp(finalCol, 0.0, 1.0), 1.0);
                 }
