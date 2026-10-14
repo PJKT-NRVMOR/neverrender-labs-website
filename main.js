@@ -226,15 +226,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     return length(pa - ba * h);
                 }
 
-                // Map screen UV (0..1) to full-frame v2 UV (3840x2278 = 1.6857 aspect, with portrait mobile focal framing)
+                // Map screen UV (0..1) to full uncropped v2 canvas (3840x2278 = 1.6857 aspect)
                 vec2 getCoverUV(vec2 uv, vec2 res) {
                     float screenAspect = res.x / max(res.y, 1.0);
                     float imgAspect = 1.6857;
                     vec2 scale = vec2(1.0);
                     vec2 anchor = vec2(0.5, 0.5);
                     if (screenAspect > imgAspect) {
-                        // Gently blend vertical fit so the full puddle reflection and sleeve remain framed
-                        scale.y = mix(1.0, imgAspect / screenAspect, 0.35);
+                        // Show 100% of the expanded v2 canvas height & width (outer edges fade to pure #000000 black)
+                        scale.x = screenAspect / imgAspect;
+                        scale.y = 1.0;
                     } else {
                         scale.x = screenAspect / imgAspect;
                         // On portrait mobile screens, center between the yellow emitter (0.34) and gloved hand (0.53)
@@ -441,7 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
                     texReady = true;
                 };
-                img.src = 'WEBSITE_MEDIA/lignite-argon-puddle-4k.jpg';
+                img.src = 'WEBSITE_MEDIA/lignite-argon-puddle-v2-4k.jpg?v=3';
 
                 function resizeCanvas() {
                     const dpr = Math.min(window.devicePixelRatio || 1, 2.0);
