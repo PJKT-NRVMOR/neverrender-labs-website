@@ -157,13 +157,13 @@ document.addEventListener('DOMContentLoaded', () => {
             e.stopPropagation();
             if (viewport) viewport.style.transform = '';
             macroEnv.classList.add('puddle-mode');
-            spawnRipple(0.24, 0.61, 1.35);
+            spawnRipple(0.34, 0.565, 1.35);
         });
     }
 
     // =========================================================================
     // WEBGL GLSL SHADER: GEMINI 4 ARGON GAS & STARGATE PUDDLE REFRACTION
-    // Emanating from the bright yellow hot-spot (0.22, 0.61) -> Gloved Hand
+    // Emanating from the bright yellow hot-spot (0.34, 0.565) -> Gloved Hand
     // =========================================================================
     const canvas = document.getElementById('argon-puddle-canvas');
     if (canvas) {
@@ -226,21 +226,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     return length(pa - ba * h);
                 }
 
-                // Map screen UV (0..1) to full-frame 16:9 UV (with portrait mobile focal framing)
+                // Map screen UV (0..1) to full-frame v2 UV (3840x2278 = 1.6857 aspect, with portrait mobile focal framing)
                 vec2 getCoverUV(vec2 uv, vec2 res) {
                     float screenAspect = res.x / max(res.y, 1.0);
-                    float imgAspect = 16.0 / 9.0;
+                    float imgAspect = 1.6857;
                     vec2 scale = vec2(1.0);
                     vec2 anchor = vec2(0.5, 0.5);
                     if (screenAspect > imgAspect) {
-                        // Gently letterbox-blend so 97% of vertical height (wristband reflection + sleeve) stays visible
-                        scale.y = mix(1.0, imgAspect / screenAspect, 0.22);
+                        // Gently blend vertical fit so the full puddle reflection and sleeve remain framed
+                        scale.y = mix(1.0, imgAspect / screenAspect, 0.35);
                     } else {
                         scale.x = screenAspect / imgAspect;
-                        // On portrait mobile screens, shift horizontal anchor slightly left (0.41)
-                        // so both the bright yellow emitter (0.21) and gloved hand (0.48) stay in frame
+                        // On portrait mobile screens, center between the yellow emitter (0.34) and gloved hand (0.53)
                         float portraitFactor = clamp((1.2 - screenAspect) * 1.5, 0.0, 1.0);
-                        anchor.x = mix(0.5, 0.41, portraitFactor);
+                        anchor.x = mix(0.5, 0.45, portraitFactor);
                     }
                     return (uv - 0.5) * scale + anchor;
                 }
@@ -264,45 +263,45 @@ document.addEventListener('DOMContentLoaded', () => {
                     vec2 imgUV = getCoverUV(v_uv, u_res);
                     vec3 unwarpedCol = texture2D(u_tex, clamp(imgUV, 0.001, 0.999)).rgb;
 
-                    // Aspect-corrected space for geometric masks (16:9 normalized)
-                    vec2 p16 = vec2(imgUV.x * 1.7778, imgUV.y);
+                    // Aspect-corrected space for geometric masks (1.6857 normalized)
+                    vec2 p16 = vec2(imgUV.x * 1.6857, imgUV.y);
 
                     // 1. PROTECT THE GLOVED HAND, NEON WRISTBAND & FLEECE SLEEVE (Zero distortion on hand)
-                    float dSleeve  = sdSegment(p16, vec2(1.52, -0.02), vec2(1.08, 0.30)) - 0.155;
-                    float dGlove   = sdSegment(p16, vec2(1.08, 0.30),  vec2(0.84, 0.48)) - 0.118;
-                    float dFingers = sdSegment(p16, vec2(0.84, 0.48),  vec2(0.62, 0.595)) - 0.068;
-                    float dThumb   = sdSegment(p16, vec2(0.98, 0.45),  vec2(0.93, 0.620)) - 0.062;
-                    float dBox     = sdSegment(p16, vec2(0.58, 0.40),  vec2(0.76, 0.40)) - 0.075;
+                    float dSleeve  = sdSegment(p16, vec2(1.33, 0.02),  vec2(1.07, 0.365)) - 0.115;
+                    float dGlove   = sdSegment(p16, vec2(1.07, 0.365), vec2(0.935, 0.475)) - 0.088;
+                    float dFingers = sdSegment(p16, vec2(0.935, 0.475), vec2(0.784, 0.550)) - 0.048;
+                    float dThumb   = sdSegment(p16, vec2(1.003, 0.465), vec2(0.969, 0.572)) - 0.044;
+                    float dBox     = sdSegment(p16, vec2(0.767, 0.435), vec2(0.877, 0.435)) - 0.048;
 
                     float dHand = min(min(dSleeve, dGlove), min(min(dFingers, dThumb), dBox));
-                    float handProtection = smoothstep(0.0, 0.042, dHand);
+                    float handProtection = smoothstep(0.0, 0.036, dHand);
 
                     // Extra sub-pixel luminance lock on dark leather inside the hand neighborhood
-                    float inFingerBox = step(0.32, imgUV.x) * step(imgUV.x, 0.66) * step(0.28, imgUV.y) * step(imgUV.y, 0.64);
+                    float inFingerBox = step(0.44, imgUV.x) * step(imgUV.x, 0.68) * step(0.30, imgUV.y) * step(imgUV.y, 0.585);
                     float maxCh = max(unwarpedCol.r, max(unwarpedCol.g, unwarpedCol.b));
                     float chroma = maxCh - min(unwarpedCol.r, min(unwarpedCol.g, unwarpedCol.b));
                     float leatherLock = mix(1.0, smoothstep(0.12, 0.32, chroma + maxCh * 0.5), inFingerBox);
                     handProtection *= leatherLock;
 
                     // 2. PUDDLE HORIZON MASK (Keep upper swamp trees & sunset sky crisp)
-                    float puddlePlane = smoothstep(0.43, 0.52, imgUV.y);
+                    float puddlePlane = smoothstep(0.39, 0.48, imgUV.y);
                     float activeMask = puddlePlane * handProtection;
 
-                    // 3. DIRECTIONAL ARGON EMITTER: Bright Yellow Spot (0.21, 0.61) -> Toward the Gloved Hand (0.47, 0.575)
-                    vec2 yellowSource = vec2(0.21, 0.61);
-                    vec2 handTarget   = vec2(0.47, 0.575);
+                    // 3. DIRECTIONAL ARGON EMITTER: Bright Yellow Spot (0.34, 0.565) -> Toward the Gloved Hand (0.52, 0.555)
+                    vec2 yellowSource = vec2(0.34, 0.565);
+                    vec2 handTarget   = vec2(0.52, 0.555);
                     vec2 mainFlowDir  = normalize(handTarget - yellowSource);
 
-                    // Potential-flow curl deflection around the submerged fingertips (0.45, 0.59)
-                    vec2 toFingers = imgUV - vec2(0.45, 0.59);
+                    // Potential-flow curl deflection around the submerged fingertips (0.515, 0.56)
+                    vec2 toFingers = imgUV - vec2(0.515, 0.56);
                     vec2 toFingersScaled = toFingers * vec2(1.0, 2.2);
                     float fingerDist = length(toFingersScaled);
                     vec2 deflectDir = normalize(vec2(-toFingers.y * 2.2, toFingers.x));
-                    float deflectWeight = exp(-fingerDist * fingerDist * 28.0) * 0.55;
+                    float deflectWeight = exp(-fingerDist * fingerDist * 34.0) * 0.55;
                     vec2 localFlowDir = normalize(mix(mainFlowDir, deflectDir * sign(toFingers.y + 0.01), deflectWeight));
 
                     // Perspective-scaled puddle coordinate for Domain-Warped FBM
-                    vec2 fluidP = vec2(imgUV.x * 4.2, imgUV.y * 9.5);
+                    vec2 fluidP = vec2(imgUV.x * 4.5, imgUV.y * 10.0);
                     vec2 advectVel = localFlowDir * vec2(1.0, 2.1) * 0.58;
 
                     // 2-Stage Domain-Warped FBM (Gemini 4 Argon gas advection math)
@@ -316,20 +315,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     );
                     float argonField = fbm(fluidP + 2.2 * r - advectVel * 0.8 * u_time);
 
-                    // Envelope for the Argon stream corridor: strongest from the bright yellow pool (0.12..0.34)
-                    // streaming rightward across the fingertips (0.35..0.66)
+                    // Envelope for the Argon stream corridor: strongest from the bright yellow pool (0.24..0.44)
+                    // streaming rightward across the fingertips (0.45..0.68)
                     vec2 streamRel = imgUV - yellowSource;
                     float alongStream = dot(streamRel, mainFlowDir);
                     float perpStream  = dot(streamRel, vec2(-mainFlowDir.y, mainFlowDir.x));
                     float streamCorridor = smoothstep(-0.14, 0.04, alongStream)
-                                         * smoothstep(0.62, 0.18, alongStream)
-                                         * exp(-perpStream * perpStream * 36.0);
+                                         * smoothstep(0.48, 0.14, alongStream)
+                                         * exp(-perpStream * perpStream * 42.0);
 
-                    // Autonomous gentle elliptical ripple pulsing from the yellow hot-spot & puddle foreground
+                    // Autonomous gentle elliptical ripple pulsing from the yellow hot-spot & lower yellow crescent
                     float autoCycle1 = mod(u_time * 0.52, 3.8);
                     float autoCycle2 = mod(u_time * 0.52 + 1.9, 3.8);
                     vec2 autoRipple = calcRippleDisp(imgUV, yellowSource, autoCycle1, 0.55)
-                                    + calcRippleDisp(imgUV, vec2(0.34, 0.65), autoCycle2, 0.42);
+                                    + calcRippleDisp(imgUV, vec2(0.46, 0.65), autoCycle2, 0.42);
 
                     // Sum interactive mouse & click Stargate ripples
                     vec2 totalRipple = autoRipple;

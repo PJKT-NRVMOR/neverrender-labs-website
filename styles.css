@@ -74,14 +74,14 @@ body, html {
     overflow: hidden;
 }
 
-/* Background Plate with 4K Lignite Argon Puddle Master */
+/* Background Plate with 4K Lignite Argon Puddle v2 Master */
 .background-plate {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('WEBSITE_MEDIA/lignite-argon-puddle-4k.jpg');
+    background-image: url('WEBSITE_MEDIA/lignite-argon-puddle-v2-4k.jpg');
     background-size: cover;
     background-position: center 50%;
     z-index: 0;
