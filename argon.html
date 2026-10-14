@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeverRender Labs</title>
+    <meta name="description" content="Agent Assisted Creative Studio - Surreal-Futurist Macro-Diorama">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="favicon-svg.svg">
+</head>
+<body>
+    <div class="macro-environment puddle-mode" id="macro-env">
+        <!-- Floating Anamorphic Stage -->
+        <div class="anamorphic-stage" id="anamorphic-stage">
+            <div class="background-plate"></div>
+            <canvas id="argon-puddle-canvas"></canvas>
+            <div class="anamorphic-streak"></div>
+            <div class="anamorphic-vignette"></div>
+        </div>
+        
+        <!-- Energy Conduits -->
+        <div class="conduit-grid">
+            <div class="conduit-line horizontal top"></div>
+            <div class="conduit-line vertical left"></div>
+            <div class="conduit-line horizontal bottom"></div>
+            <div class="conduit-line vertical right"></div>
+        </div>
+
+        <!-- Puddle Immersion HUD Prompt (Visible before breaching into Viewport) -->
+        <div class="puddle-hud-overlay" id="puddle-hud">
+            <div class="puddle-brand-whisper">NEVERRENDER LABS // LIGNITE ARGON SLOUGH</div>
+            <button class="puddle-breach-prompt" id="puddle-breach-btn" type="button">
+                <span class="pulse-ring"></span>
+                <span class="prompt-label">[ TOUCH THE IRIDESCENT PUDDLE // CLICK TO ENTER RECEPTION ]</span>
+            </button>
+        </div>
+
+        <!-- Central Crystalline Viewport -->
+        <div class="viewport-container" id="main-viewport">
+            <div class="glass-panel">
+                <header class="sys-header">
+                    <div class="sys-status">
+                        <span class="indicator blink"></span> SYSTEM STATUS: CEMENTED
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div class="sys-id">PROJECT_NEVERMORE</div>
+                        <button class="close-btn" id="return-to-puddle" title="Return to Argon Puddle View" style="font-size: 0.82rem; padding: 4px 10px; border: 1px solid rgba(0, 229, 255, 0.4); color: var(--color-energy-cyan); background: rgba(0, 229, 255, 0.08); border-radius: 3px; cursor: pointer;">[≈ PUDDLE]</button>
+                    </div>
+                </header>
+
+                <main class="content-matrix">
+                    <div style="display: flex; justify-content: center; margin-bottom: 8px;">
+                        <a href="https://labs.google/fx/tools/flow/shared/tool/c718f343-2e2f-4ae8-92bd-6f68f13b1c45" target="_blank" rel="noopener" style="text-decoration: none;">
+                            <span style="display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-molten-amber); background: rgba(255, 183, 3, 0.12); border: 1px solid var(--color-molten-amber); padding: 6px 16px; border-radius: 4px; text-transform: uppercase; letter-spacing: 1.2px;">
+                                ★ GOOGLE LABS FLOW FEATURED: RETRO-TERM 80
+                            </span>
+                        </a>
+                    </div>
+
+                    <h1 class="chromatic-aberration">NEVERRENDER LABS</h1>
+                    <p class="subtitle">MASTER SYSTEM &amp; MACHINE LEARNING COMPENDIUM (SEPT 2026 // LIGNITE EDITION)</p>
+                    
+                    <div class="terminal-box" id="terminal-interface">
+                        <div class="terminal-header">
+                            <span>> TERMINAL FOCUS // SRE KERNEL</span>
+                        </div>
+                        <div class="terminal-body">
+                            <p class="typewriter-text" id="typewriter"></p>
+                            <span class="cursor">_</span>
+                        </div>
+                    </div>
+
+                    <!-- Primary Mission Launchers -->
+                    <div style="margin-top: 12px; width: 100%; display: flex; flex-direction: column; gap: 8px;">
+                        <button class="action-btn" style="width: 100%; border-color: var(--color-energy-cyan); background: rgba(0, 229, 255, 0.18); color: var(--color-energy-cyan); text-shadow: 0 0 12px rgba(0, 229, 255, 0.7); font-weight: bold; letter-spacing: 2px;" onclick="window.location.href='front-desk.html'">[⚡] AUTONOMOUS FRONT DESK PROTOTYPE // 24/7 AI RECEPTION [⚡]</button>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
+                            <button class="action-btn" style="border-color: var(--color-biolum-mint); color: var(--color-biolum-mint); background: rgba(0, 255, 136, 0.1); font-size: 0.85rem;" onclick="window.location.href='resume.html'">[📄] 8-BIT RESUME</button>
+                            <button class="action-btn" style="border-color: var(--color-disruptive-pink); color: var(--color-disruptive-pink); background: rgba(255, 0, 119, 0.1); font-size: 0.85rem;" onclick="window.open('https://www.instagram.com/neverrenderlabs/', '_blank')">[📸] INSTAGRAM</button>
+                            <button class="action-btn" style="border-color: var(--color-molten-amber); color: var(--color-molten-amber); background: rgba(255, 183, 3, 0.1); font-size: 0.85rem;" onclick="window.open('https://www.flowmusic.app/NeverRenderLabs', '_blank')">[🎵] FLOW MUSIC</button>
+                        </div>
+                    </div>
+
+                    <div class="action-matrix">
+                        <button class="action-btn secondary" id="view-archives">VIEW ARCHIVES</button>
+                        <button class="action-btn secondary" id="view-characters" onclick="window.location.href='characters.html'">CHARACTERS</button>
+                        <button class="action-btn secondary" id="view-stills" onclick="window.location.href='still-edits.html'">STILL EDITS</button>
+                        <button class="action-btn secondary" id="view-tech-logs" onclick="window.location.href='tech-logs.html'">TECH LOGS</button>
+                        <button class="action-btn secondary" id="view-notebook-research" onclick="window.location.href='notebook-research.html'">RESEARCH REPO</button>
+                        <button class="action-btn secondary" id="contact-creator">CONTACT</button>
+                    </div>
+                </main>
+
+                <footer class="sys-footer">
+                    <div>COMPUTE: TUNED AMD 6800U</div>
+                    <div class="text-pop">AESTHETIC: LIGNITE ANAMORPHIC MACRO-DIORAMA</div>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <div class="video-modal" id="archive-modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content glass-panel extended-modal">
+            <header class="sys-header">
+                <div class="sys-id">ARCHIVE_PLAYBACK</div>
+                <button class="close-btn" id="close-modal">[X] CLOSE</button>
+            </header>
+            <div class="archive-layout">
+                <div class="playlist-sidebar">
+                    <button class="playlist-btn active" data-type="youtube" data-src="https://www.youtube.com/embed/WeXq97CMTcQ?autoplay=1">FROM NEVERRENDER; WITH SLUDGE, JACKSON</button>
+                    <button class="playlist-btn" data-type="youtube" data-src="https://www.youtube.com/embed/O5LN6nC4u9U?autoplay=1">LIDO DI ANTHROPOLIS // SINGLES NIGHT AT THE EDGE OF THE WORLD</button>
+                    <button class="playlist-btn" data-type="youtube" data-src="https://www.youtube.com/embed/QZCesyU9u8o?autoplay=1">ANTHROPOLIS: A CLOCKWORK MINK</button>
+                    <button class="playlist-btn" data-type="youtube" data-src="https://www.youtube.com/embed/iLWTi4U6Bc0?autoplay=1">HOUSE OF MACAU // WE GAMBLE IT FOR YOU WHOLESALE</button>
+                    <button class="playlist-btn" data-type="youtube" data-src="https://www.youtube.com/embed/_0-SYxFXl_o?autoplay=1">SURREAL AI CHARACTER EMOTION</button>
+                    <button class="playlist-btn" data-type="youtube" data-src="https://www.youtube.com/embed/Z4FgfjtxdFk?autoplay=1">NEO ARCADE CHASE // SFX SUITE (LOSSLESS)</button>
+                    <button class="playlist-btn" data-type="youtube" data-src="https://www.youtube.com/embed/Ha_rtRwyLCU?autoplay=1">OUTPOST PERIMETER // 8-BIT DARKWAVE</button>
+                    <button class="playlist-btn" data-type="youtube" data-src="https://www.youtube.com/embed/zQM6iV-Fs0U?autoplay=1">PROJECT THE RECEIPTS (YT SHORT)</button>
+                    <button class="playlist-btn" data-type="youtube" data-src="https://www.youtube.com/embed/j6G2yc-H05A?autoplay=1">THE AWAKENING</button>
+                    <button class="playlist-btn" data-type="youtube" data-src="https://www.youtube.com/embed/LArgW7CPEc4?autoplay=1">BUREAU OF UNNECESSARY CELEBRATIONS</button>
+                </div>
+                <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0;">
+                    <iframe id="youtube-player" style="display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

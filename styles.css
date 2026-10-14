@@ -55,51 +55,48 @@ body, html {
     width: 100vw;
     height: 100vh;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
-    padding-bottom: 15vh;
+    padding-bottom: 0;
     perspective: 1000px;
     overflow: hidden;
 }
 
-/* Anamorphic Widescreen Stage with Floating Ambient Breath */
+/* Anamorphic Widescreen Stage (True 1:1 Full-Frame Viewport) */
 .anamorphic-stage {
     position: absolute;
-    top: -6%;
-    left: -6%;
-    width: 112%;
-    height: 112%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: 0;
     pointer-events: none;
     overflow: hidden;
-    animation: anamorphicFloat 16s ease-in-out infinite alternate;
 }
 
-@keyframes anamorphicFloat {
-    0% {
-        transform: scale(1.02) translate3d(0, 0, 0);
-    }
-    50% {
-        transform: scale(1.06) translate3d(-1.5%, -1%, 0);
-    }
-    100% {
-        transform: scale(1.03) translate3d(1%, 0.8%, 0);
-    }
-}
-
-/* Background Plate with Lignite Chemical Slough Banner */
+/* Background Plate with 4K Lignite Argon Puddle Master */
 .background-plate {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('WEBSITE_MEDIA/SLICK_LIGNITE_BANNER_ART.jpg');
+    background-image: url('WEBSITE_MEDIA/lignite-argon-puddle-4k.jpg');
     background-size: cover;
-    background-position: center 46%;
-    filter: brightness(0.85) contrast(1.12) saturate(1.18);
+    background-position: center 50%;
     z-index: 0;
     transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+#argon-puddle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: block;
+    pointer-events: none;
 }
 
 /* Responsive Anamorphic Flare & Streak */
@@ -119,32 +116,33 @@ body, html {
     box-shadow: 
         0 0 14px rgba(0, 229, 255, 0.55), 
         0 0 28px rgba(255, 0, 119, 0.45);
-    opacity: 0.5;
+    opacity: 0.35;
     mix-blend-mode: screen;
     pointer-events: none;
+    z-index: 2;
     animation: streakPulse 9s ease-in-out infinite alternate;
 }
 
 @keyframes streakPulse {
-    0% { opacity: 0.3; transform: scaleX(0.96); }
-    50% { opacity: 0.65; transform: scaleX(1.04); }
-    100% { opacity: 0.4; transform: scaleX(0.99); }
+    0% { opacity: 0.2; transform: scaleX(0.96); }
+    50% { opacity: 0.48; transform: scaleX(1.04); }
+    100% { opacity: 0.28; transform: scaleX(0.99); }
 }
 
-/* Anamorphic Vignette: cinematic edge falloff and letterbox darkening */
+/* Anamorphic Vignette: subtle cinematic edge falloff */
 .anamorphic-vignette {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(ellipse 92% 72% at 50% 50%, transparent 42%, rgba(6, 9, 14, 0.65) 75%, rgba(6, 9, 14, 0.95) 100%),
-                linear-gradient(180deg, rgba(6, 9, 14, 0.75) 0%, transparent 14%, transparent 80%, rgba(6, 9, 14, 0.88) 100%);
+    background: radial-gradient(ellipse 96% 84% at 50% 50%, transparent 58%, rgba(6, 9, 14, 0.45) 84%, rgba(6, 9, 14, 0.85) 100%);
     pointer-events: none;
+    z-index: 3;
 }
 
 /* Conduit Grid */
 .conduit-grid {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    z-index: 1;
+    z-index: 4;
     pointer-events: none;
 }
 
@@ -152,7 +150,7 @@ body, html {
     position: absolute;
     background: linear-gradient(90deg, transparent, var(--color-energy-cyan), var(--color-disruptive-pink), transparent);
     box-shadow: 0 0 12px var(--color-energy-cyan), 0 0 24px rgba(255, 0, 119, 0.3);
-    opacity: 0.35;
+    opacity: 0.28;
 }
 
 .conduit-line.horizontal {
@@ -181,31 +179,114 @@ body, html {
     100% { transform: translateY(100%); }
 }
 
-/* Central Viewport - Crystalline Foreground Focus (Scaled -30%) */
+/* Puddle Immersion Overlay & Interactive Breach Prompt */
+.macro-environment.puddle-mode {
+    cursor: pointer;
+}
+
+.puddle-hud-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 4.5vh;
+    z-index: 12;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    pointer-events: none;
+    transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.macro-environment:not(.puddle-mode) .puddle-hud-overlay {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
+
+.puddle-brand-whisper {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 4px;
+    color: rgba(234, 251, 255, 0.72);
+    text-shadow: 0 2px 12px rgba(6, 9, 14, 0.95);
+    text-transform: uppercase;
+}
+
+.puddle-breach-prompt {
+    pointer-events: auto;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 22px;
+    background: rgba(6, 9, 14, 0.62);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 229, 255, 0.55);
+    border-radius: 999px;
+    color: var(--color-energy-cyan);
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    letter-spacing: 1.8px;
+    cursor: pointer;
+    box-shadow: 0 0 24px rgba(0, 229, 255, 0.25), inset 0 0 12px rgba(255, 183, 3, 0.12);
+    transition: all 0.3s ease;
+}
+
+.puddle-breach-prompt:hover {
+    border-color: var(--color-molten-amber);
+    color: #fff;
+    box-shadow: 0 0 32px rgba(255, 183, 3, 0.5), 0 0 16px rgba(0, 229, 255, 0.45);
+    transform: translateY(-2px) scale(1.02);
+}
+
+.pulse-ring {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-molten-amber);
+    box-shadow: 0 0 10px var(--color-molten-amber), 0 0 20px var(--color-energy-cyan);
+    animation: argonBeacon 2s ease-in-out infinite;
+}
+
+@keyframes argonBeacon {
+    0%, 100% { transform: scale(0.9); opacity: 0.75; }
+    50% { transform: scale(1.35); opacity: 1; }
+}
+
+/* Central Viewport - Crystalline Foreground Focus (Scaled +30%) */
 .viewport-container {
     position: relative;
     z-index: 10;
-    width: 85%;
-    max-width: 720px;
+    width: 88%;
+    max-width: 936px;
     margin: 0 auto;
     transform-style: preserve-3d;
-    transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), filter 0.65s ease;
+}
+
+.macro-environment.puddle-mode .viewport-container {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.92) translateY(32px);
+    filter: blur(12px);
 }
 
 .glass-panel {
-    background: rgba(16, 14, 44, 0.5);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(0, 229, 255, 0.2);
-    border-radius: 6px;
-    padding: 22px 28px;
+    background: rgba(16, 14, 44, 0.54);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 229, 255, 0.25);
+    border-radius: 8px;
+    padding: 30px 38px;
     box-shadow: 
-        0 20px 50px rgba(6, 9, 14, 0.85),
-        0 0 30px rgba(18, 69, 89, 0.35),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.07);
+        0 24px 60px rgba(6, 9, 14, 0.85),
+        0 0 38px rgba(18, 69, 89, 0.4),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.08);
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 24px;
     position: relative;
     overflow: hidden;
 }
@@ -217,36 +298,38 @@ body, html {
     top: 0; left: 0; right: 0; bottom: 0;
     box-shadow: inset -2px 0 0px rgba(255, 0, 119, 0.45), inset 2px 0 0px rgba(0, 229, 255, 0.45);
     pointer-events: none;
-    border-radius: 6px;
+    border-radius: 8px;
 }
 
 /* Typography & Layout */
 .sys-header, .sys-footer {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-family: var(--font-mono);
-    font-size: 0.72rem;
-    letter-spacing: 1.5px;
-    color: rgba(234, 251, 255, 0.6);
-    border-bottom: 1px solid rgba(234, 251, 255, 0.1);
-    padding-bottom: 8px;
+    font-size: 0.88rem;
+    letter-spacing: 1.8px;
+    color: rgba(234, 251, 255, 0.68);
+    border-bottom: 1px solid rgba(234, 251, 255, 0.12);
+    padding-bottom: 10px;
 }
 .sys-footer {
     border-bottom: none;
-    border-top: 1px solid rgba(234, 251, 255, 0.1);
+    border-top: 1px solid rgba(234, 251, 255, 0.12);
     padding-bottom: 0;
-    padding-top: 8px;
+    padding-top: 10px;
 }
 
 .indicator {
     display: inline-block;
-    width: 7px; height: 7px;
+    width: 9px; height: 9px;
     background-color: var(--color-biolum-mint);
     border-radius: 50%;
-    margin-right: 6px;
+    margin-right: 8px;
     box-shadow: 0 0 8px var(--color-biolum-mint), 0 0 16px var(--color-biolum-mint);
 }
 .indicator.blink { animation: blinker 2s linear infinite; }
+
 @keyframes blinker { 50% { opacity: 0.3; } }
 
 .content-matrix {
@@ -254,24 +337,24 @@ body, html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 15px;
 }
 
 h1.chromatic-aberration {
-    font-size: 2.6rem;
+    font-size: 3.4rem;
     font-weight: 900;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     color: var(--color-base-light);
     text-shadow: 
         2px 0 0 rgba(255, 0, 119, 0.85),
         -2px 0 0 rgba(0, 229, 255, 0.85),
-        0 0 25px rgba(0, 229, 255, 0.3);
+        0 0 28px rgba(0, 229, 255, 0.35);
     margin: 0;
 }
 
 .subtitle {
-    font-size: 0.82rem;
-    letter-spacing: 5px;
+    font-size: 1.02rem;
+    letter-spacing: 5.5px;
     color: var(--color-energy-cyan);
     font-weight: 300;
 }
@@ -279,28 +362,28 @@ h1.chromatic-aberration {
 /* Terminal Interface */
 .terminal-box {
     width: 100%;
-    max-width: 520px;
-    background: rgba(8, 14, 20, 0.7);
-    border: 1px solid rgba(18, 69, 89, 0.8);
+    max-width: 680px;
+    background: rgba(8, 14, 20, 0.72);
+    border: 1px solid rgba(18, 69, 89, 0.85);
     border-left: 3px solid var(--color-disruptive-pink);
     text-align: left;
-    margin-top: 10px;
+    margin-top: 12px;
     font-family: var(--font-mono);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 }
 
 .terminal-header {
     background: rgba(18, 69, 89, 0.6);
-    padding: 4px 12px;
-    font-size: 0.72rem;
+    padding: 6px 14px;
+    font-size: 0.86rem;
     color: var(--color-disruptive-pink);
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
 }
 
 .terminal-body {
-    padding: 10px 14px;
-    font-size: 0.8rem;
-    min-height: 52px;
+    padding: 14px 18px;
+    font-size: 0.98rem;
+    min-height: 66px;
     display: flex;
 }
 
@@ -320,18 +403,18 @@ h1.chromatic-aberration {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 8px;
-    margin-top: 12px;
+    gap: 10px;
+    margin-top: 14px;
 }
 
 .action-btn {
     background: rgba(18, 69, 89, 0.25);
     border: 1px solid var(--color-energy-cyan);
     color: var(--color-energy-cyan);
-    padding: 8px 16px;
+    padding: 11px 22px;
     font-family: var(--font-mono);
-    font-size: 0.75rem;
-    letter-spacing: 1.2px;
+    font-size: 0.92rem;
+    letter-spacing: 1.5px;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     text-transform: uppercase;
@@ -499,39 +582,60 @@ h1.chromatic-aberration {
 @media (max-width: 768px) {
     body, html {
         overflow-y: auto;
-        height: auto;
+        height: 100%;
     }
     .macro-environment {
+        min-height: 100dvh;
         height: auto;
-        min-height: 100vh;
-        align-items: flex-start;
-        padding: 20px 0;
+        align-items: center;
+        padding: 16px 0;
+    }
+    .macro-environment.puddle-mode {
+        height: 100dvh;
+        overflow: hidden;
     }
     .anamorphic-stage {
-        width: 130%;
-        height: 120%;
-        top: -10%;
-        left: -15%;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
     }
     .background-plate {
-        background-position: center 42%;
+        background-position: 42% center;
+    }
+    .puddle-hud-overlay {
+        bottom: 6vh;
+        padding: 0 14px;
+    }
+    .puddle-brand-whisper {
+        font-size: 0.62rem;
+        letter-spacing: 2.5px;
+        text-align: center;
+    }
+    .puddle-breach-prompt {
+        font-size: 0.64rem;
+        padding: 10px 16px;
+        letter-spacing: 1px;
+        text-align: center;
     }
     h1.chromatic-aberration {
-        font-size: 2.2rem;
+        font-size: 2.1rem;
         word-wrap: break-word;
         letter-spacing: 2px;
     }
     .subtitle {
-        font-size: 0.8rem;
+        font-size: 0.76rem;
         letter-spacing: 2px;
         word-wrap: break-word;
     }
     .glass-panel {
-        padding: 20px;
+        padding: 18px 16px;
         width: 100%;
         overflow-x: hidden;
         overflow-y: visible;
         height: auto;
+        gap: 14px;
     }
     .action-matrix {
         flex-direction: column;
@@ -540,6 +644,8 @@ h1.chromatic-aberration {
     .action-btn {
         width: 100%;
         text-align: center;
+        font-size: 0.78rem;
+        padding: 10px 14px;
     }
     .terminal-box {
         max-width: 100%;

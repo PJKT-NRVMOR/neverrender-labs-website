@@ -10,10 +10,11 @@
     <link rel="icon" type="image/svg+xml" href="favicon-svg.svg">
 </head>
 <body>
-    <div class="macro-environment">
+    <div class="macro-environment puddle-mode" id="macro-env">
         <!-- Floating Anamorphic Stage -->
-        <div class="anamorphic-stage">
+        <div class="anamorphic-stage" id="anamorphic-stage">
             <div class="background-plate"></div>
+            <canvas id="argon-puddle-canvas"></canvas>
             <div class="anamorphic-streak"></div>
             <div class="anamorphic-vignette"></div>
         </div>
@@ -26,6 +27,15 @@
             <div class="conduit-line vertical right"></div>
         </div>
 
+        <!-- Puddle Immersion HUD Prompt (Visible before breaching into Viewport) -->
+        <div class="puddle-hud-overlay" id="puddle-hud">
+            <div class="puddle-brand-whisper">NEVERRENDER LABS // LIGNITE ARGON SLOUGH</div>
+            <button class="puddle-breach-prompt" id="puddle-breach-btn" type="button">
+                <span class="pulse-ring"></span>
+                <span class="prompt-label">[ TOUCH THE IRIDESCENT PUDDLE // CLICK TO ENTER RECEPTION ]</span>
+            </button>
+        </div>
+
         <!-- Central Crystalline Viewport -->
         <div class="viewport-container" id="main-viewport">
             <div class="glass-panel">
@@ -33,13 +43,16 @@
                     <div class="sys-status">
                         <span class="indicator blink"></span> SYSTEM STATUS: CEMENTED
                     </div>
-                    <div class="sys-id">PROJECT_NEVERMORE</div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div class="sys-id">PROJECT_NEVERMORE</div>
+                        <button class="close-btn" id="return-to-puddle" title="Return to Argon Puddle View" style="font-size: 0.82rem; padding: 4px 10px; border: 1px solid rgba(0, 229, 255, 0.4); color: var(--color-energy-cyan); background: rgba(0, 229, 255, 0.08); border-radius: 3px; cursor: pointer;">[≈ PUDDLE]</button>
+                    </div>
                 </header>
 
                 <main class="content-matrix">
-                    <div style="display: flex; justify-content: center; margin-bottom: 6px;">
+                    <div style="display: flex; justify-content: center; margin-bottom: 8px;">
                         <a href="https://labs.google/fx/tools/flow/shared/tool/c718f343-2e2f-4ae8-92bd-6f68f13b1c45" target="_blank" rel="noopener" style="text-decoration: none;">
-                            <span style="display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 0.68rem; color: var(--color-molten-amber); background: rgba(255, 183, 3, 0.12); border: 1px solid var(--color-molten-amber); padding: 4px 12px; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px;">
+                            <span style="display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-molten-amber); background: rgba(255, 183, 3, 0.12); border: 1px solid var(--color-molten-amber); padding: 6px 16px; border-radius: 4px; text-transform: uppercase; letter-spacing: 1.2px;">
                                 ★ GOOGLE LABS FLOW FEATURED: RETRO-TERM 80
                             </span>
                         </a>
@@ -59,13 +72,13 @@
                     </div>
 
                     <!-- Primary Mission Launchers -->
-                    <div style="margin-top: 10px; width: 100%; display: flex; flex-direction: column; gap: 6px;">
+                    <div style="margin-top: 12px; width: 100%; display: flex; flex-direction: column; gap: 8px;">
                         <button class="action-btn" style="width: 100%; border-color: var(--color-energy-cyan); background: rgba(0, 229, 255, 0.18); color: var(--color-energy-cyan); text-shadow: 0 0 12px rgba(0, 229, 255, 0.7); font-weight: bold; letter-spacing: 2px;" onclick="window.location.href='front-desk.html'">[⚡] AUTONOMOUS FRONT DESK PROTOTYPE // 24/7 AI RECEPTION [⚡]</button>
                         
-                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px;">
-                            <button class="action-btn" style="border-color: var(--color-biolum-mint); color: var(--color-biolum-mint); background: rgba(0, 255, 136, 0.1); font-size: 0.68rem;" onclick="window.location.href='resume.html'">[📄] 8-BIT RESUME</button>
-                            <button class="action-btn" style="border-color: var(--color-disruptive-pink); color: var(--color-disruptive-pink); background: rgba(255, 0, 119, 0.1); font-size: 0.68rem;" onclick="window.open('https://www.instagram.com/neverrenderlabs/', '_blank')">[📸] INSTAGRAM</button>
-                            <button class="action-btn" style="border-color: var(--color-molten-amber); color: var(--color-molten-amber); background: rgba(255, 183, 3, 0.1); font-size: 0.68rem;" onclick="window.open('https://www.flowmusic.app/NeverRenderLabs', '_blank')">[🎵] FLOW MUSIC</button>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
+                            <button class="action-btn" style="border-color: var(--color-biolum-mint); color: var(--color-biolum-mint); background: rgba(0, 255, 136, 0.1); font-size: 0.85rem;" onclick="window.location.href='resume.html'">[📄] 8-BIT RESUME</button>
+                            <button class="action-btn" style="border-color: var(--color-disruptive-pink); color: var(--color-disruptive-pink); background: rgba(255, 0, 119, 0.1); font-size: 0.85rem;" onclick="window.open('https://www.instagram.com/neverrenderlabs/', '_blank')">[📸] INSTAGRAM</button>
+                            <button class="action-btn" style="border-color: var(--color-molten-amber); color: var(--color-molten-amber); background: rgba(255, 183, 3, 0.1); font-size: 0.85rem;" onclick="window.open('https://www.flowmusic.app/NeverRenderLabs', '_blank')">[🎵] FLOW MUSIC</button>
                         </div>
                     </div>
 
