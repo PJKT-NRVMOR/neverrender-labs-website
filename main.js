@@ -238,9 +238,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         scale.y = 1.0;
                     } else {
                         scale.x = screenAspect / imgAspect;
-                        // On portrait mobile screens, center between the yellow emitter (0.34) and gloved hand (0.53)
+                        // On portrait mobile screens, center on the gloved hand & wristband (0.525)
+                        // and pull back 22% so both the yellow Argon pool and full red wristband stay inside the frame
                         float portraitFactor = clamp((1.2 - screenAspect) * 1.5, 0.0, 1.0);
-                        anchor.x = mix(0.5, 0.45, portraitFactor);
+                        float mobilePullback = mix(1.0, 1.22, portraitFactor);
+                        scale *= mobilePullback;
+                        anchor.x = mix(0.5, 0.525, portraitFactor);
                     }
                     return (uv - 0.5) * scale + anchor;
                 }

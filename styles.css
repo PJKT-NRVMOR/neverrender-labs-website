@@ -631,6 +631,15 @@ h1.chromatic-aberration {
         letter-spacing: 2px;
         word-wrap: break-word;
     }
+    .background-plate {
+        background-position: 54% 50%;
+    }
+    .sys-header {
+        flex-wrap: wrap;
+        gap: 6px;
+        font-size: 0.72rem;
+        letter-spacing: 1px;
+    }
     .glass-panel {
         padding: 18px 16px;
         width: 100%;
