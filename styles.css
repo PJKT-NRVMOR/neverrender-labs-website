@@ -99,6 +99,7 @@ body, html {
     z-index: 1;
     display: block;
     pointer-events: none;
+    mix-blend-mode: screen;
 }
 
 /* Responsive Anamorphic Flare & Streak */
