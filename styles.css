@@ -145,20 +145,17 @@ body, html {
 .conduit-line {
     position: absolute;
     background: linear-gradient(90deg, transparent, var(--color-energy-cyan), var(--color-disruptive-pink), transparent);
-    box-shadow: 0 0 12px var(--color-energy-cyan), 0 0 24px rgba(255, 0, 119, 0.3);
-    opacity: 0.28;
+    opacity: 0.22;
 }
 
 .conduit-line.horizontal {
     height: 1px;
     width: 100%;
-    animation: flowH 6s linear infinite;
 }
 .conduit-line.vertical {
     width: 1px;
     height: 100%;
     background: linear-gradient(180deg, transparent, var(--color-energy-cyan), var(--color-disruptive-pink), transparent);
-    animation: flowV 7s linear infinite;
 }
 
 .conduit-line.top { top: 20%; }

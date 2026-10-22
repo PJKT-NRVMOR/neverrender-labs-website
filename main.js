@@ -59,73 +59,29 @@ document.addEventListener('DOMContentLoaded', () => {
         macroEnv.classList.remove('puddle-mode');
     }
 
-    // Ripple state (up to 8 concurrent Stargate wave packets)
-    const MAX_RIPPLES = 8;
-    const ripples = [];
-    for (let i = 0; i < MAX_RIPPLES; i++) {
-        ripples.push({ x: -10.0, y: -10.0, startTime: -100.0, strength: 0.0 });
-    }
-    let rippleWriteIdx = 0;
-    let shaderStartTime = performance.now() * 0.001;
-
-    function spawnRipple(normX, normY, strength = 1.0) {
-        const now = performance.now() * 0.001 - shaderStartTime;
-        ripples[rippleWriteIdx] = { x: normX, y: normY, startTime: now, strength: strength };
-        rippleWriteIdx = (rippleWriteIdx + 1) % MAX_RIPPLES;
-    }
-
-    let lastMouseRippleTime = 0;
+    const shaderStartTime = performance.now() * 0.001;
     let mouseNorm = { x: 0.35, y: 0.62 };
 
     if (macroEnv) {
         macroEnv.addEventListener('mousemove', (e) => {
-            const nx = e.clientX / window.innerWidth;
-            const ny = e.clientY / window.innerHeight;
-            mouseNorm.x = nx;
-            mouseNorm.y = ny;
-
-            // Spawn subtle trailing Stargate wake ripples when gliding across the puddle plane
-            const nowMs = performance.now();
-            if (ny > 0.42 && nowMs - lastMouseRippleTime > 120) {
-                spawnRipple(nx, ny, 0.48);
-                lastMouseRippleTime = nowMs;
-            }
+            mouseNorm.x = e.clientX / window.innerWidth;
+            mouseNorm.y = e.clientY / window.innerHeight;
         }, { passive: true });
 
-        macroEnv.addEventListener('mouseleave', () => {
-            if (!macroEnv.classList.contains('puddle-mode') && viewport) {
-                viewport.style.transform = '';
-            }
-        });
-
-        // Mobile touch support: dragging a finger across the puddle spawns live Stargate wake ripples
         macroEnv.addEventListener('touchmove', (e) => {
             if (!e.touches || !e.touches.length) return;
             const t = e.touches[0];
-            const nx = t.clientX / window.innerWidth;
-            const ny = t.clientY / window.innerHeight;
-            mouseNorm.x = nx;
-            mouseNorm.y = ny;
-            const nowMs = performance.now();
-            if (ny > 0.40 && nowMs - lastMouseRippleTime > 95) {
-                spawnRipple(nx, ny, 0.65);
-                lastMouseRippleTime = nowMs;
-            }
+            mouseNorm.x = t.clientX / window.innerWidth;
+            mouseNorm.y = t.clientY / window.innerHeight;
         }, { passive: true });
 
-        // Clicking anywhere on the puddle in puddle-mode triggers a big Stargate breach wave & opens the Viewport
+        // Clicking anywhere on the puddle in puddle-mode opens the Reception Viewport immediately
         macroEnv.addEventListener('click', (e) => {
             if (e.target.closest('#main-viewport') || e.target.closest('#archive-modal') || e.target.closest('#return-to-puddle')) {
                 return;
             }
-            const nx = e.clientX / window.innerWidth;
-            const ny = Math.max(0.46, e.clientY / window.innerHeight);
-            spawnRipple(nx, ny, 1.65);
-
             if (macroEnv.classList.contains('puddle-mode')) {
-                setTimeout(() => {
-                    macroEnv.classList.remove('puddle-mode');
-                }, 480);
+                macroEnv.classList.remove('puddle-mode');
             }
         });
     }
@@ -133,11 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (puddleBreachBtn && macroEnv) {
         puddleBreachBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            // Fire breach wave right at the bright yellow-to-hand nexus
-            spawnRipple(0.36, 0.60, 1.85);
-            setTimeout(() => {
-                macroEnv.classList.remove('puddle-mode');
-            }, 520);
+            macroEnv.classList.remove('puddle-mode');
         });
     }
 
@@ -146,29 +98,26 @@ document.addEventListener('DOMContentLoaded', () => {
             e.stopPropagation();
             if (viewport) viewport.style.transform = '';
             macroEnv.classList.add('puddle-mode');
-            spawnRipple(0.34, 0.565, 1.35);
         });
     }
 
     // =========================================================================
-    // VOLUMETRIC ARGON GAS & VAPOR PLUME ENGINE (v7 Ultra-Light Pre-Baked Sprites)
-    // Zero per-pixel shader tax (<0.2ms/frame, 0% CPU spin, locked 60 FPS)
-    // Billowing from the bright yellow pool (0.34, 0.565) -> Gloved Hand (0.52, 0.555)
+    // PURE VOLUMETRIC ARGON GAS & VAPOR PLUME ENGINE (v9 Zero-Ripple Edition)
+    // Pure pre-baked sprite blits on a 640x360 buffer (zero ripples, zero paths)
     // =========================================================================
     const canvas = document.getElementById('argon-puddle-canvas');
     if (canvas) {
         const ctx = canvas.getContext('2d', { alpha: true });
         if (ctx) {
-            // Internal low-res volumetric buffer (upscaled smoothly by browser compositor)
-            let cw = 960;
-            let ch = 540;
+            let cw = 640;
+            let ch = 360;
 
             function resizeCanvas() {
                 const vw = canvas.clientWidth || window.innerWidth;
                 const vh = canvas.clientHeight || window.innerHeight;
-                const scale = Math.min(1.0, 960 / Math.max(vw, vh, 1));
+                const scale = Math.min(1.0, 640 / Math.max(vw, vh, 1));
                 cw = Math.max(320, Math.floor(vw * scale));
-                ch = Math.max(240, Math.floor(vh * scale));
+                ch = Math.max(180, Math.floor(vh * scale));
                 if (canvas.width !== cw || canvas.height !== ch) {
                     canvas.width = cw;
                     canvas.height = ch;
@@ -321,39 +270,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     ctx.globalAlpha = alpha;
                     ctx.drawImage(gasSprites[p.spriteIdx], pt.x - w * 0.5, pt.y - h * 0.5, w, h);
-                }
-
-                // 2. Render interactive Stargate / Argon gas wave rings when touching or clicking the puddle
-                for (let i = 0; i < MAX_RIPPLES; i++) {
-                    const rp = ripples[i];
-                    if (rp.strength <= 0.001) continue;
-                    const age = elapsed - rp.startTime;
-                    if (age <= 0.0 || age > 3.2) continue;
-
-                    const lifeNorm = age / 3.2;
-                    const env = Math.pow(1.0 - lifeNorm, 1.8) * Math.min(1.0, age * 8.0) * Math.min(1.3, rp.strength);
-                    if (env <= 0.01) continue;
-
-                    const rx = rp.x * cw;
-                    const ry = rp.y * ch;
-                    const radiusX = (18 + age * 165) * (cw / 960);
-                    const radiusY = radiusX * 0.42; // Perspective-foreshortened puddle ellipse
-
-                    // Soft glowing gas surge at ripple center + expanding cyan/amber vapor ring
-                    ctx.save();
-                    ctx.globalAlpha = env * 0.48;
-                    ctx.strokeStyle = age < 0.7 ? '#FFB703' : '#00E5FF';
-                    ctx.lineWidth = Math.max(1.2, (3.5 - age * 0.9) * (cw / 960));
-                    ctx.beginPath();
-                    ctx.ellipse(rx, ry, radiusX, radiusY, 0, 0, Math.PI * 2);
-                    ctx.stroke();
-
-                    // Soft inner Argon vapor bloom
-                    const bloomW = radiusX * 2.2;
-                    const bloomH = radiusY * 2.2;
-                    ctx.globalAlpha = env * 0.28;
-                    ctx.drawImage(gasSprites[1], rx - bloomW * 0.5, ry - bloomH * 0.5, bloomW, bloomH);
-                    ctx.restore();
                 }
 
                 ctx.globalAlpha = 1.0;
