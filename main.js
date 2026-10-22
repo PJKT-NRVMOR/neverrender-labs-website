@@ -16,8 +16,18 @@ document.addEventListener('DOMContentLoaded', () => {
     let typeSpeed = 50;
     const typewriterEl = document.getElementById('typewriter');
 
+    const macroEnv = document.getElementById('macro-env');
+    const viewport = document.getElementById('main-viewport');
+    const puddleBreachBtn = document.getElementById('puddle-breach-btn');
+    const returnToPuddleBtn = document.getElementById('return-to-puddle');
+
     function type() {
         if (!typewriterEl) return;
+        // Skip DOM mutations while the terminal is hidden in puddle-mode
+        if (macroEnv && macroEnv.classList.contains('puddle-mode')) {
+            setTimeout(type, 600);
+            return;
+        }
         const currentText = terminalText[textIndex];
         
         if (isDeleting) {
@@ -44,19 +54,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setTimeout(type, 1000);
 
-    // Macro-Diorama Parallax & Puddle Immersion Mode
-    const macroEnv = document.getElementById('macro-env');
-    const viewport = document.getElementById('main-viewport');
-    const background = document.querySelector('.background-plate');
-    const puddleBreachBtn = document.getElementById('puddle-breach-btn');
-    const returnToPuddleBtn = document.getElementById('return-to-puddle');
-
     // Allow ?hud=1 query param to open directly with viewport visible if returning from subpages
     if (window.location.search.includes('hud=1') && macroEnv) {
         macroEnv.classList.remove('puddle-mode');
     }
 
-    // Ripple state shared with WebGL shader (up to 8 concurrent Stargate wave packets)
+    // Ripple state (up to 8 concurrent Stargate wave packets)
     const MAX_RIPPLES = 8;
     const ripples = [];
     for (let i = 0; i < MAX_RIPPLES; i++) {
@@ -83,29 +86,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Spawn subtle trailing Stargate wake ripples when gliding across the puddle plane
             const nowMs = performance.now();
-            if (ny > 0.42 && nowMs - lastMouseRippleTime > 110) {
-                spawnRipple(nx, ny, 0.42);
+            if (ny > 0.42 && nowMs - lastMouseRippleTime > 120) {
+                spawnRipple(nx, ny, 0.48);
                 lastMouseRippleTime = nowMs;
             }
-
-            if (window.innerWidth <= 768) return;
-            const x = (nx - 0.5) * 2;
-            const y = (ny - 0.5) * 2;
-
-            if (!macroEnv.classList.contains('puddle-mode') && viewport) {
-                viewport.style.transform = `rotateX(${-y * 4}deg) rotateY(${x * 4}deg) translateZ(40px)`;
-            }
-            if (background) {
-                background.style.transform = `translateX(${-x * 1.2}%) translateY(${-y * 1.2}%) scale(1.03)`;
-            }
-        });
+        }, { passive: true });
 
         macroEnv.addEventListener('mouseleave', () => {
             if (!macroEnv.classList.contains('puddle-mode') && viewport) {
                 viewport.style.transform = '';
-            }
-            if (background) {
-                background.style.transform = 'translateX(0) translateY(0) scale(1)';
             }
         });
 
@@ -233,43 +222,43 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
             }
 
-            // Initialize 34 drifting Argon gas plumes & rising vapor wisps
-            const NUM_PLUMES = 34;
+            // Initialize 28 briskly billowing Argon gas plumes & rising vapor wisps
+            const NUM_PLUMES = 28;
             const plumes = [];
 
             function resetPlume(p, randomizeAge = false) {
                 // Spawn along the iridescent yellow-to-magenta puddle slick & around the submerged fingertips
                 const zone = Math.random();
                 if (zone < 0.52) {
-                    // Main bright yellow pool streaming right toward the gloved hand
-                    p.ix = 0.25 + Math.random() * 0.16;
-                    p.iy = 0.55 + (Math.random() - 0.5) * 0.09;
-                    p.vx = 0.018 + Math.random() * 0.022;
-                    p.vy = -0.008 - Math.random() * 0.015; // gentle rising vapor curl
+                    // Main bright yellow pool streaming briskly right toward the gloved hand
+                    p.ix = 0.24 + Math.random() * 0.14;
+                    p.iy = 0.56 + (Math.random() - 0.5) * 0.08;
+                    p.vx = 0.065 + Math.random() * 0.065;
+                    p.vy = -0.025 - Math.random() * 0.038; // visible rising vapor curl
                     p.spriteIdx = Math.random() < 0.6 ? 0 : 1; // Amber & Cyan core
                 } else if (zone < 0.82) {
                     // Fingertip nexus & cyan/magenta swirl zone
-                    p.ix = 0.42 + Math.random() * 0.18;
-                    p.iy = 0.54 + (Math.random() - 0.5) * 0.11;
-                    p.vx = 0.008 + (Math.random() - 0.35) * 0.018;
-                    p.vy = -0.014 - Math.random() * 0.020; // rising Argon mist past the hand
+                    p.ix = 0.40 + Math.random() * 0.16;
+                    p.iy = 0.55 + (Math.random() - 0.5) * 0.10;
+                    p.vx = 0.032 + (Math.random() - 0.30) * 0.055;
+                    p.vy = -0.042 - Math.random() * 0.052; // brisk rising Argon mist past the hand
                     p.spriteIdx = Math.random() < 0.55 ? 1 : (Math.random() < 0.5 ? 2 : 3);
                 } else {
                     // Foreground lower amber-cyan crescent mist
-                    p.ix = 0.30 + Math.random() * 0.30;
-                    p.iy = 0.64 + (Math.random() - 0.5) * 0.08;
-                    p.vx = (Math.random() - 0.3) * 0.016;
-                    p.vy = -0.006 - Math.random() * 0.012;
+                    p.ix = 0.28 + Math.random() * 0.28;
+                    p.iy = 0.64 + (Math.random() - 0.5) * 0.07;
+                    p.vx = 0.025 + (Math.random() - 0.25) * 0.048;
+                    p.vy = -0.020 - Math.random() * 0.032;
                     p.spriteIdx = Math.random() < 0.5 ? 0 : 2;
                 }
 
-                p.life = 4.0 + Math.random() * 4.5;
+                p.life = 1.6 + Math.random() * 1.8;
                 p.age = randomizeAge ? Math.random() * p.life : 0.0;
-                p.rx = 65 + Math.random() * 95;   // Horizontal cloud spread
-                p.ry = 24 + Math.random() * 42;   // Vertical perspective-flattened mist height
+                p.rx = 60 + Math.random() * 88;   // Horizontal cloud spread
+                p.ry = 22 + Math.random() * 38;   // Vertical perspective-flattened mist height
                 p.phase = Math.random() * Math.PI * 2;
-                p.swirlFreq = 0.8 + Math.random() * 1.1;
-                p.maxAlpha = 0.22 + Math.random() * 0.26;
+                p.swirlFreq = 2.4 + Math.random() * 2.2;
+                p.maxAlpha = 0.26 + Math.random() * 0.28;
                 return p;
             }
 
@@ -287,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (modalEl && modalEl.classList.contains('active')) return;
 
                 const nowSec = nowMs * 0.001;
-                const dt = Math.min(0.06, Math.max(0.001, nowSec - lastTimeSec));
+                const dt = Math.min(0.05, Math.max(0.001, nowSec - lastTimeSec));
                 lastTimeSec = nowSec;
                 const elapsed = nowSec - shaderStartTime;
 
@@ -304,31 +293,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     const progress = p.age / p.life;
                     // Smooth fade-in and long vapor fade-out
-                    const fadeIn = Math.min(1.0, progress * 3.2);
-                    const fadeOut = 1.0 - Math.pow(progress, 1.6);
+                    const fadeIn = Math.min(1.0, progress * 3.5);
+                    const fadeOut = 1.0 - Math.pow(progress, 1.5);
                     const alpha = fadeIn * fadeOut * p.maxAlpha;
 
-                    // Gentle sinusoidal curl & mouse wake breeze
-                    const waveX = Math.sin(elapsed * p.swirlFreq + p.phase) * 0.006;
-                    const waveY = Math.cos(elapsed * (p.swirlFreq * 0.7) + p.phase) * 0.004;
+                    // Active sinusoidal curl & mouse wake breeze
+                    const waveX = Math.sin(elapsed * p.swirlFreq + p.phase) * 0.024;
+                    const waveY = Math.cos(elapsed * (p.swirlFreq * 0.8) + p.phase) * 0.016;
                     p.ix += (p.vx + waveX) * dt;
                     p.iy += (p.vy + waveY) * dt;
 
-                    // Subtle mouse interaction: cursor gently parts and swirls nearby Argon gas
+                    // Subtle mouse interaction: cursor parts and swirls nearby Argon gas
                     const dxM = p.ix - mouseNorm.x;
                     const dyM = p.iy - mouseNorm.y;
                     const distM2 = dxM * dxM + dyM * dyM;
-                    if (distM2 < 0.025 && distM2 > 0.00001) {
-                        const push = (0.025 - distM2) * 0.45 * dt;
+                    if (distM2 < 0.032 && distM2 > 0.00001) {
+                        const push = (0.032 - distM2) * 1.35 * dt;
                         p.ix += (dxM / Math.sqrt(distM2)) * push;
-                        p.iy += (dyM / Math.sqrt(distM2)) * push * 0.5;
+                        p.iy += (dyM / Math.sqrt(distM2)) * push * 0.6;
                     }
 
                     const pt = imgToCanvas(p.ix, p.iy);
-                    // Clouds expand and rise slightly as they evaporate
-                    const growth = 0.85 + progress * 0.65;
+                    // Clouds expand and rise as they evaporate
+                    const growth = 0.80 + progress * 0.75;
                     const w = p.rx * growth * pt.scale * 2.0;
-                    const h = (p.ry + progress * 22.0) * growth * pt.scale * 2.0;
+                    const h = (p.ry + progress * 28.0) * growth * pt.scale * 2.0;
 
                     ctx.globalAlpha = alpha;
                     ctx.drawImage(gasSprites[p.spriteIdx], pt.x - w * 0.5, pt.y - h * 0.5, w, h);
