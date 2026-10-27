@@ -59,22 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         macroEnv.classList.remove('puddle-mode');
     }
 
-    const shaderStartTime = performance.now() * 0.001;
-    let mouseNorm = { x: 0.35, y: 0.62 };
-
     if (macroEnv) {
-        macroEnv.addEventListener('mousemove', (e) => {
-            mouseNorm.x = e.clientX / window.innerWidth;
-            mouseNorm.y = e.clientY / window.innerHeight;
-        }, { passive: true });
-
-        macroEnv.addEventListener('touchmove', (e) => {
-            if (!e.touches || !e.touches.length) return;
-            const t = e.touches[0];
-            mouseNorm.x = t.clientX / window.innerWidth;
-            mouseNorm.y = t.clientY / window.innerHeight;
-        }, { passive: true });
-
         // Clicking anywhere on the puddle in puddle-mode opens the Reception Viewport immediately
         macroEnv.addEventListener('click', (e) => {
             if (e.target.closest('#main-viewport') || e.target.closest('#archive-modal') || e.target.closest('#return-to-puddle')) {
@@ -102,180 +87,463 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =========================================================================
-    // PURE VOLUMETRIC ARGON GAS & VAPOR PLUME ENGINE (v9 Zero-Ripple Edition)
-    // Pure pre-baked sprite blits on a 640x360 buffer (zero ripples, zero paths)
+    // DEEPMIND-STYLE WEBGL LIQUID REFRACTION & VISCOUS RIPPLE SHADER (v13)
+    // Goldilocks v12 Motion + Horizon Neon-Line Ripple Fade + Anchored Gloved Hand
     // =========================================================================
     const canvas = document.getElementById('argon-puddle-canvas');
     if (canvas) {
-        const ctx = canvas.getContext('2d', { alpha: true });
-        if (ctx) {
-            let cw = 640;
-            let ch = 360;
+        const gl = canvas.getContext('webgl', {
+            alpha: false,
+            antialias: false,
+            depth: false,
+            stencil: false,
+            preserveDrawingBuffer: false,
+            powerPreference: 'high-performance'
+        }) || canvas.getContext('experimental-webgl');
 
-            function resizeCanvas() {
-                const vw = canvas.clientWidth || window.innerWidth;
-                const vh = canvas.clientHeight || window.innerHeight;
-                const scale = Math.min(1.0, 640 / Math.max(vw, vh, 1));
-                cw = Math.max(320, Math.floor(vw * scale));
-                ch = Math.max(180, Math.floor(vh * scale));
-                if (canvas.width !== cw || canvas.height !== ch) {
-                    canvas.width = cw;
-                    canvas.height = ch;
+        if (gl) {
+            // Simulation grid dimensions (16:9 aspect, ultra-smooth bilinear normal map)
+            const SIM_W = 256;
+            const SIM_H = 144;
+            const SIM_SIZE = SIM_W * SIM_H;
+
+            let hCurr = new Float32Array(SIM_SIZE);
+            let hPrev = new Float32Array(SIM_SIZE);
+            let hSmooth = new Float32Array(SIM_SIZE);
+            const waveTexData = new Uint8Array(SIM_SIZE * 4);
+
+            // Smoothstep helper for CPU-side horizon fade
+            function cpuSmoothstep(edge0, edge1, x) {
+                const t = Math.max(0.0, Math.min(1.0, (x - edge0) / (edge1 - edge0)));
+                return t * t * (3.0 - 2.0 * t);
+            }
+
+            // Deposit a smooth Gaussian ripple impulse at normalized (nx, ny) in [0..1]
+            function dropRipple(nx, ny, radiusCells, strength) {
+                // Fade out ripple impulses as they approach the horizontal neon line (y = 0.445) and end above it
+                const horizonWeight = cpuSmoothstep(0.442, 0.525, ny);
+                if (horizonWeight <= 0.001) return;
+                const effStrength = strength * horizonWeight;
+
+                const cx = nx * SIM_W;
+                const cy = ny * SIM_H;
+                const r = Math.max(2, radiusCells);
+                const r2 = r * r;
+                const x0 = Math.max(2, Math.floor(cx - r));
+                const x1 = Math.min(SIM_W - 3, Math.ceil(cx + r));
+                const y0 = Math.max(2, Math.floor(cy - r));
+                const y1 = Math.min(SIM_H - 3, Math.ceil(cy + r));
+                const invSigma2 = 2.6 / r2;
+
+                for (let y = y0; y <= y1; y++) {
+                    const dy = y - cy;
+                    const dy2 = dy * dy;
+                    const rowOffset = y * SIM_W;
+                    for (let x = x0; x <= x1; x++) {
+                        const dx = x - cx;
+                        const d2 = dx * dx + dy2;
+                        if (d2 < r2) {
+                            const falloff = Math.exp(-d2 * invSigma2) * (1.0 - d2 / r2);
+                            const idx = rowOffset + x;
+                            hCurr[idx] = Math.max(-1.1, Math.min(1.1, hCurr[idx] + effStrength * falloff));
+                        }
+                    }
                 }
             }
-            window.addEventListener('resize', resizeCanvas);
-            resizeCanvas();
 
-            // Pre-bake 4 soft radial gas cloud sprites once at startup (zero per-frame gradient allocation!)
-            function createGasSprite(r, g, b) {
-                const s = document.createElement('canvas');
-                s.width = 128;
-                s.height = 128;
-                const sctx = s.getContext('2d');
-                const grad = sctx.createRadialGradient(64, 64, 2, 64, 64, 62);
-                grad.addColorStop(0.0, `rgba(${r}, ${g}, ${b}, 0.55)`);
-                grad.addColorStop(0.35, `rgba(${r}, ${g}, ${b}, 0.26)`);
-                grad.addColorStop(0.70, `rgba(${r}, ${g}, ${b}, 0.07)`);
-                grad.addColorStop(1.0, `rgba(${r}, ${g}, ${b}, 0.0)`);
-                sctx.fillStyle = grad;
-                sctx.fillRect(0, 0, 128, 128);
+            // Continuous mouse & touch wake tracking with segment interpolation
+            let lastPointerX = -1;
+            let lastPointerY = -1;
+            let lastPointerTime = 0;
+
+            function handlePointerMove(clientX, clientY) {
+                const vw = window.innerWidth || 1;
+                const vh = window.innerHeight || 1;
+                const nx = Math.max(0.01, Math.min(0.99, clientX / vw));
+                const ny = Math.max(0.01, Math.min(0.99, clientY / vh));
+                const now = performance.now();
+
+                if (lastPointerX < 0 || (now - lastPointerTime) > 180) {
+                    dropRipple(nx, ny, 10.5, 0.14);
+                } else {
+                    const dx = nx - lastPointerX;
+                    const dy = ny - lastPointerY;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist > 0.0008) {
+                        // Goldilocks wake intensity (~60% of v10)
+                        const speedBoost = Math.min(1.0, dist * 15.0);
+                        const strength = 0.095 + speedBoost * 0.18;
+                        const radius = 9.5 + speedBoost * 4.5;
+                        const steps = Math.min(12, Math.max(1, Math.ceil(dist * 85)));
+                        for (let s = 1; s <= steps; s++) {
+                            const t = s / steps;
+                            dropRipple(
+                                lastPointerX + dx * t,
+                                lastPointerY + dy * t,
+                                radius,
+                                strength / Math.sqrt(steps)
+                            );
+                        }
+                    }
+                }
+                lastPointerX = nx;
+                lastPointerY = ny;
+                lastPointerTime = now;
+            }
+
+            window.addEventListener('mousemove', (e) => {
+                handlePointerMove(e.clientX, e.clientY);
+            }, { passive: true });
+
+            window.addEventListener('touchmove', (e) => {
+                if (e.touches && e.touches.length > 0) {
+                    handlePointerMove(e.touches[0].clientX, e.touches[0].clientY);
+                }
+            }, { passive: true });
+
+            window.addEventListener('mousedown', (e) => {
+                const nx = e.clientX / (window.innerWidth || 1);
+                const ny = e.clientY / (window.innerHeight || 1);
+                dropRipple(nx, ny, 14.5, 0.36);
+            }, { passive: true });
+
+            // Advance the 2D viscous wave equation and pack normal gradients (nx, ny, height) into waveTexData
+            function stepWaveSimulation(elapsedSec) {
+                // Ambient heartbeat ripple in the puddle just off the fingertips
+                if (Math.random() < 0.07) {
+                    const fingerX = 0.455 + (Math.random() - 0.5) * 0.06;
+                    const fingerY = 0.595 + (Math.random() - 0.5) * 0.03;
+                    dropRipple(fingerX, fingerY, 8.5, 0.06 * Math.sin(elapsedSec * 2.1));
+                }
+
+                // 1. True isotropic 9-tap Laplacian wave propagation with shoreline attenuation at the horizontal neon line (y = 0.445)
+                const baseDamping = 0.975;
+                for (let y = 1; y < SIM_H - 1; y++) {
+                    const ny = y / SIM_H;
+                    // Waves travelling upward fade smoothly between y=0.535 and y=0.445, ending completely at y=0.445
+                    const horizonFade = cpuSmoothstep(0.442, 0.535, ny);
+                    const rowDamping = baseDamping * (0.72 + 0.28 * horizonFade);
+
+                    const row = y * SIM_W;
+                    const rowUp = row - SIM_W;
+                    const rowDn = row + SIM_W;
+                    for (let x = 1; x < SIM_W - 1; x++) {
+                        const idx = row + x;
+                        if (horizonFade <= 0.001) {
+                            hPrev[idx] = 0.0;
+                            continue;
+                        }
+                        const ortho = hCurr[idx - 1] + hCurr[idx + 1] + hCurr[rowUp + x] + hCurr[rowDn + x];
+                        const diag = hCurr[rowUp + x - 1] + hCurr[rowUp + x + 1] + hCurr[rowDn + x - 1] + hCurr[rowDn + x + 1];
+                        const avg = ortho * 0.20 + diag * 0.05;
+                        let next = (avg * 2.0 - hPrev[idx]) * rowDamping;
+                        if (Math.abs(next) < 0.00006) next = 0.0;
+                        hPrev[idx] = next;
+                    }
+                }
+
+                // Swap hCurr and hPrev so hCurr holds the newest wave heights
+                const tmp = hCurr;
+                hCurr = hPrev;
+                hPrev = tmp;
+
+                // 2. Single-pass spatial smoothing into hSmooth + crisp gradient extraction
+                for (let y = 1; y < SIM_H - 1; y++) {
+                    const row = y * SIM_W;
+                    const rowUp = row - SIM_W;
+                    const rowDn = row + SIM_W;
+                    for (let x = 1; x < SIM_W - 1; x++) {
+                        const idx = row + x;
+                        hSmooth[idx] = hCurr[idx] * 0.42 +
+                            (hCurr[idx - 1] + hCurr[idx + 1] + hCurr[rowUp + x] + hCurr[rowDn + x]) * 0.105 +
+                            (hCurr[rowUp + x - 1] + hCurr[rowUp + x + 1] + hCurr[rowDn + x - 1] + hCurr[rowDn + x + 1]) * 0.04;
+                    }
+                }
+
+                for (let y = 1; y < SIM_H - 1; y++) {
+                    const row = y * SIM_W;
+                    const rowUp = row - SIM_W;
+                    const rowDn = row + SIM_W;
+                    for (let x = 1; x < SIM_W - 1; x++) {
+                        const idx = row + x;
+                        const dx = (hSmooth[idx + 1] - hSmooth[idx - 1]) * 2.35;
+                        const dy = (hSmooth[rowDn + x] - hSmooth[rowUp + x]) * 2.35;
+                        const hVal = hSmooth[idx];
+
+                        const pIdx = idx * 4;
+                        waveTexData[pIdx]     = Math.max(0, Math.min(255, Math.round(128 + dx * 127)));
+                        waveTexData[pIdx + 1] = Math.max(0, Math.min(255, Math.round(128 + dy * 127)));
+                        waveTexData[pIdx + 2] = Math.max(0, Math.min(255, Math.round(128 + hVal * 127)));
+                        waveTexData[pIdx + 3] = 255;
+                    }
+                }
+            }
+
+            // Compile WebGL Shaders
+            const vsSource = `
+                attribute vec2 a_pos;
+                varying vec2 v_uv;
+                void main() {
+                    v_uv = vec2(a_pos.x * 0.5 + 0.5, 0.5 - a_pos.y * 0.5);
+                    gl_Position = vec4(a_pos, 0.0, 1.0);
+                }
+            `;
+
+            const fsSource = `
+                precision highp float;
+                varying vec2 v_uv;
+                uniform sampler2D u_bgTex;
+                uniform sampler2D u_waveTex;
+                uniform vec2 u_resolution;
+                uniform float u_time;
+
+                // Distance from point p to line segment a-b
+                float sdSegment(vec2 p, vec2 a, vec2 b) {
+                    vec2 pa = p - a;
+                    vec2 ba = b - a;
+                    float h = clamp(dot(pa, ba) / dot(ba, ba), 0.0, 1.0);
+                    return length(pa - ba * h);
+                }
+
+                // Combined water mask:
+                // 1) Fades smoothly to 0.0 right at the horizontal neon line (y = 0.445)
+                // 2) Anchors the entire gloved hand, fingers, thumb, wristband, and sleeve at 0.0
+                float getWaterMask(vec2 uv) {
+                    // Fade out ripple approaching the horizontal neon line at y = 0.445 and end completely there
+                    float puddleWeight = smoothstep(0.445, 0.535, uv.y);
+
+                    // Multi-capsule SDF hugging the sleeve, red wristband, leather palm, thumb, and submerged fingertips
+                    float dSleeve = sdSegment(uv, vec2(0.590, 0.420), vec2(0.840, 0.000)) - 0.095;
+                    float dPalm   = sdSegment(uv, vec2(0.525, 0.505), vec2(0.605, 0.415)) - 0.052;
+                    float dIndex  = sdSegment(uv, vec2(0.462, 0.553), vec2(0.535, 0.485)) - 0.024;
+                    float dMiddle = sdSegment(uv, vec2(0.495, 0.562), vec2(0.535, 0.500)) - 0.023;
+                    float dThumb  = sdSegment(uv, vec2(0.568, 0.573), vec2(0.602, 0.475)) - 0.025;
+
+                    float dHand = min(min(dSleeve, dPalm), min(min(dIndex, dMiddle), dThumb));
+                    float handMask = smoothstep(0.0, 0.026, dHand);
+
+                    return puddleWeight * handMask;
+                }
+
+                void main() {
+                    // Sample smoothed wave normal & height from simulation texture
+                    vec4 wave = texture2D(u_waveTex, v_uv);
+                    vec2 normal = (wave.rg - vec2(128.0 / 255.0)) * 2.0;
+
+                    // Map screen v_uv to background-size: contain coordinates (1.6857 aspect ratio)
+                    float screenAspect = u_resolution.x / max(u_resolution.y, 1.0);
+                    float imgAspect = 1.685689;
+                    vec2 scale = vec2(1.0);
+                    if (screenAspect > imgAspect) {
+                        scale.x = screenAspect / imgAspect;
+                    } else {
+                        scale.y = imgAspect / screenAspect;
+                    }
+                    vec2 imgUV = (v_uv - 0.5) * scale + 0.5;
+
+                    // Black letterbox outside the contained image bounds
+                    if (imgUV.x < 0.0 || imgUV.x > 1.0 || imgUV.y < 0.0 || imgUV.y > 1.0) {
+                        gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+                        return;
+                    }
+
+                    // Compute water mask (0.0 above the horizontal neon line and 0.0 on the gloved hand)
+                    float waterMask = getWaterMask(imgUV);
+
+                    // Organic idle liquid breathing across the iridescent oil slick
+                    vec2 ambientRipple = vec2(
+                        sin(imgUV.y * 26.0 + u_time * 1.25 + imgUV.x * 8.0),
+                        cos(imgUV.x * 20.0 - u_time * 1.00 + imgUV.y * 12.0)
+                    ) * 0.00085 * waterMask;
+
+                    // Rich, hypnotic v12 liquid-mercury displacement scaled strictly by waterMask
+                    vec2 rawDisp = normal * vec2(0.034, 0.046) * waterMask + ambientRipple;
+
+                    // Prevent ripples right next to the fingers from sampling pixels out of the anchored black leather glove
+                    float targetMask = getWaterMask(clamp(imgUV + rawDisp, 0.001, 0.999));
+                    float safeMask = waterMask * smoothstep(0.0, 0.35, targetMask);
+                    vec2 disp = rawDisp * smoothstep(0.0, 0.35, targetMask);
+
+                    // Chromatic prism split on wave slopes
+                    vec2 uvR = clamp(imgUV + disp * 1.06, 0.001, 0.999);
+                    vec2 uvG = clamp(imgUV + disp * 1.00, 0.001, 0.999);
+                    vec2 uvB = clamp(imgUV + disp * 0.94, 0.001, 0.999);
+
+                    float r = texture2D(u_bgTex, uvR).r;
+                    float g = texture2D(u_bgTex, uvG).g;
+                    float b = texture2D(u_bgTex, uvB).b;
+                    vec3 color = vec3(r, g, b);
+
+                    // Iridescent cyan / molten-amber / wristband-magenta specular caustic rim (strictly inside waterMask)
+                    float slopeMag = length(normal);
+                    vec2 lightDir = normalize(vec2(-0.45, -0.75));
+                    float spec = max(0.0, dot(normal, lightDir));
+                    float rimHighlight = (pow(spec, 2.3) * 0.20 + slopeMag * 0.065) * safeMask;
+
+                    vec3 iridescentTint = mix(
+                        vec3(0.0, 0.898, 1.0),
+                        vec3(1.0, 0.718, 0.012),
+                        clamp(normal.x * 2.5 + 0.5, 0.0, 1.0)
+                    );
+                    iridescentTint = mix(
+                        iridescentTint,
+                        vec3(1.0, 0.0, 0.467),
+                        clamp(normal.y * 2.5 + 0.5, 0.0, 1.0) * 0.45
+                    );
+
+                    color += iridescentTint * rimHighlight;
+                    color += vec3(0.85, 0.96, 1.0) * pow(spec, 4.2) * 0.13 * safeMask;
+
+                    gl_FragColor = vec4(color, 1.0);
+                }
+            `;
+
+            function compileShader(type, source) {
+                const s = gl.createShader(type);
+                gl.shaderSource(s, source);
+                gl.compileShader(s);
+                if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
+                    console.error('Shader compile error:', gl.getShaderInfoLog(s));
+                    gl.deleteShader(s);
+                    return null;
+                }
                 return s;
             }
 
-            const gasSprites = [
-                createGasSprite(255, 183, 3),   // 0: Molten Amber Gold (#FFB703)
-                createGasSprite(0, 229, 255),   // 1: Electric Petrol Cyan (#00E5FF)
-                createGasSprite(0, 255, 136),   // 2: Bioluminescent Mint (#00FF88)
-                createGasSprite(255, 0, 119)    // 3: Radioactive Wristband Pink (#FF0077)
-            ];
+            const vs = compileShader(gl.VERTEX_SHADER, vsSource);
+            const fs = compileShader(gl.FRAGMENT_SHADER, fsSource);
+            const prog = gl.createProgram();
+            gl.attachShader(prog, vs);
+            gl.attachShader(prog, fs);
+            gl.linkProgram(prog);
 
-            // Map normalized image coordinates (3840x2278 = 1.6857 aspect, background-size: contain) to canvas pixels
-            function imgToCanvas(ix, iy) {
-                const screenAspect = cw / Math.max(ch, 1);
-                const imgAspect = 1.6857;
-                let drawW = cw;
-                let drawH = ch;
-                if (screenAspect > imgAspect) {
-                    drawH = ch;
-                    drawW = ch * imgAspect;
-                } else {
-                    drawW = cw;
-                    drawH = cw / imgAspect;
-                }
-                const offsetX = (cw - drawW) * 0.5;
-                const offsetY = (ch - drawH) * 0.5;
-                return {
-                    x: offsetX + ix * drawW,
-                    y: offsetY + iy * drawH,
-                    scale: drawW / 960
+            if (gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+                gl.useProgram(prog);
+
+                // Fullscreen quad
+                const quadBuf = gl.createBuffer();
+                gl.bindBuffer(gl.ARRAY_BUFFER, quadBuf);
+                gl.bufferData(
+                    gl.ARRAY_BUFFER,
+                    new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]),
+                    gl.STATIC_DRAW
+                );
+
+                const aPosLoc = gl.getAttribLocation(prog, 'a_pos');
+                gl.enableVertexAttribArray(aPosLoc);
+                gl.vertexAttribPointer(aPosLoc, 2, gl.FLOAT, false, 0, 0);
+
+                const uBgTexLoc = gl.getUniformLocation(prog, 'u_bgTex');
+                const uWaveTexLoc = gl.getUniformLocation(prog, 'u_waveTex');
+                const uResLoc = gl.getUniformLocation(prog, 'u_resolution');
+                const uTimeLoc = gl.getUniformLocation(prog, 'u_time');
+
+                // Create Texture 0: Background Puddle Master Image
+                const bgTex = gl.createTexture();
+                gl.activeTexture(gl.TEXTURE0);
+                gl.bindTexture(gl.TEXTURE_2D, bgTex);
+                gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+                gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+                gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+                gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+                gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array([6, 9, 14, 255]));
+
+                let bgLoaded = false;
+                const hdImg = new Image();
+                hdImg.onload = () => {
+                    try {
+                        gl.activeTexture(gl.TEXTURE0);
+                        gl.bindTexture(gl.TEXTURE_2D, bgTex);
+                        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, hdImg);
+                        bgLoaded = true;
+                        canvas.style.opacity = '1';
+                    } catch (err) {
+                        console.warn('WebGL texImage2D fallback:', err);
+                    }
+
+                    // Upgrade to 4K master plate silently in the background when served over HTTP/HTTPS
+                    if (window.location.protocol !== 'file:') {
+                        const img4k = new Image();
+                        img4k.onload = () => {
+                            gl.activeTexture(gl.TEXTURE0);
+                            gl.bindTexture(gl.TEXTURE_2D, bgTex);
+                            gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img4k);
+                        };
+                        img4k.src = 'WEBSITE_MEDIA/lignite-argon-puddle-v2-4k.jpg';
+                    }
                 };
-            }
 
-            // Initialize 28 briskly billowing Argon gas plumes & rising vapor wisps
-            const NUM_PLUMES = 28;
-            const plumes = [];
-
-            function resetPlume(p, randomizeAge = false) {
-                // Spawn along the iridescent yellow-to-magenta puddle slick & around the submerged fingertips
-                const zone = Math.random();
-                if (zone < 0.52) {
-                    // Main bright yellow pool streaming briskly right toward the gloved hand
-                    p.ix = 0.24 + Math.random() * 0.14;
-                    p.iy = 0.56 + (Math.random() - 0.5) * 0.08;
-                    p.vx = 0.065 + Math.random() * 0.065;
-                    p.vy = -0.025 - Math.random() * 0.038; // visible rising vapor curl
-                    p.spriteIdx = Math.random() < 0.6 ? 0 : 1; // Amber & Cyan core
-                } else if (zone < 0.82) {
-                    // Fingertip nexus & cyan/magenta swirl zone
-                    p.ix = 0.40 + Math.random() * 0.16;
-                    p.iy = 0.55 + (Math.random() - 0.5) * 0.10;
-                    p.vx = 0.032 + (Math.random() - 0.30) * 0.055;
-                    p.vy = -0.042 - Math.random() * 0.052; // brisk rising Argon mist past the hand
-                    p.spriteIdx = Math.random() < 0.55 ? 1 : (Math.random() < 0.5 ? 2 : 3);
+                if (window.location.protocol === 'file:') {
+                    const inlineScript = document.createElement('script');
+                    inlineScript.src = 'WEBSITE_MEDIA/puddle-plate-inline.js';
+                    inlineScript.onload = () => {
+                        if (window.__PUDDLE_HD_DATA_URI) {
+                            hdImg.src = window.__PUDDLE_HD_DATA_URI;
+                        }
+                    };
+                    document.head.appendChild(inlineScript);
                 } else {
-                    // Foreground lower amber-cyan crescent mist
-                    p.ix = 0.28 + Math.random() * 0.28;
-                    p.iy = 0.64 + (Math.random() - 0.5) * 0.07;
-                    p.vx = 0.025 + (Math.random() - 0.25) * 0.048;
-                    p.vy = -0.020 - Math.random() * 0.032;
-                    p.spriteIdx = Math.random() < 0.5 ? 0 : 2;
+                    hdImg.src = 'WEBSITE_MEDIA/lignite-argon-puddle-v2-hd.jpg?v=8';
                 }
 
-                p.life = 1.6 + Math.random() * 1.8;
-                p.age = randomizeAge ? Math.random() * p.life : 0.0;
-                p.rx = 60 + Math.random() * 88;   // Horizontal cloud spread
-                p.ry = 22 + Math.random() * 38;   // Vertical perspective-flattened mist height
-                p.phase = Math.random() * Math.PI * 2;
-                p.swirlFreq = 2.4 + Math.random() * 2.2;
-                p.maxAlpha = 0.26 + Math.random() * 0.28;
-                return p;
-            }
+                // Create Texture 1: Wave Normal & Height Map
+                for (let i = 0; i < SIM_SIZE * 4; i += 4) {
+                    waveTexData[i] = 128;
+                    waveTexData[i + 1] = 128;
+                    waveTexData[i + 2] = 128;
+                    waveTexData[i + 3] = 255;
+                }
+                const waveTex = gl.createTexture();
+                gl.activeTexture(gl.TEXTURE1);
+                gl.bindTexture(gl.TEXTURE_2D, waveTex);
+                gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+                gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+                gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+                gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+                gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, SIM_W, SIM_H, 0, gl.RGBA, gl.UNSIGNED_BYTE, waveTexData);
 
-            for (let i = 0; i < NUM_PLUMES; i++) {
-                plumes.push(resetPlume({}, true));
-            }
+                gl.uniform1i(uBgTexLoc, 0);
+                gl.uniform1i(uWaveTexLoc, 1);
 
-            let lastTimeSec = performance.now() * 0.001;
-
-            function renderGas(nowMs) {
-                requestAnimationFrame(renderGas);
-
-                if (document.hidden) return;
-                const modalEl = document.getElementById('archive-modal');
-                if (modalEl && modalEl.classList.contains('active')) return;
-
-                const nowSec = nowMs * 0.001;
-                const dt = Math.min(0.05, Math.max(0.001, nowSec - lastTimeSec));
-                lastTimeSec = nowSec;
-                const elapsed = nowSec - shaderStartTime;
-
-                ctx.clearRect(0, 0, cw, ch);
-                ctx.globalCompositeOperation = 'lighter';
-
-                // 1. Render billowing, curling Argon gas clouds & rising vapor wisps
-                for (let i = 0; i < NUM_PLUMES; i++) {
-                    const p = plumes[i];
-                    p.age += dt;
-                    if (p.age >= p.life) {
-                        resetPlume(p, false);
+                function resizeGL() {
+                    const dpr = Math.min(window.devicePixelRatio || 1, 2.0);
+                    const w = Math.max(1, Math.floor((canvas.clientWidth || window.innerWidth) * dpr));
+                    const h = Math.max(1, Math.floor((canvas.clientHeight || window.innerHeight) * dpr));
+                    if (canvas.width !== w || canvas.height !== h) {
+                        canvas.width = w;
+                        canvas.height = h;
+                        gl.viewport(0, 0, w, h);
                     }
+                }
+                window.addEventListener('resize', resizeGL);
+                resizeGL();
 
-                    const progress = p.age / p.life;
-                    // Smooth fade-in and long vapor fade-out
-                    const fadeIn = Math.min(1.0, progress * 3.5);
-                    const fadeOut = 1.0 - Math.pow(progress, 1.5);
-                    const alpha = fadeIn * fadeOut * p.maxAlpha;
+                // Seed a welcoming ripple in the puddle just off the submerged gloved fingertips on load
+                dropRipple(0.455, 0.595, 13.5, 0.32);
 
-                    // Active sinusoidal curl & mouse wake breeze
-                    const waveX = Math.sin(elapsed * p.swirlFreq + p.phase) * 0.024;
-                    const waveY = Math.cos(elapsed * (p.swirlFreq * 0.8) + p.phase) * 0.016;
-                    p.ix += (p.vx + waveX) * dt;
-                    p.iy += (p.vy + waveY) * dt;
+                const startTime = performance.now() * 0.001;
 
-                    // Subtle mouse interaction: cursor parts and swirls nearby Argon gas
-                    const dxM = p.ix - mouseNorm.x;
-                    const dyM = p.iy - mouseNorm.y;
-                    const distM2 = dxM * dxM + dyM * dyM;
-                    if (distM2 < 0.032 && distM2 > 0.00001) {
-                        const push = (0.032 - distM2) * 1.35 * dt;
-                        p.ix += (dxM / Math.sqrt(distM2)) * push;
-                        p.iy += (dyM / Math.sqrt(distM2)) * push * 0.6;
-                    }
+                function renderLoop(nowMs) {
+                    requestAnimationFrame(renderLoop);
+                    if (document.hidden || !bgLoaded) return;
+                    const modalEl = document.getElementById('archive-modal');
+                    if (modalEl && modalEl.classList.contains('active')) return;
 
-                    const pt = imgToCanvas(p.ix, p.iy);
-                    // Clouds expand and rise as they evaporate
-                    const growth = 0.80 + progress * 0.75;
-                    const w = p.rx * growth * pt.scale * 2.0;
-                    const h = (p.ry + progress * 28.0) * growth * pt.scale * 2.0;
+                    const elapsed = nowMs * 0.001 - startTime;
+                    stepWaveSimulation(elapsed);
 
-                    ctx.globalAlpha = alpha;
-                    ctx.drawImage(gasSprites[p.spriteIdx], pt.x - w * 0.5, pt.y - h * 0.5, w, h);
+                    gl.activeTexture(gl.TEXTURE1);
+                    gl.bindTexture(gl.TEXTURE_2D, waveTex);
+                    gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, 0, SIM_W, SIM_H, gl.RGBA, gl.UNSIGNED_BYTE, waveTexData);
+
+                    gl.uniform2f(uResLoc, canvas.width, canvas.height);
+                    gl.uniform1f(uTimeLoc, elapsed);
+
+                    gl.drawArrays(gl.TRIANGLES, 0, 6);
                 }
 
-                ctx.globalAlpha = 1.0;
+                requestAnimationFrame(renderLoop);
             }
-
-            requestAnimationFrame(renderGas);
         }
     }
 
