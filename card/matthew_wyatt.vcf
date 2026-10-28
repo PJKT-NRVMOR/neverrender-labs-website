@@ -1,11 +1,11 @@
 BEGIN:VCARD
 VERSION:3.0
-N:Wyatt;Matthew;;;
-FN:Matthew Wyatt
-ORG:Never Render Labs;
-TITLE:Digital Creator / Solo Operator
-TEL;TYPE=WORK,VOICE:4423039935
-EMAIL;TYPE=WORK,INTERNET:contact@neverrenderlabs.com
+N:Wyatt;Matthew;Cole;;
+FN:Matthew Cole Wyatt
+ORG:NeverRender Labs;
+TITLE:Creative Technologist & AI Systems Architect
+TEL;TYPE=WORK,VOICE:7603100706
+EMAIL;TYPE=WORK,INTERNET:creator@renderwithoutcode.com
 URL:https://renderwithoutcode.com
-NOTE:No Code. No Pulp. All Pixels. Zero B.S. | @neverrenderlabs
+NOTE:No Code. No Pulp. All Pixels. Zero B.S. | https://renderwithoutcode.com/resume.html | @NeverRenderLabs
 END:VCARD
