@@ -200,7 +200,7 @@
         }
 
         /* ==================================================== */
-        /* 🖨️ STRICT HIGH-CONTRAST 8-BIT PRINT ENGINE           */
+        /* 🖨️ DEEP OBSIDIAN + TRINITY ACCENT PRINT ENGINE      */
         /* ==================================================== */
         @media print {
             .no-print { display: none !important; }
@@ -208,62 +208,74 @@
             body { 
                 background: #ffffff !important; 
                 background-image: none !important;
-                color: #000000 !important; 
+                color: #0b0e1e !important; 
                 padding: 0 !important;
                 margin: 0 !important;
             }
 
             .term-box { 
                 background: #ffffff !important; 
-                border: 2px solid #000000 !important; 
-                box-shadow: 3px 3px 0px #000000 !important;
-                color: #000000 !important; 
+                border: 1.5px solid #0b0e1e !important; 
+                box-shadow: 3px 3px 0px #0b0e1e !important;
+                color: #0b0e1e !important; 
                 break-inside: avoid !important;
                 page-break-inside: avoid !important;
                 margin-bottom: 1rem !important;
                 padding: 1.25rem !important;
             }
 
-            .term-box::before, .term-box::after {
-                border-color: #000000 !important;
+            .term-box::before {
+                border-top: 3px solid #0090b8 !important;
+                border-left: 3px solid #0090b8 !important;
                 box-shadow: none !important;
             }
 
-            h1, h2, h3, h4, strong, .text-white { 
-                color: #000000 !important; 
+            .term-box::after {
+                border-bottom: 3px solid #d416b8 !important;
+                border-right: 3px solid #d416b8 !important;
+                box-shadow: none !important;
+            }
+
+            h1, h3, h4, strong, .text-white { 
+                color: #0b0e1e !important; 
+                text-shadow: none !important;
+            }
+
+            h2 {
+                color: #d416b8 !important;
                 text-shadow: none !important;
             }
 
             p, span, li, .text-slate-300, .text-slate-400 { 
-                color: #1e293b !important; 
+                color: #171d33 !important; 
                 text-shadow: none !important;
             }
 
             .bg-slate-900\/60,
             .bg-slate-900\/50,
             .bg-slate-950\/80 {
-                background: #f8fafc !important;
-                border: 1px solid #94a3b8 !important;
+                background: #f6f9fe !important;
+                border: 1px solid #0090b8 !important;
             }
 
             .pixel-chip {
-                background: #ffffff !important;
-                border: 1.5px solid #000000 !important;
-                box-shadow: 1.5px 1.5px 0px #000000 !important;
-                color: #000000 !important;
+                background: #f6f9fe !important;
+                border: 1.5px solid #0090b8 !important;
+                box-shadow: 1.5px 1.5px 0px #0b0e1e !important;
+                color: #0b0e1e !important;
             }
 
             .pixel-badge {
-                border-color: #000000 !important;
-                box-shadow: 1.5px 1.5px 0px #000000 !important;
-                color: #000000 !important;
-                background: #f1f5f9 !important;
+                border-color: #d416b8 !important;
+                box-shadow: 1.5px 1.5px 0px #0b0e1e !important;
+                color: #d416b8 !important;
+                background: #fbf7fe !important;
             }
 
             .tagline-box {
-                background: #f1f5f9 !important;
-                border: 1.5px dashed #000000 !important;
-                color: #000000 !important;
+                background: #fbf7fe !important;
+                border: 1.5px dashed #6e2cd8 !important;
+                color: #0b0e1e !important;
             }
 
             @page {
@@ -300,6 +312,11 @@
                 </button>
 
                 <div class="h-4 w-px bg-slate-800 mx-1 hidden sm:block"></div>
+
+                <!-- Direct Vector PDF Download -->
+                <a href="Matthew_Cole_Wyatt_NeverRender_Labs_Resume.pdf" download class="px-3 py-1 bg-[#12162f] hover:bg-fuchsia-950 text-fuchsia-300 border border-crt-magenta/60 rounded transition flex items-center gap-1.5 font-pixel text-[8px] font-bold shadow-[2px_2px_0px_#000]">
+                    <span>⬇ STUDIO PDF</span>
+                </a>
 
                 <!-- Export PDF / Print Button -->
                 <button onclick="printResume()" class="px-3.5 py-1 bg-gradient-to-r from-fuchsia-600 to-cyan-500 hover:from-fuchsia-500 hover:to-cyan-400 text-white rounded transition flex items-center gap-1.5 font-pixel text-[8px] font-bold shadow-[2px_2px_0px_#000]">
@@ -339,8 +356,8 @@
                         <span class="text-crt-magenta font-bold font-pixel text-[8px]">&gt; PHONE:</span>
                         <a href="tel:7603100706" class="hover:text-crt-accent font-bold transition">760.310.0706</a>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <span class="text-crt-magenta font-bold font-pixel text-[8px]">&gt; EMAIL:</span>
+                    <div class="flex items-center gap-2 whitespace-nowrap">
+                        <span class="text-crt-magenta font-bold font-pixel text-[8px] shrink-0">&gt; EMAIL:</span>
                         <a href="mailto:creator@renderwithoutcode.com" class="hover:text-crt-accent underline decoration-cyan-500/40 transition">
                             creator@renderwithoutcode.com
                         </a>
