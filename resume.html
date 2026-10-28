@@ -23,14 +23,14 @@
                     },
                     colors: {
                         crt: {
-                            bg: '#080a0f',
-                            panel: '#10141e',
-                            border: '#1e293b',
-                            accent: '#00f0ff',
-                            amber: '#ffb300',
-                            magenta: '#ff0055',
-                            purple: '#1a0a2a',
-                            green: '#34d399',
+                            bg: '#05060d',
+                            panel: '#0b0e1c',
+                            border: '#1e2642',
+                            accent: '#00e5ff',
+                            magenta: '#ff2ae5',
+                            violet: '#b845ff',
+                            purple: '#160b2e',
+                            cyan: '#38bdf8',
                             dim: '#64748b'
                         }
                     }
@@ -47,63 +47,42 @@
             color-adjust: exact !important;
         }
 
-        /* Base Dark CRT Theme */
+        /* Base Agent Trinity // Gemini 4 Argon Theme (Zero CRT Lines) */
         body {
-            background-color: #06080c;
-            color: #e2e8f0;
+            background-color: #05060d;
+            background-image:
+                radial-gradient(circle at 16% 18%, rgba(255, 42, 229, 0.13) 0%, transparent 42%),
+                radial-gradient(circle at 84% 22%, rgba(0, 229, 255, 0.15) 0%, transparent 46%),
+                radial-gradient(circle at 50% 85%, rgba(168, 85, 247, 0.10) 0%, transparent 50%),
+                linear-gradient(180deg, #04050b 0%, #080a17 50%, #05060d 100%);
+            background-attachment: fixed;
+            color: #e6f0ff;
             font-family: 'Space Grotesk', sans-serif;
             overflow-x: hidden;
             transition: background-color 0.2s ease, color 0.2s ease;
         }
 
-        /* Scanline Overlay Effect */
-        .crt-scanlines::before {
-            content: " ";
-            display: block;
-            position: fixed;
-            top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-            z-index: 50;
-            background-size: 100% 4px, 6px 100%;
-            pointer-events: none;
-            opacity: 0.85;
-            transition: opacity 0.3s ease;
+        /* Holographic Neon Text Glows (Agent Trinity Palette) */
+        .glow-cyan {
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.6), 0 0 22px rgba(0, 229, 255, 0.25);
+        }
+        .glow-magenta {
+            text-shadow: 0 0 10px rgba(255, 42, 229, 0.65), 0 0 24px rgba(255, 42, 229, 0.3);
+        }
+        .glow-violet {
+            text-shadow: 0 0 10px rgba(184, 69, 255, 0.6), 0 0 22px rgba(184, 69, 255, 0.25);
         }
 
-        .crt-scanlines.crt-high::before {
-            background-size: 100% 3px, 3px 100%;
-            opacity: 1;
-        }
-
-        .crt-scanlines.crt-off::before {
-            display: none !important;
-        }
-
-        @keyframes subtle-flicker {
-            0% { opacity: 0.992; }
-            50% { opacity: 1; }
-            52% { opacity: 0.985; }
-            54% { opacity: 1; }
-            80% { opacity: 0.995; }
-            100% { opacity: 0.992; }
-        }
-
-        .crt-flicker {
-            animation: subtle-flicker 0.15s infinite;
-        }
-
-        /* Phosphor Text Glows */
-        .glow-cyan { text-shadow: 0 0 8px rgba(0, 240, 255, 0.55); }
-        .glow-amber { text-shadow: 0 0 8px rgba(255, 179, 0, 0.55); }
-        .glow-pink { text-shadow: 0 0 8px rgba(255, 0, 85, 0.55); }
-        .glow-green { text-shadow: 0 0 8px rgba(52, 211, 153, 0.55); }
-
-        /* 8-Bit Pixelated Containers (Dark Mode) */
+        /* Holographic HUD Containers (Dark Mode) */
         .term-box {
             position: relative;
-            background: rgba(16, 20, 30, 0.85);
-            border: 2px solid #1e293b;
-            box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.8);
+            background: linear-gradient(135deg, rgba(11, 15, 31, 0.92) 0%, rgba(15, 12, 34, 0.88) 100%);
+            border: 1.5px solid rgba(56, 189, 248, 0.28);
+            box-shadow:
+                0 0 24px rgba(0, 229, 255, 0.07),
+                inset 0 0 18px rgba(255, 42, 229, 0.04),
+                4px 4px 0px rgba(2, 3, 8, 0.9);
+            backdrop-filter: blur(10px);
             transition: all 0.2s ease;
         }
 
@@ -111,18 +90,20 @@
             content: '';
             position: absolute;
             top: -2px; left: -2px;
-            width: 8px; height: 8px;
-            border-top: 3px solid #00f0ff;
-            border-left: 3px solid #00f0ff;
+            width: 10px; height: 10px;
+            border-top: 3px solid #00e5ff;
+            border-left: 3px solid #00e5ff;
+            box-shadow: -2px -2px 8px rgba(0, 229, 255, 0.55);
         }
 
         .term-box::after {
             content: '';
             position: absolute;
             bottom: -2px; right: -2px;
-            width: 8px; height: 8px;
-            border-bottom: 3px solid #ff0055;
-            border-right: 3px solid #ff0055;
+            width: 10px; height: 10px;
+            border-bottom: 3px solid #ff2ae5;
+            border-right: 3px solid #ff2ae5;
+            box-shadow: 2px 2px 8px rgba(255, 42, 229, 0.55);
         }
 
         /* 8-Bit Pixel Badges */
@@ -142,10 +123,10 @@
         .pixel-chip {
             font-family: 'VT323', monospace;
             font-size: 16px;
-            background: rgba(15, 23, 42, 0.8);
-            border: 2px solid #334155;
-            box-shadow: 2px 2px 0px #0f172a;
-            padding: 2px 8px;
+            background: rgba(12, 16, 36, 0.9);
+            border: 1.5px solid rgba(56, 189, 248, 0.35);
+            box-shadow: 2px 2px 0px rgba(3, 5, 14, 0.95);
+            padding: 2px 9px;
             display: inline-block;
         }
 
@@ -154,11 +135,8 @@
         /* ==================================================== */
         body.light-theme {
             background-color: #f3f5fa;
+            background-image: none;
             color: #0f172a;
-        }
-
-        body.light-theme .crt-scanlines::before {
-            display: none !important;
         }
 
         body.light-theme .term-box {
@@ -169,19 +147,20 @@
         }
 
         body.light-theme .term-box::before {
-            border-top: 3px solid #008ba3;
-            border-left: 3px solid #008ba3;
+            border-top: 3px solid #0284c7;
+            border-left: 3px solid #0284c7;
+            box-shadow: none;
         }
 
         body.light-theme .term-box::after {
-            border-bottom: 3px solid #d90452;
-            border-right: 3px solid #d90452;
+            border-bottom: 3px solid #c026d3;
+            border-right: 3px solid #c026d3;
+            box-shadow: none;
         }
 
         body.light-theme .glow-cyan,
-        body.light-theme .glow-amber,
-        body.light-theme .glow-pink,
-        body.light-theme .glow-green {
+        body.light-theme .glow-magenta,
+        body.light-theme .glow-violet {
             text-shadow: none !important;
         }
 
@@ -202,7 +181,7 @@
 
         body.light-theme .bg-slate-900\/60,
         body.light-theme .bg-slate-900\/50,
-        body.light-theme .bg-slate-950\/60 {
+        body.light-theme .bg-slate-950\/80 {
             background-color: #f8fafc !important;
             border-color: #cbd5e1 !important;
         }
@@ -215,9 +194,9 @@
         }
 
         body.light-theme .tagline-box {
-            background-color: #e0f2fe !important;
-            border: 2px dashed #0284c7 !important;
-            color: #0369a1 !important;
+            background-color: #f5f3ff !important;
+            border: 2px dashed #9333ea !important;
+            color: #4c1d95 !important;
         }
 
         /* ==================================================== */
@@ -228,13 +207,10 @@
             
             body { 
                 background: #ffffff !important; 
+                background-image: none !important;
                 color: #000000 !important; 
                 padding: 0 !important;
                 margin: 0 !important;
-            }
-
-            .crt-scanlines::before { 
-                display: none !important; 
             }
 
             .term-box { 
@@ -250,6 +226,7 @@
 
             .term-box::before, .term-box::after {
                 border-color: #000000 !important;
+                box-shadow: none !important;
             }
 
             h1, h2, h3, h4, strong, .text-white { 
@@ -264,7 +241,7 @@
 
             .bg-slate-900\/60,
             .bg-slate-900\/50,
-            .bg-slate-950\/60 {
+            .bg-slate-950\/80 {
                 background: #f8fafc !important;
                 border: 1px solid #94a3b8 !important;
             }
@@ -296,20 +273,20 @@
         }
     </style>
 </head>
-<body class="crt-scanlines crt-flicker antialiased min-h-screen py-4 sm:py-8 px-2 sm:px-6 md:px-12">
+<body class="antialiased min-h-screen py-4 sm:py-8 px-2 sm:px-6 md:px-12">
 
     <!-- Top Control Bar (Hidden on Print) -->
     <header class="max-w-5xl mx-auto mb-6 no-print">
-        <div class="flex flex-wrap items-center justify-between gap-4 p-3 bg-slate-900/90 border-2 border-slate-800 rounded-lg text-xs font-mono shadow-[4px_4px_0px_rgba(0,0,0,0.5)]">
+        <div class="flex flex-wrap items-center justify-between gap-4 p-3 bg-[#090c1a]/90 border-2 border-cyan-500/30 rounded-lg text-xs font-mono shadow-[0_0_20px_rgba(0,229,255,0.12)]">
             <div class="flex flex-wrap items-center gap-3">
-                <a href="index.html" class="px-2.5 py-1 bg-rose-950/60 hover:bg-rose-900 border border-rose-500 text-rose-300 font-pixel text-[8px] transition shadow-[2px_2px_0px_#000]">
+                <a href="index.html" class="px-2.5 py-1 bg-fuchsia-950/70 hover:bg-fuchsia-900 border border-crt-magenta text-fuchsia-200 font-pixel text-[8px] transition shadow-[2px_2px_0px_#000]">
                     ◄ TERMINAL
                 </a>
-                <span class="pixel-badge text-emerald-400 border-emerald-500 bg-emerald-950/40">
-                    <span class="w-2 h-2 rounded-none bg-emerald-400 animate-pulse"></span>
-                    LVL 99 // ACTIVE
+                <span class="pixel-badge text-crt-accent border-crt-accent bg-cyan-950/40">
+                    <span class="w-2 h-2 rounded-none bg-crt-accent animate-pulse"></span>
+                    AGENT TRINITY // ARGON ACTIVE
                 </span>
-                <a href="front-desk.html" class="hidden sm:inline-flex items-center gap-1 font-pixel text-[8px] text-sky-400 hover:text-amber-400 transition">
+                <a href="front-desk.html" class="hidden sm:inline-flex items-center gap-1 font-pixel text-[8px] text-fuchsia-300 hover:text-crt-accent transition">
                     ⚡ 24/7 AI FRONT DESK
                 </a>
             </div>
@@ -317,20 +294,15 @@
             <!-- Theme & Print Controls -->
             <div class="flex flex-wrap items-center gap-2">
                 <!-- Theme Toggle Button -->
-                <button onclick="toggleTheme()" id="btn-theme-toggle" class="px-3 py-1 rounded bg-sky-950 text-sky-300 border border-sky-700 font-bold transition flex items-center gap-1.5 shadow-[2px_2px_0px_#000]">
+                <button onclick="toggleTheme()" id="btn-theme-toggle" class="px-3 py-1 rounded bg-[#12162f] text-cyan-300 border border-cyan-500/40 font-bold transition flex items-center gap-1.5 shadow-[2px_2px_0px_#000]">
                     <span>🕹️ Theme:</span>
-                    <span id="theme-label" class="text-amber-400 font-pixel text-[8px]">DARK CRT</span>
-                </button>
-
-                <!-- CRT Scanline Intensity (Only for Dark Mode) -->
-                <button onclick="cycleCRT()" id="btn-crt-cycle" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 transition shadow-[2px_2px_0px_#000]">
-                    CRT: <span id="crt-label" class="text-sky-400 font-bold">Muted</span>
+                    <span id="theme-label" class="text-crt-magenta font-pixel text-[8px]">TRINITY // ARGON</span>
                 </button>
 
                 <div class="h-4 w-px bg-slate-800 mx-1 hidden sm:block"></div>
 
                 <!-- Export PDF / Print Button -->
-                <button onclick="printResume()" class="px-3.5 py-1 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded transition flex items-center gap-1.5 font-pixel text-[8px] font-bold shadow-[2px_2px_0px_#000]">
+                <button onclick="printResume()" class="px-3.5 py-1 bg-gradient-to-r from-fuchsia-600 to-cyan-500 hover:from-fuchsia-500 hover:to-cyan-400 text-white rounded transition flex items-center gap-1.5 font-pixel text-[8px] font-bold shadow-[2px_2px_0px_#000]">
                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
                     PRINT / PDF
                 </button>
@@ -343,18 +315,18 @@
 
         <!-- Header Card -->
         <section class="term-box p-6 sm:p-8 rounded-none">
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b-2 border-slate-800 pb-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b-2 border-cyan-500/20 pb-6">
                 <div>
-                    <div class="font-pixel text-[9px] text-crt-amber glow-amber tracking-wider mb-2 flex flex-wrap items-center gap-2">
-                        <span class="text-crt-magenta">▶</span> SYSTEM_NODE: 01 // MATTHEW_COLE_WYATT
-                        <span class="ml-1 pixel-badge text-amber-400 border-amber-500 bg-amber-950/30 text-[8px]">★ GOOGLE LABS FEATURED</span>
+                    <div class="font-pixel text-[9px] text-crt-magenta glow-magenta tracking-wider mb-2 flex flex-wrap items-center gap-2">
+                        <span class="text-crt-accent">▶</span> SYSTEM_NODE: 01 // MATTHEW_COLE_WYATT
+                        <span class="ml-1 pixel-badge text-fuchsia-300 border-crt-magenta bg-fuchsia-950/40 text-[8px]">★ GOOGLE LABS FEATURED</span>
                     </div>
                     <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white glow-cyan font-sans">
                         Matthew Cole Wyatt
                     </h1>
                     <div class="text-base sm:text-lg font-mono text-crt-accent mt-1 flex flex-wrap items-center gap-2 font-bold">
                         <span>Agentic Systems Architect, Full-Stack E-Commerce Director &amp; Lead of Visual Synthesis</span>
-                        <span class="text-xs px-2 py-0.5 border border-crt-accent font-pixel text-[8px]">8-BIT SRE</span>
+                        <span class="text-xs px-2 py-0.5 border border-crt-magenta text-fuchsia-300 font-pixel text-[8px]">GEMINI 4 ARGON</span>
                     </div>
                     <p class="text-xs sm:text-sm text-slate-400 mt-2 font-mono">
                         Oceanside &amp; Rancho Santa Fe, CA | Remote &amp; Worldwide Operations
@@ -364,24 +336,24 @@
                 <!-- Contact Links & Verification HUD -->
                 <div class="font-mono text-xs space-y-2 text-slate-300">
                     <div class="flex items-center gap-2">
-                        <span class="text-crt-amber font-bold font-pixel text-[8px]">&gt; PHONE:</span>
+                        <span class="text-crt-magenta font-bold font-pixel text-[8px]">&gt; PHONE:</span>
                         <a href="tel:7603100706" class="hover:text-crt-accent font-bold transition">760.310.0706</a>
                     </div>
                     <div class="flex items-center gap-2">
-                        <span class="text-crt-amber font-bold font-pixel text-[8px]">&gt; EMAIL:</span>
-                        <a href="mailto:creator@renderwithoutcode.com" class="hover:text-crt-accent underline decoration-sky-500/40 transition">
+                        <span class="text-crt-magenta font-bold font-pixel text-[8px]">&gt; EMAIL:</span>
+                        <a href="mailto:creator@renderwithoutcode.com" class="hover:text-crt-accent underline decoration-cyan-500/40 transition">
                             creator@renderwithoutcode.com
                         </a>
                     </div>
                     <div class="flex items-center gap-2">
-                        <span class="text-crt-amber font-bold font-pixel text-[8px]">&gt; WEB:</span>
-                        <a href="https://renderwithoutcode.com/" target="_blank" rel="noopener" class="hover:text-crt-accent underline decoration-sky-500/40 transition">
+                        <span class="text-crt-magenta font-bold font-pixel text-[8px]">&gt; WEB:</span>
+                        <a href="https://renderwithoutcode.com/" target="_blank" rel="noopener" class="hover:text-crt-accent underline decoration-cyan-500/40 transition">
                             renderwithoutcode.com
                         </a>
                     </div>
                     <div class="flex items-center gap-2">
-                        <span class="text-crt-amber font-bold font-pixel text-[8px]">&gt; SOCIAL:</span>
-                        <a href="https://www.instagram.com/neverrenderlabs/" target="_blank" rel="noopener" class="hover:text-crt-accent underline decoration-sky-500/40 transition">
+                        <span class="text-crt-magenta font-bold font-pixel text-[8px]">&gt; SOCIAL:</span>
+                        <a href="https://www.instagram.com/neverrenderlabs/" target="_blank" rel="noopener" class="hover:text-crt-accent underline decoration-cyan-500/40 transition">
                             @NeverRenderLabs
                         </a>
                     </div>
@@ -389,38 +361,38 @@
             </div>
 
             <!-- Tagline Mission -->
-            <div class="tagline-box mt-6 font-mono text-xs sm:text-sm text-sky-200/90 bg-sky-950/40 p-4 border-2 border-sky-800/60 flex items-start gap-2.5">
-                <span class="font-pixel text-crt-amber text-[10px] mt-0.5">★</span>
+            <div class="tagline-box mt-6 font-mono text-xs sm:text-sm text-cyan-100/95 bg-gradient-to-r from-fuchsia-950/35 via-[#0d1329]/80 to-cyan-950/35 p-4 border-2 border-fuchsia-500/40 flex items-start gap-2.5">
+                <span class="font-pixel text-crt-magenta text-[10px] mt-0.5">★</span>
                 <span>"Over 15 years of mission-critical operations, secure logistics, and systems infrastructure paired with autonomous multi-agent AI orchestration, enterprise REST API automation, and real-time 3D/generative media synthesis. A Google Labs Featured technologist who builds cloud-decoupled, local-first pipelines and high-converting luxury commerce engines with 100% client data sovereignty."</span>
             </div>
 
             <!-- Active Tech Stack & Agentic Tooling Matrix -->
-            <div class="mt-5 pt-4 border-t border-slate-800/80 flex flex-wrap gap-2">
-                <span class="pixel-chip text-sky-300">Google Antigravity // Multi-Agent CLI</span>
-                <span class="pixel-chip text-amber-300">Gemini 4 Argon &amp; Flash</span>
-                <span class="pixel-chip text-emerald-300">Dual-Layer NotebookLM RAG</span>
-                <span class="pixel-chip text-pink-300">WooCommerce &amp; WP REST API v3</span>
-                <span class="pixel-chip text-sky-300">Omnisend API // E.164 SMS &amp; MMS</span>
-                <span class="pixel-chip text-amber-300">Meta Commerce &amp; Pixel Routing</span>
-                <span class="pixel-chip text-emerald-300">Python PIL // Homography CV</span>
-                <span class="pixel-chip text-pink-300">FLUX // Photoshop AI // OCIO LUTs</span>
-                <span class="pixel-chip text-sky-300">Unreal Engine 5 &amp; Blender</span>
+            <div class="mt-5 pt-4 border-t border-cyan-500/20 flex flex-wrap gap-2">
+                <span class="pixel-chip text-cyan-300">Google Antigravity IDE // Agent Trinity</span>
+                <span class="pixel-chip text-fuchsia-300">Gemini 4 Argon &amp; Flash</span>
+                <span class="pixel-chip text-purple-300">Dual-Layer NotebookLM RAG</span>
+                <span class="pixel-chip text-cyan-300">WooCommerce &amp; WP REST API v3</span>
+                <span class="pixel-chip text-fuchsia-300">Omnisend API // E.164 SMS &amp; MMS</span>
+                <span class="pixel-chip text-purple-300">Meta Commerce &amp; Pixel Routing</span>
+                <span class="pixel-chip text-cyan-300">Python PIL // Homography CV</span>
+                <span class="pixel-chip text-fuchsia-300">FLUX // Photoshop AI // OCIO LUTs</span>
+                <span class="pixel-chip text-purple-300">Unreal Engine 5 &amp; Blender</span>
                 <span class="pixel-chip text-slate-300">WireGuard VPN // Ryzen 6800U APU</span>
             </div>
         </section>
 
         <!-- Core Infrastructure & Technical Competencies -->
         <section class="term-box p-6 sm:p-8 rounded-none">
-            <h2 class="text-xs font-pixel text-crt-amber tracking-wider uppercase mb-6 flex items-center gap-2">
-                <span class="w-2.5 h-2.5 bg-amber-400 inline-block shadow-[1px_1px_0px_#000]"></span>
+            <h2 class="text-xs font-pixel text-crt-magenta glow-magenta tracking-wider uppercase mb-6 flex items-center gap-2">
+                <span class="w-2.5 h-2.5 bg-crt-magenta inline-block shadow-[0_0_8px_#ff2ae5]"></span>
                 Core Architectural Pillars
             </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                 <!-- Pillar 1: Agentic Commerce & CRM Systems -->
-                <div class="p-5 bg-slate-900/60 border-2 border-slate-800 rounded-none hover:border-amber-500/50 transition space-y-3">
-                    <div class="font-mono text-crt-amber text-sm font-bold flex items-center gap-2 pb-2 border-b border-slate-800">
-                        <span class="font-pixel text-[8px] text-amber-400">[01]</span> AGENTIC COMMERCE &amp; API AUTOMATION
+                <div class="p-5 bg-slate-900/60 border-2 border-fuchsia-500/30 rounded-none hover:border-crt-magenta transition space-y-3">
+                    <div class="font-mono text-fuchsia-300 text-sm font-bold flex items-center gap-2 pb-2 border-b border-fuchsia-500/20">
+                        <span class="font-pixel text-[8px] text-crt-magenta">[01]</span> AGENTIC COMMERCE &amp; API AUTOMATION
                     </div>
                     <ul class="text-slate-300 text-xs leading-relaxed font-sans space-y-2">
                         <li>• <strong class="text-white">Dual-Layer AI Concierge:</strong> Air-gapped public NotebookLM front desks paired with private operational intelligence vaults.</li>
@@ -431,9 +403,9 @@
                 </div>
 
                 <!-- Pillar 2: Generative AI & Media Systems -->
-                <div class="p-5 bg-slate-900/60 border-2 border-slate-800 rounded-none hover:border-pink-500/50 transition space-y-3">
-                    <div class="font-mono text-crt-magenta text-sm font-bold flex items-center gap-2 pb-2 border-b border-slate-800">
-                        <span class="font-pixel text-[8px] text-crt-magenta">[02]</span> GENERATIVE AI &amp; VISUAL SYNTHESIS
+                <div class="p-5 bg-slate-900/60 border-2 border-cyan-500/30 rounded-none hover:border-crt-accent transition space-y-3">
+                    <div class="font-mono text-cyan-300 text-sm font-bold flex items-center gap-2 pb-2 border-b border-cyan-500/20">
+                        <span class="font-pixel text-[8px] text-crt-accent">[02]</span> GENERATIVE AI &amp; VISUAL SYNTHESIS
                     </div>
                     <ul class="text-slate-300 text-xs leading-relaxed font-sans space-y-2">
                         <li>• <strong class="text-white">Computer-Vision Grading:</strong> Automated perspective homography rectification, glass reflection cleanup, and studio backdrop compositing.</li>
@@ -444,9 +416,9 @@
                 </div>
 
                 <!-- Pillar 3: Infrastructure & Local Security -->
-                <div class="p-5 bg-slate-900/60 border-2 border-slate-800 rounded-none hover:border-sky-500/50 transition space-y-3">
-                    <div class="font-mono text-crt-accent text-sm font-bold flex items-center gap-2 pb-2 border-b border-slate-800">
-                        <span class="font-pixel text-[8px] text-sky-400">[03]</span> INFRASTRUCTURE &amp; LOCAL SECURITY
+                <div class="p-5 bg-slate-900/60 border-2 border-purple-500/30 rounded-none hover:border-purple-400 transition space-y-3">
+                    <div class="font-mono text-purple-300 text-sm font-bold flex items-center gap-2 pb-2 border-b border-purple-500/20">
+                        <span class="font-pixel text-[8px] text-purple-400">[03]</span> INFRASTRUCTURE &amp; LOCAL SECURITY
                     </div>
                     <ul class="text-slate-300 text-xs leading-relaxed font-sans space-y-2">
                         <li>• <strong class="text-white">Hardware Optimization:</strong> Local-first model execution and multi-threaded AMD Ryzen 6800U APU rendering pipelines.</li>
@@ -460,53 +432,77 @@
 
         <!-- Featured Projects & Disruptive Innovations -->
         <section class="term-box p-6 sm:p-8 rounded-none">
-            <h2 class="text-xs font-pixel text-crt-amber tracking-wider uppercase mb-6 flex items-center gap-2">
-                <span class="w-2.5 h-2.5 bg-amber-400 inline-block shadow-[1px_1px_0px_#000]"></span>
+            <h2 class="text-xs font-pixel text-crt-magenta glow-magenta tracking-wider uppercase mb-6 flex items-center gap-2">
+                <span class="w-2.5 h-2.5 bg-crt-magenta inline-block shadow-[0_0_8px_#ff2ae5]"></span>
                 Featured Projects &amp; Live Production Deployments
             </h2>
 
             <div class="space-y-5">
-                <!-- Project 1: The Chapman Collection & Dual-Layer AI Concierge (Oct 2026) -->
-                <div class="p-5 bg-slate-900/50 border-2 border-amber-500/50 rounded-none">
+                <!-- Project 1: The Chapman Collection Full-Stack Luxury E-Commerce & Omnichannel CRM -->
+                <div class="p-5 bg-slate-900/50 border-2 border-fuchsia-500/50 rounded-none">
                     <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-                        <h3 class="font-mono text-base sm:text-lg font-bold text-white glow-amber">
-                            The Chapman Collection // Luxury E-Commerce &amp; Dual-Layer AI Concierge (Oct 2026)
+                        <h3 class="font-mono text-base sm:text-lg font-bold text-white glow-magenta">
+                            The Chapman Collection // Full-Stack Luxury E-Commerce &amp; Omnichannel CRM (Oct 2026)
                         </h3>
-                        <span class="pixel-badge text-amber-400 border-amber-500 bg-amber-950/30 text-[8px]">
-                            ★ ENTERPRISE PRODUCTION
+                        <span class="pixel-badge text-fuchsia-300 border-crt-magenta bg-fuchsia-950/40 text-[8px]">
+                            ★ ENTERPRISE CLIENT DEPLOYMENT
                         </span>
                     </div>
                     <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans mb-3">
-                        Architected the end-to-end digital transformation for a flagship Rancho Santa Fe European antiques and fine Persian carpet gallery (<strong class="text-white">thechapmancollection.com</strong>). Engineered a custom ETL deduplication pipeline consolidating <strong class="text-white">1,434 collector profiles</strong> and <strong class="text-white">225 carrier-verified E.164 VIP mobile numbers</strong>; built a headless Python/REST publishing engine with automated homography photo rectification and Yoast SEO/AEO scoring; bypassed Meta Commerce checkout bottlenecks via a dynamic User-Agent router; and deployed a 24/7 air-gapped <strong class="text-white">NotebookLM + Gemini 4 Argon</strong> curatorial concierge (<code class="text-sky-300">DEE</code>). Inaugural Omnisend campaign achieved a <strong class="text-white">99.5% True Delivered rate</strong>, <strong class="text-white">48.9% open rate</strong>, and generated high-ticket interior designer inquiries within <strong class="text-white">10 minutes</strong> of dispatch.
+                        Architected the end-to-end digital transformation for a flagship Rancho Santa Fe European antiques and fine Persian carpet gallery (<strong class="text-white">thechapmancollection.com</strong>). Engineered a custom ETL deduplication pipeline consolidating <strong class="text-white">1,434 collector profiles</strong> and <strong class="text-white">225 carrier-verified E.164 VIP mobile numbers</strong>; scaled the live WooCommerce catalog to <strong class="text-white">81 curated fine art and antique pieces</strong> via headless Python/REST automation with 100% green Yoast SEO/AEO schema; and resolved Meta Commerce checkout bottlenecks via a server-side PHP cart router and custom TSV shipping feed override. Inaugural Omnisend broadcast achieved a <strong class="text-white">99.5% True Delivered rate</strong>, <strong class="text-white">48.9% open rate</strong>, and generated high-ticket interior designer inquiries within <strong class="text-white">10 minutes</strong> of dispatch.
                     </p>
-                    <div class="font-mono text-xs text-sky-400 pt-2 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3">
+                    <div class="font-mono text-xs text-cyan-300 pt-2 border-t border-cyan-500/20 flex flex-wrap items-center justify-between gap-3">
                         <div class="flex flex-wrap items-center gap-4">
-                            <a href="front-desk.html" class="inline-flex items-center gap-1.5 underline decoration-sky-500 hover:text-white transition font-bold">
-                                <span>▶ Launch 24/7 AI Front Desk Prototype</span>
-                            </a>
-                            <a href="https://thechapmancollection.com/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 underline decoration-amber-500 text-amber-300 hover:text-white transition font-bold">
+                            <a href="https://thechapmancollection.com/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 underline decoration-fuchsia-500 text-fuchsia-300 hover:text-white transition font-bold">
                                 <span>▶ View Live Showroom Storefront</span>
+                            </a>
+                            <a href="drafts-for-pmc-approval/autumn-warmth-and-old-world-peculiars.html" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 underline decoration-cyan-500 text-cyan-300 hover:text-white transition font-bold">
+                                <span>▶ View Dynamic HTML Circular</span>
+                            </a>
+                            <a href="drafts-for-pmc-approval/sms-autumn-warmth-and-old-world-peculiars.html" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 underline decoration-purple-500 text-purple-300 hover:text-white transition font-bold">
+                                <span>▶ View VIP MMS iPhone Simulator</span>
                             </a>
                         </div>
                         <span class="text-slate-500 text-[10px]">Rancho Santa Fe, CA</span>
                     </div>
                 </div>
 
-                <!-- Project 2: Google Labs Spotlight -->
-                <div class="p-5 bg-slate-900/50 border-2 border-slate-800/80 rounded-none">
+                <!-- Project 2: Dual-Layer AI Concierge (DEE) & Computer-Vision Studio Pipeline -->
+                <div class="p-5 bg-slate-900/50 border-2 border-cyan-500/40 rounded-none">
                     <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
                         <h3 class="font-mono text-base sm:text-lg font-bold text-white glow-cyan">
+                            Dual-Layer AI Concierge (DEE) &amp; Computer-Vision Catalog Pipeline // Active Client Ops
+                        </h3>
+                        <span class="pixel-badge text-cyan-300 border-crt-accent bg-cyan-950/40 text-[8px]">
+                            GEMINI 4 ARGON + CV
+                        </span>
+                    </div>
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans mb-3">
+                        Designed and deployed a dual-layer <strong class="text-white">NotebookLM + Gemini 4 Argon</strong> architecture pairing a public-facing 24/7 AI Curatorial Front Desk with an air-gapped operational intelligence vault (<code class="text-cyan-300">DEE</code>) and living multimodal voice-corpus skills that ingest client phone calls, SMS redlines, and showroom walkthroughs with zero AI writing tells. Built an accompanying local Python computer-vision suite executing planar homography perspective rectification, automated storefront window frosting, and warm parchment studio compositing while preserving 100% of the original artwork and patina pixel fidelity.
+                    </p>
+                    <div class="font-mono text-xs text-cyan-300 pt-2 border-t border-cyan-500/20 flex flex-wrap items-center justify-between gap-2">
+                        <a href="front-desk.html" class="inline-flex items-center gap-1.5 underline decoration-cyan-500 hover:text-white transition font-bold">
+                            <span>▶ Launch 24/7 AI Front Desk Prototype</span>
+                        </a>
+                        <span class="text-slate-500 text-[10px]">Zero-PII Air-Gapped RAG Architecture</span>
+                    </div>
+                </div>
+
+                <!-- Project 3: Google Labs Spotlight -->
+                <div class="p-5 bg-slate-900/50 border-2 border-purple-500/35 rounded-none">
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                        <h3 class="font-mono text-base sm:text-lg font-bold text-white glow-violet">
                             RETRO-TERM 80 // Selected by Google Labs Community Gallery (July 2026)
                         </h3>
-                        <span class="pixel-badge text-amber-400 border-amber-500 bg-amber-950/30 text-[8px]">
+                        <span class="pixel-badge text-purple-300 border-purple-400 bg-purple-950/40 text-[8px]">
                             ★ OFFICIAL GOOGLE FEATURE
                         </span>
                     </div>
                     <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans mb-3">
                         Designed and compiled a browser-native image and video terminal processor executing brutalist visual styles, phosphor matrix rendering, and magnetic tape distortion effects directly on client-side GPUs via custom CSS/JS. Completed the entire build and deployment loop through natural-language orchestration matrices.
                     </p>
-                    <div class="font-mono text-xs text-sky-400 pt-2 border-t border-slate-800 flex items-center justify-between">
-                        <a href="https://labs.google/fx/tools/flow/shared/tool/c718f343-2e2f-4ae8-92bd-6f68f13b1c45" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 underline decoration-sky-500 hover:text-white transition font-bold">
+                    <div class="font-mono text-xs text-cyan-300 pt-2 border-t border-cyan-500/20 flex items-center justify-between">
+                        <a href="https://labs.google/fx/tools/flow/shared/tool/c718f343-2e2f-4ae8-92bd-6f68f13b1c45" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 underline decoration-cyan-500 hover:text-white transition font-bold">
                             <span>▶ View Live Tool on Google Labs Flow</span>
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                         </a>
@@ -514,48 +510,25 @@
                     </div>
                 </div>
 
-                <!-- Project 3: Generative Cinematics (Vianet Djenguet Validation) -->
-                <div class="p-5 bg-slate-900/50 border-2 border-slate-800/80 rounded-none">
+                <!-- Project 4: Generative Cinematics (Vianet Djenguet Validation) -->
+                <div class="p-5 bg-slate-900/50 border-2 border-cyan-500/30 rounded-none">
                     <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
                         <h3 class="font-mono text-base sm:text-lg font-bold text-white glow-cyan">
                             Generative Cinematics &amp; Research Compendium // NeverRender Labs Media Pipeline
                         </h3>
-                        <span class="pixel-badge text-emerald-400 border-emerald-500 bg-emerald-950/30 text-[8px]">
+                        <span class="pixel-badge text-cyan-300 border-crt-accent bg-cyan-950/40 text-[8px]">
                             BBC / NATGEO VALIDATED
                         </span>
                     </div>
                     <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans mb-3">
                         Developed an offline, cloud-decoupled synthetic media rendering factory and published a 5-Part Master Research Compendium plus 6 Open-Source NotebookLM vaults covering Agentic Content Workflows, Physics-Informed World Models, and Virtual Production. Architected camera physics, sensor noise, and anamorphic lens simulation within AI video engines, earning organic validation from award-winning BBC/PBS National Geographic Wildlife Cinematographer <strong class="text-white">Vianet Djenguet</strong>.
                     </p>
-                    <div class="font-mono text-xs text-sky-400 pt-2 border-t border-slate-800 flex flex-wrap items-center justify-between gap-2">
+                    <div class="font-mono text-xs text-cyan-300 pt-2 border-t border-cyan-500/20 flex flex-wrap items-center justify-between gap-2">
                         <div>
-                            <span class="text-emerald-400 font-bold">✓ Impact:</span> <span class="text-slate-300 font-sans">Anchors generative video synthesis to physical camera optics while open-sourcing the studio's research repositories.</span>
+                            <span class="text-fuchsia-300 font-bold">✓ Impact:</span> <span class="text-slate-300 font-sans">Anchors generative video synthesis to physical camera optics while open-sourcing the studio's research repositories.</span>
                         </div>
-                        <a href="notebook-research.html" class="inline-flex items-center gap-1.5 underline decoration-sky-500 hover:text-white transition font-bold">
+                        <a href="notebook-research.html" class="inline-flex items-center gap-1.5 underline decoration-cyan-500 hover:text-white transition font-bold">
                             <span>▶ Explore Research Repo</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 4: Wellgreens Retail Prototype -->
-                <div class="p-5 bg-slate-900/50 border-2 border-slate-800/80 rounded-none">
-                    <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-                        <h3 class="font-mono text-base sm:text-lg font-bold text-white glow-cyan">
-                            Wellgreens Vista Retail Prototype // Custom Computer Vision Scanner
-                        </h3>
-                        <span class="pixel-badge text-sky-400 border-sky-500 bg-sky-950/30 text-[8px]">
-                            LIVE RETAIL ENGINE
-                        </span>
-                    </div>
-                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans mb-3">
-                        Designed and tested a local-first browser-based METRC inventory barcode and OCR intake engine. Uses local device camera hardware and on-device neural OCR loops to capture, verify, and match 24-character California state compliance tags and batch potencies in 3 seconds, eliminating manual data entry lag and bridging directly to an in-store "Kiosk-to-Pocket" mobile cart deep link.
-                    </p>
-                    <div class="font-mono text-xs text-sky-400 pt-2 border-t border-slate-800 flex items-center justify-between">
-                        <a href="https://renderwithoutcode.com/wellgreens-scanner.html" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 underline decoration-sky-500 hover:text-white transition font-bold">
-                            <span>▶ View Live Intake Scanner</span>
-                        </a>
-                        <a href="https://renderwithoutcode.com/wellgreens-vista.html" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 underline decoration-sky-500 hover:text-white transition font-bold">
-                            <span>▶ View Live Storefront Kiosk</span>
                         </a>
                     </div>
                 </div>
@@ -564,35 +537,35 @@
 
         <!-- Professional Experience & Infrastructure Chronology -->
         <section class="term-box p-6 sm:p-8 rounded-none">
-            <h2 class="text-xs font-pixel text-crt-amber tracking-wider uppercase mb-6 flex items-center gap-2">
-                <span class="w-2.5 h-2.5 bg-amber-400 inline-block shadow-[1px_1px_0px_#000]"></span>
+            <h2 class="text-xs font-pixel text-crt-magenta glow-magenta tracking-wider uppercase mb-6 flex items-center gap-2">
+                <span class="w-2.5 h-2.5 bg-crt-magenta inline-block shadow-[0_0_8px_#ff2ae5]"></span>
                 Professional Experience &amp; Infrastructure Chronology
             </h2>
 
             <div class="space-y-6">
                 <!-- Role 1: NeverRender Labs / The Chapman Collection -->
-                <div class="relative pl-6 border-l-3 border-amber-400">
-                    <div class="absolute -left-[7px] top-0 w-3 h-3 bg-amber-400 border-2 border-slate-950 shadow-[1px_1px_0px_#000]"></div>
+                <div class="relative pl-6 border-l-3 border-crt-magenta">
+                    <div class="absolute -left-[7px] top-0 w-3 h-3 bg-crt-magenta border-2 border-slate-950 shadow-[0_0_8px_#ff2ae5]"></div>
                     <div class="flex flex-wrap items-center justify-between gap-1 mb-1">
                         <h3 class="font-mono text-base font-bold text-white">PRINCIPAL AI SYSTEMS ARCHITECT &amp; TECHNICAL DIRECTOR</h3>
-                        <span class="pixel-badge text-amber-400 border-amber-500 bg-amber-950/20 text-[8px]">2025 - PRESENT</span>
+                        <span class="pixel-badge text-fuchsia-300 border-crt-magenta bg-fuchsia-950/30 text-[8px]">2025 - PRESENT</span>
                     </div>
-                    <div class="font-mono text-xs text-amber-400 mb-2 font-bold">NeverRender Labs // Retained Enterprise Architect for The Chapman Collection (Rancho Santa Fe, CA)</div>
+                    <div class="font-mono text-xs text-fuchsia-300 mb-2 font-bold">NeverRender Labs // Retained Enterprise Architect for The Chapman Collection (Rancho Santa Fe, CA)</div>
                     <ul class="list-disc list-inside text-xs text-slate-300 space-y-1.5 font-sans">
                         <li>Lead full-stack digital infrastructure, WooCommerce/WordPress REST API automation, Meta Commerce catalog synchronization, and Omnisend email/SMS architecture for luxury retail clientele.</li>
                         <li>Engineered custom Python computer-vision pipelines for perspective rectification, storefront glass frosting, and unified gallery backdrop compositing across hundreds of high-value fine art and antique assets.</li>
-                        <li>Built dual-layer NotebookLM + Gemini 4 Argon autonomous reception and operational intelligence vaults (<code class="text-sky-300">DEE</code>) alongside living voice-corpus copywriting skills with strict AI-tell sanitization.</li>
+                        <li>Built dual-layer NotebookLM + Gemini 4 Argon autonomous reception and operational intelligence vaults (<code class="text-cyan-300">DEE</code>) alongside living voice-corpus copywriting skills with strict AI-tell sanitization.</li>
                     </ul>
                 </div>
 
                 <!-- Role 2: Independent AI Evaluation -->
-                <div class="relative pl-6 border-l-3 border-sky-500">
-                    <div class="absolute -left-[7px] top-0 w-3 h-3 bg-sky-400 border-2 border-slate-950 shadow-[1px_1px_0px_#000]"></div>
+                <div class="relative pl-6 border-l-3 border-crt-accent">
+                    <div class="absolute -left-[7px] top-0 w-3 h-3 bg-crt-accent border-2 border-slate-950 shadow-[0_0_8px_#00e5ff]"></div>
                     <div class="flex flex-wrap items-center justify-between gap-1 mb-1">
                         <h3 class="font-mono text-base font-bold text-white">INDEPENDENT AI EVALUATION &amp; DIGITAL MEDIA CONTRACTOR</h3>
-                        <span class="pixel-badge text-sky-400 border-sky-500 bg-sky-950/20 text-[8px]">JUNE 2024 - PRESENT</span>
+                        <span class="pixel-badge text-cyan-300 border-crt-accent bg-cyan-950/30 text-[8px]">JUNE 2024 - PRESENT</span>
                     </div>
-                    <div class="font-mono text-xs text-sky-400 mb-2 font-bold">Remote Contractor // Frontier Multimodal Evaluation</div>
+                    <div class="font-mono text-xs text-cyan-300 mb-2 font-bold">Remote Contractor // Frontier Multimodal Evaluation</div>
                     <ul class="list-disc list-inside text-xs text-slate-300 space-y-1.5 font-sans">
                         <li>Stress-test and evaluate frontier language and vision models across technical reasoning, agentic browser control, prompt compliance, and token-efficiency benchmarks.</li>
                         <li>Maintain dedicated secure workstation utilizing custom WireGuard VPN tunnels and local AMD Ryzen 6800U APU multi-threaded rendering pipelines.</li>
@@ -601,13 +574,13 @@
                 </div>
 
                 <!-- Role 3 -->
-                <div class="relative pl-6 border-l-3 border-emerald-500">
-                    <div class="absolute -left-[7px] top-0 w-3 h-3 bg-emerald-400 border-2 border-slate-950 shadow-[1px_1px_0px_#000]"></div>
+                <div class="relative pl-6 border-l-3 border-purple-400">
+                    <div class="absolute -left-[7px] top-0 w-3 h-3 bg-purple-400 border-2 border-slate-950 shadow-[0_0_8px_#c084fc]"></div>
                     <div class="flex flex-wrap items-center justify-between gap-1 mb-1">
                         <h3 class="font-mono text-base font-bold text-white">CARE LOGISTICS &amp; COMPLIANCE SYSTEMS COORDINATOR</h3>
-                        <span class="pixel-badge text-emerald-400 border-emerald-500 bg-emerald-950/20 text-[8px]">2011 - 2024</span>
+                        <span class="pixel-badge text-purple-300 border-purple-400 bg-purple-950/30 text-[8px]">2011 - 2024</span>
                     </div>
-                    <div class="font-mono text-xs text-emerald-400 mb-2 font-bold">Family Caregiver &amp; Authorized Representative // Oceanside, CA</div>
+                    <div class="font-mono text-xs text-purple-300 mb-2 font-bold">Family Caregiver &amp; Authorized Representative // Oceanside, CA</div>
                     <ul class="list-disc list-inside text-xs text-slate-300 space-y-1.5 font-sans">
                         <li>Managed long-term household logistics, fiduciary accounting, and multi-agency benefit coordination across county CalSAWS and state MEDS systems.</li>
                         <li>Built high-fidelity background logging systems integrating audio-to-text transcription to audit plan-level care compliance, compiling unassailable 113-page clinical-legal evidence payloads for state regulatory dockets.</li>
@@ -662,10 +635,10 @@
 
         <!-- Specialized Mission Cover Letters & Track Selector (No-Print) -->
         <section class="term-box p-6 sm:p-8 rounded-none no-print">
-            <div class="flex flex-wrap items-center justify-between gap-4 mb-4 pb-3 border-b-2 border-slate-800">
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-4 pb-3 border-b-2 border-cyan-500/20">
                 <div>
-                    <h2 class="text-xs font-pixel text-crt-amber tracking-wider uppercase flex items-center gap-2">
-                        <span class="w-2.5 h-2.5 bg-amber-400 inline-block shadow-[1px_1px_0px_#000]"></span>
+                    <h2 class="text-xs font-pixel text-crt-magenta glow-magenta tracking-wider uppercase flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 bg-crt-magenta inline-block shadow-[0_0_8px_#ff2ae5]"></span>
                         Specialized Mission Cover Letters // 4 Active Tracks
                     </h2>
                     <p class="text-xs text-slate-400 font-mono mt-1">Select a specialization track to view and copy tailored operational cover letters.</p>
@@ -674,25 +647,25 @@
 
             <!-- Track Tabs -->
             <div class="flex flex-wrap gap-2 mb-4">
-                <button onclick="switchTrack('commerce')" id="tab-commerce" class="px-3.5 py-2 rounded-none bg-sky-950 border-2 border-sky-400 text-sky-300 font-mono text-xs font-bold transition flex items-center gap-1.5 shadow-[2px_2px_0px_#000]">
+                <button onclick="switchTrack('commerce')" id="tab-commerce" class="px-3.5 py-2 rounded-none bg-fuchsia-950/70 border-2 border-crt-magenta text-fuchsia-200 font-mono text-xs font-bold transition flex items-center gap-1.5 shadow-[2px_2px_0px_#000]">
                     <span>🏛️</span> Track 1: Agentic Commerce &amp; AI Architect
                 </button>
-                <button onclick="switchTrack('video')" id="tab-video" class="px-3.5 py-2 rounded-none bg-slate-900 border-2 border-slate-800 hover:border-slate-700 text-slate-400 font-mono text-xs font-bold transition flex items-center gap-1.5">
+                <button onclick="switchTrack('video')" id="tab-video" class="px-3.5 py-2 rounded-none bg-slate-900 border-2 border-slate-800 hover:border-cyan-500/50 text-slate-400 font-mono text-xs font-bold transition flex items-center gap-1.5">
                     <span>🎬</span> Track 2: AI Technical Director (Video)
                 </button>
-                <button onclick="switchTrack('prompt')" id="tab-prompt" class="px-3.5 py-2 rounded-none bg-slate-900 border-2 border-slate-800 hover:border-slate-700 text-slate-400 font-mono text-xs font-bold transition flex items-center gap-1.5">
+                <button onclick="switchTrack('prompt')" id="tab-prompt" class="px-3.5 py-2 rounded-none bg-slate-900 border-2 border-slate-800 hover:border-cyan-500/50 text-slate-400 font-mono text-xs font-bold transition flex items-center gap-1.5">
                     <span>🧠</span> Track 3: Prompt &amp; RAG Architect
                 </button>
-                <button onclick="switchTrack('ops')" id="tab-ops" class="px-3.5 py-2 rounded-none bg-slate-900 border-2 border-slate-800 hover:border-slate-700 text-slate-400 font-mono text-xs font-bold transition flex items-center gap-1.5">
+                <button onclick="switchTrack('ops')" id="tab-ops" class="px-3.5 py-2 rounded-none bg-slate-900 border-2 border-slate-800 hover:border-cyan-500/50 text-slate-400 font-mono text-xs font-bold transition flex items-center gap-1.5">
                     <span>🛡️</span> Track 4: IRL Systems &amp; Operations
                 </button>
             </div>
 
             <!-- Track 1 Content: Agentic Commerce & Full-Stack AI Architect -->
-            <div id="track-content-commerce" class="p-5 bg-slate-950/80 border border-slate-800 font-mono text-xs text-slate-300 space-y-3">
-                <div class="flex items-center justify-between border-b border-slate-800 pb-2">
-                    <span class="text-crt-amber font-bold font-pixel text-[8px]">&gt; MISSION: AGENTIC COMMERCE &amp; FULL-STACK AI SYSTEMS ARCHITECT</span>
-                    <button onclick="copyCoverLetter('commerce')" class="px-2.5 py-1 bg-amber-900 hover:bg-amber-800 border border-amber-400 text-white font-pixel text-[8px] transition">
+            <div id="track-content-commerce" class="p-5 bg-slate-950/80 border border-cyan-500/30 font-mono text-xs text-slate-300 space-y-3">
+                <div class="flex items-center justify-between border-b border-cyan-500/20 pb-2">
+                    <span class="text-crt-magenta font-bold font-pixel text-[8px]">&gt; MISSION: AGENTIC COMMERCE &amp; FULL-STACK AI SYSTEMS ARCHITECT</span>
+                    <button onclick="copyCoverLetter('commerce')" class="px-2.5 py-1 bg-fuchsia-900 hover:bg-fuchsia-800 border border-crt-magenta text-white font-pixel text-[8px] transition">
                         📋 COPY TEXT
                     </button>
                 </div>
@@ -708,10 +681,10 @@
             </div>
 
             <!-- Track 2 Content: Video -->
-            <div id="track-content-video" class="p-5 bg-slate-950/80 border border-slate-800 font-mono text-xs text-slate-300 space-y-3 hidden">
-                <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+            <div id="track-content-video" class="p-5 bg-slate-950/80 border border-cyan-500/30 font-mono text-xs text-slate-300 space-y-3 hidden">
+                <div class="flex items-center justify-between border-b border-cyan-500/20 pb-2">
                     <span class="text-crt-accent font-bold font-pixel text-[8px]">&gt; MISSION: AI TECHNICAL DIRECTOR &amp; GENERATIVE VIDEO LEAD</span>
-                    <button onclick="copyCoverLetter('video')" class="px-2.5 py-1 bg-sky-900 hover:bg-sky-800 border border-sky-400 text-white font-pixel text-[8px] transition">
+                    <button onclick="copyCoverLetter('video')" class="px-2.5 py-1 bg-cyan-900 hover:bg-cyan-800 border border-crt-accent text-white font-pixel text-[8px] transition">
                         📋 COPY TEXT
                     </button>
                 </div>
@@ -728,10 +701,10 @@
             </div>
 
             <!-- Track 3 Content: Prompt & RAG -->
-            <div id="track-content-prompt" class="p-5 bg-slate-950/80 border border-slate-800 font-mono text-xs text-slate-300 space-y-3 hidden">
-                <div class="flex items-center justify-between border-b border-slate-800 pb-2">
-                    <span class="text-crt-amber font-bold font-pixel text-[8px]">&gt; MISSION: PROMPT ARCHITECT &amp; MULTIMODAL EVALUATION LEAD</span>
-                    <button onclick="copyCoverLetter('prompt')" class="px-2.5 py-1 bg-amber-900 hover:bg-amber-800 border border-amber-400 text-white font-pixel text-[8px] transition">
+            <div id="track-content-prompt" class="p-5 bg-slate-950/80 border border-cyan-500/30 font-mono text-xs text-slate-300 space-y-3 hidden">
+                <div class="flex items-center justify-between border-b border-cyan-500/20 pb-2">
+                    <span class="text-crt-magenta font-bold font-pixel text-[8px]">&gt; MISSION: PROMPT ARCHITECT &amp; MULTIMODAL EVALUATION LEAD</span>
+                    <button onclick="copyCoverLetter('prompt')" class="px-2.5 py-1 bg-fuchsia-900 hover:bg-fuchsia-800 border border-crt-magenta text-white font-pixel text-[8px] transition">
                         📋 COPY TEXT
                     </button>
                 </div>
@@ -747,10 +720,10 @@
             </div>
 
             <!-- Track 4 Content: IRL Ops -->
-            <div id="track-content-ops" class="p-5 bg-slate-950/80 border border-slate-800 font-mono text-xs text-slate-300 space-y-3 hidden">
-                <div class="flex items-center justify-between border-b border-slate-800 pb-2">
-                    <span class="text-crt-green font-bold font-pixel text-[8px]">&gt; MISSION: IRL SYSTEMS &amp; ESCALATION OPERATIONS LEAD</span>
-                    <button onclick="copyCoverLetter('ops')" class="px-2.5 py-1 bg-emerald-900 hover:bg-emerald-800 border border-emerald-400 text-white font-pixel text-[8px] transition">
+            <div id="track-content-ops" class="p-5 bg-slate-950/80 border border-cyan-500/30 font-mono text-xs text-slate-300 space-y-3 hidden">
+                <div class="flex items-center justify-between border-b border-cyan-500/20 pb-2">
+                    <span class="text-purple-300 font-bold font-pixel text-[8px]">&gt; MISSION: IRL SYSTEMS &amp; ESCALATION OPERATIONS LEAD</span>
+                    <button onclick="copyCoverLetter('ops')" class="px-2.5 py-1 bg-purple-900 hover:bg-purple-800 border border-purple-400 text-white font-pixel text-[8px] transition">
                         📋 COPY TEXT
                     </button>
                 </div>
@@ -769,37 +742,12 @@
 
         <!-- Footer Terminal Bar -->
         <footer class="pt-4 pb-12 text-center font-mono text-xs text-slate-500 no-print">
-            <p class="font-pixel text-[8px] text-slate-600">&gt; NEVERRENDER LABS // IDENTITY_GRID_SECURE_VERIFICATION_v3.0 // OCT 2026</p>
+            <p class="font-pixel text-[8px] text-cyan-500/60">&gt; NEVERRENDER LABS // AGENT_TRINITY_GEMINI_4_ARGON_v3.1 // OCT 2026</p>
         </footer>
 
     </main>
 
     <script>
-        let crtModes = ['subtle', 'high', 'off'];
-        let crtIndex = 0;
-
-        function cycleCRT() {
-            crtIndex = (crtIndex + 1) % crtModes.length;
-            const mode = crtModes[crtIndex];
-            const body = document.body;
-            const label = document.getElementById('crt-label');
-
-            body.classList.remove('crt-off', 'crt-high');
-
-            if (mode === 'off') {
-                body.classList.add('crt-off');
-                label.textContent = "Off";
-                label.className = "text-rose-400 font-bold";
-            } else if (mode === 'high') {
-                body.classList.add('crt-high');
-                label.textContent = "Retro";
-                label.className = "text-amber-400 font-bold";
-            } else {
-                label.textContent = "Muted";
-                label.className = "text-sky-400 font-bold";
-            }
-        }
-
         function toggleTheme() {
             const body = document.body;
             const html = document.documentElement;
@@ -812,8 +760,8 @@
                 label.className = "text-sky-600 font-pixel text-[8px]";
             } else {
                 html.classList.add('dark');
-                label.textContent = "DARK CRT";
-                label.className = "text-amber-400 font-pixel text-[8px]";
+                label.textContent = "TRINITY // ARGON";
+                label.className = "text-crt-magenta font-pixel text-[8px]";
             }
         }
 
@@ -824,10 +772,10 @@
                 const tab = document.getElementById(`tab-${t}`);
                 if (t === track) {
                     content.classList.remove('hidden');
-                    tab.className = "px-3.5 py-2 rounded-none bg-sky-950 border-2 border-sky-400 text-sky-300 font-mono text-xs font-bold transition flex items-center gap-1.5 shadow-[2px_2px_0px_#000]";
+                    tab.className = "px-3.5 py-2 rounded-none bg-fuchsia-950/70 border-2 border-crt-magenta text-fuchsia-200 font-mono text-xs font-bold transition flex items-center gap-1.5 shadow-[2px_2px_0px_#000]";
                 } else {
                     content.classList.add('hidden');
-                    tab.className = "px-3.5 py-2 rounded-none bg-slate-900 border-2 border-slate-800 hover:border-slate-700 text-slate-400 font-mono text-xs font-bold transition flex items-center gap-1.5";
+                    tab.className = "px-3.5 py-2 rounded-none bg-slate-900 border-2 border-slate-800 hover:border-cyan-500/50 text-slate-400 font-mono text-xs font-bold transition flex items-center gap-1.5";
                 }
             });
         }
