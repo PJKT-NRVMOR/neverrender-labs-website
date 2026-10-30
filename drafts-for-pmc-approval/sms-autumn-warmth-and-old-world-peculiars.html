@@ -378,10 +378,8 @@
 
           <!-- Dynamic Personalized SMS Text Bubble -->
           <div class="sms-text-bubble" id="live-sms-bubble">
-            Hi <span id="preview-fname">Victoria</span>, a quick look at our Old World antique door cabinets, Antique English Charles II style armchairs, a finely inlaid chest, a 75&Prime; carved mirror and fine Persian carpets just placed on sale at The Chapman Collection. Tap below to browse, or reply if you would like further details:<br><br>
-            <a href="https://thechapmancollection.com/" target="_blank">https://thechapmancollection.com/</a><br><br>
-            Warmly, Melissa Chapman<br>
-            <span style="font-size: 11.5px; color: #636366;">Reply STOP to opt out</span>
+            Hi <span id="preview-fname">Melissa</span>, delighted to share our Old World cabinets and new autumn sale arrivals: <a href="https://thechapmancollection.com/" target="_blank">https://thechapmancollection.com/</a><br>
+            Warmly, Melissa. Reply STOP to opt-out
           </div>
 
           <!-- Rich Link Preview Card (OpenGraph Unfurl) -->
@@ -411,21 +409,16 @@
 
     <div class="dynamic-tester">
       <label for="fname-input">Test Dynamic First Name (<code>[[contact.first_name]]</code>):</label>
-      <input type="text" id="fname-input" value="Victoria" oninput="updateFirstName(this.value)" placeholder="Enter client name...">
+      <input type="text" id="fname-input" value="Melissa" oninput="updateFirstName(this.value)" placeholder="Enter client name...">
       <button class="btn secondary" onclick="document.getElementById('fname-input').value='there';updateFirstName('there');">Test Fallback ("there")</button>
     </div>
 
     <div class="card-box">
-      <h3>Option 1: VIP Visual MMS + Dynamic Personalization (Recommended)</h3>
+      <h3>Option 1: Single-Segment 160-Char VIP MMS + Dynamic Name (Recommended)</h3>
       <p style="margin: 0 0 8px 0; font-size: 15px; color: #3D3935;">
-        Pairs the 6-piece compilation image (or 4-slide animated GIF) with a warm, concise note in Melissa's voice (zero dashes, no Oxford comma):
+        Matches the exact concise 1-segment SMS cadence approved on Thursday afternoon (156 characters total including opt-out, pairing the 4-frame animated GIF with direct domain delivery):
       </p>
-      <div class="code-block" id="omnisend-copy-1">Hi [[contact.first_name | default: 'there']], a quick look at our Old World antique door cabinets, Antique English Charles II style armchairs, a finely inlaid chest, a 75" carved mirror and fine Persian carpets just placed on sale at The Chapman Collection. Tap below to browse, or reply if you would like further details:
-
-https://thechapmancollection.com/
-
-Warmly, Melissa Chapman
-Reply STOP to opt out</div>
+      <div class="code-block" id="omnisend-copy-1">Hi [[contact.first_name | default: 'there']], delighted to share our Old World cabinets and new autumn sale arrivals: https://thechapmancollection.com/ Warmly, Melissa.</div>
       <div class="btn-row">
         <button class="btn" onclick="copyText('omnisend-copy-1', this)">Copy Omnisend MMS Text</button>
         <a class="btn secondary" href="2026-10-27-autumn-warmth-and-old-world-peculiars/cuts/tcc-oct27-mms-dynamic-showcase.gif" download>Download Animated MMS (.GIF)</a>
@@ -434,18 +427,17 @@ Reply STOP to opt out</div>
     </div>
 
     <div class="card-box">
-      <h3>Option 2: Ultra-Short VIP Text Linking to The Chapman Collection</h3>
+      <h3>Option 2: Expanded Two-Sentence VIP Text</h3>
       <p style="margin: 0 0 8px 0; font-size: 15px; color: #3D3935;">
-        Sends a crisp two-sentence text whose link automatically unfurls into the rich preview banner on iMessage and Google Messages:
+        Longer two-segment alternative listing each featured category explicitly:
       </p>
-      <div class="code-block" id="omnisend-copy-2">Hi [[contact.first_name | default: 'there']], we just shared our new autumn sale showcase featuring Old World antique door cabinets, Antique English Charles II style armchairs, a finely inlaid chest, a 75" carved mirror and fine Persian carpets. Take a look here or reply if anything catches your eye:
+      <div class="code-block" id="omnisend-copy-2">Hi [[contact.first_name | default: 'there']], delighted to share our Old World antique door cabinets, Antique English Charles II style armchairs, a finely inlaid chest, a 75" carved mirror and fine Persian carpets on sale:
 
 https://thechapmancollection.com/
 
-Warmly, Melissa Chapman
-Reply STOP to opt out</div>
+Warmly, Melissa.</div>
       <div class="btn-row">
-        <button class="btn" onclick="copyText('omnisend-copy-2', this)">Copy Short VIP SMS</button>
+        <button class="btn" onclick="copyText('omnisend-copy-2', this)">Copy Expanded VIP SMS</button>
         <a class="btn secondary" href="autumn-warmth-and-old-world-peculiars.html">Open Full HTML Circular &rarr;</a>
       </div>
     </div>
