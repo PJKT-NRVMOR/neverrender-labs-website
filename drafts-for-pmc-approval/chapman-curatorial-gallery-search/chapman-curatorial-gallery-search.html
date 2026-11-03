@@ -39,36 +39,39 @@
     position: relative;
   }
 
-  /* Layer 1 of Tactile Linen Press: Whisper-Light Belgian Linen / 300gsm Cotton Rag Tooth */
+  /* Layer 1 of NRL Curtain Draft: Strictly z-index: 0 behind all foreground cards & photos */
+  .nrl-curtain-draft-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    display: block;
+  }
+
   .nrl-linen-tooth-overlay {
     position: fixed;
     inset: 0;
     pointer-events: none;
-    z-index: 1;
-    opacity: 0.032;
+    z-index: 0;
+    opacity: 0.022;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='linenTooth'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23linenTooth)'/%3E%3C/svg%3E");
   }
 
-  /* Layer 2 & 3 of Tactile Linen Press: Subliminal "Second-Look" Beveled Dimple */
-  .nrl-tactile-dimple {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 280px;
-    height: 280px;
-    margin-left: -140px;
-    margin-top: -140px;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 2;
-    opacity: 0;
-    will-change: transform, opacity;
-    background:
-      radial-gradient(circle at 37% 37%, rgba(118, 107, 92, 0.036) 0%, rgba(118, 107, 92, 0.012) 40%, transparent 65%),
-      radial-gradient(circle at 63% 63%, rgba(255, 253, 249, 0.72) 0%, rgba(255, 253, 249, 0.18) 44%, transparent 68%);
-    box-shadow:
-      inset 4px 4px 12px rgba(112, 101, 85, 0.028),
-      inset -4px -4px 12px rgba(255, 253, 249, 0.62);
+  /* Ensure all foreground sections sit cleanly at z-index: 10 above the curtain draft canvas */
+  .flow-status-bar,
+  .site-view,
+  .hero-stage-wrap,
+  .mansour-editorial-intro,
+  .collage-splash-wrap,
+  .gallery-lookbook-stage,
+  .console-wrap,
+  .results-wrapper,
+  .checkout-wrap,
+  .site-footer-wrap {
+    position: relative;
+    z-index: 10;
   }
 
   /* Interactive Flow Switcher Pill Bar (Top Sticky Demo Helper) */
@@ -1555,9 +1558,9 @@
 </style>
 </head>
 <body>
-  <!-- NRL Tactile Linen-Press Background Layers (300gsm Belgian Linen Tooth + Pillowy Beveled Cursor Dimple) -->
+  <!-- NRL Whisper-Fine Sheer Linen Curtain Draft Canvas (Strictly z-index: 0 behind all foreground cards) -->
+  <canvas id="nrl-curtain-draft-canvas" class="nrl-curtain-draft-canvas" aria-hidden="true"></canvas>
   <div class="nrl-linen-tooth-overlay" aria-hidden="true"></div>
-  <div class="nrl-tactile-dimple" id="nrl-tactile-dimple" aria-hidden="true"></div>
 
   <!-- TOP DEMO BAR SO MATTHEW CAN JUMP OR WATCH THE CLICK-FLOW -->
   <div class="flow-status-bar">
@@ -2718,67 +2721,193 @@ applyFilters();
     };
   }
 
-  // 3. Subliminal "Did I Just See That?" Linen-Press Physics:
-  //    - Progressive dwell ramp (starts whisper-faint and deepens subtly as they spend 1-2 minutes on the site)
-  //    - Velocity-gated bloom: stays invisible during rapid mouse sweeps, then gently yields into the #FAF8F5 linen
-  //      only when the cursor slows down/lingers on the background margin, and melts away when moving fast again.
-  const dimpleEl = document.getElementById("nrl-tactile-dimple");
-  if (dimpleEl) {
-    const sessionStart = performance.now();
-    let dx = window.innerWidth * 0.5;
-    let dy = window.innerHeight * 0.5;
-    let tx = dx;
-    let ty = dy;
-    let prevTx = dx;
-    let prevTy = dy;
-    let curOpacity = 0.0;
-    let onMargin = true;
+  // 3. Whisper-Fine Airy Linen Curtain Draft Engine (Strictly z-index: 0 behind all products)
+  //    Dialed down by ~78% from the heavy burlap grid so at rest the weave is practically invisible,
+  //    and only reveals a gossamer sunlit silk/linen thread ripple ("did I just see that?") when
+  //    your cursor breezes across the margin, settling back over ~3.2 seconds.
+  const draftCanvas = document.getElementById("nrl-curtain-draft-canvas");
+  if (draftCanvas) {
+    const ctx = draftCanvas.getContext("2d");
+    const SPACING = 28;
+    let width = 0, height = 0, cols = 0, rows = 0;
+    let nodes = [];
 
-    window.addEventListener("mousemove", e => {
-      tx = e.clientX;
-      ty = e.clientY;
-      // Only press into the linen background/margins, not over photos or dark buttons
-      const tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : "";
-      const overMedia = e.target && e.target.closest && e.target.closest("img, button, input, select, .hero-carousel, .collage-tile, .lookbook-img-box, .card-img-box, .flow-status-bar");
-      onMargin = !overMedia && tag !== "img";
+    const pointer = { x: -9999, y: -9999, prevX: -9999, prevY: -9999, vx: 0, vy: 0, active: false };
+
+    function rebuildGrid() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = window.innerWidth;
+      height = window.innerHeight;
+      draftCanvas.width = Math.floor(width * dpr);
+      draftCanvas.height = Math.floor(height * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      cols = Math.ceil(width / SPACING) + 2;
+      rows = Math.ceil(height / SPACING) + 2;
+      nodes = new Array(cols * rows);
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          nodes[r * cols + c] = { bx: c * SPACING, by: r * SPACING, ox: 0, oy: 0, vx: 0, vy: 0, glow: 0 };
+        }
+      }
+    }
+    window.addEventListener("resize", rebuildGrid, { passive: true });
+    rebuildGrid();
+
+    window.addEventListener("pointermove", (e) => {
+      if (!pointer.active) {
+        pointer.prevX = e.clientX;
+        pointer.prevY = e.clientY;
+        pointer.active = true;
+      }
+      const rawDx = e.clientX - pointer.prevX;
+      const rawDy = e.clientY - pointer.prevY;
+      pointer.prevX = e.clientX;
+      pointer.prevY = e.clientY;
+      pointer.x = e.clientX;
+      pointer.y = e.clientY;
+
+      pointer.vx = pointer.vx * 0.74 + rawDx * 0.26;
+      pointer.vy = pointer.vy * 0.74 + rawDy * 0.26;
+
+      const speed = Math.hypot(pointer.vx, pointer.vy);
+      const draftRadius = 210;
+      const rSq = draftRadius * draftRadius;
+
+      const minC = Math.max(0, Math.floor((pointer.x - draftRadius) / SPACING));
+      const maxC = Math.min(cols - 1, Math.ceil((pointer.x + draftRadius) / SPACING));
+      const minR = Math.max(0, Math.floor((pointer.y - draftRadius) / SPACING));
+      const maxR = Math.min(rows - 1, Math.ceil((pointer.y + draftRadius) / SPACING));
+
+      const clampedSpeed = Math.min(speed, 20);
+      const dirX = speed > 0.1 ? pointer.vx / speed : 0;
+      const dirY = speed > 0.1 ? pointer.vy / speed : 0;
+
+      for (let r = minR; r <= maxR; r++) {
+        const rowOffset = r * cols;
+        for (let c = minC; c <= maxC; c++) {
+          const n = nodes[rowOffset + c];
+          const dx = n.bx - pointer.x;
+          const dy = n.by - pointer.y;
+          const dSq = dx * dx + dy * dy;
+          if (dSq < rSq) {
+            const dist = Math.sqrt(dSq);
+            const falloff = Math.pow(1 - dist / draftRadius, 2.2);
+
+            const pullStrength = falloff * (0.095 * clampedSpeed + 0.14);
+            n.vx += dirX * pullStrength;
+            n.vy += dirY * pullStrength;
+
+            if (dist > 1) {
+              const radialPush = falloff * 0.075;
+              n.vx += (dx / dist) * radialPush;
+              n.vy += (dy / dist) * radialPush;
+            }
+
+            const targetGlow = Math.min(1, falloff * (0.34 + clampedSpeed * 0.028));
+            if (targetGlow > n.glow) {
+              n.glow = n.glow + (targetGlow - n.glow) * 0.30;
+            }
+          }
+        }
+      }
     }, { passive: true });
 
-    function animateLinenPress(now) {
-      // Spring position (0.065 pillowy damping)
-      dx += (tx - dx) * 0.065;
-      dy += (ty - dy) * 0.065;
+    const SPRING = 0.013;
+    const DAMPING = 0.968;
+    const GLOW_DECAY = 0.980;
+    const MAX_DISP = 13.5;
 
-      // Measure instantaneous cursor velocity
-      const vx = tx - prevTx;
-      const vy = ty - prevTy;
-      prevTx = tx;
-      prevTy = ty;
-      const speed = Math.hypot(vx, vy);
+    function renderCurtainDraft() {
+      pointer.vx *= 0.92;
+      pointer.vy *= 0.92;
+      ctx.clearRect(0, 0, width, height);
 
-      // Dwell maturity: ramps from 0.25 at 0s up to 1.0 after 90 seconds on the site
-      // so it feels like a "Wait... did I just see that?" discovery after browsing!
-      const elapsedSec = (now - sessionStart) * 0.001;
-      const dwellFactor = Math.min(1.0, 0.28 + (elapsedSec / 90.0) * 0.72);
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i];
+        n.vx += -n.ox * SPRING;
+        n.vy += -n.oy * SPRING;
+        n.vx *= DAMPING;
+        n.vy *= DAMPING;
+        n.ox += n.vx;
+        n.oy += n.vy;
 
-      // Target opacity: only blooms when moving gently (< 6px/frame) on the linen margin
-      let targetOp = 0.0;
-      if (onMargin && speed < 7.5) {
-        const slowness = 1.0 - Math.min(1.0, speed / 7.5);
-        // Subtle breathing micro-pulse so the resting dimple feels alive under the hand
-        const breath = 0.90 + 0.10 * Math.sin(now * 0.0022);
-        targetOp = slowness * dwellFactor * breath;
+        const disp = Math.hypot(n.ox, n.oy);
+        if (disp > MAX_DISP) {
+          const scale = MAX_DISP / disp;
+          n.ox *= scale;
+          n.oy *= scale;
+        }
+        n.glow *= GLOW_DECAY;
+        if (n.glow < 0.002) n.glow = 0;
       }
 
-      // Smooth fade in when settling (0.035), faster melt away when darting (0.12)
-      const rate = targetOp > curOpacity ? 0.032 : 0.11;
-      curOpacity += (targetOp - curOpacity) * rate;
+      // 1. Resting warp/weft threads: whisper-faint (0.032 alpha vs 0.14 before) so it never looks like heavy graph paper
+      ctx.lineWidth = 0.5;
+      ctx.strokeStyle = "rgba(176, 165, 146, 0.032)";
+      ctx.beginPath();
+      for (let r = 0; r < rows; r++) {
+        const rowOffset = r * cols;
+        for (let c = 0; c < cols; c++) {
+          const n = nodes[rowOffset + c];
+          const px = n.bx + n.ox;
+          const py = n.by + n.oy;
+          if (c === 0) ctx.moveTo(px, py);
+          else ctx.lineTo(px, py);
+        }
+      }
+      for (let c = 0; c < cols; c++) {
+        for (let r = 0; r < rows; r++) {
+          const n = nodes[r * cols + c];
+          const px = n.bx + n.ox;
+          const py = n.by + n.oy;
+          if (r === 0) ctx.moveTo(px, py);
+          else ctx.lineTo(px, py);
+        }
+      }
+      ctx.stroke();
 
-      const scale = 0.92 + curOpacity * 0.10;
-      dimpleEl.style.opacity = curOpacity.toFixed(3);
-      dimpleEl.style.transform = `translate3d(${dx.toFixed(1)}px, ${dy.toFixed(1)}px, 0) scale(${scale.toFixed(3)})`;
-      requestAnimationFrame(animateLinenPress);
+      // 2. Active billowed threads: warm sunlit champagne silk that only appears where the breeze lifts the fabric
+      for (let r = 0; r < rows; r++) {
+        const rowOffset = r * cols;
+        for (let c = 0; c < cols; c++) {
+          const n = nodes[rowOffset + c];
+          if (n.glow > 0.015) {
+            const g = n.glow;
+            const px = n.bx + n.ox;
+            const py = n.by + n.oy;
+
+            // Delicate micro-knot illumination (0.16 max alpha instead of 0.48)
+            ctx.beginPath();
+            ctx.arc(px, py, 0.8 + g * 1.1, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(182, 152, 98, ${(g * 0.16).toFixed(3)})`;
+            ctx.fill();
+
+            if (c + 1 < cols) {
+              const right = nodes[rowOffset + c + 1];
+              ctx.beginPath();
+              ctx.moveTo(px, py);
+              ctx.lineTo(right.bx + right.ox, right.by + right.oy);
+              ctx.strokeStyle = `rgba(182, 152, 98, ${(g * 0.13).toFixed(3)})`;
+              ctx.lineWidth = 0.65;
+              ctx.stroke();
+            }
+            if (r + 1 < rows) {
+              const down = nodes[(r + 1) * cols + c];
+              ctx.beginPath();
+              ctx.moveTo(px, py);
+              ctx.lineTo(down.bx + down.ox, down.by + down.oy);
+              ctx.strokeStyle = `rgba(182, 152, 98, ${(g * 0.13).toFixed(3)})`;
+              ctx.lineWidth = 0.65;
+              ctx.stroke();
+            }
+          }
+        }
+      }
+
+      requestAnimationFrame(renderCurtainDraft);
     }
-    requestAnimationFrame(animateLinenPress);
+    requestAnimationFrame(renderCurtainDraft);
   }
 })();
 </script>
