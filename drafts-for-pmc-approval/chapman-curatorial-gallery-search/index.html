@@ -807,13 +807,22 @@
     margin-top: 6px;
   }
   .cat-tile:hover {
-    border-color: #999995;
+    border-color: #8E8A80;
+    box-shadow:
+      inset 2px 2px 6px rgba(95, 86, 72, 0.08),
+      inset -2px -2px 6px rgba(255, 253, 248, 0.9),
+      0 1px 0 rgba(255, 255, 255, 0.8);
+    transform: translateY(0.5px);
   }
   .cat-tile.active {
     border-color: #232220;
-    background-color: #FAF9F6;
+    background-color: #F4F1EA;
     color: #111111;
     font-weight: 600;
+    box-shadow:
+      inset 3px 3px 8px rgba(60, 54, 45, 0.13),
+      inset -2px -2px 6px rgba(255, 253, 248, 0.85);
+    transform: translateY(1px);
   }
 
   .swatch-row {
@@ -864,11 +873,22 @@
     cursor: pointer;
     transition: all 0.2s ease;
   }
+  .period-pill:hover {
+    border-color: #8E8A80;
+    box-shadow:
+      inset 2px 2px 6px rgba(95, 86, 72, 0.08),
+      inset -2px -2px 6px rgba(255, 253, 248, 0.9);
+    transform: translateY(0.5px);
+  }
   .period-pill.active {
     border-color: #232220;
-    background: #FAF9F6;
+    background: #F4F1EA;
     color: #111111;
     font-weight: 600;
+    box-shadow:
+      inset 3px 3px 8px rgba(60, 54, 45, 0.13),
+      inset -2px -2px 6px rgba(255, 253, 248, 0.85);
+    transform: translateY(1px);
   }
 
   .size-header {
