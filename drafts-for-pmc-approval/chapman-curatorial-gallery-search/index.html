@@ -30,12 +30,49 @@
   }
 
   body {
-    background-color: var(--bg);
+    background-color: #FAF8F5;
     color: var(--text-main);
     font-family: 'Cormorant Garamond', Georgia, serif;
     -webkit-font-smoothing: antialiased;
     line-height: 1.5;
     overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Layer 1 of Tactile Linen Press: Whisper-Light Belgian Linen / 300gsm Cotton Rag Tooth */
+  .nrl-linen-tooth-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.032;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='linenTooth'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23linenTooth)'/%3E%3C/svg%3E");
+  }
+
+  /* Layer 2 & 3 of Tactile Linen Press: Beveled Dimple (Upper-Left Warm Taupe Shadow + Lower-Right Ivory Rim) */
+  .nrl-tactile-dimple {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 340px;
+    height: 340px;
+    margin-left: -170px;
+    margin-top: -170px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.45s ease;
+    will-change: transform;
+    background:
+      radial-gradient(circle at 36% 36%, rgba(120, 110, 95, 0.052) 0%, rgba(120, 110, 95, 0.018) 38%, transparent 66%),
+      radial-gradient(circle at 64% 64%, rgba(255, 253, 248, 0.85) 0%, rgba(255, 253, 248, 0.25) 42%, transparent 70%);
+    box-shadow:
+      inset 5px 5px 14px rgba(115, 104, 88, 0.042),
+      inset -5px -5px 14px rgba(255, 253, 248, 0.75);
+  }
+  body:hover .nrl-tactile-dimple {
+    opacity: 1;
   }
 
   /* Interactive Flow Switcher Pill Bar (Top Sticky Demo Helper) */
@@ -1502,6 +1539,9 @@
 </style>
 </head>
 <body>
+  <!-- NRL Tactile Linen-Press Background Layers (300gsm Belgian Linen Tooth + Pillowy Beveled Cursor Dimple) -->
+  <div class="nrl-linen-tooth-overlay" aria-hidden="true"></div>
+  <div class="nrl-tactile-dimple" id="nrl-tactile-dimple" aria-hidden="true"></div>
 
   <!-- TOP DEMO BAR SO MATTHEW CAN JUMP OR WATCH THE CLICK-FLOW -->
   <div class="flow-status-bar">
@@ -2660,6 +2700,28 @@ applyFilters();
       origApply.apply(this, arguments);
       bindSpotlightTargets();
     };
+  }
+
+  // 3. Pillowy Spring-Rebound (0.08 Lerp Damping) for the Tactile Linen-Press Background Dimple
+  const dimpleEl = document.getElementById("nrl-tactile-dimple");
+  if (dimpleEl) {
+    let dx = window.innerWidth * 0.5;
+    let dy = window.innerHeight * 0.5;
+    let tx = dx;
+    let ty = dy;
+
+    window.addEventListener("mousemove", e => {
+      tx = e.clientX;
+      ty = e.clientY;
+    }, { passive: true });
+
+    function animateLinenPress() {
+      dx += (tx - dx) * 0.08;
+      dy += (ty - dy) * 0.08;
+      dimpleEl.style.transform = `translate3d(${dx.toFixed(1)}px, ${dy.toFixed(1)}px, 0)`;
+      requestAnimationFrame(animateLinenPress);
+    }
+    requestAnimationFrame(animateLinenPress);
   }
 })();
 </script>
