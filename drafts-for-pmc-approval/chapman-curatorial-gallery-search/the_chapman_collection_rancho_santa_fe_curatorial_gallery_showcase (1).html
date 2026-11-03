@@ -1959,7 +1959,7 @@ resumeHero();
   if (!canvas) return;
   const ctx = canvas.getContext("2d");
 
-  const SPACING = 24;
+  const SPACING = 16;
   let width = 0;
   let height = 0;
   let cols = 0;
@@ -2106,9 +2106,9 @@ resumeHero();
       if (n.glow < 0.002) n.glow = 0;
     }
 
-    // 1. Draw delicate horizontal & vertical linen warp/weft threads (dialed down 78% from heavy burlap to gossamer silk-linen)
-    ctx.lineWidth = 0.5;
-    ctx.strokeStyle = "rgba(176, 165, 146, 0.032)";
+    // 1. Draw delicate horizontal & vertical linen warp/weft threads (tighter 16px thread count at 0.056 alpha / 0.6px)
+    ctx.lineWidth = 0.6;
+    ctx.strokeStyle = "rgba(172, 158, 136, 0.056)";
     ctx.beginPath();
     for (let r = 0; r < rows; r++) {
       const rowOffset = r * cols;
@@ -2136,14 +2136,14 @@ resumeHero();
       const rowOffset = r * cols;
       for (let c = 0; c < cols; c++) {
         const n = nodes[rowOffset + c];
-        if (n.glow > 0.015) {
+        if (n.glow > 0.012) {
           const px = n.bx + n.ox;
           const py = n.by + n.oy;
           const g = n.glow;
           // Soft champagne halo on the billowed curtain fold
           ctx.beginPath();
-          ctx.arc(px, py, 0.8 + g * 1.1, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(182, 152, 98, ${(g * 0.16).toFixed(3)})`;
+          ctx.arc(px, py, 0.85 + g * 1.25, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(176, 142, 84, ${(g * 0.28).toFixed(3)})`;
           ctx.fill();
 
           // Highlighted thread segment connecting lifted neighbor nodes
@@ -2152,8 +2152,8 @@ resumeHero();
             ctx.beginPath();
             ctx.moveTo(px, py);
             ctx.lineTo(right.bx + right.ox, right.by + right.oy);
-            ctx.strokeStyle = `rgba(182, 152, 98, ${(g * 0.13).toFixed(3)})`;
-            ctx.lineWidth = 0.65;
+            ctx.strokeStyle = `rgba(176, 142, 84, ${(g * 0.24).toFixed(3)})`;
+            ctx.lineWidth = 0.78;
             ctx.stroke();
           }
           if (r + 1 < rows) {
@@ -2161,8 +2161,8 @@ resumeHero();
             ctx.beginPath();
             ctx.moveTo(px, py);
             ctx.lineTo(down.bx + down.ox, down.by + down.oy);
-            ctx.strokeStyle = `rgba(182, 152, 98, ${(g * 0.13).toFixed(3)})`;
-            ctx.lineWidth = 0.65;
+            ctx.strokeStyle = `rgba(176, 142, 84, ${(g * 0.24).toFixed(3)})`;
+            ctx.lineWidth = 0.78;
             ctx.stroke();
           }
         }
