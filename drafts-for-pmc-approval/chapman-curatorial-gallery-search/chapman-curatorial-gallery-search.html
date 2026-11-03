@@ -2721,16 +2721,16 @@ applyFilters();
     };
   }
 
-  // 3. Whisper-Fine Airy Linen Curtain Draft Engine (Strictly z-index: 0 behind all products)
-  //    Dialed down by ~78% from the heavy burlap grid so at rest the weave is practically invisible,
-  //    and only reveals a gossamer sunlit silk/linen thread ripple ("did I just see that?") when
-  //    your cursor breezes across the margin, settling back over ~3.2 seconds.
+  // 3. NRL Butter-Muslin / Cheesecloth Gauze Weave Engine (Strictly z-index: 0 behind all products)
   const draftCanvas = document.getElementById("nrl-curtain-draft-canvas");
   if (draftCanvas) {
     const ctx = draftCanvas.getContext("2d");
-    const SPACING = 16; // Closer thread count (16px vs 28px) so the billow reads as fine woven Belgian linen rather than wide graph squares
+    const CELL = 18;         // Physics control cell size (18px)
+    const SUB = 4;           // 4 fine cheesecloth yarns per cell (4.5px actual thread pitch)
     let width = 0, height = 0, cols = 0, rows = 0;
     let nodes = [];
+    let warpCrimp = [];
+    let weftCrimp = [];
 
     const pointer = { x: -9999, y: -9999, prevX: -9999, prevY: -9999, vx: 0, vy: 0, active: false };
 
@@ -2742,13 +2742,32 @@ applyFilters();
       draftCanvas.height = Math.floor(height * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      cols = Math.ceil(width / SPACING) + 2;
-      rows = Math.ceil(height / SPACING) + 2;
+      cols = Math.ceil(width / CELL) + 2;
+      rows = Math.ceil(height / CELL) + 2;
       nodes = new Array(cols * rows);
       for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
-          nodes[r * cols + c] = { bx: c * SPACING, by: r * SPACING, ox: 0, oy: 0, vx: 0, vy: 0, glow: 0 };
+          nodes[r * cols + c] = {
+            bx: c * CELL,
+            by: r * CELL,
+            ox: 0,
+            oy: 0,
+            vx: 0,
+            vy: 0,
+            glow: 0
+          };
         }
+      }
+
+      const totalRows = rows * SUB;
+      const totalCols = cols * SUB;
+      warpCrimp = new Float32Array(totalRows);
+      weftCrimp = new Float32Array(totalCols);
+      for (let i = 0; i < totalRows; i++) {
+        warpCrimp[i] = Math.sin(i * 1.73) * 0.42 + Math.cos(i * 0.61) * 0.28;
+      }
+      for (let j = 0; j < totalCols; j++) {
+        weftCrimp[j] = Math.cos(j * 1.91) * 0.42 + Math.sin(j * 0.79) * 0.28;
       }
     }
     window.addEventListener("resize", rebuildGrid, { passive: true });
@@ -2771,15 +2790,15 @@ applyFilters();
       pointer.vy = pointer.vy * 0.74 + rawDy * 0.26;
 
       const speed = Math.hypot(pointer.vx, pointer.vy);
-      const draftRadius = 210;
+      const draftRadius = 225;
       const rSq = draftRadius * draftRadius;
 
-      const minC = Math.max(0, Math.floor((pointer.x - draftRadius) / SPACING));
-      const maxC = Math.min(cols - 1, Math.ceil((pointer.x + draftRadius) / SPACING));
-      const minR = Math.max(0, Math.floor((pointer.y - draftRadius) / SPACING));
-      const maxR = Math.min(rows - 1, Math.ceil((pointer.y + draftRadius) / SPACING));
+      const minC = Math.max(0, Math.floor((pointer.x - draftRadius) / CELL));
+      const maxC = Math.min(cols - 1, Math.ceil((pointer.x + draftRadius) / CELL));
+      const minR = Math.max(0, Math.floor((pointer.y - draftRadius) / CELL));
+      const maxR = Math.min(rows - 1, Math.ceil((pointer.y + draftRadius) / CELL));
 
-      const clampedSpeed = Math.min(speed, 20);
+      const clampedSpeed = Math.min(speed, 22);
       const dirX = speed > 0.1 ? pointer.vx / speed : 0;
       const dirY = speed > 0.1 ? pointer.vy / speed : 0;
 
@@ -2792,21 +2811,21 @@ applyFilters();
           const dSq = dx * dx + dy * dy;
           if (dSq < rSq) {
             const dist = Math.sqrt(dSq);
-            const falloff = Math.pow(1 - dist / draftRadius, 2.2);
+            const falloff = Math.pow(1 - dist / draftRadius, 2.15);
 
-            const pullStrength = falloff * (0.095 * clampedSpeed + 0.14);
+            const pullStrength = falloff * (0.105 * clampedSpeed + 0.15);
             n.vx += dirX * pullStrength;
             n.vy += dirY * pullStrength;
 
             if (dist > 1) {
-              const radialPush = falloff * 0.075;
+              const radialPush = falloff * 0.085;
               n.vx += (dx / dist) * radialPush;
               n.vy += (dy / dist) * radialPush;
             }
 
-            const targetGlow = Math.min(1, falloff * (0.34 + clampedSpeed * 0.028));
+            const targetGlow = Math.min(1, falloff * (0.38 + clampedSpeed * 0.032));
             if (targetGlow > n.glow) {
-              n.glow = n.glow + (targetGlow - n.glow) * 0.30;
+              n.glow = n.glow + (targetGlow - n.glow) * 0.32;
             }
           }
         }
@@ -2816,13 +2835,14 @@ applyFilters();
     const SPRING = 0.013;
     const DAMPING = 0.968;
     const GLOW_DECAY = 0.980;
-    const MAX_DISP = 13.5;
+    const MAX_DISP = 14.5;
 
-    function renderCurtainDraft() {
+    function renderCheeseclothGauze() {
       pointer.vx *= 0.92;
       pointer.vy *= 0.92;
       ctx.clearRect(0, 0, width, height);
 
+      let maxActiveGlow = 0;
       for (let i = 0; i < nodes.length; i++) {
         const n = nodes[i];
         n.vx += -n.ox * SPRING;
@@ -2840,74 +2860,109 @@ applyFilters();
         }
         n.glow *= GLOW_DECAY;
         if (n.glow < 0.002) n.glow = 0;
+        else if (n.glow > maxActiveGlow) maxActiveGlow = n.glow;
       }
 
-      // 1. Resting warp/weft threads: tighter 16px weave at 0.056 alpha / 0.6px lineWidth
-      ctx.lineWidth = 0.6;
-      ctx.strokeStyle = "rgba(172, 158, 136, 0.056)";
-      ctx.beginPath();
-      for (let r = 0; r < rows; r++) {
-        const rowOffset = r * cols;
-        for (let c = 0; c < cols; c++) {
-          const n = nodes[rowOffset + c];
-          const px = n.bx + n.ox;
-          const py = n.by + n.oy;
-          if (c === 0) ctx.moveTo(px, py);
-          else ctx.lineTo(px, py);
+      for (let pass = 0; pass < 2; pass++) {
+        ctx.beginPath();
+        if (pass === 0) {
+          ctx.lineWidth = 0.55;
+          ctx.strokeStyle = "rgba(174, 160, 138, 0.064)";
+        } else {
+          ctx.lineWidth = 0.40;
+          ctx.strokeStyle = "rgba(182, 169, 148, 0.042)";
         }
-      }
-      for (let c = 0; c < cols; c++) {
-        for (let r = 0; r < rows; r++) {
-          const n = nodes[r * cols + c];
-          const px = n.bx + n.ox;
-          const py = n.by + n.oy;
-          if (r === 0) ctx.moveTo(px, py);
-          else ctx.lineTo(px, py);
+
+        for (let r = 0; r < rows - 1; r++) {
+          const r0 = r * cols;
+          const r1 = (r + 1) * cols;
+          for (let s = 0; s < SUB; s++) {
+            if ((s === 0) !== (pass === 0)) continue;
+            const frac = s / SUB;
+            const crimpY = warpCrimp[r * SUB + s];
+            for (let c = 0; c < cols; c++) {
+              const n0 = nodes[r0 + c];
+              const n1 = nodes[r1 + c];
+              const ox = n0.ox + (n1.ox - n0.ox) * frac;
+              const oy = n0.oy + (n1.oy - n0.oy) * frac;
+              const wave = Math.sin(c * 0.9 + s * 1.7) * 0.38 + crimpY;
+              const px = n0.bx + ox;
+              const py = n0.by + frac * CELL + oy + wave;
+              if (c === 0) ctx.moveTo(px, py);
+              else ctx.lineTo(px, py);
+            }
+          }
         }
+
+        for (let c = 0; c < cols - 1; c++) {
+          for (let s = 0; s < SUB; s++) {
+            if ((s === 0) !== (pass === 0)) continue;
+            const frac = s / SUB;
+            const crimpX = weftCrimp[c * SUB + s];
+            for (let r = 0; r < rows; r++) {
+              const rOff = r * cols;
+              const n0 = nodes[rOff + c];
+              const n1 = nodes[rOff + c + 1];
+              const ox = n0.ox + (n1.ox - n0.ox) * frac;
+              const oy = n0.oy + (n1.oy - n0.oy) * frac;
+              const wave = Math.cos(r * 0.9 + s * 1.7) * 0.38 + crimpX;
+              const px = n0.bx + frac * CELL + ox + wave;
+              const py = n0.by + oy;
+              if (r === 0) ctx.moveTo(px, py);
+              else ctx.lineTo(px, py);
+            }
+          }
+        }
+        ctx.stroke();
       }
-      ctx.stroke();
 
-      // 2. Active billowed threads: warm sunlit champagne silk that catches the light along the lifted fold
-      for (let r = 0; r < rows; r++) {
-        const rowOffset = r * cols;
-        for (let c = 0; c < cols; c++) {
-          const n = nodes[rowOffset + c];
-          if (n.glow > 0.012) {
-            const g = n.glow;
-            const px = n.bx + n.ox;
-            const py = n.by + n.oy;
+      if (maxActiveGlow > 0.008) {
+        for (let r = 0; r < rows - 1; r++) {
+          const r0 = r * cols;
+          const r1 = (r + 1) * cols;
+          for (let c = 0; c < cols - 1; c++) {
+            const n00 = nodes[r0 + c];
+            const g = n00.glow;
+            if (g < 0.012) continue;
 
-            // Delicate micro-knot illumination (0.28 max alpha)
+            const n10 = nodes[r0 + c + 1];
+            const n01 = nodes[r1 + c];
+            const n11 = nodes[r1 + c + 1];
+
             ctx.beginPath();
-            ctx.arc(px, py, 0.85 + g * 1.25, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(176, 142, 84, ${(g * 0.28).toFixed(3)})`;
-            ctx.fill();
+            for (let s = 0; s < SUB; s++) {
+              const f = s / SUB;
+              const hx0 = n00.bx + n00.ox + (n01.ox - n00.ox) * f;
+              const hy0 = n00.by + f * CELL + n00.oy + (n01.oy - n00.oy) * f;
+              const hx1 = n10.bx + n10.ox + (n11.ox - n10.ox) * f;
+              const hy1 = n10.by + f * CELL + n10.oy + (n11.oy - n10.oy) * f;
+              ctx.moveTo(hx0, hy0);
+              ctx.lineTo(hx1, hy1);
 
-            if (c + 1 < cols) {
-              const right = nodes[rowOffset + c + 1];
-              ctx.beginPath();
-              ctx.moveTo(px, py);
-              ctx.lineTo(right.bx + right.ox, right.by + right.oy);
-              ctx.strokeStyle = `rgba(176, 142, 84, ${(g * 0.24).toFixed(3)})`;
-              ctx.lineWidth = 0.78;
-              ctx.stroke();
+              const vx0 = n00.bx + f * CELL + n00.ox + (n10.ox - n00.ox) * f;
+              const vy0 = n00.by + n00.oy + (n10.oy - n00.oy) * f;
+              const vx1 = n01.bx + f * CELL + n01.ox + (n11.ox - n01.ox) * f;
+              const vy1 = n01.by + n01.oy + (n11.oy - n01.oy) * f;
+              ctx.moveTo(vx0, vy0);
+              ctx.lineTo(vx1, vy1);
             }
-            if (r + 1 < rows) {
-              const down = nodes[(r + 1) * cols + c];
-              ctx.beginPath();
-              ctx.moveTo(px, py);
-              ctx.lineTo(down.bx + down.ox, down.by + down.oy);
-              ctx.strokeStyle = `rgba(176, 142, 84, ${(g * 0.24).toFixed(3)})`;
-              ctx.lineWidth = 0.78;
-              ctx.stroke();
-            }
+            ctx.lineWidth = 0.55 + g * 0.35;
+            ctx.strokeStyle = `rgba(176, 148, 98, ${(g * 0.16).toFixed(3)})`;
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(n00.bx + n00.ox, n00.by + n00.oy);
+            ctx.lineTo(n10.bx + n10.ox, n10.by + n10.oy);
+            ctx.lineWidth = 0.85;
+            ctx.strokeStyle = `rgba(255, 253, 248, ${(g * 0.52).toFixed(3)})`;
+            ctx.stroke();
           }
         }
       }
 
-      requestAnimationFrame(renderCurtainDraft);
+      requestAnimationFrame(renderCheeseclothGauze);
     }
-    requestAnimationFrame(renderCurtainDraft);
+    requestAnimationFrame(renderCheeseclothGauze);
   }
 })();
 </script>
