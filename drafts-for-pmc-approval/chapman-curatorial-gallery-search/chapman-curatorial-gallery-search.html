@@ -49,30 +49,26 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='linenTooth'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23linenTooth)'/%3E%3C/svg%3E");
   }
 
-  /* Layer 2 & 3 of Tactile Linen Press: Beveled Dimple (Upper-Left Warm Taupe Shadow + Lower-Right Ivory Rim) */
+  /* Layer 2 & 3 of Tactile Linen Press: Subliminal "Second-Look" Beveled Dimple */
   .nrl-tactile-dimple {
     position: fixed;
     top: 0;
     left: 0;
-    width: 340px;
-    height: 340px;
-    margin-left: -170px;
-    margin-top: -170px;
+    width: 280px;
+    height: 280px;
+    margin-left: -140px;
+    margin-top: -140px;
     border-radius: 50%;
     pointer-events: none;
     z-index: 2;
     opacity: 0;
-    transition: opacity 0.45s ease;
-    will-change: transform;
+    will-change: transform, opacity;
     background:
-      radial-gradient(circle at 36% 36%, rgba(120, 110, 95, 0.052) 0%, rgba(120, 110, 95, 0.018) 38%, transparent 66%),
-      radial-gradient(circle at 64% 64%, rgba(255, 253, 248, 0.85) 0%, rgba(255, 253, 248, 0.25) 42%, transparent 70%);
+      radial-gradient(circle at 37% 37%, rgba(118, 107, 92, 0.036) 0%, rgba(118, 107, 92, 0.012) 40%, transparent 65%),
+      radial-gradient(circle at 63% 63%, rgba(255, 253, 249, 0.72) 0%, rgba(255, 253, 249, 0.18) 44%, transparent 68%);
     box-shadow:
-      inset 5px 5px 14px rgba(115, 104, 88, 0.042),
-      inset -5px -5px 14px rgba(255, 253, 248, 0.75);
-  }
-  body:hover .nrl-tactile-dimple {
-    opacity: 1;
+      inset 4px 4px 12px rgba(112, 101, 85, 0.028),
+      inset -4px -4px 12px rgba(255, 253, 249, 0.62);
   }
 
   /* Interactive Flow Switcher Pill Bar (Top Sticky Demo Helper) */
@@ -2722,23 +2718,64 @@ applyFilters();
     };
   }
 
-  // 3. Pillowy Spring-Rebound (0.08 Lerp Damping) for the Tactile Linen-Press Background Dimple
+  // 3. Subliminal "Did I Just See That?" Linen-Press Physics:
+  //    - Progressive dwell ramp (starts whisper-faint and deepens subtly as they spend 1-2 minutes on the site)
+  //    - Velocity-gated bloom: stays invisible during rapid mouse sweeps, then gently yields into the #FAF8F5 linen
+  //      only when the cursor slows down/lingers on the background margin, and melts away when moving fast again.
   const dimpleEl = document.getElementById("nrl-tactile-dimple");
   if (dimpleEl) {
+    const sessionStart = performance.now();
     let dx = window.innerWidth * 0.5;
     let dy = window.innerHeight * 0.5;
     let tx = dx;
     let ty = dy;
+    let prevTx = dx;
+    let prevTy = dy;
+    let curOpacity = 0.0;
+    let onMargin = true;
 
     window.addEventListener("mousemove", e => {
       tx = e.clientX;
       ty = e.clientY;
+      // Only press into the linen background/margins, not over photos or dark buttons
+      const tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : "";
+      const overMedia = e.target && e.target.closest && e.target.closest("img, button, input, select, .hero-carousel, .collage-tile, .lookbook-img-box, .card-img-box, .flow-status-bar");
+      onMargin = !overMedia && tag !== "img";
     }, { passive: true });
 
-    function animateLinenPress() {
-      dx += (tx - dx) * 0.08;
-      dy += (ty - dy) * 0.08;
-      dimpleEl.style.transform = `translate3d(${dx.toFixed(1)}px, ${dy.toFixed(1)}px, 0)`;
+    function animateLinenPress(now) {
+      // Spring position (0.065 pillowy damping)
+      dx += (tx - dx) * 0.065;
+      dy += (ty - dy) * 0.065;
+
+      // Measure instantaneous cursor velocity
+      const vx = tx - prevTx;
+      const vy = ty - prevTy;
+      prevTx = tx;
+      prevTy = ty;
+      const speed = Math.hypot(vx, vy);
+
+      // Dwell maturity: ramps from 0.25 at 0s up to 1.0 after 90 seconds on the site
+      // so it feels like a "Wait... did I just see that?" discovery after browsing!
+      const elapsedSec = (now - sessionStart) * 0.001;
+      const dwellFactor = Math.min(1.0, 0.28 + (elapsedSec / 90.0) * 0.72);
+
+      // Target opacity: only blooms when moving gently (< 6px/frame) on the linen margin
+      let targetOp = 0.0;
+      if (onMargin && speed < 7.5) {
+        const slowness = 1.0 - Math.min(1.0, speed / 7.5);
+        // Subtle breathing micro-pulse so the resting dimple feels alive under the hand
+        const breath = 0.90 + 0.10 * Math.sin(now * 0.0022);
+        targetOp = slowness * dwellFactor * breath;
+      }
+
+      // Smooth fade in when settling (0.035), faster melt away when darting (0.12)
+      const rate = targetOp > curOpacity ? 0.032 : 0.11;
+      curOpacity += (targetOp - curOpacity) * rate;
+
+      const scale = 0.92 + curOpacity * 0.10;
+      dimpleEl.style.opacity = curOpacity.toFixed(3);
+      dimpleEl.style.transform = `translate3d(${dx.toFixed(1)}px, ${dy.toFixed(1)}px, 0) scale(${scale.toFixed(3)})`;
       requestAnimationFrame(animateLinenPress);
     }
     requestAnimationFrame(animateLinenPress);
