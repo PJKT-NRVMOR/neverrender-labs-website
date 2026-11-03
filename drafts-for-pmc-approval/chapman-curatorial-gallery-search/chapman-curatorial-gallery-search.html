@@ -1849,6 +1849,8 @@ function openCurateWithCategory(catId, kw) {
 /* ==========================================================================
    HERO CAROUSEL (SLIDE 1: SLATE FURNITURE, SLIDE 2: CARPET COLLAGE, SLIDE 3: TRINKET COLLAGE)
    ========================================================================== */
+let heroAutoplayTimer = null;
+
 function setHeroSlide(idx) {
   state.heroSlide = (idx + 3) % 3;
   for (let i = 0; i < 3; i++) {
@@ -1859,6 +1861,30 @@ function setHeroSlide(idx) {
 
 function stepHeroSlide(delta) {
   setHeroSlide(state.heroSlide + delta);
+  restartHeroAutoplay();
+}
+
+function startHeroAutoplay() {
+  if (heroAutoplayTimer) clearInterval(heroAutoplayTimer);
+  heroAutoplayTimer = setInterval(() => {
+    if (state.view === "home") {
+      setHeroSlide(state.heroSlide + 1);
+    }
+  }, 4500);
+}
+
+function restartHeroAutoplay() {
+  startHeroAutoplay();
+}
+
+const heroEl = document.querySelector(".hero-carousel");
+if (heroEl) {
+  heroEl.addEventListener("mouseenter", () => {
+    if (heroAutoplayTimer) clearInterval(heroAutoplayTimer);
+  });
+  heroEl.addEventListener("mouseleave", () => {
+    startHeroAutoplay();
+  });
 }
 
 function initHeroCollages() {
@@ -2263,6 +2289,7 @@ function renderCollageSplash() {
 }
 
 initHeroCollages();
+startHeroAutoplay();
 renderCollageSplash();
 renderGalleryLookbooks();
 renderControls();
