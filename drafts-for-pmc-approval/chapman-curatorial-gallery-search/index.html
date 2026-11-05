@@ -1801,112 +1801,95 @@
         <div style="width:44px; height:2px; background:#B35A5E; margin:0 auto;"></div>
       </div>
 
-      <!-- Main Split Editorial Hero (Unified Left Vertical Floating Card + Open Right Bio) -->
-      <div class="melissa-hero-split" style="display:grid; grid-template-columns:minmax(320px, 460px) 1fr; gap:52px; padding:12px 4px 36px; align-items:start;">
-        <!-- Left Column: Unified Vertical Dossier Card (Portrait + Switcher + Contact Info) that Pop-Lifts Together -->
-        <div class="nrl-hover-box" style="padding:28px;">
-          <div class="nrl-framed-photo" style="aspect-ratio:4 / 5;">
-            <img id="melissa-about-hero-img" src="assets/melissa-seated-showroom.jpg" alt="Melissa Chapman in The Chapman Collection Rancho Santa Fe Showroom" style="width:100%; height:100%; object-fit:cover; object-position:center top; display:block;">
-          </div>
-          <div id="melissa-about-caption" style="font-style:italic; font-size:14px; color:#8A8F97; text-align:center; margin-top:14px; line-height:1.45;">
-            Melissa Chapman in the Rancho Santa Fe showroom with 17th Century carved oak, Renaissance velvet seating and fine European bronzes.
-          </div>
-
-          <!-- 3-Photo Studio Switcher So Matthew & Melissa Can Preview Each Option -->
-          <div style="margin-top:18px; padding-top:14px; border-top:1px solid #D5D3CC;">
-            <div style="font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:#8A8F97; text-align:center; margin-bottom:10px;">
-              Select Showroom Portrait View
+      <!-- Main Split Editorial Hero (100% Symmetrical Top & Bottom Lines, Flush with Lower Grid) -->
+      <div class="melissa-hero-split" style="display:grid; grid-template-columns:minmax(340px, 460px) 1fr; gap:32px; padding:12px 0 32px; align-items:stretch;">
+        <!-- Left Column: Singular Ranch and Coast Portrait Card + Credit + Curate Your Collection CTA -->
+        <div class="nrl-hover-box" style="padding:28px; display:flex; flex-direction:column; justify-content:space-between;">
+          <div style="display:flex; flex-direction:column; flex:1;">
+            <div class="nrl-framed-photo" style="flex:1; min-height:460px;">
+              <img id="melissa-about-hero-img" src="assets/melissa-seated-showroom.jpg" alt="Melissa Chapman in The Chapman Collection Rancho Santa Fe Showroom" style="width:100%; height:100%; object-fit:cover; object-position:center top; display:block;">
             </div>
-            <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:8px;">
-              <button type="button" class="nrl-float-btn active-portrait-btn" id="about-photo-btn-1" onclick="setAboutPortrait('assets/melissa-seated-showroom.jpg', 'Melissa Chapman in the Rancho Santa Fe showroom with 17th Century carved oak, Renaissance velvet seating and fine European bronzes.', 1)" style="padding:8px 6px; font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer;">1. Seated Gallery</button>
-              <button type="button" class="nrl-float-btn" id="about-photo-btn-2" onclick="setAboutPortrait('assets/melissa-standing-miro.jpg', 'Melissa Chapman beside a Spanish Bargueño cabinet on stand, framed Joan Miró lithograph and 18th Century giltwood mirror.', 2)" style="padding:8px 6px; font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer;">2. Standing Mir&oacute;</button>
-              <button type="button" class="nrl-float-btn" id="about-photo-btn-3" onclick="setAboutPortrait('assets/showroom-6014-la-granada.jpg', 'The Chapman Collection showroom at 6014 La Granada in the heart of Rancho Santa Fe Village.', 3)" style="padding:8px 6px; font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer;">3. 6014 La Granada</button>
+            <div id="melissa-about-caption" style="font-style:italic; font-size:14.5px; color:#8A8F97; text-align:center; margin-top:14px; line-height:1.45;">
+              Photo courtesy of Ranch and Coast Magazine
             </div>
           </div>
 
-          <!-- Direct Personal Concierge Section (Integrated Inside the Same Vertical Pop-Up Card) -->
-          <div style="margin-top:20px; padding-top:18px; border-top:1px solid #D5D3CC; text-align:center;">
-            <div style="font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:#B35A5E; margin-bottom:6px;">
-              Direct Showroom Concierge
-            </div>
-            <div style="font-size:18px; color:#2B2F32; font-weight:500; margin-bottom:4px;">
-              6014 La Granada, Rancho Santa Fe, CA 92067
-            </div>
-            <div style="font-size:15px; color:#8A8F97; margin-bottom:12px;">
-              Monday to Saturday: 10:00 AM to 6:00 PM &middot; Sunday by Appointment
-            </div>
-            <div style="font-family:'Montserrat',sans-serif; font-size:11px; letter-spacing:0.14em; color:#2B2F32;">
-              Call or Text Melissa: <a href="tel:+18583492638" style="color:#2B2F32; font-weight:600; text-decoration:none; border-bottom:1px solid #B35A5E;">(858) 349-2638</a>
-            </div>
+          <!-- Curate Your Collection Button Underneath the Photo (Flush with Right Column Signature) -->
+          <div style="margin-top:18px; padding-top:18px; border-top:1px solid #D5D3CC; text-align:center; display:flex; flex-direction:column; align-items:center; gap:10px;">
+            <button type="button" class="search-trigger" style="width:100%;" onclick="switchView('curate')">Curate Your Collection</button>
+            <button type="button" class="reset-trigger" onclick="switchView('gallery')">Explore Gallery Lookbook</button>
           </div>
         </div>
 
-        <!-- Right Column: Melissa's Verbatim Approved 6-Paragraph Bio -->
-        <div style="font-size:19.5px; line-height:1.82; color:#2B2F32;">
-          <div style="font-family:'Montserrat',sans-serif; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:#B35A5E; margin-bottom:14px;">
-            Three Decades of London &amp; California Curatorial Heritage
+        <!-- Right Column: Melissa's Verbatim Approved 6-Paragraph Bio (Symmetrical Top & Bottom Alignment) -->
+        <div style="font-size:19.5px; line-height:1.82; color:#2B2F32; display:flex; flex-direction:column; justify-content:space-between; padding-left:16px;">
+          <div>
+            <div style="font-family:'Montserrat',sans-serif; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:#B35A5E; margin-bottom:14px;">
+              Three Decades of London and California Curatorial Heritage
+            </div>
+
+            <p style="margin-bottom:20px;">
+              Melissa Chapman is an experienced antiques and Persian carpet dealer whose lifelong passion began in her family&rsquo;s Persian carpet stores. At just 19, she opened her first shop on Harrington Road in London, specializing in fine Persian carpets alongside a carefully curated selection of antiques.
+            </p>
+
+            <p style="margin-bottom:20px;">
+              As Melissa&rsquo;s discerning eye and love for timeless design grew, so did her business. She began importing full containers of antique and fine European furniture, establishing herself as a distinguished antiques dealer with an exceptional collection of Persian rugs.
+            </p>
+
+            <p style="margin-bottom:20px;">
+              Over the years, Melissa has opened several successful locations in London and San Diego, building a loyal and prestigious clientele that includes celebrities, politicians and even royalty.
+            </p>
+
+            <p style="margin-bottom:20px;">
+              Today, she runs The Chapman Collection from her elegant showroom in Rancho Santa Fe, California, offering exceptional pieces selected for their history, craftsmanship and beauty, all at remarkable value.
+            </p>
+
+            <p style="margin-bottom:20px;">
+              The Collection brings together classical European antiques, Old World furnishings, tapestries, artwork, decorative accessories and an extraordinary selection of Persian carpets. Whether you are seeking a statement piece or a subtle accent, there is something special to discover.
+            </p>
+
+            <p style="margin-bottom:24px;">
+              Beyond the showroom, Melissa is a devoted single mother to two wonderful sons, with two much-loved dogs completing the family. She also helps manage her family&rsquo;s International Real Estate Portfolio, bringing the same dedication and attention to detail to every aspect of her life.
+            </p>
           </div>
 
-          <p style="margin-bottom:20px;">
-            Melissa Chapman is an experienced antiques and Persian carpet dealer whose lifelong passion began in her family&rsquo;s Persian carpet stores. At just 19, she opened her first shop on Harrington Road in London, specializing in fine Persian carpets alongside a carefully curated selection of antiques.
-          </p>
-
-          <p style="margin-bottom:20px;">
-            As Melissa&rsquo;s discerning eye and love for timeless design grew, so did her business. She began importing full containers of antique and fine European furniture, establishing herself as a distinguished antiques dealer with an exceptional collection of Persian rugs.
-          </p>
-
-          <p style="margin-bottom:20px;">
-            Over the years, Melissa has opened several successful locations in London and San Diego, building a loyal and prestigious clientele that includes celebrities, politicians and even royalty.
-          </p>
-
-          <p style="margin-bottom:20px;">
-            Today, she runs The Chapman Collection from her elegant showroom in Rancho Santa Fe, California, offering exceptional pieces selected for their history, craftsmanship and beauty, all at remarkable value.
-          </p>
-
-          <p style="margin-bottom:20px;">
-            The Collection brings together classical European antiques, Old World furnishings, tapestries, artwork, decorative accessories and an extraordinary selection of Persian carpets. Whether you are seeking a statement piece or a subtle accent, there is something special to discover.
-          </p>
-
-          <p style="margin-bottom:28px;">
-            Beyond the showroom, Melissa is a devoted single mother to two wonderful sons, with two much-loved dogs completing the family. She also helps manage her family&rsquo;s International Real Estate Portfolio, bringing the same dedication and attention to detail to every aspect of her life.
-          </p>
-
-          <!-- Signature Block & CTA Row -->
-          <div style="padding-top:22px; border-top:1px solid #D5D3CC; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:18px;">
+          <!-- Signature Block (Bottom Border Aligns Symmetrically with Left Portrait Card Bottom Edge) -->
+          <div style="padding:20px 0 22px; border-top:1px solid #D5D3CC; border-bottom:1px solid #D5D3CC; display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px;">
             <div>
-              <div style="font-family:'Cormorant Garamond', Georgia, serif; font-size:24px; font-style:italic; color:#2B2F32;">
+              <div style="font-family:'Cormorant Garamond', Georgia, serif; font-size:25px; font-style:italic; color:#2B2F32; line-height:1.2;">
                 Warm regards, Melissa Chapman
               </div>
-              <div style="font-family:'Montserrat',sans-serif; font-size:9.5px; letter-spacing:0.18em; text-transform:uppercase; color:#8A8F97; margin-top:2px;">
-                Founder &amp; Principal Curator &middot; The Chapman Collection
+              <div style="font-family:'Montserrat',sans-serif; font-size:9.5px; letter-spacing:0.18em; text-transform:uppercase; color:#8A8F97; margin-top:4px;">
+                Founder and Principal Curator &middot; The Chapman Collection
               </div>
             </div>
-            <div style="display:flex; gap:12px; flex-wrap:wrap;">
-              <button type="button" class="search-trigger" onclick="switchView('curate')">Curate Your Collection</button>
-              <button type="button" class="reset-trigger" onclick="switchView('gallery')">Explore Gallery Lookbook</button>
+            <div style="text-align:right; font-family:'Montserrat',sans-serif; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#8A8F97;">
+              6014 La Granada, Rancho Santa Fe &middot; <a href="tel:+18583492638" style="color:#2B2F32; font-weight:600; text-decoration:none; border-bottom:1px solid #B35A5E;">(858) 349-2638</a>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Lower Band: The Rancho Santa Fe Showroom & White-Glove Shipping / In-Home Trial Architecture (With Floating Hover Elevation) -->
-      <div class="melissa-lower-grid" style="margin-top:24px; display:grid; grid-template-columns:1fr 1fr; gap:32px;">
+      <div class="melissa-lower-grid" style="margin-top:8px; display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:stretch;">
         <!-- Card 1: 6014 La Granada Showroom & In-Home Preview Promise -->
-        <div class="nrl-hover-box" style="padding:32px;">
-          <div class="nrl-framed-photo" style="aspect-ratio:16 / 10; margin-bottom:20px;">
-            <img src="assets/showroom-6014-la-granada.jpg" alt="The Chapman Collection Showroom at 6014 La Granada, Rancho Santa Fe" style="width:100%; height:100%; object-fit:cover; display:block;">
+        <div class="nrl-hover-box" style="padding:32px; display:flex; flex-direction:column; justify-content:space-between;">
+          <div>
+            <div class="nrl-framed-photo" style="aspect-ratio:16 / 10; margin-bottom:20px;">
+              <img src="assets/showroom-6014-la-granada.jpg" alt="The Chapman Collection Showroom at 6014 La Granada, Rancho Santa Fe" style="width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+            <div style="font-family:'Montserrat',sans-serif; font-size:9.5px; letter-spacing:0.2em; text-transform:uppercase; color:#B35A5E; margin-bottom:8px;">
+              Rancho Santa Fe Village &middot; Corner of La Granada and Paseo Delicias
+            </div>
+            <h3 style="font-size:24px; font-weight:400; letter-spacing:0.12em; text-transform:uppercase; color:#2B2F32; margin-bottom:12px;">
+              Complimentary In-Home Placement Trials
+            </h3>
+            <p style="font-size:17px; line-height:1.7; color:#2B2F32; margin-bottom:16px;">
+              Seeing a hand-knotted Persian carpet or an 18th Century European armoire in your own natural light is the truest way to know it belongs. Melissa and her showroom team offer complimentary in-home placement trials across Rancho Santa Fe, Del Mar, La Jolla and Coastal San Diego so you and your interior designer can experience pieces in situ before final acquisition.
+            </p>
           </div>
-          <div style="font-family:'Montserrat',sans-serif; font-size:9.5px; letter-spacing:0.2em; text-transform:uppercase; color:#B35A5E; margin-bottom:8px;">
-            Rancho Santa Fe Village &middot; Corner of La Granada &amp; Paseo Delicias
-          </div>
-          <h3 style="font-size:24px; font-weight:400; letter-spacing:0.12em; text-transform:uppercase; color:#2B2F32; margin-bottom:12px;">
-            Complimentary In-Home Placement Trials
-          </h3>
-          <p style="font-size:17px; line-height:1.7; color:#2B2F32; margin-bottom:14px;">
-            Seeing a hand-knotted Persian carpet or an 18th Century European armoire in your own natural light is the truest way to know it belongs. Melissa and her showroom team offer complimentary in-home placement trials across Rancho Santa Fe, Del Mar, La Jolla and Coastal San Diego so you and your interior designer can experience pieces in situ before final acquisition.
-          </p>
-          <div style="font-family:'Montserrat',sans-serif; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#8A8F97;">
-            Recognized in Ranch &amp; Coast Magazine &middot; Private Designer Appointments Available
+          <div style="border-top:1px solid #D5D3CC; padding-top:16px; font-family:'Montserrat',sans-serif; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#8A8F97;">
+            Recognized in Ranch and Coast Magazine &middot; Private Designer Appointments Available
           </div>
         </div>
 
@@ -1914,10 +1897,10 @@
         <div class="nrl-hover-box" style="padding:32px; display:flex; flex-direction:column; justify-content:space-between;">
           <div>
             <div style="font-family:'Montserrat',sans-serif; font-size:9.5px; letter-spacing:0.2em; text-transform:uppercase; color:#B35A5E; margin-bottom:8px;">
-              Domestic &amp; International Fine-Art Logistics
+              Domestic and International Fine-Art Logistics
             </div>
             <h3 style="font-size:24px; font-weight:400; letter-spacing:0.12em; text-transform:uppercase; color:#2B2F32; margin-bottom:14px;">
-              White-Glove Shipping &amp; Carrier Coordination
+              White-Glove Shipping and Carrier Coordination
             </h3>
             <p style="font-size:17px; line-height:1.7; color:#2B2F32; margin-bottom:16px;">
               Because Melissa has imported full containers of European antiques and palace-sized carpets for over thirty years, every acquisition outside Southern California is handled with museum-grade care. We coordinate directly with vetted white-glove blanket-wrap carriers and custom fine-art crating specialists for seamless door-to-room placement nationwide and abroad.
@@ -1927,8 +1910,8 @@
                 Three Effortless Fulfillment Pathways
               </div>
               <ul style="list-style:none; font-size:16px; line-height:1.65; color:#2B2F32;">
-                <li style="margin-bottom:6px;"><strong style="color:#B35A5E;">1. Local Estate Preview &amp; Delivery:</strong> Complimentary showroom van delivery and placement across Rancho Santa Fe and San Diego County.</li>
-                <li style="margin-bottom:6px;"><strong style="color:#B35A5E;">2. Showroom &amp; Designer Warehouse Pickup:</strong> Immediate reservation at 6014 La Granada for client or ASID trade receiver pickup.</li>
+                <li style="margin-bottom:6px;"><strong style="color:#B35A5E;">1. Local Estate Preview and Delivery:</strong> Complimentary showroom van delivery and placement across Rancho Santa Fe and San Diego County.</li>
+                <li style="margin-bottom:6px;"><strong style="color:#B35A5E;">2. Showroom and Designer Warehouse Pickup:</strong> Immediate reservation at 6014 La Granada for client or ASID trade receiver pickup.</li>
                 <li><strong style="color:#B35A5E;">3. Nationwide White-Glove Freight:</strong> Post-purchase carrier quotes billed at direct net transport cost with full transit insurance.</li>
               </ul>
             </div>
