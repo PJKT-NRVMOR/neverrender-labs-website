@@ -313,7 +313,7 @@
     box-shadow: 0 8px 18px -6px rgba(43, 47, 50, 0.18);
   }
   .nav-curate-cta {
-    border-color: var(--chaphavian-iron) !important;
+    border-color: var(--chaphavian-putty) !important;
   }
   .nav-selection-pill {
     font-family: 'Montserrat', sans-serif !important;
@@ -1607,6 +1607,7 @@
     .main-nav li:nth-child(5) {
       grid-column: span 3;
     }
+    /* 1. Give "CURATE YOUR COLLECTION" clean left/right padding inside its 50% column */
     .main-nav a {
       display: flex;
       align-items: center;
@@ -1614,9 +1615,22 @@
       width: 100%;
       height: 100%;
       text-align: center;
-      font-size: 11px !important;
-      letter-spacing: 0.11em !important;
-      padding: 9px 6px !important;
+      font-size: 10px !important;
+      letter-spacing: 0.065em !important;
+      padding: 10px 4px !important;
+      white-space: nowrap;
+    }
+
+    /* 2. Match inactive "Curate Your Collection" border to Putty so all inactive tabs match */
+    .nav-curate-cta {
+      border-color: var(--chaphavian-putty) !important;
+    }
+
+    /* 3. Keep "EXPLORE THE GALLERY" on one clean horizontal line on mobile */
+    #view-melissa .search-trigger {
+      font-size: 13px !important;
+      letter-spacing: 0.15em !important;
+      padding: 12px 14px !important;
       white-space: nowrap;
     }
     .hero-carousel { height: auto; }
