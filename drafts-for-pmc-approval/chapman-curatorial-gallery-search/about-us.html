@@ -9,18 +9,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #F7F5F2;
-    --off-greige: #F7F5F2;
-    --greige-panel: #D9D3CC;
-    --slate-panel: #8A8F97;
-    --taupe-panel: #2B2F33;
-    --text-main: #2B2F33;
-    --text-muted: #8A8F97;
-    --text-italic-hint: #B35A5E;
-    --border-hairline: #D9D3CC;
-    --border-active: #2B2F33;
-    --gold-accent: #B35A5E;
-    --studio-grey-card: #F7F5F2;
+    /* The Chaphavian Palette (Chapman + Safe Haven + Gustavian) */
+    --chaphavian-alabaster: #F7F5F2; /* 60% Primary plaster & linen canvas */
+    --chaphavian-putty:     #D5D3CC; /* 60% Carved limestone & millwork */
+    --chaphavian-slate:     #8A8F97; /* 30% Wainscoting & study paneling */
+    --chaphavian-rose:      #B35A5E; /* 10% Alcove warmth & textile accent */
+    --chaphavian-iron:      #2B2F32; /* 10% Steel window grids & deep ink */
+
+    --bg: var(--chaphavian-alabaster);
+    --off-greige: var(--chaphavian-alabaster);
+    --greige-panel: var(--chaphavian-putty);
+    --slate-panel: var(--chaphavian-slate);
+    --taupe-panel: var(--chaphavian-iron);
+    --text-main: var(--chaphavian-iron);
+    --text-muted: var(--chaphavian-slate);
+    --text-italic-hint: var(--chaphavian-rose);
+    --border-hairline: var(--chaphavian-putty);
+    --border-active: var(--chaphavian-iron);
+    --gold-accent: var(--chaphavian-rose);
+    --studio-grey-card: var(--chaphavian-alabaster);
   }
 
   * {
@@ -39,10 +46,10 @@
     position: relative;
   }
 
-  /* Newsletter-Inspired Floating Card, Click-Box & Photo Elevation System */
+  /* Newsletter-Inspired Floating Card, Click-Box & Photo Frame System (Zero Image Bubble/Warp) */
   .nrl-hover-box {
     background: #F7F5F2;
-    border: 1px solid #D9D3CC;
+    border: 1px solid #D5D3CC;
     transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1),
                 border-color 0.28s ease,
                 background-color 0.28s ease,
@@ -58,33 +65,44 @@
                 0 0 0 1px rgba(179, 90, 94, 0.20);
   }
 
-  /* Floating Portrait & Showroom Photo Frame */
-  .nrl-float-photo {
+  /* Framed Portrait & Showroom Photo (Crisp 1px Border, Zero Bubble/Scale Warp) */
+  .nrl-framed-photo {
     position: relative;
     overflow: hidden;
     background: #EFECE6;
-    box-shadow: 0 10px 26px -6px rgba(43, 47, 51, 0.08);
-    transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
-                box-shadow 0.38s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: transform, box-shadow;
-    cursor: pointer;
+    border: 1px solid #D5D3CC;
+    transition: border-color 0.28s ease;
   }
-  .nrl-float-photo img {
-    transition: transform 0.52s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease;
-    will-change: transform;
-  }
-  .nrl-float-photo:hover {
-    transform: translateY(-7px) scale(1.012);
-    box-shadow: 0 26px 52px -12px rgba(43, 47, 51, 0.22),
-                0 12px 24px -8px rgba(179, 90, 94, 0.12);
-  }
-  .nrl-float-photo:hover img {
-    transform: scale(1.032);
+  .nrl-hover-box:hover .nrl-framed-photo {
+    border-color: #B35A5E;
   }
 
-  /* Floating Click-Boxes & Buttons */
+  /* Ghost-to-Dark Charcoal Buttons (#F7F5F2 Alabaster Default -> #2B2F32 Dark Slate on Hover) */
   .nrl-float-btn,
-  .search-trigger,
+  .search-trigger {
+    background: #F7F5F2 !important;
+    color: #2B2F32 !important;
+    border: 1px solid #2B2F32 !important;
+    transition: transform 0.26s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.26s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.22s ease,
+                background-color 0.22s ease,
+                color 0.22s ease !important;
+    will-change: transform, box-shadow;
+  }
+  .nrl-float-btn:hover,
+  .search-trigger:hover {
+    background: #2B2F32 !important;
+    color: #F7F5F2 !important;
+    border-color: #2B2F32 !important;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px -6px rgba(43, 47, 51, 0.18);
+  }
+  .nrl-float-btn.active-portrait-btn {
+    border-color: #B35A5E !important;
+    font-weight: 600;
+  }
+
   .reset-trigger,
   .hero-curate-btn,
   .cat-tile,
@@ -98,12 +116,9 @@
                 color 0.24s ease !important;
     will-change: transform, box-shadow;
   }
-  .nrl-float-btn:hover,
-  .search-trigger:hover,
   .reset-trigger:hover,
   .hero-curate-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 24px -6px rgba(43, 47, 51, 0.16);
+    transform: translateY(-2px);
   }
   .cat-tile:hover,
   .shipping-option-card:hover,
@@ -340,7 +355,7 @@
     gap: 1px;
     width: 100%;
     height: 100%;
-    background: #D9D3CC;
+    background: #D5D3CC;
   }
   .hero-furniture-card {
     position: relative;
@@ -1090,7 +1105,7 @@
     display: flex;
     flex-direction: column;
     color: inherit;
-    border: 1px solid #D9D3CC;
+    border: 1px solid #D5D3CC;
     background: #F7F5F2;
     padding: 14px;
     transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
@@ -1782,15 +1797,15 @@
       <!-- Top Editorial Header -->
       <div style="text-align:center; margin-bottom:38px;">
         <div class="hero-kicker" style="color:#B35A5E; letter-spacing:0.24em; margin-bottom:10px;">Harrington Road, London to 6014 La Granada, Rancho Santa Fe</div>
-        <h2 class="console-lead" style="margin-bottom:14px; color:#2B2F33;">About Us &middot; Meet Melissa Chapman</h2>
+        <h2 class="console-lead" style="margin-bottom:14px; color:#2B2F32;">About Us &middot; Meet Melissa Chapman</h2>
         <div style="width:44px; height:2px; background:#B35A5E; margin:0 auto;"></div>
       </div>
 
-      <!-- Main Split Editorial Hero (Borderless Open Canvas with Floating Portrait & Click-Boxes) -->
-      <div class="melissa-hero-split" style="display:grid; grid-template-columns:minmax(320px, 450px) 1fr; gap:56px; padding:12px 4px 36px; align-items:start;">
-        <!-- Left Column: Founder Portrait + Interactive Switcher (No Outer Box Border, Floats on Hover) -->
-        <div>
-          <div class="nrl-float-photo" style="aspect-ratio:4 / 5;">
+      <!-- Main Split Editorial Hero (Unified Left Vertical Floating Card + Open Right Bio) -->
+      <div class="melissa-hero-split" style="display:grid; grid-template-columns:minmax(320px, 460px) 1fr; gap:52px; padding:12px 4px 36px; align-items:start;">
+        <!-- Left Column: Unified Vertical Dossier Card (Portrait + Switcher + Contact Info) that Pop-Lifts Together -->
+        <div class="nrl-hover-box" style="padding:28px;">
+          <div class="nrl-framed-photo" style="aspect-ratio:4 / 5;">
             <img id="melissa-about-hero-img" src="assets/melissa-seated-showroom.jpg" alt="Melissa Chapman in The Chapman Collection Rancho Santa Fe Showroom" style="width:100%; height:100%; object-fit:cover; object-position:center top; display:block;">
           </div>
           <div id="melissa-about-caption" style="font-style:italic; font-size:14px; color:#8A8F97; text-align:center; margin-top:14px; line-height:1.45;">
@@ -1798,36 +1813,36 @@
           </div>
 
           <!-- 3-Photo Studio Switcher So Matthew & Melissa Can Preview Each Option -->
-          <div style="margin-top:18px; padding-top:14px; border-top:1px solid rgba(217, 211, 204, 0.65);">
+          <div style="margin-top:18px; padding-top:14px; border-top:1px solid #D5D3CC;">
             <div style="font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:#8A8F97; text-align:center; margin-bottom:10px;">
               Select Showroom Portrait View
             </div>
             <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:8px;">
-              <button type="button" class="nrl-float-btn" id="about-photo-btn-1" onclick="setAboutPortrait('assets/melissa-seated-showroom.jpg', 'Melissa Chapman in the Rancho Santa Fe showroom with 17th Century carved oak, Renaissance velvet seating and fine European bronzes.', 1)" style="padding:8px 6px; font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:0.12em; text-transform:uppercase; background:#2B2F33; color:#F7F5F2; border:1px solid #2B2F33; cursor:pointer;">1. Seated Gallery</button>
-              <button type="button" class="nrl-float-btn" id="about-photo-btn-2" onclick="setAboutPortrait('assets/melissa-standing-miro.jpg', 'Melissa Chapman beside a Spanish Bargueño cabinet on stand, framed Joan Miró lithograph and 18th Century giltwood mirror.', 2)" style="padding:8px 6px; font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:0.12em; text-transform:uppercase; background:#F7F5F2; color:#2B2F33; border:1px solid #D9D3CC; cursor:pointer;">2. Standing Mir&oacute;</button>
-              <button type="button" class="nrl-float-btn" id="about-photo-btn-3" onclick="setAboutPortrait('assets/showroom-6014-la-granada.jpg', 'The Chapman Collection showroom at 6014 La Granada in the heart of Rancho Santa Fe Village.', 3)" style="padding:8px 6px; font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:0.12em; text-transform:uppercase; background:#F7F5F2; color:#2B2F33; border:1px solid #D9D3CC; cursor:pointer;">3. 6014 La Granada</button>
+              <button type="button" class="nrl-float-btn active-portrait-btn" id="about-photo-btn-1" onclick="setAboutPortrait('assets/melissa-seated-showroom.jpg', 'Melissa Chapman in the Rancho Santa Fe showroom with 17th Century carved oak, Renaissance velvet seating and fine European bronzes.', 1)" style="padding:8px 6px; font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer;">1. Seated Gallery</button>
+              <button type="button" class="nrl-float-btn" id="about-photo-btn-2" onclick="setAboutPortrait('assets/melissa-standing-miro.jpg', 'Melissa Chapman beside a Spanish Bargueño cabinet on stand, framed Joan Miró lithograph and 18th Century giltwood mirror.', 2)" style="padding:8px 6px; font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer;">2. Standing Mir&oacute;</button>
+              <button type="button" class="nrl-float-btn" id="about-photo-btn-3" onclick="setAboutPortrait('assets/showroom-6014-la-granada.jpg', 'The Chapman Collection showroom at 6014 La Granada in the heart of Rancho Santa Fe Village.', 3)" style="padding:8px 6px; font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer;">3. 6014 La Granada</button>
             </div>
           </div>
 
-          <!-- Direct Personal Concierge Card (With Newsletter Hover-Box Highlight) -->
-          <div class="nrl-hover-box" style="margin-top:22px; padding:20px 22px; text-align:center;">
+          <!-- Direct Personal Concierge Section (Integrated Inside the Same Vertical Pop-Up Card) -->
+          <div style="margin-top:20px; padding-top:18px; border-top:1px solid #D5D3CC; text-align:center;">
             <div style="font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:#B35A5E; margin-bottom:6px;">
               Direct Showroom Concierge
             </div>
-            <div style="font-size:18px; color:#2B2F33; font-weight:500; margin-bottom:4px;">
+            <div style="font-size:18px; color:#2B2F32; font-weight:500; margin-bottom:4px;">
               6014 La Granada, Rancho Santa Fe, CA 92067
             </div>
             <div style="font-size:15px; color:#8A8F97; margin-bottom:12px;">
               Monday to Saturday: 10:00 AM to 6:00 PM &middot; Sunday by Appointment
             </div>
-            <div style="font-family:'Montserrat',sans-serif; font-size:11px; letter-spacing:0.14em; color:#2B2F33;">
-              Call or Text Melissa: <a href="tel:+18583492638" style="color:#2B2F33; font-weight:600; text-decoration:none; border-bottom:1px solid #B35A5E;">(858) 349-2638</a>
+            <div style="font-family:'Montserrat',sans-serif; font-size:11px; letter-spacing:0.14em; color:#2B2F32;">
+              Call or Text Melissa: <a href="tel:+18583492638" style="color:#2B2F32; font-weight:600; text-decoration:none; border-bottom:1px solid #B35A5E;">(858) 349-2638</a>
             </div>
           </div>
         </div>
 
         <!-- Right Column: Melissa's Verbatim Approved 6-Paragraph Bio -->
-        <div style="font-size:19.5px; line-height:1.82; color:#2B2F33;">
+        <div style="font-size:19.5px; line-height:1.82; color:#2B2F32;">
           <div style="font-family:'Montserrat',sans-serif; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:#B35A5E; margin-bottom:14px;">
             Three Decades of London &amp; California Curatorial Heritage
           </div>
@@ -1857,9 +1872,9 @@
           </p>
 
           <!-- Signature Block & CTA Row -->
-          <div style="padding-top:22px; border-top:1px solid #D9D3CC; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:18px;">
+          <div style="padding-top:22px; border-top:1px solid #D5D3CC; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:18px;">
             <div>
-              <div style="font-family:'Cormorant Garamond', Georgia, serif; font-size:24px; font-style:italic; color:#2B2F33;">
+              <div style="font-family:'Cormorant Garamond', Georgia, serif; font-size:24px; font-style:italic; color:#2B2F32;">
                 Warm regards, Melissa Chapman
               </div>
               <div style="font-family:'Montserrat',sans-serif; font-size:9.5px; letter-spacing:0.18em; text-transform:uppercase; color:#8A8F97; margin-top:2px;">
@@ -1878,16 +1893,16 @@
       <div class="melissa-lower-grid" style="margin-top:24px; display:grid; grid-template-columns:1fr 1fr; gap:32px;">
         <!-- Card 1: 6014 La Granada Showroom & In-Home Preview Promise -->
         <div class="nrl-hover-box" style="padding:32px;">
-          <div class="nrl-float-photo" style="aspect-ratio:16 / 10; margin-bottom:20px; border:1px solid #D9D3CC;">
+          <div class="nrl-framed-photo" style="aspect-ratio:16 / 10; margin-bottom:20px;">
             <img src="assets/showroom-6014-la-granada.jpg" alt="The Chapman Collection Showroom at 6014 La Granada, Rancho Santa Fe" style="width:100%; height:100%; object-fit:cover; display:block;">
           </div>
           <div style="font-family:'Montserrat',sans-serif; font-size:9.5px; letter-spacing:0.2em; text-transform:uppercase; color:#B35A5E; margin-bottom:8px;">
             Rancho Santa Fe Village &middot; Corner of La Granada &amp; Paseo Delicias
           </div>
-          <h3 style="font-size:24px; font-weight:400; letter-spacing:0.12em; text-transform:uppercase; color:#2B2F33; margin-bottom:12px;">
+          <h3 style="font-size:24px; font-weight:400; letter-spacing:0.12em; text-transform:uppercase; color:#2B2F32; margin-bottom:12px;">
             Complimentary In-Home Placement Trials
           </h3>
-          <p style="font-size:17px; line-height:1.7; color:#2B2F33; margin-bottom:14px;">
+          <p style="font-size:17px; line-height:1.7; color:#2B2F32; margin-bottom:14px;">
             Seeing a hand-knotted Persian carpet or an 18th Century European armoire in your own natural light is the truest way to know it belongs. Melissa and her showroom team offer complimentary in-home placement trials across Rancho Santa Fe, Del Mar, La Jolla and Coastal San Diego so you and your interior designer can experience pieces in situ before final acquisition.
           </p>
           <div style="font-family:'Montserrat',sans-serif; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#8A8F97;">
@@ -1901,17 +1916,17 @@
             <div style="font-family:'Montserrat',sans-serif; font-size:9.5px; letter-spacing:0.2em; text-transform:uppercase; color:#B35A5E; margin-bottom:8px;">
               Domestic &amp; International Fine-Art Logistics
             </div>
-            <h3 style="font-size:24px; font-weight:400; letter-spacing:0.12em; text-transform:uppercase; color:#2B2F33; margin-bottom:14px;">
+            <h3 style="font-size:24px; font-weight:400; letter-spacing:0.12em; text-transform:uppercase; color:#2B2F32; margin-bottom:14px;">
               White-Glove Shipping &amp; Carrier Coordination
             </h3>
-            <p style="font-size:17px; line-height:1.7; color:#2B2F33; margin-bottom:16px;">
+            <p style="font-size:17px; line-height:1.7; color:#2B2F32; margin-bottom:16px;">
               Because Melissa has imported full containers of European antiques and palace-sized carpets for over thirty years, every acquisition outside Southern California is handled with museum-grade care. We coordinate directly with vetted white-glove blanket-wrap carriers and custom fine-art crating specialists for seamless door-to-room placement nationwide and abroad.
             </p>
-            <div style="background:#EFECE6; border:1px solid #D9D3CC; padding:18px 20px; margin-bottom:18px;">
-              <div style="font-family:'Montserrat',sans-serif; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#2B2F33; font-weight:600; margin-bottom:8px;">
+            <div style="background:#EFECE6; border:1px solid #D5D3CC; padding:18px 20px; margin-bottom:18px;">
+              <div style="font-family:'Montserrat',sans-serif; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#2B2F32; font-weight:600; margin-bottom:8px;">
                 Three Effortless Fulfillment Pathways
               </div>
-              <ul style="list-style:none; font-size:16px; line-height:1.65; color:#2B2F33;">
+              <ul style="list-style:none; font-size:16px; line-height:1.65; color:#2B2F32;">
                 <li style="margin-bottom:6px;"><strong style="color:#B35A5E;">1. Local Estate Preview &amp; Delivery:</strong> Complimentary showroom van delivery and placement across Rancho Santa Fe and San Diego County.</li>
                 <li style="margin-bottom:6px;"><strong style="color:#B35A5E;">2. Showroom &amp; Designer Warehouse Pickup:</strong> Immediate reservation at 6014 La Granada for client or ASID trade receiver pickup.</li>
                 <li><strong style="color:#B35A5E;">3. Nationwide White-Glove Freight:</strong> Post-purchase carrier quotes billed at direct net transport cost with full transit insurance.</li>
@@ -1919,7 +1934,7 @@
             </div>
           </div>
 
-          <div style="border-top:1px solid #D9D3CC; padding-top:16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+          <div style="border-top:1px solid #D5D3CC; padding-top:16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
             <div style="font-size:15px; font-style:italic; color:#8A8F97;">
               Request a shipping quote or in-home trial directly with Melissa at (858) 349-2638.
             </div>
@@ -1948,12 +1963,12 @@
       <div class="filter-section" style="margin-bottom:18px;">
         <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:12px;">
           <div class="filter-label" style="margin-bottom:6px;">Search Keyword</div>
-          <button type="button" id="toggle-advanced-filters-btn" onclick="const adv=document.getElementById('advanced-curate-drawer'); const open=adv.style.display==='none'; adv.style.display=open?'block':'none'; this.textContent=open?'- Hide Color, Period and Dimension Filters':'+ Refine by Color, Period and Dimensions';" style="background:none; border:1px solid #D9D3CC; padding:5px 14px; font-family:'Montserrat',sans-serif; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#2B2F33; cursor:pointer;">+ Refine by Color, Period and Dimensions</button>
+          <button type="button" id="toggle-advanced-filters-btn" onclick="const adv=document.getElementById('advanced-curate-drawer'); const open=adv.style.display==='none'; adv.style.display=open?'block':'none'; this.textContent=open?'- Hide Color, Period and Dimension Filters':'+ Refine by Color, Period and Dimensions';" style="background:none; border:1px solid #D5D3CC; padding:5px 14px; font-family:'Montserrat',sans-serif; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#2B2F32; cursor:pointer;">+ Refine by Color, Period and Dimensions</button>
         </div>
         <input type="text" class="keyword-input" id="keyword-input" placeholder="Enter origin, style, or keyword (e.g., Spanish, Gothic, Tabriz, Heriz, Louis XV, Sèvres)..." oninput="applyFilters()">
       </div>
 
-      <div id="advanced-curate-drawer" style="display:none; padding-top:12px; border-top:1px solid #D9D3CC;">
+      <div id="advanced-curate-drawer" style="display:none; padding-top:12px; border-top:1px solid #D5D3CC;">
         <!-- COLORS -->
         <div class="filter-section">
           <div class="filter-label">Colors</div>
@@ -2327,15 +2342,7 @@ function setAboutPortrait(src, caption, activeIdx) {
   [1, 2, 3].forEach(i => {
     const btn = document.getElementById("about-photo-btn-" + i);
     if (!btn) return;
-    if (i === activeIdx) {
-      btn.style.background = "#2B2F33";
-      btn.style.color = "#F7F5F2";
-      btn.style.borderColor = "#2B2F33";
-    } else {
-      btn.style.background = "#F7F5F2";
-      btn.style.color = "#2B2F33";
-      btn.style.borderColor = "#D9D3CC";
-    }
+    btn.classList.toggle("active-portrait-btn", i === activeIdx);
   });
 }
 
