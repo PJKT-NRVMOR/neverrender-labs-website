@@ -6,7 +6,7 @@
 <title>The Chapman Collection | Rancho Santa Fe &amp; London Heritage</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     /* The Chaphavian Palette (Chapman + Safe Haven + Gustavian) */
@@ -22,7 +22,7 @@
     --slate-panel: var(--chaphavian-slate);
     --taupe-panel: var(--chaphavian-iron);
     --text-main: var(--chaphavian-iron);
-    --text-muted: var(--chaphavian-slate);
+    --text-muted: #52575D;
     --text-italic-hint: var(--chaphavian-rose);
     --border-hairline: var(--chaphavian-putty);
     --border-active: var(--chaphavian-iron);
@@ -38,12 +38,22 @@
 
   body {
     background-color: #F7F5F2;
-    color: var(--text-main);
+    color: var(--chaphavian-iron);
     font-family: 'Cormorant Garamond', Georgia, serif;
-    -webkit-font-smoothing: antialiased;
-    line-height: 1.5;
+    font-weight: 500;
+    -webkit-text-stroke: 0.15px rgba(43, 47, 50, 0.32);
+    line-height: 1.55;
     overflow-x: hidden;
     position: relative;
+  }
+
+  h1, h2, h3, h4, .brand-title, .console-lead {
+    font-weight: 600 !important;
+    color: var(--chaphavian-iron);
+  }
+
+  .main-nav a, .search-trigger, .nrl-float-btn, .reset-trigger {
+    font-weight: 600 !important;
   }
 
   /* Newsletter-Inspired Floating Card, Click-Box & Photo Frame System (Zero Image Bubble/Warp) */
@@ -1796,8 +1806,8 @@
     <section class="console-wrap" style="max-width:1180px; padding-top:44px; padding-bottom:76px;">
       <!-- Top Editorial Header -->
       <div style="text-align:center; margin-bottom:38px;">
-        <div class="hero-kicker" style="color:#B35A5E; letter-spacing:0.24em; margin-bottom:10px;">Harrington Road, London to 6014 La Granada, Rancho Santa Fe</div>
-        <h2 class="console-lead" style="margin-bottom:14px; color:#2B2F32;">About Us &middot; Meet Melissa Chapman</h2>
+        <div class="hero-kicker" style="color:#B35A5E; font-weight:600; letter-spacing:0.24em; margin-bottom:10px;">Harrington Road, London to 6014 La Granada, Rancho Santa Fe</div>
+        <h2 class="console-lead" style="margin-bottom:14px; color:#2B2F32; font-weight:600;">About Us &middot; Meet Melissa Chapman</h2>
         <div style="width:44px; height:2px; background:#B35A5E; margin:0 auto;"></div>
       </div>
 
@@ -1809,7 +1819,7 @@
             <div class="nrl-framed-photo" style="flex:1; min-height:480px;">
               <img id="melissa-about-hero-img" src="assets/melissa-seated-showroom.jpg" alt="Melissa Chapman in The Chapman Collection Rancho Santa Fe Showroom" style="width:100%; height:100%; object-fit:cover; object-position:center top; display:block;">
             </div>
-            <div id="melissa-about-caption" style="font-style:italic; font-size:14.5px; color:#8A8F97; text-align:center; margin-top:14px; line-height:1.45;">
+            <div id="melissa-about-caption" style="font-style:italic; font-weight:600; font-size:15.5px; color:#2B2F32; text-align:center; margin-top:14px; line-height:1.45;">
               Photo courtesy of Ranch and Coast Magazine
             </div>
           </div>
@@ -1822,9 +1832,9 @@
         </div>
 
         <!-- Right Column: Melissa's Verbatim Approved 6-Paragraph Bio (Exact 1fr Alignment with Lower-Right Card) -->
-        <div style="font-size:19.5px; line-height:1.82; color:#2B2F32; display:flex; flex-direction:column; justify-content:space-between;">
+        <div style="font-size:20px; font-weight:500; line-height:1.8; color:#2B2F32; display:flex; flex-direction:column; justify-content:space-between;">
           <div>
-            <div style="font-family:'Montserrat',sans-serif; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:#B35A5E; margin-bottom:14px;">
+            <div style="font-family:'Montserrat',sans-serif; font-size:10.5px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#B35A5E; margin-bottom:14px;">
               Three Decades of London and California Curatorial Heritage
             </div>
 
@@ -1855,10 +1865,10 @@
 
           <!-- Signature Block (Clean Warm Regards Only — Flush with Left Portrait Card Bottom Edge) -->
           <div style="padding:20px 0 22px; border-top:1px solid #D5D3CC; border-bottom:1px solid #D5D3CC;">
-            <div style="font-family:'Cormorant Garamond', Georgia, serif; font-size:25px; font-style:italic; color:#2B2F32; line-height:1.2;">
+            <div style="font-family:'Cormorant Garamond', Georgia, serif; font-size:26px; font-weight:600; font-style:italic; color:#2B2F32; line-height:1.2;">
               Warm regards, Melissa Chapman
             </div>
-            <div style="font-family:'Montserrat',sans-serif; font-size:9.5px; letter-spacing:0.18em; text-transform:uppercase; color:#8A8F97; margin-top:4px;">
+            <div style="font-family:'Montserrat',sans-serif; font-size:10px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:#52575D; margin-top:4px;">
               Founder and Principal Curator &middot; The Chapman Collection
             </div>
           </div>
@@ -1873,17 +1883,17 @@
             <div class="nrl-framed-photo" style="aspect-ratio:16 / 10; margin-bottom:20px;">
               <img src="assets/showroom-6014-la-granada.jpg" alt="The Chapman Collection Showroom at 6014 La Granada, Rancho Santa Fe" style="width:100%; height:100%; object-fit:cover; display:block;">
             </div>
-            <div style="font-family:'Montserrat',sans-serif; font-size:9.5px; letter-spacing:0.2em; text-transform:uppercase; color:#B35A5E; margin-bottom:8px;">
+            <div style="font-family:'Montserrat',sans-serif; font-size:10px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#B35A5E; margin-bottom:8px;">
               Rancho Santa Fe Village &middot; Corner of La Granada and Paseo Delicias
             </div>
-            <h3 style="font-size:24px; font-weight:400; letter-spacing:0.12em; text-transform:uppercase; color:#2B2F32; margin-bottom:12px;">
+            <h3 style="font-size:24px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#2B2F32; margin-bottom:12px;">
               Complimentary In-Home Placement Trials
             </h3>
-            <p style="font-size:17px; line-height:1.7; color:#2B2F32; margin-bottom:16px;">
+            <p style="font-size:18px; font-weight:500; line-height:1.7; color:#2B2F32; margin-bottom:16px;">
               Seeing a hand-knotted Persian carpet or an 18th Century European armoire in your own natural light is the truest way to know it belongs. Melissa and her showroom team offer complimentary in-home placement trials across Rancho Santa Fe, Del Mar, La Jolla and Coastal San Diego so you and your interior designer can experience pieces in situ before final acquisition.
             </p>
           </div>
-          <div style="border-top:1px solid #D5D3CC; padding-top:16px; font-family:'Montserrat',sans-serif; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#8A8F97;">
+          <div style="border-top:1px solid #D5D3CC; padding-top:16px; font-family:'Montserrat',sans-serif; font-size:10px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#52575D;">
             Recognized in Ranch and Coast Magazine &middot; Private Designer Appointments Available
           </div>
         </div>
@@ -1891,29 +1901,29 @@
         <!-- Card 2: White-Glove Shipping Partners & Trade Concierge -->
         <div class="nrl-hover-box" style="padding:32px; display:flex; flex-direction:column; justify-content:space-between;">
           <div>
-            <div style="font-family:'Montserrat',sans-serif; font-size:9.5px; letter-spacing:0.2em; text-transform:uppercase; color:#B35A5E; margin-bottom:8px;">
+            <div style="font-family:'Montserrat',sans-serif; font-size:10px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#B35A5E; margin-bottom:8px;">
               Domestic and International Fine-Art Logistics
             </div>
-            <h3 style="font-size:24px; font-weight:400; letter-spacing:0.12em; text-transform:uppercase; color:#2B2F32; margin-bottom:14px;">
+            <h3 style="font-size:24px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#2B2F32; margin-bottom:14px;">
               White-Glove Shipping and Carrier Coordination
             </h3>
-            <p style="font-size:17px; line-height:1.7; color:#2B2F32; margin-bottom:16px;">
+            <p style="font-size:18px; font-weight:500; line-height:1.7; color:#2B2F32; margin-bottom:16px;">
               Because Melissa has imported full containers of European antiques and palace-sized carpets for over thirty years, every acquisition outside Southern California is handled with museum-grade care. We coordinate directly with vetted white-glove blanket-wrap carriers and custom fine-art crating specialists for seamless door-to-room placement nationwide and abroad.
             </p>
             <div style="background:#EFECE6; border:1px solid #D5D3CC; padding:18px 20px; margin-bottom:18px;">
-              <div style="font-family:'Montserrat',sans-serif; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#2B2F32; font-weight:600; margin-bottom:8px;">
+              <div style="font-family:'Montserrat',sans-serif; font-size:10.5px; letter-spacing:0.16em; text-transform:uppercase; color:#2B2F32; font-weight:700; margin-bottom:8px;">
                 Three Effortless Fulfillment Pathways
               </div>
-              <ul style="list-style:none; font-size:16px; line-height:1.65; color:#2B2F32;">
-                <li style="margin-bottom:6px;"><strong style="color:#B35A5E;">1. Local Estate Preview and Delivery:</strong> Complimentary showroom van delivery and placement across Rancho Santa Fe and San Diego County.</li>
-                <li style="margin-bottom:6px;"><strong style="color:#B35A5E;">2. Showroom and Designer Warehouse Pickup:</strong> Immediate reservation at 6014 La Granada for client or ASID trade receiver pickup.</li>
-                <li><strong style="color:#B35A5E;">3. Nationwide White-Glove Freight:</strong> Post-purchase carrier quotes billed at direct net transport cost with full transit insurance.</li>
+              <ul style="list-style:none; font-size:17px; font-weight:500; line-height:1.65; color:#2B2F32;">
+                <li style="margin-bottom:6px;"><strong style="color:#B35A5E; font-weight:700;">1. Local Estate Preview and Delivery:</strong> Complimentary showroom van delivery and placement across Rancho Santa Fe and San Diego County.</li>
+                <li style="margin-bottom:6px;"><strong style="color:#B35A5E; font-weight:700;">2. Showroom and Designer Warehouse Pickup:</strong> Immediate reservation at 6014 La Granada for client or ASID trade receiver pickup.</li>
+                <li><strong style="color:#B35A5E; font-weight:700;">3. Nationwide White-Glove Freight:</strong> Post-purchase carrier quotes billed at direct net transport cost with full transit insurance.</li>
               </ul>
             </div>
           </div>
 
           <div style="border-top:1px solid #D5D3CC; padding-top:16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
-            <div style="font-size:15px; font-style:italic; color:#8A8F97;">
+            <div style="font-size:16px; font-weight:600; font-style:italic; color:#2B2F32;">
               Request a shipping quote or in-home trial directly with Melissa at (858) 349-2638.
             </div>
             <a href="tel:+18583492638" class="reset-trigger" style="text-decoration:none; display:inline-block;">Call (858) 349-2638</a>
