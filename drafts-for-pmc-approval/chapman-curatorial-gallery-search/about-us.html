@@ -236,75 +236,75 @@
     box-shadow: 0 4px 18px rgba(30, 29, 27, 0.06);
   }
   .brand-crest {
-    width: 68px;
+    width: 78px;
     height: auto;
-    margin: 0 auto 8px;
+    margin: 0 auto 10px;
     display: block;
     cursor: pointer;
   }
   .brand-title {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-weight: 400;
-    font-size: 32px;
-    letter-spacing: 0.24em;
+    font-weight: 600;
+    font-size: 42px;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: #1F1F1E;
-    margin-bottom: 4px;
+    color: var(--chaphavian-iron);
+    margin-bottom: 6px;
     cursor: pointer;
   }
   .brand-subtitle {
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-style: italic;
-    font-size: 14px;
+    font-weight: 600;
+    font-size: 16px;
     letter-spacing: 0.06em;
     color: var(--text-muted);
-    margin-bottom: 18px;
+    margin-bottom: 20px;
   }
 
-  /* Whisper-Quiet Navigation Bar */
+  /* Unified Chaphavian Navigation Bar (All Buttons Change Color to Dark Iron on Hover & Active) */
   .main-nav {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 14px;
     list-style: none;
   }
   .main-nav a {
+    display: inline-block;
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: 14px;
+    font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #555553;
+    color: var(--chaphavian-iron);
+    background: var(--chaphavian-alabaster);
     text-decoration: none;
-    padding-bottom: 4px;
-    border-bottom: 1px solid transparent;
-    transition: all 0.2s ease;
+    padding: 7px 16px;
+    border: 1px solid var(--chaphavian-putty);
+    transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+                background-color 0.22s ease,
+                color 0.22s ease,
+                border-color 0.22s ease,
+                box-shadow 0.24s ease;
     cursor: pointer;
   }
   .main-nav a:hover,
   .main-nav a.active {
-    color: #111111;
-    border-bottom-color: #111111;
+    background: var(--chaphavian-iron) !important;
+    color: var(--chaphavian-alabaster) !important;
+    border-color: var(--chaphavian-iron) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px -6px rgba(43, 47, 50, 0.18);
   }
   .nav-curate-cta {
-    padding: 6px 14px !important;
-    border: 1px solid #3A3835 !important;
-    color: #1F1F1E !important;
-    font-weight: 500;
-  }
-  .nav-curate-cta:hover, .nav-curate-cta.active {
-    background: #232220 !important;
-    color: #FFFFFF !important;
+    border-color: var(--chaphavian-iron) !important;
   }
   .nav-selection-pill {
     font-family: 'Montserrat', sans-serif !important;
     font-size: 11px !important;
     letter-spacing: 0.14em !important;
-    color: #232220 !important;
-    background: var(--off-greige);
-    padding: 6px 13px !important;
-    border: 1px solid var(--border-hairline) !important;
   }
 
   /* Views Management */
@@ -1067,14 +1067,23 @@
     cursor: pointer;
   }
   .reset-trigger {
-    background: none;
-    border: none;
+    background: var(--chaphavian-alabaster);
+    border: 1px solid var(--chaphavian-putty);
+    padding: 9px 22px;
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-style: italic;
     font-size: 14px;
-    color: var(--text-italic-hint);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--chaphavian-iron);
     cursor: pointer;
-    text-decoration: underline;
+    text-decoration: none;
+  }
+  .reset-trigger:hover {
+    background: var(--chaphavian-iron) !important;
+    color: var(--chaphavian-alabaster) !important;
+    border-color: var(--chaphavian-iron) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -6px rgba(43, 47, 50, 0.16);
   }
 
   /* Curate Results Grid (With Unlocked Prices + Add to Curated Selection) */
