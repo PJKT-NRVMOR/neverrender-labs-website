@@ -218,25 +218,36 @@
     font-weight: 500;
   }
 
-  /* Centered Crest + Mansour-Style Header (No Giant Phone Icon Next to Contact!) */
+  /* Centered Crest + Mansour-Style Masthead (Stays at Top of Page; Never Drops Down Mid-Scroll) */
   .brand-header {
     text-align: center;
-    padding: 26px 20px 22px;
+    padding: 26px 20px 6px;
+    background: var(--chaphavian-alabaster);
+    position: relative;
+    z-index: 89;
+  }
+  /* Slim Sticky Navigation Bar (Glides Gently on Intentional Scroll; Never Yanks Full Masthead Down) */
+  .brand-nav-bar {
+    text-align: center;
+    padding: 12px 20px 18px;
     border-bottom: 1px solid var(--border-hairline);
-    background: rgba(247, 245, 242, 0.94);
+    background: rgba(247, 245, 242, 0.95);
     backdrop-filter: blur(8px);
     position: sticky;
     top: 0;
     z-index: 90;
-    transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease;
+    transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.35s ease,
+                padding 0.35s ease;
     will-change: transform;
   }
-  .brand-header.header-tucked {
-    transform: translateY(-105%);
+  .brand-nav-bar.header-tucked {
+    transform: translateY(-108%);
     pointer-events: none;
   }
-  .brand-header.header-scrolled {
-    box-shadow: 0 4px 18px rgba(30, 29, 27, 0.06);
+  .brand-nav-bar.header-scrolled {
+    padding: 10px 20px 12px;
+    box-shadow: 0 8px 24px -8px rgba(179, 90, 94, 0.18);
   }
   .brand-crest {
     width: 78px;
@@ -262,7 +273,7 @@
     font-size: 16px;
     letter-spacing: 0.06em;
     color: var(--text-muted);
-    margin-bottom: 20px;
+    margin-bottom: 6px;
   }
 
   /* Unified Chaphavian Navigation Bar (All Buttons Change Color to Dark Iron on Hover & Active) */
@@ -1570,12 +1581,44 @@
   }
 
   @media (max-width: 920px) {
-    .brand-header { padding: 16px 14px 14px; }
-    .brand-crest { width: 52px; margin-bottom: 6px; }
-    .brand-title { font-size: 23px; letter-spacing: 0.16em; }
-    .brand-subtitle { font-size: 12px; margin-bottom: 12px; }
-    .main-nav { gap: 14px; }
-    .main-nav a { font-size: 12px; letter-spacing: 0.14em; }
+    .brand-header { padding: 16px 14px 4px; }
+    .brand-nav-bar { padding: 8px 12px 12px; }
+    .brand-nav-bar.header-scrolled { padding: 8px 12px 10px; }
+    .brand-crest { width: 54px; margin-bottom: 6px; }
+    .brand-title { font-size: 25px; letter-spacing: 0.16em; }
+    .brand-subtitle { font-size: 13px; margin-bottom: 4px; }
+    /* Symmetrical 2-Row Mobile Button Grid (Row 1: 3 Equal Columns | Row 2: 2 Equal Columns, Flush Outer Edges) */
+    .main-nav {
+      display: grid !important;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+    .main-nav li {
+      display: flex;
+    }
+    .main-nav li:nth-child(1),
+    .main-nav li:nth-child(2),
+    .main-nav li:nth-child(3) {
+      grid-column: span 2;
+    }
+    .main-nav li:nth-child(4),
+    .main-nav li:nth-child(5) {
+      grid-column: span 3;
+    }
+    .main-nav a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      font-size: 11px !important;
+      letter-spacing: 0.11em !important;
+      padding: 9px 6px !important;
+      white-space: nowrap;
+    }
     .hero-carousel { height: auto; }
     .hero-slide { position: relative; grid-template-columns: 1fr; display: none; }
     .hero-slide.active { display: grid; }
@@ -1725,21 +1768,21 @@
     </div>
   </div>
 
-  <!-- MANSOUR-STYLE CENTERED HEADER (GOODBYE PHONE NUMBER NEXT TO CONTACT) -->
+  <!-- MANSOUR-STYLE CENTERED HEADER (MASTHEAD AT TOP + SLIM STICKY NAV BAR) -->
   <header class="brand-header">
     <img class="brand-crest" src="https://thechapmancollection.com/wp-content/uploads/2026/10/tcc-oct23-crest.png" onerror="this.style.display='none'" alt="The Chapman Collection Crest" onclick="switchView('home')">
     <h1 class="brand-title" onclick="switchView('home')">The Chapman Collection</h1>
     <div class="brand-subtitle">Rancho Santa Fe and London Heritage &middot; Fine European Antiques and Carpets</div>
-    <nav>
-      <ul class="main-nav">
-        <li><a id="nav-home" class="active" onclick="switchView('home')">Home</a></li>
-        <li><a id="nav-gallery" onclick="switchView('gallery')">Gallery</a></li>
-        <li><a id="nav-melissa" onclick="switchView('melissa')">Meet Melissa</a></li>
-        <li><a id="nav-curate" class="nav-curate-cta" onclick="switchView('curate')">Curate Your Collection</a></li>
-        <li><a id="nav-selection" class="nav-selection-pill" onclick="toggleDrawer(true)">Curated Selection (<span id="nav-cart-count">0</span>)</a></li>
-      </ul>
-    </nav>
   </header>
+  <nav class="brand-nav-bar">
+    <ul class="main-nav">
+      <li><a id="nav-home" class="active" onclick="switchView('home')">Home</a></li>
+      <li><a id="nav-gallery" onclick="switchView('gallery')">Gallery</a></li>
+      <li><a id="nav-melissa" onclick="switchView('melissa')">Meet Melissa</a></li>
+      <li><a id="nav-curate" class="nav-curate-cta" onclick="switchView('curate')">Curate Your Collection</a></li>
+      <li><a id="nav-selection" class="nav-selection-pill" onclick="toggleDrawer(true)">Curated Selection (<span id="nav-cart-count">0</span>)</a></li>
+    </ul>
+  </nav>
 
   <!-- ========================================================================
        VIEW 1: HOME (SLIDING CAROUSEL ON NEW SLATE BACKDROP + OFF-GREIGE + COLLAGE SPLASH)
@@ -2833,10 +2876,13 @@ renderControls();
 updateCartBadge();
 applyFilters();
 
-/* Smart Scroll-Direction Header Tuck (Zero layout-height mutation -> zero scroll bounce) */
+/* Smart Scroll-Direction Slim Nav Bar Tuck (Masthead stays at top; only slim nav bar glides gently) */
 (function() {
-  const headerEl = document.querySelector(".brand-header");
+  const navBarEl = document.querySelector(".brand-nav-bar");
+  if (!navBarEl) return;
   let lastScrollY = window.scrollY || 0;
+  let upScrollAccum = 0;
+  let downScrollAccum = 0;
   let ticking = false;
 
   window.addEventListener("scroll", () => {
@@ -2845,19 +2891,25 @@ applyFilters();
         const currentY = Math.max(0, window.scrollY || 0);
         const delta = currentY - lastScrollY;
 
-        if (currentY > 40) {
-          headerEl.classList.add("header-scrolled");
+        if (currentY > 140) {
+          navBarEl.classList.add("header-scrolled");
         } else {
-          headerEl.classList.remove("header-scrolled");
-          headerEl.classList.remove("header-tucked");
+          navBarEl.classList.remove("header-scrolled");
+          navBarEl.classList.remove("header-tucked");
         }
 
-        if (currentY > 180 && delta > 10) {
-          // Scrolling down -> GPU-slide header smoothly out of the way (0px DOM layout shift)
-          headerEl.classList.add("header-tucked");
-        } else if (delta < -8 || currentY <= 80) {
-          // Scrolling up or near top -> bring header right back
-          headerEl.classList.remove("header-tucked");
+        if (delta > 0) {
+          downScrollAccum += delta;
+          upScrollAccum = 0;
+          if (currentY > 240 && downScrollAccum > 28) {
+            navBarEl.classList.add("header-tucked");
+          }
+        } else if (delta < 0) {
+          upScrollAccum += Math.abs(delta);
+          downScrollAccum = 0;
+          if (upScrollAccum > 48 || currentY <= 140) {
+            navBarEl.classList.remove("header-tucked");
+          }
         }
 
         lastScrollY = currentY;
