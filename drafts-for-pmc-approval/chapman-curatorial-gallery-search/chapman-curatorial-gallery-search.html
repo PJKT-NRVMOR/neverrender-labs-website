@@ -335,7 +335,7 @@
   }
 
   /* ==========================================================================
-     VIEW 1: HOME (MANSOUR SPLIT HERO CAROUSEL + COLLAGE SPLASH, ZERO PRICES)
+     VIEW 1: HOME (CHAPHAVIAN SPLIT HERO CAROUSEL + COLLAGE SPLASH, ZERO PRICES)
      ========================================================================== */
   .hero-stage-wrap {
     max-width: 1180px;
@@ -347,8 +347,16 @@
     width: 100%;
     height: 490px;
     overflow: hidden;
-    background: var(--off-greige);
-    border: 1px solid var(--border-hairline);
+    background: var(--chaphavian-alabaster);
+    border: 1px solid var(--chaphavian-putty);
+    box-shadow: 0 12px 30px -10px rgba(179, 90, 94, 0.18),
+                0 4px 12px -4px rgba(179, 90, 94, 0.08);
+    transition: border-color 0.28s ease, box-shadow 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .hero-carousel:hover {
+    border-color: var(--chaphavian-rose);
+    box-shadow: 0 22px 44px -8px rgba(179, 90, 94, 0.32),
+                0 10px 22px -4px rgba(179, 90, 94, 0.20);
   }
   .hero-slide {
     position: absolute;
@@ -369,8 +377,9 @@
     position: relative;
     width: 100%;
     height: 100%;
-    background: var(--off-greige);
+    background: var(--chaphavian-alabaster);
     overflow: hidden;
+    border-right: 1px solid var(--chaphavian-putty);
   }
   /* Slide 1: 3-Piece Hero Furniture Triptych on Bleached Nordic Alabaster (#F7F5F2) */
   .hero-furniture-triptych {
@@ -391,46 +400,53 @@
     justify-content: center;
     padding: 16px 10px 46px;
     cursor: pointer;
+    transition: background-color 0.25s ease;
+  }
+  .hero-furniture-card:hover {
+    background: #FAF9F7;
   }
   .hero-furniture-card img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    transition: transform 0.65s ease;
-  }
-  .hero-furniture-card:hover img {
-    transform: scale(1.04);
   }
   .hero-furniture-tag {
     position: absolute;
     bottom: 12px;
     left: 12px;
     right: 12px;
-    background: rgba(29, 28, 26, 0.72);
-    backdrop-filter: blur(4px);
-    color: #F6F4F0;
+    background: var(--chaphavian-alabaster);
+    color: var(--chaphavian-iron);
+    border: 1px solid var(--chaphavian-putty);
     padding: 6px 10px;
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: 13px;
+    font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     text-align: center;
+    transition: background-color 0.22s ease, color 0.22s ease, border-color 0.22s ease;
+  }
+  .hero-furniture-card:hover .hero-furniture-tag {
+    background: var(--chaphavian-iron);
+    color: var(--chaphavian-alabaster);
+    border-color: var(--chaphavian-iron);
   }
 
-  /* Slide 2 & 3: Macro Collage Grid Over Minimalist Off-Greige */
+  /* Slide 2 & 3: Macro Collage Grid Over Chaphavian Putty Dividers */
   .hero-macro-collage {
     display: grid;
     grid-template-columns: 1.35fr 1fr;
     grid-template-rows: 1fr 1fr;
-    gap: 5px;
+    gap: 1px;
     width: 100%;
     height: 100%;
-    background: #FFFFFF;
+    background: var(--chaphavian-putty);
   }
   .hero-macro-cell {
     position: relative;
     overflow: hidden;
-    background: var(--off-greige);
+    background: var(--chaphavian-alabaster);
     cursor: pointer;
   }
   .hero-macro-cell.tall {
@@ -440,13 +456,9 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.65s ease;
-  }
-  .hero-macro-cell:hover img {
-    transform: scale(1.05);
   }
 
-  /* Slide Right Mansour Geometric Color-Block Panel */
+  /* Slide Right Chaphavian Architectural Editorial Panel */
   .hero-colorblock-panel {
     position: relative;
     display: flex;
@@ -455,51 +467,34 @@
     align-items: center;
     padding: 42px 34px;
     text-align: center;
-    color: #FFFFFF;
+    color: var(--chaphavian-iron);
+    background-color: var(--chaphavian-alabaster) !important;
     overflow: hidden;
   }
-  /* Subtle Mansour-style translucent geometric rectangles inside right panel */
-  .hero-colorblock-panel::before {
-    content: "";
-    position: absolute;
-    top: -30px;
-    left: 28px;
-    width: 170px;
-    height: 160px;
-    background: rgba(255, 255, 255, 0.09);
-    pointer-events: none;
+  .panel-slate-greige,
+  .panel-warm-greige,
+  .panel-gustavian {
+    background-color: var(--chaphavian-alabaster) !important;
   }
-  .hero-colorblock-panel::after {
-    content: "";
-    position: absolute;
-    bottom: 24px;
-    right: 28px;
-    width: 190px;
-    height: 150px;
-    background: rgba(255, 255, 255, 0.08);
-    pointer-events: none;
-  }
-  .panel-slate-greige { background-color: #9FA8B0; }
-  .panel-warm-greige  { background-color: #B8B1A6; }
-  .panel-gustavian    { background-color: #A6A29A; }
 
   .hero-kicker {
     font-family: 'Montserrat', sans-serif;
-    font-size: 10px;
-    letter-spacing: 0.24em;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.88);
+    color: var(--chaphavian-rose);
     margin-bottom: 14px;
     position: relative;
     z-index: 2;
   }
   .hero-panel-title {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-weight: 400;
+    font-weight: 600 !important;
     font-size: 36px;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #FFFFFF;
+    color: var(--chaphavian-iron) !important;
     line-height: 1.2;
     margin-bottom: 14px;
     position: relative;
@@ -508,31 +503,36 @@
   .hero-panel-sub {
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-style: italic;
-    font-size: 17px;
-    color: rgba(255,255,255,0.92);
+    font-weight: 500;
+    font-size: 18px;
+    color: #52575D;
     max-width: 290px;
     margin-bottom: 28px;
+    line-height: 1.55;
     position: relative;
     z-index: 2;
   }
   .hero-curate-btn {
     position: relative;
     z-index: 2;
-    background: #FFFFFF;
-    color: #232220;
-    border: 1px solid #FFFFFF;
+    background: var(--chaphavian-alabaster);
+    color: var(--chaphavian-iron);
+    border: 1px solid var(--chaphavian-iron);
     padding: 13px 26px;
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: 14px;
+    font-weight: 600;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     cursor: pointer;
     transition: all 0.25s ease;
   }
   .hero-curate-btn:hover {
-    background: #232220;
-    color: #FFFFFF;
-    border-color: #232220;
+    background: var(--chaphavian-iron);
+    color: var(--chaphavian-alabaster);
+    border-color: var(--chaphavian-iron);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -6px rgba(43, 47, 50, 0.18);
   }
 
   /* ==========================================================================
@@ -599,87 +599,94 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 4px 0;
+    padding: 14px 4px 0;
   }
   .hero-dots {
     display: flex;
     gap: 10px;
   }
   .hero-dot {
-    width: 28px;
+    width: 32px;
     height: 3px;
-    background: #D6D3CD;
+    background: var(--chaphavian-putty);
     border: none;
     cursor: pointer;
     transition: background 0.2s ease;
   }
   .hero-dot.active {
-    background: #232220;
+    background: var(--chaphavian-rose);
   }
   .hero-arrows {
     display: flex;
-    gap: 14px;
+    gap: 10px;
   }
   .hero-arrow {
-    background: none;
-    border: 1px solid var(--border-hairline);
-    padding: 4px 12px;
+    background: var(--chaphavian-alabaster);
+    border: 1px solid var(--chaphavian-putty);
+    padding: 6px 16px;
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: 13px;
-    letter-spacing: 0.14em;
+    font-weight: 600;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--text-main);
+    color: var(--chaphavian-iron);
     cursor: pointer;
+    transition: all 0.22s ease;
   }
   .hero-arrow:hover {
-    border-color: var(--text-main);
+    background: var(--chaphavian-iron);
+    color: var(--chaphavian-alabaster);
+    border-color: var(--chaphavian-iron);
+    transform: translateY(-2px);
   }
 
-  /* Mansour-Style Editorial Welcome Copy (Replaces Header Phone Clutter) */
+  /* Chaphavian Editorial Welcome Card on Home View */
   .mansour-editorial-intro {
-    max-width: 1180px;
-    margin: 34px auto 40px;
-    padding: 0 24px;
+    max-width: 1132px;
+    margin: 32px auto 40px;
+    padding: 34px 40px;
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 19px;
-    line-height: 1.75;
-    color: #4A4845;
+    font-size: 19.5px;
+    font-weight: 500;
+    line-height: 1.78;
+    color: var(--chaphavian-iron);
   }
   .mansour-editorial-intro p + p {
     margin-top: 16px;
   }
   .mansour-editorial-intro a {
-    color: #232220;
+    color: var(--chaphavian-rose);
+    font-weight: 600;
     text-decoration: underline;
     text-underline-offset: 3px;
   }
 
-  /* MANSOUR-STYLE ASYMMETRIC COLLAGE SPLASH */
+  /* CHAPHAVIAN ASYMMETRIC COLLAGE SPLASH */
   .collage-splash-wrap {
     max-width: 1180px;
     margin: 10px auto 56px;
     padding: 0 24px;
   }
   .collage-splash-heading {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 15px;
-    font-weight: 400;
-    letter-spacing: 0.18em;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 14px;
+    color: var(--chaphavian-rose);
+    margin-bottom: 16px;
   }
   .collage-row-3 {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    gap: 5px;
-    margin-bottom: 5px;
+    gap: 18px;
+    margin-bottom: 18px;
   }
   .collage-row-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 5px;
-    margin-bottom: 5px;
+    gap: 18px;
+    margin-bottom: 18px;
   }
   .collage-tile {
     position: relative;
@@ -687,75 +694,56 @@
     flex-direction: column;
     cursor: pointer;
     overflow: hidden;
-    background: var(--studio-grey-card);
+    background: var(--chaphavian-alabaster);
+    border: 1px solid var(--chaphavian-putty);
+    padding: 12px 12px 0;
+    box-shadow: 0 8px 20px -8px rgba(179, 90, 94, 0.14);
     text-decoration: none;
   }
   .collage-tile-img-wrap {
     width: 100%;
-    height: 300px;
+    height: 290px;
     overflow: hidden;
-    background: #F4F2EE;
+    background: #EFECE6;
+    border: 1px solid var(--chaphavian-putty);
+    transition: border-color 0.25s ease;
+  }
+  .collage-tile:hover .collage-tile-img-wrap {
+    border-color: var(--chaphavian-rose);
   }
   .collage-tile-img-wrap img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.55s ease;
-  }
-  .collage-tile:hover .collage-tile-img-wrap img {
-    transform: scale(1.04);
   }
   .collage-caption-bar {
-    background-color: #AFA9A0;
-    color: #FFFFFF;
+    background-color: var(--chaphavian-alabaster);
+    color: var(--chaphavian-iron);
     text-align: center;
-    padding: 8px 12px;
+    padding: 12px 12px;
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.2em;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    transition: background-color 0.25s ease;
+    transition: background-color 0.25s ease, color 0.25s ease;
   }
   .collage-tile:hover .collage-caption-bar {
-    background-color: #8E877E;
+    background-color: var(--chaphavian-iron);
+    color: var(--chaphavian-alabaster);
   }
 
   /* ==========================================================================
-     VIEW 2: GALLERY (CATEGORIZED LOOKBOOK SLIDES OVER MINIMALIST OFF-GREIGE, ZERO PRICES)
+     VIEW 2: GALLERY (CATEGORIZED LOOKBOOK CHAPTERS ON CHAPHAVIAN ALABASTER)
      ========================================================================== */
   .gallery-lookbook-stage {
-    background: var(--off-greige);
-    padding: 44px 0 64px;
-    border-bottom: 1px solid var(--border-hairline);
+    background: var(--chaphavian-alabaster);
+    padding: 28px 0 64px;
   }
   .lookbook-container {
     max-width: 1180px;
     margin: 0 auto;
     padding: 0 24px;
-  }
-  .lookbook-top-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-bottom: 36px;
-    padding-bottom: 18px;
-    border-bottom: 1px solid #DCD7CE;
-  }
-  .lookbook-top-bar h2 {
-    font-weight: 400;
-    font-size: 28px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: #1F1F1E;
-  }
-  .lookbook-top-bar p {
-    font-style: italic;
-    font-size: 16px;
-    color: var(--text-muted);
-    margin-top: 4px;
   }
   .lookbook-chapter {
     margin-bottom: 48px;
@@ -764,14 +752,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--chaphavian-putty);
   }
   .chapter-title {
-    font-size: 19px;
-    font-weight: 500;
+    font-size: 22px;
+    font-weight: 600;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: #232220;
+    color: var(--chaphavian-iron);
   }
   .chapter-Controls {
     display: flex;
@@ -779,77 +771,88 @@
     align-items: center;
   }
   .chapter-curate-link {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 10px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 13px;
+    font-weight: 600;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: #232220;
-    background: #FFFFFF;
-    border: 1px solid #C9C4BA;
-    padding: 7px 14px;
+    color: var(--chaphavian-iron);
+    background: var(--chaphavian-alabaster);
+    border: 1px solid var(--chaphavian-iron);
+    padding: 8px 16px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.24s ease;
   }
   .chapter-curate-link:hover {
-    background: #232220;
-    color: #FFFFFF;
-    border-color: #232220;
+    background: var(--chaphavian-iron);
+    color: var(--chaphavian-alabaster);
+    border-color: var(--chaphavian-iron);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px -6px rgba(43, 47, 50, 0.18);
   }
   .chapter-track {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
+    gap: 20px;
   }
   .lookbook-card {
-    background: #FFFFFF;
-    border: 1px solid #E5E0D8;
-    padding: 14px 14px 18px;
+    background: var(--chaphavian-alabaster);
+    border: 1px solid var(--chaphavian-putty);
+    padding: 16px 16px 20px;
     cursor: pointer;
     box-shadow: 0 8px 20px -8px rgba(179, 90, 94, 0.14);
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.25s ease,
+                background-color 0.25s ease;
     text-align: center;
   }
   .lookbook-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
+    background: #FAF9F7;
     border-color: #B35A5E;
-    box-shadow: 0 16px 34px -6px rgba(179, 90, 94, 0.30),
-                0 6px 16px -4px rgba(179, 90, 94, 0.18);
+    box-shadow: 0 18px 36px -6px rgba(179, 90, 94, 0.32),
+                0 8px 18px -4px rgba(179, 90, 94, 0.20),
+                0 0 0 1px rgba(179, 90, 94, 0.24);
   }
   .lookbook-img-box {
     width: 100%;
     aspect-ratio: 1 / 1;
-    background: var(--studio-grey-card);
+    background: #EFECE6;
+    border: 1px solid var(--chaphavian-putty);
     overflow: hidden;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
+    transition: border-color 0.25s ease;
+  }
+  .lookbook-card:hover .lookbook-img-box {
+    border-color: var(--chaphavian-rose);
   }
   .lookbook-img-box img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.45s ease;
-  }
-  .lookbook-card:hover .lookbook-img-box img {
-    transform: scale(1.04);
   }
   .lookbook-cat {
     font-family: 'Montserrat', sans-serif;
-    font-size: 9px;
+    font-size: 9.5px;
+    font-weight: 600;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 4px;
+    color: var(--chaphavian-rose);
+    margin-bottom: 6px;
   }
   .lookbook-name {
-    font-size: 16px;
-    font-weight: 500;
-    color: #1F1F1E;
-    line-height: 1.3;
-    margin-bottom: 4px;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--chaphavian-iron);
+    line-height: 1.35;
+    margin-bottom: 6px;
   }
   .lookbook-dims {
     font-style: italic;
-    font-size: 13px;
-    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 14px;
+    color: #52575D;
   }
 
   /* ==========================================================================
@@ -1872,15 +1875,20 @@
       </div>
     </section>
 
-    <!-- MANSOUR-STYLE EDITORIAL INTRO (ZERO CLUTTER, INLINE CONCIERGE) -->
-    <section class="mansour-editorial-intro">
-      <p>
-        For over three decades, Melissa Chapman has sourced museum-caliber European period furniture, hand-knotted Persian and silk carpets, historical tapestries and fine decorative arts from her early showroom roots on Harrington Road in South Kensington, London to the heart of Rancho Santa Fe Village. Every piece is personally vetted for authenticity, architectural proportion and timeless warmth.
-      </p>
-      <p>
-        Explore our editorial <a href="#gallery" onclick="switchView('gallery'); return false;">Gallery Lookbooks</a> or enter <a href="#curate" onclick="switchView('curate'); return false;">Curate Your Collection</a> to filter our live showroom inventory by color palette, historical period and room dimensions. For private in-home trials across Southern California, call or text Melissa directly at <a href="tel:+18583492638">(858) 349-2638</a>.
-      </p>
-    </section>
+    <!-- CHAPHAVIAN EDITORIAL INTRO CARD ON HOME VIEW -->
+    <div style="max-width:1180px; margin:0 auto; padding:0 24px;">
+      <section class="mansour-editorial-intro nrl-hover-box">
+        <div style="font-family:'Montserrat',sans-serif; font-size:10.5px; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:#B35A5E; margin-bottom:12px;">
+          Rancho Santa Fe and South Kensington Heritage
+        </div>
+        <p>
+          For over three decades, Melissa Chapman has sourced museum-caliber European period furniture, hand-knotted Persian and silk carpets, historical tapestries and fine decorative arts from her early showroom roots on Harrington Road in South Kensington, London to the heart of Rancho Santa Fe Village. Every piece is personally vetted for authenticity, architectural proportion and timeless warmth.
+        </p>
+        <p>
+          Explore our editorial <a href="#gallery" onclick="switchView('gallery'); return false;">Gallery Lookbooks</a> or enter <a href="#curate" onclick="switchView('curate'); return false;">Curate Your Collection</a> to filter our live showroom inventory by color palette, historical period and room dimensions. For private in-home trials across Southern California, call or text Melissa directly at <a href="tel:+18583492638">(858) 349-2638</a>.
+        </p>
+      </section>
+    </div>
 
     <!-- MANSOUR ASYMMETRIC COLLAGE SPLASH FOR RUGS & TAPESTRIES -->
     <section class="collage-splash-wrap">
@@ -1890,19 +1898,11 @@
   </div>
 
   <!-- ========================================================================
-       VIEW 2: GALLERY (CATEGORIZED LOOKBOOK SLIDES ON MINIMALIST OFF-GREIGE, ZERO PRICES)
+       VIEW 2: GALLERY (CATEGORIZED LOOKBOOK CHAPTERS ON CHAPHAVIAN ALABASTER)
        ======================================================================== -->
   <div id="view-gallery" class="site-view">
     <section class="gallery-lookbook-stage">
       <div class="lookbook-container">
-        <div class="lookbook-top-bar">
-          <div>
-            <h2>The Showroom Gallery</h2>
-            <p>Categorized editorial lookbooks &middot; Click any piece to inspect provenance or open Curate Your Collection to view pricing and acquire</p>
-          </div>
-          <button type="button" class="search-trigger" onclick="switchView('curate')">Curate Your Collection &rarr;</button>
-        </div>
-
         <div id="lookbook-chapters-mount"></div>
       </div>
     </section>
@@ -2934,128 +2934,7 @@ applyFilters();
   }, { passive: true });
 })();
 
-/* ==========================================================================
-   THE NRL SUBTLE TOUCH:
-   1. Real-Time WebGL Anisotropic Silk & Giltwood Specular Shader on Hero Colorblocks
-   2. Cursor-Tracking Museum Gallery Spotlight (`--spot-x`, `--spot-y`) Across All Visual Stages
-   ========================================================================== */
-(function initNrlGalleryLightAndSilkShader() {
-  // 1. Attach WebGL Silk Sheen Canvas to each Hero Colorblock Panel
-  const panels = document.querySelectorAll(".hero-colorblock-panel");
-  const vsSource = `
-    attribute vec2 a_pos;
-    varying vec2 v_uv;
-    void main() {
-      v_uv = a_pos * 0.5 + 0.5;
-      gl_Position = vec4(a_pos, 0.0, 1.0);
-    }
-  `;
-  const fsSource = `
-    precision mediump float;
-    varying vec2 v_uv;
-    uniform float u_time;
-    uniform vec2 u_mouse;
-    void main() {
-      vec2 uv = v_uv;
-      float d = distance(uv, u_mouse);
-      // Soft museum spotlight falloff around cursor
-      float spot = smoothstep(0.68, 0.0, d);
-      // Anisotropic woven silk & giltwood caustic waves
-      float wave1 = sin((uv.x * 11.0 + uv.y * 7.0) + u_time * 0.55) * 0.5 + 0.5;
-      float wave2 = cos((uv.x * 6.0 - uv.y * 13.0) - u_time * 0.38) * 0.5 + 0.5;
-      float silk = pow(wave1 * wave2, 1.6);
-      // Warm champagne-gold museum light (#FFF6E5)
-      vec3 col = vec3(1.0, 0.965, 0.89) * (silk * 0.24 + spot * 0.34);
-      gl_FragColor = vec4(col, silk * 0.26 + spot * 0.30);
-    }
-  `;
-
-  const glContexts = [];
-  panels.forEach(panel => {
-    const canvas = document.createElement("canvas");
-    canvas.className = "nrl-silk-webgl-canvas";
-    canvas.width = 360;
-    canvas.height = 360;
-    panel.insertBefore(canvas, panel.firstChild);
-
-    const gl = canvas.getContext("webgl", { alpha: true, premultipliedAlpha: false });
-    if (!gl) return;
-
-    function compileShader(type, src) {
-      const s = gl.createShader(type);
-      gl.shaderSource(s, src);
-      gl.compileShader(s);
-      return s;
-    }
-    const prog = gl.createProgram();
-    gl.attachShader(prog, compileShader(gl.VERTEX_SHADER, vsSource));
-    gl.attachShader(prog, compileShader(gl.FRAGMENT_SHADER, fsSource));
-    gl.linkProgram(prog);
-    gl.useProgram(prog);
-
-    const buf = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);
-    const aPos = gl.getAttribLocation(prog, "a_pos");
-    gl.enableVertexAttribArray(aPos);
-    gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
-
-    const uTime = gl.getUniformLocation(prog, "u_time");
-    const uMouse = gl.getUniformLocation(prog, "u_mouse");
-    const ctxObj = { gl, prog, uTime, uMouse, mx: 0.5, my: 0.5, tx: 0.5, ty: 0.5 };
-    glContexts.push(ctxObj);
-
-    panel.addEventListener("mousemove", e => {
-      const r = panel.getBoundingClientRect();
-      ctxObj.tx = (e.clientX - r.left) / Math.max(1, r.width);
-      ctxObj.ty = 1.0 - (e.clientY - r.top) / Math.max(1, r.height);
-    });
-    panel.addEventListener("mouseleave", () => {
-      ctxObj.tx = 0.5;
-      ctxObj.ty = 0.5;
-    });
-  });
-
-  function animateShaders(t) {
-    const sec = t * 0.001;
-    glContexts.forEach(c => {
-      c.mx += (c.tx - c.mx) * 0.08;
-      c.my += (c.ty - c.my) * 0.08;
-      c.gl.viewport(0, 0, 360, 360);
-      c.gl.clearColor(0, 0, 0, 0);
-      c.gl.clear(c.gl.COLOR_BUFFER_BIT);
-      c.gl.uniform1f(c.uTime, sec);
-      c.gl.uniform2f(c.uMouse, c.mx, c.my);
-      c.gl.drawArrays(c.gl.TRIANGLES, 0, 6);
-    });
-    requestAnimationFrame(animateShaders);
-  }
-  if (glContexts.length > 0) requestAnimationFrame(animateShaders);
-
-  // 2. Attach Cursor-Reactive Museum Gallery Spotlight to Furniture, Carpet Collages & Cards
-  function bindSpotlightTargets() {
-    const selectors = ".hero-furniture-card, .hero-macro-cell, .collage-tile-img-wrap, .lookbook-img-box, .card-img-box";
-    document.querySelectorAll(selectors).forEach(el => {
-      if (el.dataset.nrlSpotBound) return;
-      el.dataset.nrlSpotBound = "1";
-      el.classList.add("nrl-spotlight-surface");
-      el.addEventListener("mousemove", e => {
-        const r = el.getBoundingClientRect();
-        el.style.setProperty("--spot-x", (e.clientX - r.left) + "px");
-        el.style.setProperty("--spot-y", (e.clientY - r.top) + "px");
-      });
-    });
-  }
-  bindSpotlightTargets();
-  // Re-bind whenever filters re-render cards
-  const origApply = window.applyFilters;
-  if (typeof origApply === "function") {
-    window.applyFilters = function() {
-      origApply.apply(this, arguments);
-      bindSpotlightTargets();
-    };
-  }
-})();
+/* Pure Chaphavian Surfaces (WebGL Silk Shader Disabled for Clean Alabaster & Putty Consistency) */
 </script>
 </body>
 </html>
