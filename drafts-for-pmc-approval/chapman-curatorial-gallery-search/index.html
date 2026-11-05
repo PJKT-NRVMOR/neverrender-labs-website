@@ -1600,30 +1600,64 @@
     color: var(--text-main);
   }
   .concierge-pillars-grid {
-    max-width: 1180px;
+    max-width: 820px;
     margin: 0 auto;
-    padding: 44px 24px 36px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 36px;
+    padding: 48px 24px 42px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     border-bottom: 1px solid var(--border-hairline);
   }
+  .concierge-pillar {
+    max-width: 680px;
+    margin: 0 auto;
+  }
   .concierge-pillar h4 {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
+    font-size: 22px;
+    font-weight: 600 !important;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    margin-bottom: 8px;
-    color: #1E1D1B;
+    margin-bottom: 12px;
+    color: var(--chaphavian-rose) !important;
   }
-  .concierge-pillar p {
-    font-size: 15px;
-    color: var(--text-muted);
-    max-width: 330px;
-    margin: 0 auto;
-    line-height: 1.55;
+  .concierge-pillar .showroom-address-line {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--chaphavian-iron);
+    margin-bottom: 6px;
+    line-height: 1.45;
+  }
+  .concierge-pillar .showroom-hours-line {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 16.5px;
+    font-style: italic;
+    font-weight: 500;
+    color: #52575D;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .concierge-pillar .showroom-phone-line {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--chaphavian-iron);
+  }
+  .concierge-pillar .showroom-phone-line a {
+    color: var(--chaphavian-rose);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(179, 90, 94, 0.45);
+    padding-bottom: 2px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .concierge-pillar .showroom-phone-line a:hover {
+    color: var(--chaphavian-iron);
+    border-color: var(--chaphavian-iron);
   }
   .footer-legal-strip {
     max-width: 1180px;
@@ -1835,10 +1869,9 @@
             </div>
           </div>
 
-          <!-- Curate Your Collection Button Underneath the Photo (Flush with Right Column Signature) -->
-          <div style="margin-top:18px; padding-top:18px; border-top:1px solid #D5D3CC; text-align:center; display:flex; flex-direction:column; align-items:center; gap:10px;">
-            <button type="button" class="search-trigger" style="width:100%;" onclick="switchView('curate')">Curate Your Collection</button>
-            <button type="button" class="reset-trigger" onclick="switchView('gallery')">Explore Gallery Lookbook</button>
+          <!-- Explore the Gallery Button Underneath the Photo (Flush with Right Column Signature) -->
+          <div style="margin-top:18px; padding-top:18px; border-top:1px solid #D5D3CC; text-align:center; display:flex; flex-direction:column; align-items:center;">
+            <button type="button" class="search-trigger" style="width:100%;" onclick="switchView('gallery')">Explore the Gallery</button>
           </div>
         </div>
 
@@ -2247,16 +2280,11 @@
   <footer class="site-footer-wrap">
     <div class="concierge-pillars-grid">
       <div class="concierge-pillar">
-        <h4>Complimentary In-Home Preview</h4>
-        <p>Experience our carpets and period furnishings inside your own residence across Rancho Santa Fe, La Jolla, Del Mar and Southern California on private approval.</p>
-      </div>
-      <div class="concierge-pillar">
-        <h4>White-Glove Nationwide Delivery</h4>
-        <p>Every acquisition is professionally crated, insured and delivered through our vetted fine-art and antique white-glove carriers throughout the United States.</p>
-      </div>
-      <div class="concierge-pillar">
         <h4>Rancho Santa Fe Village Showroom</h4>
-        <p>6014 La Granada, Rancho Santa Fe, CA 92067 &middot; Private Showroom Concierge: <a href="tel:+18583492638" style="color:inherit;">(858) 349-2638</a></p>
+        <div style="width:44px; height:1px; background:#B35A5E; margin:0 auto 14px;"></div>
+        <div class="showroom-address-line">6014 La Granada, Rancho Santa Fe, CA 92067</div>
+        <div class="showroom-hours-line">Monday through Saturday &middot; 10:00 AM to 6:00 PM &middot; Sunday by Private Appointment</div>
+        <div class="showroom-phone-line">Private Showroom Concierge &middot; <a href="tel:+18583492638">(858) 349-2638</a></div>
       </div>
     </div>
 
