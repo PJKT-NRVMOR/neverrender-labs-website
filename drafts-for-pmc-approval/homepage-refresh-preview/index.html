@@ -53,64 +53,75 @@
     width: 100%;
   }
   .header-inner {
-    max-width: 1280px;
+    max-width: 1360px;
     margin: 0 auto;
-    padding: 16px 36px;
+    padding: 14px 28px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 28px;
+    gap: 16px;
+    flex-wrap: nowrap;
   }
   .brand-lockup {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
     text-decoration: none;
     color: var(--chaphavian-iron);
+    flex-shrink: 0;
   }
   .brand-crest {
-    width: 68px;
+    width: clamp(48px, 4.5vw, 66px);
     height: auto;
     display: block;
+    flex-shrink: 0;
   }
   .brand-wordmark {
     display: flex;
     flex-direction: column;
+    white-space: nowrap;
   }
   .brand-wordmark-title {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 26px;
+    font-size: clamp(17px, 1.8vw, 26px);
     font-weight: 600;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--chaphavian-iron);
     line-height: 1.15;
+    white-space: nowrap;
   }
   .brand-wordmark-sub {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 14px;
+    font-size: clamp(11px, 1vw, 14px);
     font-style: italic;
     color: var(--chaphavian-slate);
-    letter-spacing: 0.04em;
+    letter-spacing: 0.03em;
     margin-top: 2px;
+    white-space: nowrap;
   }
 
   .primary-nav {
     display: flex;
     align-items: center;
-    gap: 28px;
+    gap: clamp(12px, 1.6vw, 26px);
     list-style: none;
+    flex-wrap: nowrap;
+  }
+  .primary-nav li {
+    flex-shrink: 0;
   }
   .primary-nav a {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 15px;
+    font-size: clamp(11.5px, 1.05vw, 15px);
     font-weight: 600;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.11em;
     text-transform: uppercase;
     color: var(--chaphavian-iron);
     text-decoration: none;
     padding-bottom: 3px;
     border-bottom: 1px solid transparent;
+    white-space: nowrap;
     transition: color 0.2s ease, border-color 0.2s ease;
   }
   .primary-nav a.active,
@@ -120,13 +131,14 @@
   }
   .nav-phone-pill {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 15px;
+    font-size: clamp(11.5px, 1.05vw, 15px);
     font-weight: 600;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.09em;
     color: var(--chaphavian-iron) !important;
     background-color: var(--chaphavian-alabaster);
     border: 1px solid var(--chaphavian-putty) !important;
-    padding: 7px 16px !important;
+    padding: 6px 12px !important;
+    white-space: nowrap !important;
     transition: all 0.22s ease !important;
   }
   .nav-phone-pill:hover {
@@ -141,14 +153,16 @@
   .hero-salon-stage {
     position: relative;
     width: 100%;
-    min-height: 780px;
+    aspect-ratio: 16 / 9;
+    min-height: 520px;
+    max-height: 860px;
     background-image: url('the-alabaster-hero-2k.jpg');
     background-size: cover;
-    background-position: center 45%;
+    background-position: center center;
     display: flex;
     align-items: flex-end;
     justify-content: flex-start;
-    padding: 56px 6% 64px 7%;
+    padding: 28px 4.5% 3.2% 4.5%;
     border-bottom: 1px solid var(--chaphavian-putty);
   }
   /* Subtle warm plaster vignette so the architectural room stays luminous while framing the card */
@@ -156,91 +170,99 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 65% 50%, rgba(247, 245, 242, 0.02) 0%, rgba(43, 47, 50, 0.18) 100%);
+    background: radial-gradient(circle at 65% 50%, rgba(247, 245, 242, 0.02) 0%, rgba(43, 47, 50, 0.14) 100%);
     pointer-events: none;
   }
 
   .refresh-editorial-card {
     position: relative;
     z-index: 2;
-    max-width: 680px;
+    max-width: clamp(420px, 44vw, 680px);
     width: 100%;
     background: rgba(247, 245, 242, 0.92);
     backdrop-filter: blur(6px);
     border: 1px solid var(--chaphavian-putty);
     outline: 1px solid rgba(43, 47, 50, 0.18);
-    outline-offset: -8px;
-    padding: 38px 42px 36px;
+    outline-offset: -7px;
+    padding: clamp(20px, 2.2vw, 34px) clamp(22px, 2.5vw, 38px);
     text-align: left;
-    box-shadow: 0 24px 54px -12px rgba(43, 47, 50, 0.28);
+    box-shadow: 0 22px 48px -12px rgba(43, 47, 50, 0.26);
   }
 
   .refresh-kicker {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 12.5px;
+    font-size: clamp(10px, 0.85vw, 12.5px);
     font-weight: 700;
-    letter-spacing: 0.24em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--chaphavian-rose);
-    margin-bottom: 10px;
+    margin-bottom: 6px;
   }
 
   .refresh-title {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 42px;
+    font-size: clamp(26px, 2.7vw, 42px);
     font-weight: 500;
     font-style: italic;
     color: var(--chaphavian-iron);
-    line-height: 1.15;
-    margin-bottom: 6px;
+    line-height: 1.12;
+    margin-bottom: 4px;
   }
 
   .refresh-subtitle {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 14.5px;
+    font-size: clamp(10.5px, 0.95vw, 14px);
     font-weight: 600;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
     color: var(--chaphavian-slate);
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
 
   .refresh-divider {
     width: 48px;
     height: 2px;
     background-color: var(--chaphavian-rose);
-    margin: 0 0 18px 0;
+    margin: 0 0 12px 0;
+  }
+
+  .section-divider {
+    width: 48px;
+    height: 2px;
+    background-color: var(--chaphavian-rose);
+    margin: 0 auto 12px auto;
   }
 
   .refresh-body {
     font-family: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
-    font-size: 19px;
+    font-size: clamp(14px, 1.2vw, 18.5px);
     font-weight: 500;
-    line-height: 1.6;
+    line-height: 1.52;
     color: var(--chaphavian-iron);
-    margin: 0 0 24px 0;
+    margin: 0 0 18px 0;
   }
 
   .refresh-cta-row {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 14px;
+    flex-wrap: nowrap;
+    gap: 10px;
   }
 
   .btn-primary-iron {
     display: inline-block;
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 14px;
+    font-size: clamp(10px, 0.88vw, 13.5px);
     font-weight: 600;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 13px 28px;
+    padding: clamp(9px, 0.8vw, 12px) clamp(12px, 1.4vw, 22px);
     background-color: var(--chaphavian-iron);
     color: var(--chaphavian-alabaster);
     border: 1px solid var(--chaphavian-iron);
+    white-space: nowrap;
     transition: all 0.22s ease;
   }
   .btn-primary-iron:hover {
@@ -252,15 +274,16 @@
   .btn-secondary-ghost {
     display: inline-block;
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 14px;
+    font-size: clamp(10px, 0.88vw, 13.5px);
     font-weight: 600;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 13px 26px;
+    padding: clamp(9px, 0.8vw, 12px) clamp(12px, 1.4vw, 20px);
     background-color: var(--chaphavian-alabaster);
     color: var(--chaphavian-iron);
     border: 1px solid var(--chaphavian-iron);
+    white-space: nowrap;
     transition: all 0.22s ease;
   }
   .btn-secondary-ghost:hover {
@@ -354,25 +377,27 @@
     color: var(--chaphavian-alabaster);
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 720px) {
     .header-inner {
       flex-direction: column;
-      padding: 16px 20px;
-      gap: 14px;
+      padding: 14px 16px;
+      gap: 12px;
     }
     .primary-nav {
       flex-wrap: wrap;
       justify-content: center;
-      gap: 16px;
+      gap: 12px;
+    }
+    .hero-salon-stage {
+      aspect-ratio: auto;
+      min-height: 620px;
     }
     .refresh-editorial-card {
-      padding: 32px 24px;
+      max-width: 100%;
+      padding: 24px 20px;
     }
-    .refresh-title {
-      font-size: 32px;
-    }
-    .refresh-body {
-      font-size: 18px;
+    .refresh-cta-row {
+      flex-wrap: wrap;
     }
     .arrivals-grid {
       grid-template-columns: 1fr;
@@ -425,7 +450,7 @@
     <div class="section-header">
       <p class="section-kicker">Curated from Our Rancho Santa Fe Gallery</p>
       <h2 class="section-title">This Week's Featured Showroom Arrivals</h2>
-      <div class="refresh-divider"></div>
+      <div class="section-divider"></div>
     </div>
     <div class="arrivals-grid">
       <div class="arrival-card">
