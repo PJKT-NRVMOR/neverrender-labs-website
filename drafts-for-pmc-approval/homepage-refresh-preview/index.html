@@ -141,14 +141,14 @@
   .hero-salon-stage {
     position: relative;
     width: 100%;
-    min-height: 760px;
-    background-image: url('walkthrough-salon-4k-16x9.png');
+    min-height: 780px;
+    background-image: url('the-alabaster-hero-2k.jpg');
     background-size: cover;
-    background-position: center 42%;
+    background-position: center 45%;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 56px 24px;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 56px 6% 64px 7%;
     border-bottom: 1px solid var(--chaphavian-putty);
   }
   /* Subtle warm plaster vignette so the architectural room stays luminous while framing the card */
@@ -156,78 +156,77 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at center, rgba(247, 245, 242, 0.08) 0%, rgba(43, 47, 50, 0.22) 100%);
+    background: radial-gradient(circle at 65% 50%, rgba(247, 245, 242, 0.02) 0%, rgba(43, 47, 50, 0.18) 100%);
     pointer-events: none;
   }
 
   .refresh-editorial-card {
     position: relative;
     z-index: 2;
-    max-width: 760px;
+    max-width: 680px;
     width: 100%;
-    background: rgba(247, 245, 242, 0.94);
+    background: rgba(247, 245, 242, 0.92);
     backdrop-filter: blur(6px);
     border: 1px solid var(--chaphavian-putty);
     outline: 1px solid rgba(43, 47, 50, 0.18);
     outline-offset: -8px;
-    padding: 46px 52px 44px;
-    text-align: center;
+    padding: 38px 42px 36px;
+    text-align: left;
     box-shadow: 0 24px 54px -12px rgba(43, 47, 50, 0.28);
   }
 
   .refresh-kicker {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 700;
     letter-spacing: 0.24em;
     text-transform: uppercase;
     color: var(--chaphavian-rose);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
   .refresh-title {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 44px;
+    font-size: 42px;
     font-weight: 500;
     font-style: italic;
     color: var(--chaphavian-iron);
-    line-height: 1.18;
-    margin-bottom: 8px;
+    line-height: 1.15;
+    margin-bottom: 6px;
   }
 
   .refresh-subtitle {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 16px;
+    font-size: 14.5px;
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--chaphavian-slate);
-    margin-bottom: 18px;
+    margin-bottom: 16px;
   }
 
   .refresh-divider {
     width: 48px;
     height: 2px;
     background-color: var(--chaphavian-rose);
-    margin: 0 auto 20px;
+    margin: 0 0 18px 0;
   }
 
   .refresh-body {
     font-family: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
-    font-size: 20px;
+    font-size: 19px;
     font-weight: 500;
-    line-height: 1.65;
+    line-height: 1.6;
     color: var(--chaphavian-iron);
-    max-width: 630px;
-    margin: 0 auto 28px;
+    margin: 0 0 24px 0;
   }
 
   .refresh-cta-row {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 14px;
   }
 
   .btn-primary-iron {
