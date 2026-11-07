@@ -156,7 +156,7 @@
     aspect-ratio: 16 / 9;
     min-height: 520px;
     max-height: 860px;
-    background-image: url('the-alabaster-hero-2k.jpg');
+    background-image: url('the-greenfoam-compromise.jpg');
     background-size: cover;
     background-position: center center;
     display: flex;
@@ -164,6 +164,36 @@
     justify-content: flex-start;
     padding: 28px 4.5% 3.2% 4.5%;
     border-bottom: 1px solid var(--chaphavian-putty);
+    transition: background-image 0.35s ease;
+  }
+  .hero-variant-switcher {
+    position: absolute;
+    top: 18px;
+    right: 24px;
+    z-index: 10;
+    display: flex;
+    gap: 8px;
+    background: rgba(247, 245, 242, 0.9);
+    border: 1px solid var(--chaphavian-putty);
+    padding: 5px;
+    backdrop-filter: blur(4px);
+  }
+  .hero-variant-btn {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--chaphavian-iron);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .hero-variant-btn.active {
+    background: var(--chaphavian-iron);
+    color: var(--chaphavian-alabaster);
   }
   /* Subtle warm plaster vignette so the architectural room stays luminous while framing the card */
   .hero-salon-stage::before {
@@ -429,7 +459,11 @@
   </header>
 
   <!-- 2. SUNLIT GEORGIAN SALON HERO & DIGITAL SHOWROOM REFRESH CARD -->
-  <section class="hero-salon-stage">
+  <section id="hero-stage" class="hero-salon-stage">
+    <div class="hero-variant-switcher">
+      <button type="button" id="btn-greenfoam" class="hero-variant-btn active" onclick="setHeroPlate('the-greenfoam-compromise.jpg', 'btn-greenfoam')">Celadon Green Settee</button>
+      <button type="button" id="btn-alabaster" class="hero-variant-btn" onclick="setHeroPlate('the-alabaster-hero-2k.jpg', 'btn-alabaster')">Alabaster Linen Settee</button>
+    </div>
     <div class="refresh-editorial-card">
       <p class="refresh-kicker">Digital Showroom Refresh in Progress</p>
       <h1 class="refresh-title">The Chapman Collection</h1>
@@ -521,5 +555,17 @@
     </div>
   </section>
 
+<script>
+function setHeroPlate(imgUrl, btnId) {
+  var stage = document.getElementById('hero-stage');
+  if (stage) stage.style.backgroundImage = "url('" + imgUrl + "')";
+  var btns = document.querySelectorAll('.hero-variant-btn');
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].classList.remove('active');
+  }
+  var activeBtn = document.getElementById(btnId);
+  if (activeBtn) activeBtn.classList.add('active');
+}
+</script>
 </body>
 </html>
