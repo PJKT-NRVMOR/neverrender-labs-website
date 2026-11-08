@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Typewriter effect for terminal
     const terminalText = [
-        "SYSTEM ONLINE // NEVERRENDER LABS MASTER COMPENDIUM (OCT 2026)...",
-        "LIGNITE ARGON SLOUGH: 8K SUPER-RES WEBGL FLUID STAGE ONLINE...",
+        "SYSTEM ONLINE // NEVERRENDER LABS STUDIO COMPENDIUM (NOV 2026)...",
+        "CLIENT ARCHITECTURE: THE CHAPMAN COLLECTION 200-SKU GALLERY LIVE...",
         "GOOGLE LABS FLOW: RETRO-TERM 80 COMMUNITY GALLERY FEATURED...",
-        "COLOR MATRIX v3.0: LIGNITE PETROL TEAL // ELECTRIC CYAN // RADIOACTIVE WRISTBAND MAGENTA...",
+        "PALETTE v4.0: ARGON WHITE // PERIWINKLE // LAVENDER // MACAU MINT...",
+        "MCP GATEWAY: @BEELINK-NEEDLECASTING STREAMABLE-HTTP ACTIVE...",
         "AUDIO ARCHITECTURE: YOUTUBE MUSIC VERIFIED // LIDO DI ANTHROPOLIS MASTERED...",
-        "HARDWARE TELEMETRY: AMD RYZEN 7 6800U 4-THREAD 0.99MS ENVELOPE...",
-        "DIRECTOR-ENGINEER AGENTIC ORCHESTRATION: SYSTEM CEMENTED."
+        "HARDWARE TELEMETRY: TINY HYPERION AMD RYZEN 7 6800U (52.8W UNLOCKED)..."
     ];
     
     let textIndex = 0;
@@ -20,6 +20,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const viewport = document.getElementById('main-viewport');
     const puddleBreachBtn = document.getElementById('puddle-breach-btn');
     const returnToPuddleBtn = document.getElementById('return-to-puddle');
+    const toggleArgonThemeBtn = document.getElementById('toggle-argon-theme');
+
+    if (toggleArgonThemeBtn && macroEnv) {
+        toggleArgonThemeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isLight = macroEnv.classList.toggle('argon-light');
+            toggleArgonThemeBtn.textContent = isLight
+                ? '[☀ MODE: ARGON PAPER]'
+                : '[◐ MODE: D-SUITE TEAL]';
+        });
+    }
 
     function type() {
         if (!typewriterEl) return;
@@ -192,16 +203,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             window.addEventListener('mousemove', (e) => {
+                if (macroEnv && !macroEnv.classList.contains('puddle-mode')) return;
                 handlePointerMove(e.clientX, e.clientY);
             }, { passive: true });
 
             window.addEventListener('touchmove', (e) => {
+                if (macroEnv && !macroEnv.classList.contains('puddle-mode')) return;
                 if (e.touches && e.touches.length > 0) {
                     handlePointerMove(e.touches[0].clientX, e.touches[0].clientY);
                 }
             }, { passive: true });
 
             window.addEventListener('mousedown', (e) => {
+                if (macroEnv && !macroEnv.classList.contains('puddle-mode')) return;
                 const nx = e.clientX / (window.innerWidth || 1);
                 const ny = e.clientY / (window.innerHeight || 1);
                 dropRipple(nx, ny, 14.5, 0.36);
@@ -526,6 +540,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 function renderLoop(nowMs) {
                     requestAnimationFrame(renderLoop);
                     if (document.hidden || !bgLoaded) return;
+                    // Sleep WebGL simulation completely while inside the Reception Spine (0% GPU/CPU)
+                    if (macroEnv && !macroEnv.classList.contains('puddle-mode')) return;
                     const modalEl = document.getElementById('archive-modal');
                     if (modalEl && modalEl.classList.contains('active')) return;
 

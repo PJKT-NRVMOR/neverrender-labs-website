@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeverRender Labs</title>
-    <meta name="description" content="Agent Assisted Creative Studio - Surreal-Futurist Macro-Diorama">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=9">
+    <title>NeverRender Labs // Sovereign AI Systems, Luxury Commerce &amp; Generative Cinema</title>
+    <meta name="description" content="NeverRender Labs (renderwithoutcode.com) - Sovereign AI Systems Architecture, Full-Stack Luxury Commerce, and Generative Cinema by Matthew Cole Wyatt.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=17">
     <link rel="icon" type="image/svg+xml" href="favicon-svg.svg">
 </head>
 <body>
     <div class="macro-environment puddle-mode" id="macro-env">
-        <!-- Floating Anamorphic Stage -->
+        <!-- Floating Anamorphic Stage (WebGL Puddle) -->
         <div class="anamorphic-stage" id="anamorphic-stage">
             <div class="background-plate"></div>
             <canvas id="argon-puddle-canvas"></canvas>
             <div class="anamorphic-streak"></div>
             <div class="anamorphic-vignette"></div>
         </div>
-        
+
         <!-- Energy Conduits -->
         <div class="conduit-grid">
             <div class="conduit-line horizontal top"></div>
@@ -29,81 +29,202 @@
 
         <!-- Puddle Immersion HUD Prompt (Visible before breaching into Viewport) -->
         <div class="puddle-hud-overlay" id="puddle-hud">
-            <div class="puddle-brand-whisper">NEVERRENDER LABS // LIGNITE ARGON SLOUGH</div>
+            <div class="puddle-brand-whisper">NEVERRENDER LABS // ARGON &amp; LIGNITE SLOUGH</div>
             <button class="puddle-breach-prompt" id="puddle-breach-btn" type="button">
                 <span class="pulse-ring"></span>
                 <span class="prompt-label">[ TOUCH THE IRIDESCENT PUDDLE // CLICK TO ENTER RECEPTION ]</span>
             </button>
         </div>
 
-        <!-- Central Crystalline Viewport -->
+        <!-- Central Google Dev Blog // D-Suite HUD Viewport -->
         <div class="viewport-container" id="main-viewport">
             <div class="glass-panel">
-                <header class="sys-header">
-                    <div class="sys-status">
-                        <span class="indicator blink"></span> SYSTEM STATUS: CEMENTED
+
+                <!-- 1. Top HUD Masthead Bar -->
+                <header class="dev-top-bracket">
+                    <div class="dev-brand-pill">
+                        <span class="dev-code-glyph">&lt;/&gt;</span>
+                        <span>NEVERRENDER LABS <span class="slash-orange">//</span> STUDIO COMPENDIUM</span>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 12px;">
-                        <div class="sys-id">PROJECT_NEVERMORE</div>
-                        <button class="close-btn" id="return-to-puddle" title="Return to Argon Puddle View" style="font-size: 0.82rem; padding: 4px 10px; border: 1px solid rgba(0, 229, 255, 0.4); color: var(--color-energy-cyan); background: rgba(0, 229, 255, 0.08); border-radius: 3px; cursor: pointer;">[≈ PUDDLE]</button>
+                    <div class="dev-header-controls">
+                        <button class="dev-ctrl-btn" id="toggle-argon-theme" type="button" title="Switch between D-Suite Petrol HUD and Argon Paper Light">[◐ MODE: D-SUITE TEAL]</button>
+                        <button class="dev-ctrl-btn" id="return-to-puddle" type="button" title="Return to Interactive Argon Puddle">[≈ PUDDLE]</button>
                     </div>
                 </header>
 
-                <main class="content-matrix">
-                    <div style="display: flex; justify-content: center; margin-bottom: 8px;">
-                        <a href="https://labs.google/fx/tools/flow/shared/tool/c718f343-2e2f-4ae8-92bd-6f68f13b1c45" target="_blank" rel="noopener" style="text-decoration: none;">
-                            <span style="display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-molten-amber); background: rgba(255, 183, 3, 0.12); border: 1px solid var(--color-molten-amber); padding: 6px 16px; border-radius: 4px; text-transform: uppercase; letter-spacing: 1.2px;">
-                                ★ GOOGLE LABS FLOW FEATURED: RETRO-TERM 80
-                            </span>
-                        </a>
+                <!-- 2. Hero Stage: Solar Orange Portal Ring + 4 Cyan HUD Telemetry Boxes + Central Window -->
+                <section class="dev-hero-stage">
+                    <div class="iso-chip chip-mint">
+                        <span class="hud-label">EVENT LOG:</span>
+                        <span class="hud-val">0-LATENCY</span>
+                    </div>
+                    <div class="iso-chip chip-amber">
+                        <span class="hud-label">STREAMABLE-HTTP:</span>
+                        <span class="hud-val">PORT 8765</span>
+                    </div>
+                    <div class="iso-chip chip-periwinkle">
+                        <span class="hud-label">MCP NEEDLECAST:</span>
+                        <span class="hud-val">ACTIVE</span>
+                    </div>
+                    <div class="iso-chip chip-lavender">
+                        <span class="hud-label">RUN RATE:</span>
+                        <span class="hud-val">MAXIMUM</span>
                     </div>
 
-                    <h1 class="chromatic-aberration">NEVERRENDER LABS</h1>
-                    <p class="subtitle">MASTER SYSTEM &amp; MACHINE LEARNING COMPENDIUM (SEPT 2026 // LIGNITE EDITION)</p>
-                    
-                    <div class="terminal-box" id="terminal-interface">
-                        <div class="terminal-header">
-                            <span>> TERMINAL FOCUS // SRE KERNEL</span>
+                    <div class="retro-browser-window">
+                        <div class="retro-window-bar">
+                            <div class="retro-window-dots">
+                                <span class="retro-dot d-pink"></span>
+                                <span class="retro-dot d-amber"></span>
+                                <span class="retro-dot d-mint"></span>
+                            </div>
+                            <span class="retro-window-tag">GEMINI 4 ARGON // TINY HYPERION 6800U</span>
                         </div>
-                        <div class="terminal-body">
-                            <p class="typewriter-text" id="typewriter"></p>
-                            <span class="cursor">_</span>
+                        <div class="retro-window-body">
+                            <div class="dsuite-kicker">SOVEREIGN AI STUDIO <span class="slash-accent">//</span></div>
+                            <h1 class="retro-window-title">
+                                NEVERRENDER LABS
+                            </h1>
+                            <div class="dsuite-subkicker">HOT PATH ARCHITECTURE // ZERO AGENCY LAG</div>
+                            <p class="retro-window-sub">
+                                No Code. No Pulp. All Pixels. Deterministic AI pipelines, luxury e-commerce architecture &amp; generative cinema.
+                            </p>
                         </div>
                     </div>
 
-                    <!-- Primary Mission Launchers -->
-                    <div style="margin-top: 12px; width: 100%; display: flex; flex-direction: column; gap: 8px;">
-                        <button class="action-btn" style="width: 100%; border-color: var(--color-energy-cyan); background: rgba(0, 229, 255, 0.18); color: var(--color-energy-cyan); text-shadow: 0 0 12px rgba(0, 229, 255, 0.7); font-weight: bold; letter-spacing: 2px;" onclick="window.location.href='front-desk.html'">[⚡] AUTONOMOUS FRONT DESK PROTOTYPE // 24/7 AI RECEPTION [⚡]</button>
-                        
-                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
-                            <button class="action-btn" style="border-color: var(--color-biolum-mint); color: var(--color-biolum-mint); background: rgba(0, 255, 136, 0.1); font-size: 0.85rem;" onclick="window.location.href='resume.html'">[📄] 8-BIT RESUME</button>
-                            <button class="action-btn" style="border-color: var(--color-disruptive-pink); color: var(--color-disruptive-pink); background: rgba(255, 0, 119, 0.1); font-size: 0.85rem;" onclick="window.open('https://www.instagram.com/neverrenderlabs/', '_blank')">[📸] INSTAGRAM</button>
-                            <button class="action-btn" style="border-color: var(--color-molten-amber); color: var(--color-molten-amber); background: rgba(255, 183, 3, 0.1); font-size: 0.85rem;" onclick="window.open('https://www.flowmusic.app/NeverRenderLabs', '_blank')">[🎵] FLOW MUSIC</button>
+                    <div class="dev-byline">
+                        Architected by <strong>Matthew Cole Wyatt</strong> &middot; Featured in
+                        <a href="https://labs.google/fx/tools/flow/shared/tool/c718f343-2e2f-4ae8-92bd-6f68f13b1c45" target="_blank" rel="noopener">Google Labs Flow (RETRO-TERM 80)</a>
+                    </div>
+                </section>
+
+                <!-- 3. Compact Terminal Typewriter Strip -->
+                <div class="terminal-box" id="terminal-interface">
+                    <div class="terminal-header">
+                        <span>&gt; TERMINAL FOCUS // SRE KERNEL</span>
+                        <span class="status-orange">STATUS: ACTIVE</span>
+                    </div>
+                    <div class="terminal-body">
+                        <p class="typewriter-text" id="typewriter"></p>
+                        <span class="cursor">_</span>
+                    </div>
+                </div>
+
+                <!-- 4. Cyan Wireframe Spotlight Card (Google Dev Blog Structure + D-Suite HUD) -->
+                <section class="dev-bracket-card">
+                    <span class="dev-pill-badge">BUILDER &amp; CLIENT SPOTLIGHT //</span>
+                    <h2 class="dev-card-title">
+                        Built to solve your hardest creative, catalog &amp; systems engineering problems
+                    </h2>
+                    <p class="dev-card-copy">
+                        NeverRender Labs replaces bloated agency layers with sovereign edge compute, Streamable-HTTP MCP agent swarms, and broadcast-compliant 4K post-production. Explore our live 200-product Chaphavian digital gallery rebuild for
+                        <a href="https://thechapmancollection.com" target="_blank" rel="noopener"><span class="hl-amber">The Chapman Collection</span></a>
+                        in Rancho Santa Fe, test our
+                        <a href="front-desk.html"><span class="hl-periwinkle">24/7 Autonomous AI Front Desk</span></a>,
+                        or save our direct contact via the
+                        <a href="card/index.html"><span class="hl-lavender">Digital Executive Card (.VCF)</span></a>.
+                    </p>
+                    <div class="dev-btn-row">
+                        <a href="front-desk.html" class="dev-action-btn btn-primary">[⚡] 24/7 AI FRONT DESK</a>
+                        <a href="https://thechapmancollection.com" target="_blank" rel="noopener" class="dev-action-btn btn-amber">[🏛️] CHAPMAN COLLECTION LIVE SITE</a>
+                        <a href="card/index.html" class="dev-action-btn btn-lavender">[🪪] DIGITAL CARD &amp; CONTACT</a>
+                        <a href="resume.html" class="dev-action-btn btn-periwinkle">[📄] EXECUTIVE RESUME</a>
+                    </div>
+                </section>
+
+                <!-- 5. Latest from NeverRender Labs Feed -->
+                <h2 class="dev-section-heading">
+                    LATEST FROM <span class="hl-amber">NEVERRENDER LABS</span>
+                </h2>
+
+                <div class="dev-feed-list">
+                    <!-- Feed Item 1: Cinema & Audio Vault -->
+                    <article class="dev-feed-item">
+                        <div class="dev-play-bullet" title="Play Media">&#9654;</div>
+                        <div class="dev-feed-content">
+                            <h3 class="dev-feed-title">
+                                Stream 4K generative cinema &amp; lossless audio in the Studio Archive Vault
+                            </h3>
+                            <p class="dev-feed-desc">
+                                Watch 11 mastered 4K narrative reels including <em>House of Macau (We Gamble It For You Wholesale)</em>, <em>Lido di Anthropolis (Singles Night)</em>, and <em>The Stagecoach</em>, mastered to ITU-R BS.1770-4 / -14.6 LUFS compliance.
+                            </p>
+                            <div class="dev-feed-links">
+                                <button type="button" class="dev-inline-link" id="view-archives">&#9654; Launch 11-Track 4K Video Player</button>
+                                <a href="https://www.flowmusic.app/NeverRenderLabs" target="_blank" rel="noopener" class="dev-inline-link">&#9835; Flow Music Profile</a>
+                                <a href="https://www.instagram.com/neverrenderlabs/" target="_blank" rel="noopener" class="dev-inline-link">&#9673; Instagram (@neverrenderlabs)</a>
+                            </div>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="action-matrix">
-                        <button class="action-btn secondary" id="view-archives">VIEW ARCHIVES</button>
-                        <button class="action-btn secondary" id="view-characters" onclick="window.location.href='characters.html'">CHARACTERS</button>
-                        <button class="action-btn secondary" id="view-stills" onclick="window.location.href='still-edits.html'">STILL EDITS</button>
-                        <button class="action-btn secondary" id="view-tech-logs" onclick="window.location.href='tech-logs.html'">TECH LOGS</button>
-                        <button class="action-btn secondary" id="view-notebook-research" onclick="window.location.href='notebook-research.html'">RESEARCH REPO</button>
-                        <button class="action-btn secondary" id="contact-creator">CONTACT</button>
-                    </div>
-                </main>
+                    <!-- Feed Item 2: Autonomous Front Desk -->
+                    <article class="dev-feed-item">
+                        <div class="dev-play-bullet mint" title="AI Reception">&#9654;</div>
+                        <div class="dev-feed-content">
+                            <h3 class="dev-feed-title">
+                                Deploy a 24/7 autonomous reception &amp; concierge with air-gapped data sovereignty
+                            </h3>
+                            <p class="dev-feed-desc">
+                                Powered by Google Gemini 4 Argon and NotebookLM, our dual-layer concierge fields off-hours client inquiries, cross-references technical dossiers, and keeps private telemetry strictly quarantined.
+                            </p>
+                            <div class="dev-feed-links">
+                                <a href="front-desk.html" class="dev-inline-link">&#9889; Open Front Desk Architecture</a>
+                                <a href="https://notebook.google.com/notebook/8f1ea112-fb7c-4720-a4f2-0c208f16b435" target="_blank" rel="noopener" class="dev-inline-link">&#128214; Launch Live NotebookLM Concierge</a>
+                            </div>
+                        </div>
+                    </article>
 
-                <footer class="sys-footer">
-                    <div>COMPUTE: TUNED AMD 6800U</div>
-                    <div class="text-pop">AESTHETIC: LIGNITE ANAMORPHIC MACRO-DIORAMA</div>
+                    <!-- Feed Item 3: Characters & Still Edits -->
+                    <article class="dev-feed-item">
+                        <div class="dev-play-bullet lavender" title="Character & Still Vaults">&#9654;</div>
+                        <div class="dev-feed-content">
+                            <h3 class="dev-feed-title">
+                                Inspect character identity locking, AOT XML prompt schemas &amp; 16-bit color plates
+                            </h3>
+                            <p class="dev-feed-desc">
+                                Browse the <em>8-Bit Theater District</em> subject dossiers and high-contrast anamorphic still plates graded with our custom 60/30/10 LUT pipeline and 12% bottom luma crush.
+                            </p>
+                            <div class="dev-feed-links">
+                                <a href="characters.html" class="dev-inline-link">&#129516; Subject &amp; Character Archives</a>
+                                <a href="still-edits.html" class="dev-inline-link">&#127912; Still Edits Gallery</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Feed Item 4: Tech Logs & Research Repo -->
+                    <article class="dev-feed-item">
+                        <div class="dev-play-bullet amber" title="Tech Logs & Research">&#9654;</div>
+                        <div class="dev-feed-content">
+                            <h3 class="dev-feed-title">
+                                Read the 5-Part Master Research Compendium, Veo prompt patches &amp; SRE Tech Logs
+                            </h3>
+                            <p class="dev-feed-desc">
+                                Deep-dive into our 5-part technical omnibus covering agentic orchestration, 3D Gaussian splatting, spatial audio dynamics, YouTube Music algorithmic telemetry, and multi-agent QA.
+                            </p>
+                            <div class="dev-feed-links">
+                                <a href="tech-logs.html" class="dev-inline-link">&#128187; Open Tech Logs</a>
+                                <a href="notebook-research.html" class="dev-inline-link">&#128218; Research Deposit Repo</a>
+                                <a href="mailto:creator@renderwithoutcode.com" id="contact-creator" class="dev-inline-link">&#9993; creator@renderwithoutcode.com</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- 6. Bottom HUD Footer -->
+                <footer class="dev-bottom-bracket">
+                    <div>COMPUTE: TINY HYPERION (AMD RYZEN 7 6800U) <span class="orange-readout">// SAN DIEGO, CA</span></div>
+                    <div>PALETTE: <span class="orange-readout">D-SUITE PETROL &amp; SOLAR HUD v4.1</span></div>
                 </footer>
+
             </div>
         </div>
     </div>
+
+    <!-- Interactive 11-Track 4K Video Archive Modal -->
     <div class="video-modal" id="archive-modal">
         <div class="modal-backdrop"></div>
         <div class="modal-content glass-panel extended-modal">
             <header class="sys-header">
-                <div class="sys-id">ARCHIVE_PLAYBACK</div>
+                <div class="sys-id">// ARCHIVE_PLAYBACK // 4K MASTER VAULT</div>
                 <button class="close-btn" id="close-modal">[X] CLOSE</button>
             </header>
             <div class="archive-layout">
@@ -126,6 +247,6 @@
             </div>
         </div>
     </div>
-    <script src="main.js?v=13"></script>
+    <script src="main.js?v=17"></script>
 </body>
 </html>
