@@ -37,7 +37,7 @@
   }
 
   /* ==========================================================================
-     1. REFINED CHAPHAVIAN HEADER (REPLACING LEGACY SANS-SERIF NAV BAR)
+     1. REFINED CHAPHAVIAN HEADER
      ========================================================================== */
   .site-header {
     background-color: var(--chaphavian-alabaster);
@@ -148,147 +148,80 @@
   }
 
   /* ==========================================================================
-     2. SUNLIT GEORGIAN SALON HERO STAGE & CONVERSION CARD
+     2. CHAPHAVIAN ALCOVE & PLASTER HERO STAGE (1792x756 / 2.3704:1 FULL BLEED)
      ========================================================================== */
   .hero-salon-stage {
     position: relative;
     width: 100%;
-    aspect-ratio: 16 / 9;
-    min-height: 520px;
-    max-height: 860px;
-    background-image: url('the-greenfoam-compromise.jpg');
+    max-width: 100%;
+    aspect-ratio: 1792 / 756;
+    margin: 0 auto;
+    background-image: url('https://thechapmancollection.com/wp-content/uploads/2026/11/the-chaphavian-hero-2-5.png');
     background-size: cover;
     background-position: center center;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
-    padding: 28px 4.5% 3.2% 4.5%;
+    display: block;
+    padding: 0;
+    border: none;
     border-bottom: 1px solid var(--chaphavian-putty);
+    box-shadow: none;
     transition: background-image 0.35s ease;
   }
-  .hero-variant-switcher {
-    position: absolute;
-    top: 18px;
-    right: 24px;
-    z-index: 10;
-    display: flex;
-    gap: 8px;
-    background: rgba(247, 245, 242, 0.9);
-    border: 1px solid var(--chaphavian-putty);
-    padding: 5px;
-    backdrop-filter: blur(4px);
-  }
-  .hero-variant-btn {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    border: 1px solid transparent;
-    background: transparent;
-    color: var(--chaphavian-iron);
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  .hero-variant-btn.active {
-    background: var(--chaphavian-iron);
-    color: var(--chaphavian-alabaster);
-  }
-  /* Subtle warm plaster vignette so the architectural room stays luminous while framing the card */
-  .hero-salon-stage::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 65% 50%, rgba(247, 245, 242, 0.02) 0%, rgba(43, 47, 50, 0.14) 100%);
-    pointer-events: none;
-  }
 
-  .refresh-editorial-card {
-    position: relative;
+  /* Aligned directly below the wall-lettered "The Chapman Collection / Refreshing Our Digital Gallery" (x = 16.8%, y = 62.5%) */
+  .refresh-plaster-block {
+    position: absolute;
+    left: 16.8%;
+    top: 62.5%;
     z-index: 2;
-    max-width: clamp(420px, 44vw, 680px);
-    width: 100%;
-    background: rgba(247, 245, 242, 0.92);
-    backdrop-filter: blur(6px);
-    border: 1px solid var(--chaphavian-putty);
-    outline: 1px solid rgba(43, 47, 50, 0.18);
-    outline-offset: -7px;
-    padding: clamp(20px, 2.2vw, 34px) clamp(22px, 2.5vw, 38px);
+    width: 41.5%;
+    max-width: 680px;
     text-align: left;
-    box-shadow: 0 22px 48px -12px rgba(43, 47, 50, 0.26);
-  }
-
-  .refresh-kicker {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(10px, 0.85vw, 12.5px);
-    font-weight: 700;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--chaphavian-rose);
-    margin-bottom: 6px;
-  }
-
-  .refresh-title {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(26px, 2.7vw, 42px);
-    font-weight: 500;
-    font-style: italic;
-    color: var(--chaphavian-iron);
-    line-height: 1.12;
-    margin-bottom: 4px;
-  }
-
-  .refresh-subtitle {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(10.5px, 0.95vw, 14px);
-    font-weight: 600;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-    color: var(--chaphavian-slate);
-    margin-bottom: 12px;
   }
 
   .refresh-divider {
-    width: 48px;
+    width: 52px;
     height: 2px;
     background-color: var(--chaphavian-rose);
-    margin: 0 0 12px 0;
+    margin: 0 0 8px 0;
   }
 
-  .section-divider {
-    width: 48px;
-    height: 2px;
-    background-color: var(--chaphavian-rose);
-    margin: 0 auto 12px auto;
+  .refresh-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(8.5px, 0.64vw, 11.5px);
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--chaphavian-iron);
+    margin-bottom: 6px;
+    line-height: 1.35;
   }
 
   .refresh-body {
     font-family: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
-    font-size: clamp(14px, 1.2vw, 18.5px);
+    font-size: clamp(13.5px, 0.92vw, 17.5px);
     font-weight: 500;
-    line-height: 1.52;
+    line-height: 1.44;
     color: var(--chaphavian-iron);
-    margin: 0 0 18px 0;
+    margin: 0 0 12px 0;
   }
 
   .refresh-cta-row {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     gap: 10px;
   }
 
   .btn-primary-iron {
     display: inline-block;
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(10px, 0.88vw, 13.5px);
+    font-size: clamp(10px, 0.70vw, 12px);
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     text-decoration: none;
-    padding: clamp(9px, 0.8vw, 12px) clamp(12px, 1.4vw, 22px);
+    padding: 8px 16px;
     background-color: var(--chaphavian-iron);
     color: var(--chaphavian-alabaster);
     border: 1px solid var(--chaphavian-iron);
@@ -304,13 +237,13 @@
   .btn-secondary-ghost {
     display: inline-block;
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(10px, 0.88vw, 13.5px);
+    font-size: clamp(10px, 0.70vw, 12px);
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     text-decoration: none;
-    padding: clamp(9px, 0.8vw, 12px) clamp(12px, 1.4vw, 20px);
-    background-color: var(--chaphavian-alabaster);
+    padding: 8px 16px;
+    background-color: rgba(247, 245, 242, 0.92);
     color: var(--chaphavian-iron);
     border: 1px solid var(--chaphavian-iron);
     white-space: nowrap;
@@ -321,8 +254,15 @@
     color: var(--chaphavian-alabaster);
   }
 
+  .section-divider {
+    width: 48px;
+    height: 2px;
+    background-color: var(--chaphavian-rose);
+    margin: 0 auto 12px auto;
+  }
+
   /* ==========================================================================
-     3. THIS WEEK'S FEATURED SHOWROOM ARRIVALS (DIRECT CLICK-TO-PRODUCT GRID)
+     3. THIS WEEK'S FEATURED SHOWROOM SELECTION (DIRECT CLICK-TO-PRODUCT GRID)
      ========================================================================== */
   .featured-arrivals-section {
     max-width: 1180px;
@@ -420,14 +360,18 @@
     }
     .hero-salon-stage {
       aspect-ratio: auto;
-      min-height: 620px;
+      min-height: 540px;
+      align-items: flex-end;
+      padding: 20px;
     }
-    .refresh-editorial-card {
+    .refresh-plaster-block {
+      position: relative;
+      left: auto;
+      top: auto;
       max-width: 100%;
-      padding: 24px 20px;
-    }
-    .refresh-cta-row {
-      flex-wrap: wrap;
+      background: rgba(247, 245, 242, 0.92);
+      border: 1px solid var(--chaphavian-putty);
+      padding: 20px;
     }
     .arrivals-grid {
       grid-template-columns: 1fr;
@@ -444,11 +388,10 @@
         <img src="tcc-crest.png" alt="The Chapman Collection Crest" class="brand-crest">
         <div class="brand-wordmark">
           <span class="brand-wordmark-title">The Chapman Collection</span>
-          <span class="brand-wordmark-sub">Rancho Santa Fe &amp; London Heritage &middot; Est. 1995</span>
         </div>
       </a>
       <ul class="primary-nav">
-        <li><a href="#featured-arrivals" class="active">Home</a></li>
+        <li><a href="#featured-selection" class="active">Home</a></li>
         <li><a href="https://thechapmancollection.com/about-us/">About Us</a></li>
         <li><a href="https://thechapmancollection.com/services/">Services</a></li>
         <li><a href="https://thechapmancollection.com/shop/">Shop</a></li>
@@ -458,32 +401,26 @@
     </div>
   </header>
 
-  <!-- 2. SUNLIT GEORGIAN SALON HERO & DIGITAL SHOWROOM REFRESH CARD -->
+  <!-- 2. CHAPHAVIAN ALCOVE & PLASTER HERO -->
   <section id="hero-stage" class="hero-salon-stage">
-    <div class="hero-variant-switcher">
-      <button type="button" id="btn-greenfoam" class="hero-variant-btn active" onclick="setHeroPlate('the-greenfoam-compromise.jpg', 'btn-greenfoam')">Celadon Green Settee</button>
-      <button type="button" id="btn-alabaster" class="hero-variant-btn" onclick="setHeroPlate('the-alabaster-hero-2k.jpg', 'btn-alabaster')">Alabaster Linen Settee</button>
-    </div>
-    <div class="refresh-editorial-card">
-      <p class="refresh-kicker">Digital Showroom Refresh in Progress</p>
-      <h1 class="refresh-title">The Chapman Collection</h1>
-      <p class="refresh-subtitle">Providing Fine Furniture and Antiques for Over 30 Years</p>
+    <div class="refresh-plaster-block">
       <div class="refresh-divider"></div>
+      <p class="refresh-subtitle">Providing Fine Furniture and Antiques for Over 30 Years</p>
       <p class="refresh-body">
-        We are currently updating our online gallery to showcase our latest European and Asian acquisitions. While our new virtual showroom is being installed, you can explore this week's featured arrivals below or visit us seven days a week in the heart of the Rancho Santa Fe Village.
+        We are currently updating our online gallery to showcase our curated European and Asian collection. Explore this week's featured selection below or visit our Rancho Santa Fe showroom in the heart of the Village.
       </p>
       <div class="refresh-cta-row">
-        <a href="#featured-arrivals" class="btn-primary-iron">View This Week's Featured Arrivals</a>
+        <a href="https://thechapmancollection.com/shop/" class="btn-primary-iron">Browse Our Collection</a>
         <a href="tel:+18583492638" class="btn-secondary-ghost">Call the Showroom: (858) 349-2638</a>
       </div>
     </div>
   </section>
 
-  <!-- 3. THIS WEEK'S FEATURED ARRIVALS -->
-  <section id="featured-arrivals" class="featured-arrivals-section">
+  <!-- 3. THIS WEEK'S FEATURED SHOWROOM SELECTION -->
+  <section id="featured-selection" class="featured-arrivals-section">
     <div class="section-header">
       <p class="section-kicker">Curated from Our Rancho Santa Fe Gallery</p>
-      <h2 class="section-title">This Week's Featured Showroom Arrivals</h2>
+      <h2 class="section-title">This Week's Featured Showroom Selection</h2>
       <div class="section-divider"></div>
     </div>
     <div class="arrivals-grid">
@@ -555,17 +492,5 @@
     </div>
   </section>
 
-<script>
-function setHeroPlate(imgUrl, btnId) {
-  var stage = document.getElementById('hero-stage');
-  if (stage) stage.style.backgroundImage = "url('" + imgUrl + "')";
-  var btns = document.querySelectorAll('.hero-variant-btn');
-  for (var i = 0; i < btns.length; i++) {
-    btns[i].classList.remove('active');
-  }
-  var activeBtn = document.getElementById(btnId);
-  if (activeBtn) activeBtn.classList.add('active');
-}
-</script>
 </body>
 </html>
