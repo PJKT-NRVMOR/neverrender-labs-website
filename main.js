@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "SYSTEM ONLINE // NEVERRENDER LABS STUDIO COMPENDIUM (NOV 2026)...",
         "CLIENT ARCHITECTURE: THE CHAPMAN COLLECTION 200-SKU GALLERY LIVE...",
         "GOOGLE LABS FLOW: RETRO-TERM 80 COMMUNITY GALLERY FEATURED...",
-        "PALETTE v4.0: ARGON WHITE // PERIWINKLE // LAVENDER // MACAU MINT...",
+        "MODEL KERNEL: GEMINI 4 CARBON (HIGH) // D-SUITE PETROL & SOLAR HUD...",
         "MCP GATEWAY: @BEELINK-NEEDLECASTING STREAMABLE-HTTP ACTIVE...",
         "AUDIO ARCHITECTURE: YOUTUBE MUSIC VERIFIED // LIDO DI ANTHROPOLIS MASTERED...",
         "HARDWARE TELEMETRY: TINY HYPERION AMD RYZEN 7 6800U (52.8W UNLOCKED)..."
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.stopPropagation();
             const isLight = macroEnv.classList.toggle('argon-light');
             toggleArgonThemeBtn.textContent = isLight
-                ? '[☀ MODE: ARGON PAPER]'
+                ? '[☀ MODE: CORPORATE PAPER]'
                 : '[◐ MODE: D-SUITE TEAL]';
         });
     }
