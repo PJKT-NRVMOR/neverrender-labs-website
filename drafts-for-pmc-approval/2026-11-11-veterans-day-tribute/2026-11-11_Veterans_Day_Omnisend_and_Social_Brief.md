@@ -3,7 +3,9 @@
 ## 1. Campaign Envelope
 - **Subject Line**: `With gratitude this Veterans Day & a warm midweek welcome`
 - **Preheader**: `Thinking of our veterans and their families as you gather with loved ones today.`
-- **Hero Plate (WordPress Media ID `3407`, C2PA Content Credentials intact)**:
+- **Email Fast-Load 2x Retina Hero (WordPress Media ID `3403`, `1088x870` Progressive 4:4:4 JPEG, `354 KB` / `305 ms` vs `3,826 KB` PNG)**:
+  `https://thechapmancollection.com/wp-content/uploads/2026/11/2026-11-11-tricolor-garden-courtyard-email-2x.jpg`
+- **Website Product Master Plate (WordPress Media ID `3407`, C2PA Content Credentials `- Cr.png` intact)**:
   `https://thechapmancollection.com/wp-content/uploads/2026/11/2026-11-11-tricolor-garden-scaled-5x4-nrl-graded-2026-11-10-13.49.25-Cr.png`
 - **Subtle Spotlight Target (`WC-3311`)**:
   `https://thechapmancollection.com/product/hand-carved-marble-lady-floral-wreath-and-bird/`
