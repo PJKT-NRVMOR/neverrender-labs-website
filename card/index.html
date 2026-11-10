@@ -5,105 +5,123 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matthew Cole Wyatt // NeverRender Labs | Digital Business Card</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/svg+xml" href="../favicon-svg.svg">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;700;900&family=Space+Mono:wght@400;700&display=swap');
         
         :root {
-            --trinity-magenta: #ff2ae5;
-            --argon-cyan: #00e5ff;
-            --ultraviolet: #b845ff;
-            --obsidian: #05060d;
-            --obsidian-panel: rgba(11, 14, 28, 0.88);
+            --solar-orange: #FF6B2B;
+            --solar-amber: #FF8C42;
+            --hud-cyan: #2CE5F6;
+            --petrol-canvas: #123544;
+            --petrol-panel: rgba(16, 46, 60, 0.94);
+            --petrol-deep: #0B222D;
         }
         
         body {
-            background-color: var(--obsidian);
+            background-color: var(--petrol-canvas);
             background-image:
-                radial-gradient(circle at 15% 15%, rgba(255, 42, 229, 0.14) 0%, transparent 45%),
-                radial-gradient(circle at 85% 80%, rgba(0, 229, 255, 0.14) 0%, transparent 45%),
-                radial-gradient(circle at 50% 50%, rgba(184, 69, 255, 0.08) 0%, transparent 60%);
-            color: #f4f7ff;
-            font-family: 'Share Tech Mono', monospace;
+                radial-gradient(circle at 50% 20%, rgba(255, 107, 43, 0.22) 0%, transparent 48%),
+                radial-gradient(circle at 15% 15%, rgba(44, 229, 246, 0.25) 0%, transparent 45%),
+                radial-gradient(circle at 85% 80%, rgba(44, 229, 246, 0.20) 0%, transparent 45%),
+                linear-gradient(180deg, #123544 0%, #0B222D 100%);
+            color: #F4FAFC;
+            font-family: 'Space Mono', monospace;
             overflow-x: hidden;
             min-height: 100vh;
         }
 
         .font-display {
-            font-family: 'Orbitron', sans-serif;
-        }
-
-        .font-terminal {
-            font-family: 'Share Tech Mono', monospace;
+            font-family: 'Inter', sans-serif;
         }
 
         .trinity-panel {
-            background: var(--obsidian-panel);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 229, 255, 0.25);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 42, 229, 0.12);
+            position: relative;
+            background: var(--petrol-panel);
+            border: 1px solid rgba(44, 229, 246, 0.45);
+            box-shadow: 0 16px 42px rgba(4, 14, 20, 0.65), inset 0 0 24px rgba(44, 229, 246, 0.05);
+        }
+
+        .trinity-panel::before {
+            content: '';
+            position: absolute;
+            top: -1px; left: -1px;
+            width: 12px; height: 12px;
+            border-top: 2px solid var(--hud-cyan);
+            border-left: 2px solid var(--hud-cyan);
+            pointer-events: none;
+        }
+
+        .trinity-panel::after {
+            content: '';
+            position: absolute;
+            bottom: -1px; right: -1px;
+            width: 12px; height: 12px;
+            border-bottom: 2px solid var(--solar-orange);
+            border-right: 2px solid var(--solar-orange);
+            pointer-events: none;
         }
 
         .trinity-bar {
             height: 4px;
-            background: linear-gradient(90deg, var(--argon-cyan) 0%, var(--trinity-magenta) 50%, var(--ultraviolet) 100%);
+            background: linear-gradient(90deg, var(--hud-cyan) 0%, var(--solar-orange) 100%);
         }
 
-        .btn-magenta {
-            border: 1px solid var(--trinity-magenta);
-            background: rgba(255, 42, 229, 0.12);
-            box-shadow: 0 0 18px rgba(255, 42, 229, 0.25), inset 0 0 12px rgba(255, 42, 229, 0.1);
+        .btn-solar {
+            border: 1px solid var(--solar-amber);
+            background: var(--solar-orange);
+            box-shadow: 0 0 22px rgba(255, 107, 43, 0.35);
             color: #ffffff;
         }
-        .btn-magenta:hover {
-            background: var(--trinity-magenta);
-            color: #05060d;
-            box-shadow: 0 0 28px rgba(255, 42, 229, 0.6);
+        .btn-solar:hover {
+            background: var(--solar-amber);
+            color: #06090e;
+            box-shadow: 0 0 30px rgba(255, 140, 66, 0.55);
         }
 
         .btn-cyan {
-            border: 1px solid rgba(0, 229, 255, 0.4);
-            background: rgba(0, 229, 255, 0.06);
+            border: 1px solid rgba(44, 229, 246, 0.42);
+            background: rgba(11, 34, 45, 0.90);
         }
         .btn-cyan:hover {
-            border-color: var(--argon-cyan);
-            background: rgba(0, 229, 255, 0.15);
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+            border-color: var(--hud-cyan);
+            background: rgba(22, 61, 79, 0.96);
+            box-shadow: 0 0 20px rgba(44, 229, 246, 0.25);
         }
     </style>
 </head>
 <body class="relative flex flex-col items-center justify-center p-6">
 
     <!-- Main Container -->
-    <main class="relative z-10 w-full max-w-md flex flex-col items-center gap-6 my-8">
+    <main class="relative z-10 w-full max-w-md flex flex-col items-center gap-5 my-6">
         
         <!-- Profile Card -->
-        <section class="trinity-panel w-full rounded-xl p-7 flex flex-col items-center text-center relative overflow-hidden">
+        <section class="trinity-panel w-full rounded-md p-7 flex flex-col items-center text-center relative overflow-hidden">
             <div class="trinity-bar absolute top-0 left-0 w-full"></div>
             
             <div class="w-full flex items-center justify-between gap-2 mb-5 mt-1">
-                <span class="text-[10px] tracking-widest text-[#ff2ae5] uppercase border border-[#ff2ae5]/40 bg-[#ff2ae5]/10 px-2.5 py-1 rounded">
-                    &gt; NEVERRENDER LABS // SRE
+                <span class="text-[10px] tracking-widest text-[#FF7A40] font-bold uppercase border border-[#FF6B2B] bg-[#222A30] px-2.5 py-1 rounded-sm">
+                    &#9654; NEVERRENDER LABS // SRE
                 </span>
-                <span class="text-[10px] tracking-widest text-[#00e5ff] uppercase border border-[#00e5ff]/40 bg-[#00e5ff]/10 px-2.5 py-1 rounded">
-                    * GOOGLE LABS FEATURED
+                <span class="text-[10px] tracking-widest text-[#2CE5F6] font-bold uppercase border border-[#2CE5F6] bg-[#0C3646] px-2.5 py-1 rounded-sm">
+                    &#9733; GOOGLE LABS FEATURED
                 </span>
             </div>
 
-            <h1 class="font-display text-2xl sm:text-3xl font-black uppercase tracking-wider mb-1 text-white" style="text-shadow: 0 0 18px rgba(0, 229, 255, 0.35);">
+            <h1 class="font-display text-2xl sm:text-3xl font-black uppercase tracking-wider mb-1 text-white">
                 Matthew Cole Wyatt
             </h1>
             
-            <h2 class="text-xs uppercase font-bold tracking-widest text-[#00e5ff] mb-5">
-                Creative Technologist &amp; AI Systems Architect <span class="text-[#ff2ae5]">//</span> <span class="text-[#b845ff]">v3.1 ARGON</span>
+            <h2 class="text-xs uppercase font-bold tracking-wider text-[#2CE5F6] mb-5">
+                Creative Technologist &amp; AI Systems Architect <span class="text-[#FF6B2B]">//</span> <span class="text-[#FF8C42]">v4.1 D-SUITE</span>
             </h2>
 
-            <div class="text-xs text-slate-300 mb-6 border-l-2 border-[#ff2ae5] bg-[#0d1224]/90 p-3.5 rounded-r text-left w-full space-y-1.5">
-                <p class="text-white font-bold">&gt; No Code. No Pulp. All Pixels. Zero B.S.</p>
-                <p class="text-slate-300 leading-relaxed">Architecting autonomous AI systems, full-stack commerce pipelines, and real-time 3D/generative media without production lag.</p>
+            <div class="text-xs text-[#F4FAFC] mb-6 border border-[#1A4E62] border-l-[3.5px] border-l-[#FF6B2B] bg-[#0B222D] p-3.5 rounded-sm text-left w-full space-y-1.5 font-display">
+                <p class="text-white font-bold font-mono">&gt; No Code. No Pulp. All Pixels. Zero B.S.</p>
+                <p class="text-[#F4FAFC]/90 leading-relaxed">Architecting autonomous AI systems, full-stack commerce pipelines, and real-time 3D/generative media without production lag.</p>
             </div>
 
-            <a href="matthew_wyatt.vcf" download="Matthew_Cole_Wyatt.vcf" class="w-full btn-magenta rounded-lg py-3.5 flex items-center justify-center gap-3 font-display text-xs font-bold uppercase tracking-widest transition-all duration-300 active:scale-95">
+            <a href="matthew_wyatt.vcf" download="Matthew_Cole_Wyatt.vcf" class="w-full btn-solar rounded-sm py-3.5 flex items-center justify-center gap-3 font-mono text-xs font-bold uppercase tracking-widest transition-all duration-300 active:scale-95">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                 Save Contact (.VCF)
             </a>
@@ -111,44 +129,47 @@
 
         <!-- Links Grid -->
         <section class="w-full grid grid-cols-2 gap-3.5">
-            <a href="https://renderwithoutcode.com" class="trinity-panel btn-cyan rounded-xl p-4 flex flex-col items-center justify-center gap-1.5 transition-all">
-                <span class="text-xs font-bold text-[#00e5ff] tracking-wider">&gt; HOMEPAGE</span>
-                <span class="text-[11px] text-slate-300">renderwithoutcode.com</span>
+            <a href="../index.html?hud=1" class="trinity-panel btn-cyan rounded-md p-4 flex flex-col items-center justify-center gap-1.5 transition-all">
+                <span class="text-xs font-bold text-[#2CE5F6] tracking-wider">&gt; HOMEPAGE</span>
+                <span class="text-[11px] text-[#F4FAFC]">renderwithoutcode.com</span>
             </a>
             
-            <a href="https://renderwithoutcode.com/resume.html" class="trinity-panel btn-cyan rounded-xl p-4 flex flex-col items-center justify-center gap-1.5 transition-all">
-                <span class="text-xs font-bold text-[#ff2ae5] tracking-wider">&gt; LIVE RESUME</span>
-                <span class="text-[11px] text-slate-300">Agent Trinity v3.1</span>
+            <a href="../resume.html" class="trinity-panel btn-cyan rounded-md p-4 flex flex-col items-center justify-center gap-1.5 transition-all">
+                <span class="text-xs font-bold text-[#FF6B2B] tracking-wider">&gt; LIVE RESUME</span>
+                <span class="text-[11px] text-[#F4FAFC]">D-Suite v4.1</span>
             </a>
 
-            <a href="mailto:creator@renderwithoutcode.com" class="trinity-panel btn-cyan rounded-xl p-4 flex flex-col items-center justify-center gap-1.5 transition-all">
-                <span class="text-xs font-bold text-[#00e5ff] tracking-wider">&gt; STUDIO MAIL</span>
-                <span class="text-[11px] text-slate-300">creator@renderwithoutcode.com</span>
+            <a href="mailto:creator@renderwithoutcode.com" class="trinity-panel btn-cyan rounded-md p-4 flex flex-col items-center justify-center gap-1.5 transition-all">
+                <span class="text-xs font-bold text-[#2CE5F6] tracking-wider">&gt; STUDIO MAIL</span>
+                <span class="text-[11px] text-[#F4FAFC]">creator@renderwithoutcode.com</span>
             </a>
 
-            <a href="tel:7603100706" class="trinity-panel btn-cyan rounded-xl p-4 flex flex-col items-center justify-center gap-1.5 transition-all">
-                <span class="text-xs font-bold text-[#b845ff] tracking-wider">&gt; DIRECT LINE</span>
-                <span class="text-[11px] text-slate-300">760.310.0706</span>
+            <a href="tel:7603100706" class="trinity-panel btn-cyan rounded-md p-4 flex flex-col items-center justify-center gap-1.5 transition-all">
+                <span class="text-xs font-bold text-[#FF8C42] tracking-wider">&gt; DIRECT LINE</span>
+                <span class="text-[11px] text-[#F4FAFC]">760.310.0706</span>
             </a>
         </section>
 
-        <!-- Print-Ready Business Card Downloads -->
-        <section class="trinity-panel w-full rounded-xl p-5 flex flex-col gap-3">
-            <div class="text-[11px] uppercase tracking-widest text-[#00e5ff] text-center">
-                Print-Ready 3.5" x 2.0" Vector Business Cards (Front + QR Back)
+        <!-- Print-Ready Business Card & Email Signature Downloads -->
+        <section class="trinity-panel w-full rounded-md p-5 flex flex-col gap-3">
+            <div class="text-[11px] uppercase tracking-widest text-[#2CE5F6] text-center font-bold">
+                Print-Ready 3.5" x 2.0" Vector Business Cards &amp; Email Signatures
             </div>
             <div class="grid grid-cols-2 gap-3">
-                <a href="Matthew_Wyatt_Business_Card_Trinity_Light_PRINT_READY.pdf" target="_blank" class="btn-cyan rounded-lg py-2.5 px-3 text-center text-[11px] font-bold text-white transition-all">
-                    ⬇ LIGHT OBSIDIAN PDF
+                <a href="Matthew_Wyatt_Business_Card_Trinity_Light_PRINT_READY.pdf" target="_blank" class="btn-cyan rounded-sm py-2.5 px-3 text-center text-[11px] font-bold text-white transition-all">
+                    ⬇ LIGHT PAPER PDF
                 </a>
-                <a href="Matthew_Wyatt_Business_Card_Trinity_Dark_PRINT_READY.pdf" target="_blank" class="btn-magenta rounded-lg py-2.5 px-3 text-center text-[11px] font-bold transition-all">
-                    ⬇ OLED DARK PDF
+                <a href="Matthew_Wyatt_Business_Card_Trinity_Dark_PRINT_READY.pdf" target="_blank" class="btn-solar rounded-sm py-2.5 px-3 text-center text-[11px] font-bold transition-all">
+                    ⬇ D-SUITE DARK PDF
                 </a>
             </div>
+            <a href="../email-signature.html" class="btn-cyan rounded-sm py-2.5 px-3 text-center text-[11px] font-bold text-[#2CE5F6] transition-all">
+                &#9993; OPEN EMAIL SIGNATURE FOUNDRY (PROTON &amp; GMAIL)
+            </a>
         </section>
 
         <!-- Footer -->
-        <footer class="text-[10px] text-slate-500 mt-2 text-center tracking-widest uppercase">
+        <footer class="text-[10px] text-[#67E8F9]/75 mt-1 text-center tracking-widest uppercase">
             NEVERRENDER LABS // SAN DIEGO, CA // [GEMINI 4 ARGON]
         </footer>
     </main>
