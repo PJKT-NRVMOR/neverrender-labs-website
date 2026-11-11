@@ -38,6 +38,21 @@
     background-color: #2B2F32 !important;
     color: #F7F5F2 !important;
   }
+  @media only screen and (min-width: 521px) {
+    .tcc-subnav {
+      font-size: 9px !important;
+      letter-spacing: 0.4px !important;
+    }
+    .tcc-subnav-pipe {
+      padding: 0 6px !important;
+    }
+    .tcc-desk-pipe {
+      display: inline !important;
+    }
+    .tcc-stack-br {
+      display: none !important;
+    }
+  }
   @media only screen and (max-width: 520px) {
     .tcc-outer-frame {
       width: 98% !important;
@@ -73,15 +88,11 @@
       letter-spacing: 1.4px !important;
     }
     .tcc-subnav {
-      font-size: 8px !important;
-      letter-spacing: 0.15px !important;
-      white-space: normal !important;
+      font-size: 7.5px !important;
+      letter-spacing: 0px !important;
     }
-    .tcc-desk-only {
-      display: none !important;
-    }
-    .tcc-mob-br {
-      display: inline !important;
+    .tcc-subnav-pipe {
+      padding: 0 3px !important;
     }
     .tcc-social-links {
       font-size: 8.5px !important;
@@ -121,14 +132,8 @@
             <h1 class="tcc-brand-h1" style="margin:0 0 8px 0;font-family:'Garamond','EB Garamond','Apple Garamond','Georgia',serif;font-size:23px;letter-spacing:1.8px;text-transform:uppercase;color:#2B2F32;font-weight:normal;line-height:1.25;text-align:center;">
               The Chapman Collection
             </h1>
-            <p class="tcc-subnav" style="margin:0;padding:0 0 14px 0;border-bottom:1px solid #D5D3CC;font-family:'Garamond','EB Garamond','Apple Garamond','Georgia',serif;font-size:8.5px;letter-spacing:0.2px;text-transform:uppercase;color:#8A8F97;font-weight:bold;line-height:1.6;text-align:center;white-space:nowrap;">
-              <a href="https://thechapmancollection.com/product-category/furniture/" target="_blank" style="color:#8A8F97;text-decoration:none;white-space:nowrap;">Fine Furniture</a>
-              <span style="color:#D5D3CC;padding:0 4px;">|</span>
-              <a href="https://thechapmancollection.com/product-category/carpets/" target="_blank" style="color:#8A8F97;text-decoration:none;white-space:nowrap;">Carpets</a>
-              <span style="color:#D5D3CC;padding:0 4px;">|</span>
-              <a href="https://thechapmancollection.com/product-category/artwork-tapestries/" target="_blank" style="color:#8A8F97;text-decoration:none;white-space:nowrap;">Artworks</a>
-              <span style="color:#D5D3CC;padding:0 4px;">|</span>
-              <a href="https://thechapmancollection.com/services/" target="_blank" style="color:#8A8F97;text-decoration:none;white-space:nowrap;">Services</a>
+            <p class="tcc-subnav" style="margin:0;padding:0 0 14px 0;border-bottom:1px solid #D5D3CC;font-family:'Garamond','EB Garamond','Apple Garamond','Georgia',serif;font-size:7.5px;letter-spacing:0px;text-transform:uppercase;color:#8A8F97;font-weight:bold;line-height:1.6;text-align:center;white-space:nowrap;">
+              <a href="https://thechapmancollection.com/product-category/furniture/" target="_blank" style="color:#8A8F97;text-decoration:none;white-space:nowrap;">Fine Furniture</a><span class="tcc-subnav-pipe" style="color:#D5D3CC;padding:0 3px;">|</span><a href="https://thechapmancollection.com/product-category/carpets/" target="_blank" style="color:#8A8F97;text-decoration:none;white-space:nowrap;">Carpets</a><span class="tcc-subnav-pipe" style="color:#D5D3CC;padding:0 3px;">|</span><a href="https://thechapmancollection.com/product-category/artwork-tapestries/" target="_blank" style="color:#8A8F97;text-decoration:none;white-space:nowrap;">Artworks</a><span class="tcc-subnav-pipe" style="color:#D5D3CC;padding:0 3px;">|</span><a href="https://thechapmancollection.com/services/" target="_blank" style="color:#8A8F97;text-decoration:none;white-space:nowrap;">Services</a>
             </p>
           </td>
         </tr>
@@ -188,7 +193,7 @@
             <p style="margin:0;font-family:'Garamond','EB Garamond','Apple Garamond','Georgia',serif;font-size:16.5px;line-height:1.65;color:#2B2F32;text-align:left;">
               My warmest regards,<br>
               <strong>Melissa Chapman</strong><br>
-              <span style="font-size:13.5px;color:#8A8F97;"><span style="white-space:nowrap;">Founder and Principal Curator</span> <span class="tcc-desk-only" style="color:#D5D3CC;padding:0 3px;">|</span><br class="tcc-mob-br" style="display:none;"><span style="white-space:nowrap;">The Chapman Collection</span></span>
+              <span style="font-size:13.5px;color:#8A8F97;"><span style="white-space:nowrap;">Founder and Principal Curator</span><span class="tcc-desk-pipe" style="display:none;color:#D5D3CC;padding:0 5px;">|</span><br class="tcc-stack-br"><span style="white-space:nowrap;">The Chapman Collection</span></span>
             </p>
           </td>
         </tr>
@@ -206,7 +211,7 @@
                   </p>
                   <p class="tcc-hours-copy" style="margin:0 0 14px 0;font-family:'Garamond','EB Garamond','Apple Garamond','Georgia',serif;font-size:12px;letter-spacing:0.2px;color:#2B2F32;line-height:1.65;">
                     <span style="white-space:nowrap;">Monday through Friday</span> <span style="white-space:nowrap;">10:00 AM to 7:00 PM</span><br>
-                    <span style="white-space:nowrap;">Saturday 9:00 AM to 7:00 PM</span> <span class="tcc-desk-only" style="color:#D5D3CC;padding:0 4px;">|</span><br class="tcc-mob-br" style="display:none;"><span style="white-space:nowrap;">Sunday 11:00 AM to 4:00 PM</span>
+                    <span style="white-space:nowrap;">Saturday 9:00 AM to 7:00 PM</span><span class="tcc-desk-pipe" style="display:none;color:#D5D3CC;padding:0 5px;">|</span><br class="tcc-stack-br"><span style="white-space:nowrap;">Sunday 11:00 AM to 4:00 PM</span>
                   </p>
                   <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" style="margin:0 auto;max-width:100%;border-collapse:separate;">
                     <tr>
