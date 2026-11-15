@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Typewriter effect for terminal
     const terminalText = [
         "SYSTEM ONLINE // NEVERRENDER LABS STUDIO COMPENDIUM (NOV 2026)...",
+        "IN THE WORKS: OUTPOST CRUISE NIGHT // NRL 21067 SD ('SUPER DROSS') DEVBLOG LIVE...",
         "COMMERCE FOUNDRY: HEADLESS REST API, AEO SCHEMA & 99.5% CRM ENGINE...",
         "GOOGLE LABS FLOW: RETRO-TERM 80 COMMUNITY GALLERY FEATURED...",
         "MODEL KERNEL: GEMINI 4 CARBON (HIGH) // D-SUITE PETROL & SOLAR HUD...",

@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In the Works // Outpost Cruise Night (NRL 21067 SD) - NeverRender Labs</title>
+    <meta name="description" content="Open-hood studio production blog following Outpost Cruise Night and NRL 21067 SD ('Super Dross') from CAD vehicle locking to graded 5:4 story plates and 118 BPM D Minor scoring.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=18">
+    <link rel="icon" type="image/svg+xml" href="favicon-svg.svg">
+</head>
+<body>
+    <div class="macro-environment" id="macro-env">
+        <!-- Energy Conduits -->
+        <div class="conduit-grid">
+            <div class="conduit-line horizontal top"></div>
+            <div class="conduit-line vertical left"></div>
+            <div class="conduit-line horizontal bottom"></div>
+            <div class="conduit-line vertical right"></div>
+        </div>
+
+        <div class="viewport-container itw-viewport" id="main-viewport">
+            <div class="glass-panel">
+
+                <!-- 1. Top Masthead Bar -->
+                <header class="dev-top-bracket">
+                    <div class="dev-brand-pill">
+                        <span class="dev-code-glyph">&lt;/&gt;</span>
+                        <span>NEVERRENDER LABS <span class="slash-orange">//</span> IN THE WORKS</span>
+                    </div>
+                    <div class="dev-header-controls">
+                        <button class="dev-ctrl-btn" id="toggle-argon-theme" type="button" title="Switch between D-Suite Petrol HUD and Corporate Paper Light">[&#9680; MODE: D-SUITE TEAL]</button>
+                        <a href="index.html?hud=1" class="dev-ctrl-btn" style="text-decoration: none;">[x] RETURN TO TERMINAL</a>
+                    </div>
+                </header>
+
+                <!-- 2. Hero Stage -->
+                <section class="dev-hero-stage itw-hero-stage">
+                    <div class="retro-browser-window itw-hero-window">
+                        <div class="retro-window-bar">
+                            <div class="retro-window-dots">
+                                <span class="retro-dot d-pink"></span>
+                                <span class="retro-dot d-amber"></span>
+                                <span class="retro-dot d-mint"></span>
+                            </div>
+                            <span class="retro-window-tag">PRODUCTION LOG // NOV 13 - NOV 15, 2026</span>
+                        </div>
+                        <div class="retro-window-body">
+                            <div class="dsuite-kicker">LIVE PRODUCTION DEVBLOG <span class="slash-accent">//</span> FOLLOW ALONG</div>
+                            <h1 class="retro-window-title">
+                                OUTPOST CRUISE NIGHT
+                            </h1>
+                            <div class="dsuite-subkicker">NRL 21067 SD ("SUPER DROSS") // ANTHROPOLIS TO THE STAGECOACH</div>
+                            <p class="itw-hero-intro">
+                                Most studios only let you see the clean 4K render after the credits roll. This page leaves the hood popped open while we build <strong>Outpost Cruise Night</strong> in real time: locking a 6-panel orthographic hero vehicle that survives a 144-frame camera turn, matching graded 5:4 story plates across two opposing worlds, keying chroma-green cast sheets, and stitching the road cut to twin 118 BPM D Minor synth stems.
+                            </p>
+                            <div class="itw-meta-pills">
+                                <span class="itw-meta-pill orange">HERO RIG: NRL 21067 SD</span>
+                                <span class="itw-meta-pill">16 GRADED PLATES + 14 C2PA MASTERS</span>
+                                <span class="itw-meta-pill">KEY: D MINOR // 118 BPM -> 104 BPM</span>
+                                <span class="itw-meta-pill orange">STATUS: ACTIVE BUILD</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. Interactive Dual-Stem Audio Deck -->
+                <section class="itw-audio-deck" id="audio-deck" aria-label="Neo Arcade Chase Audio Stem Deck">
+                    <div class="itw-deck-top">
+                        <div class="itw-deck-label">
+                            &gt; AUDIO CONSOLE // <span class="accent-orange">NEO ARCADE CHASE</span> (320 KBPS STREAM FROM 48 KHZ WAV)
+                        </div>
+                        <div class="itw-stem-tabs" role="tablist" aria-label="Audio Stem Selection">
+                            <button type="button" class="itw-stem-btn active" id="stem-take2" data-stem="take2">TAKE 2 // OVERDRIVE HERO MASTER [03:00]</button>
+                            <button type="button" class="itw-stem-btn" id="stem-take1" data-stem="take1">TAKE 1 // NIGHT PATROL CUT [02:57]</button>
+                        </div>
+                    </div>
+
+                    <div class="itw-deck-controls">
+                        <button type="button" class="itw-play-btn" id="audio-play-btn">[&#9654;] PLAY STEM</button>
+                        <button type="button" class="itw-cue-btn" id="phaser-cue-btn" title="Switch to Take 2 and cue directly to the 01:17 - 01:32 analog phaser pocket">[&#9889; JUMP TO 01:17 PHASER DROP]</button>
+                        <div class="itw-scrubber-wrap">
+                            <input type="range" class="itw-scrubber" id="audio-scrubber" min="0" max="180" step="0.1" value="0" aria-label="Seek audio position">
+                            <span class="itw-timecode" id="audio-timecode">00:00 / 03:00</span>
+                        </div>
+                        <button type="button" class="itw-mute-btn" id="audio-mute-btn">[&#128266; MUTE]</button>
+                    </div>
+
+                    <div class="itw-deck-telemetry">
+                        <span id="stem-telemetry-readout">ACTIVE: TAKE 2 OVERDRIVE MASTER // 118 BPM // D MINOR // -15.28 LUFS</span>
+                        <span>CUE MARKER: 01:17 - 01:32 ANALOG PHASER POCKET</span>
+                    </div>
+
+                    <audio id="devblog-audio" preload="metadata" src="IN_THE_WORKS/audio/neo-arcade-chase-take-2-overdrive-master.mp3"></audio>
+                </section>
+
+                <!-- Quick-Jump Anchor Bar -->
+                <nav class="itw-jump-nav" aria-label="Production Entries Navigation">
+                    <a href="#road-spine" class="itw-jump-link">[#04] 6-BEAT ROAD SPINE (NOV 15)</a>
+                    <a href="#outpost-cast" class="itw-jump-link">[#03] BAR PLATES &amp; 3-TURN CAST (NOV 15)</a>
+                    <a href="#super-dross-hcard" class="itw-jump-link">[#02] 6-PANEL CAD &amp; OCCLUSION CLIFF (NOV 14)</a>
+                    <a href="#chassis-pivot" class="itw-jump-link">[#01] "OATEE" &amp; BLUETOOTH EXHAUST PIVOT (NOV 13)</a>
+                </nav>
+
+                <!-- ENTRY #04 -->
+                <article class="itw-entry-card" id="road-spine">
+                    <div class="itw-entry-header">
+                        <span class="itw-entry-badge">ENTRY #04 // STORYBOARD &amp; WORLD POLARITY</span>
+                        <span class="itw-entry-date">2026-11-15 // 6-BEAT ROAD MOVIE SPINE</span>
+                    </div>
+                    <h2 class="itw-entry-title">
+                        The 6-Beat Road Movie Spine: Foundation Thermodynamics &amp; The Puddle Match-Cut
+                    </h2>
+                    <p class="itw-prose">
+                        Stylistically, <strong>Outpost Cruise Night</strong> splits its map along Isaac Asimov's <em>Foundation</em> thermodynamics rather than flashy space opera. Inner-city <strong>Anthropolis</strong> (our gilded <em>Empire / Trantor</em>) runs hot with tall wet masonry, emerald alley vapor, and the amber marquee outside <strong>Casino Jesolo</strong>, while <strong>Poe</strong> (my own director cameo from <em>A Clockwork Mink</em>) keeps house watch upstairs on Floor 70. Out across the obsidian dunes sits <strong>The Stagecoach</strong> (our working-class <em>Foundation / Terminus</em>), running on analog knobs, desert electricity, and honest patina.
+                    </p>
+                    <p class="itw-prose">
+                        Two structural glue joints hold the sequence together across those worlds. Visually, Beat 01 mirrors the <strong>NRL 21067 SD</strong> coupe in a wet cobblestone puddle under Casino Jesolo's marquee, then cuts across the highway right into a matching lower-third neon rain puddle outside The Stagecoach in Beat 06. Harmonically, we dug an archived lossless <strong>118 BPM D Minor</strong> stem out of the audio drawer (<strong>Neo Arcade Chase, Take 2</strong>, carrying a wicked <code>01:17 - 01:32</code> analog phaser pocket) to drive the escape out of Anthropolis before downshifting to <strong>104 BPM D Minor</strong> (<em>Outpost Perimeter</em>) when the tires hit the Stagecoach curb.
+                    </p>
+
+                    <div class="itw-telemetry-callout">
+                        <strong>// SURGICAL FIX ON BEAT 03 (COCKPIT POV):</strong> Even good world-model generation tries to hallucinate missing trim when framing out the windshield. Before locking Beat 03 below, we welded the missing split-top center T-bar spine straight up the overhead frame and scrubbed a rogue factory Mustang pony emblem off the steering wheel horn button. What you see is the clean post-surgery master plate.
+                    </div>
+
+                    <div class="itw-beat-grid">
+                        <!-- Beat 01 -->
+                        <div class="itw-plate-card" data-plate-index="0">
+                            <div class="itw-plate-media">
+                                <span class="itw-plate-tag">BEAT 01 // ANTHROPOLIS</span>
+                                <img src="IN_THE_WORKS/web/beat-01-casino-jesolo-super-dross.jpg" alt="NRL 21067 SD coupe emerging from emerald alley fog outside Casino Jesolo" loading="lazy">
+                            </div>
+                            <div class="itw-plate-body">
+                                <div class="itw-plate-title">Casino Jesolo Marquee Departure</div>
+                                <p class="itw-plate-caption">
+                                    Emerging through emerald alley vapor onto wet European cobblestones under the double-row amber Casino Jesolo marquee, quad cyan halos mirrored in the rain puddle.
+                                </p>
+                                <div class="itw-plate-actions">
+                                    <button type="button" class="itw-badge-btn">[&#128269; INSPECT PLATE]</button>
+                                    <a href="IN_THE_WORKS/c2pa/beat-01-casino-jesolo-super-dross-cr.jpg" target="_blank" rel="noopener" class="itw-badge-btn c2pa" onclick="event.stopPropagation()">[&#128737; C2PA MASTER]</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Beat 02 -->
+                        <div class="itw-plate-card" data-plate-index="1">
+                            <div class="itw-plate-media">
+                                <span class="itw-plate-tag">BEAT 02 // CAUSEWAY EXIT</span>
+                                <img src="IN_THE_WORKS/web/beat-02-elevated-highway-anthropolis.jpg" alt="Super Dross leaving the glowing Anthropolis skyline along an elevated mist-shrouded highway" loading="lazy">
+                            </div>
+                            <div class="itw-plate-body">
+                                <div class="itw-plate-title">Elevated Highway Out of Anthropolis</div>
+                                <p class="itw-plate-caption">
+                                    Leaving the warm skyline glow behind on cracked damp asphalt past high-voltage lattice towers and teal coastal fog as the 118 BPM bassline locks in.
+                                </p>
+                                <div class="itw-plate-actions">
+                                    <button type="button" class="itw-badge-btn">[&#128269; INSPECT PLATE]</button>
+                                    <a href="IN_THE_WORKS/c2pa/beat-02-elevated-highway-anthropolis-cr.jpg" target="_blank" rel="noopener" class="itw-badge-btn c2pa" onclick="event.stopPropagation()">[&#128737; C2PA MASTER]</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Beat 03 -->
+                        <div class="itw-plate-card" data-plate-index="2">
+                            <div class="itw-plate-media">
+                                <span class="itw-plate-tag">BEAT 03 // COCKPIT POV</span>
+                                <img src="IN_THE_WORKS/web/beat-03-ots-cockpit-highway-saturn.jpg" alt="Over the shoulder night driving POV from inside the Super Dross coupe facing the ringed gas giant" loading="lazy">
+                            </div>
+                            <div class="itw-plate-body">
+                                <div class="itw-plate-title">Welded T-Bar &amp; Cyan Gauge Run</div>
+                                <p class="itw-plate-caption">
+                                    Interior over-the-shoulder POV: overhead center T-bar spine welded back in, horn button scrubbed clean, wood wheel and quad #2CE5F6 cyan dials aimed straight at the rings.
+                                </p>
+                                <div class="itw-plate-actions">
+                                    <button type="button" class="itw-badge-btn">[&#128269; INSPECT PLATE]</button>
+                                    <a href="IN_THE_WORKS/c2pa/beat-03-ots-cockpit-highway-saturn-cr.jpg" target="_blank" rel="noopener" class="itw-badge-btn c2pa" onclick="event.stopPropagation()">[&#128737; C2PA MASTER]</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Beat 04 -->
+                        <div class="itw-plate-card" data-plate-index="3">
+                            <div class="itw-plate-media">
+                                <span class="itw-plate-tag">BEAT 04 // REAR 3/4 CHASE</span>
+                                <img src="IN_THE_WORKS/web/beat-04-elevated-highway-saturn.jpg" alt="Rear left 3/4 crane chase shot of Super Dross driving down the obsidian desert straightaway toward The Stagecoach" loading="lazy">
+                            </div>
+                            <div class="itw-plate-body">
+                                <div class="itw-plate-title">Obsidian Straightaway Approach</div>
+                                <p class="itw-plate-caption">
+                                    Rear-left 3/4 chase angle over the double yellow divide showing all 6 matte-black rear louver slats and bold SUPER DROSS tail panel aimed at the distant diner spearhead.
+                                </p>
+                                <div class="itw-plate-actions">
+                                    <button type="button" class="itw-badge-btn">[&#128269; INSPECT PLATE]</button>
+                                    <a href="IN_THE_WORKS/c2pa/beat-04-elevated-highway-saturn-cr.jpg" target="_blank" rel="noopener" class="itw-badge-btn c2pa" onclick="event.stopPropagation()">[&#128737; C2PA MASTER]</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Beat 05 -->
+                        <div class="itw-plate-card" data-plate-index="4">
+                            <div class="itw-plate-media">
+                                <span class="itw-plate-tag">BEAT 05 // OBSIDIAN SANDS</span>
+                                <img src="IN_THE_WORKS/web/beat-05-the-outpost-sands.jpg" alt="Wide establishing plate of Obsidian Sands dunes under ringed gas giant with distant neon diner" loading="lazy">
+                            </div>
+                            <div class="itw-plate-body">
+                                <div class="itw-plate-title">The Outpost Sands Establishing Plate</div>
+                                <p class="itw-plate-caption">
+                                    Ink-dark cyan-rimmed desert dunes beneath a cratered ice-cyan ringed giant and violet nebula lightning, anchoring the concrete diner outpost on the horizon.
+                                </p>
+                                <div class="itw-plate-actions">
+                                    <button type="button" class="itw-badge-btn">[&#128269; INSPECT PLATE]</button>
+                                    <a href="IN_THE_WORKS/c2pa/beat-05-the-outpost-sands-cr.jpg" target="_blank" rel="noopener" class="itw-badge-btn c2pa" onclick="event.stopPropagation()">[&#128737; C2PA MASTER]</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Beat 06 -->
+                        <div class="itw-plate-card" data-plate-index="5">
+                            <div class="itw-plate-media">
+                                <span class="itw-plate-tag">BEAT 06 // THE STAGECOACH</span>
+                                <img src="IN_THE_WORKS/web/beat-06-the-stagecoach-super-dross.jpg" alt="Super Dross parked at the neon curb of The Stagecoach Brutalist diner reflected in a lower-third rain puddle" loading="lazy">
+                            </div>
+                            <div class="itw-plate-body">
+                                <div class="itw-plate-title">Singles Night Curb Arrival</div>
+                                <p class="itw-plate-caption">
+                                    Brutalist concrete monolith rising above THE STAGECOACH neon strip with two stray dogs watching the curb and an upside-down marquee reflection closing the puddle match-cut.
+                                </p>
+                                <div class="itw-plate-actions">
+                                    <button type="button" class="itw-badge-btn">[&#128269; INSPECT PLATE]</button>
+                                    <a href="IN_THE_WORKS/c2pa/beat-06-the-stagecoach-super-dross-cr.jpg" target="_blank" rel="noopener" class="itw-badge-btn c2pa" onclick="event.stopPropagation()">[&#128737; C2PA MASTER]</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ENTRY #03 -->
+                <article class="itw-entry-card" id="outpost-cast">
+                    <div class="itw-entry-header">
+                        <span class="itw-entry-badge">ENTRY #03 // CAST &amp; CHROMA INGREDIENTS</span>
+                        <span class="itw-entry-date">2026-11-15 // SINGLES NIGHT LINEUP</span>
+                    </div>
+                    <h2 class="itw-entry-title">
+                        Inside Singles Night: Live Bar Plates, Registered 3-Turn Cast &amp; Chroma Ingredients
+                    </h2>
+                    <p class="itw-prose">
+                        Before dropping anybody onto the diner asphalt outside <strong>The Stagecoach</strong>, the characters go through the same deterministic lock as the car: full-body front/side/3-quarter turnaround sheets so silhouettes stay anchored through camera pans, paired with vertical graded bar plates to calibrate practical tungsten and emerald neon bounce on synthetic porcelain and weathered leather.
+                    </p>
+                    <p class="itw-prose">
+                        Fresh off this morning's pass (04:05 AM PST): <strong>DJ Churn ("The Static Stray")</strong> now has a dedicated 3-pose `#00FF00` chroma-green compositing ingredient sheet (`front watch`, `profile`, `barking mid-leap`) ready to key directly onto the sidewalk beside the white stray dog and Booth 4 regulars.
+                    </p>
+
+                    <div class="itw-beat-grid">
+                        <!-- Clip 017 -->
+                        <div class="itw-plate-card" data-plate-index="6">
+                            <div class="itw-plate-media portrait">
+                                <span class="itw-plate-tag">CLIP-017 // BAR PLATE</span>
+                                <img src="IN_THE_WORKS/web/scene-plate-017-jax-unit-0-barkeep.jpg" alt="Jax Unit 0 behind the neon bar holding a crystal whiskey glass in his copper-brass mechanical hand" loading="lazy">
+                            </div>
+                            <div class="itw-plate-body">
+                                <div class="itw-plate-title">Jax (Unit 0 - The Weary Barkeep)</div>
+                                <p class="itw-plate-caption">
+                                    Cracked matte porcelain faceplate, red optical sensors, pinstripe waistcoat, and copper-brass articulated hand holding amber rocks in front of emerald bar neon.
+                                </p>
+                                <div class="itw-plate-actions">
+                                    <button type="button" class="itw-badge-btn">[&#128269; INSPECT PLATE]</button>
+                                    <a href="IN_THE_WORKS/c2pa/scene-plate-017-jax-unit-0-barkeep-master.jpg" target="_blank" rel="noopener" class="itw-badge-btn" onclick="event.stopPropagation()">[&#128190; FULL-RES MASTER]</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Clip 018 -->
+                        <div class="itw-plate-card" data-plate-index="7">
+                            <div class="itw-plate-media portrait">
+                                <span class="itw-plate-tag">CLIP-018 // BAR PLATE</span>
+                                <img src="IN_THE_WORKS/web/scene-plate-018-silas-cold-iron-vance.jpg" alt="Silas Cold Iron Vance holding a blue flaming drink glass in his exposed steel cybernetic right hand" loading="lazy">
+                            </div>
+                            <div class="itw-plate-body">
+                                <div class="itw-plate-title">Silas "Cold Iron" Vance</div>
+                                <p class="itw-plate-caption">
+                                    Scarred courier in weathered duster trench coat and dark ribbed torso plate, cobalt alcohol flame lighting his face above an orange-hydraulic steel right forearm.
+                                </p>
+                                <div class="itw-plate-actions">
+                                    <button type="button" class="itw-badge-btn">[&#128269; INSPECT PLATE]</button>
+                                    <a href="IN_THE_WORKS/c2pa/scene-plate-018-silas-cold-iron-vance-master.jpg" target="_blank" rel="noopener" class="itw-badge-btn" onclick="event.stopPropagation()">[&#128190; FULL-RES MASTER]</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="itw-cast-grid">
+                        <!-- DJ Churn Green -->
+                        <div class="itw-plate-card" data-plate-index="8">
+                            <div class="itw-plate-media">
+                                <span class="itw-plate-tag">CHROMA #00FF00 // NOV 15</span>
+                                <img src="IN_THE_WORKS/web/cast-dj-churn-chroma-green-3-pose.jpg" alt="DJ Churn 3-pose chroma green compositing sheet" loading="lazy">
+                            </div>
+                            <div class="itw-plate-body">
+                                <div class="itw-plate-title">DJ Churn // Chroma Key Sheet</div>
+                                <p class="itw-plate-caption">
+                                    Three-pose compositing asset (watch, profile, mid-leap bark) with white over-ear cans keyed for diner sidewalk placement.
+                                </p>
+                                <div class="itw-plate-actions">
+                                    <button type="button" class="itw-badge-btn">[&#128269; INSPECT]</button>
+                                    <a href="IN_THE_WORKS/c2pa/cast-dj-churn-chroma-green-3-pose-cr.png" target="_blank" rel="noopener" class="itw-badge-btn c2pa" onclick="event.stopPropagation()">[&#128737; C2PA PNG]</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- DJ Churn 3-Turn -->
+                        <div class="itw-plate-card" data-plate-index="9">
+                            <div class="itw-plate-media">
+                                <span class="itw-plate-tag">3-TURN // DJ CHURN</span>
+                                <img src="IN_THE_WORKS/web/cast-dj-churn-3-turn.jpg" alt="DJ Churn The Static Stray 3-turn reference sheet" loading="lazy">
+                            </div>
+                            <div class="itw-plate-body">
+                                <div class="itw-plate-title">DJ Churn // Tri-Panel Turn</div>
+                                <p class="itw-plate-caption">
+                                    Neon-bordered turnaround locking ear geometry, speckled black-and-white coat pattern, and headphone collar fit.
+                                </p>
+                                <div class="itw-plate-actions">
+                                    <button type="button" class="itw-badge-btn">[&#128269; INSPECT]</button>
+                                    <a href="IN_THE_WORKS/c2pa/cast-dj-churn-3-turn-cr.jpg" target="_blank" rel="noopener" class="itw-badge-btn c2pa" onclick="event.stopPropagation()">[&#128737; C2PA]</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- DJ Churn Portrait -->
+                        <div class="itw-plate-card" data-plate-index="10">
+                            <div class="itw-plate-media square">
+                                <span class="itw-plate-tag">KEYFRAME // CASSETTE</span>
+                                <img src="IN_THE_WORKS/web/cast-dj-churn-portrait.jpg" alt="DJ Churn barking toward floating analog cassettes and chartreuse lightning bolts" loading="lazy">
+                            </div>
+                            <div class="itw-plate-body">
+                                <div class="itw-plate-title">DJ Churn // "The Static Stray"</div>
+                                <p class="itw-plate-caption">
+                                    Hero bark keyframe with analog cassette tapes and chartreuse static arcs.
+                                </p>
+                                <div class="itw-plate-actions">
+                                    <button type="button" class="itw-badge-btn">[&#128269; INSPECT]</button>
+                                    <a href="IN_THE_WORKS/c2pa/cast-dj-churn-portrait-cr.jpg" target="_blank" rel="noopener" class="itw-badge-btn c2pa" onclick="event.stopPropagation()">[&#128737; C2PA]</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Vesper 3-Turn -->
+                        <div class="itw-plate-card" data-plate-index="11">
+                            <div class="itw-plate-media portrait">
+                                <span class="itw-plate-tag">3-TURN // BOOTH 4</span>
+                                <img src="IN_THE_WORKS/web/cast-vesper-static-thorne-3-turn.jpg" alt="Vesper Static Thorne 3-turn reference in translucent charcoal coat and violet satin shirt" loading="lazy">
+                            </div>
+                            <div class="itw-plate-body">
+                                <div class="itw-plate-title">Vesper "Static" Thorne</div>
+                                <p class="itw-plate-caption">
+                                    Smoked translucent PVC trench coat over metallic violet button-down shirt, studded collar, and cyan tumbler grip.
+                                </p>
+                                <div class="itw-plate-actions">
+                                    <button type="button" class="itw-badge-btn">[&#128269; INSPECT]</button>
+                                    <a href="IN_THE_WORKS/c2pa/cast-vesper-static-thorne-3-turn-cr.jpg" target="_blank" rel="noopener" class="itw-badge-btn c2pa" onclick="event.stopPropagation()">[&#128737; C2PA]</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Vesper Portrait -->
+                        <div class="itw-plate-card" data-plate-index="12">
+                            <div class="itw-plate-media portrait">
+                                <span class="itw-plate-tag">BOOTH 4 // PORTRAIT</span>
+                                <img src="IN_THE_WORKS/web/cast-vesper-static-thorne-portrait.jpg" alt="Vesper Static Thorne sitting in a red vinyl diner booth beside Venetian blinds holding a dark stylus" loading="lazy">
+                            </div>
+                            <div class="itw-plate-body">
+                                <div class="itw-plate-title">Booth Four Drifter Plate</div>
+                                <p class="itw-plate-caption">
+                                    Tufted oxblood vinyl booth beside amber Venetian blinds and a desert horizon silhouette, votive light at her elbow.
+                                </p>
+                                <div class="itw-plate-actions">
+                                    <button type="button" class="itw-badge-btn">[&#128269; INSPECT]</button>
+                                    <a href="IN_THE_WORKS/c2pa/cast-vesper-static-thorne-portrait-cr.jpg" target="_blank" rel="noopener" class="itw-badge-btn c2pa" onclick="event.stopPropagation()">[&#128737; C2PA]</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Jax 3-Turn -->
+                        <div class="itw-plate-card" data-plate-index="13">
+                            <div class="itw-plate-media portrait">
+                                <span class="itw-plate-tag">3-TURN // UNIT 0</span>
+                                <img src="IN_THE_WORKS/web/cast-jax-unit-0-3-turn.jpg" alt="Archetype 3 Jax Unit 0 3-turn reference showing symmetrical copper-brass mechanical forearms" loading="lazy">
+                            </div>
+                            <div class="itw-plate-body">
+                                <div class="itw-plate-title">Jax (Unit 0) // Tri-Panel Turn</div>
+                                <p class="itw-plate-caption">
+                                    Full-height orthodoxy lock across front, profile, and glass-hold angles with twin brass-copper mechanical forearms.
+                                </p>
+                                <div class="itw-plate-actions">
+                                    <button type="button" class="itw-badge-btn">[&#128269; INSPECT]</button>
+                                    <a href="IN_THE_WORKS/c2pa/cast-jax-unit-0-3-turn-cr.jpg" target="_blank" rel="noopener" class="itw-badge-btn c2pa" onclick="event.stopPropagation()">[&#128737; C2PA]</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Silas 3-Turn wide anchor row -->
+                    <div class="itw-plate-card" data-plate-index="14" style="max-width: 520px;">
+                        <div class="itw-plate-media">
+                            <span class="itw-plate-tag">3-TURN // DESERTER COURIER</span>
+                            <img src="IN_THE_WORKS/web/cast-silas-cold-iron-vance-3-turn.jpg" alt="Silas Cold Iron Vance 3-turn reference wearing armored chest vest, trench coat, and hydraulic right arm" loading="lazy">
+                        </div>
+                        <div class="itw-plate-body">
+                            <div class="itw-plate-title">Silas "Cold Iron" Vance // Full-Body Turnaround</div>
+                            <p class="itw-plate-caption">
+                                Segmented carbon torso armor, buckled utility belt, combat boots, and hydraulic conduit gauntlet held steady across all three rotations.
+                            </p>
+                            <div class="itw-plate-actions">
+                                <button type="button" class="itw-badge-btn">[&#128269; INSPECT PLATE]</button>
+                                <a href="IN_THE_WORKS/c2pa/cast-silas-cold-iron-vance-3-turn-cr.jpg" target="_blank" rel="noopener" class="itw-badge-btn c2pa" onclick="event.stopPropagation()">[&#128737; C2PA MASTER]</a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ENTRY #02 -->
+                <article class="itw-entry-card" id="super-dross-hcard">
+                    <div class="itw-entry-header">
+                        <span class="itw-entry-badge">ENTRY #02 // VEHICLE LOCK &amp; ANTI-DRIFT ARCHITECTURE</span>
+                        <span class="itw-entry-date">2026-11-14 // 6-PANEL CAD HERO CARD</span>
+                    </div>
+                    <h2 class="itw-entry-title">
+                        Locking NRL 21067 SD ("Super Dross") &amp; Beating the 6-Second Occlusion Cliff
+                    </h2>
+                    <p class="itw-prose">
+                        Anyone who watched our early animation tests remembers the PTSD from trying to keep <strong>Beau // Unit 01</strong>'s brutalist concrete cube head from melting after six seconds (~144 frames) of camera motion. Modern video models hit a wall once a vehicle orbits past roughly 90 degrees: the moment a panel goes out of frame, the network starts guessing unseen trim, stripes, or extra doors from training averages.
+                    </p>
+                    <p class="itw-prose">
+                        To kill occlusion drift before rolling a single frame of <strong>Outpost Cruise Night</strong>, we built the single locked <strong>6-panel orthographic and cockpit H-Card</strong> below (`07:05 PST`, Nov 14). Every panel enforces identical geometry on a custom <strong>1969 wide-body fastback pony coupe</strong> sprayed in `#123544` Deep Cerulean-Petrol Blue with `#FF6B2B` Molten Solar Orange twin stripes, chopped open into a split-top roof with a structural center T-bar spine. And yes, before anyone asks about New Zealand slang: calling it <strong>SUPER DROSS</strong> is a <strong>Philip K. Dick</strong> reference (kipple, dross, and signal-vs-noise entropy from <em>Do Androids Dream of Electric Sheep?</em> and the <em>Exegesis</em>, sharing universe DNA with Anthropolis's own <em>Velvet "Pris" Prism</em>).
+                    </p>
+
+                    <div class="itw-hcard-showcase" data-plate-index="15" role="button" tabindex="0" aria-label="Inspect full-resolution 6-panel NRL 21067 SD CAD spec sheet">
+                        <img src="IN_THE_WORKS/web/nrl-21067-sd-6-panel-card.jpg" alt="6-panel v4.1 D-Suite CAD specification sheet for NRL 21067 SD Super Dross coupe" loading="lazy">
+                    </div>
+
+                    <div class="itw-plate-actions">
+                        <button type="button" class="itw-badge-btn" onclick="openLightboxByIndex(15)">[&#128269; ZOOM FULL 6-PANEL SPEC SHEET]</button>
+                        <a href="IN_THE_WORKS/c2pa/nrl-21067-sd-6-panel-card-cr.png" target="_blank" rel="noopener" class="itw-badge-btn c2pa">[&#128737; OPEN UNTOUCHED C2PA PNG MASTER (5.6 MB)]</a>
+                    </div>
+
+                    <div class="itw-spec-grid">
+                        <div class="itw-spec-item">
+                            <div class="itw-spec-kicker">ORTHO PROFILES &amp; STENCIL</div>
+                            <div class="itw-spec-val">Port and starboard elevations lock the bolted wide flares, 5-spoke dark bronze wheels, and lowercase orange <code>NRL 21067 SD</code> door rocker stencil.</div>
+                        </div>
+                        <div class="itw-spec-item">
+                            <div class="itw-spec-kicker">SURGICAL 7 -> 6 LOUVER FIX</div>
+                            <div class="itw-spec-val">Caught a 7-vs-6 rear louver mismatch during turn review and ran surgical inpainting to lock exactly <strong>6 matte-black slats</strong> across every elevation.</div>
+                        </div>
+                        <div class="itw-spec-item">
+                            <div class="itw-spec-kicker">NO HAUNTED SEATBACK EYES</div>
+                            <div class="itw-spec-val">Earlier cockpit passes tried spawning tiny glowing cyan Wall-E odometer eyes on the high-back leather bolsters. Exorcised cleanly before locking the bottom-right cutaway.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ENTRY #01 -->
+                <article class="itw-entry-card" id="chassis-pivot">
+                    <div class="itw-entry-header">
+                        <span class="itw-entry-badge">ENTRY #01 // ORIGIN PIVOT LOG</span>
+                        <span class="itw-entry-date">2026-11-13 // WHY WE SCRAPPED MK I</span>
+                    </div>
+                    <h2 class="itw-entry-title">
+                        Anatomy of a Studio Pivot: "Oatee", Bluetooth Dual Exhaust &amp; The Morning Coffee Test
+                    </h2>
+                    <p class="itw-prose">
+                        This coupe did not start life as a '69 fastback. On November 13 the original concept ("The Holy Sheet") was a surreal four-door 1972 Roadrunner and Shelby Cobra mashup. Within twenty-four hours, live inspection broke three hilarious failure modes that would have poisoned an entire multi-clip shoot: an AI-hallucinated fender script that literally spelled <strong>"Oatee"</strong>, a stray door handle spawned onto a smooth front quarter panel that slipped past initial QA, and an afternoon run that accidentally spat out a three-door <em>"Hyundai Cobra"</em>.
+                    </p>
+                    <p class="itw-prose">
+                        Then came the real kicker over morning coffee at the kitchen table. Showing two near-identical turnaround cuts for a casual human Spot-The-Difference check, hunting for a missing chrome rocker stripe revealed something worse sitting right in plain sight: <strong>Schrodinger's Bluetooth Dual Exhaust</strong>. Giant Shelby side pipes ran under the doors while full-size dual tailpipes simultaneously poked out beneath the rear valance, connected to nothing. We scrapped the bloated 4-door chassis on the spot, rebuilt onto a disciplined '69 fastback pony platform, and kept the one happy accident worth saving from that rogue Hyundai Cobra: its worn dark navy leather and crisp `#2CE5F6` cyan analog gauge pods.
+                    </p>
+                    <div class="itw-telemetry-callout">
+                        <strong>// C2PA CONTENT CREDENTIALS POLICY:</strong> Every <code>- Cr</code> plate linked on this devblog is a byte-for-byte copy of the signed Adobe Content Authenticity master. No pixels stripped, no EXIF/JUMBF manifests scrubbed before upload. If a plate was fixed with inpainting (7-to-6 louvers, cabin T-bar weld, or horn badge scrub), it gets documented right here in the build log.
+                    </div>
+                </article>
+
+                <!-- 6. Bottom HUD Footer -->
+                <footer class="dev-bottom-bracket">
+                    <div>PROJECT: OUTPOST CRUISE NIGHT // <span class="orange-readout">NRL 21067 SD ("SUPER DROSS")</span></div>
+                    <div>WORKSTATION: TINY HYPERION 6800U // <span class="orange-readout">SAN DIEGO, CA</span></div>
+                </footer>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Plate Inspection Lightbox Modal -->
+    <div class="itw-lightbox" id="itw-lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
+        <div class="modal-backdrop" id="lightbox-backdrop"></div>
+        <div class="itw-lightbox-panel">
+            <header class="sys-header">
+                <div class="sys-id" id="lightbox-kicker">// PLATE INSPECTOR // NRL 21067 SD</div>
+                <button type="button" class="close-btn" id="lightbox-close">[X] CLOSE</button>
+            </header>
+            <div class="itw-lightbox-stage">
+                <img id="lightbox-img" src="" alt="">
+            </div>
+            <div class="itw-lightbox-footer">
+                <div class="itw-lightbox-meta">
+                    <div class="itw-lightbox-title" id="lightbox-title"></div>
+                    <div class="itw-lightbox-desc" id="lightbox-desc"></div>
+                </div>
+                <div class="itw-lightbox-controls">
+                    <button type="button" class="dev-ctrl-btn" id="lightbox-prev">[&larr; PREV]</button>
+                    <button type="button" class="dev-ctrl-btn" id="lightbox-next">[NEXT &rarr;]</button>
+                    <a id="lightbox-master-link" href="#" target="_blank" rel="noopener" class="itw-badge-btn c2pa">[&#128737; OPEN C2PA / FULL-RES MASTER]</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (() => {
+            const macroEnv = document.getElementById('macro-env');
+            const toggleThemeBtn = document.getElementById('toggle-argon-theme');
+            if (toggleThemeBtn && macroEnv) {
+                toggleThemeBtn.addEventListener('click', () => {
+                    const isLight = macroEnv.classList.toggle('argon-light');
+                    toggleThemeBtn.textContent = isLight
+                        ? '[\u2600 MODE: CORPORATE PAPER]'
+                        : '[\u25D0 MODE: D-SUITE TEAL]';
+                });
+            }
+
+            // Dual-Stem Audio Deck
+            const audioEl = document.getElementById('devblog-audio');
+            const playBtn = document.getElementById('audio-play-btn');
+            const phaserBtn = document.getElementById('phaser-cue-btn');
+            const muteBtn = document.getElementById('audio-mute-btn');
+            const scrubber = document.getElementById('audio-scrubber');
+            const timecodeEl = document.getElementById('audio-timecode');
+            const telemetryEl = document.getElementById('stem-telemetry-readout');
+            const stemTake2Btn = document.getElementById('stem-take2');
+            const stemTake1Btn = document.getElementById('stem-take1');
+
+            const stems = {
+                take2: {
+                    src: 'IN_THE_WORKS/audio/neo-arcade-chase-take-2-overdrive-master.mp3',
+                    telemetry: 'ACTIVE: TAKE 2 OVERDRIVE MASTER // 118 BPM // D MINOR // -15.28 LUFS',
+                    fallbackDuration: 180
+                },
+                take1: {
+                    src: 'IN_THE_WORKS/audio/neo-arcade-chase-take-1-night-patrol.mp3',
+                    telemetry: 'ACTIVE: TAKE 1 NIGHT PATROL CUT // 118 BPM // D MINOR // -14.70 LUFS',
+                    fallbackDuration: 177
+                }
+            };
+            let currentStemKey = 'take2';
+
+            function formatTime(sec) {
+                if (!Number.isFinite(sec) || sec < 0) sec = 0;
+                const mins = Math.floor(sec / 60);
+                const secs = Math.floor(sec % 60);
+                return String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
+            }
+
+            function refreshPlayButton() {
+                if (!playBtn || !audioEl) return;
+                playBtn.textContent = audioEl.paused ? '[\u25B6] PLAY STEM' : '[||] PAUSE STEM';
+            }
+
+            function updateTimeReadout() {
+                if (!audioEl || !scrubber || !timecodeEl) return;
+                const dur = Number.isFinite(audioEl.duration) && audioEl.duration > 0
+                    ? audioEl.duration
+                    : stems[currentStemKey].fallbackDuration;
+                scrubber.max = String(dur);
+                scrubber.value = String(audioEl.currentTime || 0);
+                timecodeEl.textContent = formatTime(audioEl.currentTime || 0) + ' / ' + formatTime(dur);
+            }
+
+            function selectStem(key, autoPlay, cueSeconds) {
+                const stem = stems[key];
+                if (!stem || !audioEl) return;
+                const changed = currentStemKey !== key;
+                currentStemKey = key;
+                stemTake2Btn.classList.toggle('active', key === 'take2');
+                stemTake1Btn.classList.toggle('active', key === 'take1');
+                if (telemetryEl) telemetryEl.textContent = stem.telemetry;
+
+                const applyCueAndPlay = () => {
+                    if (typeof cueSeconds === 'number') {
+                        audioEl.currentTime = cueSeconds;
+                    }
+                    updateTimeReadout();
+                    if (autoPlay) {
+                        audioEl.play().catch(() => {});
+                    }
+                };
+
+                if (changed) {
+                    audioEl.pause();
+                    audioEl.src = stem.src;
+                    audioEl.load();
+                    if (typeof cueSeconds === 'number' || autoPlay) {
+                        audioEl.addEventListener('loadedmetadata', applyCueAndPlay, { once: true });
+                    } else {
+                        updateTimeReadout();
+                    }
+                } else {
+                    applyCueAndPlay();
+                }
+            }
+
+            if (stemTake2Btn) stemTake2Btn.addEventListener('click', () => selectStem('take2', !audioEl.paused));
+            if (stemTake1Btn) stemTake1Btn.addEventListener('click', () => selectStem('take1', !audioEl.paused));
+
+            if (playBtn && audioEl) {
+                playBtn.addEventListener('click', () => {
+                    if (audioEl.paused) {
+                        audioEl.play().catch(() => {});
+                    } else {
+                        audioEl.pause();
+                    }
+                });
+            }
+
+            if (phaserBtn && audioEl) {
+                phaserBtn.addEventListener('click', () => {
+                    selectStem('take2', true, 77);
+                });
+            }
+
+            if (muteBtn && audioEl) {
+                muteBtn.addEventListener('click', () => {
+                    audioEl.muted = !audioEl.muted;
+                    muteBtn.textContent = audioEl.muted ? '[MUTED]' : '[\uD83D\uDD0A MUTE]';
+                });
+            }
+
+            if (scrubber && audioEl) {
+                scrubber.addEventListener('input', () => {
+                    audioEl.currentTime = Number(scrubber.value) || 0;
+                    updateTimeReadout();
+                });
+            }
+
+            if (audioEl) {
+                audioEl.addEventListener('loadedmetadata', updateTimeReadout);
+                audioEl.addEventListener('timeupdate', updateTimeReadout);
+                audioEl.addEventListener('play', refreshPlayButton);
+                audioEl.addEventListener('pause', refreshPlayButton);
+                audioEl.addEventListener('ended', refreshPlayButton);
+            }
+
+            // Lightbox Gallery Inspector
+            const plates = [
+                {
+                    kicker: 'BEAT 01 // ANTHROPOLIS // C2PA SIGNED',
+                    title: 'Casino Jesolo Marquee Departure (5:4 NRL Graded)',
+                    desc: 'NRL 21067 SD rolling onto wet cobblestones under the amber Casino Jesolo marquee with emerald alley mist and quad cyan halo puddle reflection.',
+                    web: 'IN_THE_WORKS/web/beat-01-casino-jesolo-super-dross.jpg',
+                    master: 'IN_THE_WORKS/c2pa/beat-01-casino-jesolo-super-dross-cr.jpg',
+                    masterLabel: 'OPEN C2PA MASTER'
+                },
+                {
+                    kicker: 'BEAT 02 // CAUSEWAY EXIT // C2PA SIGNED',
+                    title: 'Elevated Highway Leaving Anthropolis (5:4 NRL Graded)',
+                    desc: 'Damp cracked highway shoulder pulling away from the glowing city skyline past high-voltage lattice towers and low teal vapor.',
+                    web: 'IN_THE_WORKS/web/beat-02-elevated-highway-anthropolis.jpg',
+                    master: 'IN_THE_WORKS/c2pa/beat-02-elevated-highway-anthropolis-cr.jpg',
+                    masterLabel: 'OPEN C2PA MASTER'
+                },
+                {
+                    kicker: 'BEAT 03 // COCKPIT POV // C2PA SIGNED',
+                    title: 'Interior OTS Night Drive toward Ringed Planet (5:4 NRL Graded)',
+                    desc: 'Over-the-shoulder Deluxe cockpit view featuring the welded overhead split-T-bar spine, scrubbed wood-rimmed wheel, quad cyan gauge pods, and ringed horizon.',
+                    web: 'IN_THE_WORKS/web/beat-03-ots-cockpit-highway-saturn.jpg',
+                    master: 'IN_THE_WORKS/c2pa/beat-03-ots-cockpit-highway-saturn-cr.jpg',
+                    masterLabel: 'OPEN C2PA MASTER'
+                },
+                {
+                    kicker: 'BEAT 04 // REAR 3/4 CHASE // C2PA SIGNED',
+                    title: 'Obsidian Sands Straightaway Chase (5:4 NRL Graded)',
+                    desc: 'Rear-left crane perspective showing all 6 matte-black rear louver slats and crisp SUPER DROSS tail panel aimed straight toward The Stagecoach.',
+                    web: 'IN_THE_WORKS/web/beat-04-elevated-highway-saturn.jpg',
+                    master: 'IN_THE_WORKS/c2pa/beat-04-elevated-highway-saturn-cr.jpg',
+                    masterLabel: 'OPEN C2PA MASTER'
+                },
+                {
+                    kicker: 'BEAT 05 // OBSIDIAN SANDS // C2PA SIGNED',
+                    title: 'The Outpost Sands Establishing Plate (5:4 NRL Graded)',
+                    desc: 'Wide establishing vista across ice-cyan-rimmed dark dunes with violet nebula storm lighting behind the distant Brutalist Stagecoach monolith.',
+                    web: 'IN_THE_WORKS/web/beat-05-the-outpost-sands.jpg',
+                    master: 'IN_THE_WORKS/c2pa/beat-05-the-outpost-sands-cr.jpg',
+                    masterLabel: 'OPEN C2PA MASTER'
+                },
+                {
+                    kicker: 'BEAT 06 // THE STAGECOACH // C2PA SIGNED',
+                    title: 'The Stagecoach Singles Night Arrival (5:4 NRL Graded)',
+                    desc: 'Parked at the neon diner curb with two stray dogs on the sidewalk and a full lower-third neon rain puddle matching Beat 01.',
+                    web: 'IN_THE_WORKS/web/beat-06-the-stagecoach-super-dross.jpg',
+                    master: 'IN_THE_WORKS/c2pa/beat-06-the-stagecoach-super-dross-cr.jpg',
+                    masterLabel: 'OPEN C2PA MASTER'
+                },
+                {
+                    kicker: 'CLIP-017 // BAR SCENE PLATE',
+                    title: 'Jax (Unit 0 - The Weary Barkeep) at The Stagecoach Bar',
+                    desc: 'Synthetic porcelain Barkeep with glowing red optics, pinstripe waistcoat, and copper-brass mechanical hand pouring amber whiskey in front of emerald bar neon.',
+                    web: 'IN_THE_WORKS/web/scene-plate-017-jax-unit-0-barkeep.jpg',
+                    master: 'IN_THE_WORKS/c2pa/scene-plate-017-jax-unit-0-barkeep-master.jpg',
+                    masterLabel: 'OPEN FULL-RES MASTER'
+                },
+                {
+                    kicker: 'CLIP-018 // BAR SCENE PLATE',
+                    title: 'Silas "Cold Iron" Vance with Cobalt Alcohol Flame',
+                    desc: 'Deserter courier staring through a tall blue glass flame illuminated against his scarred features and hydraulic steel right forearm.',
+                    web: 'IN_THE_WORKS/web/scene-plate-018-silas-cold-iron-vance.jpg',
+                    master: 'IN_THE_WORKS/c2pa/scene-plate-018-silas-cold-iron-vance-master.jpg',
+                    masterLabel: 'OPEN FULL-RES MASTER'
+                },
+                {
+                    kicker: 'CHROMA #00FF00 // NOV 15 // C2PA SIGNED',
+                    title: 'DJ Churn 3-Pose Chroma Green Ingredient Sheet',
+                    desc: 'Freshly keyed 3-pose compositing plate (front alert, profile, barking mid-leap) ready for Stagecoach sidewalk placement.',
+                    web: 'IN_THE_WORKS/web/cast-dj-churn-chroma-green-3-pose.jpg',
+                    master: 'IN_THE_WORKS/c2pa/cast-dj-churn-chroma-green-3-pose-cr.png',
+                    masterLabel: 'OPEN C2PA PNG MASTER'
+                },
+                {
+                    kicker: 'CHARACTER 3-TURN // C2PA SIGNED',
+                    title: 'DJ Churn ("The Static Stray") Tri-Panel Turnaround',
+                    desc: 'Studio orthographic 3-turn sheet locking satellite ears, speckled coat markings, and white DJ headphones.',
+                    web: 'IN_THE_WORKS/web/cast-dj-churn-3-turn.jpg',
+                    master: 'IN_THE_WORKS/c2pa/cast-dj-churn-3-turn-cr.jpg',
+                    masterLabel: 'OPEN C2PA MASTER'
+                },
+                {
+                    kicker: 'CHARACTER PORTRAIT // C2PA SIGNED',
+                    title: 'DJ Churn Action Keyframe with Floating Cassettes',
+                    desc: 'High-contrast bark pose with analog cassettes and neon chartreuse lightning accents.',
+                    web: 'IN_THE_WORKS/web/cast-dj-churn-portrait.jpg',
+                    master: 'IN_THE_WORKS/c2pa/cast-dj-churn-portrait-cr.jpg',
+                    masterLabel: 'OPEN C2PA MASTER'
+                },
+                {
+                    kicker: 'CHARACTER 3-TURN // C2PA SIGNED',
+                    title: 'Vesper "Static" Thorne ("The Booth Four Drifter") 3-Turn',
+                    desc: 'Full-length turnaround in translucent charcoal PVC trench coat, violet satin button-down, studded choker, and cyan cocktail glass.',
+                    web: 'IN_THE_WORKS/web/cast-vesper-static-thorne-3-turn.jpg',
+                    master: 'IN_THE_WORKS/c2pa/cast-vesper-static-thorne-3-turn-cr.jpg',
+                    masterLabel: 'OPEN C2PA MASTER'
+                },
+                {
+                    kicker: 'CHARACTER PORTRAIT // C2PA SIGNED',
+                    title: 'Vesper "Static" Thorne inside Diner Booth Four',
+                    desc: 'Seated in red tufted vinyl Booth Four beside slatted blinds, stylus in hand and desert sunset silhouetting the horizon.',
+                    web: 'IN_THE_WORKS/web/cast-vesper-static-thorne-portrait.jpg',
+                    master: 'IN_THE_WORKS/c2pa/cast-vesper-static-thorne-portrait-cr.jpg',
+                    masterLabel: 'OPEN C2PA MASTER'
+                },
+                {
+                    kicker: 'CHARACTER 3-TURN // C2PA SIGNED',
+                    title: 'Archetype 3: Jax (Unit 0) Full-Body Turnaround',
+                    desc: 'Front, side, and 3/4 glass-hold turnarounds locking cracked porcelain faceplate, waistcoat tailoring, and twin copper-brass forearms.',
+                    web: 'IN_THE_WORKS/web/cast-jax-unit-0-3-turn.jpg',
+                    master: 'IN_THE_WORKS/c2pa/cast-jax-unit-0-3-turn-cr.jpg',
+                    masterLabel: 'OPEN C2PA MASTER'
+                },
+                {
+                    kicker: 'CHARACTER 3-TURN // C2PA SIGNED',
+                    title: 'Silas "Cold Iron" Vance Full-Body Turnaround',
+                    desc: 'Three-angle continuity sheet locking trench coat silhouette, ribbed chest armor, combat boots, and orange-hydraulic steel right gauntlet.',
+                    web: 'IN_THE_WORKS/web/cast-silas-cold-iron-vance-3-turn.jpg',
+                    master: 'IN_THE_WORKS/c2pa/cast-silas-cold-iron-vance-3-turn-cr.jpg',
+                    masterLabel: 'OPEN C2PA MASTER'
+                },
+                {
+                    kicker: 'VEHICLE LOCK H-CARD // NOV 14 // C2PA SIGNED',
+                    title: 'NRL 21067 SD ("Super Dross") 6-Panel CAD Spec Sheet',
+                    desc: 'Master anti-drift vehicle blueprint: port/starboard profiles, front/rear elevations (6-slat louvers + SUPER DROSS badge), 3/4 Hero, top-down T-bar plan, and cyan analog cockpit cutaway.',
+                    web: 'IN_THE_WORKS/web/nrl-21067-sd-6-panel-card.jpg',
+                    master: 'IN_THE_WORKS/c2pa/nrl-21067-sd-6-panel-card-cr.png',
+                    masterLabel: 'OPEN C2PA PNG MASTER'
+                }
+            ];
+
+            const lightboxEl = document.getElementById('itw-lightbox');
+            const lightboxBackdrop = document.getElementById('lightbox-backdrop');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const lightboxPrev = document.getElementById('lightbox-prev');
+            const lightboxNext = document.getElementById('lightbox-next');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxKicker = document.getElementById('lightbox-kicker');
+            const lightboxTitle = document.getElementById('lightbox-title');
+            const lightboxDesc = document.getElementById('lightbox-desc');
+            const lightboxMasterLink = document.getElementById('lightbox-master-link');
+
+            let activePlateIdx = 0;
+
+            function renderLightbox(idx) {
+                activePlateIdx = (idx + plates.length) % plates.length;
+                const item = plates[activePlateIdx];
+                lightboxKicker.textContent = '// ' + item.kicker + ' [' + (activePlateIdx + 1) + '/' + plates.length + ']';
+                lightboxImg.src = item.web;
+                lightboxImg.alt = item.title;
+                lightboxTitle.textContent = item.title;
+                lightboxDesc.textContent = item.desc;
+                lightboxMasterLink.href = item.master;
+                lightboxMasterLink.textContent = '[\uD83D\uDEE1 ' + item.masterLabel + ']';
+            }
+
+            window.openLightboxByIndex = (idx) => {
+                renderLightbox(idx);
+                lightboxEl.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            };
+
+            function closeLightbox() {
+                lightboxEl.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            document.querySelectorAll('[data-plate-index]').forEach((el) => {
+                el.addEventListener('click', () => {
+                    const idx = Number(el.getAttribute('data-plate-index')) || 0;
+                    window.openLightboxByIndex(idx);
+                });
+                el.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        const idx = Number(el.getAttribute('data-plate-index')) || 0;
+                        window.openLightboxByIndex(idx);
+                    }
+                });
+            });
+
+            if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+            if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
+            if (lightboxPrev) lightboxPrev.addEventListener('click', () => renderLightbox(activePlateIdx - 1));
+            if (lightboxNext) lightboxNext.addEventListener('click', () => renderLightbox(activePlateIdx + 1));
+
+            document.addEventListener('keydown', (e) => {
+                if (!lightboxEl.classList.contains('active')) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') renderLightbox(activePlateIdx - 1);
+                if (e.key === 'ArrowRight') renderLightbox(activePlateIdx + 1);
+            });
+        })();
+    </script>
+</body>
+</html>
