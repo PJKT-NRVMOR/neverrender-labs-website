@@ -57,41 +57,43 @@
                             <div class="itw-meta-pills">
                                 <span class="itw-meta-pill orange">HERO RIG: NRL 21067 SD</span>
                                 <span class="itw-meta-pill">18 GRADED PLATES + 16 C2PA MASTERS</span>
-                                <span class="itw-meta-pill">KEY: D MINOR // 118 BPM -> 104 BPM</span>
+                                <span class="itw-meta-pill">3 STUDIO MASTERS // 118 BPM</span>
                                 <span class="itw-meta-pill orange">STATUS: ACTIVE BUILD</span>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- 3. Interactive Dual-Stem Audio Deck -->
-                <section class="itw-audio-deck" id="audio-deck" aria-label="Neo Arcade Chase Audio Stem Deck">
+                <!-- 3. Interactive 3-Track Studio Master Console -->
+                <section class="itw-audio-deck" id="audio-deck" aria-label="Outpost Cruise Night Studio Master Console">
                     <div class="itw-deck-top">
                         <div class="itw-deck-label">
-                            &gt; AUDIO CONSOLE // <span class="accent-orange">NEO ARCADE CHASE</span> (320 KBPS STREAM FROM 48 KHZ WAV)
+                            &gt; STUDIO AUDIO CONSOLE // <span class="accent-orange">OUTPOST CRUISE NIGHT MASTERS</span> (320 KBPS FROM 48 KHZ WAV)
                         </div>
                         <div class="itw-stem-tabs" role="tablist" aria-label="Audio Stem Selection">
-                            <button type="button" class="itw-stem-btn active" id="stem-take2" data-stem="take2">TAKE 2 // OVERDRIVE HERO MASTER [03:00]</button>
-                            <button type="button" class="itw-stem-btn" id="stem-take1" data-stem="take1">TAKE 1 // NIGHT PATROL CUT [02:57]</button>
+                            <button type="button" class="itw-stem-btn active" id="stem-servitude" data-stem="servitude">ATTENTION IS SERVITUDE // NRL MASTER [03:01]</button>
+                            <button type="button" class="itw-stem-btn" id="stem-take2" data-stem="take2">NEO ARCADE CHASE // TAKE 2 [03:00]</button>
+                            <button type="button" class="itw-stem-btn" id="stem-take1" data-stem="take1">NEO ARCADE CHASE // TAKE 1 [02:57]</button>
                         </div>
                     </div>
 
                     <div class="itw-deck-controls">
                         <button type="button" class="itw-play-btn" id="audio-play-btn">[&#9654;] PLAY STEM</button>
-                        <button type="button" class="itw-cue-btn" id="phaser-cue-btn" title="Switch to Take 2 and cue directly to the 01:17 - 01:32 analog phaser pocket">[&#9889; JUMP TO 01:17 PHASER DROP]</button>
+                        <button type="button" class="itw-cue-btn" id="whisper-cue-btn" title="Cue Attention Is Servitude (NRL Master) to the 01:58 sonar whisper bridge">[&#9889; 01:58 SONAR WHISPER BRIDGE]</button>
+                        <button type="button" class="itw-cue-btn" id="phaser-cue-btn" title="Switch to Neo Arcade Chase Take 2 and cue to the 01:17 analog phaser pocket">[&#9889; 01:17 PHASER DROP]</button>
                         <div class="itw-scrubber-wrap">
-                            <input type="range" class="itw-scrubber" id="audio-scrubber" min="0" max="180" step="0.1" value="0" aria-label="Seek audio position">
-                            <span class="itw-timecode" id="audio-timecode">00:00 / 03:00</span>
+                            <input type="range" class="itw-scrubber" id="audio-scrubber" min="0" max="181" step="0.1" value="0" aria-label="Seek audio position">
+                            <span class="itw-timecode" id="audio-timecode">00:00 / 03:01</span>
                         </div>
                         <button type="button" class="itw-mute-btn" id="audio-mute-btn">[&#128266; MUTE]</button>
                     </div>
 
                     <div class="itw-deck-telemetry">
-                        <span id="stem-telemetry-readout">ACTIVE: TAKE 2 OVERDRIVE MASTER // 118 BPM // D MINOR // -15.28 LUFS</span>
-                        <span>CUE MARKER: 01:17 - 01:32 ANALOG PHASER POCKET</span>
+                        <span id="stem-telemetry-readout">ACTIVE: ATTENTION IS SERVITUDE (CLEAN TAPE MASTER) // 118 BPM // -12.3 LUFS // -1.5 DBTP</span>
+                        <span id="stem-cue-readout">CUE MARKERS: 01:44 FUZZ SLIDE SOLO // 01:58 SONAR WHISPER POCKET</span>
                     </div>
 
-                    <audio id="devblog-audio" preload="metadata" src="IN_THE_WORKS/audio/neo-arcade-chase-take-2-overdrive-master.mp3"></audio>
+                    <audio id="devblog-audio" preload="metadata" src="IN_THE_WORKS/audio/attention-is-servitude-nrl-master.mp3"></audio>
                 </section>
 
                 <!-- Quick-Jump Anchor Bar -->
@@ -127,7 +129,12 @@
 
                     <div class="itw-plate-actions">
                         <button type="button" class="itw-badge-btn" onclick="openLightboxByIndex(16)">[&#128269; ZOOM HERO PLATE]</button>
+                        <button type="button" class="itw-badge-btn" onclick="window.playServitudeMaster()">[&#9654; STREAM NRL MASTER (03:01)]</button>
                         <a href="IN_THE_WORKS/c2pa/kipple-01-attention-is-servitude-cr.jpg" target="_blank" rel="noopener" class="itw-badge-btn c2pa">[&#128737; OPEN C2PA MASTER (3.8 MB)]</a>
+                    </div>
+
+                    <div class="itw-telemetry-callout">
+                        <strong>// STUDIO SCORE DROP: "ATTENTION IS SERVITUDE" (GREGORIAN SWAMP STEP // NRL CLEAN TAPE MASTER):</strong> That burnt-out billboard slogan now carries its own <code>03:01</code> vocal anthem loaded as Track 01 on the console above. It opens with liturgical Latin (<em>"Attentio servitus est! ... mmm-hmm"</em>) over rusted-rail swamp blues, Wurlitzer bite, 16th-note analog synth bass, and a <code>"Kyrie // De profundis"</code> chorus grounded straight in Jax and Super Dross lore (<em>"Cold brass grip in an open bay / Burn every sign standing in the way"</em>), drops through a weeping <code>01:44</code> fuzz-slide guitar solo into the <code>01:58</code> sonar-ping whisper pocket (<em>"Cold porcelain... baptized in the mire"</em>), and prints finished at <strong>-12.3 LUFS</strong> Integrated, <strong>7.6 LU</strong> loudness range, <strong>-1.5 dBFS</strong> brickwall True Peak ceiling, and <strong>0.000000</strong> flat factor across 8.68M stereo samples.
                     </div>
 
                     <!-- Co-Architect Pick Split Card -->
@@ -577,30 +584,41 @@
                 });
             }
 
-            // Dual-Stem Audio Deck
+            // 3-Track Studio Master Audio Console
             const audioEl = document.getElementById('devblog-audio');
             const playBtn = document.getElementById('audio-play-btn');
+            const whisperBtn = document.getElementById('whisper-cue-btn');
             const phaserBtn = document.getElementById('phaser-cue-btn');
             const muteBtn = document.getElementById('audio-mute-btn');
             const scrubber = document.getElementById('audio-scrubber');
             const timecodeEl = document.getElementById('audio-timecode');
             const telemetryEl = document.getElementById('stem-telemetry-readout');
+            const cueReadoutEl = document.getElementById('stem-cue-readout');
+            const stemServitudeBtn = document.getElementById('stem-servitude');
             const stemTake2Btn = document.getElementById('stem-take2');
             const stemTake1Btn = document.getElementById('stem-take1');
 
             const stems = {
+                servitude: {
+                    src: 'IN_THE_WORKS/audio/attention-is-servitude-nrl-master.mp3',
+                    telemetry: 'ACTIVE: ATTENTION IS SERVITUDE (CLEAN TAPE MASTER) // 118 BPM // -12.3 LUFS // -1.5 DBTP',
+                    cue: 'CUE MARKERS: 01:44 FUZZ SLIDE SOLO // 01:58 SONAR WHISPER POCKET',
+                    fallbackDuration: 181
+                },
                 take2: {
                     src: 'IN_THE_WORKS/audio/neo-arcade-chase-take-2-overdrive-master.mp3',
                     telemetry: 'ACTIVE: TAKE 2 OVERDRIVE MASTER // 118 BPM // D MINOR // -15.28 LUFS',
+                    cue: 'CUE MARKER: 01:17 - 01:32 ANALOG PHASER POCKET',
                     fallbackDuration: 180
                 },
                 take1: {
                     src: 'IN_THE_WORKS/audio/neo-arcade-chase-take-1-night-patrol.mp3',
                     telemetry: 'ACTIVE: TAKE 1 NIGHT PATROL CUT // 118 BPM // D MINOR // -14.70 LUFS',
+                    cue: 'CUE MARKER: FULL NIGHT PATROL INSTRUMENTAL RUN',
                     fallbackDuration: 177
                 }
             };
-            let currentStemKey = 'take2';
+            let currentStemKey = 'servitude';
 
             function formatTime(sec) {
                 if (!Number.isFinite(sec) || sec < 0) sec = 0;
@@ -629,9 +647,11 @@
                 if (!stem || !audioEl) return;
                 const changed = currentStemKey !== key;
                 currentStemKey = key;
-                stemTake2Btn.classList.toggle('active', key === 'take2');
-                stemTake1Btn.classList.toggle('active', key === 'take1');
+                if (stemServitudeBtn) stemServitudeBtn.classList.toggle('active', key === 'servitude');
+                if (stemTake2Btn) stemTake2Btn.classList.toggle('active', key === 'take2');
+                if (stemTake1Btn) stemTake1Btn.classList.toggle('active', key === 'take1');
                 if (telemetryEl) telemetryEl.textContent = stem.telemetry;
+                if (cueReadoutEl) cueReadoutEl.textContent = stem.cue;
 
                 const applyCueAndPlay = () => {
                     if (typeof cueSeconds === 'number') {
@@ -657,6 +677,11 @@
                 }
             }
 
+            window.playServitudeMaster = () => {
+                selectStem('servitude', true, 0);
+            };
+
+            if (stemServitudeBtn) stemServitudeBtn.addEventListener('click', () => selectStem('servitude', !audioEl.paused));
             if (stemTake2Btn) stemTake2Btn.addEventListener('click', () => selectStem('take2', !audioEl.paused));
             if (stemTake1Btn) stemTake1Btn.addEventListener('click', () => selectStem('take1', !audioEl.paused));
 
@@ -667,6 +692,12 @@
                     } else {
                         audioEl.pause();
                     }
+                });
+            }
+
+            if (whisperBtn && audioEl) {
+                whisperBtn.addEventListener('click', () => {
+                    selectStem('servitude', true, 118);
                 });
             }
 
