@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>In the Works // Outpost Cruise Night (NRL 21067 SD) - NeverRender Labs</title>
-    <meta name="description" content="Open-hood studio production blog following Outpost Cruise Night and NRL 21067 SD ('Super Dross') from CAD vehicle locking to graded 5:4 story plates and 118 BPM D Minor scoring.">
+    <meta name="description" content="Open-hood studio production blog following Outpost Cruise Night and NRL 21067 SD ('Super Dross') from CAD vehicle locking to graded 5:4 story plates, 118 BPM D Minor stems, and the streaming 1080p24 'Attention Is Servitude' visualizer cut.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=19">
+    <link rel="stylesheet" href="styles.css?v=20">
     <link rel="icon" type="image/svg+xml" href="favicon-svg.svg">
 </head>
 <body>
@@ -58,7 +58,7 @@
                                 <span class="itw-meta-pill orange">HERO RIG: NRL 21067 SD</span>
                                 <span class="itw-meta-pill">18 GRADED PLATES + 16 C2PA MASTERS</span>
                                 <span class="itw-meta-pill">3 STUDIO MASTERS // 118 BPM</span>
-                                <span class="itw-meta-pill orange">STATUS: ACTIVE BUILD</span>
+                                <a href="#servitude-video" class="itw-meta-pill orange" style="text-decoration: none;">&#9654; 1080P24 CUT STREAMING LIVE</a>
                             </div>
                         </div>
                     </div>
@@ -81,6 +81,7 @@
                         <button type="button" class="itw-play-btn" id="audio-play-btn">[&#9654;] PLAY STEM</button>
                         <button type="button" class="itw-cue-btn" id="whisper-cue-btn" title="Cue Attention Is Servitude (NRL Master) to the 01:58 sonar whisper bridge">[&#9889; 01:58 SONAR WHISPER BRIDGE]</button>
                         <button type="button" class="itw-cue-btn" id="phaser-cue-btn" title="Switch to Neo Arcade Chase Take 2 and cue to the 01:17 analog phaser pocket">[&#9889; 01:17 PHASER DROP]</button>
+                        <button type="button" class="itw-cue-btn" id="watch-video-cue-btn" title="Jump down and stream the 1080p24 Attention Is Servitude visualizer cut">[&#127916; WATCH 1080P24 VIDEO]</button>
                         <div class="itw-scrubber-wrap">
                             <input type="range" class="itw-scrubber" id="audio-scrubber" min="0" max="181" step="0.1" value="0" aria-label="Seek audio position">
                             <span class="itw-timecode" id="audio-timecode">00:00 / 03:01</span>
@@ -98,6 +99,7 @@
 
                 <!-- Quick-Jump Anchor Bar -->
                 <nav class="itw-jump-nav" aria-label="Production Entries Navigation">
+                    <a href="#servitude-video" class="itw-jump-link featured-cut">[&#9654; 1080P24 CUT] ATTENTION IS SERVITUDE</a>
                     <a href="#neon-kipple" class="itw-jump-link">[#05] NEON KIPPLE &amp; JAX POV (NOV 16)</a>
                     <a href="#road-spine" class="itw-jump-link">[#04] 6-BEAT ROAD SPINE (NOV 15)</a>
                     <a href="#outpost-cast" class="itw-jump-link">[#03] BAR PLATES &amp; 3-TURN CAST (NOV 15)</a>
@@ -108,8 +110,8 @@
                 <!-- ENTRY #05 -->
                 <article class="itw-entry-card" id="neon-kipple">
                     <div class="itw-entry-header">
-                        <span class="itw-entry-badge">ENTRY #05 // NEON KIPPLE &amp; COURIER LOCK</span>
-                        <span class="itw-entry-date">2026-11-16 // MUNICIPAL BILLBOARD PASS</span>
+                        <span class="itw-entry-badge">ENTRY #05 // NEON KIPPLE, COURIER LOCK &amp; 1080P24 CUT</span>
+                        <span class="itw-entry-date">2026-11-16 // BILLBOARD &amp; VISUALIZER RELEASE</span>
                     </div>
                     <h2 class="itw-entry-title">
                         Building Neon Kipple: "Attention Is Servitude" &amp; Putting Jax Behind the Wheel
@@ -121,6 +123,29 @@
                         First test pulls came back far too showroom-clean like shiny vaporwave rectangles, and wordy municipal paragraphs caused double-letter artifacts while sneaking a seventh rear louver back onto the coupe. Two hard design locks fixed both problems at once. Visually, we dropped the outer glass silhouette contour down to low-voltage <strong>#0B222D</strong> dark petrol-slate piping so fiery <strong>#FF6B2B</strong> recessed glass tubes burn straight out of dead blistered matte-black sheetmetal, right down to the darkened burnt-out <code>DE</code> electrodes at the end of <code>SERVITU[DE]</code>. Linguistically, we took a cue from <strong>Benjamin Burnley</strong> (<em>Breaking Benjamin</em>): compressing verbose ordinances into stark three-to-five-word Rorschach fragments that spell cleanly in bent glass on the first pull.
                     </p>
 
+                    <!-- Streaming 1080p24 YouTube Visualizer Stage -->
+                    <div class="itw-video-stage" id="servitude-video">
+                        <div class="itw-video-bar">
+                            <div class="itw-video-kicker">
+                                <span class="indicator blink"></span>NOW STREAMING // ATTENTION IS SERVITUDE (1080P24 // -12.5 LUFS // -1.5 DBTP)
+                            </div>
+                            <a href="https://youtu.be/WK-aAoh7Vpg" target="_blank" rel="noopener" class="itw-badge-btn">[&#8599; OPEN ON YOUTUBE]</a>
+                        </div>
+                        <div class="itw-video-frame">
+                            <iframe id="servitude-yt-iframe" src="https://www.youtube.com/embed/WK-aAoh7Vpg?enablejsapi=1&amp;rel=0&amp;playsinline=1" title="NeverRender Labs - Attention Is Servitude (1080p24 Visualizer)" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class="itw-chapter-strip" aria-label="Attention Is Servitude Video Chapter Cues">
+                            <span class="itw-chapter-label">JUMP CUES:</span>
+                            <button type="button" class="itw-chapter-btn" data-yt-seek="0">[0:00 V8 COLD OPEN]</button>
+                            <button type="button" class="itw-chapter-btn" data-yt-seek="20">[0:20 VERSE 1 + ORBS]</button>
+                            <button type="button" class="itw-chapter-btn" data-yt-seek="69">[1:09 KYRIE CHORUS]</button>
+                            <button type="button" class="itw-chapter-btn" data-yt-seek="104">[1:44 FUZZ SOLO]</button>
+                            <button type="button" class="itw-chapter-btn" data-yt-seek="118">[1:58 SONAR WHISPER]</button>
+                            <button type="button" class="itw-chapter-btn" data-yt-seek="142">[2:22 CYAN TUNNEL WARP]</button>
+                            <button type="button" class="itw-chapter-btn" data-yt-seek="182">[3:02 V8 DARK TAIL]</button>
+                        </div>
+                    </div>
+
                     <!-- Full-Width Hero Plate Showcase -->
                     <div class="itw-hero-plate-frame" data-plate-index="16" role="button" tabindex="0" aria-label="Inspect full-resolution Attention Is Servitude hero billboard plate">
                         <span class="itw-plate-tag hero-orange">HERO PLATE // ATTENTION IS SERVITUDE</span>
@@ -130,11 +155,12 @@
                     <div class="itw-plate-actions">
                         <button type="button" class="itw-badge-btn" onclick="openLightboxByIndex(16)">[&#128269; ZOOM HERO PLATE]</button>
                         <button type="button" class="itw-badge-btn" onclick="window.playServitudeMaster()">[&#9654; STREAM NRL MASTER (03:01)]</button>
+                        <a href="https://youtu.be/WK-aAoh7Vpg" target="_blank" rel="noopener" class="itw-badge-btn">[&#9654; YOUTUBE 1080P24]</a>
                         <a href="IN_THE_WORKS/c2pa/kipple-01-attention-is-servitude-cr.jpg" target="_blank" rel="noopener" class="itw-badge-btn c2pa">[&#128737; OPEN C2PA MASTER (3.8 MB)]</a>
                     </div>
 
                     <div class="itw-telemetry-callout">
-                        <strong>// STUDIO SCORE DROP: "ATTENTION IS SERVITUDE" (GREGORIAN SWAMP STEP // NRL CLEAN TAPE MASTER):</strong> That burnt-out billboard slogan now carries its own <code>03:01</code> vocal anthem loaded as Track 01 on the console above. It opens with liturgical Latin (<em>"Attentio servitus est! ... mmm-hmm"</em>) over rusted-rail swamp blues, Wurlitzer bite, 16th-note analog synth bass, and a <code>"Kyrie // De profundis"</code> chorus grounded straight in Jax and Super Dross lore (<em>"Cold brass grip in an open bay / Burn every sign standing in the way"</em>), drops through a weeping <code>01:44</code> fuzz-slide guitar solo into the <code>01:58</code> sonar-ping whisper pocket (<em>"Cold porcelain... baptized in the mire"</em>), and prints finished at <strong>-12.3 LUFS</strong> Integrated, <strong>7.6 LU</strong> loudness range, <strong>-1.5 dBFS</strong> brickwall True Peak ceiling, and <strong>0.000000</strong> flat factor across 8.68M stereo samples.
+                        <strong>// STUDIO SCORE &amp; 1080P24 VISUALIZER CUT: "ATTENTION IS SERVITUDE" (GREGORIAN SWAMP STEP // NRL CLEAN TAPE MASTER):</strong> That burnt-out billboard slogan now carries both a finished <code>03:09</code> <code>1080p24</code> visualizer streaming live above and its <code>03:01</code> vocal master loaded as Track 01 on the console. Built from dual spatial V8 highway bookends, dying <code>SERVITU[DE]</code> electric arc sparks, floating liquid-mercury glass-orb refractions, a Dutch-angle highway dive, and radial cyan planet tunnel warps locked to <code>"Attentio servitus est!"</code>, the <code>01:44</code> fuzz-slide solo, and the <code>01:58</code> sonar-ping whisper bridge (<em>"Cold porcelain... baptized in the mire"</em>). The stereo stem prints at <strong>-12.3 LUFS</strong> Integrated (`7.6 LU` range, `-1.5 dBFS` True Peak, `0.000000` flat factor), and the finished video encode delivers <strong>-12.5 LUFS</strong> Integrated, <strong>8.8 LU</strong> loudness range, and <strong>-1.5 dBFS</strong> True Peak headroom.
                     </div>
 
                     <!-- Co-Architect Pick Split Card -->
@@ -727,6 +753,63 @@
                 audioEl.addEventListener('play', refreshPlayButton);
                 audioEl.addEventListener('pause', refreshPlayButton);
                 audioEl.addEventListener('ended', refreshPlayButton);
+            }
+
+            // Mutual Audio Console <-> YouTube Visualizer Coordination & Chapter Seek
+            const servitudeYtIframe = document.getElementById('servitude-yt-iframe');
+            const watchVideoCueBtn = document.getElementById('watch-video-cue-btn');
+            const videoStageEl = document.getElementById('servitude-video');
+            const chapterBtns = document.querySelectorAll('.itw-chapter-btn[data-yt-seek]');
+            const baseYtEmbed = 'https://www.youtube.com/embed/WK-aAoh7Vpg?enablejsapi=1&rel=0&playsinline=1';
+            let ytPlayerBooted = false;
+
+            function postYtCommand(func, args) {
+                if (!servitudeYtIframe || !servitudeYtIframe.contentWindow) return;
+                servitudeYtIframe.contentWindow.postMessage(
+                    JSON.stringify({ event: 'command', func: func, args: args || [] }),
+                    '*'
+                );
+            }
+
+            if (audioEl && servitudeYtIframe) {
+                audioEl.addEventListener('play', () => {
+                    postYtCommand('pauseVideo', []);
+                });
+            }
+
+            function triggerVideoCue(sec, scrollToStage) {
+                if (!servitudeYtIframe) return;
+                if (audioEl && !audioEl.paused) {
+                    audioEl.pause();
+                }
+                chapterBtns.forEach((btn) => {
+                    btn.classList.toggle('active', Number(btn.getAttribute('data-yt-seek')) === sec);
+                });
+                if (scrollToStage && videoStageEl) {
+                    videoStageEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                if (ytPlayerBooted && servitudeYtIframe.contentWindow) {
+                    postYtCommand('seekTo', [sec, true]);
+                    postYtCommand('playVideo', []);
+                } else {
+                    servitudeYtIframe.addEventListener('load', () => {
+                        ytPlayerBooted = true;
+                    }, { once: true });
+                    servitudeYtIframe.src = baseYtEmbed + '&autoplay=1&start=' + sec;
+                }
+            }
+
+            chapterBtns.forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const sec = Number(btn.getAttribute('data-yt-seek')) || 0;
+                    triggerVideoCue(sec, false);
+                });
+            });
+
+            if (watchVideoCueBtn) {
+                watchVideoCueBtn.addEventListener('click', () => {
+                    triggerVideoCue(0, true);
+                });
             }
 
             // Lightbox Gallery Inspector
