@@ -2255,3 +2255,130 @@ body > .viewport-container {
         position: static;
     }
 }
+
+/* Entry #05: Neon Kipple Hero Showcase & Co-Architect Split Pick */
+.itw-hero-plate-frame {
+    position: relative;
+    background: #05080c;
+    border: 1.5px solid var(--color-solar-orange);
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.65), 0 0 26px rgba(255, 107, 43, 0.2);
+    transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
+}
+
+.itw-hero-plate-frame:hover {
+    border-color: var(--color-hud-cyan);
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.72), 0 0 28px rgba(44, 229, 246, 0.25);
+    transform: translateY(-2px);
+}
+
+.itw-hero-plate-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.42s ease;
+}
+
+.itw-hero-plate-frame:hover img {
+    transform: scale(1.015);
+}
+
+.itw-plate-tag.hero-orange {
+    background: rgba(255, 107, 43, 0.94);
+    border-color: var(--color-solar-orange);
+    color: #071922;
+}
+
+.itw-pick-split {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 18px;
+    align-items: stretch;
+    background: rgba(8, 25, 34, 0.92);
+    border: 1px solid rgba(44, 229, 246, 0.48);
+    border-radius: 4px;
+    padding: 16px;
+}
+
+.macro-environment.argon-light .itw-pick-split {
+    background: #F8FAFC;
+    border-color: #0E7490;
+}
+
+.itw-pick-media {
+    position: relative;
+    border-radius: 3px;
+    overflow: hidden;
+    border: 1px solid rgba(44, 229, 246, 0.35);
+    background: #05080c;
+    cursor: pointer;
+}
+
+.itw-pick-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.38s ease;
+}
+
+.itw-pick-media:hover img {
+    transform: scale(1.025);
+}
+
+.itw-pick-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.itw-pick-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--color-hud-cyan);
+    text-transform: uppercase;
+}
+
+.macro-environment.argon-light .itw-pick-kicker {
+    color: #0E7490;
+}
+
+.itw-pick-title {
+    font-size: 1.12rem;
+    font-weight: 800;
+    line-height: 1.3;
+    color: var(--color-pure-white);
+}
+
+.macro-environment.argon-light .itw-pick-title {
+    color: #0F172A;
+}
+
+.itw-pick-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.86rem;
+    line-height: 1.54;
+    color: #C7E4EE;
+}
+
+.itw-pick-points strong {
+    color: var(--color-solar-orange);
+}
+
+.macro-environment.argon-light .itw-pick-points {
+    color: #334155;
+}
+
+@media (max-width: 768px) {
+    .itw-pick-split {
+        grid-template-columns: 1fr;
+    }
+}
