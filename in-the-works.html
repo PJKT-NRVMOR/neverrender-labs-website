@@ -43,7 +43,7 @@
                                 <span class="retro-dot d-amber"></span>
                                 <span class="retro-dot d-mint"></span>
                             </div>
-                            <span class="retro-window-tag">PRODUCTION LOG // NOV 13 - NOV 16, 2026</span>
+                            <span class="retro-window-tag">PRODUCTION LOG // NOV 13 - NOV 18, 2026</span>
                         </div>
                         <div class="retro-window-body">
                             <div class="dsuite-kicker">LIVE PRODUCTION DEVBLOG <span class="slash-accent">//</span> FOLLOW ALONG</div>
@@ -57,21 +57,22 @@
                             <div class="itw-meta-pills">
                                 <span class="itw-meta-pill orange">HERO RIG: NRL 21067 SD</span>
                                 <span class="itw-meta-pill">18 GRADED PLATES + 16 C2PA MASTERS</span>
-                                <span class="itw-meta-pill">3 STUDIO MASTERS // 118 BPM</span>
+                                <span class="itw-meta-pill">4 STUDIO MASTERS // WAWYS LIVE</span>
                                 <a href="#servitude-video" class="itw-meta-pill orange" style="text-decoration: none;">&#9654; 1080P24 CUT STREAMING LIVE</a>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- 3. Interactive 3-Track Studio Master Console -->
+                <!-- 3. Interactive 4-Track Studio Master Console -->
                 <section class="itw-audio-deck" id="audio-deck" aria-label="Outpost Cruise Night Studio Master Console">
                     <div class="itw-deck-top">
                         <div class="itw-deck-label">
                             &gt; STUDIO AUDIO CONSOLE // <span class="accent-orange">OUTPOST CRUISE NIGHT MASTERS</span> (320 KBPS FROM 48 KHZ WAV)
                         </div>
                         <div class="itw-stem-tabs" role="tablist" aria-label="Audio Stem Selection">
-                            <button type="button" class="itw-stem-btn active" id="stem-servitude" data-stem="servitude">ATTENTION IS SERVITUDE // NRL MASTER [03:01]</button>
+                            <button type="button" class="itw-stem-btn active" id="stem-wawys" data-stem="wawys">WE ARE WHAT YOU SEE // NRL MASTER [02:42]</button>
+                            <button type="button" class="itw-stem-btn" id="stem-servitude" data-stem="servitude">ATTENTION IS SERVITUDE // NRL MASTER [03:01]</button>
                             <button type="button" class="itw-stem-btn" id="stem-take2" data-stem="take2">NEO ARCADE CHASE // TAKE 2 [03:00]</button>
                             <button type="button" class="itw-stem-btn" id="stem-take1" data-stem="take1">NEO ARCADE CHASE // TAKE 1 [02:57]</button>
                         </div>
@@ -79,28 +80,29 @@
 
                     <div class="itw-deck-controls">
                         <button type="button" class="itw-play-btn" id="audio-play-btn">[&#9654;] PLAY STEM</button>
+                        <button type="button" class="itw-cue-btn" id="sax-cue-btn" title="Cue We Are What You See (NRL Master) to the 01:02 midnight saxophone solo">[&#127927; 01:02 MIDNIGHT SAX SOLO]</button>
                         <button type="button" class="itw-cue-btn" id="whisper-cue-btn" title="Cue Attention Is Servitude (NRL Master) to the 01:58 sonar whisper bridge">[&#9889; 01:58 SONAR WHISPER BRIDGE]</button>
                         <button type="button" class="itw-cue-btn" id="phaser-cue-btn" title="Switch to Neo Arcade Chase Take 2 and cue to the 01:17 analog phaser pocket">[&#9889; 01:17 PHASER DROP]</button>
                         <button type="button" class="itw-cue-btn" id="watch-video-cue-btn" title="Jump down and stream the 1080p24 Attention Is Servitude visualizer cut">[&#127916; WATCH 1080P24 VIDEO]</button>
                         <div class="itw-scrubber-wrap">
-                            <input type="range" class="itw-scrubber" id="audio-scrubber" min="0" max="181" step="0.1" value="0" aria-label="Seek audio position">
-                            <span class="itw-timecode" id="audio-timecode">00:00 / 03:01</span>
+                            <input type="range" class="itw-scrubber" id="audio-scrubber" min="0" max="162" step="0.1" value="0" aria-label="Seek audio position">
+                            <span class="itw-timecode" id="audio-timecode">00:00 / 02:42</span>
                         </div>
                         <button type="button" class="itw-mute-btn" id="audio-mute-btn">[&#128266; MUTE]</button>
                     </div>
 
                     <div class="itw-deck-telemetry">
-                        <span id="stem-telemetry-readout">ACTIVE: ATTENTION IS SERVITUDE (CLEAN TAPE MASTER) // 118 BPM // -12.3 LUFS // -1.5 DBTP</span>
-                        <span id="stem-cue-readout">CUE MARKERS: 01:44 FUZZ SLIDE SOLO // 01:58 SONAR WHISPER POCKET</span>
+                        <span id="stem-telemetry-readout">ACTIVE: WE ARE WHAT YOU SEE (NRL MASTER // WAWYS) // -13.2 LUFS // -2.7 DBTP</span>
+                        <span id="stem-cue-readout">CUE MARKERS: 01:02 MIDNIGHT SAX SOLO // 01:36 LOW-PASS TALKBOX BRIDGE</span>
                     </div>
 
-                    <audio id="devblog-audio" preload="metadata" src="IN_THE_WORKS/audio/attention-is-servitude-nrl-master.mp3"></audio>
+                    <audio id="devblog-audio" preload="metadata" src="IN_THE_WORKS/audio/we-are-what-you-see-nrl-master.mp3"></audio>
                 </section>
 
                 <!-- Quick-Jump Anchor Bar -->
                 <nav class="itw-jump-nav" aria-label="Production Entries Navigation">
                     <a href="#servitude-video" class="itw-jump-link featured-cut">[&#9654; 1080P24 CUT] ATTENTION IS SERVITUDE</a>
-                    <a href="#neon-kipple" class="itw-jump-link">[#05] NEON KIPPLE &amp; JAX POV (NOV 16)</a>
+                    <a href="#neon-kipple" class="itw-jump-link">[#05] NEON KIPPLE &amp; WAWYS (NOV 16-18)</a>
                     <a href="#road-spine" class="itw-jump-link">[#04] 6-BEAT ROAD SPINE (NOV 15)</a>
                     <a href="#outpost-cast" class="itw-jump-link">[#03] BAR PLATES &amp; 3-TURN CAST (NOV 15)</a>
                     <a href="#super-dross-hcard" class="itw-jump-link">[#02] 6-PANEL CAD &amp; OCCLUSION CLIFF (NOV 14)</a>
@@ -111,7 +113,7 @@
                 <article class="itw-entry-card" id="neon-kipple">
                     <div class="itw-entry-header">
                         <span class="itw-entry-badge">ENTRY #05 // NEON KIPPLE, COURIER LOCK &amp; 1080P24 CUT</span>
-                        <span class="itw-entry-date">2026-11-16 // BILLBOARD &amp; VISUALIZER RELEASE</span>
+                        <span class="itw-entry-date">2026-11-16 -> 2026-11-18 // BILLBOARD, VISUALIZER &amp; WAWYS SCORE</span>
                     </div>
                     <h2 class="itw-entry-title">
                         Building Neon Kipple: "Attention Is Servitude" &amp; Putting Jax Behind the Wheel
@@ -178,9 +180,11 @@
                                 <li><strong>Reverse-Angle Grammar:</strong> Cuts from the wide desert exterior Hero plate straight into an intimate 28mm over-the-shoulder cockpit shot climbing the foggy concrete causeway.</li>
                                 <li><strong>Courier Premise On Camera:</strong> First plate putting <strong>Jax (Unit 0)</strong> behind the wheel in his cracked matte porcelain seams, pinstripe vest, and black tie centered in the rearview mirror. Antique copper-brass left hand grips the scrubbed wood-rim steering wheel while his right hand works the floor shifter, showing why an android runs inbound so Stagecoach regulars stay clear of city towers.</li>
                                 <li><strong>Zero Geometry Drift:</strong> Welded center T-bar roof spine, quad #2CE5F6 cyan dash dials, twin #FF6B2B hood stripes, and cold-white overhead glass piping stay locked without blurred rocker stencils or stray louvers.</li>
+                                <li><strong>NRL Master Score (<code>WAWYS</code> // 02:42):</strong> Paired with its own French-touch x outlaw-blues road anthem (<em>"Driving through the high-rise fog / Tuning out the commercial soul / No price tag on my memory"</em>): smoky midnight saxophone hooks, rubbery slap bass, talkbox vocoder call-and-response, and a <code>01:36</code> low-pass filter-sweep bridge mastered in Audition at <strong>-13.2 LUFS</strong> Integrated, <strong>4.5 LU</strong> range, <strong>-2.7 dBFS</strong> True Peak, and <strong>0.000000</strong> flat factor.</li>
                             </ul>
                             <div class="itw-plate-actions">
                                 <button type="button" class="itw-badge-btn" onclick="openLightboxByIndex(17)">[&#128269; INSPECT COCKPIT PLATE]</button>
+                                <button type="button" class="itw-badge-btn" onclick="window.playWawysMaster()">[&#9654; STREAM WAWYS MASTER (02:42)]</button>
                                 <a href="IN_THE_WORKS/c2pa/kipple-02-we-are-what-you-see-jax-pov-cr.jpg" target="_blank" rel="noopener" class="itw-badge-btn c2pa">[&#128737; OPEN C2PA MASTER (3.0 MB)]</a>
                             </div>
                         </div>
@@ -610,9 +614,10 @@
                 });
             }
 
-            // 3-Track Studio Master Audio Console
+            // 4-Track Studio Master Audio Console
             const audioEl = document.getElementById('devblog-audio');
             const playBtn = document.getElementById('audio-play-btn');
+            const saxBtn = document.getElementById('sax-cue-btn');
             const whisperBtn = document.getElementById('whisper-cue-btn');
             const phaserBtn = document.getElementById('phaser-cue-btn');
             const muteBtn = document.getElementById('audio-mute-btn');
@@ -620,11 +625,18 @@
             const timecodeEl = document.getElementById('audio-timecode');
             const telemetryEl = document.getElementById('stem-telemetry-readout');
             const cueReadoutEl = document.getElementById('stem-cue-readout');
+            const stemWawysBtn = document.getElementById('stem-wawys');
             const stemServitudeBtn = document.getElementById('stem-servitude');
             const stemTake2Btn = document.getElementById('stem-take2');
             const stemTake1Btn = document.getElementById('stem-take1');
 
             const stems = {
+                wawys: {
+                    src: 'IN_THE_WORKS/audio/we-are-what-you-see-nrl-master.mp3',
+                    telemetry: 'ACTIVE: WE ARE WHAT YOU SEE (NRL MASTER // WAWYS) // -13.2 LUFS // -2.7 DBTP',
+                    cue: 'CUE MARKERS: 01:02 MIDNIGHT SAX SOLO // 01:36 LOW-PASS TALKBOX BRIDGE',
+                    fallbackDuration: 162
+                },
                 servitude: {
                     src: 'IN_THE_WORKS/audio/attention-is-servitude-nrl-master.mp3',
                     telemetry: 'ACTIVE: ATTENTION IS SERVITUDE (CLEAN TAPE MASTER) // 118 BPM // -12.3 LUFS // -1.5 DBTP',
@@ -644,7 +656,7 @@
                     fallbackDuration: 177
                 }
             };
-            let currentStemKey = 'servitude';
+            let currentStemKey = 'wawys';
 
             function formatTime(sec) {
                 if (!Number.isFinite(sec) || sec < 0) sec = 0;
@@ -673,6 +685,7 @@
                 if (!stem || !audioEl) return;
                 const changed = currentStemKey !== key;
                 currentStemKey = key;
+                if (stemWawysBtn) stemWawysBtn.classList.toggle('active', key === 'wawys');
                 if (stemServitudeBtn) stemServitudeBtn.classList.toggle('active', key === 'servitude');
                 if (stemTake2Btn) stemTake2Btn.classList.toggle('active', key === 'take2');
                 if (stemTake1Btn) stemTake1Btn.classList.toggle('active', key === 'take1');
@@ -703,10 +716,15 @@
                 }
             }
 
+            window.playWawysMaster = () => {
+                selectStem('wawys', true, 0);
+            };
+
             window.playServitudeMaster = () => {
                 selectStem('servitude', true, 0);
             };
 
+            if (stemWawysBtn) stemWawysBtn.addEventListener('click', () => selectStem('wawys', !audioEl.paused));
             if (stemServitudeBtn) stemServitudeBtn.addEventListener('click', () => selectStem('servitude', !audioEl.paused));
             if (stemTake2Btn) stemTake2Btn.addEventListener('click', () => selectStem('take2', !audioEl.paused));
             if (stemTake1Btn) stemTake1Btn.addEventListener('click', () => selectStem('take1', !audioEl.paused));
@@ -718,6 +736,12 @@
                     } else {
                         audioEl.pause();
                     }
+                });
+            }
+
+            if (saxBtn && audioEl) {
+                saxBtn.addEventListener('click', () => {
+                    selectStem('wawys', true, 62);
                 });
             }
 
