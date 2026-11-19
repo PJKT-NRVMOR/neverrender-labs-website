@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RenderSins *ding!* // AI Physics Failures &amp; Deterministic Fixes - NeverRender Labs</title>
+    <meta name="description" content="NeverRender Labs RenderSins (*ding!*): an open-hood archive of real generative cinema physics crimes (Reverse-Gear Super Dross, SEAL Team 6 smoke grenades, Bluetooth Dual Exhaust, 7th Louver Hydra, and the 144-frame Occlusion Cliff) alongside the exact deterministic prompt and CAD fixes that redeemed them.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=23">
+    <link rel="icon" type="image/svg+xml" href="favicon-svg.svg">
+</head>
+<body>
+    <div class="macro-environment" id="macro-env">
+        <!-- Energy Conduits -->
+        <div class="conduit-grid">
+            <div class="conduit-line horizontal top"></div>
+            <div class="conduit-line vertical left"></div>
+            <div class="conduit-line horizontal bottom"></div>
+            <div class="conduit-line vertical right"></div>
+        </div>
+
+        <div class="viewport-container itw-viewport" id="main-viewport">
+            <div class="glass-panel">
+
+                <!-- 1. Top Masthead Bar -->
+                <header class="dev-top-bracket">
+                    <div class="dev-brand-pill" id="rs-brand-pill" title="Click 5x or type rindersin for studio lore" style="cursor: pointer;">
+                        <span class="dev-code-glyph">&lt;/&gt;</span>
+                        <span id="rs-brand-label">NEVERRENDER LABS <span class="slash-orange">//</span> RENDERSINS</span>
+                    </div>
+                    <div class="dev-header-controls">
+                        <button class="dev-ctrl-btn" id="toggle-argon-theme" type="button" title="Switch between D-Suite Petrol HUD and Corporate Paper Light">[&#9680; MODE: D-SUITE TEAL]</button>
+                        <a href="in-the-works.html" class="dev-ctrl-btn" style="text-decoration: none;">[&#127916; IN THE WORKS]</a>
+                        <a href="tech-logs.html" class="dev-ctrl-btn" style="text-decoration: none;">[&#9889; TECH LOGS]</a>
+                        <a href="index.html?hud=1" class="dev-ctrl-btn" style="text-decoration: none;">[x] TERMINAL</a>
+                    </div>
+                </header>
+
+                <!-- 2. Hero Stage -->
+                <section class="dev-hero-stage itw-hero-stage">
+                    <div class="retro-browser-window itw-hero-window">
+                        <div class="retro-window-bar">
+                            <div class="retro-window-dots">
+                                <span class="retro-dot d-pink"></span>
+                                <span class="retro-dot d-amber"></span>
+                                <span class="retro-dot d-mint"></span>
+                            </div>
+                            <span class="retro-window-tag">OPEN-HOOD QA ARCHIVE // ZERO CHERRY-PICKING</span>
+                        </div>
+                        <div class="retro-window-body">
+                            <div class="dsuite-kicker">GENERATIVE CINEMA QA <span class="slash-accent">//</span> HALL OF SHAME &amp; FIXES</div>
+                            <h1 class="retro-window-title" id="rs-hero-title">
+                                RENDERSINS *DING!*
+                            </h1>
+                            <div class="dsuite-subkicker">EVERY PHYSICS FELONY WE CAUGHT ON CAMERA // AND THE EXACT ENGINEERING THAT KILLED IT</div>
+                            <p class="itw-hero-intro">
+                                Most AI studios hide their failed generations behind polished three-second highlight reels and pretend the model nailed it on Try #1. <strong>NeverRender Labs</strong> puts the unvarnished physics crimes right on the front lawn alongside the optical-parallax prompts, orthographic H-Cards, and surgical inpainting locks that fixed them deterministically.
+                            </p>
+                            <div class="itw-meta-pills">
+                                <span class="itw-meta-pill orange">4 CANONICAL CASE FILES</span>
+                                <span class="itw-meta-pill">ZERO-KB WEB AUDIO *DING!* ENGINE</span>
+                                <span class="itw-meta-pill">SYNCED BEFORE / AFTER DUAL-DECK</span>
+                                <a href="in-the-works.html#wawys-rendersin" class="itw-meta-pill" style="text-decoration: none;">&#127916; FULL OUTPOST DEVBLOG</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. Sticky Running Sin Counter HUD -->
+                <section class="rs-hud-bar" id="rs-hud-bar" aria-label="Running RenderSin Counter">
+                    <div class="rs-counter-group">
+                        <div class="rs-sin-digits" id="rs-sin-digits">SINS: 004 *DING!*</div>
+                        <div class="rs-counter-meta" id="rs-counter-meta">REDEEMED: 0 / 4 // ACTIVE CRIMES AGAINST PHYSICS</div>
+                    </div>
+                    <div class="itw-rs-btn-group">
+                        <button type="button" class="itw-rs-sync-btn primary" id="rs-test-ding">[&#128276; *DING!* +1]</button>
+                        <button type="button" class="itw-rs-sync-btn" id="rs-redeem-all">[&#9989; REDEEM ALL]</button>
+                        <button type="button" class="itw-rs-sync-btn" id="rs-reset-all">[&#8634; RESET]</button>
+                        <button type="button" class="itw-rs-sync-btn" id="rs-mute-btn">[&#128266; CHIMES: ON]</button>
+                    </div>
+                </section>
+
+                <!-- Quick-Jump Navigation -->
+                <nav class="itw-jump-nav" aria-label="RenderSin Case Index">
+                    <a href="#sin-001" class="itw-jump-link featured-cut">[SIN #001] REVERSE-GEAR + M18 SMOKE SCREEN</a>
+                    <a href="#sin-002" class="itw-jump-link">[SIN #002] "OATEE" &amp; BLUETOOTH EXHAUST</a>
+                    <a href="#sin-003" class="itw-jump-link">[SIN #003] HAUNTED SEATBACK EYES &amp; 7TH LOUVER</a>
+                    <a href="#sin-004" class="itw-jump-link">[SIN #004] THE 144-FRAME OCCLUSION CLIFF</a>
+                </nav>
+
+                <!-- SIN #001: WAWYS Clip 001 (Synced Live Dual-Deck) -->
+                <article class="rs-case-card" id="sin-001" data-sin-id="1">
+                    <div class="rs-case-top">
+                        <span class="rs-sin-badge" data-badge-sin="SIN #001 // CLASS-A PHYSICS FELONY // GOOGLE FLOW OMNI" data-badge-win="WIN #001 // REDEEMED VIA 55 MPH OPTICAL PARALLAX">SIN #001 // CLASS-A PHYSICS FELONY // GOOGLE FLOW OMNI</span>
+                        <div class="rs-case-controls">
+                            <button type="button" class="rs-ding-btn" data-ding-card="1">[&#128276; *DING!* +1 SIN]</button>
+                            <button type="button" class="rs-redeem-btn" data-redeem-card="1">[&#9989; REDEEM WITH RENDERWIN]</button>
+                        </div>
+                    </div>
+
+                    <h2 class="itw-entry-title">
+                        Super Dross Shifts Into Reverse Inside a SEAL Team 6 Smoke Screen (WAWYS Clip 001)
+                    </h2>
+                    <p class="itw-prose">
+                        Exact same <code>4x5 -> 9:16</code> Jax cockpit start plate, exact same Google Flow (<code>Omni</code>) video engine, zero seed luck. On Pass 01, spelling out <code>"WE ARE WHAT YOU SEE"</code> over a right-cropped billboard without a forward driving verb forced the model to throw Super Dross into <strong>Reverse</strong> just to reveal the missing letters, while <code>"dense dark teal causeway fog drifts"</code> detonated three volumetric M18 smoke canisters straight off the left shoulder.
+                    </p>
+
+                    <!-- Synced Dual-Deck Theater (Zero Extra Repo Bytes - Reuses IN_THE_WORKS/video/) -->
+                    <div class="itw-rs-stage">
+                        <div class="itw-rs-controls">
+                            <div class="itw-video-kicker">
+                                <span class="indicator blink"></span>LIVE EVIDENCE DECK // SAME PLATE, SAME MODEL, PURE PROMPT PHYSICS
+                            </div>
+                            <div class="itw-rs-btn-group">
+                                <button type="button" class="itw-rs-sync-btn primary" id="rs-play-both">[&#9654; PLAY BOTH SYNCED]</button>
+                                <button type="button" class="itw-rs-sync-btn" id="rs-pause-both">[|| PAUSE]</button>
+                                <button type="button" class="itw-rs-sync-btn" id="rs-restart-both">[&#8634; 00:00]</button>
+                                <button type="button" class="itw-rs-sync-btn" id="rs-jump-exit">[&#9889; 00:02.5 BILLBOARD EXIT]</button>
+                                <button type="button" class="itw-rs-sync-btn" id="rs-audio-toggle">[&#128266; SYNC AUDIO: RENDERWIN]</button>
+                            </div>
+                        </div>
+
+                        <div class="itw-rs-deck-grid">
+                            <div class="itw-rs-deck sin">
+                                <div class="itw-rs-deck-head">
+                                    <span>&#9888; RENDERSIN *DING!* // PASS 01</span>
+                                    <span>720x1280 // 24FPS // 6.0S</span>
+                                </div>
+                                <video id="rs-video-sin" class="itw-rs-video" controls playsinline preload="metadata" poster="IN_THE_WORKS/video/wawys-clip-001-rendersin-poster.jpg">
+                                    <source src="IN_THE_WORKS/video/wawys-clip-001-rendersin.mp4" type="video/mp4">
+                                </video>
+                                <div class="itw-rs-deck-foot">
+                                    <strong>The Crime:</strong> Car backs down the causeway (<code>00:00.5 -> 00:05.5</code>) to unmask cropped <code>SEE</code> + arrow tip while tactical teal smoke billows up from the left fender.
+                                </div>
+                            </div>
+
+                            <div class="itw-rs-deck win">
+                                <div class="itw-rs-deck-head">
+                                    <span>&#9989; RENDERWIN // 55 MPH PARALLAX FIX</span>
+                                    <span>720x1280 // 24FPS // 6.0S</span>
+                                </div>
+                                <video id="rs-video-win" class="itw-rs-video" controls playsinline preload="metadata" poster="IN_THE_WORKS/video/wawys-clip-001-renderwin-poster.jpg">
+                                    <source src="IN_THE_WORKS/video/wawys-clip-001-renderwin.mp4" type="video/mp4">
+                                </video>
+                                <div class="itw-rs-deck-foot">
+                                    <strong>The Redemption:</strong> Crisp dry night air, concrete barriers whipping backward, monopole swelling off the upper-right roof pillar right at <code>00:03</code>, and its fender reflection sliding cleanly off the hood cowl.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="itw-rs-audit-grid">
+                        <div class="itw-rs-audit-card sin">
+                            <div class="itw-rs-audit-title">// SIN INDICTMENT</div>
+                            <ul class="itw-pick-points">
+                                <li><strong>Token-Completion Reverse Gear:</strong> Never transcribe cropped background signage inside an image-to-video prompt; diffusion solvers will literally reverse the vehicle to bring missing letters into view.</li>
+                                <li><strong>Static Fog Boiling:</strong> Without explicit vehicle velocity, foreground fog drift collapses into localized smoke plumes erupting right next to the car.</li>
+                            </ul>
+                        </div>
+                        <div class="itw-rs-audit-card win">
+                            <div class="itw-rs-audit-title">// RENDERWIN VERDICT</div>
+                            <ul class="itw-pick-points">
+                                <li><strong>Optical Parallax Steering:</strong> Drop the sign transcript completely, lock <code>55 mph</code> forward motion, and describe exact pixel trajectories (monopole exiting upper-right at <code>00:03</code> + hood reflection sliding backward toward the cowl).</li>
+                                <li><strong>Zero Cabin Drift:</strong> Jax's porcelain seams, brass hands, welded center T-bar spine, rearview mirror, and quad cyan gauges stayed 100% locked across all 144 frames.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <details class="itw-rs-prompt-details">
+                        <summary>[+ INSPECT FULL BEFORE / AFTER GOOGLE FLOW PROMPTS]</summary>
+                        <div class="itw-rs-prompt-pre"><strong>[RENDERSIN PROMPT - PASS 01]:</strong>
+Locked interior cockpit camera perspective at 24fps with subtle highway road micro-vibration across the open-top cabin. Dense dark teal causeway fog drifts smoothly past the windshield and across the rusted monopole billboard in the upper right as the glowing white-cyan neon letters WE ARE WHAT YOU SEE hum with a brief, crisp 60Hz voltage flicker before stabilizing bright. Keep all lettering, porcelain neck seams, brass knuckles, overhead T-bar spine, and hood stripes completely rigid with zero morphing and zero camera pan.
+
+<strong>[RENDERWIN PROMPT - PASS 02 // 55 MPH OPTICAL PARALLAX]:</strong>
+Rigid chassis-mounted interior cockpit camera moving steadily forward at 55 mph down an elevated concrete highway causeway at 24fps, carrying subtle 2% road-surface micro-vibration across the open split-T-bar cabin with zero camera pan and zero reverse motion. The night air ahead of the windshield is crisp, dry, and completely clear with zero foreground fog, zero billowing smoke, and only static distant slate-teal horizon haze far down the road. As the coupe drives briskly forward, the elevated concrete barriers and dark causeway walls rush steadily backward past both sides of the hood. In the upper right, the glowing white-cyan neon monopole billboard gives one brief crisp 60Hz flicker in the first second as it rapidly grows larger in forward perspective, sweeping cleanly upward and off the upper-right edge of the windshield frame by second 3 as the car drives underneath and past it into the dark open causeway ahead, while the bright white-cyan reflection on the glossy cerulean right fender slides backward down the hood toward the windshield cowl and disappears.</div>
+                    </details>
+                </article>
+
+                <!-- SIN #002: "Oatee", Hyundai Cobra & Bluetooth Dual Exhaust -->
+                <article class="rs-case-card" id="sin-002" data-sin-id="2">
+                    <div class="rs-case-top">
+                        <span class="rs-sin-badge" data-badge-sin="SIN #002 // STRUCTURAL HALLUCINATION // MK I CHASSIS" data-badge-win="WIN #002 // REDEEMED VIA '69 FASTBACK REBUILD">SIN #002 // STRUCTURAL HALLUCINATION // MK I CHASSIS</span>
+                        <div class="rs-case-controls">
+                            <button type="button" class="rs-ding-btn" data-ding-card="2">[&#128276; *DING!* +1 SIN]</button>
+                            <button type="button" class="rs-redeem-btn" data-redeem-card="2">[&#9989; REDEEM WITH RENDERWIN]</button>
+                        </div>
+                    </div>
+
+                    <h2 class="itw-entry-title">
+                        "Oatee", The 3-Door Hyundai Cobra &amp; Schrodinger's Bluetooth Dual Exhaust
+                    </h2>
+                    <p class="itw-prose">
+                        Before <strong>NRL 21067 SD ("Super Dross")</strong> became a disciplined 1969 wide-body fastback, our Nov 13 MK I prototype attempted a surreal 4-door 1972 Roadrunner x Shelby Cobra mashup. Within twenty-four hours, live inspection uncovered four simultaneous structural crimes: an AI fender emblem proudly spelling <strong>"Oatee"</strong>, a stray door handle glued to a smooth front fender, an asymmetric three-door <em>"Hyundai Cobra"</em> mutation, and the grand finale caught over morning coffee: <strong>Schrodinger's Bluetooth Dual Exhaust</strong> (full Shelby side pipes under the doors PLUS full dual tailpipes under the rear bumper, physically plumbed to absolutely nothing).
+                    </p>
+
+                    <div class="itw-hcard-showcase" data-rs-plate="0" role="button" tabindex="0" aria-label="Inspect post-pivot 6-panel Super Dross CAD RenderWin">
+                        <img src="IN_THE_WORKS/web/nrl-21067-sd-6-panel-card.jpg" alt="6-panel orthographic CAD sheet locking NRL 21067 SD Super Dross after scrapping the MK I Bluetooth Exhaust chassis" loading="lazy">
+                    </div>
+
+                    <div class="itw-rs-audit-grid">
+                        <div class="itw-rs-audit-card sin">
+                            <div class="itw-rs-audit-title">// THE FOUR MK I CRIMES</div>
+                            <ul class="itw-pick-points">
+                                <li><strong>Phantom Plumbing:</strong> Side-exit Shelby pipes and dual rear valance tips coexisting in quantum superposition.</li>
+                                <li><strong>Hallucinated Badging &amp; Doors:</strong> Fender script spelling <code>"Oatee"</code>, phantom front-quarter door handle, and uneven 3-door sedan geometry.</li>
+                            </ul>
+                        </div>
+                        <div class="itw-rs-audit-card win">
+                            <div class="itw-rs-audit-title">// RENDERWIN VERDICT</div>
+                            <ul class="itw-pick-points">
+                                <li><strong>Full Platform Scrap &amp; 6-Panel H-Card Lock:</strong> Rebuilt onto a crisp 2-door '69 fastback pony chassis with twin rear chrome tips only, bolted wide flares, and a welded split-T-bar spine.</li>
+                                <li><strong>One Happy Accident Salvaged:</strong> Kept the worn dark navy leather and crisp <code>#2CE5F6</code> cyan analog gauge pods straight out of that rogue Hyundai Cobra cockpit.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="itw-plate-actions">
+                        <button type="button" class="itw-badge-btn" onclick="openRsLightbox(0)">[&#128269; ZOOM 6-PANEL RENDERWIN]</button>
+                        <a href="in-the-works.html#chassis-pivot" class="itw-badge-btn">[&#128214; READ ENTRY #01 ORIGIN LOG]</a>
+                    </div>
+                </article>
+
+                <!-- SIN #003: Haunted Seatback Eyes, Rogue Pony Emblem & 7th Louver Hydra -->
+                <article class="rs-case-card" id="sin-003" data-sin-id="3">
+                    <div class="rs-case-top">
+                        <span class="rs-sin-badge" data-badge-sin="SIN #003 // CONTINUITY DRIFT // PHANTOM TRIM" data-badge-win="WIN #003 // REDEEMED VIA SURGICAL INPAINTING">SIN #003 // CONTINUITY DRIFT // PHANTOM TRIM</span>
+                        <div class="rs-case-controls">
+                            <button type="button" class="rs-ding-btn" data-ding-card="3">[&#128276; *DING!* +1 SIN]</button>
+                            <button type="button" class="rs-redeem-btn" data-redeem-card="3">[&#9989; REDEEM WITH RENDERWIN]</button>
+                        </div>
+                    </div>
+
+                    <h2 class="itw-entry-title">
+                        Haunted Wall-E Seatback Eyes, The Rogue Mustang Horn Badge &amp; The 7th Louver Hydra
+                    </h2>
+                    <p class="itw-prose">
+                        Even after locking the chassis silhouette, generative diffusion models relentlessly try to smuggle training-set muscle-car muscle memory back into the frame: glowing cyan Wall-E odometer eyes staring out of the high-back leather seats, a factory Mustang pony emblem hijacking the steering wheel horn button while erasing the overhead T-bar roof spine on Beat 03, and a recurring <strong>7th matte-black rear window louver</strong> sneaking back onto the rear glass whenever prompt text grew wordy.
+                    </p>
+
+                    <div class="rs-evidence-pair">
+                        <div class="rs-evidence-card" data-rs-plate="1" role="button" tabindex="0" aria-label="Inspect post-surgery Beat 03 cockpit plate">
+                            <div class="rs-evidence-media">
+                                <span class="itw-plate-tag">WIN PROOF A // T-BAR WELDED &amp; HORN SCRUBBED</span>
+                                <img src="IN_THE_WORKS/web/beat-03-ots-cockpit-highway-saturn.jpg" alt="Post-surgery Beat 03 interior cockpit POV showing welded overhead split-T-bar spine and clean debadged wood-rim steering wheel" loading="lazy">
+                            </div>
+                            <div class="rs-evidence-caption">
+                                <strong>Beat 03 Post-Surgery Master:</strong> Overhead split-T-bar roof spine welded back across the windshield header, rogue factory pony emblem scrubbed clean, and haunted leather seat eyes exorcised.
+                            </div>
+                        </div>
+
+                        <div class="rs-evidence-card" data-rs-plate="2" role="button" tabindex="0" aria-label="Inspect WAWYS Plate B showing 6 matte-black rear louvers locked">
+                            <div class="rs-evidence-media">
+                                <span class="itw-plate-tag hero-orange">WIN PROOF B // ALL 6 LOUVERS LOCKED</span>
+                                <img src="IN_THE_WORKS/web/wawys-plate-b-sparking-gantry.jpg" alt="WAWYS Plate B showing NRL 21067 SD from directly behind with exactly 6 matte-black rear window louvers intact" loading="lazy">
+                            </div>
+                            <div class="rs-evidence-caption">
+                                <strong>6-Slat Louver Compliance:</strong> Surgical <code>7 -> 6</code> louver inpainting on the H-Card plus explicit <code>"6 horizontal matte-black rear window louvers"</code> locked all six slats cleanly across WAWYS Plates B, D, and E.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="itw-plate-actions">
+                        <button type="button" class="itw-badge-btn" onclick="openRsLightbox(1)">[&#128269; INSPECT BEAT 03 FIX]</button>
+                        <button type="button" class="itw-badge-btn" onclick="openRsLightbox(2)">[&#128269; COUNT ALL 6 LOUVERS]</button>
+                        <a href="in-the-works.html#neon-kipple" class="itw-badge-btn">[&#128214; READ ENTRY #05]</a>
+                    </div>
+                </article>
+
+                <!-- SIN #004: The 6-Second (144-Frame) Occlusion Cliff -->
+                <article class="rs-case-card" id="sin-004" data-sin-id="4">
+                    <div class="rs-case-top">
+                        <span class="rs-sin-badge" data-badge-sin="SIN #004 // TEMPORAL DECAY // 144-FRAME WALL" data-badge-win="WIN #004 // REDEEMED VIA ORTHO 3-TURN LOCKS">SIN #004 // TEMPORAL DECAY // 144-FRAME WALL</span>
+                        <div class="rs-case-controls">
+                            <button type="button" class="rs-ding-btn" data-ding-card="4">[&#128276; *DING!* +1 SIN]</button>
+                            <button type="button" class="rs-redeem-btn" data-redeem-card="4">[&#9989; REDEEM WITH RENDERWIN]</button>
+                        </div>
+                    </div>
+
+                    <h2 class="itw-entry-title">
+                        The 6-Second (144-Frame) Occlusion Cliff: Why Unanchored Heads &amp; Panels Melt Past 90 Degrees
+                    </h2>
+                    <p class="itw-prose">
+                        Our earliest <em>Beau // Unit 01</em> tests exposed the single biggest trap in generative video: once a camera orbits past roughly 90 degrees or runs beyond six seconds (<code>~144 frames</code> at <code>24 fps</code>), any face, jacket seam, or body panel that leaves frame gets hallucinated from generic training priors the moment it rotates back into view. Beau's brutalist concrete cube head literally melted mid-turn until we formalized NeverRender Labs' multi-elevation turnaround protocol.
+                    </p>
+
+                    <div class="rs-evidence-pair">
+                        <div class="rs-evidence-card" data-rs-plate="3" role="button" tabindex="0" aria-label="Inspect Jax Unit 0 3-turn orthographic reference sheet">
+                            <div class="rs-evidence-media">
+                                <span class="itw-plate-tag">WIN PROTOCOL A // 3-TURN CHARACTER LOCK</span>
+                                <img src="IN_THE_WORKS/web/cast-jax-unit-0-3-turn.jpg" alt="Jax Unit 0 full-body front, profile, and three-quarter turnaround sheet locking porcelain seams and copper-brass forearms" loading="lazy">
+                            </div>
+                            <div class="rs-evidence-caption">
+                                <strong>Deterministic Cast Anchoring:</strong> Front, profile, and 3/4 turnaround sheets pin Jax's porcelain crack geometry, waistcoat tailoring, and twin copper-brass forearms before a single video frame rolls.
+                            </div>
+                        </div>
+
+                        <div class="rs-evidence-card" data-rs-plate="4" role="button" tabindex="0" aria-label="Inspect DJ Churn 3-pose chroma green compositing sheet">
+                            <div class="rs-evidence-media">
+                                <span class="itw-plate-tag hero-orange">WIN PROTOCOL B // #00FF00 CHROMA INGREDIENTS</span>
+                                <img src="IN_THE_WORKS/web/cast-dj-churn-chroma-green-3-pose.jpg" alt="DJ Churn 3-pose chroma green compositing sheet on pure #00FF00 backdrop" loading="lazy">
+                            </div>
+                            <div class="rs-evidence-caption">
+                                <strong>Sub-6s Keyframing + Chroma Keying:</strong> Pairing clean 5s-6s First/Last-Frame Omni shots with isolated <code>#00FF00</code> pose ingredients keeps complex subjects locked right through Premiere Pro warp cuts.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="itw-plate-actions">
+                        <button type="button" class="itw-badge-btn" onclick="openRsLightbox(3)">[&#128269; INSPECT JAX 3-TURN]</button>
+                        <button type="button" class="itw-badge-btn" onclick="openRsLightbox(4)">[&#128269; INSPECT CHROMA SHEET]</button>
+                        <a href="in-the-works.html#super-dross-hcard" class="itw-badge-btn">[&#128214; READ ENTRY #02]</a>
+                    </div>
+                </article>
+
+                <!-- Telemetry Footer Callout -->
+                <div class="itw-telemetry-callout">
+                    <strong>// LIVING ARCHIVE PROTOCOL:</strong> Every time Google Flow (<code>Omni</code>), Veo, or Firefly commits a fresh felony against Newtonian mechanics, automotive plumbing, or basic louver counting, it gets stamped with a new case number right here alongside the verified fix. Want the full unedited math stress-test too? Check out <a href="neon-physics-benchmark.html" style="color: var(--color-hud-cyan); font-weight: 700;">Making Gemini 4 Neon Extra Stop and Think</a>.
+                </div>
+
+                <!-- 6. Bottom HUD Footer -->
+                <footer class="dev-bottom-bracket">
+                    <div>ARCHIVE: NEVERRENDER LABS // <span class="orange-readout">RENDERSINS *DING!* EDITION</span></div>
+                    <div>WORKSTATION: TINY HYPERION 6800U // <span class="orange-readout">SAN DIEGO, CA</span></div>
+                </footer>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Easter Egg Toast -->
+    <div class="rs-easter-toast" id="rs-easter-toast" role="status" aria-live="polite">
+        &#128276; RINDERSIN MODE UNLOCKED *DING!* (HALL OF FAME MIC EDITION)
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div class="itw-lightbox" id="itw-lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
+        <div class="modal-backdrop" id="lightbox-backdrop"></div>
+        <div class="itw-lightbox-panel">
+            <header class="sys-header">
+                <div class="sys-id" id="lightbox-kicker">// RENDERSINS EVIDENCE INSPECTOR</div>
+                <button type="button" class="close-btn" id="lightbox-close">[X] CLOSE</button>
+            </header>
+            <div class="itw-lightbox-stage">
+                <img id="lightbox-img" src="" alt="">
+            </div>
+            <div class="itw-lightbox-footer">
+                <div class="itw-lightbox-meta">
+                    <div class="itw-lightbox-title" id="lightbox-title"></div>
+                    <div class="itw-lightbox-desc" id="lightbox-desc"></div>
+                </div>
+                <div class="itw-lightbox-controls">
+                    <button type="button" class="dev-ctrl-btn" id="lightbox-prev">[&larr; PREV]</button>
+                    <button type="button" class="dev-ctrl-btn" id="lightbox-next">[NEXT &rarr;]</button>
+                    <a id="lightbox-master-link" href="#" target="_blank" rel="noopener" class="itw-badge-btn c2pa">[&#128737; OPEN FULL PLATE]</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (() => {
+            // Theme Toggle (D-Suite Petrol HUD <-> Corporate Paper Light)
+            const macroEnv = document.getElementById('macro-env');
+            const toggleThemeBtn = document.getElementById('toggle-argon-theme');
+            if (toggleThemeBtn && macroEnv) {
+                toggleThemeBtn.addEventListener('click', () => {
+                    const isLight = macroEnv.classList.toggle('argon-light');
+                    toggleThemeBtn.textContent = isLight
+                        ? '[\u2600 MODE: CORPORATE PAPER]'
+                        : '[\u25D0 MODE: D-SUITE TEAL]';
+                });
+            }
+
+            // Zero-KB Web Audio API Chime Engine (CinemaSins Bell *DING!* & RenderWin Chord)
+            let audioCtx = null;
+            let chimesMuted = false;
+
+            function getAudioCtx() {
+                if (!audioCtx) {
+                    const Ctx = window.AudioContext || window.webkitAudioContext;
+                    if (Ctx) audioCtx = new Ctx();
+                }
+                if (audioCtx && audioCtx.state === 'suspended') {
+                    audioCtx.resume().catch(() => {});
+                }
+                return audioCtx;
+            }
+
+            function playDingSound() {
+                if (chimesMuted) return;
+                const ctx = getAudioCtx();
+                if (!ctx) return;
+                const now = ctx.currentTime;
+                const freqs = [2093.0, 4186.0, 5274.0];
+                const gains = [0.18, 0.08, 0.04];
+                freqs.forEach((f, i) => {
+                    const osc = ctx.createOscillator();
+                    const g = ctx.createGain();
+                    osc.type = i === 0 ? 'sine' : 'triangle';
+                    osc.frequency.setValueAtTime(f, now);
+                    g.gain.setValueAtTime(0.0001, now);
+                    g.gain.exponentialRampToValueAtTime(gains[i], now + 0.008);
+                    g.gain.exponentialRampToValueAtTime(0.0001, now + (i === 0 ? 0.58 : 0.34));
+                    osc.connect(g);
+                    g.connect(ctx.destination);
+                    osc.start(now);
+                    osc.stop(now + 0.62);
+                });
+            }
+
+            function playWinChord() {
+                if (chimesMuted) return;
+                const ctx = getAudioCtx();
+                if (!ctx) return;
+                const now = ctx.currentTime;
+                const notes = [523.25, 659.25, 783.99, 1046.5];
+                notes.forEach((f, idx) => {
+                    const osc = ctx.createOscillator();
+                    const g = ctx.createGain();
+                    const t0 = now + idx * 0.055;
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(f, t0);
+                    g.gain.setValueAtTime(0.0001, t0);
+                    g.gain.exponentialRampToValueAtTime(0.1, t0 + 0.015);
+                    g.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.32);
+                    osc.connect(g);
+                    g.connect(ctx.destination);
+                    osc.start(t0);
+                    osc.stop(t0 + 0.36);
+                });
+            }
+
+            // Running Sin Counter State
+            const cards = Array.from(document.querySelectorAll('.rs-case-card[data-sin-id]'));
+            const hudBar = document.getElementById('rs-hud-bar');
+            const digitsEl = document.getElementById('rs-sin-digits');
+            const metaEl = document.getElementById('rs-counter-meta');
+            const testDingBtn = document.getElementById('rs-test-ding');
+            const redeemAllBtn = document.getElementById('rs-redeem-all');
+            const resetAllBtn = document.getElementById('rs-reset-all');
+            const muteBtn = document.getElementById('rs-mute-btn');
+
+            let bonusSins = 0;
+            const redeemedSet = new Set();
+
+            function popDigits() {
+                if (!digitsEl) return;
+                digitsEl.classList.remove('ding-pop');
+                void digitsEl.offsetWidth;
+                digitsEl.classList.add('ding-pop');
+                setTimeout(() => digitsEl.classList.remove('ding-pop'), 180);
+            }
+
+            function syncHud() {
+                const activeBase = cards.length - redeemedSet.size;
+                const totalSins = Math.max(0, activeBase + bonusSins);
+                const allClean = totalSins === 0 && redeemedSet.size === cards.length;
+                if (hudBar) hudBar.classList.toggle('all-redeemed', allClean);
+                if (digitsEl) {
+                    digitsEl.textContent = allClean
+                        ? 'SINS: 000 // CLEAN!'
+                        : 'SINS: ' + String(totalSins).padStart(3, '0') + ' *DING!*';
+                }
+                if (metaEl) {
+                    metaEl.textContent = allClean
+                        ? 'REDEEMED: ' + cards.length + ' / ' + cards.length + ' // STUDIO PHYSICS VERIFIED CLEAN'
+                        : 'REDEEMED: ' + redeemedSet.size + ' / ' + cards.length + ' // ACTIVE CRIMES AGAINST PHYSICS';
+                }
+
+                cards.forEach((card) => {
+                    const id = card.getAttribute('data-sin-id');
+                    const isRed = redeemedSet.has(id);
+                    card.classList.toggle('redeemed', isRed);
+                    const badge = card.querySelector('.rs-sin-badge');
+                    if (badge) {
+                        badge.textContent = isRed
+                            ? badge.getAttribute('data-badge-win')
+                            : badge.getAttribute('data-badge-sin');
+                    }
+                    const btn = card.querySelector('.rs-redeem-btn');
+                    if (btn) {
+                        btn.textContent = isRed
+                            ? '[\u2705 REDEEMED // UNDO]'
+                            : '[\u2705 REDEEM WITH RENDERWIN]';
+                    }
+                });
+            }
+
+            document.querySelectorAll('[data-ding-card]').forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    bonusSins += 1;
+                    playDingSound();
+                    syncHud();
+                    popDigits();
+                });
+            });
+
+            document.querySelectorAll('[data-redeem-card]').forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const id = btn.getAttribute('data-redeem-card');
+                    if (redeemedSet.has(id)) {
+                        redeemedSet.delete(id);
+                        playDingSound();
+                    } else {
+                        redeemedSet.add(id);
+                        playWinChord();
+                    }
+                    syncHud();
+                    popDigits();
+                });
+            });
+
+            if (testDingBtn) {
+                testDingBtn.addEventListener('click', () => {
+                    bonusSins += 1;
+                    playDingSound();
+                    syncHud();
+                    popDigits();
+                });
+            }
+
+            if (redeemAllBtn) {
+                redeemAllBtn.addEventListener('click', () => {
+                    bonusSins = 0;
+                    cards.forEach((c) => redeemedSet.add(c.getAttribute('data-sin-id')));
+                    playWinChord();
+                    syncHud();
+                    popDigits();
+                });
+            }
+
+            if (resetAllBtn) {
+                resetAllBtn.addEventListener('click', () => {
+                    bonusSins = 0;
+                    redeemedSet.clear();
+                    playDingSound();
+                    syncHud();
+                    popDigits();
+                });
+            }
+
+            if (muteBtn) {
+                muteBtn.addEventListener('click', () => {
+                    chimesMuted = !chimesMuted;
+                    muteBtn.textContent = chimesMuted ? '[\uD83D\uDD07 CHIMES: OFF]' : '[\uD83D\uDD0A CHIMES: ON]';
+                });
+            }
+
+            syncHud();
+
+            // Synced Dual-Deck Controls for SIN #001
+            const rsVideoSin = document.getElementById('rs-video-sin');
+            const rsVideoWin = document.getElementById('rs-video-win');
+            const rsPlayBothBtn = document.getElementById('rs-play-both');
+            const rsPauseBothBtn = document.getElementById('rs-pause-both');
+            const rsRestartBothBtn = document.getElementById('rs-restart-both');
+            const rsJumpExitBtn = document.getElementById('rs-jump-exit');
+            const rsAudioToggleBtn = document.getElementById('rs-audio-toggle');
+            let rsSyncAudioOwner = 'win';
+
+            function applySyncAudioOwner() {
+                if (!rsVideoSin || !rsVideoWin) return;
+                rsVideoSin.muted = rsSyncAudioOwner !== 'sin';
+                rsVideoWin.muted = rsSyncAudioOwner !== 'win';
+                if (rsAudioToggleBtn) {
+                    rsAudioToggleBtn.textContent = rsSyncAudioOwner === 'win'
+                        ? '[\uD83D\uDD0A SYNC AUDIO: RENDERWIN]'
+                        : '[\uD83D\uDD0A SYNC AUDIO: RENDERSIN]';
+                }
+            }
+
+            function playBothRenderDecks(startAt) {
+                if (!rsVideoSin || !rsVideoWin) return;
+                applySyncAudioOwner();
+                if (typeof startAt === 'number') {
+                    rsVideoSin.currentTime = startAt;
+                    rsVideoWin.currentTime = startAt;
+                } else if (rsVideoSin.ended || rsVideoWin.ended) {
+                    rsVideoSin.currentTime = 0;
+                    rsVideoWin.currentTime = 0;
+                }
+                rsVideoSin.play().catch(() => {});
+                rsVideoWin.play().catch(() => {});
+            }
+
+            if (rsPlayBothBtn) rsPlayBothBtn.addEventListener('click', () => playBothRenderDecks());
+            if (rsPauseBothBtn) rsPauseBothBtn.addEventListener('click', () => {
+                if (rsVideoSin) rsVideoSin.pause();
+                if (rsVideoWin) rsVideoWin.pause();
+            });
+            if (rsRestartBothBtn) rsRestartBothBtn.addEventListener('click', () => playBothRenderDecks(0));
+            if (rsJumpExitBtn) rsJumpExitBtn.addEventListener('click', () => playBothRenderDecks(2.5));
+            if (rsAudioToggleBtn) {
+                rsAudioToggleBtn.addEventListener('click', () => {
+                    rsSyncAudioOwner = rsSyncAudioOwner === 'win' ? 'sin' : 'win';
+                    applySyncAudioOwner();
+                });
+            }
+
+            // Secret "RinderSin" Hall-of-Fame Easter Egg (5 clicks on brand pill or type "rindersin")
+            const brandPill = document.getElementById('rs-brand-pill');
+            const brandLabel = document.getElementById('rs-brand-label');
+            const heroTitle = document.getElementById('rs-hero-title');
+            const toastEl = document.getElementById('rs-easter-toast');
+            let brandClicks = 0;
+            let keyBuffer = '';
+            let easterTimer = null;
+
+            function triggerRinderSinEasterEgg() {
+                playDingSound();
+                if (brandLabel) brandLabel.innerHTML = 'NEVERRENDER LABS <span class="slash-orange">//</span> RINDERSINS *DING!*';
+                if (heroTitle) heroTitle.textContent = 'RINDERSINS *DING!*';
+                if (toastEl) toastEl.classList.add('show');
+                clearTimeout(easterTimer);
+                easterTimer = setTimeout(() => {
+                    if (brandLabel) brandLabel.innerHTML = 'NEVERRENDER LABS <span class="slash-orange">//</span> RENDERSINS';
+                    if (heroTitle) heroTitle.textContent = 'RENDERSINS *DING!*';
+                    if (toastEl) toastEl.classList.remove('show');
+                }, 3600);
+            }
+
+            if (brandPill) {
+                brandPill.addEventListener('click', () => {
+                    brandClicks += 1;
+                    if (brandClicks >= 5) {
+                        brandClicks = 0;
+                        triggerRinderSinEasterEgg();
+                    }
+                });
+            }
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key.length === 1 && /[a-z]/i.test(e.key)) {
+                    keyBuffer = (keyBuffer + e.key.toLowerCase()).slice(-12);
+                    if (keyBuffer.includes('rindersin')) {
+                        keyBuffer = '';
+                        triggerRinderSinEasterEgg();
+                    }
+                }
+            });
+
+            // Evidence Plate Lightbox
+            const rsPlates = [
+                {
+                    kicker: 'WIN #002 // 6-PANEL CAD VEHICLE LOCK // C2PA SIGNED',
+                    title: 'NRL 21067 SD ("Super Dross") 6-Panel Spec Sheet',
+                    desc: 'Post-pivot orthographic blueprint that ended "Oatee", the 3-door Hyundai Cobra, and Schrodinger\'s Bluetooth Dual Exhaust permanently.',
+                    web: 'IN_THE_WORKS/web/nrl-21067-sd-6-panel-card.jpg',
+                    master: 'IN_THE_WORKS/c2pa/nrl-21067-sd-6-panel-card-cr.png',
+                    masterLabel: 'OPEN C2PA PNG MASTER'
+                },
+                {
+                    kicker: 'WIN #003A // BEAT 03 COCKPIT SURGERY // C2PA SIGNED',
+                    title: 'Beat 03 OTS Cockpit: Welded T-Bar Spine & Scrubbed Horn',
+                    desc: 'Post-inpainting master plate after welding the missing split-top center roof bar, removing a rogue factory pony badge, and banishing haunted seatback eyes.',
+                    web: 'IN_THE_WORKS/web/beat-03-ots-cockpit-highway-saturn.jpg',
+                    master: 'IN_THE_WORKS/c2pa/beat-03-ots-cockpit-highway-saturn-cr.jpg',
+                    masterLabel: 'OPEN C2PA MASTER'
+                },
+                {
+                    kicker: 'WIN #003B // WAWYS PLATE B // 6 LOUVERS VERIFIED',
+                    title: 'WAWYS Plate B: Rear Chase With Exactly 6 Louvers Locked',
+                    desc: 'Dead-center 4x5 rear tracking shot proving all 6 matte-black rear window louvers and crisp SUPER DROSS lettering survived intact.',
+                    web: 'IN_THE_WORKS/web/wawys-plate-b-sparking-gantry.jpg',
+                    master: 'IN_THE_WORKS/web/wawys-plate-b-sparking-gantry.jpg',
+                    masterLabel: 'OPEN 4X5 GRADED PLATE'
+                },
+                {
+                    kicker: 'WIN #004A // ANTI-DRIFT 3-TURN SHEET // C2PA SIGNED',
+                    title: 'Jax (Unit 0) Full-Body Orthographic Turnaround',
+                    desc: 'Three-elevation character blueprint preventing facial seam drift and prosthetic forearm hallucinations across multi-second pans.',
+                    web: 'IN_THE_WORKS/web/cast-jax-unit-0-3-turn.jpg',
+                    master: 'IN_THE_WORKS/c2pa/cast-jax-unit-0-3-turn-cr.jpg',
+                    masterLabel: 'OPEN C2PA MASTER'
+                },
+                {
+                    kicker: 'WIN #004B // #00FF00 CHROMA INGREDIENTS // C2PA SIGNED',
+                    title: 'DJ Churn 3-Pose Chroma Green Compositing Plate',
+                    desc: 'Isolated chroma-green poses paired with sub-6s Omni keyframing to defeat the 144-frame occlusion cliff.',
+                    web: 'IN_THE_WORKS/web/cast-dj-churn-chroma-green-3-pose.jpg',
+                    master: 'IN_THE_WORKS/c2pa/cast-dj-churn-chroma-green-3-pose-cr.png',
+                    masterLabel: 'OPEN C2PA PNG MASTER'
+                }
+            ];
+
+            const lightboxEl = document.getElementById('itw-lightbox');
+            const lightboxBackdrop = document.getElementById('lightbox-backdrop');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const lightboxPrev = document.getElementById('lightbox-prev');
+            const lightboxNext = document.getElementById('lightbox-next');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxKicker = document.getElementById('lightbox-kicker');
+            const lightboxTitle = document.getElementById('lightbox-title');
+            const lightboxDesc = document.getElementById('lightbox-desc');
+            const lightboxMasterLink = document.getElementById('lightbox-master-link');
+            let activeIdx = 0;
+
+            function renderRsLightbox(idx) {
+                activeIdx = (idx + rsPlates.length) % rsPlates.length;
+                const item = rsPlates[activeIdx];
+                lightboxKicker.textContent = '// ' + item.kicker + ' [' + (activeIdx + 1) + '/' + rsPlates.length + ']';
+                lightboxImg.src = item.web;
+                lightboxImg.alt = item.title;
+                lightboxTitle.textContent = item.title;
+                lightboxDesc.textContent = item.desc;
+                lightboxMasterLink.href = item.master;
+                lightboxMasterLink.textContent = '[\uD83D\uDEE1 ' + item.masterLabel + ']';
+            }
+
+            window.openRsLightbox = (idx) => {
+                renderRsLightbox(idx);
+                lightboxEl.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            };
+
+            function closeLightbox() {
+                lightboxEl.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            document.querySelectorAll('[data-rs-plate]').forEach((el) => {
+                el.addEventListener('click', () => window.openRsLightbox(Number(el.getAttribute('data-rs-plate')) || 0));
+                el.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        window.openRsLightbox(Number(el.getAttribute('data-rs-plate')) || 0);
+                    }
+                });
+            });
+
+            if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+            if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
+            if (lightboxPrev) lightboxPrev.addEventListener('click', () => renderRsLightbox(activeIdx - 1));
+            if (lightboxNext) lightboxNext.addEventListener('click', () => renderRsLightbox(activeIdx + 1));
+            document.addEventListener('keydown', (e) => {
+                if (!lightboxEl.classList.contains('active')) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') renderRsLightbox(activeIdx - 1);
+                if (e.key === 'ArrowRight') renderRsLightbox(activeIdx + 1);
+            });
+        })();
+    </script>
+</body>
+</html>
