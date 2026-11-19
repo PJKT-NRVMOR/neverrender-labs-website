@@ -13,6 +13,8 @@ THE_AWAKENING/
 *.mp4
 !TECH_LOGS/neon-physics-benchmark/*.mp4
 !IN_THE_WORKS/video/*.mp4
+!area-33/**/*.mp4
+area-33-ridersin-nv/
 *.dng
 WEBSITE_MEDIA/lignite-argon-puddle.png
 WEBSITE_MEDIA/lignite-argon-puddle-v2.jpg

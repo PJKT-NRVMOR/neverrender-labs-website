@@ -1,0 +1,8 @@
+Objective: Execute my autonomous single-root Google Drive context sweep across my Main Google Drive Root (parentId = 'root') using @daily-drive-context-sweep, applying lowercase kebab-case category prefixes, routing loose files into my configured vault folders, staging duplicates safely in 99_Duplicate_Staging, and outputting the 9-column sweep delta log strictly inline in chat with zero file cards and zero side-panel pop-ups.
+
+Steps:
+1. Begin line 1 of the response with the 24-hour local timestamp HH:MM:SS-YYYY-MM-DD followed by a blank line, using only standard ASCII hyphens (-), colons (:), or double slashes (//).
+2. Scan only Google Drive Root (parentId = 'root') for loose files while leaving my configured Protected Root Folders untouched. Exclude content snippets on the initial folder scan, and check short metadata snippets only for untitled or ambiguous items.
+3. Rename loose files in lowercase kebab-case (<category-prefix>: <descriptive-slug>-YYYY-MM-DD) while preserving existing active-* and YYYY-MM-DD-* prefixes.
+4. Move each file in parallel batches into its matching configured Vault Folder ID, and route any exact duplicates, superseded partial exports, or blank untitled shells to 99_Duplicate_Staging (<DUPLICATE_STAGING_FOLDER_ID>) with prefix staged-dup: (never trash or delete any file).
+5. Output the 9-column sweep delta log (Date Swept | Original Filename | Standardized Kebab-Case Title | Category Tag | Destination Vault / Folder Path | File ID | Source Root | Action Taken | Notes / Summary) inline in chat with clickable links to each filed item, closing with a single status line.

@@ -3544,3 +3544,275 @@ body > .viewport-container {
         grid-template-columns: 1fr;
     }
 }
+
+/* Area 33 // Rindersin, NV Directory & Episode Pages (.a33-*) */
+.a33-ep-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.a33-ep-card {
+    background: rgba(8, 25, 34, 0.94);
+    border: 1.5px solid rgba(44, 229, 246, 0.42);
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 16px 38px rgba(0, 0, 0, 0.58);
+    transition: border-color 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.a33-ep-card:hover {
+    border-color: var(--color-solar-orange);
+    transform: translateY(-3px);
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.7), 0 0 26px rgba(255, 107, 43, 0.22);
+}
+
+.a33-ep-card.featured {
+    border-color: rgba(255, 107, 43, 0.68);
+}
+
+.macro-environment.argon-light .a33-ep-card {
+    background: #FFFFFF;
+    border-color: #CBD5E1;
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
+}
+
+.macro-environment.argon-light .a33-ep-card:hover {
+    border-color: #EA580C;
+}
+
+.a33-ep-thumb {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    background: #04080c;
+    overflow: hidden;
+}
+
+.a33-ep-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 42%;
+    display: block;
+    transition: transform 0.38s ease;
+}
+
+.a33-ep-card:hover .a33-ep-thumb img {
+    transform: scale(1.03);
+}
+
+.a33-ep-body {
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+}
+
+.a33-ep-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--color-solar-orange);
+    text-transform: uppercase;
+}
+
+.a33-ep-title {
+    font-size: 1.24rem;
+    font-weight: 900;
+    line-height: 1.26;
+    color: var(--color-pure-white);
+}
+
+.macro-environment.argon-light .a33-ep-title {
+    color: #0F172A;
+}
+
+.a33-ep-desc {
+    font-size: 0.88rem;
+    line-height: 1.56;
+    color: #C4E2EC;
+    flex: 1;
+}
+
+.macro-environment.argon-light .a33-ep-desc {
+    color: #334155;
+}
+
+.a33-ep-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.a33-tag {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 3px 8px;
+    border-radius: 3px;
+    background: rgba(44, 229, 246, 0.1);
+    border: 1px solid rgba(44, 229, 246, 0.35);
+    color: var(--color-hud-cyan);
+    text-transform: uppercase;
+}
+
+.a33-tag.orange {
+    background: rgba(255, 107, 43, 0.14);
+    border-color: rgba(255, 107, 43, 0.5);
+    color: var(--color-solar-orange);
+}
+
+.a33-tag.mint {
+    background: rgba(0, 255, 136, 0.12);
+    border-color: rgba(0, 255, 136, 0.5);
+    color: #69FFB8;
+}
+
+.macro-environment.argon-light .a33-tag {
+    background: #F1F5F9;
+    border-color: #CBD5E1;
+    color: #0E7490;
+}
+
+.macro-environment.argon-light .a33-tag.orange {
+    background: #FFF7ED;
+    border-color: #FDBA74;
+    color: #C2410C;
+}
+
+.macro-environment.argon-light .a33-tag.mint {
+    background: #ECFDF5;
+    border-color: #6EE7B7;
+    color: #047857;
+}
+
+.a33-take-split {
+    display: grid;
+    grid-template-columns: 310px 1fr;
+    gap: 22px;
+    align-items: start;
+}
+
+.a33-take-video-box {
+    background: #04080c;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1.5px solid rgba(255, 92, 92, 0.65);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+}
+
+.rs-case-card.redeemed .a33-take-video-box,
+.a33-take-video-box.win {
+    border-color: rgba(0, 255, 136, 0.68);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 22px rgba(0, 255, 136, 0.18);
+}
+
+.a33-take-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.a33-quote-callout {
+    padding: 12px 15px;
+    background: rgba(255, 107, 43, 0.1);
+    border-left: 3.5px solid var(--color-solar-orange);
+    border-radius: 3px;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    line-height: 1.54;
+    color: #F2FAFC;
+}
+
+.macro-environment.argon-light .a33-quote-callout {
+    background: #FFF7ED;
+    color: #1E293B;
+    border-left-color: #EA580C;
+}
+
+.a33-ep-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 14px 18px;
+    background: rgba(8, 25, 34, 0.9);
+    border: 1px solid rgba(44, 229, 246, 0.35);
+    border-radius: 4px;
+}
+
+.macro-environment.argon-light .a33-ep-nav {
+    background: #F8FAFC;
+    border-color: #CBD5E1;
+}
+
+.a33-code-card {
+    background: rgba(6, 17, 24, 0.95);
+    border: 1px solid rgba(44, 229, 246, 0.36);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.macro-environment.argon-light .a33-code-card {
+    background: #FFFFFF;
+    border-color: #CBD5E1;
+}
+
+.a33-code-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px 14px;
+    background: rgba(11, 34, 45, 0.96);
+    border-bottom: 1px solid rgba(44, 229, 246, 0.3);
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: var(--color-hud-cyan);
+    text-transform: uppercase;
+}
+
+.macro-environment.argon-light .a33-code-head {
+    background: #E2E8F0;
+    color: #0F172A;
+    border-bottom-color: #CBD5E1;
+}
+
+.a33-code-pre {
+    margin: 0;
+    padding: 16px;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    line-height: 1.58;
+    color: #D5ECF2;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+    max-height: 520px;
+}
+
+.macro-environment.argon-light .a33-code-pre {
+    color: #1E293B;
+}
+
+@media (max-width: 820px) {
+    .a33-ep-grid,
+    .a33-take-split {
+        grid-template-columns: 1fr;
+    }
+    .a33-take-video-box {
+        max-width: 340px;
+        margin: 0 auto;
+        width: 100%;
+    }
+}
