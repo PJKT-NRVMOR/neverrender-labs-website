@@ -11,6 +11,7 @@ THE_AWAKENING/
 !NOTEBOOKLM_EXPLAINERS/*
 *.aep
 *.mp4
+!TECH_LOGS/neon-physics-benchmark/*.mp4
 *.dng
 WEBSITE_MEDIA/lignite-argon-puddle.png
 WEBSITE_MEDIA/lignite-argon-puddle-v2.jpg

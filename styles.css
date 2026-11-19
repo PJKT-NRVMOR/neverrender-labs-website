@@ -2537,3 +2537,308 @@ body > .viewport-container {
         padding: 10px 12px;
     }
 }
+
+/* ==========================================================================
+   Benchmark Dispatch // Gemini 4 Neon Extra Physics, 6800U Bus & DSP Proof
+   ========================================================================== */
+.npb-timeline-strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+    padding: 10px 12px;
+    background: rgba(6, 18, 26, 0.9);
+    border: 1px solid rgba(44, 229, 246, 0.32);
+    border-radius: 3px;
+}
+
+.macro-environment.argon-light .npb-timeline-strip {
+    background: #F1F5F9;
+    border-color: #CBD5E1;
+}
+
+.npb-step-pill {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 4px 8px;
+    border-radius: 2px;
+    background: rgba(16, 48, 62, 0.85);
+    border: 1px solid rgba(44, 229, 246, 0.42);
+    color: var(--color-hud-cyan);
+}
+
+.npb-step-pill.py {
+    background: rgba(255, 107, 43, 0.16);
+    border-color: var(--color-solar-orange);
+    color: var(--color-solar-orange);
+}
+
+.npb-step-arrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: rgba(213, 236, 242, 0.55);
+}
+
+.macro-environment.argon-light .npb-step-pill {
+    background: #FFFFFF;
+    border-color: #0E7490;
+    color: #0E7490;
+}
+
+.macro-environment.argon-light .npb-step-pill.py {
+    background: #FFF7ED;
+    border-color: #EA580C;
+    color: #C2410C;
+}
+
+.macro-environment.argon-light .npb-step-arrow {
+    color: #64748B;
+}
+
+.npb-video-frame {
+    position: relative;
+    width: 100%;
+    background: #050a0e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.npb-video-frame video {
+    width: 100%;
+    max-height: 76vh;
+    height: auto;
+    display: block;
+    background: #050a0e;
+}
+
+.npb-video-controls-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px 14px;
+    background: rgba(8, 25, 34, 0.95);
+    border-top: 1px solid rgba(44, 229, 246, 0.28);
+}
+
+.macro-environment.argon-light .npb-video-controls-bar {
+    background: #F1F5F9;
+    border-top-color: #CBD5E1;
+}
+
+.npb-speed-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.npb-speed-btn {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 4px 9px;
+    border-radius: 2px;
+    border: 1px solid rgba(44, 229, 246, 0.45);
+    background: rgba(16, 48, 62, 0.78);
+    color: #D5ECF2;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.npb-speed-btn:hover,
+.npb-speed-btn.active {
+    background: var(--color-hud-cyan);
+    border-color: var(--color-hud-cyan);
+    color: #071922;
+}
+
+.macro-environment.argon-light .npb-speed-btn {
+    background: #FFFFFF;
+    border-color: #0E7490;
+    color: #0F172A;
+}
+
+.macro-environment.argon-light .npb-speed-btn:hover,
+.macro-environment.argon-light .npb-speed-btn.active {
+    background: #0E7490;
+    color: #FFFFFF;
+}
+
+.npb-prompt-box {
+    background: rgba(5, 14, 20, 0.95);
+    border: 1px solid rgba(44, 229, 246, 0.38);
+    border-left: 3px solid var(--color-solar-orange);
+    border-radius: 4px;
+    padding: 16px 18px;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    line-height: 1.62;
+    color: #CBEBF4;
+    white-space: pre-wrap;
+    overflow-x: auto;
+}
+
+.macro-environment.argon-light .npb-prompt-box {
+    background: #F8FAFC;
+    border-color: #CBD5E1;
+    border-left: 3px solid #EA580C;
+    color: #1E293B;
+}
+
+.npb-subhead {
+    font-size: 1.12rem;
+    font-weight: 800;
+    color: var(--color-hud-cyan);
+    margin-top: 8px;
+    letter-spacing: 0.2px;
+}
+
+.npb-microhead {
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--color-solar-orange);
+    margin-top: 6px;
+    letter-spacing: 0.4px;
+}
+
+.macro-environment.argon-light .npb-subhead {
+    color: #0E7490;
+}
+
+.macro-environment.argon-light .npb-microhead {
+    color: #C2410C;
+}
+
+.npb-math-box {
+    background: rgba(6, 18, 26, 0.92);
+    border: 1px solid rgba(44, 229, 246, 0.34);
+    border-radius: 4px;
+    padding: 14px 18px;
+    overflow-x: auto;
+    color: #F2FAFC;
+    text-align: center;
+}
+
+.macro-environment.argon-light .npb-math-box {
+    background: #F8FAFC;
+    border-color: #CBD5E1;
+    color: #0F172A;
+}
+
+.npb-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid rgba(44, 229, 246, 0.4);
+    border-radius: 4px;
+    background: rgba(7, 20, 29, 0.94);
+}
+
+.macro-environment.argon-light .npb-table-wrap {
+    background: #FFFFFF;
+    border-color: #94A3B8;
+}
+
+.npb-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    line-height: 1.56;
+    color: #D5ECF2;
+}
+
+.npb-table th {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    text-align: left;
+    padding: 12px 14px;
+    background: rgba(16, 48, 62, 0.92);
+    color: var(--color-hud-cyan);
+    border-bottom: 1.5px solid var(--color-solar-orange);
+}
+
+.npb-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(44, 229, 246, 0.18);
+    vertical-align: top;
+}
+
+.npb-table tr:last-child td {
+    border-bottom: none;
+}
+
+.npb-table strong {
+    color: var(--color-pure-white);
+}
+
+.macro-environment.argon-light .npb-table {
+    color: #334155;
+}
+
+.macro-environment.argon-light .npb-table th {
+    background: #E2E8F0;
+    color: #0F172A;
+    border-bottom-color: #EA580C;
+}
+
+.macro-environment.argon-light .npb-table td {
+    border-bottom-color: #E2E8F0;
+}
+
+.macro-environment.argon-light .npb-table strong {
+    color: #0F172A;
+}
+
+.npb-list {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 0.94rem;
+    line-height: 1.65;
+    color: #D5ECF2;
+}
+
+.npb-list strong {
+    color: var(--color-pure-white);
+}
+
+.macro-environment.argon-light .npb-list {
+    color: #334155;
+}
+
+.macro-environment.argon-light .npb-list strong {
+    color: #0F172A;
+}
+
+.npb-verdict-box {
+    background: rgba(255, 107, 43, 0.1);
+    border: 1px solid var(--color-solar-orange);
+    border-left: 4px solid var(--color-solar-orange);
+    border-radius: 4px;
+    padding: 14px 18px;
+    font-size: 0.92rem;
+    line-height: 1.62;
+    color: #F4FAFC;
+}
+
+.npb-verdict-box strong {
+    color: var(--color-solar-orange);
+}
+
+.macro-environment.argon-light .npb-verdict-box {
+    background: #FFF7ED;
+    border-color: #EA580C;
+    color: #1E293B;
+}
+
+.macro-environment.argon-light .npb-verdict-box strong {
+    color: #C2410C;
+}

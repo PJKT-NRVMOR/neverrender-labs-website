@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Making Gemini 4 Neon Extra Stop and Think // Physics, 6800U Bus &amp; DSP Benchmark - NeverRender Labs</title>
+    <meta name="description" content="Live NeverRender Labs stress test of Gemini 4 Neon (Extra): a 2m 47s Python-verified derivation across InGaN quantum micro-LED physics, Ryzen 7 6800U unified LPDDR5 speculative decoding, and differentiable Haas/RVQ audio DSP.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <link rel="stylesheet" href="styles.css?v=21">
+    <link rel="icon" type="image/svg+xml" href="favicon-svg.svg">
+</head>
+<body>
+    <div class="macro-environment" id="macro-env">
+        <!-- Energy Conduits -->
+        <div class="conduit-grid">
+            <div class="conduit-line horizontal top"></div>
+            <div class="conduit-line vertical left"></div>
+            <div class="conduit-line horizontal bottom"></div>
+            <div class="conduit-line vertical right"></div>
+        </div>
+
+        <div class="viewport-container itw-viewport" id="main-viewport">
+            <div class="glass-panel">
+
+                <!-- 1. Top Masthead Bar -->
+                <header class="dev-top-bracket">
+                    <div class="dev-brand-pill">
+                        <span class="dev-code-glyph">&lt;/&gt;</span>
+                        <span>NEVERRENDER LABS <span class="slash-orange">//</span> BENCHMARK DISPATCH</span>
+                    </div>
+                    <div class="dev-header-controls">
+                        <button class="dev-ctrl-btn" id="toggle-argon-theme" type="button" title="Switch between D-Suite Petrol HUD and Corporate Paper Light">[&#9680; MODE: D-SUITE TEAL]</button>
+                        <a href="tech-logs.html" class="dev-ctrl-btn" style="text-decoration: none;">[&#9889; TECH LOGS]</a>
+                        <a href="index.html?hud=1" class="dev-ctrl-btn" style="text-decoration: none;">[x] TERMINAL</a>
+                    </div>
+                </header>
+
+                <!-- 2. Hero Stage -->
+                <section class="dev-hero-stage itw-hero-stage">
+                    <div class="retro-browser-window itw-hero-window">
+                        <div class="retro-window-bar">
+                            <div class="retro-window-dots">
+                                <span class="retro-dot d-pink"></span>
+                                <span class="retro-dot d-amber"></span>
+                                <span class="retro-dot d-mint"></span>
+                            </div>
+                            <span class="retro-window-tag">BENCHMARK LOG // 2026-11-18 // 16:03:59 PST</span>
+                        </div>
+                        <div class="retro-window-body">
+                            <div class="dsuite-kicker">FRONTIER MODEL STRESS TEST <span class="slash-accent">//</span> LIVE PYTHON-VERIFIED RUN</div>
+                            <h1 class="retro-window-title">
+                                MAKING GEMINI 4 NEON EXTRA STOP AND THINK
+                            </h1>
+                            <div class="dsuite-subkicker">QUANTUM DISPLAY PHYSICS // RYZEN 7 6800U SPECULATIVE BUS // DIFFERENTIABLE ACOUSTIC DSP</div>
+                            <p class="itw-hero-intro">
+                                Normally, <strong>Gemini 4 Neon (Extra)</strong> streams its reasoning trace inside Google Antigravity so fast you cannot even skim the steps in real time. So we threw the book at it: a single three-layer architectural trap mixing condensed-matter micro-LED thermodynamics, unified <code>75 GB/s</code> APU memory-bus proofs for <strong>Tiny Hyperion</strong> (<code>Ryzen 7 6800U</code>), and differentiable DiT audio mastering math. It actually paused, burned <strong>2 minutes and 47 seconds</strong> across two live Python verification scripts, and called out every hidden physical impossibility baked into the prompt.
+                            </p>
+                            <div class="itw-meta-pills">
+                                <span class="itw-meta-pill orange">MODEL: GEMINI 4 NEON (EXTRA)</span>
+                                <span class="itw-meta-pill">THINKING: 2M 47S + 2 PYTHON RUNS</span>
+                                <span class="itw-meta-pill">BUS TARGET: RYZEN 7 6800U (75 GB/S)</span>
+                                <a href="#live-capture" class="itw-meta-pill orange" style="text-decoration: none;">&#9654; WATCH 1080X936 CAPTURE</a>
+                            </div>
+                            <div class="npb-timeline-strip" aria-label="Execution Timeline Breakdown">
+                                <span class="npb-step-pill">THOUGHT: 113s</span>
+                                <span class="npb-step-arrow">-&gt;</span>
+                                <span class="npb-step-pill py">PYTHON: VERIFY PHYSICS &amp; DSP</span>
+                                <span class="npb-step-arrow">-&gt;</span>
+                                <span class="npb-step-pill">THOUGHT: 14s</span>
+                                <span class="npb-step-arrow">-&gt;</span>
+                                <span class="npb-step-pill py">PYTHON: BUS BREAKEVEN SOLVER</span>
+                                <span class="npb-step-arrow">-&gt;</span>
+                                <span class="npb-step-pill">FINAL AUDIT: 24s</span>
+                                <span class="npb-step-arrow">-&gt;</span>
+                                <span class="npb-step-pill py">LIVE KATEX STREAM</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Quick-Jump Anchor Bar -->
+                <nav class="itw-jump-nav" aria-label="Benchmark Sections Navigation">
+                    <a href="#live-capture" class="itw-jump-link featured-cut">[&#9654; LIVE VIDEO] 2M 47S RUN CAPTURE</a>
+                    <a href="#the-prompt" class="itw-jump-link">[#PROMPT] THE 3-LAYER TRAP</a>
+                    <a href="#quantum-display" class="itw-jump-link">[#01] INGAN &amp; 298 K DECOHERENCE</a>
+                    <a href="#speculative-memory" class="itw-jump-link">[#02] 6800U SPECULATIVE BUS PROOF</a>
+                    <a href="#acoustic-dsp" class="itw-jump-link">[#03] HAAS PHASE &amp; RVQ CONSTRAINTS</a>
+                </nav>
+
+                <!-- LIVE SCREEN CAPTURE STAGE -->
+                <article class="itw-entry-card" id="live-capture">
+                    <div class="itw-entry-header">
+                        <span class="itw-entry-badge">UNEDITED CAPTURE // REAL-TIME BENCHMARK</span>
+                        <span class="itw-entry-date">1080X936 NATIVE // ANTIGRAVITY IDE</span>
+                    </div>
+                    <h2 class="itw-entry-title">
+                        Live Screen Recording: Watching Gemini 4 Neon Extra Chew Through All Three Layers
+                    </h2>
+                    <p class="itw-prose">
+                        Captured directly inside Google Antigravity on <strong>Tiny Hyperion</strong> (<code>AMD Ryzen 7 6800U</code>). Use the jump cues below to hop directly to the <code>113s</code> first-pass derivation, either Python verification script, the <code>24s</code> self-audit, or the full rendered output stream, or kick playback up to <code>2x</code> / <code>4x</code> to watch the reasoning trace fly.
+                    </p>
+
+                    <div class="itw-video-stage">
+                        <div class="itw-video-bar">
+                            <div class="itw-video-kicker">
+                                <span class="indicator blink"></span>LIVE CAPTURE // GEMINI 4 NEON EXTRA (1080X936 FASTSTART MP4)
+                            </div>
+                            <a href="TECH_LOGS/neon-physics-benchmark/2026-11-18-gemini-neon-extra-physics-verification.md" target="_blank" rel="noopener" class="itw-badge-btn c2pa">[&#128196; OPEN CLEAN PROOF (.MD)]</a>
+                        </div>
+                        <div class="npb-video-frame">
+                            <video id="neon-benchmark-video" controls playsinline preload="metadata" poster="TECH_LOGS/neon-physics-benchmark/neon-benchmark-poster.jpg">
+                                <source src="TECH_LOGS/neon-physics-benchmark/gemini-neon-extra-physics-run.mp4" type="video/mp4">
+                                Your browser does not support HTML5 video playback.
+                            </video>
+                        </div>
+                        <div class="npb-video-controls-bar">
+                            <div class="itw-chapter-strip" style="padding: 0; border-top: none; background: transparent;" aria-label="Benchmark Video Jump Cues">
+                                <span class="itw-chapter-label">JUMP CUES:</span>
+                                <button type="button" class="itw-chapter-btn" data-vid-seek="0">[0:00 PROMPT FIRED]</button>
+                                <button type="button" class="itw-chapter-btn" data-vid-seek="7">[0:07 PASS 1 (113S)]</button>
+                                <button type="button" class="itw-chapter-btn" data-vid-seek="117">[1:57 PYTHON #1]</button>
+                                <button type="button" class="itw-chapter-btn" data-vid-seek="139">[2:19 PYTHON #2]</button>
+                                <button type="button" class="itw-chapter-btn" data-vid-seek="152">[2:32 SELF-AUDIT]</button>
+                                <button type="button" class="itw-chapter-btn" data-vid-seek="168">[2:48 LIVE STREAM]</button>
+                                <button type="button" class="itw-chapter-btn" data-vid-seek="203">[3:23 6800U TABLE]</button>
+                            </div>
+                            <div class="npb-speed-group" aria-label="Playback Speed Controls">
+                                <span class="itw-chapter-label">SPEED:</span>
+                                <button type="button" class="npb-speed-btn active" data-vid-rate="1">1X</button>
+                                <button type="button" class="npb-speed-btn" data-vid-rate="2">2X</button>
+                                <button type="button" class="npb-speed-btn" data-vid-rate="4">4X</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- THE PROMPT -->
+                <article class="itw-entry-card" id="the-prompt">
+                    <div class="itw-entry-header">
+                        <span class="itw-entry-badge">INPUT PAYLOAD // 3-DOMAIN STRESS TEST</span>
+                        <span class="itw-entry-date">SENT VERBATIM AT 16:01:32 PST</span>
+                    </div>
+                    <h2 class="itw-entry-title">
+                        The Torture-Test Prompt
+                    </h2>
+                    <p class="itw-prose">
+                        Every section deliberately embeds a real physics or systems trap: room-temperature quantum teleportation over RF cavities, disaggregated-memory speculative decoding applied to a shared unified APU bus, and equal-amplitude Haas/detuned sub-bass summed to mono.
+                    </p>
+                    <pre class="npb-prompt-box" id="stress-prompt-text">### SYSTEM ARCHITECTURAL PROPOSAL: CROSS-LAYER QUANTUM-OPTICAL AND SPECULATIVE TENSOR DYNAMICS
+
+We are evaluating an edge hybrid architecture that unifies physical display physics,
+asynchronous multi-agent speculative decoding, and neural DSP audio pipelines:
+
+1. QUANTUM DISPLAY DYNAMICS:
+Contrast the thermodynamic efficiency droop in conventional AlInGaP red sub-pixels
+against monolithic pure InGaN crystal lattices. If sub-pixel addressing transitions from
+active-matrix electrical trace routing to macro-scale quantum entanglement state teleportation
+via RF-cavity resonance, formulate the theoretical upper bound on frame refresh latency
+and calculate the decoherence threshold under ambient 298K thermal phonon bombardment.
+
+2. SPECULATIVE INFERENCE TENSOR MEMORY:
+On a unified memory APU bus (such as an AMD Ryzen 7 6800U with shared LPDDR5 at ~75 GB/s),
+evaluate the memory bus saturation between:
+  a) A 3-tier Pyramid Speculative Decoding pipeline (Fast Drafter -> Robust QA Qualifier -> Heavy Target Verifier),
+  b) Parallel Block-Diffusion (DFlash at gamma = 16) with layer-wise KV injection, and
+  c) Heterogeneous CPU-GPU asynchronous pipelining (Mirror-SD).
+Provide a formal memory-bandwidth consumption proof showing the exact point where
+speculative rejection overhead and intermediate KV-cache dequantization negate
+the theoretical speedup of 4-bit quantized KV caching (TurboQuant / PolarQuant + QJL).
+
+3. DIFFERENTIABLE WAVE MECHANICS &amp; ACOUSTIC PHASE:
+In a unified generative DiT latent space (co-evolving video and audio flow matching),
+derive why a 4.5ms inter-channel phase shift (Haas effect) coupled with an intentional
+4.0 Hz sub-bass detuning (|f1 - f2| = 4 Hz) creates perceived spatial widening without causing
+destructive acoustic cancellation when summed to mono. Specify the exact mathematical
+constraints required on Residual Vector Quantization (RVQ) codebooks 0 through 4
+in the 20 Hz to 180 Hz Log-Mel domain to maintain strict 0.00% DC offset and prevent inter-sample
+true peak overs (&gt; -1.0 dBTP) during downstream lossy AAC/Opus transcode passes.</pre>
+                    <div class="itw-plate-actions">
+                        <button type="button" class="itw-badge-btn" id="copy-prompt-btn">[&#128203; COPY STRESS-TEST PROMPT]</button>
+                        <a href="TECH_LOGS/neon-physics-benchmark/2026-11-18-gemini-neon-extra-physics-verification.md" target="_blank" rel="noopener" class="itw-badge-btn c2pa">[&#128196; DOWNLOAD FULL MARKDOWN DOSSIER]</a>
+                    </div>
+                </article>
+
+                <!-- SECTION 1: QUANTUM DISPLAY DYNAMICS -->
+                <article class="itw-entry-card" id="quantum-display">
+                    <div class="itw-entry-header">
+                        <span class="itw-entry-badge">LAYER 01 // QUANTUM DISPLAY DYNAMICS</span>
+                        <span class="itw-entry-date">SEMICONDUCTOR PHYSICS &amp; 298 K DECOHERENCE</span>
+                    </div>
+                    <h2 class="itw-entry-title">
+                        1. AlInGaP vs. Monolithic InGaN Red Micro-LEDs &amp; 298 K RF-Cavity Teleportation
+                    </h2>
+
+                    <h3 class="npb-subhead">A. Thermodynamic &amp; Efficiency Droop: AlInGaP vs. Pure InGaN Red Micro-LEDs</h3>
+                    <p class="itw-prose">
+                        In the modified ABC recombination model, internal quantum efficiency is governed by:
+                    </p>
+                    <div class="npb-math-box">
+                        $$IQE(n) = \frac{B n^2}{A n + B n^2 + C n^3 + J_{\text{leak}} / (q d)}$$
+                    </div>
+                    <p class="itw-prose">
+                        where \(A\) is Shockley-Read-Hall (SRH) defect/sidewall recombination, \(B\) is radiative recombination, \(C\) is Auger recombination, and \(J_{\text{leak}}\) is thermionic carrier escape across the heterostructure barrier.
+                    </p>
+
+                    <div class="npb-table-wrap">
+                        <table class="npb-table">
+                            <thead>
+                                <tr>
+                                    <th>Mechanism</th>
+                                    <th>Conventional AlInGaP Red (\((\text{Al}_x \text{Ga}_{1-x})_{0.5}\text{In}_{0.5}\text{P}\))</th>
+                                    <th>Monolithic Pure InGaN Red (\(\text{In}_x \text{Ga}_{1-x}\text{N},\ x \approx 0.30\text{-}0.40\))</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Micro-Scale Sidewall Droop (\(\lt 10\,\mu\text{m}\))</strong></td>
+                                    <td><strong>Catastrophic.</strong> High surface recombination velocity (\(v_s \sim 10^5\text{-}10^6\,\text{cm/s}\)) and long minority-carrier diffusion length (\(L_D \approx 1\text{-}10\,\mu\text{m}\)). Because perimeter-to-area scales as \(4/W\), \(A_{\text{SRH}} \propto 4v_s/W\) explodes at small mesa pitch, collapsing peak EQE below 1-10%.</td>
+                                    <td><strong>Far superior size scaling.</strong> Lower \(v_s\) (\(\sim 10^3\text{-}10^4\,\text{cm/s}\)), short \(L_D\) (\(\lt 0.2\,\mu\text{m}\)), and natural carrier localization in Indium-rich potential fluctuations shield carriers from etched sidewalls. Enables monolithic RGB on one wafer.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Thermodynamic / Thermal Droop</strong></td>
+                                    <td><strong>Severe.</strong> Active alloy sits close to the direct (\(\Gamma\)) to indirect (\(X\)) conduction-band crossover with a shallow conduction-band offset (\(\Delta E_c\)). Elevated junction temperature drives exponential thermionic leakage into the indirect \(X\)-valley (\(J_{\text{leak}} \propto \exp(-\Delta E_c / k_B T_j)\)), producing steep efficiency loss per kelvin and large wavelength red-shift (low \(T_0\)).</td>
+                                    <td><strong>Superior thermal stability.</strong> Direct bandgap across the full alloy range (\(3.4\,\text{eV}\) GaN down to \(\approx 0.7\,\text{eV}\) InN) with deep band offsets drastically curtails thermionic escape (higher \(T_0\) and weaker thermal red-shift).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Primary Failure Mode</strong></td>
+                                    <td>Sidewall SRH at micro-pitch + thermal leakage at high \(T_j\).</td>
+                                    <td><strong>The "Red Wall" (QCSE + Auger + Strain).</strong> High In content (\(x \gt 0.30\)) creates ~3.5-4.5% compressive lattice mismatch on c-plane GaN, inducing intense piezoelectric fields and the <strong>Quantum-Confined Stark Effect (QCSE)</strong>. Band tilting pulls electron and hole wavefunctions apart, slashing \(B \propto |\langle \psi_e | \psi_h \rangle|^2\), causing early current-driven Auger droop (\(C n^3\)), misfit dislocations, and strong <strong>blue-shift</strong> with increasing current as free carriers screen QCSE.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3 class="npb-subhead">B. RF-Cavity Entanglement Teleportation Addressing at \(T = 298\,\text{K}\): Bounds &amp; Physical Reality Check</h3>
+                    <p class="itw-prose">
+                        Replacing active-matrix electrical traces with quantum teleportation encounters <strong>two fatal, opposing physical bounds</strong> that cannot close at room temperature:
+                    </p>
+
+                    <div class="npb-microhead">1. Causal Lower Bound on Frame Refresh Latency (No-Communication Theorem)</div>
+                    <p class="itw-prose">
+                        Quantum teleportation <strong>cannot transmit frame state faster than light</strong>. Under the No-Communication Theorem, the reduced density matrix at pixel \(i\) (\(\rho_B = \text{Tr}_A(\rho_{AB})\)) is completely independent of local measurements at the display controller until <strong>2 classical bits per teleported qubit</strong> arrive over a classical channel to select the pixel's Pauli correction (\(I, X, Z, XZ\)). Across a panel of maximum routing span \(d_{\max}\):
+                    </p>
+                    <div class="npb-math-box">
+                        $$T_{\text{frame,min}} = \tau_{\text{BSM}} + \frac{d_{\max}}{c_{\text{eff}}} + \tau_{\text{gate}} + \tau_{\text{rad}}, \qquad \tau_{\text{cl}} \ge \frac{1\,\text{m}}{c} \approx 3.34\,\text{ns}$$
+                    </div>
+                    <p class="itw-prose">
+                        where \(c_{\text{eff}} = c / n_{\text{eff}}\) (plus classical multiplexing and serialization delay for \(N_{\text{subpixels}} \times 2b\) classical bits, making teleportation strictly <em>higher</em> in classical bandwidth overhead than sending \(b\) classical RGB bits directly over an optical waveguide or copper trace).
+                    </p>
+
+                    <div class="npb-microhead">2. Ambient 298 K Decoherence Upper Bound (Thermal Photon &amp; Phonon Bombardment)</div>
+                    <p class="itw-prose">
+                        For teleportation to deliver a coherent state <em>before</em> the classical correction bits arrive, the total protocol time must satisfy \(T_{\text{refresh,max}} \ll T_2(298\,\text{K})\). At ambient \(T = 298\,\text{K}\): thermal energy \(k_B T = 25.68\,\text{meV}\), thermal frequency \(\nu_{\text{th}} = k_B T / h = 6.21\,\text{THz}\), and fundamental thermal correlation time \(\tau_{\text{th}} = \hbar / (k_B T) = 25.63\,\text{fs}\).
+                    </p>
+                    <ul class="npb-list">
+                        <li><strong>RF-Cavity Blackbody Bombardment:</strong> For an RF cavity in the 1-5 GHz band, Bose-Einstein thermal photon occupation \(\bar{n}_{\text{th}}(\nu) = [\exp(h\nu / k_B T) - 1]^{-1} \approx k_B T / (h\nu)\) reaches <strong>1,241.4 thermal photons/mode at 5 GHz</strong> and <strong>6,208.8 thermal photons/mode at 1 GHz</strong>. Even for a high-\(Q\) room-temperature cavity (\(Q = 10^4\) at 5 GHz, bare decay \(1/\kappa \approx 318\,\text{ns}\)), thermal stimulation collapses cavity coherence to:
+                            <div class="npb-math-box" style="margin-top: 8px;">
+                                $$T_{2,\text{cav}}(298\,\text{K}) \approx \frac{1}{\kappa(2\bar{n}_{\text{th}} + 1)} \approx 128.2\,\text{ps}$$
+                            </div>
+                        </li>
+                        <li><strong>InGaN Lattice Phonon Bombardment:</strong> In a solid-state InGaN quantum well at 298 K, GaN longitudinal optical (LO) phonons (\(\hbar\omega_{\text{LO}} \approx 92\,\text{meV}\), \(\bar{n}_{\text{LO}} \approx 0.0286\)) plus dense acoustic deformation/piezoelectric phonon scattering broaden homogeneous exciton linewidths to \(\Gamma_{\text{ph}} \sim 20\text{-}40\,\text{meV}\), locking electronic/excitonic coherence to:
+                            <div class="npb-math-box" style="margin-top: 8px;">
+                                $$T_{2,\text{ex}}(298\,\text{K}) \approx \frac{\hbar}{\Gamma_{\text{ph}}} \approx 16.5\text{ to }32.9\,\text{fs}$$
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="npb-verdict-box">
+                        <strong>// CLOSURE VERDICT:</strong> Because \(T_{2,\text{ex}} \sim 20\,\text{fs}\) and \(T_{2,\text{cav}} \sim 128\,\text{ps}\) are <strong>1.5 to 5 orders of magnitude shorter than the luminal classical feedforward time</strong> (\(3.34\,\text{ns/m}\)), the entangled state thermalizes completely into classical noise long before the Bell-state measurement bits can cross the backplane. Achieving coherent RF-cavity teleportation requires \(\bar{n}_{\text{th}} \ll 1\), meaning cryogenic operation (\(T \ll h\nu / k_B \approx 0.24\,\text{K}\) at 5 GHz).
+                    </div>
+                </article>
+
+                <!-- SECTION 2: SPECULATIVE INFERENCE TENSOR MEMORY -->
+                <article class="itw-entry-card" id="speculative-memory">
+                    <div class="itw-entry-header">
+                        <span class="itw-entry-badge">LAYER 02 // UNIFIED APU TENSOR MEMORY</span>
+                        <span class="itw-entry-date">TINY HYPERION // RYZEN 7 6800U (75 GB/S)</span>
+                    </div>
+                    <h2 class="itw-entry-title">
+                        2. Speculative Inference Tensor Memory on a Shared 75 GB/s Unified APU Bus
+                    </h2>
+
+                    <h3 class="npb-subhead">A. Bus Saturation Comparison Across the Three Architectures</h3>
+                    <p class="itw-prose">
+                        On an <strong>AMD Ryzen 7 6800U</strong> (Zen 3+ CPU + RDNA 2 Radeon 680M iGPU sharing one LPDDR5-6400 memory controller, sustained effective bandwidth \(B_{\text{eff}} \approx 75\,\text{GB/s}\)), batch-1 autoregressive decode is deeply memory-bandwidth bound under a strict <strong>zero-sum bus constraint</strong>:
+                    </p>
+                    <div class="npb-math-box">
+                        $$B_{\text{CPU}}(t) + B_{\text{iGPU}}(t) \le B_{\text{eff}} \approx 75\,\text{GB/s}$$
+                    </div>
+                    <ul class="npb-list">
+                        <li><strong>3-Tier Pyramid Speculative Decoding (<code>Drafter D -&gt; QA Qualifier Q -&gt; Target T</code>):</strong> Sequential execution avoids concurrent CPU/iGPU bus contention (\(\phi_{\text{bus}} \approx 1\)), but streams three distinct weight tensors across LPDDR5 per macro-cycle (\(\gamma_1 W_D + W_Q + W_T\)) plus three KV caches. Only wins when \(W_D \ll W_Q \ll W_T\) and \(Q\) prunes frequent low-\(\alpha\) rejections before waking \(W_T\); if \(W_Q\) is a 1.5B-3B Q4 model (1-2 GB, costing 13-27 ms at 75 GB/s), paying \(W_Q\) unconditionally on high-acceptance passages underperforms a lean 2-tier pipeline.</li>
+                        <li><strong>Parallel Block-Diffusion (<code>DFlash</code> at \(\gamma = 16\)) with Layer-Wise KV Injection:</strong> Slashes drafter weight reads by generating all 16 draft tokens in \(K_{\text{diff}} = 1\text{-}4\) passes (\(K_{\text{diff}} W_D + M_{\text{inj}}\)). However, verifying \(\gamma + 1 = 17\) tokens in parallel expands attention activation tensors (<code>17 x d_model</code> per layer) against the Radeon 680M's small L2 cache, risking spills into LPDDR5, and because target verification remains strictly <strong>prefix-causal</strong>, a mismatch at position \(k = 2\) throws away tokens \(3 \dots 16\).</li>
+                        <li><strong>Heterogeneous CPU-GPU Asynchronous Pipelining (<code>Mirror-SD</code>):</strong> Built for disaggregated memory (500-1000 GB/s discrete VRAM + separate host DDR5). On a unified 6800U APU, concurrent CPU drafting <strong>steals memory channels directly from the iGPU</strong> (slowing the iGPU by \(1/(1-\lambda)\)) and triggers Infinity Fabric snoop stalls (\(\phi_{\text{bus}} \gt 1\)). Beats sequential runs on a 6800U only when the drafter fits 100% inside the 16 MB Zen 3+ L3 cache or when large-\(\gamma\) iGPU verification becomes temporarily compute-bound across the 12 RDNA 2 CUs.</li>
+                    </ul>
+
+                    <h3 class="npb-subhead">B. Formal Memory-Bandwidth Proof: 4-Bit Quantized KV Caching (<code>TurboQuant</code> / <code>PolarQuant + QJL</code>) + Speculative Rejection</h3>
+                    <p class="itw-prose">
+                        Let \(W_T\) be Target weights, \(S_{\text{KV}}(L) = 4 n_{\text{layers}} n_{\text{kv}} d_{\text{head}} L\) the FP16 KV footprint at sequence length \(L\), \(\rho = 16 / b_{\text{eff}}\) the effective 4-bit KV compression ratio (\(b_{\text{eff}} \approx 4.2\text{-}4.8\,\text{bits} \Rightarrow \rho \approx 3.33\text{-}3.81\)), \(\kappa_{\text{deq}} S_{\text{KV}}(L)\) extra LPDDR5 spill traffic from unfused dequantization (\(\kappa_{\text{deq}} = 0\) for fused in-register kernels; \(\kappa_{\text{deq}} = 2.0\) for write-back/re-read FP16 spills), \(M_{\text{ALU}} = B_{\text{eff}} t_{\text{deq,ALU}}\) the byte-equivalent rotational projection stall, and \(\bar{\tau}(\gamma, \alpha) = (1 - \alpha^{\gamma+1})/(1 - \alpha)\) the expected accepted tokens per cycle.
+                    </p>
+
+                    <div class="npb-microhead">Step 1: Isolated 4-Bit KV Dequantization Negation Threshold</div>
+                    <div class="npb-math-box">
+                        $$\kappa_{\text{deq}} S_{\text{KV}}(L) + B_{\text{eff}} t_{\text{deq,ALU}} \ge \left(1 - \frac{1}{\rho}\right) S_{\text{KV}}(L) \iff \kappa_{\text{deq}} + \frac{B_{\text{eff}} t_{\text{deq,ALU}}}{S_{\text{KV}}(L)} \ge 1 - \frac{1}{\rho}$$
+                    </div>
+                    <p class="itw-prose">
+                        <strong>Immediate corollary:</strong> At \(b_{\text{eff}} = 4.5\,\text{bits}\) (\(\rho = 3.556\), \(1 - 1/\rho = 0.719\)), an <strong>unfused</strong> kernel that materializes FP16 KV chunks in LPDDR5 (\(\kappa_{\text{deq}} = 2.0\)) reads \(0.281 S_{\text{KV}}\), writes \(1.0 S_{\text{KV}}\), and re-reads \(1.0 S_{\text{KV}} = \mathbf{2.281 S_{\text{KV}}}\), inverting a \(3.56\times\) theoretical KV win into a <strong>\(2.28\times\) bandwidth penalty</strong>. Any L2 spill above \(\kappa_{\text{deq}} \ge 0.719\) destroys 100% of quantization gains before counting ALU stalls.
+                    </p>
+
+                    <div class="npb-microhead">Step 2: Exact Joint Speculative + Dequantization Breakeven Proof</div>
+                    <div class="npb-math-box">
+                        $$\bar{\tau}_{\text{crit}}^{(4\text{b})} = \phi_{\text{bus}} + \frac{\phi_{\text{bus}}\left(M_{\text{draft}}(\gamma) + \Delta M_{\text{rej}}(\gamma) + \kappa_{\text{deq}} S_{\text{KV}}(L)\right) + B_{\text{eff}} t_{\text{deq,ALU}}}{W_T + S_{\text{KV}}(L)/\rho}$$
+                    </div>
+                    <div class="npb-math-box">
+                        $$\bar{\tau}(\gamma, \alpha) \le \bar{\tau}_{\text{crit}}^{(\text{FP16})} = \frac{\phi_{\text{bus}}\left[W_T + M_{\text{draft}}(\gamma) + \Delta M_{\text{rej}}(\gamma) + \left(\frac{1}{\rho} + \kappa_{\text{deq}}\right) S_{\text{KV}}(L)\right] + B_{\text{eff}} t_{\text{deq,ALU}}}{W_T + S_{\text{KV}}(L)}$$
+                    </div>
+
+                    <div class="npb-microhead">Concrete Ryzen 7 6800U Verification (75 GB/s, 8B Q4 \(W_T = 4.5\,\text{GB}\), \(L = 32{,}768\) GQA-8 FP16 \(S_{\text{KV}} = 4.0\,\text{GiB}\), \(b_{\text{eff}} = 4.5\,\text{b} \Rightarrow S_{\text{KV,q}} = 1.125\,\text{GB}\))</div>
+                    <p class="itw-prose">
+                        <strong>FP16 Autoregressive Baseline:</strong> <code>8.50 GB/tok</code> -&gt; <code>113.33 ms/tok</code> (<code>8.82 tok/s</code>). <strong>Ideal Fused 4-Bit KV Autoregressive Baseline:</strong> <code>5.625 GB/tok</code> -&gt; <code>75.00 ms/tok</code> (<code>13.33 tok/s</code>, max <code>1.51x</code> KV speedup).
+                    </p>
+
+                    <div class="npb-table-wrap">
+                        <table class="npb-table">
+                            <thead>
+                                <tr>
+                                    <th>Regime (75 GB/s 6800U)</th>
+                                    <th>Parameters</th>
+                                    <th>\(\bar{\tau}_{\text{crit}}\) vs. 4-Bit AR (\(\alpha_{\text{crit}}\))</th>
+                                    <th>\(\bar{\tau}_{\text{crit}}\) vs. FP16 AR (\(\alpha_{\text{crit}}\))</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Fused DFlash (\(\gamma = 16\))</strong></td>
+                                    <td>\(\kappa_{\text{deq}} = 0\), \(M_{\text{draft}} + \Delta M_{\text{rej}} = 0.85\,\text{GB}\), \(t_{\text{ALU}} = 3\,\text{ms}\), \(\phi_{\text{bus}} = 1.0\)</td>
+                                    <td><strong><code>1.191</code> tok</strong> (\(\alpha_{\text{crit}} = 0.160\))</td>
+                                    <td><strong><code>0.788</code> tok</strong> (always faster than FP16 since \(\bar{\tau} \ge 1\))</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Unified Mirror-SD (\(\gamma = 8\), partial spill)</strong></td>
+                                    <td>\(\phi_{\text{bus}} = 1.20\), \(\kappa_{\text{deq}} = 0.5\), \(M_{\text{draft}} = 0.5\,\text{GB}\), \(t_{\text{ALU}} = 3\,\text{ms}\)</td>
+                                    <td><strong><code>1.773</code> tok</strong> (\(\alpha_{\text{crit}} = 0.436\))</td>
+                                    <td><strong><code>1.174</code> tok</strong> (\(\alpha_{\text{crit}} = 0.148\))</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Unfused Intermediate Dequant (\(\gamma = 16\))</strong></td>
+                                    <td>\(\kappa_{\text{deq}} = 2.0\) (<code>+8.0 GB</code> FP16 round-trip), \(M_{\text{draft}} = 0.85\,\text{GB}\), \(t_{\text{ALU}} = 3\,\text{ms}\)</td>
+                                    <td><strong><code>2.613</code> tok</strong> (\(\alpha_{\text{crit}} = 0.617\))</td>
+                                    <td><strong><code>1.729</code> tok</strong> (\(\alpha_{\text{crit}} = 0.422\))</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="npb-verdict-box">
+                        <strong>// APU TAKEAWAY:</strong> On a <code>Ryzen 7 6800U</code>, <strong>in-register fused dequantization (<code>kappa_deq = 0</code>) is non-negotiable</strong>. If PolarQuant/QJL spills intermediate FP16 KV tiles out of L2 onto LPDDR5, you must sustain \(\alpha \gt 0.617\) across \(\gamma = 16\) just to break even against <em>non-speculative</em> fused 4-bit decoding, and any dip below \(\alpha = 0.422\) leaves you slower than unquantized FP16.
+                    </div>
+                </article>
+
+                <!-- SECTION 3: ACOUSTIC PHASE & RVQ CONSTRAINTS -->
+                <article class="itw-entry-card" id="acoustic-dsp">
+                    <div class="itw-entry-header">
+                        <span class="itw-entry-badge">LAYER 03 // DIFFERENTIABLE ACOUSTIC DSP</span>
+                        <span class="itw-entry-date">HAAS PHASE, 4 HZ DETUNING &amp; RVQ 0-4</span>
+                    </div>
+                    <h2 class="itw-entry-title">
+                        3. Differentiable Wave Mechanics, Acoustic Phase &amp; RVQ Sub-Bass Constraints
+                    </h2>
+
+                    <h3 class="npb-subhead">A. 4.5 ms Haas Shift + 4.0 Hz Sub-Bass Detuning: Exact Mono-Sum Derivation &amp; Crucial Caveat</h3>
+
+                    <div class="npb-microhead">1. Why a Pure 4.5 ms Haas Shift Alone Does Cause Destructive Mono Cancellation</div>
+                    <p class="itw-prose">
+                        For a coherent stereo pair \(L(t) = x(t)\) and \(R(t) = x(t - \Delta t)\) at \(\Delta t = 4.5\,\text{ms}\), \(4.5\,\text{ms}\) sits squarely inside the precedence (Haas) fusion window (1-30 ms), well beyond the human head's maximum ITD (\(\approx 0.65\text{-}0.75\,\text{ms}\)), fusing into a widened stereo image. Summing to mono \(M(t) = \frac{1}{2}[x(t) + x(t - \Delta t)]\), however, creates a steep comb filter:
+                    </p>
+                    <div class="npb-math-box">
+                        $$|H_{\text{mono}}(f)| = \left|\frac{1 + e^{-j 2\pi f \Delta t}}{2}\right| = |\cos(\pi f \Delta t)|, \qquad f_{\text{null},k} = \frac{2k + 1}{2\Delta t}$$
+                    </div>
+                    <ul class="npb-list">
+                        <li><strong>Exact total cancellation nulls:</strong> \(k = 0 \Rightarrow \mathbf{111.11\,\text{Hz}}\) (<code>-inf dB</code> right inside the <code>20-180 Hz</code> bass region!), \(k = 1 \Rightarrow 333.33\,\text{Hz}\), \(k = 2 \Rightarrow 555.56\,\text{Hz}\).</li>
+                        <li><strong>Sub-bass comb loss profile:</strong> <code>20 Hz -&gt; -0.35 dB</code>, <code>40 Hz -&gt; -1.47 dB</code>, <code>60 Hz -&gt; -3.59 dB</code>, <code>80 Hz -&gt; -7.42 dB</code>, <code>111.11 Hz -&gt; total null</code>, <code>180 Hz -&gt; -1.65 dB</code>.</li>
+                    </ul>
+
+                    <div class="npb-microhead">2. Coupling With \(|f_1 - f_2| = 4.0\,\text{Hz}\) Detuning: Static Null Elimination vs. Instantaneous Beating</div>
+                    <p class="itw-prose">
+                        Setting \(L(t) = A\cos(2\pi f_1 t)\) and \(R(t) = A\cos\big(2\pi(f_1 + \Delta f)(t - \Delta t)\big)\) with \(\Delta f = 4.0\,\text{Hz}\) yields:
+                    </p>
+                    <div class="npb-math-box">
+                        $$M(t) = \frac{L(t) + R(t)}{2} = A \cos\!\Big(\pi \Delta f \cdot t - \pi(f_1 + \Delta f)\Delta t\Big) \cos\!\Big(2\pi\!\left(f_1 + \frac{\Delta f}{2}\right)t - \pi(f_1 + \Delta f)\Delta t\Big)$$
+                    </div>
+                    <ul class="npb-list">
+                        <li><strong>Why permanent / static spectral cancellation vanishes (Time-Averaged RMS Conservation):</strong> Because \(\Delta\phi(t) = 2\pi\Delta f \cdot t - \phi_0\) rotates smoothly through \([0, 2\pi)\) at 4.0 Hz, \(\langle L(t) R(t) \rangle_T = 0\) over any window \(T \ge 1/\Delta f = 250\,\text{ms}\), locking average mono power strictly to \(P_{\text{mono}} = A^2 / 4 = (P_L + P_R)/4\) (constant <code>-3 dB</code>, zero stationary comb notches for every \(f_1\) and \(\Delta t\)).</li>
+                        <li><strong>Real-World Engineering Caveat (Instantaneous 4 Hz Tremolo / Dropouts):</strong> Equal-amplitude L/R detuning at \(\Delta f = 4.0\,\text{Hz}\) does <strong>not</strong> stop instantaneous cancellation: the slow envelope \(\cos(\pi\Delta f \cdot t - \phi_0)\) still crosses <strong>zero</strong> (100% momentary cancellation every 250 ms), and un-detuned upper bass near <code>111.11 Hz</code> still gets notched by the static 4.5 ms delay. <strong>Mono-safe DiT architecture:</strong> lock the fundamental sub-bass carrier (\(\lt 80\text{-}100\,\text{Hz}\)) on Mid center amplitude \(a_M\), and layer the 4.5 ms + 4 Hz detuned pair as a lower-amplitude Side/harmonic layer (\(a_S \lt a_M\)) so minimum mono envelope stays strictly bounded above zero: \(E_{\min} = a_M - a_S \gt 0\).</li>
+                    </ul>
+
+                    <h3 class="npb-subhead">B. Mathematical Constraints on RVQ Codebooks 0-4 (20-180 Hz Log-Mel) for 0.00% DC Offset &amp; &lt; -1.0 dBTP Under AAC/Opus</h3>
+                    <p class="itw-prose">
+                        Crucial representation reality check: <strong>a <code>20-180 Hz</code> Log-Mel magnitude spectrogram discards both the <code>0 Hz</code> DC bin and explicit waveform phase</strong>. Therefore, strict <code>0.00%</code> DC offset and inter-sample true-peak limits cannot be enforced by Log-Mel clamping alone; they must bind the RVQ latent sum \(\hat{z} = \sum_{q=0}^{4} e_{i_q}^{(q)}\) jointly with the neural vocoder/synthesis head \(D(\hat{z}) = \hat{x}\):
+                    </p>
+                    <ul class="npb-list">
+                        <li><strong>1. Structural Zero-DC Synthesis &amp; Zero-Mean Codebooks:</strong> Enforce zero bias (\(b_{\text{out}} = 0\)) and zero-sum kernels (\(\sum_n h_{\text{out},c}[n] = 0\)) in the final ConvTranspose1D layer so \(H_{\text{dec}}(e^{j0}) \equiv 0\), paired with deterministic DC projection (\(\hat{X}[0] = 0\)) or a streaming IIR DC blocker \(H_{\text{DC}}(z) = (1 - z^{-1}) / (1 - r z^{-1})\) (\(r = 0.9995\)), plus zero-mean codebook initialization and explicit decoded mean loss:
+                            <div class="npb-math-box" style="margin-top: 8px;">
+                                $$\frac{1}{K_q}\sum_{k=1}^{K_q} e_k^{(q)} = 0, \qquad \mathcal{L}_{\text{DC}} = \lambda_{\text{DC}}\left(\frac{1}{N}\sum_{n=0}^{N-1} D\!\left(\sum_{q=0}^{4} e_{i_q}^{(q)}\right)[n]\right)^2$$
+                            </div>
+                        </li>
+                        <li><strong>2. Pre-Transcode \(4\times\) Oversampled True-Peak Ceiling:</strong> Because AAC-LC (1024-sample MDCT) and Opus (CELT/HYBRID MDCT) inject spectral quantization ringing and phase dispersion that typically inflate true peaks by \(\Delta_{\text{codec}} \approx +0.8\text{ to }+1.5\,\text{dBTP}\) on dense bass, bound \(4\times\)-oversampled peaks below <code>-1.0 dBTP</code> by margin \(\Delta_{\text{codec}} \ge 1.0\text{-}1.5\,\text{dB}\) (targeting <strong><code>-2.0</code> to <code>-2.5 dBTP</code></strong>, matching our <a href="in-the-works.html#audio-deck" style="color: var(--color-hud-cyan);">WAWYS <code>-2.7 dBTP</code> master</a>):
+                            <div class="npb-math-box" style="margin-top: 8px;">
+                                $$\|\mathcal{U}_4(\hat{x})\|_\infty \le 10^{-(1.0 + \Delta_{\text{codec}})/20}$$
+                            </div>
+                        </li>
+                        <li><strong>3. Monotonic RVQ Residual Norm Decay (\(q = 0..4\)):</strong> Keep Codebook 0 anchoring fundamental 20-180 Hz energy while bounding residual Codebooks 1-4 geometrically so upper stages cannot stack phase-aligned spikes onto the carrier:
+                            <div class="npb-math-box" style="margin-top: 8px;">
+                                $$\|e_k^{(q)}\|_2 \le \beta^q \|e_{\max}^{(0)}\|_2 \quad (q \in \{1,2,3,4\},\ \beta \in [0.4, 0.6])$$
+                            </div>
+                        </li>
+                        <li><strong>4. Parseval Log-Mel Crest Budget + Differentiable Surrogate MDCT Loss:</strong> Constrain cumulative 20-180 Hz linear energy against sub-band crest factor \(\text{CF}_{\text{sub}}\) and train directly against simulated MDCT quantization noise \(\epsilon \sim \mathcal{Q}_{\text{MDCT}}\), backed by a \(4\times\)-oversampled lookahead limiter (attack \(\ge 1.5\,\text{ms}\), release \(\ge 50\,\text{ms}\)):
+                            <div class="npb-math-box" style="margin-top: 8px;">
+                                $$\sum_{m \in \mathcal{M}_{20\text{-}180}} w_m \exp\!\big(2\hat{M}_m(\hat{z})\big) \le \frac{10^{-(1.0 + \Delta_{\text{codec}})/10}}{\text{CF}_{\text{sub}}^2} - P_{\text{HF}}$$
+                            </div>
+                            <div class="npb-math-box" style="margin-top: 8px;">
+                                $$\mathcal{L}_{\text{TP-codec}} = \mathbb{E}_{\epsilon \sim \mathcal{Q}_{\text{MDCT}}}\left[\max\!\left(0,\ \|\mathcal{U}_4(\hat{x} + \epsilon)\|_\infty - 10^{-(1.0 + \Delta_{\text{codec}})/20}\right)^2\right]$$
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="itw-telemetry-callout">
+                        <strong>// INDEPENDENT PYTHON VERIFICATION AUDIT:</strong> Every numerical bound published on this page (<code>25.68 meV</code>, <code>6.21 THz</code>, <code>25.63 fs</code>, <code>1,241.4</code> thermal photons at <code>5 GHz</code>, <code>128.2 ps</code> cavity coherence at <code>Q = 10^4</code>, <code>16.5-32.9 fs</code> InGaN exciton coherence, all six <code>Ryzen 7 6800U</code> \(\bar{\tau}_{\text{crit}}\) / \(\alpha_{\text{crit}}\) breakevens, and every <code>4.5 ms</code> Haas attenuation notch from <code>20 Hz</code> to <code>180 Hz</code>) was re-verified independently in Python directly against Gemini 4 Neon Extra's live execution output rather than relying on secondary paraphrased summaries.
+                    </div>
+                </article>
+
+                <!-- Bottom HUD Footer -->
+                <footer class="dev-bottom-bracket">
+                    <div>BENCHMARK: GEMINI 4 NEON (EXTRA) // <span class="orange-readout">2M 47S + 2 PYTHON RUNS</span></div>
+                    <div>WORKSTATION: TINY HYPERION 6800U // <span class="orange-readout">SAN DIEGO, CA</span></div>
+                </footer>
+
+            </div>
+        </div>
+    </div>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, { delimiters: [{ left: '$$', right: '$$', display: true }, { left: '\\(', right: '\\)', display: false }], throwOnError: false });"></script>
+    <script>
+        (() => {
+            const macroEnv = document.getElementById('macro-env');
+            const toggleThemeBtn = document.getElementById('toggle-argon-theme');
+            if (toggleThemeBtn && macroEnv) {
+                toggleThemeBtn.addEventListener('click', () => {
+                    const isLight = macroEnv.classList.toggle('argon-light');
+                    toggleThemeBtn.textContent = isLight
+                        ? '[\u2600 MODE: CORPORATE PAPER]'
+                        : '[\u25D0 MODE: D-SUITE TEAL]';
+                });
+            }
+
+            const videoEl = document.getElementById('neon-benchmark-video');
+            const jumpBtns = document.querySelectorAll('.itw-chapter-btn[data-vid-seek]');
+            const speedBtns = document.querySelectorAll('.npb-speed-btn[data-vid-rate]');
+
+            if (videoEl) {
+                jumpBtns.forEach((btn) => {
+                    btn.addEventListener('click', () => {
+                        const sec = Number(btn.getAttribute('data-vid-seek')) || 0;
+                        jumpBtns.forEach((b) => b.classList.toggle('active', b === btn));
+                        videoEl.currentTime = sec;
+                        videoEl.play().catch(() => {});
+                    });
+                });
+
+                speedBtns.forEach((btn) => {
+                    btn.addEventListener('click', () => {
+                        const rate = Number(btn.getAttribute('data-vid-rate')) || 1;
+                        speedBtns.forEach((b) => b.classList.toggle('active', b === btn));
+                        videoEl.playbackRate = rate;
+                    });
+                });
+            }
+
+            const copyPromptBtn = document.getElementById('copy-prompt-btn');
+            const promptEl = document.getElementById('stress-prompt-text');
+            if (copyPromptBtn && promptEl && navigator.clipboard) {
+                copyPromptBtn.addEventListener('click', () => {
+                    navigator.clipboard.writeText(promptEl.textContent || '').then(() => {
+                        copyPromptBtn.textContent = '[COPIED PROMPT TO CLIPBOARD]';
+                        setTimeout(() => {
+                            copyPromptBtn.textContent = '[\uD83D\uDCCB COPY STRESS-TEST PROMPT]';
+                        }, 2200);
+                    }).catch(() => {});
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
