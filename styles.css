@@ -3816,3 +3816,105 @@ body > .viewport-container {
         width: 100%;
     }
 }
+
+/* ============================================================================
+   UNIFIED DAYLIGHT LIGHT MODE FOR LEGACY SUBPAGES + MOBILE FAB BREATHING ROOM
+   ============================================================================ */
+body.argon-light {
+    background-color: #F4F7FA !important;
+    color: #0F172A !important;
+}
+
+body.argon-light .macro-environment.subpage-backdrop {
+    background: linear-gradient(160deg, #F8FAFC 0%, #E8EFF6 100%) !important;
+    filter: none !important;
+}
+
+body.argon-light .macro-environment.subpage-backdrop::before {
+    background: linear-gradient(180deg, rgba(248, 250, 252, 0.96), rgba(235, 242, 248, 0.96)) !important;
+}
+
+body.argon-light .conduit-grid {
+    opacity: 0.14;
+}
+
+body.argon-light .glass-panel {
+    background: rgba(255, 255, 255, 0.97) !important;
+    border-color: #CBD5E1 !important;
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08) !important;
+    color: #0F172A !important;
+}
+
+body.argon-light .header-nav {
+    background: #F8FAFC !important;
+    border-bottom-color: #CBD5E1 !important;
+}
+
+body.argon-light .chromatic-aberration,
+body.argon-light .hero-title,
+body.argon-light .section-header {
+    color: #0F172A !important;
+    text-shadow: none !important;
+}
+
+body.argon-light .subtitle,
+body.argon-light .hero-desc,
+body.argon-light .log-desc,
+body.argon-light .character-prompt,
+body.argon-light .arch-desc {
+    color: #334155 !important;
+    opacity: 1 !important;
+}
+
+body.argon-light .log-card,
+body.argon-light .character-card,
+body.argon-light .arch-card,
+body.argon-light .hero-banner,
+body.argon-light .specs-terminal {
+    background: #F8FAFC !important;
+    border-color: #CBD5E1 !important;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06) !important;
+    color: #0F172A !important;
+}
+
+body.argon-light .log-card:hover,
+body.argon-light .character-card:hover,
+body.argon-light .arch-card:hover {
+    background: #FFFFFF !important;
+    border-color: #0284C7 !important;
+    box-shadow: 0 8px 22px rgba(2, 132, 199, 0.12) !important;
+}
+
+body.argon-light .log-title,
+body.argon-light .log-icon,
+body.argon-light .character-name,
+body.argon-light .arch-title {
+    color: #0369A1 !important;
+}
+
+body.argon-light .hero-banner-bg {
+    opacity: 0.10 !important;
+}
+
+body.argon-light .back-btn,
+body.argon-light .nav-link-btn {
+    background: #FFFFFF !important;
+    border-color: #0F172A !important;
+    color: #0F172A !important;
+}
+
+body.argon-light .back-btn:hover,
+body.argon-light .nav-link-btn:hover {
+    background: #0F172A !important;
+    color: #FFFFFF !important;
+}
+
+.itw-audio-deck,
+.rs-hud-bar {
+    transition: top 0.22s ease;
+}
+
+body.nrl-dock-visible .itw-audio-deck,
+body.nrl-dock-visible .rs-hud-bar {
+    top: 56px;
+}
