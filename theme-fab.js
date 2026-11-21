@@ -113,6 +113,15 @@
             '  background: rgba(44, 229, 246, 0.2);',
             '  color: #FFFFFF;',
             '}',
+            '.nrl-dock-link.is-club19 {',
+            '  border-color: rgba(0, 255, 136, 0.45);',
+            '  color: #86EFAC;',
+            '}',
+            '.nrl-dock-link.is-club19.is-active {',
+            '  border-color: #00FF88;',
+            '  background: rgba(0, 255, 136, 0.2);',
+            '  color: #FFFFFF;',
+            '}',
             '.nrl-scroll-dock.is-light .nrl-dock-link {',
             '  background: #F1F5F9;',
             '  border-color: #CBD5E1;',
@@ -127,6 +136,11 @@
             '  border-color: #EA580C;',
             '  color: #C2410C;',
             '  background: #FFF7ED;',
+            '}',
+            '.nrl-scroll-dock.is-light .nrl-dock-link.is-club19 {',
+            '  border-color: #059669;',
+            '  color: #047857;',
+            '  background: #ECFDF5;',
             '}',
             '.nrl-scroll-dock.is-light .nrl-dock-link.is-active {',
             '  background: #0F172A;',
@@ -234,13 +248,13 @@
             '@media (max-width: 640px) {',
             '  .nrl-scroll-dock { padding: max(6px, env(safe-area-inset-top)) 8px 6px 8px; }',
             '  .nrl-dock-nav { gap: 4px; }',
-            '  .nrl-dock-link { height: 34px; padding: 0 8px; font-size: 0.64rem; letter-spacing: 0.03em; }',
+            '  .nrl-dock-link { height: 34px; padding: 0 7px; font-size: 0.63rem; letter-spacing: 0.02em; }',
             '  .nrl-dock-desktop-only { display: none; }',
             '  .nrl-dock-label-full { display: none; }',
             '  .nrl-dock-label-short { display: inline; }',
-            '  .nrl-dock-theme-btn { height: 34px; padding: 0 10px 0 8px; font-size: 0.65rem; gap: 5px; }',
+            '  .nrl-dock-theme-btn { height: 34px; padding: 0 9px 0 8px; font-size: 0.64rem; gap: 5px; }',
             '}',
-            '@media (max-width: 390px) {',
+            '@media (max-width: 440px) {',
             '  .nrl-dock-top-btn { display: none; }',
             '}',
             '@media print {',
@@ -252,6 +266,7 @@
 
     function detectSection() {
         var p = (window.location.pathname || '').toLowerCase();
+        if (p.indexOf('/club-19') !== -1) return 'club19';
         if (p.indexOf('/area-33') !== -1) return 'area33';
         if (p.indexOf('in-the-works') !== -1) return 'works';
         if (p.indexOf('rendersins') !== -1) return 'sins';
@@ -286,7 +301,12 @@
                 '<div class="nrl-dock-inner">' +
                     '<nav class="nrl-dock-nav" aria-label="Site quick links">' +
                         '<a class="nrl-dock-link is-brand' + (active === 'home' ? ' is-active' : '') + '" href="' + rootPrefix + 'index.html?hud=1">NRL</a>' +
-                        '<a class="nrl-dock-link' + (active === 'area33' ? ' is-active' : '') + '" href="' + rootPrefix + 'area-33/">AREA 33</a>' +
+                        '<a class="nrl-dock-link' + (active === 'area33' ? ' is-active' : '') + '" href="' + rootPrefix + 'area-33/">' +
+                            '<span class="nrl-dock-label-full">AREA 33</span><span class="nrl-dock-label-short">A-33</span>' +
+                        '</a>' +
+                        '<a class="nrl-dock-link is-club19' + (active === 'club19' ? ' is-active' : '') + '" href="' + rootPrefix + 'club-19/">' +
+                            '<span class="nrl-dock-label-full">CLUB 19</span><span class="nrl-dock-label-short">C-19</span>' +
+                        '</a>' +
                         '<a class="nrl-dock-link' + (active === 'works' ? ' is-active' : '') + '" href="' + rootPrefix + 'in-the-works.html">' +
                             '<span class="nrl-dock-label-full">IN THE WORKS</span><span class="nrl-dock-label-short">WORKS</span>' +
                         '</a>' +
