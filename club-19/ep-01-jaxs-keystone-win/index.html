@@ -312,23 +312,25 @@
 
     <!-- Lightbox Modal -->
     <div class="itw-lightbox" id="itw-lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
-        <div class="itw-lightbox-backdrop" id="lightbox-backdrop"></div>
-        <div class="itw-lightbox-content">
-            <div class="itw-lightbox-header">
-                <span class="itw-lightbox-kicker" id="lightbox-kicker">// KEYSTONE PLATE VIEWER</span>
-                <button type="button" class="itw-lightbox-close" id="lightbox-close">[X] CLOSE</button>
-            </div>
+        <div class="modal-backdrop" id="lightbox-backdrop"></div>
+        <div class="itw-lightbox-panel">
+            <header class="sys-header">
+                <div class="sys-id" id="lightbox-kicker">// KEYSTONE PLATE VIEWER</div>
+                <button type="button" class="close-btn" id="lightbox-close">[X] CLOSE</button>
+            </header>
             <div class="itw-lightbox-stage">
-                <button type="button" class="itw-lightbox-nav prev" id="lightbox-prev" aria-label="Previous plate">&#8249;</button>
                 <img id="lightbox-img" src="" alt="">
-                <button type="button" class="itw-lightbox-nav next" id="lightbox-next" aria-label="Next plate">&#8250;</button>
             </div>
             <div class="itw-lightbox-footer">
-                <div>
+                <div class="itw-lightbox-meta">
                     <div class="itw-lightbox-title" id="lightbox-title"></div>
                     <div class="itw-lightbox-desc" id="lightbox-desc"></div>
                 </div>
-                <a class="itw-badge-btn c2pa" id="lightbox-master-link" href="#" target="_blank" rel="noopener">[OPEN FULL IMAGE]</a>
+                <div class="itw-lightbox-controls">
+                    <button type="button" class="dev-ctrl-btn" id="lightbox-prev">[&larr; PREV]</button>
+                    <button type="button" class="dev-ctrl-btn" id="lightbox-next">[NEXT &rarr;]</button>
+                    <a id="lightbox-master-link" href="#" target="_blank" rel="noopener" class="itw-badge-btn c2pa">[&#128737; OPEN FULL PLATE]</a>
+                </div>
             </div>
         </div>
     </div>
