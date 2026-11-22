@@ -6,7 +6,7 @@
     <title>NeverRender Labs // Sovereign AI Systems, Luxury Commerce &amp; Generative Cinema</title>
     <meta name="description" content="NeverRender Labs (renderwithoutcode.com) - Sovereign AI Systems Architecture, Full-Stack Luxury Commerce, and Generative Cinema by Matthew Cole Wyatt.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=25">
+    <link rel="stylesheet" href="styles.css?v=26">
     <link rel="icon" type="image/svg+xml" href="favicon-svg.svg">
 </head>
 <body>
@@ -109,6 +109,33 @@
                         <span class="cursor">_</span>
                     </div>
                 </div>
+
+                <!-- 3B. Interactive Ne-10 Brass & Borosilicate Orbital Site Map (2 Inner + 8 Outer Shell Nodes) -->
+                <section class="ne-orrery-card" aria-label="Interactive Ne-10 Orbital Site Map">
+                    <div class="ne-orrery-head">
+                        <div class="ne-orrery-brand">
+                            <span class="ne-periodic-tile">Ne<sup>10</sup></span>
+                            <span>ORBITAL STUDIO MAP // HOVER OR TAP ANY NODE</span>
+                        </div>
+                        <button type="button" class="dev-ctrl-btn" id="ne-orrery-pause" style="padding: 4px 10px; font-size: 0.66rem;">[&#9208; FREEZE ORBIT]</button>
+                    </div>
+                    <div class="ne-orrery-stage" id="ne-orrery-stage">
+                        <canvas id="ne-orrery-canvas" aria-label="Interactive 10-node Neon atomic navigation map"></canvas>
+                        <div class="ne-orrery-tooltip" id="ne-orrery-tooltip" aria-hidden="true"></div>
+                    </div>
+                    <div class="ne-orrery-readout">
+                        <div class="ne-readout-info">
+                            <div class="ne-readout-kicker">
+                                <span class="ne-readout-dot" id="ne-readout-dot"></span>
+                                <span id="ne-readout-code">Ne-01 // INNER SHELL (n=1)</span>
+                            </div>
+                            <div class="ne-readout-title" id="ne-readout-title">Area 33 // Rindersin, Nevada</div>
+                            <div class="ne-readout-desc" id="ne-readout-desc">The Rinder-Files proving ground: 4 playable episodes, Granny Theft Jax, Russian Blair d'Etat &amp; free Drive Sweep.</div>
+                        </div>
+                        <a href="area-33/" class="dev-action-btn btn-amber" id="ne-readout-link" style="text-decoration: none;">[ENTER AREA 33 &rarr;]</a>
+                    </div>
+                    <div class="ne-orrery-pills" id="ne-orrery-pills" aria-label="Direct orbital node selector"></div>
+                </section>
 
                 <!-- 4. Cyan Wireframe Spotlight Card (Google Dev Blog Structure + D-Suite HUD) -->
                 <section class="dev-bracket-card">
@@ -335,6 +362,7 @@
         </div>
     </div>
     <script src="main.js?v=29"></script>
+    <script src="neon-orrery.js?v=1"></script>
     <script src="theme-fab.js?v=2"></script>
 </body>
 </html>

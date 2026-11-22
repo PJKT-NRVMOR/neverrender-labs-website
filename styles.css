@@ -3918,3 +3918,286 @@ body.nrl-dock-visible .itw-audio-deck,
 body.nrl-dock-visible .rs-hud-bar {
     top: 56px;
 }
+
+/* ============================================================================
+   PROJECT ASTACKWORK NEON // INTERACTIVE Ne-10 ORBITAL SITE-MAP ORRERY
+   ============================================================================ */
+.ne-orrery-card {
+    margin: 0 0 22px 0;
+    background: linear-gradient(180deg, rgba(8, 25, 34, 0.96) 0%, rgba(6, 17, 25, 0.98) 100%);
+    border: 1px solid rgba(44, 229, 246, 0.42);
+    border-top: 2px solid #E8451E;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 12px 32px rgba(3, 10, 16, 0.52), inset 0 1px 0 rgba(255, 180, 138, 0.24);
+}
+
+.macro-environment.argon-light .ne-orrery-card {
+    background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
+    border-color: #CBD5E1;
+    border-top: 2px solid #EA580C;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+.ne-orrery-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px 16px;
+    background: rgba(11, 34, 45, 0.92);
+    border-bottom: 1px solid rgba(44, 229, 246, 0.24);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--color-hud-cyan);
+    text-transform: uppercase;
+}
+
+.macro-environment.argon-light .ne-orrery-head {
+    background: #F8FAFC;
+    border-bottom-color: #CBD5E1;
+    color: #0F172A;
+}
+
+.ne-orrery-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ne-periodic-tile {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 2px;
+    padding: 2px 7px;
+    border-radius: 3px;
+    border: 1.5px solid #E8451E;
+    background: rgba(232, 69, 30, 0.16);
+    color: #FFB48A;
+    font-size: 0.76rem;
+    font-weight: 800;
+    box-shadow: 0 0 10px rgba(232, 69, 30, 0.35), inset 0 0 6px rgba(255, 180, 138, 0.2);
+}
+
+.ne-periodic-tile sup {
+    font-size: 0.56rem;
+    color: #FF8C42;
+}
+
+.macro-environment.argon-light .ne-periodic-tile {
+    background: #FFF7ED;
+    border-color: #EA580C;
+    color: #C2410C;
+    box-shadow: none;
+}
+
+.macro-environment.argon-light .ne-periodic-tile sup {
+    color: #EA580C;
+}
+
+.ne-orrery-stage {
+    position: relative;
+    width: 100%;
+    min-height: 250px;
+    overflow: hidden;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#ne-orrery-canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.ne-orrery-tooltip {
+    position: absolute;
+    z-index: 4;
+    transform: translate(-50%, -100%);
+    pointer-events: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 9px;
+    border-radius: 4px;
+    background: rgba(6, 17, 25, 0.94);
+    border: 1px solid rgba(255, 107, 43, 0.72);
+    color: #FFFFFF;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.14s ease;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
+}
+
+.ne-orrery-tooltip.visible {
+    opacity: 1;
+}
+
+.macro-environment.argon-light .ne-orrery-tooltip {
+    background: #0F172A;
+    border-color: #EA580C;
+    color: #FFFFFF;
+}
+
+.ne-tt-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.ne-tt-hint {
+    color: #FFB48A;
+    font-size: 0.58rem;
+    opacity: 0.9;
+}
+
+.ne-orrery-readout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px 16px;
+    background: rgba(11, 34, 45, 0.88);
+    border-top: 1px solid rgba(44, 229, 246, 0.22);
+    border-bottom: 1px solid rgba(44, 229, 246, 0.16);
+}
+
+.macro-environment.argon-light .ne-orrery-readout {
+    background: #F8FAFC;
+    border-top-color: #CBD5E1;
+    border-bottom-color: #E2E8F0;
+}
+
+.ne-readout-info {
+    flex: 1 1 320px;
+    min-width: 0;
+}
+
+.ne-readout-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #C88A3B;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+}
+
+.macro-environment.argon-light .ne-readout-kicker {
+    color: #B45309;
+}
+
+.ne-readout-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.ne-readout-title {
+    font-size: 0.96rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin-bottom: 2px;
+}
+
+.macro-environment.argon-light .ne-readout-title {
+    color: #0F172A;
+}
+
+.ne-readout-desc {
+    font-size: 0.8rem;
+    line-height: 1.45;
+    color: #B9DCE8;
+}
+
+.macro-environment.argon-light .ne-readout-desc {
+    color: #334155;
+}
+
+.ne-orrery-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 10px 16px 14px 16px;
+    background: rgba(6, 17, 25, 0.84);
+}
+
+.macro-environment.argon-light .ne-orrery-pills {
+    background: #FFFFFF;
+}
+
+.ne-pill-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 9px;
+    border-radius: 999px;
+    border: 1px solid rgba(44, 229, 246, 0.28);
+    background: rgba(11, 34, 45, 0.78);
+    color: #D9F4FA;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: border-color 0.16s ease, background-color 0.16s ease, transform 0.14s ease;
+}
+
+.ne-pill-btn:hover,
+.ne-pill-btn.active {
+    border-color: #FF6B2B;
+    background: rgba(232, 69, 30, 0.2);
+    color: #FFFFFF;
+    transform: translateY(-1px);
+}
+
+.macro-environment.argon-light .ne-pill-btn {
+    background: #F1F5F9;
+    border-color: #CBD5E1;
+    color: #1E293B;
+}
+
+.macro-environment.argon-light .ne-pill-btn:hover,
+.macro-environment.argon-light .ne-pill-btn.active {
+    background: #0F172A;
+    border-color: #0F172A;
+    color: #FFFFFF;
+}
+
+.ne-pill-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+    .ne-orrery-head {
+        padding: 9px 12px;
+        font-size: 0.65rem;
+    }
+    .ne-orrery-readout {
+        padding: 10px 12px;
+    }
+    .ne-orrery-pills {
+        padding: 8px 12px 12px 12px;
+        gap: 5px;
+    }
+    .ne-pill-btn {
+        font-size: 0.62rem;
+        padding: 5px 8px;
+    }
+}
