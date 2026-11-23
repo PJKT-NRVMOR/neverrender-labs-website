@@ -41,7 +41,7 @@
             shell: 'OUTER SHELL (n=2)',
             label: 'IN THE WORKS',
             title: 'In The Works // Outpost Cruise Night Devblog',
-            desc: 'Live build log for NRL 21067 SD, lossless studio audio deck, 4x5 Aurora plates & synced parallax benchmarks.',
+            desc: 'Streaming debut 9:16 music video "We Are What You See" + lossless audio deck, 4x5 Aurora plates & parallax audits.',
             href: 'in-the-works.html',
             ring: 1,
             angle: 0.9,

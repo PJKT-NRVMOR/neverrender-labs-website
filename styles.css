@@ -2538,6 +2538,211 @@ body > .viewport-container {
     }
 }
 
+/* 9:16 Vertical Cinema Premiere Stage (Outpost Cruise Night // Zero-KB YouTube Stream) */
+.itw-vertical-grid {
+    display: grid;
+    grid-template-columns: minmax(270px, 340px) 1fr;
+    gap: 20px;
+    padding: 18px;
+    align-items: start;
+    background: radial-gradient(circle at 20% 20%, rgba(44, 229, 246, 0.08), transparent 55%), rgba(5, 14, 20, 0.96);
+}
+
+.macro-environment.argon-light .itw-vertical-grid {
+    background: #F8FAFC;
+}
+
+.itw-vertical-frame-wrap {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1.5px solid rgba(44, 229, 246, 0.55);
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.8), 0 0 22px rgba(44, 229, 246, 0.22);
+    background: #000000;
+}
+
+.macro-environment.argon-light .itw-vertical-frame-wrap {
+    border-color: #0E7490;
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.16);
+}
+
+.itw-vertical-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    background: #000000;
+}
+
+.itw-vertical-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+.itw-vertical-dossier {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 0;
+}
+
+.itw-vertical-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--color-solar-orange);
+    text-transform: uppercase;
+}
+
+.macro-environment.argon-light .itw-vertical-kicker {
+    color: #C2410C;
+}
+
+.itw-vertical-title {
+    margin: 0;
+    font-size: 1.28rem;
+    line-height: 1.25;
+    font-weight: 800;
+    color: #F4FAFC;
+    letter-spacing: -0.01em;
+}
+
+.macro-environment.argon-light .itw-vertical-title {
+    color: #0F172A;
+}
+
+.itw-vertical-specs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+    gap: 8px;
+}
+
+.itw-spec-cell {
+    padding: 8px 10px;
+    border-radius: 3px;
+    background: rgba(11, 34, 45, 0.78);
+    border: 1px solid rgba(44, 229, 246, 0.28);
+    font-family: var(--font-mono);
+}
+
+.macro-environment.argon-light .itw-spec-cell {
+    background: #FFFFFF;
+    border-color: #CBD5E1;
+}
+
+.itw-spec-label {
+    display: block;
+    font-size: 0.62rem;
+    letter-spacing: 0.8px;
+    color: rgba(213, 236, 242, 0.68);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.macro-environment.argon-light .itw-spec-label {
+    color: #64748B;
+}
+
+.itw-spec-val {
+    display: block;
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: var(--color-hud-cyan);
+}
+
+.itw-spec-val.orange {
+    color: var(--color-solar-orange);
+}
+
+.macro-environment.argon-light .itw-spec-val {
+    color: #0E7490;
+}
+
+.macro-environment.argon-light .itw-spec-val.orange {
+    color: #C2410C;
+}
+
+.itw-vertical-chapters {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.itw-vertical-chapter-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: 0.73rem;
+    font-weight: 700;
+    padding: 8px 11px;
+    border-radius: 3px;
+    border: 1px solid rgba(44, 229, 246, 0.34);
+    background: rgba(11, 34, 45, 0.78);
+    color: #E2F4F8;
+    cursor: pointer;
+    transition: all 0.18s ease;
+}
+
+.itw-vertical-chapter-btn .cue-tc {
+    color: var(--color-solar-orange);
+    min-width: 38px;
+    flex-shrink: 0;
+}
+
+.itw-vertical-chapter-btn:hover,
+.itw-vertical-chapter-btn.active {
+    background: var(--color-solar-orange);
+    border-color: var(--color-solar-orange);
+    color: #071922;
+    transform: translateX(3px);
+}
+
+.itw-vertical-chapter-btn:hover .cue-tc,
+.itw-vertical-chapter-btn.active .cue-tc {
+    color: #071922;
+}
+
+.macro-environment.argon-light .itw-vertical-chapter-btn {
+    background: #FFFFFF;
+    border-color: #CBD5E1;
+    color: #0F172A;
+}
+
+.macro-environment.argon-light .itw-vertical-chapter-btn .cue-tc {
+    color: #C2410C;
+}
+
+.macro-environment.argon-light .itw-vertical-chapter-btn:hover,
+.macro-environment.argon-light .itw-vertical-chapter-btn.active {
+    background: #EA580C;
+    border-color: #EA580C;
+    color: #FFFFFF;
+}
+
+.macro-environment.argon-light .itw-vertical-chapter-btn:hover .cue-tc,
+.macro-environment.argon-light .itw-vertical-chapter-btn.active .cue-tc {
+    color: #FFFFFF;
+}
+
+@media (max-width: 860px) {
+    .itw-vertical-grid {
+        grid-template-columns: 1fr;
+        padding: 14px;
+    }
+    .itw-vertical-frame-wrap {
+        max-width: 360px;
+    }
+}
+
 /* ==========================================================================
    Benchmark Dispatch // Gemini 4 Neon Extra Physics, 6800U Bus & DSP Proof
    ========================================================================== */

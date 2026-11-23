@@ -584,23 +584,38 @@ document.addEventListener('DOMContentLoaded', () => {
         if (ytPlayer) ytPlayer.src = '';
     };
 
-    if (viewArchivesBtn && archiveModal) {
-        viewArchivesBtn.addEventListener('click', () => {
-            archiveModal.classList.add('active');
-            const activeBtn = document.querySelector('.playlist-btn.active');
-            if (activeBtn) {
-                const src = activeBtn.getAttribute('data-src');
-                if (ytPlayer) {
-                    ytPlayer.src = src;
-                    ytPlayer.style.display = 'block';
-                }
-                if (launchVideo) {
-                    launchVideo.pause();
-                    launchVideo.style.display = 'none';
-                }
+    const openArchiveModal = (trackIdx) => {
+        if (!archiveModal) return;
+        archiveModal.classList.add('active');
+        let targetBtn = document.querySelector('.playlist-btn.active');
+        if (typeof trackIdx === 'number' && playlistBtns[trackIdx]) {
+            playlistBtns.forEach(b => b.classList.remove('active'));
+            targetBtn = playlistBtns[trackIdx];
+            targetBtn.classList.add('active');
+        }
+        if (targetBtn) {
+            const src = targetBtn.getAttribute('data-src');
+            if (ytPlayer) {
+                ytPlayer.src = src;
+                ytPlayer.style.display = 'block';
             }
-        });
+            if (launchVideo) {
+                launchVideo.pause();
+                launchVideo.style.display = 'none';
+            }
+        }
+    };
+
+    if (viewArchivesBtn && archiveModal) {
+        viewArchivesBtn.addEventListener('click', () => openArchiveModal());
     }
+
+    document.querySelectorAll('[data-open-archive-track]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const idx = Number(btn.getAttribute('data-open-archive-track'));
+            openArchiveModal(Number.isNaN(idx) ? 0 : idx);
+        });
+    });
 
     if (closeModalBtn) closeModalBtn.addEventListener('click', stopPlayback);
     if (modalBackdrop) modalBackdrop.addEventListener('click', stopPlayback);

@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>In the Works // Outpost Cruise Night (NRL 21067 SD) - NeverRender Labs</title>
-    <meta name="description" content="Open-hood studio production blog following Outpost Cruise Night and NRL 21067 SD ('Super Dross'): Entry #06 WAWYS RenderSin vs. RenderWin prompt-physics audit, 5-plate 4x5 Aurora vault, 6-panel CAD vehicle lock, 23 graded plates, 4 studio masters, and the streaming 1080p24 'Attention Is Servitude' visualizer cut.">
+    <meta name="description" content="Open-hood studio production blog following Outpost Cruise Night and NRL 21067 SD ('Super Dross'): Entry #07 debut vertical music video premiere ('We Are What You See' streaming zero-KB from YouTube), Entry #06 RenderSin vs. RenderWin audit, 5-plate 4x5 Aurora vault, 6-panel CAD vehicle lock, 23 graded plates, 4 studio masters, and the 1080p24 'Attention Is Servitude' visualizer cut.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=25">
+    <link rel="stylesheet" href="styles.css?v=27">
     <link rel="icon" type="image/svg+xml" href="favicon-svg.svg">
 </head>
 <body>
@@ -45,7 +45,7 @@
                                 <span class="retro-dot d-amber"></span>
                                 <span class="retro-dot d-mint"></span>
                             </div>
-                            <span class="retro-window-tag">PRODUCTION LOG // NOV 13 - NOV 19, 2026</span>
+                            <span class="retro-window-tag">PRODUCTION LOG // NOV 13 - NOV 23, 2026</span>
                         </div>
                         <div class="retro-window-body">
                             <div class="dsuite-kicker">LIVE PRODUCTION DEVBLOG <span class="slash-accent">//</span> FOLLOW ALONG</div>
@@ -54,14 +54,15 @@
                             </h1>
                             <div class="dsuite-subkicker">NRL 21067 SD ("SUPER DROSS") // ANTHROPOLIS TO THE STAGECOACH</div>
                             <p class="itw-hero-intro">
-                                Most studios only let you see the clean 4K render after the credits roll. This page leaves the hood popped open while we build <strong>Outpost Cruise Night</strong> in real time: locking a 6-panel orthographic hero vehicle that survives a 144-frame camera turn, matching graded 5:4 and 4:5 story plates across two opposing worlds, catching real generative physics failures on camera (<em>RenderSin vs. RenderWin</em>), and stitching the road cut to four studio synth masters.
+                                Most studios only let you see the clean 4K render after the credits roll. This page leaves the hood popped open while we build <strong>Outpost Cruise Night</strong> in real time: from our brand-new debut vertical music video premiere (<em>We Are What You See</em>, streaming live below in 9:16), back through the 6-panel orthographic hero vehicle lock, graded 5:4 and 4:5 story plates, real generative physics audits (<em>RenderSin vs. RenderWin</em>), and four mastered studio tracks.
                             </p>
                             <div class="itw-meta-pills">
-                                <span class="itw-meta-pill orange">HERO RIG: NRL 21067 SD</span>
+                                <a href="#wawys-music-video" class="itw-meta-pill orange" style="text-decoration: none;">&#9654; NEW: WAWYS 9:16 MUSIC VIDEO LIVE</a>
+                                <span class="itw-meta-pill">HERO RIG: NRL 21067 SD</span>
                                 <span class="itw-meta-pill">23 GRADED PLATES + C2PA MASTERS</span>
                                 <span class="itw-meta-pill">4 STUDIO MASTERS // WAWYS LIVE</span>
-                                <a href="#wawys-rendersin" class="itw-meta-pill orange" style="text-decoration: none;">&#9889; RENDERSIN VS. RENDERWIN LIVE</a>
-                                <a href="#servitude-video" class="itw-meta-pill" style="text-decoration: none;">&#9654; 1080P24 CUT STREAMING LIVE</a>
+                                <a href="#wawys-rendersin" class="itw-meta-pill" style="text-decoration: none;">&#9889; RENDERSIN VS. RENDERWIN</a>
+                                <a href="#servitude-video" class="itw-meta-pill" style="text-decoration: none;">&#9654; SERVITUDE 1080P24 CUT</a>
                             </div>
                         </div>
                     </div>
@@ -86,7 +87,8 @@
                         <button type="button" class="itw-cue-btn" id="sax-cue-btn" title="Cue We Are What You See (NRL Master) to the 01:02 midnight saxophone solo">[&#127927; 01:02 MIDNIGHT SAX SOLO]</button>
                         <button type="button" class="itw-cue-btn" id="whisper-cue-btn" title="Cue Attention Is Servitude (NRL Master) to the 01:58 sonar whisper bridge">[&#9889; 01:58 SONAR WHISPER BRIDGE]</button>
                         <button type="button" class="itw-cue-btn" id="phaser-cue-btn" title="Switch to Neo Arcade Chase Take 2 and cue to the 01:17 analog phaser pocket">[&#9889; 01:17 PHASER DROP]</button>
-                        <button type="button" class="itw-cue-btn" id="watch-video-cue-btn" title="Jump down and stream the 1080p24 Attention Is Servitude visualizer cut">[&#127916; WATCH 1080P24 VIDEO]</button>
+                        <button type="button" class="itw-cue-btn" id="watch-wawys-cue-btn" title="Jump to and stream the 9:16 We Are What You See official music video">[&#127916; WATCH WAWYS MUSIC VIDEO]</button>
+                        <button type="button" class="itw-cue-btn" id="watch-video-cue-btn" title="Jump down and stream the 1080p24 Attention Is Servitude visualizer cut">[&#127916; WATCH SERVITUDE CUT]</button>
                         <div class="itw-scrubber-wrap">
                             <input type="range" class="itw-scrubber" id="audio-scrubber" min="0" max="162" step="0.1" value="0" aria-label="Seek audio position">
                             <span class="itw-timecode" id="audio-timecode">00:00 / 02:42</span>
@@ -104,14 +106,96 @@
 
                 <!-- Quick-Jump Anchor Bar -->
                 <nav class="itw-jump-nav" aria-label="Production Entries Navigation">
-                    <a href="#wawys-rendersin" class="itw-jump-link featured-cut">[#06] WAWYS RENDERSIN VS. RENDERWIN (NOV 19)</a>
-                    <a href="#servitude-video" class="itw-jump-link featured-cut">[&#9654; 1080P24 CUT] ATTENTION IS SERVITUDE</a>
+                    <a href="#wawys-music-video" class="itw-jump-link featured-cut">[#07 &#9654; OFFICIAL MUSIC VIDEO] WE ARE WHAT YOU SEE (NOV 23)</a>
+                    <a href="#wawys-rendersin" class="itw-jump-link">[#06] WAWYS RENDERSIN VS. RENDERWIN (NOV 19)</a>
+                    <a href="#servitude-video" class="itw-jump-link">[&#9654; 1080P24 CUT] ATTENTION IS SERVITUDE</a>
                     <a href="#neon-kipple" class="itw-jump-link">[#05] NEON KIPPLE &amp; WAWYS (NOV 16-18)</a>
                     <a href="#road-spine" class="itw-jump-link">[#04] 6-BEAT ROAD SPINE (NOV 15)</a>
                     <a href="#outpost-cast" class="itw-jump-link">[#03] BAR PLATES &amp; 3-TURN CAST (NOV 15)</a>
                     <a href="#super-dross-hcard" class="itw-jump-link">[#02] 6-PANEL CAD &amp; OCCLUSION CLIFF (NOV 14)</a>
                     <a href="#chassis-pivot" class="itw-jump-link">[#01] "OATEE" &amp; BLUETOOTH EXHAUST PIVOT (NOV 13)</a>
                 </nav>
+
+                <!-- ENTRY #07: DEBUT VERTICAL MUSIC VIDEO PREMIERE -->
+                <article class="itw-entry-card" id="wawys-music-video">
+                    <div class="itw-entry-header">
+                        <span class="itw-entry-badge">ENTRY #07 // OFFICIAL MUSIC VIDEO PREMIERE (9:16 VERTICAL CINEMA)</span>
+                        <span class="itw-entry-date">2026-11-23 // STREAMING LIVE FROM YOUTUBE // 0 KB REPO FOOTPRINT</span>
+                    </div>
+                    <h2 class="itw-entry-title">
+                        "We Are What You See" (Outpost Cruise Night): Debut Full-Length Vertical Music Video Now Live
+                    </h2>
+                    <p class="itw-prose">
+                        Every plate, physics fight, and open-source prompt logged across Entries #01 through #06, Area 33, and Club 19 just rolled off the Premiere Pro timeline as our first full-length music video: <strong>We Are What You See | Retro-Futuristic Muscle Car &amp; Cybernetic Driver</strong>. Built specifically for <code>1080x1920</code> vertical cinema at <code>24fps</code>, the cut threads <strong>Jax (Unit 0)</strong> and <strong>NRL 21067 SD ("Super Dross")</strong> through continuous VR Mobius warp transitions, the 360-degree Midnight Drift, the 180-degree windshield pass-through stunt, the foggy suspension bridge sax solo, and straight under the Theater District marquee.
+                    </p>
+
+                    <!-- Dedicated 9:16 Vertical YouTube Stream Stage -->
+                    <div class="itw-video-stage" id="wawys-video-stage">
+                        <div class="itw-video-bar">
+                            <div class="itw-video-kicker">
+                                <span class="indicator blink"></span>NOW STREAMING // WE ARE WHAT YOU SEE (1080X1920 24FPS // -14.4 LUFS // -2.4 DBFS)
+                            </div>
+                            <a href="https://youtube.com/shorts/MNsWd_qygUo" target="_blank" rel="noopener" class="itw-badge-btn">[&#8599; OPEN ON YOUTUBE]</a>
+                        </div>
+
+                        <div class="itw-vertical-grid">
+                            <!-- Left Column: Native 9:16 YouTube Stream Player -->
+                            <div class="itw-vertical-frame-wrap">
+                                <div class="itw-vertical-frame">
+                                    <iframe id="wawys-yt-iframe" src="https://www.youtube.com/embed/MNsWd_qygUo?enablejsapi=1&amp;rel=0&amp;playsinline=1" title="We Are What You See | Retro-Futuristic Muscle Car &amp; Cybernetic Driver (NeverRender Labs Official Music Video)" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                </div>
+                            </div>
+
+                            <!-- Right Column: Mastering Telemetry + 7 Interactive Frame-Verified Chapters -->
+                            <div class="itw-vertical-dossier">
+                                <div>
+                                    <div class="itw-vertical-kicker">// PREMIERE MASTER // BLUE TEAM QC VERIFIED</div>
+                                    <h3 class="itw-vertical-title">Outpost Cruise Night // 7-Chapter Jump Deck</h3>
+                                </div>
+
+                                <div class="itw-vertical-specs">
+                                    <div class="itw-spec-cell">
+                                        <span class="itw-spec-label">FORMAT &amp; CADENCE</span>
+                                        <span class="itw-spec-val">1080x1920 // 24 FPS</span>
+                                    </div>
+                                    <div class="itw-spec-cell">
+                                        <span class="itw-spec-label">LOUDNESS MASTER</span>
+                                        <span class="itw-spec-val orange">-14.4 LUFS // 3.3 LU</span>
+                                    </div>
+                                    <div class="itw-spec-cell">
+                                        <span class="itw-spec-label">TRUE PEAK HEADROOM</span>
+                                        <span class="itw-spec-val">-2.4 DBFS (ZERO CLIP)</span>
+                                    </div>
+                                    <div class="itw-spec-cell">
+                                        <span class="itw-spec-label">RUNTIME &amp; DELIVERY</span>
+                                        <span class="itw-spec-val orange">02:42 // YT STREAM</span>
+                                    </div>
+                                </div>
+
+                                <div class="itw-vertical-chapters" aria-label="We Are What You See Chapter Jump Cues">
+                                    <span class="itw-chapter-label">JUMP TO EXACT FRAME-VERIFIED CHAPTER:</span>
+                                    <button type="button" class="itw-vertical-chapter-btn" data-wawys-seek="0"><span class="cue-tc">0:00</span><span>Saturn Rising // Outpost Ignition (Spark Gantry)</span></button>
+                                    <button type="button" class="itw-vertical-chapter-btn" data-wawys-seek="21"><span class="cue-tc">0:21</span><span>Midnight Drift // NRL 21067 SD (Mobius Warp -> 360)</span></button>
+                                    <button type="button" class="itw-vertical-chapter-btn" data-wawys-seek="53"><span class="cue-tc">0:53</span><span>Enter the Driver // Cockpit Warp (Jax Unit 0)</span></button>
+                                    <button type="button" class="itw-vertical-chapter-btn" data-wawys-seek="91"><span class="cue-tc">1:31</span><span>We Are What You See // Billboard Run</span></button>
+                                    <button type="button" class="itw-vertical-chapter-btn" data-wawys-seek="103"><span class="cue-tc">1:43</span><span>Fog Bridge // Sax Solo (180-Deg Hood Pass-Through)</span></button>
+                                    <button type="button" class="itw-vertical-chapter-btn" data-wawys-seek="135"><span class="cue-tc">2:15</span><span>Under the Overpass // Final Chorus</span></button>
+                                    <button type="button" class="itw-vertical-chapter-btn" data-wawys-seek="152"><span class="cue-tc">2:32</span><span>Theater District // Marquee Outro</span></button>
+                                </div>
+
+                                <div class="itw-plate-actions">
+                                    <a href="https://youtube.com/shorts/MNsWd_qygUo" target="_blank" rel="noopener" class="itw-badge-btn c2pa">[&#8599; WATCH FULLSCREEN ON YOUTUBE]</a>
+                                    <a href="club-19/ep-01-jaxs-keystone-win/" class="itw-badge-btn">[&#127942; CLUB 19: 180-DEG STUNT + PROMPTS]</a>
+                                    <a href="area-33/" class="itw-badge-btn">[&#128760; AREA 33: RINDER-FILES OUTTAKES]</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="itw-telemetry-callout">
+                        <strong>// HOW THE SHOTS CAME TOGETHER:</strong> Every major hero beat inside this cut is documented open-hood right across the site: the <code>0:21</code> 360-degree drift grew out of our <a href="area-33/ep-03-russian-blair-detat/" style="color: var(--color-hud-cyan); font-weight: 700;">Area 33 Episode 03</a> orbit protocol, the <code>1:31</code> causeway billboard pass came straight from the <a href="#wawys-rendersin" style="color: var(--color-solar-orange); font-weight: 700;">Entry #06 RenderWin optical-parallax fix</a>, the <code>1:43</code> bridge sax solo unleashes <a href="club-19/ep-01-jaxs-keystone-win/" style="color: #00FF88; font-weight: 700;">Club 19 Entry #01's 180-degree windshield pass-through</a>, and the <code>2:15</code> overpass run was salvaged from <a href="area-33/ep-04-granny-theft-jax/" style="color: var(--color-hud-cyan); font-weight: 700;">Area 33 Episode 04</a>.
+                    </div>
+                </article>
 
                 <!-- ENTRY #06 -->
                 <article class="itw-entry-card" id="wawys-rendersin">
@@ -937,7 +1021,14 @@ Rigid chassis-mounted interior cockpit camera moving steadily forward at 55 mph 
                 audioEl.addEventListener('ended', refreshPlayButton);
             }
 
-            // Mutual Audio Console <-> YouTube Visualizer Coordination & Chapter Seek
+            // Mutual Audio Console <-> Dual YouTube Stage Coordination & Chapter Seek
+            const wawysYtIframe = document.getElementById('wawys-yt-iframe');
+            const watchWawysCueBtn = document.getElementById('watch-wawys-cue-btn');
+            const wawysStageEl = document.getElementById('wawys-video-stage');
+            const wawysChapterBtns = document.querySelectorAll('.itw-vertical-chapter-btn[data-wawys-seek]');
+            const baseWawysEmbed = 'https://www.youtube.com/embed/MNsWd_qygUo?enablejsapi=1&rel=0&playsinline=1';
+            let wawysPlayerBooted = false;
+
             const servitudeYtIframe = document.getElementById('servitude-yt-iframe');
             const watchVideoCueBtn = document.getElementById('watch-video-cue-btn');
             const videoStageEl = document.getElementById('servitude-video');
@@ -945,15 +1036,28 @@ Rigid chassis-mounted interior cockpit camera moving steadily forward at 55 mph 
             const baseYtEmbed = 'https://www.youtube.com/embed/WK-aAoh7Vpg?enablejsapi=1&rel=0&playsinline=1';
             let ytPlayerBooted = false;
 
-            function postYtCommand(func, args) {
-                if (!servitudeYtIframe || !servitudeYtIframe.contentWindow) return;
-                servitudeYtIframe.contentWindow.postMessage(
+            function postIframeYtCommand(iframeEl, func, args) {
+                if (!iframeEl || !iframeEl.contentWindow) return;
+                iframeEl.contentWindow.postMessage(
                     JSON.stringify({ event: 'command', func: func, args: args || [] }),
                     '*'
                 );
             }
 
-            // Entry #06: Synced RenderSin vs. RenderWin Dual-Deck + 3-Way Audio Coordination
+            function postYtCommand(func, args) {
+                postIframeYtCommand(servitudeYtIframe, func, args);
+            }
+
+            function postWawysYtCommand(func, args) {
+                postIframeYtCommand(wawysYtIframe, func, args);
+            }
+
+            function pauseAllYouTubeStages() {
+                postWawysYtCommand('pauseVideo', []);
+                postYtCommand('pauseVideo', []);
+            }
+
+            // Entry #06: Synced RenderSin vs. RenderWin Dual-Deck + 4-Way Audio Coordination
             const rsVideoSin = document.getElementById('rs-video-sin');
             const rsVideoWin = document.getElementById('rs-video-win');
             const rsPlayBothBtn = document.getElementById('rs-play-both');
@@ -982,7 +1086,7 @@ Rigid chassis-mounted interior cockpit camera moving steadily forward at 55 mph 
             function playBothRenderDecks(startAt) {
                 if (!rsVideoSin || !rsVideoWin) return;
                 if (audioEl && !audioEl.paused) audioEl.pause();
-                postYtCommand('pauseVideo', []);
+                pauseAllYouTubeStages();
                 applySyncAudioOwner();
                 if (typeof startAt === 'number') {
                     rsVideoSin.currentTime = startAt;
@@ -1010,14 +1114,51 @@ Rigid chassis-mounted interior cockpit camera moving steadily forward at 55 mph 
                 if (!vid) return;
                 vid.addEventListener('play', () => {
                     if (audioEl && !audioEl.paused) audioEl.pause();
-                    postYtCommand('pauseVideo', []);
+                    pauseAllYouTubeStages();
                 });
             });
 
-            if (audioEl && servitudeYtIframe) {
+            if (audioEl) {
                 audioEl.addEventListener('play', () => {
-                    postYtCommand('pauseVideo', []);
+                    pauseAllYouTubeStages();
                     pauseRenderSinDecks();
+                });
+            }
+
+            function triggerWawysCue(sec, scrollToStage) {
+                if (!wawysYtIframe) return;
+                if (audioEl && !audioEl.paused) {
+                    audioEl.pause();
+                }
+                postYtCommand('pauseVideo', []);
+                pauseRenderSinDecks();
+                wawysChapterBtns.forEach((btn) => {
+                    btn.classList.toggle('active', Number(btn.getAttribute('data-wawys-seek')) === sec);
+                });
+                if (scrollToStage && wawysStageEl) {
+                    wawysStageEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                if (wawysPlayerBooted && wawysYtIframe.contentWindow) {
+                    postWawysYtCommand('seekTo', [sec, true]);
+                    postWawysYtCommand('playVideo', []);
+                } else {
+                    wawysYtIframe.addEventListener('load', () => {
+                        wawysPlayerBooted = true;
+                    }, { once: true });
+                    wawysYtIframe.src = baseWawysEmbed + '&autoplay=1&start=' + sec;
+                }
+            }
+
+            wawysChapterBtns.forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const sec = Number(btn.getAttribute('data-wawys-seek')) || 0;
+                    triggerWawysCue(sec, false);
+                });
+            });
+
+            if (watchWawysCueBtn) {
+                watchWawysCueBtn.addEventListener('click', () => {
+                    triggerWawysCue(0, true);
                 });
             }
 
@@ -1026,6 +1167,7 @@ Rigid chassis-mounted interior cockpit camera moving steadily forward at 55 mph 
                 if (audioEl && !audioEl.paused) {
                     audioEl.pause();
                 }
+                postWawysYtCommand('pauseVideo', []);
                 pauseRenderSinDecks();
                 chapterBtns.forEach((btn) => {
                     btn.classList.toggle('active', Number(btn.getAttribute('data-yt-seek')) === sec);
