@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Making Gemini 4 Neon Extra Stop and Think (Part 2) // Red Trilemma, 1052N Anamorphic &amp; FastMCP Bus - NeverRender Labs</title>
+    <meta name="description" content="Part 2 of NeverRender Labs' live stress test of Gemini 4 Neon Extra High: a 5m 54s Python-verified derivation across monolithic InGaN Red Trilemma epitaxy, One Times Square 1052N anamorphic projection &amp; ACES 1.3 RGC, and FastMCP / Ryzen 7 6800U VCN 3.0 bus arbitration.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <link rel="stylesheet" href="styles.css?v=27">
+    <link rel="icon" type="image/svg+xml" href="favicon-svg.svg">
+</head>
+<body>
+    <div class="macro-environment" id="macro-env">
+        <!-- Energy Conduits -->
+        <div class="conduit-grid">
+            <div class="conduit-line horizontal top"></div>
+            <div class="conduit-line vertical left"></div>
+            <div class="conduit-line horizontal bottom"></div>
+            <div class="conduit-line vertical right"></div>
+        </div>
+
+        <div class="viewport-container itw-viewport" id="main-viewport">
+            <div class="glass-panel">
+
+                <!-- 1. Top Masthead Bar -->
+                <header class="dev-top-bracket">
+                    <div class="dev-brand-pill">
+                        <span class="dev-code-glyph">&lt;/&gt;</span>
+                        <span>NEVERRENDER LABS <span class="slash-orange">//</span> BENCHMARK DISPATCH PT. 2</span>
+                    </div>
+                    <div class="dev-header-controls">
+                        <button class="dev-ctrl-btn" id="toggle-argon-theme" type="button" title="Switch between D-Suite Petrol HUD and Corporate Paper Light">[&#9680; MODE: D-SUITE TEAL]</button>
+                        <a href="neon-physics-benchmark.html" class="dev-ctrl-btn" style="text-decoration: none;">[&lt;- PART 1 (2M 47S)]</a>
+                        <a href="tech-logs.html" class="dev-ctrl-btn" style="text-decoration: none;">[&#9889; TECH LOGS]</a>
+                        <a href="index.html?hud=1" class="dev-ctrl-btn" style="text-decoration: none;">[x] TERMINAL</a>
+                    </div>
+                </header>
+
+                <!-- 2. Hero Stage -->
+                <section class="dev-hero-stage itw-hero-stage">
+                    <div class="retro-browser-window itw-hero-window">
+                        <div class="retro-window-bar">
+                            <div class="retro-window-dots">
+                                <span class="retro-dot d-pink"></span>
+                                <span class="retro-dot d-amber"></span>
+                                <span class="retro-dot d-mint"></span>
+                            </div>
+                            <span class="retro-window-tag">BENCHMARK LOG PART 2 // 2026-11-24 // 13:14:51 -> 13:20:45 PST</span>
+                        </div>
+                        <div class="retro-window-body">
+                            <div class="dsuite-kicker">FRONTIER MODEL STRESS TEST PART 2 <span class="slash-accent">//</span> 5M 54S LIVE PYTHON-VERIFIED RUN</div>
+                            <h1 class="retro-window-title">
+                                MAKING GEMINI 4 NEON EXTRA STOP AND THINK (PART 2)
+                            </h1>
+                            <div class="dsuite-subkicker">INGAN RED TRILEMMA EPITAXY // 1052N ANAMORPHIC &amp; ACES 1.3 RGC // FASTMCP &amp; 6800U VCN 3.0 BUS</div>
+                            <p class="itw-hero-intro">
+                                Part 1 forced <strong>Gemini 4 Neon (Extra)</strong> to pause for <code>2m 47s</code>. For <strong>Part 2</strong>, we escalated straight into the hardest solid-state physics, street-level anamorphic monolith optics, Academy ACES 1.3 gamut compression, and unified APU bus-arbitration math inside our own studio vault. It stopped dead in its tracks for <strong>5 minutes and 54 seconds</strong>, pulled live Vurgaftman and Academy CTL specifications, ran <strong>two custom Python numerical solvers</strong> (<code>verify_part2_proofs.py</code> and <code>verify_part2_extra.py</code>), and refused to fall into all three hidden traps.
+                            </p>
+                            <div class="itw-meta-pills">
+                                <span class="itw-meta-pill orange">MODEL: GEMINI 4 NEON EXTRA HIGH</span>
+                                <span class="itw-meta-pill">ELAPSED: 5M 54S (2X PART 1)</span>
+                                <span class="itw-meta-pill">4 SPEC LOOKUPS + 2 PYTHON SOLVERS</span>
+                                <a href="#live-capture" class="itw-meta-pill orange" style="text-decoration: none;">&#9654; WATCH 8M 24S CAPTURE</a>
+                                <a href="neon-physics-benchmark.html" class="itw-meta-pill" style="text-decoration: none;">&lt;- READ PART 1 (NOV 18)</a>
+                            </div>
+                            <div class="npb-timeline-strip" aria-label="Part 2 Execution Timeline Breakdown">
+                                <span class="npb-step-pill">LOOKUPS: 4 SPECS</span>
+                                <span class="npb-step-arrow">-&gt;</span>
+                                <span class="npb-step-pill">THOUGHT: 179s</span>
+                                <span class="npb-step-arrow">-&gt;</span>
+                                <span class="npb-step-pill py">PYTHON #1: PROOFS</span>
+                                <span class="npb-step-arrow">-&gt;</span>
+                                <span class="npb-step-pill">THOUGHT: 56s</span>
+                                <span class="npb-step-arrow">-&gt;</span>
+                                <span class="npb-step-pill py">PYTHON #2: QW + FRUSTUM</span>
+                                <span class="npb-step-arrow">-&gt;</span>
+                                <span class="npb-step-pill">AUDIT: 38s</span>
+                                <span class="npb-step-arrow">-&gt;</span>
+                                <span class="npb-step-pill py">KATEX STREAM</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Quick-Jump Anchor Bar -->
+                <nav class="itw-jump-nav" aria-label="Part 2 Benchmark Sections Navigation">
+                    <a href="#live-capture" class="itw-jump-link featured-cut">[&#9654; LIVE VIDEO] 8M 24S RUN CAPTURE</a>
+                    <a href="#three-traps" class="itw-jump-link featured-cut">[#TLDR] 3 TRAPS DODGED</a>
+                    <a href="#the-prompt" class="itw-jump-link">[#PROMPT] PART 2 PAYLOAD</a>
+                    <a href="#red-trilemma" class="itw-jump-link">[#01] INGAN RED TRILEMMA</a>
+                    <a href="#anamorphic-aces" class="itw-jump-link">[#02] 1052N FRUSTUM &amp; ACES 1.3</a>
+                    <a href="#fastmcp-bus" class="itw-jump-link">[#03] FASTMCP &amp; 6800U VCN BUS</a>
+                    <a href="neon-physics-benchmark.html" class="itw-jump-link">[&lt;- PART 1] NOV 18 BENCHMARK</a>
+                </nav>
+
+                <!-- LIVE SCREEN CAPTURE STAGE -->
+                <article class="itw-entry-card" id="live-capture">
+                    <div class="itw-entry-header">
+                        <span class="itw-entry-badge">UNEDITED CAPTURE // PART 2 STRESS TEST</span>
+                        <span class="itw-entry-date">1080X876 FASTSTART MP4 // TINY HYPERION</span>
+                    </div>
+                    <h2 class="itw-entry-title">
+                        Live Screen Recording: 5m 54s of Deep Reasoning, 4 Live Spec Lookups &amp; 2 Python Solvers
+                    </h2>
+                    <p class="itw-prose">
+                        Recorded unedited inside Google Antigravity on <strong>Tiny Hyperion</strong> (<code>AMD Ryzen 7 6800U</code>). Use the verified jump cues below to skip directly to the prompt fire, the <code>179s</code> tensor-rotation derivation, both live Python verification runs, or the full KaTeX output scroll, or kick playback up to <code>2x</code> / <code>4x</code>.
+                    </p>
+
+                    <div class="itw-video-stage">
+                        <div class="itw-video-bar">
+                            <div class="itw-video-kicker">
+                                <span class="indicator blink"></span>LIVE CAPTURE // GEMINI 4 NEON EXTRA HIGH PART 2 (1080X876 // 21.1 MB WEB FASTSTART)
+                            </div>
+                            <a href="TECH_LOGS/neon-physics-benchmark/2026-11-24-gemini-neon-extra-part2-physics-verification.md" target="_blank" rel="noopener" class="itw-badge-btn c2pa">[&#128196; OPEN CLEAN PROOF (.MD)]</a>
+                        </div>
+                        <div class="npb-video-frame">
+                            <video id="neon-benchmark-video" controls playsinline preload="metadata" poster="TECH_LOGS/neon-physics-benchmark/neon-benchmark-pt2-poster.jpg">
+                                <source src="TECH_LOGS/neon-physics-benchmark/gemini-neon-extra-part2-physics-run.mp4" type="video/mp4">
+                                Your browser does not support HTML5 video playback.
+                            </video>
+                        </div>
+                        <div class="npb-video-controls-bar">
+                            <div class="itw-chapter-strip" style="padding: 0; border-top: none; background: transparent;" aria-label="Part 2 Benchmark Video Jump Cues">
+                                <span class="itw-chapter-label">JUMP CUES:</span>
+                                <button type="button" class="itw-chapter-btn" data-vid-seek="0">[0:00 WARM-UP]</button>
+                                <button type="button" class="itw-chapter-btn" data-vid-seek="43">[0:43 PROMPT FIRED]</button>
+                                <button type="button" class="itw-chapter-btn" data-vid-seek="75">[1:15 SPEC LOOKUPS + 179S]</button>
+                                <button type="button" class="itw-chapter-btn" data-vid-seek="280">[4:40 PYTHON #1]</button>
+                                <button type="button" class="itw-chapter-btn" data-vid-seek="335">[5:35 PYTHON #2 (QW+1052N)]</button>
+                                <button type="button" class="itw-chapter-btn" data-vid-seek="385">[6:25 KATEX STREAM]</button>
+                                <button type="button" class="itw-chapter-btn" data-vid-seek="450">[7:30 ACES + 6800U TABLES]</button>
+                            </div>
+                            <div class="npb-speed-group" aria-label="Playback Speed Controls">
+                                <span class="itw-chapter-label">SPEED:</span>
+                                <button type="button" class="npb-speed-btn active" data-vid-rate="1">1X</button>
+                                <button type="button" class="npb-speed-btn" data-vid-rate="2">2X</button>
+                                <button type="button" class="npb-speed-btn" data-vid-rate="4">4X</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- THREE TRAPS DODGED SUMMARY -->
+                <article class="itw-entry-card" id="three-traps">
+                    <div class="itw-entry-header">
+                        <span class="itw-entry-badge">EXECUTIVE VERDICT // 3 HIDDEN TRAPS CAUGHT</span>
+                        <span class="itw-entry-date">INDEPENDENTLY RE-VERIFIED IN PYTHON</span>
+                    </div>
+                    <h2 class="itw-entry-title">
+                        Three Subtle Traps Gemini 4 Neon Extra High Refused to Fall Into
+                    </h2>
+                    <ul class="npb-list">
+                        <li><strong>The Auger Paradox (Section 1b):</strong> Most models lazily claim the microscopic Auger coefficient \(C\) shrinks on semi-polar \((20\bar{2}1)\) GaN. Neon caught the real solid-state paradox: bare \(C(F)\) actually <em>increases</em> as wavefunction overlap recovers (\(4.04\times 10^{-32} \to 4.65\times 10^{-31}\,\text{cm}^6/\text{s}\)), yet operational Auger loss \(C n^3\) still drops <strong><code>8.8x</code></strong> at equal brightness because required carrier density \(n\) drops faster as \(1/|I_{eh}|\).</li>
+                        <li><strong>The 1052N Frustum &amp; <code>#FF0055</code> ACES Shock (Section 2a &amp; 2b):</strong> Proved that a street-level pedestrian's \(60^\circ\) angular midpoint sits only <strong><code>26.79%</code></strong> up the <code>7,416 px</code> vertical monolith (forcing the upper \(15^\circ\) of sightline to consume <code>5,429 px</code> at up to <strong><code>7.4641x</code></strong> vertical pre-stretch), caught that <code>#FF0055</code> actively triggers ACES 1.3 RGC <em>even from plain sRGB</em> (\(d_G = 0.8843 \gt t_M = 0.803\)), and proved why <code>65^3</code> 3D tetrahedral LUTs drop shadow-crush interpolation error to <code>0.256</code> 8-bit code values.</li>
+                        <li><strong>Live Tiny Hyperion Bus Ceiling (Section 3b):</strong> Derived the exact 128-bit LPDDR5-6400 arbitration deadline on our own Ryzen 7 6800U: during a 4K60 <code>RGBA16F HDR -&gt; P010</code> encode, CPU tensor traffic breaches VCN 3.0's <code>6.17 ms</code> DMA window at just <strong><code>27.96 GB/s</code></strong> (<code>~6.5 tok/s</code> on a 4.3 GB Q4 7B model), while pre-packing native <code>NV12</code> doubles safe CPU headroom back up to <strong><code>58.56 GB/s</code></strong>.</li>
+                    </ul>
+                </article>
+
+                <!-- THE PROMPT -->
+                <article class="itw-entry-card" id="the-prompt">
+                    <div class="itw-entry-header">
+                        <span class="itw-entry-badge">INPUT PAYLOAD // PART 2 3-DOMAIN STRESS TEST</span>
+                        <span class="itw-entry-date">SENT VERBATIM AT 13:14:51 PST</span>
+                    </div>
+                    <h2 class="itw-entry-title">
+                        The Part 2 Torture-Test Prompt
+                    </h2>
+                    <pre class="npb-prompt-box" id="stress-prompt-text">### SYSTEM ARCHITECTURAL PROPOSAL (PART 2): NON-LINEAR EPITAXY, ANAMORPHIC MONOLITHS, AND DISTRIBUTED FAST-MCP DYNAMICS
+
+Execute a rigorous, zero-hand-waving mathematical derivation and engineering proof across the following three systems:
+
+1. SOLID-STATE EPITAXY &amp; THE "RED TRILEMMA":
+In monolithic RGB micro-LED fabrication on a single substrate, explain why growing high-indium fraction In(x)Ga(1-x)N (x &gt; 0.35) for 630 nm red emitters on conventional c-plane (0001) GaN leads to catastrophic efficiency collapse.
+  a) Formulate the Hamiltonian shift caused by the piezoelectric field (F_pz) and calculate how the spatial separation of electron-hole wavefunctions affects radiative recombination rate B in the modified ABC model.
+  b) Contrast this against crystal growth on semi-polar (20-21) or non-polar (11-20) planes: quantify the reduction in internal polarization fields and calculate the shift in the Auger recombination coefficient (C * n^3).
+
+2. MONOLITHIC ANAMORPHIC TRANSFORMS &amp; COLOR SCIENCE (1052N DISPLAY):
+For a continuous 1,312 x 7,416 px vertical digital display (such as the One Times Square 1052N installation) viewed by pedestrians from street level at vertical angles between theta = 45 deg and theta = 75 deg:
+  a) Derive the non-linear vertical perspective pre-distortion transformation matrix required to project rectilinear 3D geometry so that it appears undistorted to a human observer on the ground.
+  b) When rendering high-saturation neon emissives in ACEScct (e.g., Cyber Cyan #00F0FF, Marquee Gold #FEE378, Neon Pink #FF0055), define the exact ACES Reference Gamut Compression (RGC) roll-off function and formulate the mathematical curve for a calibrated 12% bottom luma black crush (y = f(x)) that guarantees zero milky gray lifting in sRGB/Rec.709 while preventing color banding via 3D tetrahedral LUT interpolation.
+
+3. DISTRIBUTED AGENT IPC &amp; MEMORY ARBITRATION (FASTMCP / APU):
+In an asynchronous multi-agent architecture communicating over FastMCP via SSE (Server-Sent Events) and JSON-RPC 2.0 hosted on a unified AMD Ryzen 7 6800U APU:
+  a) Formulate the queuing delay and token-bucket rate limiter equations required to prevent asyncio event-loop starvation when multiple sub-agents stream JSON-RPC payloads concurrently.
+  b) Derive the memory-bus arbitration contention on the 128-bit LPDDR5-6400 bus when the hardware video encoder (VCN 3.0) streams 4K60 uncompressed frames while CPU threads execute concurrent tensor operations. Provide the exact throughput ceiling where bus arbitration forces frame drops.</pre>
+                    <div class="itw-plate-actions">
+                        <button type="button" class="itw-badge-btn" id="copy-prompt-btn">[&#128203; COPY PART 2 PROMPT]</button>
+                        <a href="TECH_LOGS/neon-physics-benchmark/2026-11-24-gemini-neon-extra-part2-physics-verification.md" target="_blank" rel="noopener" class="itw-badge-btn c2pa">[&#128196; DOWNLOAD CLEAN PROOF (.MD)]</a>
+                    </div>
+                </article>
+
+                <!-- SECTION 1: SOLID-STATE EPITAXY & THE RED TRILEMMA -->
+                <article class="itw-entry-card" id="red-trilemma">
+                    <div class="itw-entry-header">
+                        <span class="itw-entry-badge">LAYER 01 // SOLID-STATE EPITAXY</span>
+                        <span class="itw-entry-date">INGAN RED TRILEMMA &amp; CRYSTAL ORIENTATION</span>
+                    </div>
+                    <h2 class="itw-entry-title">
+                        1. Monolithic \(\text{In}_x\text{Ga}_{1-x}\text{N}/\text{GaN}\) (\(x \gt 0.35\)) &amp; The "Red Trilemma"
+                    </h2>
+
+                    <p class="itw-prose">
+                        Hitting \(630\,\text{nm}\) (\(E_{\text{ph}} = 1.968\,\text{eV}\)) monolithically on \((0001)\) GaN traps epitaxial growth inside three coupled physical penalties:
+                    </p>
+                    <ul class="npb-list">
+                        <li><strong>Lattice-mismatch strain (\(\sim 11.3\%\) GaN/InN mismatch):</strong> At \(x = 0.36\text{-}0.40\), coherent biaxial compressive strain reaches \(\varepsilon_{xx} \in [-3.89\%, -4.31\%]\), generating giant piezoelectric sheet charges (\(\sigma_{\text{pol}} \approx 0.057\text{-}0.063\,\text{C/m}^2\)).</li>
+                        <li><strong>Low-temperature MOCVD defect explosion:</strong> Suppressing InN desorption forces growth temperatures down to \(T_g \approx 700\text{-}750^\circ\text{C}\), driving V-pits and indium segregation that raise Shockley-Read-Hall nonradiative rate \(A\) by \(10\times\text{-}100\times\) (\(A \ge 5\times 10^7\,\text{s}^{-1}\)).</li>
+                        <li><strong>Quantum-well thickness trap:</strong> Widening \(L_w\) to reach \(630\,\text{nm}\) via Stark redshift collapses electron-hole overlap exponentially; thinning \(L_w\) blueshifts emission and demands \(x \gt 0.40\), triggering misfit dislocations and spinodal decomposition.</li>
+                    </ul>
+
+                    <h3 class="npb-subhead">1(a). Piezoelectric Hamiltonian Shift &amp; Modified ABC Radiative Collapse</h3>
+                    <p class="itw-prose">
+                        For coherent \(c\)-plane \((0001)\) growth (\(\sigma_{zz} = 0\), \(\varepsilon_{zz} = -2(C_{13}/C_{33})\varepsilon_{xx}\)), internal piezoelectric polarization and built-in electrostatic field are:
+                    </p>
+                    <div class="npb-math-box">
+                        $$P_{pz} = 2\varepsilon_{xx}\left(e_{31} - e_{33}\frac{C_{13}}{C_{33}}\right), \qquad F_{pz} = -\frac{P_{pz} + \Delta P_{sp}}{\varepsilon_0\,\varepsilon_r(x)}$$
+                    </div>
+                    <p class="itw-prose">
+                        Using standard Vurgaftman-Meyer / Bernardini constants (\(a_{\text{GaN}} = 3.189\,\text{\AA}\), \(a_{\text{InN}} = 3.548\,\text{\AA}\)), \(|F_{pz}^{(0001)}|\) reaches <strong><code>5.407 MV/cm</code></strong> at \(x = 0.36\) (<code>5.692 MV/cm</code> at \(x = 0.38\); <code>5.975 MV/cm</code> at \(x = 0.40\)). The 1D BenDaniel-Duke envelope Hamiltonian gains an opposing Stark tilt \(\pm q F_{pz} z\) that pins carriers into triangular Airy-like interface pockets:
+                    </p>
+                    <div class="npb-math-box">
+                        $$\hat{H}_{e/h} = -\frac{\hbar^2}{2}\frac{d}{dz}\!\left(\frac{1}{m^*_{e/h}(z)}\frac{d}{dz}\right) + V_{e/h}(z) \pm q F_{pz}\,z + V_H(z)$$
+                    </div>
+                    <div class="npb-math-box">
+                        $$\Delta E_{\text{QCSE}} \approx -q F_{pz} L_w + \left(\frac{\hbar^2 q^2 F_{pz}^2}{2}\right)^{1/3}|a_1|\left[(m_e^*)^{-1/3} + (m_h^*)^{-1/3}\right], \qquad B(F_{pz}, n) = \frac{B_0\,|I_{eh}(F_{pz}, n)|^2}{1 + n/n_0}$$
+                    </div>
+                    <p class="itw-prose">
+                        <strong>Exact 1D Numerical Diagonalization (\(L_w = 2.5\,\text{nm}, x = 0.36\), Bir-Pikus shift \(+0.367\,\text{eV}\)):</strong> Flat-band emission sits at \(2.6274\,\text{eV}\) (\(471.9\,\text{nm}\), \(|I_{eh}|^2 = 0.95401\)). Under polar \(c\)-plane field \(5.407\,\text{MV/cm}\), Stark redshift pulls emission to \(1.9465\,\text{eV}\) (\(637.0\,\text{nm}\) red), separates carrier centroids by \(2.465\,\text{nm}\), collapses <strong>\(|I_{eh}|^2\) by <code>70.0x</code> to <code>0.01362</code></strong> (<code>163x</code> at \(L_w = 3.0\,\text{nm}, x = 0.38\)), and crashes peak IQE down to <strong><code>8.74%</code></strong>.
+                    </p>
+
+                    <h3 class="npb-subhead">1(b). Semi-Polar \((20\bar{2}1)\) &amp; Non-Polar \((11\bar{2}0)\) Planes: Polarization Drop &amp; Auger (\(C n^3\)) Proof</h3>
+                    <div class="npb-math-box">
+                        $$\theta_{(20\bar{2}1)} = \arctan\!\left(\frac{4}{\sqrt{3}}\frac{c_0}{a_0}\right) = 75.09^\circ, \qquad \theta_{(11\bar{2}0)} = 90.00^\circ$$
+                    </div>
+                    <div class="npb-table-wrap">
+                        <table class="npb-table">
+                            <thead>
+                                <tr>
+                                    <th>Orientation (\(L_w = 2.5\,\text{nm}, x = 0.36\))</th>
+                                    <th>\(\theta\)</th>
+                                    <th>\(|F_{pz}|\) (\(\text{MV/cm}\))</th>
+                                    <th>Field Drop</th>
+                                    <th>\(|I_{eh}|^2\)</th>
+                                    <th>\(B(F)\) (\(\text{cm}^3/\text{s}\))</th>
+                                    <th>\(C(F)\) (\(\text{cm}^6/\text{s}\))</th>
+                                    <th>\(R_{\text{Auger}} = C n^3\) (\(\text{cm}^{-3}/\text{s}\))</th>
+                                    <th>Op. IQE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Polar \(c\)-plane \((0001)\)</strong></td>
+                                    <td>\(0.00^\circ\)</td>
+                                    <td><code>5.407</code></td>
+                                    <td>baseline</td>
+                                    <td><code>0.01362</code></td>
+                                    <td>\(2.72\times 10^{-13}\)</td>
+                                    <td>\(4.04\times 10^{-32}\)</td>
+                                    <td>\(3.17\times 10^{27}\)</td>
+                                    <td><code>8.59%</code></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Semi-polar \((20\bar{2}1)\)</strong></td>
+                                    <td>\(75.09^\circ\)</td>
+                                    <td><code>1.964</code> (inv.)</td>
+                                    <td><strong><code>-63.7%</code></strong></td>
+                                    <td><code>0.29698</code> (<code>21.8x</code>)</td>
+                                    <td>\(5.94\times 10^{-12}\)</td>
+                                    <td>\(4.65\times 10^{-31}\)</td>
+                                    <td>\(3.59\times 10^{26}\) (<strong><code>-8.8x</code></strong>)</td>
+                                    <td><code>37.93%</code></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Non-polar \((11\bar{2}0)\)</strong></td>
+                                    <td>\(90.00^\circ\)</td>
+                                    <td><code>0.000</code></td>
+                                    <td><strong><code>-100.0%</code></strong></td>
+                                    <td><code>0.95401</code> (<code>70.0x</code>)</td>
+                                    <td>\(1.91\times 10^{-11}\)</td>
+                                    <td>\(1.45\times 10^{-30}\)</td>
+                                    <td>\(1.94\times 10^{26}\) (<strong><code>-16.3x</code></strong>)</td>
+                                    <td><code>52.60%</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="npb-math-box">
+                        $$n = \sqrt{\frac{J_{\text{rad}}}{q L_w B_0}}\,|I_{eh}|^{-1} \implies R_{\text{Auger}} = C(F)\,n^3 = \left(\frac{J_{\text{rad}}}{q L_w B_0}\right)^{3/2}\left(\frac{C_0}{|I_{eh}|} + \frac{C_{\text{int}}}{|I_{eh}|^3}\right)$$
+                    </div>
+                    <div class="npb-verdict-box">
+                        <strong>// EPITAXY TAKEAWAY:</strong> Even though microscopic \(C(F) = C_0 |I_{eh}|^2 + C_{\text{int}}\) rises as the quantum well flattens, required carrier density \(n \propto |I_{eh}|^{-1}\) drops so rapidly that operational \(C n^3\) loss plunges <strong><code>8.8x</code> on \((20\bar{2}1)\)</strong> and <strong><code>16.3x</code> on \((11\bar{2}0)\)</strong> at equal brightness. In production, semi-polar \((20\bar{2}1)\) wins for red micro-LEDs because it preserves indium uptake while avoiding basal-plane stacking faults.
+                    </div>
+                </article>
+
+                <!-- SECTION 2: 1052N ANAMORPHIC & ACES 1.3 COLOR SCIENCE -->
+                <article class="itw-entry-card" id="anamorphic-aces">
+                    <div class="itw-entry-header">
+                        <span class="itw-entry-badge">LAYER 02 // ANAMORPHIC OPTICS &amp; COLOR SCIENCE</span>
+                        <span class="itw-entry-date">ONE TIMES SQUARE 1052N &amp; ACES 1.3 RGC</span>
+                    </div>
+                    <h2 class="itw-entry-title">
+                        2. 1052N Off-Axis Anamorphic Frustum, ACES 1.3 RGC, 12% Black Crush &amp; 3D Tetrahedral LUTs
+                    </h2>
+
+                    <h3 class="npb-subhead">2(a). Asymmetric Off-Axis Oblique Frustum Matrix (1,312 x 7,416 px, \(\theta \in [45^\circ, 75^\circ]\))</h3>
+                    <p class="itw-prose">
+                        Placing the street-level eye at \(\mathbf{E} = (0,0,0)\) facing a planar vertical facade at \(Z = -D\) fixes \(y_b = D\tan 45^\circ = D\), \(y_t = D\tan 75^\circ = (2+\sqrt{3})D \approx 3.73205 D\), \(H_{\text{phys}} = (1+\sqrt{3})D\), and \(W_{\text{phys}} = 0.48334 D\). The exact off-axis oblique frustum projection matrix simplifies algebraically to closed-form radicals:
+                    </p>
+                    <div class="npb-math-box">
+                        $$\mathbf{P}_{\text{1052N}} = \begin{pmatrix} 4.137855 & 0 & 0 & 0 \\ 0 & \sqrt{3}-1 & \sqrt{3} & 0 \\ 0 & 0 & -\dfrac{f+n}{f-n} & -\dfrac{2fn}{f-n} \\ 0 & 0 & -1 & 0 \end{pmatrix}, \qquad J_y(\theta) = D\sec^2\theta, \qquad S_{\text{aniso}}(\theta) = \sec\theta$$
+                    </div>
+
+                    <div class="npb-table-wrap">
+                        <table class="npb-table">
+                            <thead>
+                                <tr>
+                                    <th>Elevation \(\theta\)</th>
+                                    <th>\(y/D = \tan\theta\)</th>
+                                    <th>Physical Height %</th>
+                                    <th>LED Row \(v\) (from top)</th>
+                                    <th>Aspect Stretch \(\sec\theta\)</th>
+                                    <th>Vertical Jacobian \(\sec^2\theta\)</th>
+                                    <th>Stretch vs. \(45^\circ\)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>\(45.0^\circ\) (bottom)</td>
+                                    <td><code>1.0000</code></td>
+                                    <td><code>0.00%</code></td>
+                                    <td><code>7,416.0 px</code></td>
+                                    <td><code>1.4142x</code></td>
+                                    <td><code>2.0000x</code></td>
+                                    <td><code>1.0000x</code></td>
+                                </tr>
+                                <tr>
+                                    <td>\(52.5^\circ\)</td>
+                                    <td><code>1.3032</code></td>
+                                    <td><code>11.10%</code></td>
+                                    <td><code>6,592.9 px</code></td>
+                                    <td><code>1.6427x</code></td>
+                                    <td><code>2.6984x</code></td>
+                                    <td><code>1.3492x</code></td>
+                                </tr>
+                                <tr>
+                                    <td>\(60.0^\circ\) (angular mid)</td>
+                                    <td><code>1.7321</code></td>
+                                    <td><strong><code>26.79%</code></strong></td>
+                                    <td><code>5,428.9 px</code></td>
+                                    <td><code>2.0000x</code></td>
+                                    <td><code>4.0000x</code></td>
+                                    <td><code>2.0000x</code></td>
+                                </tr>
+                                <tr>
+                                    <td>\(67.5^\circ\)</td>
+                                    <td><code>2.4142</code></td>
+                                    <td><code>51.76%</code></td>
+                                    <td><code>3,577.2 px</code></td>
+                                    <td><code>2.6131x</code></td>
+                                    <td><code>6.8284x</code></td>
+                                    <td><code>3.4142x</code></td>
+                                </tr>
+                                <tr>
+                                    <td>\(75.0^\circ\) (top)</td>
+                                    <td><code>3.7321</code></td>
+                                    <td><code>100.00%</code></td>
+                                    <td><code>0.0 px</code></td>
+                                    <td><code>3.8637x</code></td>
+                                    <td><code>14.9282x</code></td>
+                                    <td><strong><code>7.4641x</code></strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3 class="npb-subhead">2(b). Academy ACES 1.3 RGC, \(C^2\) Quintic 12% Black Crush &amp; 3D Tetrahedral LUT Proof</h3>
+                    <p class="itw-prose">
+                        Decoding ACEScct back to AP1 linear and applying official Academy <code>LMT.Academy.ReferenceGamutCompress.ctl</code> parameters (\(\mathbf{t} = (0.815, 0.803, 0.880)\), \(\mathbf{l} = (1.147, 1.264, 1.312)\), \(p = 1.2\)) yields exact closed-form scaling vector \(\mathbf{s} = (0.327302, 0.285938, 0.146821)\):
+                    </p>
+                    <div class="npb-math-box">
+                        $$A = \max(R, G, B), \qquad d_c = \frac{A - c}{|A|}, \qquad d'_c = \begin{cases} d_c, & d_c \lt t_c \\ t_c + \dfrac{d_c - t_c}{\left(1 + \left(\dfrac{d_c - t_c}{s_c}\right)^p\right)^{1/p}}, & d_c \ge t_c \end{cases}, \qquad c' = A - d'_c |A|$$
+                    </div>
+
+                    <div class="npb-table-wrap">
+                        <table class="npb-table">
+                            <thead>
+                                <tr>
+                                    <th>Emissive Target</th>
+                                    <th>AP1 Linear \((R, G, B)\)</th>
+                                    <th>ACEScct \((R, G, B)\)</th>
+                                    <th>RGC \(d_{\text{in}}\)</th>
+                                    <th>RGC \(d_{\text{out}}\)</th>
+                                    <th>Post-RGC AP1 \((R', G', B')\)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Cyber Cyan <code>#00F0FF</code></strong></td>
+                                    <td><code>(0.3432, 0.8119, 0.9653)</code></td>
+                                    <td><code>(0.4667, 0.5376, 0.5519)</code></td>
+                                    <td><code>(0.6444, 0.1589, 0.0000)</code></td>
+                                    <td>unchanged</td>
+                                    <td><code>(0.3432, 0.8119, 0.9653)</code></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Marquee Gold <code>#FEE378</code></strong></td>
+                                    <td><code>(0.8773, 0.7760, 0.2680)</code></td>
+                                    <td><code>(0.5440, 0.5339, 0.4464)</code></td>
+                                    <td><code>(0.0000, 0.1155, 0.6946)</code></td>
+                                    <td>unchanged</td>
+                                    <td><code>(0.8773, 0.7760, 0.2680)</code></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Neon Pink <code>#FF0055</code></strong></td>
+                                    <td><code>(0.6174, 0.0714, 0.0996)</code></td>
+                                    <td><code>(0.5151, 0.3375, 0.3649)</code></td>
+                                    <td><code>(0.0000, 0.8843, 0.8386)</code></td>
+                                    <td><strong><code>(0.0000, 0.8719, 0.8386)</code></strong></td>
+                                    <td><strong><code>(0.6174, 0.0791, 0.0996)</code></strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Narrow-Band Cyan HDR</strong></td>
+                                    <td><code>(-0.2200, 1.8000, 2.0000)</code></td>
+                                    <td>out-of-gamut (\(R \lt 0\))</td>
+                                    <td><code>(1.1100, 0.1000, 0.0000)</code></td>
+                                    <td><strong><code>(0.9891, 0.1000, 0.0000)</code></strong></td>
+                                    <td><strong><code>(+0.0218, 1.8000, 2.0000)</code></strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="npb-microhead">Strictly Monotonic \(C^2\) Quintic 12% Black Crush &amp; 3D Tetrahedral LUT Error Bound</div>
+                    <p class="itw-prose">
+                        Enforcing six \(C^2\) Hermite constraints (\(f(0) = f'(0) = f''(0) = 0\), \(f(x_b) = x_b\), \(f'(x_b) = 1\), \(f''(x_b) = 0\)) across the bottom \(x_b = 0.12\) band (\(u = x/x_b\)) yields the unique strictly monotonic quintic shadow-crush curve (discriminant \(\Delta = -56 \lt 0\), \(\max f' = 1.5120\), \(\max |f''| = 32.835\)):
+                    </p>
+                    <div class="npb-math-box">
+                        $$y = f(x) = \begin{cases} x_b\left(6u^3 - 8u^4 + 3u^5\right), & 0 \le x \le 0.12,\quad u = \dfrac{x}{0.12} \\ x, & x \gt 0.12 \end{cases}, \qquad |e_{\max}| \le \frac{h^2}{8}\max|f''(x)| = \frac{32.835}{8(N-1)^2}$$
+                    </div>
+                    <ul class="npb-list">
+                        <li><strong><code>17^3</code> Tetrahedral LUT:</strong> \(|e_{\max}| = 0.01603\) = <code>16.40</code> 10-bit CV (<code>4.09</code> 8-bit CV -&gt; visible shadow banding).</li>
+                        <li><strong><code>33^3</code> Tetrahedral LUT:</strong> \(|e_{\max}| = 0.00401\) = <code>4.10</code> 10-bit CV (<code>1.02</code> 8-bit CV -&gt; borderline steps without a 1D shaper).</li>
+                        <li><strong><code>65^3</code> Tetrahedral LUT:</strong> \(|e_{\max}| = 0.00100\) = <strong><code>1.025</code> 10-bit CV (<code>0.256</code> 8-bit CV -&gt; sub-LSB, zero banding)</strong>. Because Kuhn tetrahedra stay strictly affine along the neutral achromatic diagonal \((0,0,0) \to (1,1,1)\), they eliminate the bilinear cross-term saddle distortion of trilinear interpolation right where black crush curvature peaks.</li>
+                    </ul>
+                </article>
+
+                <!-- SECTION 3: FASTMCP IPC & RYZEN 7 6800U BUS ARBITRATION -->
+                <article class="itw-entry-card" id="fastmcp-bus">
+                    <div class="itw-entry-header">
+                        <span class="itw-entry-badge">LAYER 03 // DISTRIBUTED IPC &amp; APU BUS</span>
+                        <span class="itw-entry-date">FASTMCP ASYNCIO &amp; TINY HYPERION LPDDR5-6400</span>
+                    </div>
+                    <h2 class="itw-entry-title">
+                        3. FastMCP Event-Loop Starvation Bounds &amp; 128-Bit LPDDR5-6400 VCN 3.0 Bus Arbitration
+                    </h2>
+
+                    <h3 class="npb-subhead">3(a). M/G/1 Pollaczek-Khinchine Delay &amp; Cruz Token-Bucket Starvation Ceiling</h3>
+                    <div class="npb-math-box">
+                        $$W_q = \frac{\rho\,\mathbb{E}[T_s](1 + C_s^2)}{2(1 - \rho)}, \qquad r_i \le \frac{\rho_{\max}}{K\,\mathbb{E}[T_s]}, \qquad b_i \le \left\lfloor \frac{D_{\max} - T_{\text{parse,max}}}{K\,\mathbb{E}[T_s]} \right\rfloor$$
+                    </div>
+                    <p class="itw-prose">
+                        At \(K = 8\) concurrent sub-agents on Tiny Hyperion (\(\mathbb{E}[T_s] = 0.45\,\text{ms}\), \(C_s^2 = 2.0\), \(T_{\text{parse,max}} = 2.5\,\text{ms}\), \(D_{\max} = 16.0\,\text{ms}\), \(\rho_{\max} = 0.75\)): policing each stream to <strong><code>r_i &lt;= 208.3 msgs/s</code></strong> and <strong><code>b_i &lt;= 3 msgs</code></strong> caps mean queue wait at <strong><code>W_q = 2.025 ms</code></strong> and guarantees a 24-message simultaneous burst clears in <code>13.30 ms &lt;= 16.0 ms</code>. Letting utilization creep to \(\rho = 0.95\) blows up \(W_q\) by <strong><code>6.3x</code> to <code>12.82 ms</code></strong>.
+                    </p>
+
+                    <h3 class="npb-subhead">3(b). 128-Bit LPDDR5-6400 Contention: VCN 3.0 4K60 Encode vs. Concurrent CPU Tensor Ops</h3>
+                    <p class="itw-prose">
+                        On an <strong>AMD Ryzen 7 6800U</strong>, theoretical peak LPDDR5-6400 bandwidth is <code>102.4 GB/s</code> (solo STREAM <code>79.87 GB/s</code>). Under mixed Zen 3+ tensor streaming + VCN 3.0 DMA bank-group contention (\(\eta_{\text{mix}} \approx 0.68\)), usable bandwidth compresses to <strong><code>69.63 GB/s</code></strong> (minus <code>1.991 GB/s</code> for iso-critical DCN 3.1 4K60 scanout). With VCN pipeline latency \(T_{\text{enc}} \approx 10.5\,\text{ms}\) inside a \(16.667\,\text{ms}\) 60 fps frame period (\(T_{\text{dma}} = 6.167\,\text{ms}\)), frame drops become mathematically inevitable once CPU tensor traffic crosses:
+                    </p>
+                    <div class="npb-math-box">
+                        $$BW_{\text{CPU}} \gt BW_{\text{CPU}}^{\max} = BW_{\text{eff,mix}} - BW_{\text{DCN}} - \frac{V_{\text{frame,DRAM}}}{T_f - T_{\text{enc}}}$$
+                    </div>
+
+                    <div class="npb-table-wrap">
+                        <table class="npb-table">
+                            <thead>
+                                <tr>
+                                    <th>Uncompressed 4K60 Format</th>
+                                    <th>Raw 1-Pass (GB/s / MB/fr)</th>
+                                    <th>Full VCN Multi-Pass (GB/s / MB/fr)</th>
+                                    <th>VCN Burst Demand (6.17 ms)</th>
+                                    <th>Exact CPU Drop Ceiling (Burst)</th>
+                                    <th>Deep-Queue Sustained</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>NV12</strong> (8-bit 4:2:0, 4.5x)</td>
+                                    <td><code>0.746</code> / <code>12.44</code></td>
+                                    <td><code>3.359</code> / <code>55.99</code></td>
+                                    <td><code>9.08 GB/s</code></td>
+                                    <td><strong><code>58.56 GB/s</code></strong></td>
+                                    <td><code>64.28 GB/s</code></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>P010</strong> (10-bit 4:2:0, 4.5x)</td>
+                                    <td><code>1.493</code> / <code>24.88</code></td>
+                                    <td><code>6.718</code> / <code>111.97</code></td>
+                                    <td><code>18.16 GB/s</code></td>
+                                    <td><strong><code>49.48 GB/s</code></strong></td>
+                                    <td><code>60.92 GB/s</code></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>RGBA8 -&gt; NV12</strong> (4.0 B/px + CSC)</td>
+                                    <td><code>1.991</code> / <code>33.18</code></td>
+                                    <td><code>7.341</code> / <code>122.34</code></td>
+                                    <td><code>19.84 GB/s</code></td>
+                                    <td><strong><code>47.80 GB/s</code></strong></td>
+                                    <td><code>60.30 GB/s</code></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>RGBA16F HDR -&gt; P010</strong> (8.0 B/px + CSC)</td>
+                                    <td><code>3.981</code> / <code>66.36</code></td>
+                                    <td><code>14.681</code> / <code>244.68</code></td>
+                                    <td><code>39.68 GB/s</code></td>
+                                    <td><strong><code>27.96 GB/s</code></strong></td>
+                                    <td><code>52.96 GB/s</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="itw-telemetry-callout">
+                        <strong>// INDEPENDENT PYTHON VERIFICATION AUDIT (PART 2):</strong> Every closed-form constant on this page (<code>P_11 = sqrt(3) - 1 = 0.732051</code>, <code>P_12 = sqrt(3) = 1.732051</code>, <code>26.79%</code> 60-deg monolith midpoint, <code>7.4641x</code> 75-deg vertical stretch, ACES 1.3 RGC <code>s_c = (0.327302, 0.285938, 0.146821)</code>, quintic crush <code>max f' = 1.5120</code> and <code>max |f''| = 32.835</code>, <code>W_q = 2.025 ms</code> vs. <code>12.82 ms</code>, and all <code>Ryzen 7 6800U</code> LPDDR5-6400 VCN drop ceilings from <code>58.56 GB/s</code> down to <code>27.96 GB/s</code>) was independently re-verified in Python directly on Tiny Hyperion.
+                    </div>
+                </article>
+
+                <!-- Bottom HUD Footer -->
+                <footer class="dev-bottom-bracket">
+                    <div>BENCHMARK PT. 2: GEMINI 4 NEON EXTRA HIGH // <span class="orange-readout">5M 54S + 2 PYTHON SOLVERS</span></div>
+                    <div>WORKSTATION: TINY HYPERION 6800U // <span class="orange-readout">SAN DIEGO, CA</span></div>
+                </footer>
+
+            </div>
+        </div>
+    </div>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, { delimiters: [{ left: '$$', right: '$$', display: true }, { left: '\\(', right: '\\)', display: false }], throwOnError: false });"></script>
+    <script>
+        (() => {
+            const macroEnv = document.getElementById('macro-env');
+            const toggleThemeBtn = document.getElementById('toggle-argon-theme');
+            if (toggleThemeBtn && macroEnv) {
+                toggleThemeBtn.addEventListener('click', () => {
+                    const isLight = macroEnv.classList.toggle('argon-light');
+                    toggleThemeBtn.textContent = isLight
+                        ? '[\u2600 MODE: CORPORATE PAPER]'
+                        : '[\u25D0 MODE: D-SUITE TEAL]';
+                });
+            }
+
+            const videoEl = document.getElementById('neon-benchmark-video');
+            const jumpBtns = document.querySelectorAll('.itw-chapter-btn[data-vid-seek]');
+            const speedBtns = document.querySelectorAll('.npb-speed-btn[data-vid-rate]');
+
+            if (videoEl) {
+                jumpBtns.forEach((btn) => {
+                    btn.addEventListener('click', () => {
+                        const sec = Number(btn.getAttribute('data-vid-seek')) || 0;
+                        jumpBtns.forEach((b) => b.classList.toggle('active', b === btn));
+                        videoEl.currentTime = sec;
+                        videoEl.play().catch(() => {});
+                    });
+                });
+
+                speedBtns.forEach((btn) => {
+                    btn.addEventListener('click', () => {
+                        const rate = Number(btn.getAttribute('data-vid-rate')) || 1;
+                        speedBtns.forEach((b) => b.classList.toggle('active', b === btn));
+                        videoEl.playbackRate = rate;
+                    });
+                });
+            }
+
+            const copyPromptBtn = document.getElementById('copy-prompt-btn');
+            const promptEl = document.getElementById('stress-prompt-text');
+            if (copyPromptBtn && promptEl && navigator.clipboard) {
+                copyPromptBtn.addEventListener('click', () => {
+                    navigator.clipboard.writeText(promptEl.textContent || '').then(() => {
+                        copyPromptBtn.textContent = '[COPIED PART 2 PROMPT]';
+                        setTimeout(() => {
+                            copyPromptBtn.textContent = '[\uD83D\uDCCB COPY PART 2 PROMPT]';
+                        }, 2200);
+                    }).catch(() => {});
+                });
+            }
+        })();
+    </script>
+    <script src="theme-fab.js?v=2"></script>
+</body>
+</html>
